@@ -288,13 +288,16 @@
     <!-- ============================================================== -->
     <!-- TAB 3: 시스템 관제탑 & 스케줄러 (SYSTEM OPERATIONS)           -->
     <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- TAB 2: 프로젝트 모니터링 (PROJECT MONITORING & SCHEDULER)       -->
+    <!-- ============================================================== -->
     <section id="view-systems" class="tab-view hidden space-y-4">
       
       <!-- Timeline Header -->
       <div class="desk-card rounded p-4">
         <h2 class="text-xs font-bold font-mono text-slate-100 uppercase tracking-wider mb-2 flex items-center">
           <i class="fa-regular fa-clock mr-2 text-indigo-400"></i>
-          프로젝트 모니터링 (Project Monitoring)
+          프로젝트 모니터링 (Project Monitoring & Execution Schedule)
         </h2>
         <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-2.5 text-xs font-mono">
           <div class="bg-desk-900 border border-desk-border rounded p-2.5">
@@ -335,95 +338,11 @@
         </div>
       </div>
 
-          <div class="bg-desk-900 border border-rose-500/30 rounded p-3 bg-rose-950/10">
-            <div class="flex items-center justify-between">
-              <span class="text-rose-400 font-bold block text-[11px]">08:45 (Mon-Fri)</span>
-              <span class="text-[10px] px-1.5 py-0.2 rounded bg-rose-950 text-rose-300 border border-rose-800">KRX 장전</span>
-            </div>
-            <div class="font-semibold text-rose-200 mt-1 truncate">stock-sniper</div>
-            <div class="text-[10px] text-rose-300/80 mt-1">외인/기관 수급 & RS 상대강도 5선</div>
-          </div>
-
-          <div class="bg-desk-900 border border-purple-400/40 rounded p-3">
-            <div class="flex items-center justify-between">
-              <span class="text-purple-400 font-bold block text-[11px]">17:00 (Tue)</span>
-              <span class="text-[10px] px-1.5 py-0.2 rounded bg-purple-950 text-purple-300 border border-purple-800">US 주간</span>
-            </div>
-            <div class="font-semibold text-slate-200 mt-1 truncate">stock-htp-top10</div>
-            <div class="text-[10px] text-slate-400 mt-1">S&P 500 & Russell 2000 모멘텀 TOP 10</div>
-          </div>
-
-          <div class="bg-desk-900 border border-indigo-400/30 rounded p-3">
-            <div class="flex items-center justify-between">
-              <span class="text-indigo-400 font-bold block text-[11px]">21:30 (Daily)</span>
-              <span class="text-[10px] px-1.5 py-0.2 rounded bg-indigo-950 text-indigo-300 border border-indigo-800">US 본장</span>
-            </div>
-            <div class="font-semibold text-slate-200 mt-1 truncate">stock-sepa-pivot & stock-swing</div>
-            <div class="text-[10px] text-slate-400 mt-1">미국 본장 피벗 감시선 & 227선 분할매수</div>
-          </div>
-        </div>
-      </div>
-          <div class="bg-desk-900 border border-rose-500/30 rounded p-2.5 bg-rose-950/10">
-            <span class="text-rose-400 font-bold block text-[11px]">08:45 (Mon-Fri)</span>
-            <div class="font-semibold text-rose-200 mt-0.5 truncate">stock-sniper</div>
-            <div class="text-[10px] text-rose-300 mt-1">RS Momentum & 52W High</div>
-          </div>
-          <div class="bg-desk-900 border border-purple-400/40 rounded p-2.5">
-            <span class="text-purple-400 font-bold block text-[11px]">17:00 (Tue)</span>
-            <div class="font-semibold text-slate-200 mt-0.5 truncate">stock-htp-top10</div>
-            <div class="text-[10px] text-slate-500 mt-1">US HTP Momentum 10</div>
-          </div>
-          <div class="bg-desk-900 border border-indigo-400/30 rounded p-2.5">
-            <span class="text-indigo-400 font-bold block text-[11px]">21:30 (Daily)</span>
-            <div class="font-semibold text-slate-200 mt-0.5 truncate">stock-sepa-pivot</div>
-            <div class="text-[10px] text-slate-500 mt-1">US SEPA x Pivot</div>
-          </div>
-          <div class="bg-desk-900 border border-emerald-500/30 rounded p-2.5 bg-emerald-950/10">
-            <span class="text-emerald-400 font-bold block text-[11px]">24/7 (Daemon)</span>
-            <div class="font-semibold text-emerald-200 mt-0.5 truncate">stock-swing</div>
-            <div class="text-[10px] text-emerald-300 mt-1">KRX & US 227 Swing</div>
-          </div>
-        </div>
-      </div>
-          <div class="bg-desk-900 border border-desk-border rounded p-2.5">
-            <span class="text-indigo-400 font-bold block text-[11px]">08:40 (Daily)</span>
-            <div class="font-semibold text-slate-200 mt-0.5">stock-sepa-pivot</div>
-            <div class="text-[10px] text-slate-500 mt-1">KRX SEPA x Pivot</div>
-          </div>
-          <div class="bg-desk-900 border border-rose-500/30 rounded p-2.5 bg-rose-950/10">
-            <span class="text-rose-400 font-bold block text-[11px]">08:45 (Mon-Fri)</span>
-            <div class="font-semibold text-rose-200 mt-0.5">stock-sniper</div>
-            <div class="text-[10px] text-rose-300 mt-1">RS Momentum & 52W High</div>
-          </div>
-          <div class="bg-desk-900 border border-desk-border rounded p-2.5">
-            <span class="text-indigo-400 font-bold block text-[11px]">09:30 (Daily)</span>
-            <div class="font-semibold text-slate-200 mt-0.5">kbit-bot</div>
-            <div class="text-[10px] text-slate-500 mt-1">Technical Chart Bot</div>
-          </div>
-          <div class="bg-desk-900 border border-desk-border rounded p-2.5">
-            <span class="text-indigo-400 font-bold block text-[11px]">11:00 (Daily)</span>
-            <div class="font-semibold text-slate-200 mt-0.5">stock-cyclical-screener</div>
-            <div class="text-[10px] text-slate-500 mt-1">KRX Cyclical 6 Sectors</div>
-          </div>
-          <div class="bg-desk-900 border border-desk-border rounded p-2.5">
-            <span class="text-purple-400 font-bold block text-[11px]">17:00 (Tue)</span>
-            <div class="font-semibold text-slate-200 mt-0.5">stock-us3x & htp-top10</div>
-            <div class="text-[10px] text-slate-500 mt-1">US 3X & HTP Momentum</div>
-          </div>
-          <div class="bg-desk-900 border border-desk-border rounded p-2.5">
-            <span class="text-purple-400 font-bold block text-[11px]">21:30 & 24H</span>
-            <div class="font-semibold text-slate-200 mt-0.5">stock-sepa-pivot & swing</div>
-            <div class="text-[10px] text-slate-500 mt-1">US Pivot & 227 Swing</div>
-          </div>
-        </div>
-      </div>
-
       <!-- Systems Grid -->
       <div id="systemsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <!-- Rendered via JS -->
       </div>
     </section>
-
   </main>
 
   <!-- Log Viewer Modal -->
@@ -457,7 +376,7 @@
     // Embedded Initial Dataset (Auto-synced with status.json)
     const INITIAL_DATA = {
       "summary": {
-            "updated_at": "2026-10-21 13:43:49",
+            "updated_at": "2026-10-21 13:48:55",
             "total_projects": 9,
             "active_daemons": 8,
             "today_executed": 4,
@@ -468,10 +387,10 @@
             },
             "portfolio": {
                   "date": "2026-10-21",
-                  "daily_return_pct": 1.44,
-                  "cumulative_return_pct": 1.33,
+                  "daily_return_pct": 1.38,
+                  "cumulative_return_pct": 1.28,
                   "realized_pnl_pct": 1.0,
-                  "unrealized_pnl_pct": 1.44,
+                  "unrealized_pnl_pct": 1.38,
                   "holding_count": 21,
                   "closed_count": 7,
                   "win_rate": 53.6
@@ -764,21 +683,21 @@
                   "last_exit_code": null,
                   "status_text": "Ready",
                   "status_code": "ready",
-                  "last_executed": "2026-10-21 13:42:57",
+                  "last_executed": "2026-10-21 13:46:13",
                   "executed_today": true,
                   "recent_logs": [
-                        "2026-10-21 13:42:57 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035420 (S07_SECTOR_SYMPATHY LONG) within 60m window.",
-                        "2026-10-21 13:42:57 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035420 (S12_HYPE_TO_FUNDAMENTALS LONG) within 60m window.",
-                        "2026-10-21 13:42:57 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035720 (S07_SECTOR_SYMPATHY LONG) within 60m window.",
-                        "2026-10-21 13:42:57 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035720 (S12_HYPE_TO_FUNDAMENTALS LONG) within 60m window.",
-                        "2026-10-21 13:42:57 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S07_SECTOR_SYMPATHY LONG) within 60m window.",
-                        "2026-10-21 13:42:57 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S11_SUPPLY_ABSORPTION LONG) within 60m window.",
-                        "2026-10-21 13:42:57 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S12_HYPE_TO_FUNDAMENTALS LONG) within 60m window.",
-                        "2026-10-21 13:42:57 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S14_RELATIVE_STRENGTH LONG) within 60m window.",
-                        "2026-10-21 13:42:57 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S15_MULTI_DAY_MOMENTUM LONG) within 60m window.",
-                        "2026-10-21 13:42:57 [INFO] [cli] [DAEMON] Cycle #874 complete: detected=29, alerted=0, dedup=29"
+                        "2026-10-21 13:46:13 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035420 (S07_SECTOR_SYMPATHY LONG) within 60m window.",
+                        "2026-10-21 13:46:13 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035420 (S12_HYPE_TO_FUNDAMENTALS LONG) within 60m window.",
+                        "2026-10-21 13:46:13 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035720 (S07_SECTOR_SYMPATHY LONG) within 60m window.",
+                        "2026-10-21 13:46:13 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035720 (S12_HYPE_TO_FUNDAMENTALS LONG) within 60m window.",
+                        "2026-10-21 13:46:13 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S07_SECTOR_SYMPATHY LONG) within 60m window.",
+                        "2026-10-21 13:46:13 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S11_SUPPLY_ABSORPTION LONG) within 60m window.",
+                        "2026-10-21 13:46:13 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S12_HYPE_TO_FUNDAMENTALS LONG) within 60m window.",
+                        "2026-10-21 13:46:13 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S14_RELATIVE_STRENGTH LONG) within 60m window.",
+                        "2026-10-21 13:46:13 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S15_MULTI_DAY_MOMENTUM LONG) within 60m window.",
+                        "2026-10-21 13:46:13 [INFO] [cli] [DAEMON] Cycle #875 complete: detected=29, alerted=0, dedup=29"
                   ],
-                  "last_log_preview": "2026-10-21 13:42:57 [INFO] [cli] [DAEMON] Cycle #874 complete: detected=29, alerted=0, dedup=29"
+                  "last_log_preview": "2026-10-21 13:46:13 [INFO] [cli] [DAEMON] Cycle #875 complete: detected=29, alerted=0, dedup=29"
             },
             {
                   "id": "stock-cyclical-screener",
@@ -1211,11 +1130,11 @@
                   "signal_date": "2026-10-21 08:40:00",
                   "entry_price": 176900.0,
                   "entry_date": "2026-10-21",
-                  "current_price": 194500.0,
+                  "current_price": 194400.0,
                   "exit_price": null,
                   "exit_date": null,
                   "status": "HOLDING",
-                  "return_pct": 9.95,
+                  "return_pct": 9.89,
                   "target_price": 205000.0,
                   "stop_loss_price": 176900.0,
                   "notes": "227선 무한 스윙 3차 트렌치 완주 보유 (+10.17%)"
@@ -1251,11 +1170,11 @@
                   "signal_date": "2026-10-21 08:45:00",
                   "entry_price": 9670.0,
                   "entry_date": "2026-10-21",
-                  "current_price": 9990.0,
+                  "current_price": 9950.0,
                   "exit_price": null,
                   "exit_date": null,
                   "status": "HOLDING",
-                  "return_pct": 3.31,
+                  "return_pct": 2.9,
                   "target_price": 10500.0,
                   "stop_loss_price": 9300.0,
                   "notes": "거래대금 1,500억 유입 양봉 수급 방어"
@@ -1291,34 +1210,14 @@
                   "signal_date": "2026-10-21 08:40:00",
                   "entry_price": 128800.0,
                   "entry_date": "2026-10-21",
-                  "current_price": 130900.0,
+                  "current_price": 131000.0,
                   "exit_price": null,
                   "exit_date": null,
                   "status": "HOLDING",
-                  "return_pct": 1.63,
+                  "return_pct": 1.71,
                   "target_price": 145000.0,
                   "stop_loss_price": 124000.0,
                   "notes": "227선 스윙 2차 분할 포지션 유지 (+1.71%)"
-            },
-            {
-                  "id": 72,
-                  "project_id": "stock-sniper",
-                  "project_name": "stock-sniper",
-                  "ticker": "042510",
-                  "name": "라온시큐어",
-                  "market": "KRX",
-                  "signal_type": "장전알람(시가매수)",
-                  "signal_date": "2026-10-21 08:45:00",
-                  "entry_price": 18170.0,
-                  "entry_date": "2026-10-21",
-                  "current_price": 18410.0,
-                  "exit_price": null,
-                  "exit_date": null,
-                  "status": "HOLDING",
-                  "return_pct": 1.32,
-                  "target_price": 19500.0,
-                  "stop_loss_price": 17500.0,
-                  "notes": "생체인증/양자암호 52주 신고가 돌파권"
             },
             {
                   "id": 97,
@@ -1331,14 +1230,34 @@
                   "signal_date": "2026-10-21 08:40:00",
                   "entry_price": 404000.0,
                   "entry_date": "2026-10-21",
-                  "current_price": 409000.0,
+                  "current_price": 409500.0,
                   "exit_price": null,
                   "exit_date": null,
                   "status": "HOLDING",
-                  "return_pct": 1.24,
+                  "return_pct": 1.36,
                   "target_price": 435000.0,
                   "stop_loss_price": 385000.0,
                   "notes": "227선 스윙 2차 분할 누적 포지션 (+1.36%)"
+            },
+            {
+                  "id": 72,
+                  "project_id": "stock-sniper",
+                  "project_name": "stock-sniper",
+                  "ticker": "042510",
+                  "name": "라온시큐어",
+                  "market": "KRX",
+                  "signal_type": "장전알람(시가매수)",
+                  "signal_date": "2026-10-21 08:45:00",
+                  "entry_price": 18170.0,
+                  "entry_date": "2026-10-21",
+                  "current_price": 18390.0,
+                  "exit_price": null,
+                  "exit_date": null,
+                  "status": "HOLDING",
+                  "return_pct": 1.21,
+                  "target_price": 19500.0,
+                  "stop_loss_price": 17500.0,
+                  "notes": "생체인증/양자암호 52주 신고가 돌파권"
             },
             {
                   "id": 75,
@@ -1351,34 +1270,34 @@
                   "signal_date": "2026-10-21 08:40:00",
                   "entry_price": 1260000.0,
                   "entry_date": "2026-10-21",
-                  "current_price": 1274000.0,
+                  "current_price": 1273000.0,
                   "exit_price": null,
                   "exit_date": null,
                   "status": "HOLDING",
-                  "return_pct": 1.11,
+                  "return_pct": 1.03,
                   "target_price": 1285000.0,
                   "stop_loss_price": 1220000.0,
                   "notes": "HBM3E 독점 슈퍼사이클, 20일선 VCP 피벗 돌파"
             },
             {
-                  "id": 76,
+                  "id": 77,
                   "project_id": "stock-sepa-pivot",
                   "project_name": "stock-sepa-pivot",
-                  "ticker": "196170",
-                  "name": "알테오젠",
+                  "ticker": "003230",
+                  "name": "삼양식품",
                   "market": "KRX",
                   "signal_type": "장전알람(시가매수)",
                   "signal_date": "2026-10-21 08:40:00",
-                  "entry_price": 236000.0,
+                  "entry_price": 1265000.0,
                   "entry_date": "2026-10-21",
-                  "current_price": 238500.0,
+                  "current_price": 1275000.0,
                   "exit_price": null,
                   "exit_date": null,
                   "status": "HOLDING",
-                  "return_pct": 1.06,
-                  "target_price": 245000.0,
-                  "stop_loss_price": 230000.0,
-                  "notes": "피하주사(SC) 독점 플랫폼, 하이타이트 플래그 돌파"
+                  "return_pct": 0.79,
+                  "target_price": 1320000.0,
+                  "stop_loss_price": 1220000.0,
+                  "notes": "글로벌 수출 호조, 컵앤핸들 피벗 돌파"
             },
             {
                   "id": 73,
@@ -1411,54 +1330,34 @@
                   "signal_date": "2026-10-21 08:45:00",
                   "entry_price": 88665.0,
                   "entry_date": "2026-10-21",
-                  "current_price": 89315.0,
+                  "current_price": 89260.0,
                   "exit_price": null,
                   "exit_date": null,
                   "status": "HOLDING",
-                  "return_pct": 0.73,
+                  "return_pct": 0.67,
                   "target_price": 91500.0,
                   "stop_loss_price": 87000.0,
                   "notes": "지수 대표 ETF 분할 시가 체결"
             },
             {
-                  "id": 77,
+                  "id": 76,
                   "project_id": "stock-sepa-pivot",
                   "project_name": "stock-sepa-pivot",
-                  "ticker": "003230",
-                  "name": "삼양식품",
+                  "ticker": "196170",
+                  "name": "알테오젠",
                   "market": "KRX",
                   "signal_type": "장전알람(시가매수)",
                   "signal_date": "2026-10-21 08:40:00",
-                  "entry_price": 1265000.0,
+                  "entry_price": 236000.0,
                   "entry_date": "2026-10-21",
-                  "current_price": 1272000.0,
+                  "current_price": 237500.0,
                   "exit_price": null,
                   "exit_date": null,
                   "status": "HOLDING",
-                  "return_pct": 0.55,
-                  "target_price": 1320000.0,
-                  "stop_loss_price": 1220000.0,
-                  "notes": "글로벌 수출 호조, 컵앤핸들 피벗 돌파"
-            },
-            {
-                  "id": 78,
-                  "project_id": "stock-sepa-pivot",
-                  "project_name": "stock-sepa-pivot",
-                  "ticker": "012450",
-                  "name": "한화에어로스페이스",
-                  "market": "KRX",
-                  "signal_type": "장전알람(시가매수)",
-                  "signal_date": "2026-10-21 08:40:00",
-                  "entry_price": 809000.0,
-                  "entry_date": "2026-10-21",
-                  "current_price": 809000.0,
-                  "exit_price": null,
-                  "exit_date": null,
-                  "status": "HOLDING",
-                  "return_pct": 0.0,
-                  "target_price": 835000.0,
-                  "stop_loss_price": 785000.0,
-                  "notes": "K9/천무 글로벌 수주 모멘텀, 불플래그 패턴"
+                  "return_pct": 0.64,
+                  "target_price": 245000.0,
+                  "stop_loss_price": 230000.0,
+                  "notes": "피하주사(SC) 독점 플랫폼, 하이타이트 플래그 돌파"
             },
             {
                   "id": 80,
@@ -1571,14 +1470,34 @@
                   "signal_date": "2026-10-21 08:45:00",
                   "entry_price": 13330.0,
                   "entry_date": "2026-10-21",
-                  "current_price": 13325.0,
+                  "current_price": 13320.0,
                   "exit_price": null,
                   "exit_date": null,
                   "status": "HOLDING",
-                  "return_pct": -0.04,
+                  "return_pct": -0.08,
                   "target_price": 13800.0,
                   "stop_loss_price": 13000.0,
                   "notes": "코스닥 지수 수급 지지선 반등"
+            },
+            {
+                  "id": 78,
+                  "project_id": "stock-sepa-pivot",
+                  "project_name": "stock-sepa-pivot",
+                  "ticker": "012450",
+                  "name": "한화에어로스페이스",
+                  "market": "KRX",
+                  "signal_type": "장전알람(시가매수)",
+                  "signal_date": "2026-10-21 08:40:00",
+                  "entry_price": 809000.0,
+                  "entry_date": "2026-10-21",
+                  "current_price": 805000.0,
+                  "exit_price": null,
+                  "exit_date": null,
+                  "status": "HOLDING",
+                  "return_pct": -0.49,
+                  "target_price": 835000.0,
+                  "stop_loss_price": 785000.0,
+                  "notes": "K9/천무 글로벌 수주 모멘텀, 불플래그 패턴"
             },
             {
                   "id": 79,
@@ -1591,11 +1510,11 @@
                   "signal_date": "2026-10-21 08:40:00",
                   "entry_price": 499500.0,
                   "entry_date": "2026-10-21",
-                  "current_price": 494000.0,
+                  "current_price": 493500.0,
                   "exit_price": null,
                   "exit_date": null,
                   "status": "HOLDING",
-                  "return_pct": -1.1,
+                  "return_pct": -1.2,
                   "target_price": 515000.0,
                   "stop_loss_price": 480000.0,
                   "notes": "북미 변압기 쇼티지 수혜, 플랫 베이스 지지"
@@ -1611,11 +1530,11 @@
                   "signal_date": "2026-10-19 08:30:00",
                   "entry_price": 42900.0,
                   "entry_date": "2026-10-19",
-                  "current_price": 42200.0,
+                  "current_price": 42250.0,
                   "exit_price": null,
                   "exit_date": null,
                   "status": "HOLDING",
-                  "return_pct": -1.63,
+                  "return_pct": -1.52,
                   "target_price": 46000.0,
                   "stop_loss_price": 38000.0,
                   "notes": "시가배당률 6.8%, 자본건전성 최우수"
@@ -1764,10 +1683,10 @@
       "performance": {
             "PORTFOLIO_TOTAL": {
                   "date": "2026-10-21",
-                  "daily_return_pct": 1.44,
-                  "cumulative_return_pct": 1.33,
+                  "daily_return_pct": 1.38,
+                  "cumulative_return_pct": 1.28,
                   "realized_pnl_pct": 1.0,
-                  "unrealized_pnl_pct": 1.44,
+                  "unrealized_pnl_pct": 1.38,
                   "holding_count": 21,
                   "closed_count": 7,
                   "win_rate": 53.6
@@ -1804,10 +1723,10 @@
             },
             "stock-dividend_top7": {
                   "date": "2026-10-21",
-                  "daily_return_pct": -1.63,
-                  "cumulative_return_pct": -2.13,
+                  "daily_return_pct": -1.52,
+                  "cumulative_return_pct": -2.1,
                   "realized_pnl_pct": -2.38,
-                  "unrealized_pnl_pct": -1.63,
+                  "unrealized_pnl_pct": -1.52,
                   "holding_count": 1,
                   "closed_count": 2,
                   "win_rate": 0.0
@@ -1824,30 +1743,30 @@
             },
             "stock-sepa-pivot": {
                   "date": "2026-10-21",
-                  "daily_return_pct": 0.32,
-                  "cumulative_return_pct": 0.32,
+                  "daily_return_pct": 0.15,
+                  "cumulative_return_pct": 0.15,
                   "realized_pnl_pct": 0.0,
-                  "unrealized_pnl_pct": 0.32,
+                  "unrealized_pnl_pct": 0.15,
                   "holding_count": 5,
                   "closed_count": 0,
                   "win_rate": 60.0
             },
             "stock-sniper": {
                   "date": "2026-10-21",
-                  "daily_return_pct": 1.21,
-                  "cumulative_return_pct": 1.21,
+                  "daily_return_pct": 1.09,
+                  "cumulative_return_pct": 1.09,
                   "realized_pnl_pct": 0.0,
-                  "unrealized_pnl_pct": 1.21,
+                  "unrealized_pnl_pct": 1.09,
                   "holding_count": 5,
                   "closed_count": 0,
                   "win_rate": 80.0
             },
             "stock-swing": {
                   "date": "2026-10-21",
-                  "daily_return_pct": 5.53,
-                  "cumulative_return_pct": 5.53,
+                  "daily_return_pct": 5.57,
+                  "cumulative_return_pct": 5.57,
                   "realized_pnl_pct": 0.0,
-                  "unrealized_pnl_pct": 5.53,
+                  "unrealized_pnl_pct": 5.57,
                   "holding_count": 4,
                   "closed_count": 0,
                   "win_rate": 100.0
@@ -1900,13 +1819,26 @@
       document.querySelectorAll('.tab-btn').forEach(b => {
         b.className = 'tab-btn px-3 py-1.5 text-xs font-medium rounded text-slate-400 hover:text-slate-200 hover:bg-desk-850 border border-transparent transition-colors';
       });
+      document.querySelectorAll('.mobile-tab-btn').forEach(b => {
+        b.className = 'mobile-tab-btn py-1.5 px-3 text-slate-400 border-b-2 border-transparent transition-colors';
+      });
 
       const activeView = document.getElementById('view-' + tab);
       const activeBtn = document.getElementById('tab-btn-' + tab);
+      const activeMobBtn = document.getElementById('mob-btn-' + tab);
+
       if (activeView) activeView.classList.remove('hidden');
       if (activeBtn) {
         activeBtn.className = 'tab-btn px-3 py-1.5 text-xs font-semibold rounded bg-desk-800 text-white border border-desk-600 transition-colors';
       }
+      if (activeMobBtn) {
+        activeMobBtn.className = 'mobile-tab-btn py-1.5 px-3 text-rose-400 font-bold border-b-2 border-rose-500 transition-colors';
+      }
+    }
+
+    function formatDeskPrice(val, market) {
+      if (val === null || val === undefined || isNaN(val)) return '-';
+      return market === 'KRX' ? `${Math.round(val).toLocaleString()}원` : `$${Number(val).toFixed(2)}`;
     }
 
     function renderAllViews() {
@@ -1944,9 +1876,10 @@
       container.innerHTML = '';
       const perf = appData.performance || {};
 
-            const strategies = [
+      const strategies = [
         { id: 'stock-sniper', name: 'stock-sniper', label: 'Mon-Fri 08:45 RS Momentum' },
         { id: 'stock-sepa-pivot', name: 'stock-sepa-pivot', label: 'Daily 08:40 / 21:30 SEPA Pivot' },
+        { id: 'stock-swing', name: 'stock-swing', label: 'Daily 08:40 / 21:30 227 Scale-in' },
         { id: 'stock-us3x', name: 'stock-us3x', label: 'Tue 17:00 US 3X Infinite' },
         { id: 'stock-dividend_top7', name: 'stock-dividend_top7', label: 'Mon 08:30 Dividend Top 7' },
         { id: 'kbit-bot', name: 'kbit-bot', label: 'Daily 09:30 Technical Chart' },
@@ -2010,10 +1943,6 @@
         const isHolding = t.status === 'HOLDING';
         const isUp = t.return_pct >= 0;
         const curOrExit = isHolding ? t.current_price : (t.exit_price || t.current_price);
-        const formatPrice = (val, market) => {
-          if (!val) return '-';
-          return market === 'KRX' ? `${Math.round(val).toLocaleString()}원` : `$${val.toFixed(2)}`;
-        };
 
         tr.innerHTML = `
           <td class="py-2.5 px-3 font-semibold text-slate-200">
@@ -2029,10 +1958,10 @@
             <div class="text-[10px] text-slate-400 mt-0.5">${t.signal_type}</div>
           </td>
           <td class="py-2.5 px-3 text-right font-semibold text-slate-200">
-            ${formatPrice(t.entry_price, t.market)}
+            ${formatDeskPrice(t.entry_price, t.market)}
           </td>
           <td class="py-2.5 px-3 text-right font-semibold text-slate-100">
-            ${formatPrice(curOrExit, t.market)}
+            ${formatDeskPrice(curOrExit, t.market)}
           </td>
           <td class="py-2.5 px-3 text-right font-bold ${isUp ? 'text-krx-up' : 'text-krx-down'}">
             ${isUp ? '+' : ''}${t.return_pct.toFixed(2)}%
@@ -2043,10 +1972,10 @@
               : '<span class="px-1.5 py-0.5 rounded text-[10px] bg-desk-800 text-slate-400 border border-desk-700">매도완료</span>'}
           </td>
           <td class="py-2.5 px-3 text-right text-slate-400 text-[11px]">
-            ${formatPrice(t.target_price, t.market)}
+            ${formatDeskPrice(t.target_price, t.market)}
           </td>
           <td class="py-2.5 px-3 text-right text-slate-400 text-[11px]">
-            ${formatPrice(t.stop_loss_price, t.market)}
+            ${formatDeskPrice(t.stop_loss_price, t.market)}
           </td>
           <td class="py-2.5 px-3 text-[11px] text-slate-400 max-w-xs truncate" title="${t.notes || ''}">
             ${t.notes || '-'}
