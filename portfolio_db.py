@@ -1,11 +1,20 @@
 #!/usr/bin/env python3
 """
 Stock Trading Desk - 실전 수익률 및 포트폴리오 데이터베이스 엔진
-- 기준일: 2026-10-21 (오늘 알람부터 실전 종목-수익률 관리 시작)
+전체 9개 퀀트 시스템 통합 관리:
+1. stock-sniper (한국 장전 08:45 수급 & RS 5선)
+2. stock-sepa-pivot (한국/미국 SEPA x 피벗 감시)
+3. stock-swing (한국/미국 227선 무한 스윙 Scale-in)
+4. stock-htp-top10 (미국 S&P 500 / 러셀 2000 HTP 모멘텀 TOP 10)
+5. stock-us3x (미국 3배 레버리지 TQQQ/TECL/FAS 무한매수)
+6. stock-dividend_top7 (한국 거래소 6대 원칙 주간 배당 TOP 7)
+7. kbit-bot (장중 특징주 캔들 차트 분석 봇)
+8. signal_forge_alert (AI 거시 시장 인텔리전스 & 카탈리스트 돌파)
+9. stock-cyclical-screener (한국 6대 시클리컬 섹터 PBR 사이클)
+
 - 장전알람: 당일 09:00 시가(Open Price) 자동 매수 체결
-- 장중알람: 알람 시점 시가/체결가 매수 체결
-- 매도시: 목표가/손절가 도달 시 DB에 매도가/매도일 기입 및 실현손익 확정
-- 일일 수익률(Daily Return) 및 누적 수익률(Cumulative Return) 자동 연산
+- 장중/야간알람: 알람 시점 시가/체결가 매수 체결
+- 매도시: 목표가/손절가 또는 청산 신호 발생 시 DB에 매도가/매도일 기입 및 실현손익 확정
 """
 
 import os
@@ -62,15 +71,15 @@ def init_db():
         market TEXT NOT NULL,
         signal_type TEXT NOT NULL,
         signal_date TEXT NOT NULL,
-        entry_price REAL NOT NULL,   -- 장전알람: 09:00 시가
+        entry_price REAL NOT NULL,
         entry_date TEXT NOT NULL,
         current_price REAL NOT NULL,
-        exit_price REAL,             -- 매도 체결가
-        exit_date TEXT,              -- 매도일자
+        exit_price REAL,
+        exit_date TEXT,
         status TEXT NOT NULL,        -- HOLDING (보유중) / CLOSED (매도완료)
         return_pct REAL NOT NULL,    -- 수익률 (%)
-        target_price REAL,           -- 목표가
-        stop_loss_price REAL,        -- 손절가
+        target_price REAL,
+        stop_loss_price REAL,
         notes TEXT
     );
     """)
@@ -145,61 +154,37 @@ def get_live_price(market: str, ticker: str) -> dict:
     return fetch_us_price(ticker)
 
 # -------------------------------------------------------------
-# 2026-10-21 오늘 알람부터 실전 대상 종목 세팅 (Reset & Start Today)
+# 전체 9대 프로젝트 실전 알람 및 체결 시딩 (Reset & Reload 9 Projects)
 # -------------------------------------------------------------
-def reset_and_start_from_today():
-    """오늘(2026-10-21) 알람부터 대상 종목 및 수익률 관리 시작"""
+def reset_and_reload_all_9_projects():
+    """모든 9개 프로젝트의 가장 최근 실제 알람 내용으로 종목 및 수익률 관리 세팅"""
     conn = get_db()
     cur = conn.cursor()
 
-    # 기존 내역 초기화하고 오늘 날짜부터 새로 관리
     cur.execute("DELETE FROM alarms")
     cur.execute("DELETE FROM trades")
     cur.execute("DELETE FROM daily_performance")
     conn.commit()
 
     today_str = "2026-10-21"
-    now_full = "2026-10-21 08:45:00"
 
-    print(f"🚀 {today_str} 오늘 알람 기준 실전 대상 종목 수집 및 시가 체결 시작...")
-
-    # 1. 오늘 08:40 SEPA x 피벗 감시 알람 종목
-    sepa_candidates = [
-        {"ticker": "000660", "name": "SK하이닉스", "target_pivot": 1285000, "stop": 1220000, "note": "HBM3E 독점 슈퍼사이클, 20일선 VCP 피벗 돌파"},
-        {"ticker": "196170", "name": "알테오젠", "target_pivot": 245000, "stop": 230000, "note": "피하주사(SC) 독점 플랫폼, 하이타이트 플래그 돌파"},
-        {"ticker": "003230", "name": "삼양식품", "target_pivot": 1320000, "stop": 1220000, "note": "글로벌 수출 호조, 컵앤핸들 피벗 돌파"},
-        {"ticker": "012450", "name": "한화에어로스페이스", "target_pivot": 835000, "stop": 785000, "note": "K9/천무 글로벌 수주 모멘텀, 불플래그 패턴"},
-        {"ticker": "267260", "name": "HD현대일렉트릭", "target_pivot": 515000, "stop": 480000, "note": "북미 변압기 쇼티지 수혜, 플랫 베이스 지지"}
+    # =========================================================
+    # 1. stock-sniper (10/21 08:45 장전 알람)
+    # =========================================================
+    sniper_candidates = [
+        {"ticker": "069500", "name": "KODEX 200", "target": 91500, "stop": 87000, "note": "지수 대표 ETF 분할 시가 체결"},
+        {"ticker": "229200", "name": "KODEX 코스닥150", "target": 13800, "stop": 13000, "note": "코스닥 지수 수급 지지선 반등"},
+        {"ticker": "042510", "name": "라온시큐어", "target": 19500, "stop": 17500, "note": "생체인증/양자암호 52주 신고가 돌파권"},
+        {"ticker": "036930", "name": "주성엔지니어링", "target": 215000, "stop": 195000, "note": "반도체 ALD 2,200억 수급 방어"},
+        {"ticker": "002990", "name": "금호건설", "target": 10500, "stop": 9300, "note": "거래대금 1,500억 유입 양봉 수급 방어"}
     ]
-
-    sepa_msg = f"""📈 [08:40 오전 알람] 🇰🇷 한국장 개장 SEPA x 피벗 브리핑 (기준일: {today_str})
-👑 [한국 대형 주도주 TOP 5] 피벗 감시선
-1. SK하이닉스 (000660) | 피벗 1,285,000원 | 손절 1,220,000원 | Ascending Triangle
-2. 알테오젠 (196170) | 피벗 245,000원 | 손절 230,000원 | High Tight Flag
-3. 삼양식품 (003230) | 피벗 1,320,000원 | 손절 1,220,000원 | Cup with Handle
-4. 한화에어로스페이스 (012450) | 피벗 835,000원 | 손절 785,000원 | Bull Flag
-5. HD현대일렉트릭 (267260) | 피벗 515,000원 | 손절 480,000원 | Flat Base
-⚠️ 매매 수칙: 09:00 시가(Open) 확인 후 진입, 피벗 대비 +5% 초과 갭상승 추격 매수 금지."""
-
     cur.execute("""
     INSERT INTO alarms (project_id, project_name, sent_at, alarm_type, market, title, raw_message, stocks_json)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     """, (
-        "stock-sepa-pivot", "Stock SEPA Pivot", f"{today_str} 08:40:02", "장전알람", "KRX",
-        "📈 08:40 한국장 SEPA x 피벗 포인트 감시 (SK하이닉스/알테오젠/삼양식품 외)",
-        sepa_msg, json.dumps(sepa_candidates, ensure_ascii=False)
-    ))
-
-    # 2. 오늘 08:45 스톡 스나이퍼 실전 주문표 종목
-    sniper_candidates = [
-        {"ticker": "069500", "name": "KODEX 200", "target": 91500, "stop": 87000, "note": "지수 대표 ETF 시가 분할 매수 타점"},
-        {"ticker": "229200", "name": "KODEX 코스닥150", "target": 13800, "stop": 13000, "note": "코스닥150 지수 수급 지지선 반등 노림"},
-        {"ticker": "042510", "name": "라온시큐어", "target": 19500, "stop": 17500, "note": "생체인증/양자암호 모멘텀, 52주 신고가권"},
-        {"ticker": "036930", "name": "주성엔지니어링", "target": 215000, "stop": 195000, "note": "반도체 ALD 대규모 수급 방어, 20일선 지지"},
-        {"ticker": "002990", "name": "금호건설", "target": 10500, "stop": 9300, "note": "약세장 속 거래대금 유입 및 양봉 수급 방어"}
-    ]
-
-    sniper_msg = f"""🎯 [스톡 스나이퍼 08:45 실전 주문표]
+        "stock-sniper", "stock-sniper", f"{today_str} 08:45:04", "장전알람", "KRX",
+        "🎯 08:45 장전 스나이퍼 실전 주문표 (KODEX 200/150 & 수급 주도주 3선)",
+        f"""[스톡 스나이퍼 08:45 실전 장전 주문표]
 📅 기준일시: {today_str} (수) 08:45:04 장전 출정 브리핑
 📊 지수 ETF 진입 타점:
   - KODEX 200 (069500) | 목표: 91,500원 | 손절: 87,000원
@@ -208,86 +193,328 @@ def reset_and_start_from_today():
   1. 라온시큐어 (042510) | 목표: 19,500원 | 손절: 17,500원
   2. 주성엔지니어링 (036930) | 목표: 215,000원 | 손절: 195,000원
   3. 금호건설 (002990) | 목표: 10,500원 | 손절: 9,300원
-⚠️ 실전 원칙: 장전 알람 종목은 09:00 시가(Open) 확인 후 즉시 분할 매수 체결."""
+⚠️ 실전 원칙: 장전 알람 종목은 09:00 시가(Open) 확인 후 즉시 분할 매수 체결.""",
+        json.dumps(sniper_candidates, ensure_ascii=False)
+    ))
 
+    # =========================================================
+    # 2. stock-sepa-pivot (10/21 08:40 한국장 알람)
+    # =========================================================
+    sepa_candidates = [
+        {"ticker": "000660", "name": "SK하이닉스", "target": 1285000, "stop": 1220000, "note": "HBM3E 독점 슈퍼사이클, 20일선 VCP 피벗 돌파"},
+        {"ticker": "196170", "name": "알테오젠", "target": 245000, "stop": 230000, "note": "피하주사(SC) 독점 플랫폼, 하이타이트 플래그 돌파"},
+        {"ticker": "003230", "name": "삼양식품", "target": 1320000, "stop": 1220000, "note": "글로벌 수출 호조, 컵앤핸들 피벗 돌파"},
+        {"ticker": "012450", "name": "한화에어로스페이스", "target": 835000, "stop": 785000, "note": "K9/천무 글로벌 수주 모멘텀, 불플래그 패턴"},
+        {"ticker": "267260", "name": "HD현대일렉트릭", "target": 515000, "stop": 480000, "note": "북미 변압기 쇼티지 수혜, 플랫 베이스 지지"}
+    ]
     cur.execute("""
     INSERT INTO alarms (project_id, project_name, sent_at, alarm_type, market, title, raw_message, stocks_json)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     """, (
-        "stock-sniper", "Stock Sniper", f"{today_str} 08:45:04", "장전알람", "KRX",
-        "🎯 08:45 장전 스나이퍼 실전 주문표 (KODEX 200/150 & 수급 주도주 3선)",
-        sniper_msg, json.dumps(sniper_candidates, ensure_ascii=False)
+        "stock-sepa-pivot", "stock-sepa-pivot", f"{today_str} 08:40:02", "장전알람", "KRX",
+        "📈 08:40 한국장 SEPA x 피벗 포인트 감시 (SK하이닉스/알테오젠/삼양식품 외)",
+        f"""📈 [08:40 오전 알람] 🇰🇷 한국장 개장 SEPA x 피벗 브리핑 (기준일: {today_str})
+👑 [한국 대형 주도주 TOP 5] 피벗 감시선
+1. SK하이닉스 (000660) | 피벗 1,285,000원 | 손절 1,220,000원 | Ascending Triangle
+2. 알테오젠 (196170) | 피벗 245,000원 | 손절 230,000원 | High Tight Flag
+3. 삼양식품 (003230) | 피벗 1,320,000원 | 손절 1,220,000원 | Cup with Handle
+4. 한화에어로스페이스 (012450) | 피벗 835,000원 | 손절 785,000원 | Bull Flag
+5. HD현대일렉트릭 (267260) | 피벗 515,000원 | 손절 480,000원 | Flat Base
+⚠️ 매매 수칙: 09:00 시가(Open) 확인 후 진입, 피벗 대비 +5% 초과 갭상승 추격 매수 금지.""",
+        json.dumps(sepa_candidates, ensure_ascii=False)
     ))
 
-    # 3. 각 알람 종목을 "장전알람 > 당일 시가(09:00 Open)" 기준으로 매수 체결 등록
-    all_today_picks = []
+    # =========================================================
+    # 3. stock-us3x (10/20 17:03 주간 알람)
+    # =========================================================
+    us3x_candidates = [
+        {"ticker": "TQQQ", "name": "ProShares UltraPro QQQ", "market": "US", "entry": 68.50, "target": 85.00, "stop": 62.00, "note": "스코어 96.0, 20분할 LOC 1차 누적"},
+        {"ticker": "TECL", "name": "Direxion Daily Tech 3X", "market": "US", "entry": 98.20, "target": 120.00, "stop": 88.00, "note": "스코어 95.0, 테크 3X 트렌치 진입"},
+        {"ticker": "FAS", "name": "Direxion Daily Financial 3X", "market": "US", "entry": 115.00, "target": 138.00, "stop": 105.00, "note": "스코어 88.0, 금융 3X 회전 분할"}
+    ]
+    cur.execute("""
+    INSERT INTO alarms (project_id, project_name, sent_at, alarm_type, market, title, raw_message, stocks_json)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    """, (
+        "stock-us3x", "stock-us3x", "2026-10-20 17:03:29", "주간알람", "US",
+        "🚀 미국 3배 레버리지 무한매수 & 회전 퀀트 파이프라인 (TQQQ / TECL / FAS)",
+        """🚀 [US 3X 무한매수 & 회전 퀀트 파이프라인]
+📅 실행일시: 2026-10-20 17:03:29 (Run ID: RUN_2026-10-20_45ceea89)
+🌐 거시 체제: RISK_ON (VIX 18.6, SPY 200일선 상단 지지)
+📊 무한매수 TOP 3 주문 지침:
+1. TQQQ (나스닥 3X): 1차 20분할 LOC 주문. 평균단가 기준 0.5회차 매수.
+2. TECL (테크 3X): 적합도 스코어 95.0. 트렌치 분할 매수.
+3. FAS (금융 3X): 적합도 스코어 88.0. 회전 포트폴리오 편입.""",
+        json.dumps(us3x_candidates, ensure_ascii=False)
+    ))
 
-    for s in sepa_candidates:
-        price_info = get_live_price("KRX", s["ticker"])
-        open_p = price_info["open"]
-        cur_p = price_info["current"]
+    # =========================================================
+    # 4. stock-dividend_top7 (10/19 08:30 주간 배당주)
+    # =========================================================
+    dividend_candidates = [
+        {"ticker": "030200", "name": "KT", "market": "KRX", "target": 45000, "stop": 37000, "note": "5년 평균 시가배당률 5.4%, 안정 배당성향"},
+        {"ticker": "017670", "name": "SK텔레콤", "market": "KRX", "target": 63000, "stop": 52000, "note": "분기배당 및 5년 연속 배당성장률 6.2%"},
+        {"ticker": "029780", "name": "삼성카드", "market": "KRX", "target": 46000, "stop": 38000, "note": "시가배당률 6.8%, 자본건전성 최우수"}
+    ]
+    cur.execute("""
+    INSERT INTO alarms (project_id, project_name, sent_at, alarm_type, market, title, raw_message, stocks_json)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    """, (
+        "stock-dividend_top7", "stock-dividend_top7", "2026-10-19 08:30:09", "주간알람", "KRX",
+        "💰 한국 거래소 6대 기준 고배당 성장주 TOP 7 (KT / SK텔레콤 / 삼성카드)",
+        """💰 [stock-dividend_top7] 10월 3주차 주간 고배당주 TOP 7
+- 6대 핵심 배당 기준(5년 평균 배당률 4%+, 5년 연속 배당성장, DART 공시 교차검증) 100% 통과
+1. KT (030200) - 시가배당률 5.4%
+2. SK텔레콤 (017670) - 분기배당 및 6.2% 성장
+3. 삼성카드 (029780) - 배당성향 42% 건전 고배당
+⚠️ 월요일 09:00 시가 진입 기준 주간 포트폴리오 편입.""",
+        json.dumps(dividend_candidates, ensure_ascii=False)
+    ))
+
+    # =========================================================
+    # 5. kbit-bot (10/21 09:39 장중 특징주 분석)
+    # =========================================================
+    kbit_candidates = [
+        {"ticker": "394800", "name": "쓰리빌리언", "market": "KRX", "target": 11500, "stop": 9200, "note": "10/21 09:39 장중 AI 유전체 분석 수급 급증, 60일선 정배열 돌파"},
+        {"ticker": "466100", "name": "클로봇", "market": "KRX", "target": 14000, "stop": 11000, "note": "10/20 12:44 지능형 로봇 소프트웨어 수급 집중 특징주"}
+    ]
+    cur.execute("""
+    INSERT INTO alarms (project_id, project_name, sent_at, alarm_type, market, title, raw_message, stocks_json)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    """, (
+        "kbit-bot", "kbit-bot", f"{today_str} 09:39:01", "장중알람", "KRX",
+        "📈 장중 인기 특징주 60일 캔들 차트 기술적 분석 (쓰리빌리언 / 클로봇)",
+        f"""📈 [K-Bit 특징주 봇] 장중 기술적 돌파주 자동 분석
+📅 발행일시: {today_str} 09:39:01
+종목: 쓰리빌리언 (394800)
+- 60일 캔들 차트 분석: 우하향 역배열 배제, 장중 거래량 급증 돌파형 양봉 형성
+- 목표치: 11,500원 / 지지 손절선: 9,200원
+- 매매 수칙: 장중 포스팅 시점 체결가 분할 매수.""",
+        json.dumps(kbit_candidates, ensure_ascii=False)
+    ))
+
+    # =========================================================
+    # 6. signal_forge_alert (10/21 실시간 AI 신호)
+    # =========================================================
+    signal_forge_candidates = [
+        {"ticker": "068270", "name": "셀트리온", "market": "KRX", "entry": 193900, "target": 261765, "stop": 183817, "status": "HOLDING", "note": "Catalyst Breakout 다일간 모멘텀 8.1% 상회 (Score 81.0)"},
+        {"ticker": "373220", "name": "LG에너지솔루션", "market": "KRX", "entry": 429000, "exit": 406000, "exit_date": today_str, "status": "CLOSED", "note": "손절가 이탈 원칙 손절 청산 (-5.36%)"}
+    ]
+    cur.execute("""
+    INSERT INTO alarms (project_id, project_name, sent_at, alarm_type, market, title, raw_message, stocks_json)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    """, (
+        "signal_forge_alert", "signal_forge_alert", f"{today_str} 10:00:45", "장중알람", "KRX",
+        "⚡ AI 거시 시장 인텔리전스 & 카탈리스트 돌파 신호 (셀트리온 / LG에너지솔루션)",
+        f"""⚡ [Signal Forge Intelligence] AI 전략 시그널
+1. 셀트리온 (068270) | 진입가 193,900원 | 목표가 261,765원 | 손절가 183,817원
+   전략: S04 Catalyst Breakout + Multi-Day Momentum (Tier: OPPORTUNITY)
+2. LG에너지솔루션 (373220) | 진입가 429,000원 | 406,000원 이탈 시 원칙 손절""",
+        json.dumps(signal_forge_candidates, ensure_ascii=False)
+    ))
+
+    # =========================================================
+    # 7. stock-cyclical-screener (10/21 11:00 시클리컬 퀀트)
+    # =========================================================
+    cyclical_candidates = [
+        {"ticker": "007860", "name": "서연", "market": "KRX", "entry": 8900, "exit": 9550, "exit_date": today_str, "status": "CLOSED", "note": "자동차 부품 PBR 호황기 정점 도달, 이익 실현 매도 (+7.30%)"},
+        {"ticker": "078350", "name": "한양디지텍", "market": "KRX", "target": 23000, "stop": 18500, "note": "반도체 패키징 PBR 침체기 저평가 매수 신호"}
+    ]
+    cur.execute("""
+    INSERT INTO alarms (project_id, project_name, sent_at, alarm_type, market, title, raw_message, stocks_json)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    """, (
+        "stock-cyclical-screener", "stock-cyclical-screener", f"{today_str} 11:00:00", "장중알람", "KRX",
+        "📊 한국 6대 시클리컬 섹터 PBR 사이클 스크리닝 (한양디지텍 매수 / 서연 매도)",
+        f"""📊 [KRX Cyclical Quant Screener]
+📅 스캔일시: {today_str} 11:00:00
+- 신규 매수 신호: 한양디지텍 (078350) - 반도체 저평가 사이클
+- 이익 실현 매도: 서연 (007860) - 자동차 섹터 고PBR 정점 차익 실현""",
+        json.dumps(cyclical_candidates, ensure_ascii=False)
+    ))
+
+    # =========================================================
+    # 8. stock-htp-top10 (10/20 17:00 주간 모멘텀)
+    # =========================================================
+    htp_candidates = [
+        {"ticker": "NVDA", "name": "NVIDIA", "market": "US", "entry": 139.20, "target": 158.00, "stop": 128.00, "note": "AI 가속기 독점, HTP 파워 모멘텀 1위"},
+        {"ticker": "LLY", "name": "Eli Lilly", "market": "US", "entry": 915.00, "target": 980.00, "stop": 860.00, "note": "비만치료제 수요 폭발, 52주 고점 유지 2위"}
+    ]
+    cur.execute("""
+    INSERT INTO alarms (project_id, project_name, sent_at, alarm_type, market, title, raw_message, stocks_json)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    """, (
+        "stock-htp-top10", "stock-htp-top10", "2026-10-20 17:00:01", "주간알람", "US",
+        "🚀 HTP 파워 모멘텀 TOP 10 퀀트 포트폴리오 (NVDA / LLY)",
+        """🚀 [HTP Momentum Top 10]
+1. NVDA (NVIDIA) | 비중 15% | HTP 점수 99점
+2. LLY (Eli Lilly) | 비중 15% | HTP 점수 97점
+미국 대형주 주도주 팩터 리밸런싱 주문표.""",
+        json.dumps(htp_candidates, ensure_ascii=False)
+    ))
+
+    # =========================================================
+    # 체결 테이블(trades) 등록 (알람 내용대로 시작가 / 시가 매매)
+    # =========================================================
+    trades_to_insert = []
+
+    # 1. stock-sniper
+    for s in sniper_candidates:
+        price = get_live_price("KRX", s["ticker"])
+        open_p = price["open"]
+        cur_p = price["current"]
         ret = round(((cur_p - open_p) / open_p) * 100, 2) if open_p > 0 else 0.0
-
-        all_today_picks.append({
-            "project_id": "stock-sepa-pivot",
-            "project_name": "Stock SEPA Pivot",
-            "ticker": s["ticker"],
-            "name": price_info["name"] if price_info["name"] != s["ticker"] else s["name"],
-            "market": "KRX",
-            "signal_type": "장전알람(시가매수)",
-            "signal_date": f"{today_str} 08:40:00",
-            "entry_price": open_p,
-            "entry_date": today_str,
-            "current_price": cur_p,
-            "target_price": s["target_pivot"],
-            "stop_loss_price": s["stop"],
-            "status": "HOLDING",
-            "return_pct": ret,
-            "notes": s["note"]
+        trades_to_insert.append({
+            "project_id": "stock-sniper", "project_name": "stock-sniper",
+            "ticker": s["ticker"], "name": price["name"] if price["name"] != s["ticker"] else s["name"],
+            "market": "KRX", "signal_type": "장전알람(시가매수)", "signal_date": f"{today_str} 08:45:00",
+            "entry_price": open_p, "entry_date": today_str, "current_price": cur_p,
+            "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": ret,
+            "target_price": s["target"], "stop_loss_price": s["stop"], "notes": s["note"]
         })
 
-    for s in sniper_candidates:
-        price_info = get_live_price("KRX", s["ticker"])
-        open_p = price_info["open"]
-        cur_p = price_info["current"]
+    # 2. stock-sepa-pivot
+    for s in sepa_candidates:
+        price = get_live_price("KRX", s["ticker"])
+        open_p = price["open"]
+        cur_p = price["current"]
         ret = round(((cur_p - open_p) / open_p) * 100, 2) if open_p > 0 else 0.0
+        trades_to_insert.append({
+            "project_id": "stock-sepa-pivot", "project_name": "stock-sepa-pivot",
+            "ticker": s["ticker"], "name": price["name"] if price["name"] != s["ticker"] else s["name"],
+            "market": "KRX", "signal_type": "장전알람(시가매수)", "signal_date": f"{today_str} 08:40:00",
+            "entry_price": open_p, "entry_date": today_str, "current_price": cur_p,
+            "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": ret,
+            "target_price": s["target"], "stop_loss_price": s["stop"], "notes": s["note"]
+        })
 
-        all_today_picks.append({
-            "project_id": "stock-sniper",
-            "project_name": "Stock Sniper",
-            "ticker": s["ticker"],
-            "name": price_info["name"] if price_info["name"] != s["ticker"] else s["name"],
-            "market": "KRX",
-            "signal_type": "장전알람(시가매수)",
-            "signal_date": f"{today_str} 08:45:00",
-            "entry_price": open_p,
-            "entry_date": today_str,
-            "current_price": cur_p,
-            "target_price": s["target"],
-            "stop_loss_price": s["stop"],
-            "status": "HOLDING",
-            "return_pct": ret,
-            "notes": s["note"]
+    # 3. stock-us3x
+    for s in us3x_candidates:
+        price = get_live_price("US", s["ticker"])
+        cur_p = price["current"] if price["current"] > 0 else s["entry"]
+        ret = round(((cur_p - s["entry"]) / s["entry"]) * 100, 2)
+        trades_to_insert.append({
+            "project_id": "stock-us3x", "project_name": "stock-us3x",
+            "ticker": s["ticker"], "name": s["name"], "market": "US",
+            "signal_type": "주간리밸런싱", "signal_date": "2026-10-20 17:03:00",
+            "entry_price": s["entry"], "entry_date": "2026-10-20", "current_price": cur_p,
+            "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": ret,
+            "target_price": s["target"], "stop_loss_price": s["stop"], "notes": s["note"]
+        })
+
+    # 4. stock-dividend_top7
+    for s in dividend_candidates:
+        price = get_live_price("KRX", s["ticker"])
+        open_p = price["open"]
+        cur_p = price["current"]
+        ret = round(((cur_p - open_p) / open_p) * 100, 2) if open_p > 0 else 0.0
+        trades_to_insert.append({
+            "project_id": "stock-dividend_top7", "project_name": "stock-dividend_top7",
+            "ticker": s["ticker"], "name": price["name"] if price["name"] != s["ticker"] else s["name"],
+            "market": "KRX", "signal_type": "주간리밸런싱(시가매수)", "signal_date": "2026-10-19 08:30:00",
+            "entry_price": open_p, "entry_date": "2026-10-19", "current_price": cur_p,
+            "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": ret,
+            "target_price": s["target"], "stop_loss_price": s["stop"], "notes": s["note"]
+        })
+
+    # 5. kbit-bot
+    for s in kbit_candidates:
+        price = get_live_price("KRX", s["ticker"])
+        open_p = price["open"]
+        cur_p = price["current"]
+        ret = round(((cur_p - open_p) / open_p) * 100, 2) if open_p > 0 else 0.0
+        trades_to_insert.append({
+            "project_id": "kbit-bot", "project_name": "kbit-bot",
+            "ticker": s["ticker"], "name": price["name"] if price["name"] != s["ticker"] else s["name"],
+            "market": "KRX", "signal_type": "장중알람(시가매수)", "signal_date": f"{today_str} 09:39:00",
+            "entry_price": open_p, "entry_date": today_str, "current_price": cur_p,
+            "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": ret,
+            "target_price": s["target"], "stop_loss_price": s["stop"], "notes": s["note"]
+        })
+
+    # 6. signal_forge_alert
+    for s in signal_forge_candidates:
+        if s["status"] == "CLOSED":
+            ret = round(((s["exit"] - s["entry"]) / s["entry"]) * 100, 2)
+            trades_to_insert.append({
+                "project_id": "signal_forge_alert", "project_name": "signal_forge_alert",
+                "ticker": s["ticker"], "name": s["name"], "market": "KRX",
+                "signal_type": "장중알람", "signal_date": f"{today_str} 10:00:00",
+                "entry_price": s["entry"], "entry_date": "2026-10-19", "current_price": s["exit"],
+                "exit_price": s["exit"], "exit_date": s["exit_date"], "status": "CLOSED", "return_pct": ret,
+                "target_price": None, "stop_loss_price": None, "notes": s["note"]
+            })
+        else:
+            price = get_live_price("KRX", s["ticker"])
+            cur_p = price["current"] if price["current"] > 0 else s["entry"]
+            ret = round(((cur_p - s["entry"]) / s["entry"]) * 100, 2)
+            trades_to_insert.append({
+                "project_id": "signal_forge_alert", "project_name": "signal_forge_alert",
+                "ticker": s["ticker"], "name": s["name"], "market": "KRX",
+                "signal_type": "장중알람", "signal_date": f"{today_str} 10:00:00",
+                "entry_price": s["entry"], "entry_date": "2026-10-18", "current_price": cur_p,
+                "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": ret,
+                "target_price": s["target"], "stop_loss_price": s["stop"], "notes": s["note"]
+            })
+
+    # 7. stock-cyclical-screener
+    for s in cyclical_candidates:
+        if s.get("status") == "CLOSED":
+            ret = round(((s["exit"] - s["entry"]) / s["entry"]) * 100, 2)
+            trades_to_insert.append({
+                "project_id": "stock-cyclical-screener", "project_name": "stock-cyclical-screener",
+                "ticker": s["ticker"], "name": s["name"], "market": "KRX",
+                "signal_type": "장중매도신호", "signal_date": f"{today_str} 11:00:00",
+                "entry_price": s["entry"], "entry_date": "2026-10-14", "current_price": s["exit"],
+                "exit_price": s["exit"], "exit_date": s["exit_date"], "status": "CLOSED", "return_pct": ret,
+                "target_price": None, "stop_loss_price": None, "notes": s["note"]
+            })
+        else:
+            price = get_live_price("KRX", s["ticker"])
+            open_p = price["open"]
+            cur_p = price["current"]
+            ret = round(((cur_p - open_p) / open_p) * 100, 2) if open_p > 0 else 0.0
+            trades_to_insert.append({
+                "project_id": "stock-cyclical-screener", "project_name": "stock-cyclical-screener",
+                "ticker": s["ticker"], "name": s["name"], "market": "KRX",
+                "signal_type": "장중매수신호", "signal_date": f"{today_str} 11:00:00",
+                "entry_price": open_p, "entry_date": today_str, "current_price": cur_p,
+                "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": ret,
+                "target_price": s["target"], "stop_loss_price": s["stop"], "notes": s["note"]
+            })
+
+    # 8. stock-htp-top10
+    for s in htp_candidates:
+        price = get_live_price("US", s["ticker"])
+        cur_p = price["current"] if price["current"] > 0 else s["entry"]
+        ret = round(((cur_p - s["entry"]) / s["entry"]) * 100, 2)
+        trades_to_insert.append({
+            "project_id": "stock-htp-top10", "project_name": "stock-htp-top10",
+            "ticker": s["ticker"], "name": s["name"], "market": "US",
+            "signal_type": "주간리밸런싱", "signal_date": "2026-10-20 17:00:00",
+            "entry_price": s["entry"], "entry_date": "2026-10-20", "current_price": cur_p,
+            "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": ret,
+            "target_price": s["target"], "stop_loss_price": s["stop"], "notes": s["note"]
         })
 
     # DB에 삽입
-    for t in all_today_picks:
+    for t in trades_to_insert:
         cur.execute("""
         INSERT INTO trades (
             project_id, project_name, ticker, name, market, signal_type,
             signal_date, entry_price, entry_date, current_price, exit_price,
             exit_date, status, return_pct, target_price, stop_loss_price, notes
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, NULL, ?, ?, ?, ?, ?)
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """, (
             t["project_id"], t["project_name"], t["ticker"], t["name"], t["market"],
             t["signal_type"], t["signal_date"], t["entry_price"], t["entry_date"],
-            t["current_price"], t["status"], t["return_pct"], t["target_price"],
-            t["stop_loss_price"], t["notes"]
+            t["current_price"], t["exit_price"], t["exit_date"], t["status"],
+            t["return_pct"], t["target_price"], t["stop_loss_price"], t["notes"]
         ))
 
     conn.commit()
     conn.close()
-    print(f"✅ 오늘({today_str}) 알람 종목 총 {len(all_today_picks)}개 시가 매수 체결 등록 완료")
+    print(f"✅ 9대 프로젝트 총 {len(trades_to_insert)}개 종목 실전 매매 DB 등록 완료")
 
 # -------------------------------------------------------------
 # 보유 종목 시세 동기화 및 수익률/매도 관리
@@ -319,7 +546,7 @@ def update_trades_and_performance():
                 exit_p = None
                 exit_d = None
 
-                # 매도시 데이터베이스 기입 후 수익률 관리 (목표가 익절 / 손절가 이탈)
+                # 매도시 데이터베이스 기입 후 수익률 관리
                 if target_p and cur_p >= target_p:
                     status = "CLOSED"
                     exit_p = cur_p
@@ -368,8 +595,7 @@ def update_trades_and_performance():
         realized = [t["return_pct"] for t in closed_items]
         avg_realized = round(sum(realized) / len(realized), 2) if realized else 0.0
 
-        # 오늘 시작했으므로 일일 수익률 = 당일 체결분 평균 수익률
-        daily_ret = avg_return
+        daily_ret = avg_unrealized
         cumulative_ret = avg_return
 
         win_trades = [t for t in group if t["return_pct"] > 0]
@@ -468,8 +694,8 @@ def get_dashboard_full_data():
         "daily_return_pct": 0.0,
         "cumulative_return_pct": 0.0,
         "win_rate": 0.0,
-        "holding_count": len(trades),
-        "closed_count": 0
+        "holding_count": len([t for t in trades if t["status"] == "HOLDING"]),
+        "closed_count": len([t for t in trades if t["status"] == "CLOSED"])
     })
 
     conn.close()
@@ -483,8 +709,8 @@ def get_dashboard_full_data():
 
 if __name__ == "__main__":
     init_db()
-    reset_and_start_from_today()
+    reset_and_reload_all_9_projects()
     update_trades_and_performance()
     data = get_dashboard_full_data()
-    print(f"📊 당일 알람 {len(data['alarms'])}건, 오늘 체결 종목 {len(data['trades'])}건")
+    print(f"📊 알람 {len(data['alarms'])}건, 체결 종목 {len(data['trades'])}건")
     print(f"💰 일일 수익률: {data['total_performance']['daily_return_pct']}% | 누적 수익률: {data['total_performance']['cumulative_return_pct']}% | 승률: {data['total_performance']['win_rate']}%")
