@@ -1,6 +1,6 @@
 {
   "summary": {
-    "updated_at": "2026-10-21 12:53:23",
+    "updated_at": "2026-10-21 13:05:35",
     "total_projects": 9,
     "active_daemons": 8,
     "today_executed": 4,
@@ -8,6 +8,16 @@
       "KRX": 6,
       "US": 4,
       "Global": 1
+    },
+    "portfolio": {
+      "date": "2026-10-21",
+      "daily_return_pct": 1.33,
+      "cumulative_return_pct": 103.81,
+      "realized_pnl_pct": 162.97,
+      "unrealized_pnl_pct": 0.28,
+      "holding_count": 4,
+      "closed_count": 7,
+      "win_rate": 54.5
     }
   },
   "projects": [
@@ -124,10 +134,9 @@
       "last_exit_code": -9,
       "status_text": "Running (실행 중)",
       "status_code": "running",
-      "last_executed": "2026-10-21 12:33:27",
+      "last_executed": "2026-10-21 13:03:30",
       "executed_today": true,
       "recent_logs": [
-        "[2026-10-21 08:50:16.745279] [한국 증시] 개장 전 정기 브리핑 알람 텔레그램 전송 중 (매매 액션 신호: 발생)...",
         "2026-10-21 08:50:18,130 [INFO] ✅ [한국 증시 개장 10분 전 스캔 완료]",
         "2026-10-21 09:02:07,779 [INFO] 💓 [하트비트 정상 가동 중] KST 2026-10-21 09:02:07",
         "2026-10-21 09:32:11,500 [INFO] 💓 [하트비트 정상 가동 중] KST 2026-10-21 09:32:11",
@@ -136,9 +145,10 @@
         "2026-10-21 11:03:19,686 [INFO] 💓 [하트비트 정상 가동 중] KST 2026-10-21 11:03:19",
         "2026-10-21 11:33:21,578 [INFO] 💓 [하트비트 정상 가동 중] KST 2026-10-21 11:33:21",
         "2026-10-21 12:03:26,050 [INFO] 💓 [하트비트 정상 가동 중] KST 2026-10-21 12:03:26",
-        "2026-10-21 12:33:27,718 [INFO] 💓 [하트비트 정상 가동 중] KST 2026-10-21 12:33:27"
+        "2026-10-21 12:33:27,718 [INFO] 💓 [하트비트 정상 가동 중] KST 2026-10-21 12:33:27",
+        "2026-10-21 13:03:30,250 [INFO] 💓 [하트비트 정상 가동 중] KST 2026-10-21 13:03:30"
       ],
-      "last_log_preview": "2026-10-21 12:33:27,718 [INFO] 💓 [하트비트 정상 가동 중] KST 2026-10-21 12:33:27"
+      "last_log_preview": "2026-10-21 13:03:30,250 [INFO] 💓 [하트비트 정상 가동 중] KST 2026-10-21 13:03:30"
     },
     {
       "id": "stock-us3x",
@@ -333,21 +343,491 @@
       "last_exit_code": null,
       "status_text": "Ready (수동 준비)",
       "status_code": "ready",
-      "last_executed": "2026-10-21 12:51:01",
+      "last_executed": "2026-10-21 13:03:59",
       "executed_today": true,
       "recent_logs": [
-        "2026-10-21 12:51:01 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035420 (S08_EXPECTATION_FAILURE_LONG LONG) within 60m window.",
-        "2026-10-21 12:51:01 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035420 (S12_HYPE_TO_FUNDAMENTALS LONG) within 60m window.",
-        "2026-10-21 12:51:01 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035720 (S07_SECTOR_SYMPATHY LONG) within 60m window.",
-        "2026-10-21 12:51:01 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035720 (S12_HYPE_TO_FUNDAMENTALS LONG) within 60m window.",
-        "2026-10-21 12:51:01 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S07_SECTOR_SYMPATHY LONG) within 60m window.",
-        "2026-10-21 12:51:01 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S11_SUPPLY_ABSORPTION LONG) within 60m window.",
-        "2026-10-21 12:51:01 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S12_HYPE_TO_FUNDAMENTALS LONG) within 60m window.",
-        "2026-10-21 12:51:01 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S14_RELATIVE_STRENGTH LONG) within 60m window.",
-        "2026-10-21 12:51:01 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S15_MULTI_DAY_MOMENTUM LONG) within 60m window.",
-        "2026-10-21 12:51:01 [INFO] [cli] [DAEMON] Cycle #858 complete: detected=29, alerted=0, dedup=29"
+        "2026-10-21 13:03:58 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035420 (S07_SECTOR_SYMPATHY LONG) within 60m window.",
+        "2026-10-21 13:03:58 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035420 (S12_HYPE_TO_FUNDAMENTALS LONG) within 60m window.",
+        "2026-10-21 13:03:58 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035720 (S07_SECTOR_SYMPATHY LONG) within 60m window.",
+        "2026-10-21 13:03:58 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035720 (S12_HYPE_TO_FUNDAMENTALS LONG) within 60m window.",
+        "2026-10-21 13:03:59 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S07_SECTOR_SYMPATHY LONG) within 60m window.",
+        "2026-10-21 13:03:59 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S11_SUPPLY_ABSORPTION LONG) within 60m window.",
+        "2026-10-21 13:03:59 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S12_HYPE_TO_FUNDAMENTALS LONG) within 60m window.",
+        "2026-10-21 13:03:59 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S14_RELATIVE_STRENGTH LONG) within 60m window.",
+        "2026-10-21 13:03:59 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S15_MULTI_DAY_MOMENTUM LONG) within 60m window.",
+        "2026-10-21 13:03:59 [INFO] [cli] [DAEMON] Cycle #862 complete: detected=29, alerted=0, dedup=29"
       ],
-      "last_log_preview": "2026-10-21 12:51:01 [INFO] [cli] [DAEMON] Cycle #858 complete: detected=29, alerted=0, dedup=29"
+      "last_log_preview": "2026-10-21 13:03:59 [INFO] [cli] [DAEMON] Cycle #862 complete: detected=29, alerted=0, dedup=29"
     }
-  ]
+  ],
+  "alarms": [
+    {
+      "id": 5,
+      "project_id": "stock-dividend_top7",
+      "project_name": "Stock Dividend Top 7",
+      "sent_at": "2026-10-19 08:30:09",
+      "alarm_type": "주간알람",
+      "market": "KRX",
+      "title": "💰 한국 거래소 6대 원칙 주간 고배당 성장주 TOP 7 (KT / SK텔레콤 / 삼성카드)",
+      "raw_message": "💰 [stock-dividend_top7] 10월 3주차 주간 고배당주 TOP 7\n- 6대 핵심 배당 기준(5년 평균 배당률 4%+, 5년 연속 배당성장, DART 공시 교차검증) 100% 통과\n1. KT (030200) - 시가배당률 5.4%\n2. SK텔레콤 (017670) - 분기배당 및 6.2% 성장\n3. 삼성카드 (029780) - 배당성향 42% 건전 고배당\n4. 기업은행 (024110) - 국책은행 배당 방어력\n⚠️ 월요일 09:00 시가 진입 기준 주간 포트폴리오 편입.",
+      "stocks": [
+        {
+          "ticker": "030200",
+          "name": "KT",
+          "market": "KRX",
+          "target": 44000,
+          "stop": 37000,
+          "note": "5년 평균 배당률 5.4%, 통신 안정 배당"
+        },
+        {
+          "ticker": "017670",
+          "name": "SK텔레콤",
+          "market": "KRX",
+          "target": 62000,
+          "stop": 52000,
+          "note": "분기배당, 5년 연속 배당성장률 6.2%"
+        },
+        {
+          "ticker": "029780",
+          "name": "삼성카드",
+          "market": "KRX",
+          "target": 45000,
+          "stop": 38000,
+          "note": "시가배당률 6.8%, 자본건전성 최우수"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "project_id": "stock-us3x",
+      "project_name": "Stock US 3X",
+      "sent_at": "2026-10-20 17:03:29",
+      "alarm_type": "주간알람",
+      "market": "US",
+      "title": "🚀 미국 3배 레버리지 무한매수 주간 리밸런싱 주문표 (TQQQ / SOXL)",
+      "raw_message": "🚀 [US 3X 무한매수 & 회전 퀀트 파이프라인]\n📅 실행일시: 2026-10-20 17:03:29 (Run ID: RUN_2026-10-20_45ceea89)\n🌐 거시 체제(Regime): RISK_ON (VIX 18.6, SPY 200일선 상단 위치)\n📊 무한매수 TOP 3 주문 지침:\n1. TQQQ (나스닥 3X): 1차 20분할 LOC 주문 발령. 평균단가 기준 0.5회차 매수.\n2. TECL (테크 3X): 적합도 스코어 92.5. 트렌치 분할 매수 대기.\n3. SOXL (반도체 3X): 변동성 관리 쿼터 모드 가동.",
+      "stocks": [
+        {
+          "ticker": "TQQQ",
+          "name": "ProShares UltraPro QQQ",
+          "market": "US",
+          "target": 85.0,
+          "stop": 62.0,
+          "note": "스코어 96.0, 20분할 LOC 1차 누적"
+        },
+        {
+          "ticker": "SOXL",
+          "name": "Direxion Daily Semi 3X",
+          "market": "US",
+          "target": 45.0,
+          "stop": 29.0,
+          "note": "반도체 3X 슈퍼사이클 20분할 분할매수"
+        },
+        {
+          "ticker": "TECL",
+          "name": "Direxion Daily Tech 3X",
+          "market": "US",
+          "target": 115.0,
+          "stop": 88.0,
+          "note": "테크 3배 레버리지 1차 트렌치 진입"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "project_id": "stock-sepa-pivot",
+      "project_name": "Stock SEPA Pivot",
+      "sent_at": "2026-10-20 21:30:02",
+      "alarm_type": "야간알람",
+      "market": "US",
+      "title": "🇺🇸 21:30 미국 본장 SEPA x 피벗 브리핑 (NVDA / PLTR / APP)",
+      "raw_message": "🇺🇸 [21:30 야간 알람] 미국장 본장 개장 SEPA x 피벗 브리핑\n📅 기준일자: 2026-10-20 21:30 | 미국 본장 개장\n주도주 감시선:\n1. NVDA (NVIDIA) | 피벗 $138.5 | 손절 $128.0 | VCP 돌파\n2. PLTR (Palantir) | 피벗 $44.2 | 손절 $41.0 | 52주 신고가 박스 돌파\n3. APP (AppLovin) | 피벗 $158.0 | 손절 $145.0 | 모멘텀 1위\n⚠️ 시가 체결 후 피벗 +5% 이상 추격 금지, 철저한 손절 라인 방어.",
+      "stocks": [
+        {
+          "ticker": "NVDA",
+          "name": "NVIDIA",
+          "market": "US",
+          "target": 155.0,
+          "stop": 128.0,
+          "note": "AI 가속기 독점, 200일선 상단 VCP 피벗 돌파"
+        },
+        {
+          "ticker": "PLTR",
+          "name": "Palantir Tech",
+          "market": "US",
+          "target": 52.0,
+          "stop": 41.0,
+          "note": "AIP 플랫폼 기업 침투 가속, 52주 신고가"
+        },
+        {
+          "ticker": "APP",
+          "name": "AppLovin",
+          "market": "US",
+          "target": 185.0,
+          "stop": 145.0,
+          "note": "AI 광고 엔진 AXON 2.0 폭발적 실적 가속"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "project_id": "stock-sepa-pivot",
+      "project_name": "Stock SEPA Pivot",
+      "sent_at": "2026-10-21 08:40:02",
+      "alarm_type": "장전알람",
+      "market": "KRX",
+      "title": "📈 08:40 한국장 SEPA 트렌드 & 피벗 포인트 돌파 감시 (SK하이닉스/삼양식품 외)",
+      "raw_message": "📈 [08:40 오전 알람] 🇰🇷 한국장 개장 피벗 & SEPA 전략 브리핑\n📅 기준일자: 2026-10-21 | 한국장 개장 20분 전\n🏆 백테스팅 3개년 황금 수칙 (손익비 7.7배 모델)\n• 하루 진입은 딱 1~2개 집중 (평균 1.1개 진입 시 최고 수익)\n• Never Chase > 5%: 피벗 대비 +5% 초과 갭상승 출발 시 추격 금지\n• 매수가 대비 -5% ~ -8% 기계적 손절매 준수\n\n👑 [한국 대형 주도주 피벗 감시선]\n1. SK하이닉스 (000660) | 피벗: 191,500원 | 손절: 182,000원 | 패턴: VCP 3차 수축\n2. 삼양식품 (003230) | 피벗: 620,000원 | 손절: 590,000원 | 패턴: 컵앤핸들\n3. HD현대일렉트릭 (267260) | 피벗: 360,000원 | 손절: 345,000원 | 패턴: 하이타이트 플래그\n4. 알테오젠 (196170) | 피벗: 385,000원 | 손절: 370,000원 | 패턴: 2차 파동 돌파",
+      "stocks": [
+        {
+          "ticker": "000660",
+          "name": "SK하이닉스",
+          "market": "KRX",
+          "target": 210000,
+          "stop": 182000,
+          "note": "HBM3E 독점적 지위, 20일선 VCP 피벗 돌파"
+        },
+        {
+          "ticker": "003230",
+          "name": "삼양식품",
+          "market": "KRX",
+          "target": 680000,
+          "stop": 590000,
+          "note": "글로벌 수출 폭증, 5일선 회복 기관 양매수"
+        },
+        {
+          "ticker": "267260",
+          "name": "HD현대일렉트릭",
+          "market": "KRX",
+          "target": 395000,
+          "stop": 345000,
+          "note": "북미 변압기 쇼티지, 전고점 지지 VCP 패턴"
+        },
+        {
+          "ticker": "196170",
+          "name": "알테오젠",
+          "market": "KRX",
+          "target": 420000,
+          "stop": 370000,
+          "note": "피하주사(SC) 독점 플랫폼, 2차 파동 피벗 돌파"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "project_id": "stock-sniper",
+      "project_name": "Stock Sniper",
+      "sent_at": "2026-10-21 08:45:04",
+      "alarm_type": "장전알람",
+      "market": "KRX",
+      "title": "🎯 08:45 장전 스나이퍼 실전 주문표 (KODEX 200/150 & 수급 주도주 3선)",
+      "raw_message": "[스톡 스나이퍼 08:45 실전 장전 주문표]\n📅 기준일시: 2026-10-21 (수) 08:45 장전 출정 브리핑\n🎯 시장 국면: 선택적 공격 (지수 방어선 확인 후 진입)\n📊 지수 ETF 진입 타점:\n  - KODEX 200 (069500): 1차 101,100원 / 2차 100,100원 | 손절 99,000원 | 목표 104,200원\n  - KODEX 코스닥150 (229200): 1차 14,270원 / 2차 14,100원 | 손절 13,900원 | 목표 15,100원\n🚀 52주 신고가 & RS 상대강도 주도주 3선:\n  1. 라온시큐어 (042510): 생체인증 양자암호 모멘텀, 시가 지지 시 진입\n  2. 주성엔지니어링 (036930): 반도체 ALD 2,200억 수급 방어, 20일선 지지\n  3. 금호건설 (002990): 거래대금 1,500억 유입, 첫 15분봉 고점 돌파 시 진입\n⚠️ 수칙: 장전 알람 종목은 09:00 시가(Open) 확인 후 분할 매수 체결.",
+      "stocks": [
+        {
+          "ticker": "069500",
+          "name": "KODEX 200",
+          "market": "KRX",
+          "target": 104200,
+          "stop": 99000,
+          "note": "지수 대표 ETF 분할 진입"
+        },
+        {
+          "ticker": "229200",
+          "name": "KODEX 코스닥150",
+          "market": "KRX",
+          "target": 15100,
+          "stop": 13900,
+          "note": "코스닥 지수 수급 지지선 반등"
+        },
+        {
+          "ticker": "042510",
+          "name": "라온시큐어",
+          "market": "KRX",
+          "target": 19500,
+          "stop": 17500,
+          "note": "생체인증/양자암호 52주 신고가 돌파권"
+        },
+        {
+          "ticker": "036930",
+          "name": "주성엔지니어링",
+          "market": "KRX",
+          "target": 38500,
+          "stop": 34000,
+          "note": "반도체 ALD 2,200억 수급 방어"
+        },
+        {
+          "ticker": "002990",
+          "name": "금호건설",
+          "market": "KRX",
+          "target": 14500,
+          "stop": 12800,
+          "note": "거래대금 1,500억 유입 양봉 수급 방어"
+        }
+      ]
+    }
+  ],
+  "trades": [
+    {
+      "id": 3,
+      "project_id": "stock-sniper",
+      "project_name": "Stock Sniper",
+      "ticker": "042510",
+      "name": "라온시큐어",
+      "market": "KRX",
+      "signal_type": "장전알람(시가매수)",
+      "signal_date": "2026-10-21 08:45:00",
+      "entry_price": 18250.0,
+      "entry_date": "2026-10-21",
+      "current_price": 18450.0,
+      "exit_price": null,
+      "exit_date": null,
+      "status": "HOLDING",
+      "return_pct": 1.1,
+      "target_price": 19500.0,
+      "stop_loss_price": 17500.0,
+      "notes": "52주 신고가 돌파 장전 주문표 시가 체결"
+    },
+    {
+      "id": 11,
+      "project_id": "stock-sepa-pivot",
+      "project_name": "Stock SEPA Pivot",
+      "ticker": "PLTR",
+      "name": "Palantir Tech",
+      "market": "US",
+      "signal_type": "야간알람(시가매수)",
+      "signal_date": "2026-10-20 21:30:00",
+      "entry_price": 44.5,
+      "entry_date": "2026-10-20",
+      "current_price": 44.5,
+      "exit_price": null,
+      "exit_date": null,
+      "status": "HOLDING",
+      "return_pct": 0.0,
+      "target_price": 52.0,
+      "stop_loss_price": 41.0,
+      "notes": "AIP 플랫폼 수급 돌파 진입"
+    },
+    {
+      "id": 10,
+      "project_id": "stock-sepa-pivot",
+      "project_name": "Stock SEPA Pivot",
+      "ticker": "NVDA",
+      "name": "NVIDIA",
+      "market": "US",
+      "signal_type": "야간알람(시가매수)",
+      "signal_date": "2026-10-20 21:30:00",
+      "entry_price": 139.2,
+      "entry_date": "2026-10-20",
+      "current_price": 139.2,
+      "exit_price": null,
+      "exit_date": null,
+      "status": "HOLDING",
+      "return_pct": 0.0,
+      "target_price": 155.0,
+      "stop_loss_price": 128.0,
+      "notes": "본장 개장 시가 피벗 돌파 확인 진입"
+    },
+    {
+      "id": 9,
+      "project_id": "stock-us3x",
+      "project_name": "Stock US 3X",
+      "ticker": "TQQQ",
+      "name": "ProShares UltraPro QQQ",
+      "market": "US",
+      "signal_type": "주간리밸런싱",
+      "signal_date": "2026-10-20 17:03:00",
+      "entry_price": 68.5,
+      "entry_date": "2026-10-20",
+      "current_price": 68.5,
+      "exit_price": null,
+      "exit_date": null,
+      "status": "HOLDING",
+      "return_pct": 0.0,
+      "target_price": 85.0,
+      "stop_loss_price": 62.0,
+      "notes": "20분할 무한매수 1차 트렌치 체결"
+    },
+    {
+      "id": 6,
+      "project_id": "stock-sepa-pivot",
+      "project_name": "Stock SEPA Pivot",
+      "ticker": "003230",
+      "name": "삼양식품",
+      "market": "KRX",
+      "signal_type": "장전알람(시가매수)",
+      "signal_date": "2026-10-21 08:40:00",
+      "entry_price": 622000.0,
+      "entry_date": "2026-10-21",
+      "current_price": 1279000.0,
+      "exit_price": 1279000.0,
+      "exit_date": "2026-10-21",
+      "status": "CLOSED",
+      "return_pct": 105.63,
+      "target_price": 680000.0,
+      "stop_loss_price": 590000.0,
+      "notes": "기관 양매수 확인 시가 분할 매수 | 🎯 목표가(680,000) 도달 전량 익절 매도"
+    },
+    {
+      "id": 5,
+      "project_id": "stock-sepa-pivot",
+      "project_name": "Stock SEPA Pivot",
+      "ticker": "000660",
+      "name": "SK하이닉스",
+      "market": "KRX",
+      "signal_type": "장전알람(시가매수)",
+      "signal_date": "2026-10-21 08:40:00",
+      "entry_price": 192000.0,
+      "entry_date": "2026-10-21",
+      "current_price": 1270000.0,
+      "exit_price": 1270000.0,
+      "exit_date": "2026-10-21",
+      "status": "CLOSED",
+      "return_pct": 561.46,
+      "target_price": 210000.0,
+      "stop_loss_price": 182000.0,
+      "notes": "SEPA 트렌드 템플릿 피벗 돌파 시가 진입 | 🎯 목표가(210,000) 도달 전량 익절 매도"
+    },
+    {
+      "id": 4,
+      "project_id": "stock-sniper",
+      "project_name": "Stock Sniper",
+      "ticker": "036930",
+      "name": "주성엔지니어링",
+      "market": "KRX",
+      "signal_type": "장전알람(시가매수)",
+      "signal_date": "2026-10-21 08:45:00",
+      "entry_price": 35200.0,
+      "entry_date": "2026-10-21",
+      "current_price": 203500.0,
+      "exit_price": 203500.0,
+      "exit_date": "2026-10-21",
+      "status": "CLOSED",
+      "return_pct": 478.12,
+      "target_price": 38500.0,
+      "stop_loss_price": 34000.0,
+      "notes": "반도체 수급 1위 시가 체결 | 🎯 목표가(38,500) 도달 전량 익절 매도"
+    },
+    {
+      "id": 2,
+      "project_id": "stock-sniper",
+      "project_name": "Stock Sniper",
+      "ticker": "229200",
+      "name": "KODEX 코스닥150",
+      "market": "KRX",
+      "signal_type": "장전알람(시가매수)",
+      "signal_date": "2026-10-21 08:45:00",
+      "entry_price": 14250.0,
+      "entry_date": "2026-10-21",
+      "current_price": 13305.0,
+      "exit_price": 13305.0,
+      "exit_date": "2026-10-21",
+      "status": "CLOSED",
+      "return_pct": -6.63,
+      "target_price": 15100.0,
+      "stop_loss_price": 13900.0,
+      "notes": "코스닥 150 지수 분할 시가 체결 | 🛑 손절가(13,900) 이탈 기계적 손절 청산"
+    },
+    {
+      "id": 1,
+      "project_id": "stock-sniper",
+      "project_name": "Stock Sniper",
+      "ticker": "069500",
+      "name": "KODEX 200",
+      "market": "KRX",
+      "signal_type": "장전알람(시가매수)",
+      "signal_date": "2026-10-21 08:45:00",
+      "entry_price": 101200.0,
+      "entry_date": "2026-10-21",
+      "current_price": 89195.0,
+      "exit_price": 89195.0,
+      "exit_date": "2026-10-21",
+      "status": "CLOSED",
+      "return_pct": -11.86,
+      "target_price": 104200.0,
+      "stop_loss_price": 99000.0,
+      "notes": "08:45 알람 발행 후 09:00 시가 체결 | 🛑 손절가(99,000) 이탈 기계적 손절 청산"
+    },
+    {
+      "id": 8,
+      "project_id": "stock-sepa-pivot",
+      "project_name": "Stock SEPA Pivot",
+      "ticker": "196170",
+      "name": "알테오젠",
+      "market": "KRX",
+      "signal_type": "장전알람(시가매수)",
+      "signal_date": "2026-10-19 08:40:00",
+      "entry_price": 382000.0,
+      "entry_date": "2026-10-19",
+      "current_price": 405000.0,
+      "exit_price": 405000.0,
+      "exit_date": "2026-10-20",
+      "status": "CLOSED",
+      "return_pct": 6.02,
+      "target_price": 410000.0,
+      "stop_loss_price": 365000.0,
+      "notes": "피벗 돌파 후 1차 목표치 부근 부분 익절 (+6.02%)"
+    },
+    {
+      "id": 7,
+      "project_id": "stock-sniper",
+      "project_name": "Stock Sniper",
+      "ticker": "064350",
+      "name": "현대로템",
+      "market": "KRX",
+      "signal_type": "장전알람(시가매수)",
+      "signal_date": "2026-10-19 08:45:00",
+      "entry_price": 58500.0,
+      "entry_date": "2026-10-19",
+      "current_price": 63200.0,
+      "exit_price": 63200.0,
+      "exit_date": "2026-10-20",
+      "status": "CLOSED",
+      "return_pct": 8.03,
+      "target_price": 63000.0,
+      "stop_loss_price": 56000.0,
+      "notes": "목표가 도달 익절 매도 완료 (+8.03%)"
+    }
+  ],
+  "performance": {
+    "PORTFOLIO_TOTAL": {
+      "date": "2026-10-21",
+      "daily_return_pct": 1.33,
+      "cumulative_return_pct": 103.81,
+      "realized_pnl_pct": 162.97,
+      "unrealized_pnl_pct": 0.28,
+      "holding_count": 4,
+      "closed_count": 7,
+      "win_rate": 54.5
+    },
+    "stock-sepa-pivot": {
+      "date": "2026-10-21",
+      "daily_return_pct": 1.2,
+      "cumulative_return_pct": 134.62,
+      "realized_pnl_pct": 224.37,
+      "unrealized_pnl_pct": 0.0,
+      "holding_count": 2,
+      "closed_count": 3,
+      "win_rate": 60.0
+    },
+    "stock-sniper": {
+      "date": "2026-10-21",
+      "daily_return_pct": 1.7,
+      "cumulative_return_pct": 93.75,
+      "realized_pnl_pct": 116.91,
+      "unrealized_pnl_pct": 1.1,
+      "holding_count": 1,
+      "closed_count": 4,
+      "win_rate": 60.0
+    },
+    "stock-us3x": {
+      "date": "2026-10-21",
+      "daily_return_pct": -0.5,
+      "cumulative_return_pct": 0.0,
+      "realized_pnl_pct": 0.0,
+      "unrealized_pnl_pct": 0.0,
+      "holding_count": 1,
+      "closed_count": 0,
+      "win_rate": 0.0
+    }
+  }
 }

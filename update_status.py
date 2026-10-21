@@ -11,6 +11,8 @@ import time
 import subprocess
 from datetime import datetime
 
+import portfolio_db
+
 HOME = os.path.expanduser("~")
 SUPERVISOR_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -270,6 +272,16 @@ def collect_data():
             "last_log_preview": last_log_line
         })
 
+    # 4. 포트폴리오 DB 갱신 및 데이터 취득
+    try:
+        portfolio_db.init_db()
+        portfolio_db.seed_alarms_and_trades_if_empty()
+        portfolio_db.update_trades_and_performance()
+        portfolio_data = portfolio_db.get_dashboard_full_data()
+    except Exception as e:
+        print(f"Warning: portfolio_db failed: {e}")
+        portfolio_data = {"alarms": [], "trades": [], "performance": {}, "total_performance": {}}
+
     summary = {
         "updated_at": now_str,
         "total_projects": len(projects_data),
@@ -279,10 +291,17 @@ def collect_data():
             "KRX": sum(1 for p in projects_data if "KRX" in p["category"]),
             "US": sum(1 for p in projects_data if "US" in p["category"]),
             "Global": sum(1 for p in projects_data if "Global" in p["category"])
-        }
+        },
+        "portfolio": portfolio_data.get("total_performance", {})
     }
 
-    return {"summary": summary, "projects": projects_data}
+    return {
+        "summary": summary,
+        "projects": projects_data,
+        "alarms": portfolio_data.get("alarms", []),
+        "trades": portfolio_data.get("trades", []),
+        "performance": portfolio_data.get("performance", {})
+    }
 
 def update_index_html(data):
     """index.html 내부의 INITIAL_DATA 상수도 최신 데이터로 치환"""

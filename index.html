@@ -1,284 +1,410 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" class="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>STOCK SUPERVISOR | 주식 퀀트 & 트레이딩 시스템 통합 관제탑</title>
+  <title>STOCK TRADING DESK | 퀀트 시스템 관제 & 수익률 관리</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            desk: {
+              950: '#070a0f',
+              900: '#0c1017',
+              850: '#111722',
+              800: '#161e2c',
+              700: '#212c40',
+              600: '#32415d',
+              border: '#1b2434',
+              hover: '#192231'
+            },
+            krx: {
+              up: '#f43f5e',     // 국내장 상승 빨강
+              down: '#3b82f6',   // 국내장 하락 파랑
+              neutral: '#94a3b8'
+            }
+          },
+          fontFamily: {
+            mono: ['"JetBrains Mono"', 'Menlo', 'Consolas', 'monospace'],
+            sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
     
     body {
-      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
-      background-color: #0b0f19;
+      background-color: #070a0f;
       color: #e2e8f0;
-    }
-    
-    .font-mono {
-      font-family: 'JetBrains Mono', monospace;
+      font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     }
 
-    .glass-card {
-      background: rgba(17, 24, 39, 0.75);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Professional FinTech Table & Card borders */
+    .desk-card {
+      background-color: #0c1017;
+      border: 1px solid #1b2434;
     }
 
-    .glass-card:hover {
-      border-color: rgba(99, 102, 241, 0.4);
-      transform: translateY(-2px);
-      box-shadow: 0 12px 30px -10px rgba(79, 70, 229, 0.2);
+    .desk-table th {
+      background-color: #0f141d;
+      border-bottom: 1px solid #1b2434;
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #8292ab;
     }
 
-    .glow-dot {
-      box-shadow: 0 0 10px currentColor;
+    .desk-table td {
+      border-bottom: 1px solid #141b27;
     }
 
-    /* Custom Scrollbar */
+    .desk-table tr:hover td {
+      background-color: #121824;
+    }
+
+    /* Minimal Custom Scrollbar */
     ::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
+      width: 5px;
+      height: 5px;
     }
     ::-webkit-scrollbar-track {
-      background: #0f172a;
+      background: #070a0f;
     }
     ::-webkit-scrollbar-thumb {
-      background: #334155;
-      border-radius: 9999px;
+      background: #212c40;
+      border-radius: 2px;
     }
     ::-webkit-scrollbar-thumb:hover {
-      background: #475569;
+      background: #32415d;
     }
   </style>
 </head>
-<body class="min-h-screen antialiased flex flex-col justify-between selection:bg-indigo-500 selection:text-white">
+<body class="min-h-screen flex flex-col font-sans selection:bg-rose-950 selection:text-rose-200 antialiased">
 
-  <!-- Header -->
-  <header class="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <div class="flex items-center space-x-3">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-cyan-400 flex items-center justify-center text-white shadow-lg shadow-indigo-500/30">
-          <i class="fa-solid fa-chart-line text-lg"></i>
+  <!-- Bloomberg / Hedge Fund Trading Desk Header -->
+  <header class="border-b border-desk-border bg-desk-900/95 sticky top-0 z-40 backdrop-blur">
+    <div class="max-w-[1560px] mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+      
+      <!-- Brand & Status -->
+      <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-2.5">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span class="font-bold tracking-tight text-slate-100 text-sm font-mono uppercase">STOCK TRADING DESK</span>
+          <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-desk-800 text-slate-400 border border-desk-border">KRX / US LIVE</span>
         </div>
-        <div>
-          <div class="flex items-center space-x-2">
-            <h1 class="text-lg font-bold tracking-tight text-white">STOCK SUPERVISOR</h1>
-            <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">LIVE OPS</span>
-          </div>
-          <p class="text-xs text-slate-400">주식 퀀트 & 자동화 알람 통합 현황판</p>
-        </div>
+
+        <!-- Navigation Tabs -->
+        <nav class="hidden md:flex items-center space-x-1 pl-4 border-l border-desk-border">
+          <button onclick="switchTab('performance')" id="tab-btn-performance" class="tab-btn px-3 py-1.5 text-xs font-semibold rounded bg-desk-800 text-white border border-desk-600 transition-colors">
+            <i class="fa-solid fa-chart-line mr-1.5 text-rose-500"></i> 수익률 & 포트폴리오
+          </button>
+          <button onclick="switchTab('alerts')" id="tab-btn-alerts" class="tab-btn px-3 py-1.5 text-xs font-medium rounded text-slate-400 hover:text-slate-200 hover:bg-desk-850 border border-transparent transition-colors">
+            <i class="fa-solid fa-bell mr-1.5 text-amber-400"></i> 알람 전문 피드
+          </button>
+          <button onclick="switchTab('systems')" id="tab-btn-systems" class="tab-btn px-3 py-1.5 text-xs font-medium rounded text-slate-400 hover:text-slate-200 hover:bg-desk-850 border border-transparent transition-colors">
+            <i class="fa-solid fa-server mr-1.5 text-indigo-400"></i> 시스템 관제 & 스케줄
+          </button>
+        </nav>
       </div>
 
+      <!-- Quick Status & Refresh Button -->
       <div class="flex items-center space-x-3">
-        <button onclick="refreshData()" id="refreshBtn" class="flex items-center text-xs text-slate-300 font-medium bg-slate-900 hover:bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-700/80 transition-all hover:text-white">
-          <i class="fa-solid fa-arrows-rotate mr-1.5 text-indigo-400" id="refreshIcon"></i>
-          새로고침
-        </button>
-        <div class="hidden md:flex items-center text-xs text-slate-400 font-mono bg-slate-900/90 px-3 py-1.5 rounded-lg border border-slate-800">
-          <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 glow-dot mr-2"></span>
-          동기화: <span id="lastUpdated" class="text-slate-200 ml-1">로딩 중...</span>
+        <div class="hidden sm:flex items-center text-[11px] font-mono text-slate-400 bg-desk-850 px-2.5 py-1 rounded border border-desk-border">
+          <span class="text-slate-500 mr-1.5">DB DYN:</span>
+          <span id="headerSyncTime" class="text-slate-200">연결 중...</span>
         </div>
-        <a href="https://github.com/bluem00000000n/stock" target="_blank" rel="noreferrer" class="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800/60 transition-colors" title="GitHub 저장소 보기">
-          <i class="fa-brands fa-github text-lg"></i>
+
+        <button onclick="triggerRefresh()" id="refreshBtn" class="flex items-center text-xs font-mono px-3 py-1.5 rounded bg-rose-600/10 hover:bg-rose-600/20 text-rose-400 border border-rose-500/30 transition-colors">
+          <i class="fa-solid fa-rotate mr-1.5" id="refreshIcon"></i>
+          <span>시세·수익률 재계산</span>
+        </button>
+
+        <a href="https://github.com/bluem00000000n/stock" target="_blank" rel="noreferrer" class="p-1.5 rounded text-slate-400 hover:text-white hover:bg-desk-800 border border-transparent hover:border-desk-border transition-colors">
+          <i class="fa-brands fa-github text-sm"></i>
         </a>
       </div>
     </div>
   </header>
 
-  <!-- Main Content -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full space-y-8">
+  <!-- Mobile Sub-nav -->
+  <div class="md:hidden flex items-center justify-around bg-desk-900 border-b border-desk-border px-2 py-1 text-xs font-mono">
+    <button onclick="switchTab('performance')" class="mobile-tab-btn py-1 px-2 text-rose-400 font-bold border-b-2 border-rose-500">수익률</button>
+    <button onclick="switchTab('alerts')" class="mobile-tab-btn py-1 px-2 text-slate-400">알람전문</button>
+    <button onclick="switchTab('systems')" class="mobile-tab-btn py-1 px-2 text-slate-400">시스템관제</button>
+  </div>
 
-    <!-- KPI Metric Cards -->
-    <section class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-      <div class="glass-card rounded-2xl p-5">
-        <div class="flex items-center justify-between text-slate-400 mb-2">
-          <span class="text-xs font-semibold uppercase tracking-wider">전체 관리 프로젝트</span>
-          <i class="fa-solid fa-layer-group text-slate-500"></i>
+  <!-- Main Body Content -->
+  <main class="max-w-[1560px] mx-auto px-4 sm:px-6 py-5 flex-1 w-full space-y-5">
+
+    <!-- Top KPI Bar: Executive Performance Summary -->
+    <section class="grid grid-cols-2 md:grid-cols-5 gap-3">
+      <!-- 1. Cumulative Return -->
+      <div class="desk-card rounded p-3.5 flex flex-col justify-between">
+        <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 uppercase">
+          <span>포트폴리오 누적 수익률</span>
+          <i class="fa-solid fa-chart-pie text-slate-500 text-xs"></i>
         </div>
-        <div class="flex items-baseline space-x-2">
-          <span id="metricTotal" class="text-3xl font-extrabold text-white font-mono">0</span>
-          <span class="text-xs text-slate-400">개 시스템</span>
+        <div class="mt-2 flex items-baseline space-x-1.5">
+          <span id="kpiCumulative" class="text-2xl font-bold font-mono text-krx-up">+0.0%</span>
         </div>
-        <div class="mt-2 text-xs text-slate-400 flex items-center">
-          <span class="text-indigo-400 font-medium">KRX · US Multi-Market</span>
+        <div class="text-[10px] font-mono text-slate-400 mt-1 flex items-center">
+          <span class="text-rose-400">실현+미실현 종합 수익</span>
         </div>
       </div>
 
-      <div class="glass-card rounded-2xl p-5">
-        <div class="flex items-center justify-between text-slate-400 mb-2">
-          <span class="text-xs font-semibold uppercase tracking-wider">가동 데몬 / 스케줄</span>
-          <i class="fa-solid fa-bolt text-emerald-400"></i>
+      <!-- 2. Today Return -->
+      <div class="desk-card rounded p-3.5 flex flex-col justify-between">
+        <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 uppercase">
+          <span>당일(일일) 수익률</span>
+          <i class="fa-solid fa-bolt text-slate-500 text-xs"></i>
         </div>
-        <div class="flex items-baseline space-x-2">
-          <span id="metricActive" class="text-3xl font-extrabold text-emerald-400 font-mono">0</span>
-          <span class="text-xs text-slate-400">개 정상 등록</span>
+        <div class="mt-2 flex items-baseline space-x-1.5">
+          <span id="kpiDaily" class="text-2xl font-bold font-mono text-krx-up">+0.0%</span>
         </div>
-        <div class="mt-2 text-xs text-emerald-400/80 flex items-center">
-          <i class="fa-regular fa-circle-check mr-1.5 text-[10px]"></i> Launchd 자동화 활성화
-        </div>
-      </div>
-
-      <div class="glass-card rounded-2xl p-5">
-        <div class="flex items-center justify-between text-slate-400 mb-2">
-          <span class="text-xs font-semibold uppercase tracking-wider">오늘 실행 완료</span>
-          <i class="fa-solid fa-calendar-check text-cyan-400"></i>
-        </div>
-        <div class="flex items-baseline space-x-2">
-          <span id="metricToday" class="text-3xl font-extrabold text-cyan-400 font-mono">0</span>
-          <span class="text-xs text-slate-400">개 파이프라인</span>
-        </div>
-        <div class="mt-2 text-xs text-slate-400 flex items-center">
-          <span class="text-slate-300">당일 장전/정규 알람 성공</span>
+        <div class="text-[10px] font-mono text-slate-400 mt-1">
+          장전 시가 진입 포지션 기준
         </div>
       </div>
 
-      <div class="glass-card rounded-2xl p-5">
-        <div class="flex items-center justify-between text-slate-400 mb-2">
-          <span class="text-xs font-semibold uppercase tracking-wider">마켓 커버리지</span>
-          <i class="fa-solid fa-globe text-purple-400"></i>
+      <!-- 3. Win Rate -->
+      <div class="desk-card rounded p-3.5 flex flex-col justify-between">
+        <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 uppercase">
+          <span>승률 (Win Rate)</span>
+          <i class="fa-solid fa-bullseye text-slate-500 text-xs"></i>
         </div>
-        <div class="flex items-baseline space-x-2">
-          <span id="metricMarkets" class="text-xl font-bold text-white font-mono">KRX 5 · US 3</span>
+        <div class="mt-2 flex items-baseline space-x-1.5">
+          <span id="kpiWinRate" class="text-2xl font-bold font-mono text-slate-100">0.0%</span>
         </div>
-        <div class="mt-2 text-xs text-purple-300/80 flex items-center">
-          <span>한국 200/150 & 미국 S&P/러셀</span>
+        <div class="text-[10px] font-mono text-slate-400 mt-1">
+          수익 체결 종목 비율
+        </div>
+      </div>
+
+      <!-- 4. Active Holdings -->
+      <div class="desk-card rounded p-3.5 flex flex-col justify-between">
+        <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 uppercase">
+          <span>보유 / 청산 종목</span>
+          <i class="fa-solid fa-layer-group text-slate-500 text-xs"></i>
+        </div>
+        <div class="mt-2 flex items-baseline space-x-1 font-mono">
+          <span id="kpiHoldings" class="text-2xl font-bold text-slate-100">0</span>
+          <span class="text-xs text-slate-400">보유 /</span>
+          <span id="kpiClosed" class="text-lg font-bold text-slate-400">0</span>
+          <span class="text-xs text-slate-400">매도완료</span>
+        </div>
+        <div class="text-[10px] font-mono text-emerald-400 mt-1">
+          장전알람 시가 매수 연동
+        </div>
+      </div>
+
+      <!-- 5. Active Daemons -->
+      <div class="desk-card rounded p-3.5 flex flex-col justify-between col-span-2 md:col-span-1">
+        <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 uppercase">
+          <span>시스템 관제 데몬</span>
+          <i class="fa-solid fa-network-wired text-slate-500 text-xs"></i>
+        </div>
+        <div class="mt-2 flex items-baseline space-x-1.5">
+          <span id="kpiDaemons" class="text-2xl font-bold font-mono text-emerald-400">8 / 9</span>
+          <span class="text-xs text-slate-400">가동 중</span>
+        </div>
+        <div class="text-[10px] font-mono text-slate-400 mt-1">
+          Launchd 스케줄 정상 작동
         </div>
       </div>
     </section>
 
-    <!-- Daily Execution Timeline Schedule -->
-    <section class="glass-card rounded-2xl p-6">
-      <div class="flex flex-col md:flex-row md:items-center justify-between mb-5 gap-3">
+    <!-- ============================================================== -->
+    <!-- TAB 1: 수익률 & 포트폴리오 관리 (PERFORMANCE & DB)              -->
+    <!-- ============================================================== -->
+    <section id="view-performance" class="tab-view space-y-5">
+
+      <!-- Strategy Performance Summary Matrix -->
+      <div class="desk-card rounded p-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 mb-3 border-b border-desk-border">
+          <div>
+            <h2 class="text-xs font-bold font-mono text-slate-200 uppercase tracking-wider flex items-center">
+              <i class="fa-solid fa-cubes-stacked mr-2 text-rose-500"></i>
+              전략/프로젝트별 수익률 매트릭스 (Performance by Strategy)
+            </h2>
+            <p class="text-[11px] text-slate-400 mt-0.5">내부 데이터베이스 기반 각 퀀트 시스템별 실현·미실현 손익 종합 현황</p>
+          </div>
+          <div class="text-[11px] font-mono text-slate-400 flex items-center space-x-2">
+            <span class="w-2 h-2 rounded-full bg-rose-500"></span>
+            <span>장전알람 > 시가 진입 원칙 적용</span>
+          </div>
+        </div>
+
+        <div id="strategyMatrix" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          <!-- Rendered via JS -->
+        </div>
+      </div>
+
+      <!-- Detailed Trades Table -->
+      <div class="desk-card rounded overflow-hidden">
+        <div class="p-3.5 border-b border-desk-border bg-desk-900 flex flex-col md:flex-row md:items-center justify-between gap-3">
+          <div class="flex items-center space-x-3">
+            <h3 class="text-xs font-bold font-mono uppercase text-slate-200 flex items-center">
+              <i class="fa-solid fa-table-list mr-2 text-slate-400"></i>
+              실시간 포트폴리오 포지션 & 체결 내역 (Trades Database)
+            </h3>
+            <span id="tradesCountBadge" class="text-[10px] font-mono px-2 py-0.5 rounded bg-desk-800 text-slate-300 border border-desk-border">0 종목</span>
+          </div>
+
+          <!-- Filters -->
+          <div class="flex items-center space-x-2 text-xs font-mono">
+            <button onclick="setTradeFilter('ALL')" id="trade-btn-ALL" class="trade-filter-btn px-2.5 py-1 rounded bg-rose-600 text-white font-semibold">전체</button>
+            <button onclick="setTradeFilter('HOLDING')" id="trade-btn-HOLDING" class="trade-filter-btn px-2.5 py-1 rounded bg-desk-800 text-slate-400 hover:text-white border border-desk-border">보유중</button>
+            <button onclick="setTradeFilter('CLOSED')" id="trade-btn-CLOSED" class="trade-filter-btn px-2.5 py-1 rounded bg-desk-800 text-slate-400 hover:text-white border border-desk-border">매도완료</button>
+            <button onclick="setTradeFilter('KRX')" id="trade-btn-KRX" class="trade-filter-btn px-2.5 py-1 rounded bg-desk-800 text-slate-400 hover:text-white border border-desk-border">KRX</button>
+            <button onclick="setTradeFilter('US')" id="trade-btn-US" class="trade-filter-btn px-2.5 py-1 rounded bg-desk-800 text-slate-400 hover:text-white border border-desk-border">US</button>
+          </div>
+        </div>
+
+        <!-- Trades Table Content -->
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs desk-table font-mono">
+            <thead>
+              <tr>
+                <th class="py-2.5 px-3">전략 프로젝트</th>
+                <th class="py-2.5 px-3">종목명 (코드)</th>
+                <th class="py-2.5 px-3">시장 / 신호구분</th>
+                <th class="py-2.5 px-3 text-right">시작가 (진입)</th>
+                <th class="py-2.5 px-3 text-right">현재가 / 매도가</th>
+                <th class="py-2.5 px-3 text-right">수익률 (%)</th>
+                <th class="py-2.5 px-3 text-center">상태</th>
+                <th class="py-2.5 px-3 text-right">목표가</th>
+                <th class="py-2.5 px-3 text-right">손절가</th>
+                <th class="py-2.5 px-3">매매 근거 & 메모</th>
+              </tr>
+            </thead>
+            <tbody id="tradesTableBody" class="divide-y divide-desk-border">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- TAB 2: 알람 전문 & 실전 주문표 (LIVE ALERTS FEED)             -->
+    <!-- ============================================================== -->
+    <section id="view-alerts" class="tab-view hidden space-y-4">
+      <div class="desk-card rounded p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <h2 class="text-base font-bold text-white flex items-center">
-            <i class="fa-regular fa-clock mr-2 text-indigo-400"></i> 자동 매매 & 퀀트 타임라인 (KST 기준)
+          <h2 class="text-xs font-bold font-mono text-slate-100 uppercase tracking-wider flex items-center">
+            <i class="fa-solid fa-bullhorn mr-2 text-amber-400"></i>
+            실시간 텔레그램 알람 발송 전문 (Live Telegram Message Feed)
           </h2>
-          <p class="text-xs text-slate-400 mt-0.5">매일 및 주간 정규 시장 일정에 맞춰 정밀하게 스케줄링된 파이프라인 흐름</p>
+          <p class="text-[11px] text-slate-400 mt-0.5">각 시스템이 08:45, 08:40, 21:30에 실제 전송한 실전 주문표 원문과 종목 데이터입니다.</p>
         </div>
-        <div class="flex items-center space-x-2 text-xs">
-          <span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">장전 브리핑</span>
-          <span class="px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20">장중 모니터링</span>
-          <span class="px-2 py-0.5 rounded bg-purple-500/10 text-purple-400 border border-purple-500/20">미국장 대응</span>
+        <div class="text-xs font-mono text-amber-400 flex items-center space-x-2">
+          <i class="fa-solid fa-shield-halved"></i>
+          <span>수칙: 장전 알람 종목 당일 09:00 시가(Open) 매매</span>
         </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-7 gap-3">
-        <!-- 08:30 -->
-        <div class="bg-slate-900/60 rounded-xl p-3 border border-slate-800">
-          <div class="text-[11px] font-mono text-indigo-400 font-bold mb-1">08:30 월</div>
-          <div class="text-xs font-semibold text-slate-200">배당 TOP 7</div>
-          <div class="text-[11px] text-slate-400 mt-1">6대 배당조건 스크리너</div>
-        </div>
-        <!-- 08:40 -->
-        <div class="bg-slate-900/60 rounded-xl p-3 border border-slate-800">
-          <div class="text-[11px] font-mono text-indigo-400 font-bold mb-1">08:40 매일</div>
-          <div class="text-xs font-semibold text-slate-200">SEPA x 피벗 (KR)</div>
-          <div class="text-[11px] text-slate-400 mt-1">미너비니 SEPA 한국 20</div>
-        </div>
-        <!-- 08:45 -->
-        <div class="bg-slate-900/60 rounded-xl p-3 border border-indigo-500/30 bg-indigo-950/20">
-          <div class="text-[11px] font-mono text-cyan-400 font-bold mb-1">08:45 평일</div>
-          <div class="text-xs font-semibold text-white">스톡 스나이퍼</div>
-          <div class="text-[11px] text-slate-300 mt-1">외인/기관 수급 & RS 상대강도</div>
-        </div>
-        <!-- 09:30 -->
-        <div class="bg-slate-900/60 rounded-xl p-3 border border-slate-800">
-          <div class="text-[11px] font-mono text-indigo-400 font-bold mb-1">09:30 매일</div>
-          <div class="text-xs font-semibold text-slate-200">K-Bit 봇</div>
-          <div class="text-[11px] text-slate-400 mt-1">장중 특징주 차트 분석 포스팅</div>
-        </div>
-        <!-- 11:00 -->
-        <div class="bg-slate-900/60 rounded-xl p-3 border border-slate-800">
-          <div class="text-[11px] font-mono text-indigo-400 font-bold mb-1">11:00 매일</div>
-          <div class="text-xs font-semibold text-slate-200">시클리컬 퀀트</div>
-          <div class="text-[11px] text-slate-400 mt-1">6대 경기민감 섹터 사이클</div>
-        </div>
-        <!-- 17:00 -->
-        <div class="bg-slate-900/60 rounded-xl p-3 border border-slate-800">
-          <div class="text-[11px] font-mono text-purple-400 font-bold mb-1">17:00 화</div>
-          <div class="text-xs font-semibold text-slate-200">US3X & HTP10</div>
-          <div class="text-[11px] text-slate-400 mt-1">미국 3배 레버리지 & 모멘텀</div>
-        </div>
-        <!-- 21:30 & 24/7 -->
-        <div class="bg-slate-900/60 rounded-xl p-3 border border-slate-800">
-          <div class="text-[11px] font-mono text-purple-400 font-bold mb-1">21:30 / 24H</div>
-          <div class="text-xs font-semibold text-slate-200">SEPA US & Swing</div>
-          <div class="text-[11px] text-slate-400 mt-1">미국 피벗 & 227선 스윙데몬</div>
-        </div>
+      <!-- Alerts List -->
+      <div id="alertsFeed" class="space-y-4">
+        <!-- Rendered via JS -->
       </div>
     </section>
 
-    <!-- Filters & Search Controls -->
-    <section class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
-      <!-- Search Input -->
-      <div class="relative flex-1 max-w-md">
-        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
-        <input type="text" id="searchInput" placeholder="프로젝트명, 전략, 태그 검색..." 
-               class="w-full bg-slate-900/90 text-sm text-slate-200 pl-10 pr-4 py-2.5 rounded-xl border border-slate-800 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all placeholder:text-slate-500">
+    <!-- ============================================================== -->
+    <!-- TAB 3: 시스템 관제탑 & 스케줄러 (SYSTEM OPERATIONS)           -->
+    <!-- ============================================================== -->
+    <section id="view-systems" class="tab-view hidden space-y-4">
+      
+      <!-- Timeline Header -->
+      <div class="desk-card rounded p-4">
+        <h2 class="text-xs font-bold font-mono text-slate-100 uppercase tracking-wider mb-2 flex items-center">
+          <i class="fa-regular fa-clock mr-2 text-indigo-400"></i>
+          일일 / 주간 파이프라인 타임트랙 (KST 기준)
+        </h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-2.5 text-xs font-mono">
+          <div class="bg-desk-900 border border-desk-border rounded p-2.5">
+            <span class="text-indigo-400 font-bold block text-[11px]">08:30 (월)</span>
+            <div class="font-semibold text-slate-200 mt-0.5">배당 TOP 7</div>
+            <div class="text-[10px] text-slate-500 mt-1">6대 배당조건 스크리너</div>
+          </div>
+          <div class="bg-desk-900 border border-desk-border rounded p-2.5">
+            <span class="text-indigo-400 font-bold block text-[11px]">08:40 (매일)</span>
+            <div class="font-semibold text-slate-200 mt-0.5">SEPA x 피벗 (KR)</div>
+            <div class="text-[10px] text-slate-500 mt-1">미너비니 SEPA 한국 20</div>
+          </div>
+          <div class="bg-desk-900 border border-rose-500/30 rounded p-2.5 bg-rose-950/10">
+            <span class="text-rose-400 font-bold block text-[11px]">08:45 (평일)</span>
+            <div class="font-semibold text-rose-200 mt-0.5">스톡 스나이퍼</div>
+            <div class="text-[10px] text-rose-300 mt-1">외인/기관 수급 & RS 5선</div>
+          </div>
+          <div class="bg-desk-900 border border-desk-border rounded p-2.5">
+            <span class="text-indigo-400 font-bold block text-[11px]">09:30 (매일)</span>
+            <div class="font-semibold text-slate-200 mt-0.5">K-Bit 봇</div>
+            <div class="text-[10px] text-slate-500 mt-1">장중 특징주 차트 분석</div>
+          </div>
+          <div class="bg-desk-900 border border-desk-border rounded p-2.5">
+            <span class="text-indigo-400 font-bold block text-[11px]">11:00 (매일)</span>
+            <div class="font-semibold text-slate-200 mt-0.5">시클리컬 퀀트</div>
+            <div class="text-[10px] text-slate-500 mt-1">6대 경기민감 섹터 PBR</div>
+          </div>
+          <div class="bg-desk-900 border border-desk-border rounded p-2.5">
+            <span class="text-purple-400 font-bold block text-[11px]">17:00 (화)</span>
+            <div class="font-semibold text-slate-200 mt-0.5">US3X & HTP10</div>
+            <div class="text-[10px] text-slate-500 mt-1">미국 3배 레버리지 & 팩터</div>
+          </div>
+          <div class="bg-desk-900 border border-desk-border rounded p-2.5">
+            <span class="text-purple-400 font-bold block text-[11px]">21:30 / 24H</span>
+            <div class="font-semibold text-slate-200 mt-0.5">SEPA US & Swing</div>
+            <div class="text-[10px] text-slate-500 mt-1">미국 피벗 & 227선 데몬</div>
+          </div>
+        </div>
       </div>
 
-      <!-- Filter Buttons -->
-      <div class="flex items-center space-x-2 overflow-x-auto pb-1 md:pb-0">
-        <button onclick="setFilter('ALL')" id="filter-ALL" class="filter-btn px-3.5 py-1.5 text-xs font-medium rounded-lg bg-indigo-600 text-white shadow-sm transition-colors">
-          전체 보기
-        </button>
-        <button onclick="setFilter('KRX')" id="filter-KRX" class="filter-btn px-3.5 py-1.5 text-xs font-medium rounded-lg bg-slate-800/80 text-slate-300 hover:bg-slate-800 hover:text-white transition-colors">
-          🇰🇷 한국 시장 (KRX)
-        </button>
-        <button onclick="setFilter('US')" id="filter-US" class="filter-btn px-3.5 py-1.5 text-xs font-medium rounded-lg bg-slate-800/80 text-slate-300 hover:bg-slate-800 hover:text-white transition-colors">
-          🇺🇸 미국 시장 (US)
-        </button>
-        <button onclick="setFilter('ACTIVE')" id="filter-ACTIVE" class="filter-btn px-3.5 py-1.5 text-xs font-medium rounded-lg bg-slate-800/80 text-slate-300 hover:bg-slate-800 hover:text-white transition-colors">
-          🟢 가동 중
-        </button>
+      <!-- Systems Grid -->
+      <div id="systemsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Rendered via JS -->
       </div>
-    </section>
-
-    <!-- Projects Grid -->
-    <section id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-      <!-- Dynamic Project Cards Render Here -->
     </section>
 
   </main>
 
-  <!-- Log Modal -->
-  <div id="logModal" class="fixed inset-0 z-50 hidden bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="bg-slate-900 border border-slate-700/80 rounded-2xl w-full max-w-3xl overflow-hidden shadow-2xl flex flex-col max-h-[85vh]">
-      <div class="p-4 border-b border-slate-800 flex items-center justify-between bg-slate-950/60">
+  <!-- Log Viewer Modal -->
+  <div id="logModal" class="fixed inset-0 z-50 hidden bg-black/80 flex items-center justify-center p-4">
+    <div class="desk-card rounded w-full max-w-3xl overflow-hidden shadow-2xl flex flex-col max-h-[85vh]">
+      <div class="p-3 border-b border-desk-border flex items-center justify-between bg-desk-950 font-mono text-xs">
         <div class="flex items-center space-x-2">
-          <i class="fa-solid fa-terminal text-indigo-400 text-sm"></i>
-          <h3 id="modalTitle" class="text-sm font-bold text-white">최근 실행 로그</h3>
+          <i class="fa-solid fa-terminal text-slate-400"></i>
+          <span id="modalTitle" class="font-bold text-slate-200">시스템 실행 로그</span>
         </div>
-        <button onclick="closeLogModal()" class="text-slate-400 hover:text-white p-1 rounded-lg">
-          <i class="fa-solid fa-xmark text-lg"></i>
+        <button onclick="closeLogModal()" class="text-slate-400 hover:text-white">
+          <i class="fa-solid fa-xmark text-sm"></i>
         </button>
       </div>
-      <div class="p-4 overflow-y-auto flex-1 font-mono text-xs bg-slate-950 text-slate-300 space-y-1.5 selection:bg-indigo-600" id="modalLogContent">
-        <!-- Log lines -->
+      <div id="modalLogContent" class="p-4 overflow-y-auto flex-1 font-mono text-xs bg-desk-950 text-slate-300 space-y-1">
+        <!-- Logs -->
       </div>
-      <div class="p-3 border-t border-slate-800 bg-slate-900/60 flex items-center justify-between text-xs text-slate-400">
-        <span id="modalPath" class="truncate max-w-md"></span>
-        <button onclick="closeLogModal()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 transition-colors">닫기</button>
+      <div class="p-2.5 border-t border-desk-border bg-desk-900 flex justify-end">
+        <button onclick="closeLogModal()" class="px-3 py-1 rounded bg-desk-800 hover:bg-desk-700 text-xs text-slate-300 font-mono">닫기</button>
       </div>
     </div>
   </div>
 
   <!-- Footer -->
-  <footer class="border-t border-slate-800/80 bg-slate-950/50 py-6 mt-12 text-center text-xs text-slate-500">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-2">
-      <p class="font-mono">STOCK SUPERVISOR • Quant & Algorithmic Trading Operations</p>
-      <p>Hosted on <span class="text-indigo-400 font-semibold">GitHub Pages</span> | Maintained by <a href="https://github.com/bluem00000000n" class="hover:text-slate-300 underline underline-offset-4">bluem00000000n</a></p>
-    </div>
+  <footer class="border-t border-desk-border bg-desk-950 py-4 text-center text-xs font-mono text-slate-500 mt-10">
+    <p>STOCK TRADING DESK • Database Engine v2.0 • Hosted on <a href="https://bluem00000000n.github.io/stock/" class="text-slate-400 hover:text-white underline">bluem00000000n.github.io/stock</a></p>
   </footer>
 
+  <!-- App Data and Controller Logic -->
   <script>
-    // Embedded initial data fallback
+    // Embedded Initial Dataset (Auto-synced with status.json)
     const INITIAL_DATA = {
       "summary": {
-            "updated_at": "2026-10-21 12:53:23",
+            "updated_at": "2026-10-21 13:05:35",
             "total_projects": 9,
             "active_daemons": 8,
             "today_executed": 4,
@@ -286,6 +412,16 @@
                   "KRX": 6,
                   "US": 4,
                   "Global": 1
+            },
+            "portfolio": {
+                  "date": "2026-10-21",
+                  "daily_return_pct": 1.33,
+                  "cumulative_return_pct": 103.81,
+                  "realized_pnl_pct": 162.97,
+                  "unrealized_pnl_pct": 0.28,
+                  "holding_count": 4,
+                  "closed_count": 7,
+                  "win_rate": 54.5
             }
       },
       "projects": [
@@ -402,10 +538,9 @@
                   "last_exit_code": -9,
                   "status_text": "Running (실행 중)",
                   "status_code": "running",
-                  "last_executed": "2026-10-21 12:33:27",
+                  "last_executed": "2026-10-21 13:03:30",
                   "executed_today": true,
                   "recent_logs": [
-                        "[2026-10-21 08:50:16.745279] [한국 증시] 개장 전 정기 브리핑 알람 텔레그램 전송 중 (매매 액션 신호: 발생)...",
                         "2026-10-21 08:50:18,130 [INFO] ✅ [한국 증시 개장 10분 전 스캔 완료]",
                         "2026-10-21 09:02:07,779 [INFO] 💓 [하트비트 정상 가동 중] KST 2026-10-21 09:02:07",
                         "2026-10-21 09:32:11,500 [INFO] 💓 [하트비트 정상 가동 중] KST 2026-10-21 09:32:11",
@@ -414,9 +549,10 @@
                         "2026-10-21 11:03:19,686 [INFO] 💓 [하트비트 정상 가동 중] KST 2026-10-21 11:03:19",
                         "2026-10-21 11:33:21,578 [INFO] 💓 [하트비트 정상 가동 중] KST 2026-10-21 11:33:21",
                         "2026-10-21 12:03:26,050 [INFO] 💓 [하트비트 정상 가동 중] KST 2026-10-21 12:03:26",
-                        "2026-10-21 12:33:27,718 [INFO] 💓 [하트비트 정상 가동 중] KST 2026-10-21 12:33:27"
+                        "2026-10-21 12:33:27,718 [INFO] 💓 [하트비트 정상 가동 중] KST 2026-10-21 12:33:27",
+                        "2026-10-21 13:03:30,250 [INFO] 💓 [하트비트 정상 가동 중] KST 2026-10-21 13:03:30"
                   ],
-                  "last_log_preview": "2026-10-21 12:33:27,718 [INFO] 💓 [하트비트 정상 가동 중] KST 2026-10-21 12:33:27"
+                  "last_log_preview": "2026-10-21 13:03:30,250 [INFO] 💓 [하트비트 정상 가동 중] KST 2026-10-21 13:03:30"
             },
             {
                   "id": "stock-us3x",
@@ -611,30 +747,539 @@
                   "last_exit_code": null,
                   "status_text": "Ready (수동 준비)",
                   "status_code": "ready",
-                  "last_executed": "2026-10-21 12:51:01",
+                  "last_executed": "2026-10-21 13:03:59",
                   "executed_today": true,
                   "recent_logs": [
-                        "2026-10-21 12:51:01 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035420 (S08_EXPECTATION_FAILURE_LONG LONG) within 60m window.",
-                        "2026-10-21 12:51:01 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035420 (S12_HYPE_TO_FUNDAMENTALS LONG) within 60m window.",
-                        "2026-10-21 12:51:01 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035720 (S07_SECTOR_SYMPATHY LONG) within 60m window.",
-                        "2026-10-21 12:51:01 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035720 (S12_HYPE_TO_FUNDAMENTALS LONG) within 60m window.",
-                        "2026-10-21 12:51:01 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S07_SECTOR_SYMPATHY LONG) within 60m window.",
-                        "2026-10-21 12:51:01 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S11_SUPPLY_ABSORPTION LONG) within 60m window.",
-                        "2026-10-21 12:51:01 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S12_HYPE_TO_FUNDAMENTALS LONG) within 60m window.",
-                        "2026-10-21 12:51:01 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S14_RELATIVE_STRENGTH LONG) within 60m window.",
-                        "2026-10-21 12:51:01 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S15_MULTI_DAY_MOMENTUM LONG) within 60m window.",
-                        "2026-10-21 12:51:01 [INFO] [cli] [DAEMON] Cycle #858 complete: detected=29, alerted=0, dedup=29"
+                        "2026-10-21 13:03:58 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035420 (S07_SECTOR_SYMPATHY LONG) within 60m window.",
+                        "2026-10-21 13:03:58 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035420 (S12_HYPE_TO_FUNDAMENTALS LONG) within 60m window.",
+                        "2026-10-21 13:03:58 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035720 (S07_SECTOR_SYMPATHY LONG) within 60m window.",
+                        "2026-10-21 13:03:58 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035720 (S12_HYPE_TO_FUNDAMENTALS LONG) within 60m window.",
+                        "2026-10-21 13:03:59 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S07_SECTOR_SYMPATHY LONG) within 60m window.",
+                        "2026-10-21 13:03:59 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S11_SUPPLY_ABSORPTION LONG) within 60m window.",
+                        "2026-10-21 13:03:59 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S12_HYPE_TO_FUNDAMENTALS LONG) within 60m window.",
+                        "2026-10-21 13:03:59 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S14_RELATIVE_STRENGTH LONG) within 60m window.",
+                        "2026-10-21 13:03:59 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S15_MULTI_DAY_MOMENTUM LONG) within 60m window.",
+                        "2026-10-21 13:03:59 [INFO] [cli] [DAEMON] Cycle #862 complete: detected=29, alerted=0, dedup=29"
                   ],
-                  "last_log_preview": "2026-10-21 12:51:01 [INFO] [cli] [DAEMON] Cycle #858 complete: detected=29, alerted=0, dedup=29"
+                  "last_log_preview": "2026-10-21 13:03:59 [INFO] [cli] [DAEMON] Cycle #862 complete: detected=29, alerted=0, dedup=29"
             }
-      ]
+      ],
+      "alarms": [
+            {
+                  "id": 5,
+                  "project_id": "stock-dividend_top7",
+                  "project_name": "Stock Dividend Top 7",
+                  "sent_at": "2026-10-19 08:30:09",
+                  "alarm_type": "주간알람",
+                  "market": "KRX",
+                  "title": "💰 한국 거래소 6대 원칙 주간 고배당 성장주 TOP 7 (KT / SK텔레콤 / 삼성카드)",
+                  "raw_message": "💰 [stock-dividend_top7] 10월 3주차 주간 고배당주 TOP 7
+- 6대 핵심 배당 기준(5년 평균 배당률 4%+, 5년 연속 배당성장, DART 공시 교차검증) 100% 통과
+1. KT (030200) - 시가배당률 5.4%
+2. SK텔레콤 (017670) - 분기배당 및 6.2% 성장
+3. 삼성카드 (029780) - 배당성향 42% 건전 고배당
+4. 기업은행 (024110) - 국책은행 배당 방어력
+⚠️ 월요일 09:00 시가 진입 기준 주간 포트폴리오 편입.",
+                  "stocks": [
+                        {
+                              "ticker": "030200",
+                              "name": "KT",
+                              "market": "KRX",
+                              "target": 44000,
+                              "stop": 37000,
+                              "note": "5년 평균 배당률 5.4%, 통신 안정 배당"
+                        },
+                        {
+                              "ticker": "017670",
+                              "name": "SK텔레콤",
+                              "market": "KRX",
+                              "target": 62000,
+                              "stop": 52000,
+                              "note": "분기배당, 5년 연속 배당성장률 6.2%"
+                        },
+                        {
+                              "ticker": "029780",
+                              "name": "삼성카드",
+                              "market": "KRX",
+                              "target": 45000,
+                              "stop": 38000,
+                              "note": "시가배당률 6.8%, 자본건전성 최우수"
+                        }
+                  ]
+            },
+            {
+                  "id": 4,
+                  "project_id": "stock-us3x",
+                  "project_name": "Stock US 3X",
+                  "sent_at": "2026-10-20 17:03:29",
+                  "alarm_type": "주간알람",
+                  "market": "US",
+                  "title": "🚀 미국 3배 레버리지 무한매수 주간 리밸런싱 주문표 (TQQQ / SOXL)",
+                  "raw_message": "🚀 [US 3X 무한매수 & 회전 퀀트 파이프라인]
+📅 실행일시: 2026-10-20 17:03:29 (Run ID: RUN_2026-10-20_45ceea89)
+🌐 거시 체제(Regime): RISK_ON (VIX 18.6, SPY 200일선 상단 위치)
+📊 무한매수 TOP 3 주문 지침:
+1. TQQQ (나스닥 3X): 1차 20분할 LOC 주문 발령. 평균단가 기준 0.5회차 매수.
+2. TECL (테크 3X): 적합도 스코어 92.5. 트렌치 분할 매수 대기.
+3. SOXL (반도체 3X): 변동성 관리 쿼터 모드 가동.",
+                  "stocks": [
+                        {
+                              "ticker": "TQQQ",
+                              "name": "ProShares UltraPro QQQ",
+                              "market": "US",
+                              "target": 85.0,
+                              "stop": 62.0,
+                              "note": "스코어 96.0, 20분할 LOC 1차 누적"
+                        },
+                        {
+                              "ticker": "SOXL",
+                              "name": "Direxion Daily Semi 3X",
+                              "market": "US",
+                              "target": 45.0,
+                              "stop": 29.0,
+                              "note": "반도체 3X 슈퍼사이클 20분할 분할매수"
+                        },
+                        {
+                              "ticker": "TECL",
+                              "name": "Direxion Daily Tech 3X",
+                              "market": "US",
+                              "target": 115.0,
+                              "stop": 88.0,
+                              "note": "테크 3배 레버리지 1차 트렌치 진입"
+                        }
+                  ]
+            },
+            {
+                  "id": 3,
+                  "project_id": "stock-sepa-pivot",
+                  "project_name": "Stock SEPA Pivot",
+                  "sent_at": "2026-10-20 21:30:02",
+                  "alarm_type": "야간알람",
+                  "market": "US",
+                  "title": "🇺🇸 21:30 미국 본장 SEPA x 피벗 브리핑 (NVDA / PLTR / APP)",
+                  "raw_message": "🇺🇸 [21:30 야간 알람] 미국장 본장 개장 SEPA x 피벗 브리핑
+📅 기준일자: 2026-10-20 21:30 | 미국 본장 개장
+주도주 감시선:
+1. NVDA (NVIDIA) | 피벗 $138.5 | 손절 $128.0 | VCP 돌파
+2. PLTR (Palantir) | 피벗 $44.2 | 손절 $41.0 | 52주 신고가 박스 돌파
+3. APP (AppLovin) | 피벗 $158.0 | 손절 $145.0 | 모멘텀 1위
+⚠️ 시가 체결 후 피벗 +5% 이상 추격 금지, 철저한 손절 라인 방어.",
+                  "stocks": [
+                        {
+                              "ticker": "NVDA",
+                              "name": "NVIDIA",
+                              "market": "US",
+                              "target": 155.0,
+                              "stop": 128.0,
+                              "note": "AI 가속기 독점, 200일선 상단 VCP 피벗 돌파"
+                        },
+                        {
+                              "ticker": "PLTR",
+                              "name": "Palantir Tech",
+                              "market": "US",
+                              "target": 52.0,
+                              "stop": 41.0,
+                              "note": "AIP 플랫폼 기업 침투 가속, 52주 신고가"
+                        },
+                        {
+                              "ticker": "APP",
+                              "name": "AppLovin",
+                              "market": "US",
+                              "target": 185.0,
+                              "stop": 145.0,
+                              "note": "AI 광고 엔진 AXON 2.0 폭발적 실적 가속"
+                        }
+                  ]
+            },
+            {
+                  "id": 2,
+                  "project_id": "stock-sepa-pivot",
+                  "project_name": "Stock SEPA Pivot",
+                  "sent_at": "2026-10-21 08:40:02",
+                  "alarm_type": "장전알람",
+                  "market": "KRX",
+                  "title": "📈 08:40 한국장 SEPA 트렌드 & 피벗 포인트 돌파 감시 (SK하이닉스/삼양식품 외)",
+                  "raw_message": "📈 [08:40 오전 알람] 🇰🇷 한국장 개장 피벗 & SEPA 전략 브리핑
+📅 기준일자: 2026-10-21 | 한국장 개장 20분 전
+🏆 백테스팅 3개년 황금 수칙 (손익비 7.7배 모델)
+• 하루 진입은 딱 1~2개 집중 (평균 1.1개 진입 시 최고 수익)
+• Never Chase > 5%: 피벗 대비 +5% 초과 갭상승 출발 시 추격 금지
+• 매수가 대비 -5% ~ -8% 기계적 손절매 준수
+
+👑 [한국 대형 주도주 피벗 감시선]
+1. SK하이닉스 (000660) | 피벗: 191,500원 | 손절: 182,000원 | 패턴: VCP 3차 수축
+2. 삼양식품 (003230) | 피벗: 620,000원 | 손절: 590,000원 | 패턴: 컵앤핸들
+3. HD현대일렉트릭 (267260) | 피벗: 360,000원 | 손절: 345,000원 | 패턴: 하이타이트 플래그
+4. 알테오젠 (196170) | 피벗: 385,000원 | 손절: 370,000원 | 패턴: 2차 파동 돌파",
+                  "stocks": [
+                        {
+                              "ticker": "000660",
+                              "name": "SK하이닉스",
+                              "market": "KRX",
+                              "target": 210000,
+                              "stop": 182000,
+                              "note": "HBM3E 독점적 지위, 20일선 VCP 피벗 돌파"
+                        },
+                        {
+                              "ticker": "003230",
+                              "name": "삼양식품",
+                              "market": "KRX",
+                              "target": 680000,
+                              "stop": 590000,
+                              "note": "글로벌 수출 폭증, 5일선 회복 기관 양매수"
+                        },
+                        {
+                              "ticker": "267260",
+                              "name": "HD현대일렉트릭",
+                              "market": "KRX",
+                              "target": 395000,
+                              "stop": 345000,
+                              "note": "북미 변압기 쇼티지, 전고점 지지 VCP 패턴"
+                        },
+                        {
+                              "ticker": "196170",
+                              "name": "알테오젠",
+                              "market": "KRX",
+                              "target": 420000,
+                              "stop": 370000,
+                              "note": "피하주사(SC) 독점 플랫폼, 2차 파동 피벗 돌파"
+                        }
+                  ]
+            },
+            {
+                  "id": 1,
+                  "project_id": "stock-sniper",
+                  "project_name": "Stock Sniper",
+                  "sent_at": "2026-10-21 08:45:04",
+                  "alarm_type": "장전알람",
+                  "market": "KRX",
+                  "title": "🎯 08:45 장전 스나이퍼 실전 주문표 (KODEX 200/150 & 수급 주도주 3선)",
+                  "raw_message": "[스톡 스나이퍼 08:45 실전 장전 주문표]
+📅 기준일시: 2026-10-21 (수) 08:45 장전 출정 브리핑
+🎯 시장 국면: 선택적 공격 (지수 방어선 확인 후 진입)
+📊 지수 ETF 진입 타점:
+  - KODEX 200 (069500): 1차 101,100원 / 2차 100,100원 | 손절 99,000원 | 목표 104,200원
+  - KODEX 코스닥150 (229200): 1차 14,270원 / 2차 14,100원 | 손절 13,900원 | 목표 15,100원
+🚀 52주 신고가 & RS 상대강도 주도주 3선:
+  1. 라온시큐어 (042510): 생체인증 양자암호 모멘텀, 시가 지지 시 진입
+  2. 주성엔지니어링 (036930): 반도체 ALD 2,200억 수급 방어, 20일선 지지
+  3. 금호건설 (002990): 거래대금 1,500억 유입, 첫 15분봉 고점 돌파 시 진입
+⚠️ 수칙: 장전 알람 종목은 09:00 시가(Open) 확인 후 분할 매수 체결.",
+                  "stocks": [
+                        {
+                              "ticker": "069500",
+                              "name": "KODEX 200",
+                              "market": "KRX",
+                              "target": 104200,
+                              "stop": 99000,
+                              "note": "지수 대표 ETF 분할 진입"
+                        },
+                        {
+                              "ticker": "229200",
+                              "name": "KODEX 코스닥150",
+                              "market": "KRX",
+                              "target": 15100,
+                              "stop": 13900,
+                              "note": "코스닥 지수 수급 지지선 반등"
+                        },
+                        {
+                              "ticker": "042510",
+                              "name": "라온시큐어",
+                              "market": "KRX",
+                              "target": 19500,
+                              "stop": 17500,
+                              "note": "생체인증/양자암호 52주 신고가 돌파권"
+                        },
+                        {
+                              "ticker": "036930",
+                              "name": "주성엔지니어링",
+                              "market": "KRX",
+                              "target": 38500,
+                              "stop": 34000,
+                              "note": "반도체 ALD 2,200억 수급 방어"
+                        },
+                        {
+                              "ticker": "002990",
+                              "name": "금호건설",
+                              "market": "KRX",
+                              "target": 14500,
+                              "stop": 12800,
+                              "note": "거래대금 1,500억 유입 양봉 수급 방어"
+                        }
+                  ]
+            }
+      ],
+      "trades": [
+            {
+                  "id": 3,
+                  "project_id": "stock-sniper",
+                  "project_name": "Stock Sniper",
+                  "ticker": "042510",
+                  "name": "라온시큐어",
+                  "market": "KRX",
+                  "signal_type": "장전알람(시가매수)",
+                  "signal_date": "2026-10-21 08:45:00",
+                  "entry_price": 18250.0,
+                  "entry_date": "2026-10-21",
+                  "current_price": 18450.0,
+                  "exit_price": null,
+                  "exit_date": null,
+                  "status": "HOLDING",
+                  "return_pct": 1.1,
+                  "target_price": 19500.0,
+                  "stop_loss_price": 17500.0,
+                  "notes": "52주 신고가 돌파 장전 주문표 시가 체결"
+            },
+            {
+                  "id": 11,
+                  "project_id": "stock-sepa-pivot",
+                  "project_name": "Stock SEPA Pivot",
+                  "ticker": "PLTR",
+                  "name": "Palantir Tech",
+                  "market": "US",
+                  "signal_type": "야간알람(시가매수)",
+                  "signal_date": "2026-10-20 21:30:00",
+                  "entry_price": 44.5,
+                  "entry_date": "2026-10-20",
+                  "current_price": 44.5,
+                  "exit_price": null,
+                  "exit_date": null,
+                  "status": "HOLDING",
+                  "return_pct": 0.0,
+                  "target_price": 52.0,
+                  "stop_loss_price": 41.0,
+                  "notes": "AIP 플랫폼 수급 돌파 진입"
+            },
+            {
+                  "id": 10,
+                  "project_id": "stock-sepa-pivot",
+                  "project_name": "Stock SEPA Pivot",
+                  "ticker": "NVDA",
+                  "name": "NVIDIA",
+                  "market": "US",
+                  "signal_type": "야간알람(시가매수)",
+                  "signal_date": "2026-10-20 21:30:00",
+                  "entry_price": 139.2,
+                  "entry_date": "2026-10-20",
+                  "current_price": 139.2,
+                  "exit_price": null,
+                  "exit_date": null,
+                  "status": "HOLDING",
+                  "return_pct": 0.0,
+                  "target_price": 155.0,
+                  "stop_loss_price": 128.0,
+                  "notes": "본장 개장 시가 피벗 돌파 확인 진입"
+            },
+            {
+                  "id": 9,
+                  "project_id": "stock-us3x",
+                  "project_name": "Stock US 3X",
+                  "ticker": "TQQQ",
+                  "name": "ProShares UltraPro QQQ",
+                  "market": "US",
+                  "signal_type": "주간리밸런싱",
+                  "signal_date": "2026-10-20 17:03:00",
+                  "entry_price": 68.5,
+                  "entry_date": "2026-10-20",
+                  "current_price": 68.5,
+                  "exit_price": null,
+                  "exit_date": null,
+                  "status": "HOLDING",
+                  "return_pct": 0.0,
+                  "target_price": 85.0,
+                  "stop_loss_price": 62.0,
+                  "notes": "20분할 무한매수 1차 트렌치 체결"
+            },
+            {
+                  "id": 6,
+                  "project_id": "stock-sepa-pivot",
+                  "project_name": "Stock SEPA Pivot",
+                  "ticker": "003230",
+                  "name": "삼양식품",
+                  "market": "KRX",
+                  "signal_type": "장전알람(시가매수)",
+                  "signal_date": "2026-10-21 08:40:00",
+                  "entry_price": 622000.0,
+                  "entry_date": "2026-10-21",
+                  "current_price": 1279000.0,
+                  "exit_price": 1279000.0,
+                  "exit_date": "2026-10-21",
+                  "status": "CLOSED",
+                  "return_pct": 105.63,
+                  "target_price": 680000.0,
+                  "stop_loss_price": 590000.0,
+                  "notes": "기관 양매수 확인 시가 분할 매수 | 🎯 목표가(680,000) 도달 전량 익절 매도"
+            },
+            {
+                  "id": 5,
+                  "project_id": "stock-sepa-pivot",
+                  "project_name": "Stock SEPA Pivot",
+                  "ticker": "000660",
+                  "name": "SK하이닉스",
+                  "market": "KRX",
+                  "signal_type": "장전알람(시가매수)",
+                  "signal_date": "2026-10-21 08:40:00",
+                  "entry_price": 192000.0,
+                  "entry_date": "2026-10-21",
+                  "current_price": 1270000.0,
+                  "exit_price": 1270000.0,
+                  "exit_date": "2026-10-21",
+                  "status": "CLOSED",
+                  "return_pct": 561.46,
+                  "target_price": 210000.0,
+                  "stop_loss_price": 182000.0,
+                  "notes": "SEPA 트렌드 템플릿 피벗 돌파 시가 진입 | 🎯 목표가(210,000) 도달 전량 익절 매도"
+            },
+            {
+                  "id": 4,
+                  "project_id": "stock-sniper",
+                  "project_name": "Stock Sniper",
+                  "ticker": "036930",
+                  "name": "주성엔지니어링",
+                  "market": "KRX",
+                  "signal_type": "장전알람(시가매수)",
+                  "signal_date": "2026-10-21 08:45:00",
+                  "entry_price": 35200.0,
+                  "entry_date": "2026-10-21",
+                  "current_price": 203500.0,
+                  "exit_price": 203500.0,
+                  "exit_date": "2026-10-21",
+                  "status": "CLOSED",
+                  "return_pct": 478.12,
+                  "target_price": 38500.0,
+                  "stop_loss_price": 34000.0,
+                  "notes": "반도체 수급 1위 시가 체결 | 🎯 목표가(38,500) 도달 전량 익절 매도"
+            },
+            {
+                  "id": 2,
+                  "project_id": "stock-sniper",
+                  "project_name": "Stock Sniper",
+                  "ticker": "229200",
+                  "name": "KODEX 코스닥150",
+                  "market": "KRX",
+                  "signal_type": "장전알람(시가매수)",
+                  "signal_date": "2026-10-21 08:45:00",
+                  "entry_price": 14250.0,
+                  "entry_date": "2026-10-21",
+                  "current_price": 13305.0,
+                  "exit_price": 13305.0,
+                  "exit_date": "2026-10-21",
+                  "status": "CLOSED",
+                  "return_pct": -6.63,
+                  "target_price": 15100.0,
+                  "stop_loss_price": 13900.0,
+                  "notes": "코스닥 150 지수 분할 시가 체결 | 🛑 손절가(13,900) 이탈 기계적 손절 청산"
+            },
+            {
+                  "id": 1,
+                  "project_id": "stock-sniper",
+                  "project_name": "Stock Sniper",
+                  "ticker": "069500",
+                  "name": "KODEX 200",
+                  "market": "KRX",
+                  "signal_type": "장전알람(시가매수)",
+                  "signal_date": "2026-10-21 08:45:00",
+                  "entry_price": 101200.0,
+                  "entry_date": "2026-10-21",
+                  "current_price": 89195.0,
+                  "exit_price": 89195.0,
+                  "exit_date": "2026-10-21",
+                  "status": "CLOSED",
+                  "return_pct": -11.86,
+                  "target_price": 104200.0,
+                  "stop_loss_price": 99000.0,
+                  "notes": "08:45 알람 발행 후 09:00 시가 체결 | 🛑 손절가(99,000) 이탈 기계적 손절 청산"
+            },
+            {
+                  "id": 8,
+                  "project_id": "stock-sepa-pivot",
+                  "project_name": "Stock SEPA Pivot",
+                  "ticker": "196170",
+                  "name": "알테오젠",
+                  "market": "KRX",
+                  "signal_type": "장전알람(시가매수)",
+                  "signal_date": "2026-10-19 08:40:00",
+                  "entry_price": 382000.0,
+                  "entry_date": "2026-10-19",
+                  "current_price": 405000.0,
+                  "exit_price": 405000.0,
+                  "exit_date": "2026-10-20",
+                  "status": "CLOSED",
+                  "return_pct": 6.02,
+                  "target_price": 410000.0,
+                  "stop_loss_price": 365000.0,
+                  "notes": "피벗 돌파 후 1차 목표치 부근 부분 익절 (+6.02%)"
+            },
+            {
+                  "id": 7,
+                  "project_id": "stock-sniper",
+                  "project_name": "Stock Sniper",
+                  "ticker": "064350",
+                  "name": "현대로템",
+                  "market": "KRX",
+                  "signal_type": "장전알람(시가매수)",
+                  "signal_date": "2026-10-19 08:45:00",
+                  "entry_price": 58500.0,
+                  "entry_date": "2026-10-19",
+                  "current_price": 63200.0,
+                  "exit_price": 63200.0,
+                  "exit_date": "2026-10-20",
+                  "status": "CLOSED",
+                  "return_pct": 8.03,
+                  "target_price": 63000.0,
+                  "stop_loss_price": 56000.0,
+                  "notes": "목표가 도달 익절 매도 완료 (+8.03%)"
+            }
+      ],
+      "performance": {
+            "PORTFOLIO_TOTAL": {
+                  "date": "2026-10-21",
+                  "daily_return_pct": 1.33,
+                  "cumulative_return_pct": 103.81,
+                  "realized_pnl_pct": 162.97,
+                  "unrealized_pnl_pct": 0.28,
+                  "holding_count": 4,
+                  "closed_count": 7,
+                  "win_rate": 54.5
+            },
+            "stock-sepa-pivot": {
+                  "date": "2026-10-21",
+                  "daily_return_pct": 1.2,
+                  "cumulative_return_pct": 134.62,
+                  "realized_pnl_pct": 224.37,
+                  "unrealized_pnl_pct": 0.0,
+                  "holding_count": 2,
+                  "closed_count": 3,
+                  "win_rate": 60.0
+            },
+            "stock-sniper": {
+                  "date": "2026-10-21",
+                  "daily_return_pct": 1.7,
+                  "cumulative_return_pct": 93.75,
+                  "realized_pnl_pct": 116.91,
+                  "unrealized_pnl_pct": 1.1,
+                  "holding_count": 1,
+                  "closed_count": 4,
+                  "win_rate": 60.0
+            },
+            "stock-us3x": {
+                  "date": "2026-10-21",
+                  "daily_return_pct": -0.5,
+                  "cumulative_return_pct": 0.0,
+                  "realized_pnl_pct": 0.0,
+                  "unrealized_pnl_pct": 0.0,
+                  "holding_count": 1,
+                  "closed_count": 0,
+                  "win_rate": 0.0
+            }
+      }
 };
 
     let appData = INITIAL_DATA;
-    let currentFilter = 'ALL';
-    let searchQuery = '';
+    let currentTab = 'performance';
+    let currentTradeFilter = 'ALL';
 
-    // Async Fetch from data/status.json if hosted on web server
+    // Fetch dynamic JSON
     async function loadLatestData() {
       if (window.location.protocol.startsWith('http')) {
         try {
@@ -643,18 +1288,17 @@
             appData = await res.json();
           }
         } catch (e) {
-          console.warn('Using embedded dataset due to fetch error:', e);
+          console.warn('Using embedded dataset:', e);
         }
       }
-      renderDashboard();
+      renderAllViews();
     }
 
-    async function refreshData() {
+    async function triggerRefresh() {
       const icon = document.getElementById('refreshIcon');
       icon.classList.add('fa-spin');
       try {
         if (window.location.protocol.startsWith('http')) {
-          // If on local serve.py, trigger /api/refresh
           const res = await fetch('/api/refresh');
           if (res.ok) {
             appData = await res.json();
@@ -662,165 +1306,302 @@
             await loadLatestData();
           }
         } else {
-          // File protocol
-          alert('로컬 파일(file://) 모드입니다.\n터미널에서 ./update_status.py 를 실행한 뒤 페이지를 새로고침(Cmd+R)해 주세요!\n또는 ./serve.py 를 실행하시면 자동 갱신됩니다.');
+          alert('로컬 파일 모드입니다.\n터미널에서 ./update_status.py 를 실행 후 브라우저를 새로고침해 주세요.');
         }
       } catch (e) {
         await loadLatestData();
       } finally {
         setTimeout(() => {
           icon.classList.remove('fa-spin');
-          renderDashboard();
-        }, 400);
+          renderAllViews();
+        }, 500);
       }
     }
 
-    function renderDashboard() {
-      const summary = appData.summary;
-      document.getElementById('lastUpdated').innerText = summary.updated_at;
-      document.getElementById('metricTotal').innerText = summary.total_projects;
-      document.getElementById('metricActive').innerText = summary.active_daemons;
-      document.getElementById('metricToday').innerText = summary.today_executed;
-      document.getElementById('metricMarkets').innerText = `KRX ${summary.market_stats.KRX} · US ${summary.market_stats.US}`;
-
-      const grid = document.getElementById('projectsGrid');
-      grid.innerHTML = '';
-
-      const filtered = appData.projects.filter(p => {
-        // Filter by category/state
-        if (currentFilter === 'KRX' && !p.category.includes('KRX')) return false;
-        if (currentFilter === 'US' && !p.category.includes('US')) return false;
-        if (currentFilter === 'ACTIVE' && p.status_code !== 'running' && p.status_code !== 'active') return false;
-
-        // Search query
-        if (searchQuery) {
-          const q = searchQuery.toLowerCase();
-          const target = (p.name + p.summary + p.strategy + p.tags.join(' ')).toLowerCase();
-          if (!target.includes(q)) return false;
-        }
-        return true;
+    function switchTab(tab) {
+      currentTab = tab;
+      document.querySelectorAll('.tab-view').forEach(v => v.classList.add('hidden'));
+      document.querySelectorAll('.tab-btn').forEach(b => {
+        b.className = 'tab-btn px-3 py-1.5 text-xs font-medium rounded text-slate-400 hover:text-slate-200 hover:bg-desk-850 border border-transparent transition-colors';
       });
 
-      if (filtered.length === 0) {
-        grid.innerHTML = `
-          <div class="col-span-full py-16 text-center text-slate-500">
-            <i class="fa-solid fa-magnifying-glass text-3xl mb-3 text-slate-600"></i>
-            <p class="text-sm">검색 및 필터 조건에 일치하는 프로젝트가 없습니다.</p>
+      const activeView = document.getElementById('view-' + tab);
+      const activeBtn = document.getElementById('tab-btn-' + tab);
+      if (activeView) activeView.classList.remove('hidden');
+      if (activeBtn) {
+        activeBtn.className = 'tab-btn px-3 py-1.5 text-xs font-semibold rounded bg-desk-800 text-white border border-desk-600 transition-colors';
+      }
+    }
+
+    function renderAllViews() {
+      const summary = appData.summary || {};
+      const port = summary.portfolio || {};
+
+      document.getElementById('headerSyncTime').innerText = summary.updated_at || '방금 전';
+      
+      // Top KPI Values
+      const cumVal = port.cumulative_return_pct !== undefined ? port.cumulative_return_pct : 0.0;
+      const dayVal = port.daily_return_pct !== undefined ? port.daily_return_pct : 0.0;
+      
+      const kpiCum = document.getElementById('kpiCumulative');
+      kpiCum.innerText = (cumVal >= 0 ? '+' : '') + cumVal.toFixed(1) + '%';
+      kpiCum.className = 'text-2xl font-bold font-mono ' + (cumVal >= 0 ? 'text-krx-up' : 'text-krx-down');
+
+      const kpiDay = document.getElementById('kpiDaily');
+      kpiDay.innerText = (dayVal >= 0 ? '+' : '') + dayVal.toFixed(2) + '%';
+      kpiDay.className = 'text-2xl font-bold font-mono ' + (dayVal >= 0 ? 'text-krx-up' : 'text-krx-down');
+
+      document.getElementById('kpiWinRate').innerText = (port.win_rate || 0.0).toFixed(1) + '%';
+      document.getElementById('kpiHoldings').innerText = port.holding_count || 0;
+      document.getElementById('kpiClosed').innerText = port.closed_count || 0;
+      document.getElementById('kpiDaemons').innerText = (summary.active_daemons || 0) + ' / ' + (summary.total_projects || 0);
+
+      renderStrategyMatrix();
+      renderTradesTable();
+      renderAlertsFeed();
+      renderSystemsGrid();
+    }
+
+    // 1. Strategy Performance Matrix
+    function renderStrategyMatrix() {
+      const container = document.getElementById('strategyMatrix');
+      container.innerHTML = '';
+      const perf = appData.performance || {};
+
+      const strategies = [
+        { id: 'stock-sniper', name: 'Stock Sniper', label: '장전 08:45 스나이퍼' },
+        { id: 'stock-sepa-pivot', name: 'SEPA x Pivot', label: '미너비니 SEPA x 피벗' },
+        { id: 'stock-us3x', name: 'US 3X Infinite', label: '미국 3배 레버리지 무한매수' },
+        { id: 'stock-dividend_top7', name: 'Dividend Top 7', label: '주간 배당주 스크리너' }
+      ];
+
+      strategies.forEach(s => {
+        const p = perf[s.id] || { cumulative_return_pct: 0, daily_return_pct: 0, holding_count: 0, closed_count: 0, win_rate: 0 };
+        const isUp = p.cumulative_return_pct >= 0;
+
+        const card = document.createElement('div');
+        card.className = 'bg-desk-900 border border-desk-border rounded p-3 font-mono flex flex-col justify-between';
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between text-[11px] text-slate-400">
+              <span class="font-bold text-slate-200">${s.name}</span>
+              <span class="text-[10px] px-1.5 py-0.2 rounded bg-desk-800 text-slate-400 border border-desk-border">${p.holding_count}종목 보유</span>
+            </div>
+            <div class="text-[11px] text-slate-500 mt-0.5 truncate">${s.label}</div>
+          </div>
+          <div class="mt-3 pt-2.5 border-t border-desk-border flex items-baseline justify-between">
+            <span class="text-xs text-slate-400">누적 수익:</span>
+            <span class="text-base font-bold ${isUp ? 'text-krx-up' : 'text-krx-down'}">
+              ${isUp ? '+' : ''}${p.cumulative_return_pct.toFixed(1)}%
+            </span>
           </div>
         `;
+        container.appendChild(card);
+      });
+    }
+
+    // 2. Trades Table
+    function renderTradesTable() {
+      const tbody = document.getElementById('tradesTableBody');
+      tbody.innerHTML = '';
+
+      let trades = appData.trades || [];
+
+      // Filter trades
+      if (currentTradeFilter === 'HOLDING') {
+        trades = trades.filter(t => t.status === 'HOLDING');
+      } else if (currentTradeFilter === 'CLOSED') {
+        trades = trades.filter(t => t.status === 'CLOSED');
+      } else if (currentTradeFilter === 'KRX') {
+        trades = trades.filter(t => t.market === 'KRX');
+      } else if (currentTradeFilter === 'US') {
+        trades = trades.filter(t => t.market === 'US');
+      }
+
+      document.getElementById('tradesCountBadge').innerText = `${trades.length}개 체결 종목`;
+
+      if (trades.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="10" class="py-8 text-center text-slate-500 font-mono text-xs">일치하는 체결 내역이 없습니다.</td></tr>`;
         return;
       }
 
-      filtered.forEach(p => {
-        const card = createProjectCard(p);
-        grid.appendChild(card);
+      trades.forEach(t => {
+        const tr = document.createElement('tr');
+        const isHolding = t.status === 'HOLDING';
+        const isUp = t.return_pct >= 0;
+        const curOrExit = isHolding ? t.current_price : (t.exit_price || t.current_price);
+        const formatPrice = (val, market) => {
+          if (!val) return '-';
+          return market === 'KRX' ? `${Math.round(val).toLocaleString()}원` : `$${val.toFixed(2)}`;
+        };
+
+        tr.innerHTML = `
+          <td class="py-2.5 px-3 font-semibold text-slate-200">
+            <div>${t.project_name}</div>
+            <div class="text-[10px] text-slate-500 font-normal">${t.signal_date || ''}</div>
+          </td>
+          <td class="py-2.5 px-3">
+            <div class="font-bold text-slate-100">${t.name}</div>
+            <div class="text-[10px] text-slate-400">${t.ticker}</div>
+          </td>
+          <td class="py-2.5 px-3">
+            <span class="px-1.5 py-0.5 rounded text-[10px] ${t.market === 'KRX' ? 'bg-rose-950/40 text-rose-300 border border-rose-900' : 'bg-blue-950/40 text-blue-300 border border-blue-900'}">${t.market}</span>
+            <div class="text-[10px] text-slate-400 mt-0.5">${t.signal_type}</div>
+          </td>
+          <td class="py-2.5 px-3 text-right font-semibold text-slate-200">
+            ${formatPrice(t.entry_price, t.market)}
+          </td>
+          <td class="py-2.5 px-3 text-right font-semibold text-slate-100">
+            ${formatPrice(curOrExit, t.market)}
+          </td>
+          <td class="py-2.5 px-3 text-right font-bold ${isUp ? 'text-krx-up' : 'text-krx-down'}">
+            ${isUp ? '+' : ''}${t.return_pct.toFixed(2)}%
+          </td>
+          <td class="py-2.5 px-3 text-center">
+            ${isHolding 
+              ? '<span class="px-1.5 py-0.5 rounded text-[10px] bg-emerald-950 text-emerald-400 border border-emerald-800">보유중</span>'
+              : '<span class="px-1.5 py-0.5 rounded text-[10px] bg-desk-800 text-slate-400 border border-desk-700">매도완료</span>'}
+          </td>
+          <td class="py-2.5 px-3 text-right text-slate-400 text-[11px]">
+            ${formatPrice(t.target_price, t.market)}
+          </td>
+          <td class="py-2.5 px-3 text-right text-slate-400 text-[11px]">
+            ${formatPrice(t.stop_loss_price, t.market)}
+          </td>
+          <td class="py-2.5 px-3 text-[11px] text-slate-400 max-w-xs truncate" title="${t.notes || ''}">
+            ${t.notes || '-'}
+          </td>
+        `;
+        tbody.appendChild(tr);
       });
     }
 
-    function createProjectCard(p) {
-      const card = document.createElement('div');
-      card.className = 'glass-card rounded-2xl p-5 flex flex-col justify-between';
+    function setTradeFilter(f) {
+      currentTradeFilter = f;
+      document.querySelectorAll('.trade-filter-btn').forEach(b => {
+        b.className = 'trade-filter-btn px-2.5 py-1 rounded bg-desk-800 text-slate-400 hover:text-white border border-desk-border';
+      });
+      const active = document.getElementById('trade-btn-' + f);
+      if (active) {
+        active.className = 'trade-filter-btn px-2.5 py-1 rounded bg-rose-600 text-white font-semibold';
+      }
+      renderTradesTable();
+    }
 
-      // Status pill styling
-      let statusBadge = '';
-      if (p.status_code === 'running') {
-        statusBadge = `<span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 glow-dot mr-1.5"></span>실행 중 (PID ${p.pid || 'Active'})</span>`;
-      } else if (p.status_code === 'active') {
-        statusBadge = `<span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400 mr-1.5"></span>스케줄 가동</span>`;
-      } else {
-        statusBadge = `<span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-slate-800 text-slate-400 border border-slate-700">스탠바이</span>`;
+    // 3. Alerts Feed
+    function renderAlertsFeed() {
+      const container = document.getElementById('alertsFeed');
+      container.innerHTML = '';
+      const alarms = appData.alarms || [];
+
+      if (alarms.length === 0) {
+        container.innerHTML = `<div class="desk-card rounded p-8 text-center text-slate-500 font-mono text-xs">수신된 알람 내역이 없습니다.</div>`;
+        return;
       }
 
-      const todayBadge = p.executed_today 
-        ? `<span class="text-[10px] font-medium px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">오늘 완료</span>` 
-        : '';
+      alarms.forEach(a => {
+        const card = document.createElement('div');
+        card.className = 'desk-card rounded p-4 font-mono space-y-3';
 
-      const tagsHtml = p.tags.map(t => `<span class="text-[10px] font-medium px-2 py-0.5 rounded bg-slate-800/80 text-slate-400">#${t}</span>`).join(' ');
+        const stocksPills = (a.stocks || []).map(s => `
+          <span class="inline-flex items-center text-[11px] px-2 py-0.5 rounded bg-desk-850 text-slate-200 border border-desk-border">
+            <span class="text-rose-400 font-bold mr-1">${s.name}</span>
+            <span class="text-slate-400 text-[10px]">(${s.ticker})</span>
+          </span>
+        `).join(' ');
 
-      card.innerHTML = `
-        <div>
-          <!-- Top Row -->
-          <div class="flex items-start justify-between gap-2 mb-3">
+        card.innerHTML = `
+          <!-- Header -->
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pb-2 border-b border-desk-border text-xs">
             <div class="flex items-center space-x-2">
-              <span class="text-lg">${p.flag}</span>
-              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono">${p.category}</span>
-              ${todayBadge}
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold ${a.alarm_type.includes('장전') ? 'bg-rose-950 text-rose-300 border border-rose-800' : 'bg-desk-800 text-slate-300 border border-desk-border'}">
+                ${a.alarm_type}
+              </span>
+              <span class="font-bold text-slate-100">${a.title}</span>
             </div>
-            ${statusBadge}
-          </div>
-
-          <!-- Project Title & Summary -->
-          <h3 class="text-base font-bold text-white mb-1.5 flex items-center justify-between">
-            <span>${p.name}</span>
-          </h3>
-          <p class="text-xs text-slate-300 leading-relaxed mb-4">${p.summary}</p>
-
-          <!-- Strategy Detail -->
-          <div class="bg-slate-900/80 rounded-xl p-3 border border-slate-800/80 text-[11px] space-y-2 mb-4">
-            <div class="flex items-start space-x-2">
-              <span class="text-slate-500 w-12 shrink-0 font-medium">스케줄</span>
-              <span class="text-indigo-300 font-mono font-medium">${p.schedule_display}</span>
-            </div>
-            <div class="flex items-start space-x-2">
-              <span class="text-slate-500 w-12 shrink-0 font-medium">대상</span>
-              <span class="text-slate-300">${p.market}</span>
-            </div>
-            <div class="flex items-start space-x-2">
-              <span class="text-slate-500 w-12 shrink-0 font-medium">전략</span>
-              <span class="text-slate-400 line-clamp-2">${p.strategy}</span>
+            <div class="text-[11px] text-slate-400 flex items-center">
+              <i class="fa-regular fa-clock mr-1 text-[10px]"></i>
+              <span>${a.sent_at}</span>
             </div>
           </div>
 
-          <!-- Tags -->
-          <div class="flex flex-wrap gap-1 mb-4">
-            ${tagsHtml}
-          </div>
-        </div>
+          <!-- Target Stocks List -->
+          ${stocksPills ? `
+          <div class="flex flex-wrap items-center gap-1.5 text-xs">
+            <span class="text-slate-500 text-[11px] mr-1">시가매수 종목:</span>
+            ${stocksPills}
+          </div>` : ''}
 
-        <!-- Bottom Action Bar -->
-        <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
-          <div class="text-[11px] text-slate-500 flex items-center truncate max-w-[60%]">
-            <i class="fa-regular fa-clock mr-1 text-[10px]"></i>
-            <span class="truncate">${p.last_executed}</span>
+          <!-- Raw Message Box -->
+          <div class="p-3 rounded bg-desk-950 border border-desk-border text-[11px] text-slate-300 whitespace-pre-wrap leading-relaxed select-text">
+            ${a.raw_message}
           </div>
-          <div class="flex items-center space-x-2">
-            <button onclick="openLogModal('${p.id}')" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors flex items-center">
-              <i class="fa-solid fa-list-check mr-1.5 text-[10px]"></i> 로그
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // 4. Systems Operations Grid
+    function renderSystemsGrid() {
+      const container = document.getElementById('systemsGrid');
+      container.innerHTML = '';
+      const projects = appData.projects || [];
+
+      projects.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'desk-card rounded p-4 font-mono flex flex-col justify-between space-y-3';
+
+        const isRunning = p.status_code === 'running';
+        const isActive = p.status_code === 'active';
+
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between text-xs mb-2">
+              <div class="flex items-center space-x-2">
+                <span class="text-sm">${p.flag || '🌐'}</span>
+                <span class="font-bold text-slate-100">${p.name}</span>
+              </div>
+              <span class="text-[10px] px-1.5 py-0.5 rounded ${isRunning ? 'bg-emerald-950 text-emerald-400 border border-emerald-800' : (isActive ? 'bg-desk-800 text-slate-300 border border-desk-border' : 'bg-desk-850 text-slate-500 border border-desk-border')}">
+                ${p.status_text || '대기'}
+              </span>
+            </div>
+            <div class="text-[11px] text-slate-400 font-sans leading-relaxed mb-3">${p.summary}</div>
+
+            <div class="bg-desk-950 rounded p-2.5 border border-desk-border text-[11px] space-y-1.5">
+              <div class="flex justify-between">
+                <span class="text-slate-500">실행 스케줄:</span>
+                <span class="text-slate-300">${p.schedule_display}</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-500">대상 시장:</span>
+                <span class="text-slate-300">${p.market}</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-500">최근 실행:</span>
+                <span class="text-slate-400">${p.last_executed}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-2 border-t border-desk-border flex items-center justify-between text-xs">
+            <button onclick="openLogModal('${p.id}')" class="px-2.5 py-1 rounded bg-desk-800 hover:bg-desk-700 text-slate-300 border border-desk-border text-[11px] transition-colors">
+              <i class="fa-solid fa-list-check mr-1 text-[10px]"></i> 로그 확인
             </button>
-            <a href="${p.repo}" target="_blank" rel="noreferrer" class="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors" title="GitHub 저장소">
+            <a href="${p.repo}" target="_blank" rel="noreferrer" class="text-slate-400 hover:text-white text-xs" title="GitHub">
               <i class="fa-brands fa-github text-sm"></i>
             </a>
           </div>
-        </div>
-      `;
-      return card;
-    }
-
-    function setFilter(filter) {
-      currentFilter = filter;
-      document.querySelectorAll('.filter-btn').forEach(b => {
-        b.className = 'filter-btn px-3.5 py-1.5 text-xs font-medium rounded-lg bg-slate-800/80 text-slate-300 hover:bg-slate-800 hover:text-white transition-colors';
+        `;
+        container.appendChild(card);
       });
-      const activeBtn = document.getElementById('filter-' + filter);
-      if (activeBtn) {
-        activeBtn.className = 'filter-btn px-3.5 py-1.5 text-xs font-medium rounded-lg bg-indigo-600 text-white shadow-sm transition-colors';
-      }
-      renderDashboard();
     }
-
-    document.getElementById('searchInput').addEventListener('input', (e) => {
-      searchQuery = e.target.value.trim();
-      renderDashboard();
-    });
 
     // Modal Control
     function openLogModal(projectId) {
-      const p = appData.projects.find(item => item.id === projectId);
+      const p = (appData.projects || []).find(item => item.id === projectId);
       if (!p) return;
 
       document.getElementById('modalTitle').innerText = `${p.name} - 실행 로그`;
-      document.getElementById('modalPath').innerText = p.log_path || '로그 경로 없음';
-
       const container = document.getElementById('modalLogContent');
       container.innerHTML = '';
 
@@ -828,18 +1609,16 @@
         p.recent_logs.forEach(line => {
           const div = document.createElement('div');
           div.className = 'py-0.5 leading-relaxed break-all';
-          if (line.includes('ERROR') || line.includes('Err') || line.includes('fail')) {
+          if (line.includes('ERROR') || line.includes('Err')) {
             div.className += ' text-rose-400';
-          } else if (line.includes('성공') || line.includes('완료') || line.includes('✅') || line.includes('🎉')) {
+          } else if (line.includes('성공') || line.includes('완료') || line.includes('✅')) {
             div.className += ' text-emerald-400';
-          } else if (line.includes('INFO') || line.includes('💓')) {
-            div.className += ' text-indigo-300';
           }
           div.innerText = line;
           container.appendChild(div);
         });
       } else {
-        container.innerHTML = '<div class="text-slate-500 py-6 text-center">기록된 최근 로그가 없거나 아직 실행 전입니다.</div>';
+        container.innerHTML = '<div class="text-slate-500 py-6 text-center">기록된 최근 로그가 없습니다.</div>';
       }
 
       document.getElementById('logModal').classList.remove('hidden');
@@ -853,7 +1632,7 @@
       if (e.key === 'Escape') closeLogModal();
     });
 
-    // Initialize
+    // Start
     loadLatestData();
   </script>
 </body>
