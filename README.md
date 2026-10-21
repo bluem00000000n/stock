@@ -11,7 +11,7 @@
 | :--- | :---: | :--- | :--- |
 | **stock-sniper** | 🇰🇷 KRX | **평일 08:45** | 외인/기관 수급 × 지수대비 RS 상대강도 × 52주 신고가 × 주도주 5선 |
 | **stock-sepa-pivot** | 🇰🇷 🇺🇸 | **매일 08:40 / 21:30** | 마크 미너비니 SEPA 13대 조건 × 댄 쟁거 VCP 차트 패턴 피벗 돌파 감시 |
-| **stock-swing** | 🇰🇷 🇺🇸 | **24/7 상시 데몬** | 한국/미국 227선 자율 진화 무한 스윙 분할 모아가기 (Scale-in) |
+| **stock-swing** | 🇰🇷 🇺🇸 | **매일 08:40 / 21:30** | 한국/미국 227선 자율 진화 무한 스윙 분할 모아가기 (Scale-in, stock-sepa-pivot과 동일) |
 | **stock-htp-top10** | 🇺🇸 US | **매주 화 17:00** | High-to-Price (HTP) 파워 모멘텀 S&P 500 / 러셀 2000 탑10 퀀트 |
 
 *(stock-us3x, stock-dividend_top7, kbit-bot, signal_forge_alert, stock-cyclical-screener 제외됨)*
