@@ -354,6 +354,32 @@ def reset_and_reload_all_9_projects():
     ))
 
     # =========================================================
+    # 9. stock-swing (10/21 08:40 한국/미국 227선 무한 스윙 Scale-in)
+    # =========================================================
+    swing_candidates = [
+        {"ticker": "033780", "name": "KT&G", "market": "KRX", "entry": 176900.0, "target": 205000, "stop": 176900, "note": "227선 무한 스윙 3차 트렌치 완주 보유 (+10.17%)"},
+        {"ticker": "011200", "name": "HMM", "market": "KRX", "entry": 21500.0, "target": 26000, "stop": 20500, "note": "227선 스윙 2차 분할 매수 모아가기 (+8.37%)"},
+        {"ticker": "138040", "name": "메리츠금융지주", "market": "KRX", "entry": 128800.0, "target": 145000, "stop": 124000, "note": "227선 스윙 2차 분할 포지션 유지 (+1.71%)"},
+        {"ticker": "004370", "name": "농심", "market": "KRX", "entry": 404000.0, "target": 435000, "stop": 385000, "note": "227선 스윙 2차 분할 누적 포지션 (+1.36%)"}
+    ]
+    cur.execute("""
+    INSERT INTO alarms (project_id, project_name, sent_at, alarm_type, market, title, raw_message, stocks_json)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    """, (
+        "stock-swing", "stock-swing", f"{today_str} 08:40:01", "장전알람", "KRX",
+        "🎯 227선 자율진화 무한 스윙 분할 모아가기 포지션 (KT&G / HMM / 메리츠금융지주 / 농심)",
+        f"""🎯 [stock-swing 227선 무한 스윙 현황]
+📅 기준일시: {today_str} 08:40:01
+📊 한국 실전 분할 진입 & 보유 종목:
+1. KT&G (033780) | 3차 트렌치 완주 (평단 176,900원)
+2. HMM (011200) | 2차 트렌치 매수 (평단 21,500원)
+3. 메리츠금융지주 (138040) | 2차 트렌치 매수 (평단 128,800원)
+4. 농심 (004370) | 2차 트렌치 매수 (평단 404,000원)
+⚠️ 실전 원칙: 227일 이동평균선 지지선 기준 1/2/3차 분할 매수 및 트레일링 스탑 적용.""",
+        json.dumps(swing_candidates, ensure_ascii=False)
+    ))
+
+    # =========================================================
     # 체결 테이블(trades) 등록 (알람 내용대로 시작가 / 시가 매매)
     # =========================================================
     trades_to_insert = []
@@ -493,6 +519,20 @@ def reset_and_reload_all_9_projects():
             "ticker": s["ticker"], "name": s["name"], "market": "US",
             "signal_type": "주간리밸런싱", "signal_date": "2026-10-20 17:00:00",
             "entry_price": s["entry"], "entry_date": "2026-10-20", "current_price": cur_p,
+            "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": ret,
+            "target_price": s["target"], "stop_loss_price": s["stop"], "notes": s["note"]
+        })
+
+    # 9. stock-swing
+    for s in swing_candidates:
+        price = get_live_price("KRX", s["ticker"])
+        cur_p = price["current"] if price["current"] > 0 else s["entry"]
+        ret = round(((cur_p - s["entry"]) / s["entry"]) * 100, 2)
+        trades_to_insert.append({
+            "project_id": "stock-swing", "project_name": "stock-swing",
+            "ticker": s["ticker"], "name": price["name"] if price["name"] != s["ticker"] else s["name"],
+            "market": "KRX", "signal_type": "장전알람(227스윙)", "signal_date": f"{today_str} 08:40:00",
+            "entry_price": s["entry"], "entry_date": today_str, "current_price": cur_p,
             "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": ret,
             "target_price": s["target"], "stop_loss_price": s["stop"], "notes": s["note"]
         })
