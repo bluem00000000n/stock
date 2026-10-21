@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STOCK SUPERVISOR | 주식 퀀트 & 트레이딩 시스템 통합 관제탑</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap');
+    
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+      background-color: #0b0f19;
+      color: #e2e8f0;
+    }
+    
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .glass-card {
+      background: rgba(17, 24, 39, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .glass-card:hover {
+      border-color: rgba(99, 102, 241, 0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px -10px rgba(79, 70, 229, 0.2);
+    }
+
+    .glow-dot {
+      box-shadow: 0 0 10px currentColor;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0f172a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #475569;
+    }
+  </style>
+</head>
+<body class="min-h-screen antialiased flex flex-col justify-between selection:bg-indigo-500 selection:text-white">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-cyan-400 flex items-center justify-center text-white shadow-lg shadow-indigo-500/30">
+          <i class="fa-solid fa-chart-line text-lg"></i>
+        </div>
+        <div>
+          <div class="flex items-center space-x-2">
+            <h1 class="text-lg font-bold tracking-tight text-white">STOCK SUPERVISOR</h1>
+            <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">LIVE OPS</span>
+          </div>
+          <p class="text-xs text-slate-400">주식 퀀트 & 자동화 알람 통합 현황판</p>
+        </div>
+      </div>
+
+      <div class="flex items-center space-x-3">
+        <button onclick="refreshData()" id="refreshBtn" class="flex items-center text-xs text-slate-300 font-medium bg-slate-900 hover:bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-700/80 transition-all hover:text-white">
+          <i class="fa-solid fa-arrows-rotate mr-1.5 text-indigo-400" id="refreshIcon"></i>
+          새로고침
+        </button>
+        <div class="hidden md:flex items-center text-xs text-slate-400 font-mono bg-slate-900/90 px-3 py-1.5 rounded-lg border border-slate-800">
+          <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 glow-dot mr-2"></span>
+          동기화: <span id="lastUpdated" class="text-slate-200 ml-1">로딩 중...</span>
+        </div>
+        <a href="https://github.com/bluem00000000n/stock-supervisor" target="_blank" rel="noreferrer" class="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800/60 transition-colors" title="GitHub 저장소 보기">
+          <i class="fa-brands fa-github text-lg"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full space-y-8">
+
+    <!-- KPI Metric Cards -->
+    <section class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="glass-card rounded-2xl p-5">
+        <div class="flex items-center justify-between text-slate-400 mb-2">
+          <span class="text-xs font-semibold uppercase tracking-wider">전체 관리 프로젝트</span>
+          <i class="fa-solid fa-layer-group text-slate-500"></i>
+        </div>
+        <div class="flex items-baseline space-x-2">
+          <span id="metricTotal" class="text-3xl font-extrabold text-white font-mono">0</span>
+          <span class="text-xs text-slate-400">개 시스템</span>
+        </div>
+        <div class="mt-2 text-xs text-slate-400 flex items-center">
+          <span class="text-indigo-400 font-medium">KRX · US Multi-Market</span>
+        </div>
+      </div>
+
+      <div class="glass-card rounded-2xl p-5">
+        <div class="flex items-center justify-between text-slate-400 mb-2">
+          <span class="text-xs font-semibold uppercase tracking-wider">가동 데몬 / 스케줄</span>
+          <i class="fa-solid fa-bolt text-emerald-400"></i>
+        </div>
+        <div class="flex items-baseline space-x-2">
+          <span id="metricActive" class="text-3xl font-extrabold text-emerald-400 font-mono">0</span>
+          <span class="text-xs text-slate-400">개 정상 등록</span>
+        </div>
+        <div class="mt-2 text-xs text-emerald-400/80 flex items-center">
+          <i class="fa-regular fa-circle-check mr-1.5 text-[10px]"></i> Launchd 자동화 활성화
+        </div>
+      </div>
+
+      <div class="glass-card rounded-2xl p-5">
+        <div class="flex items-center justify-between text-slate-400 mb-2">
+          <span class="text-xs font-semibold uppercase tracking-wider">오늘 실행 완료</span>
+          <i class="fa-solid fa-calendar-check text-cyan-400"></i>
+        </div>
+        <div class="flex items-baseline space-x-2">
+          <span id="metricToday" class="text-3xl font-extrabold text-cyan-400 font-mono">0</span>
+          <span class="text-xs text-slate-400">개 파이프라인</span>
+        </div>
+        <div class="mt-2 text-xs text-slate-400 flex items-center">
+          <span class="text-slate-300">당일 장전/정규 알람 성공</span>
+        </div>
+      </div>
+
+      <div class="glass-card rounded-2xl p-5">
+        <div class="flex items-center justify-between text-slate-400 mb-2">
+          <span class="text-xs font-semibold uppercase tracking-wider">마켓 커버리지</span>
+          <i class="fa-solid fa-globe text-purple-400"></i>
+        </div>
+        <div class="flex items-baseline space-x-2">
+          <span id="metricMarkets" class="text-xl font-bold text-white font-mono">KRX 5 · US 3</span>
+        </div>
+        <div class="mt-2 text-xs text-purple-300/80 flex items-center">
+          <span>한국 200/150 & 미국 S&P/러셀</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Daily Execution Timeline Schedule -->
+    <section class="glass-card rounded-2xl p-6">
+      <div class="flex flex-col md:flex-row md:items-center justify-between mb-5 gap-3">
+        <div>
+          <h2 class="text-base font-bold text-white flex items-center">
+            <i class="fa-regular fa-clock mr-2 text-indigo-400"></i> 자동 매매 & 퀀트 타임라인 (KST 기준)
+          </h2>
+          <p class="text-xs text-slate-400 mt-0.5">매일 및 주간 정규 시장 일정에 맞춰 정밀하게 스케줄링된 파이프라인 흐름</p>
+        </div>
+        <div class="flex items-center space-x-2 text-xs">
+          <span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">장전 브리핑</span>
+          <span class="px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20">장중 모니터링</span>
+          <span class="px-2 py-0.5 rounded bg-purple-500/10 text-purple-400 border border-purple-500/20">미국장 대응</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-7 gap-3">
+        <!-- 08:30 -->
+        <div class="bg-slate-900/60 rounded-xl p-3 border border-slate-800">
+          <div class="text-[11px] font-mono text-indigo-400 font-bold mb-1">08:30 월</div>
+          <div class="text-xs font-semibold text-slate-200">배당 TOP 7</div>
+          <div class="text-[11px] text-slate-400 mt-1">6대 배당조건 스크리너</div>
+        </div>
+        <!-- 08:40 -->
+        <div class="bg-slate-900/60 rounded-xl p-3 border border-slate-800">
+          <div class="text-[11px] font-mono text-indigo-400 font-bold mb-1">08:40 매일</div>
+          <div class="text-xs font-semibold text-slate-200">SEPA x 피벗 (KR)</div>
+          <div class="text-[11px] text-slate-400 mt-1">미너비니 SEPA 한국 20</div>
+        </div>
+        <!-- 08:45 -->
+        <div class="bg-slate-900/60 rounded-xl p-3 border border-indigo-500/30 bg-indigo-950/20">
+          <div class="text-[11px] font-mono text-cyan-400 font-bold mb-1">08:45 평일</div>
+          <div class="text-xs font-semibold text-white">스톡 스나이퍼</div>
+          <div class="text-[11px] text-slate-300 mt-1">외인/기관 수급 & RS 상대강도</div>
+        </div>
+        <!-- 09:30 -->
+        <div class="bg-slate-900/60 rounded-xl p-3 border border-slate-800">
+          <div class="text-[11px] font-mono text-indigo-400 font-bold mb-1">09:30 매일</div>
+          <div class="text-xs font-semibold text-slate-200">K-Bit 봇</div>
+          <div class="text-[11px] text-slate-400 mt-1">장중 특징주 차트 분석 포스팅</div>
+        </div>
+        <!-- 11:00 -->
+        <div class="bg-slate-900/60 rounded-xl p-3 border border-slate-800">
+          <div class="text-[11px] font-mono text-indigo-400 font-bold mb-1">11:00 매일</div>
+          <div class="text-xs font-semibold text-slate-200">시클리컬 퀀트</div>
+          <div class="text-[11px] text-slate-400 mt-1">6대 경기민감 섹터 사이클</div>
+        </div>
+        <!-- 17:00 -->
+        <div class="bg-slate-900/60 rounded-xl p-3 border border-slate-800">
+          <div class="text-[11px] font-mono text-purple-400 font-bold mb-1">17:00 화</div>
+          <div class="text-xs font-semibold text-slate-200">US3X & HTP10</div>
+          <div class="text-[11px] text-slate-400 mt-1">미국 3배 레버리지 & 모멘텀</div>
+        </div>
+        <!-- 21:30 & 24/7 -->
+        <div class="bg-slate-900/60 rounded-xl p-3 border border-slate-800">
+          <div class="text-[11px] font-mono text-purple-400 font-bold mb-1">21:30 / 24H</div>
+          <div class="text-xs font-semibold text-slate-200">SEPA US & Swing</div>
+          <div class="text-[11px] text-slate-400 mt-1">미국 피벗 & 227선 스윙데몬</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filters & Search Controls -->
+    <section class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+      <!-- Search Input -->
+      <div class="relative flex-1 max-w-md">
+        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+        <input type="text" id="searchInput" placeholder="프로젝트명, 전략, 태그 검색..." 
+               class="w-full bg-slate-900/90 text-sm text-slate-200 pl-10 pr-4 py-2.5 rounded-xl border border-slate-800 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all placeholder:text-slate-500">
+      </div>
+
+      <!-- Filter Buttons -->
+      <div class="flex items-center space-x-2 overflow-x-auto pb-1 md:pb-0">
+        <button onclick="setFilter('ALL')" id="filter-ALL" class="filter-btn px-3.5 py-1.5 text-xs font-medium rounded-lg bg-indigo-600 text-white shadow-sm transition-colors">
+          전체 보기
+        </button>
+        <button onclick="setFilter('KRX')" id="filter-KRX" class="filter-btn px-3.5 py-1.5 text-xs font-medium rounded-lg bg-slate-800/80 text-slate-300 hover:bg-slate-800 hover:text-white transition-colors">
+          🇰🇷 한국 시장 (KRX)
+        </button>
+        <button onclick="setFilter('US')" id="filter-US" class="filter-btn px-3.5 py-1.5 text-xs font-medium rounded-lg bg-slate-800/80 text-slate-300 hover:bg-slate-800 hover:text-white transition-colors">
+          🇺🇸 미국 시장 (US)
+        </button>
+        <button onclick="setFilter('ACTIVE')" id="filter-ACTIVE" class="filter-btn px-3.5 py-1.5 text-xs font-medium rounded-lg bg-slate-800/80 text-slate-300 hover:bg-slate-800 hover:text-white transition-colors">
+          🟢 가동 중
+        </button>
+      </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- Dynamic Project Cards Render Here -->
+    </section>
+
+  </main>
+
+  <!-- Log Modal -->
+  <div id="logModal" class="fixed inset-0 z-50 hidden bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-700/80 rounded-2xl w-full max-w-3xl overflow-hidden shadow-2xl flex flex-col max-h-[85vh]">
+      <div class="p-4 border-b border-slate-800 flex items-center justify-between bg-slate-950/60">
+        <div class="flex items-center space-x-2">
+          <i class="fa-solid fa-terminal text-indigo-400 text-sm"></i>
+          <h3 id="modalTitle" class="text-sm font-bold text-white">최근 실행 로그</h3>
+        </div>
+        <button onclick="closeLogModal()" class="text-slate-400 hover:text-white p-1 rounded-lg">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+      <div class="p-4 overflow-y-auto flex-1 font-mono text-xs bg-slate-950 text-slate-300 space-y-1.5 selection:bg-indigo-600" id="modalLogContent">
+        <!-- Log lines -->
+      </div>
+      <div class="p-3 border-t border-slate-800 bg-slate-900/60 flex items-center justify-between text-xs text-slate-400">
+        <span id="modalPath" class="truncate max-w-md"></span>
+        <button onclick="closeLogModal()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 transition-colors">닫기</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800/80 bg-slate-950/50 py-6 mt-12 text-center text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-2">
+      <p class="font-mono">STOCK SUPERVISOR • Quant & Algorithmic Trading Operations</p>
+      <p>Hosted on <span class="text-indigo-400 font-semibold">GitHub Pages</span> | Maintained by <a href="https://github.com/bluem00000000n" class="hover:text-slate-300 underline underline-offset-4">bluem00000000n</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Embedded initial data fallback
+    const INITIAL_DATA = {
+      "summary": {
+            "updated_at": "2026-10-21 12:53:23",
+            "total_projects": 9,
+            "active_daemons": 8,
+            "today_executed": 4,
+            "market_stats": {
+                  "KRX": 6,
+                  "US": 4,
+                  "Global": 1
+            }
+      },
+      "projects": [
+            {
+                  "id": "stock-sniper",
+                  "name": "Stock Sniper (스톡 스나이퍼)",
+                  "label": "com.stocksniper",
+                  "category": "KRX",
+                  "flag": "🇰🇷",
+                  "type": "Scheduled Alert",
+                  "summary": "한국 주식 08:45 장전 스나이퍼 트레이딩 시스템 (외인/기관 수급 × RS 상대강도 × 52주 신고가)",
+                  "schedule_display": "평일(월~금) 08:45",
+                  "market": "한국 (KOSPI 200, KOSDAQ 150)",
+                  "strategy": "수급 데이터(외인/기관) x RS 상대강도(지수대비) x 52주 신고가 돌파/임박 x 지수 ETF & 개별 주도주 5선",
+                  "tags": [
+                        "외인/기관수급",
+                        "RS상대강도",
+                        "52주신고가",
+                        "지수ETF",
+                        "장전알람"
+                  ],
+                  "repo": "https://github.com/bluem00000000n/stock-sniper",
+                  "local_path": "/Users/tothemoon/stock-sniper",
+                  "log_path": "/Users/tothemoon/stock-sniper/logs/launchd.log",
+                  "err_log_path": "/Users/tothemoon/stock-sniper/logs/launchd_err.log",
+                  "launchd_registered": true,
+                  "pid": null,
+                  "last_exit_code": 0,
+                  "status_text": "Active (스케줄 대기)",
+                  "status_code": "active",
+                  "last_executed": "2026-10-21 08:45:04",
+                  "executed_today": true,
+                  "recent_logs": [
+                        "[2026-10-20 08:45:00] 🚀 스톡 스나이퍼(Stock-Sniper) 08:45 실행 프로세스 시작 (현재시각: 2026-10-20 08:45:00)",
+                        "[2026-10-20 08:45:00] 📊 당일 실전 주문표 및 ETF/종목 수급 데이터 분석 및 메시지 생성 중...",
+                        "[2026-10-20 08:45:02] 📤 텔레그램 채널로 실전 알람 발송 중...",
+                        "[telegram_sender] ✅ 텔레그램 메시지 전송 성공!",
+                        "[2026-10-20 08:45:03] 🎉 텔레그램 알람 전송 성공 완료!",
+                        "[2026-10-21 08:45:01] 🚀 스톡 스나이퍼(Stock-Sniper) 08:45 실행 프로세스 시작 (현재시각: 2026-10-21 08:45:01)",
+                        "[2026-10-21 08:45:01] 📊 당일 실전 주문표 및 ETF/종목 수급 데이터 분석 및 메시지 생성 중...",
+                        "[2026-10-21 08:45:03] 📤 텔레그램 채널로 실전 알람 발송 중...",
+                        "[telegram_sender] ✅ 텔레그램 메시지 전송 성공!",
+                        "[2026-10-21 08:45:04] 🎉 텔레그램 알람 전송 성공 완료!"
+                  ],
+                  "last_log_preview": "[2026-10-21 08:45:04] 🎉 텔레그램 알람 전송 성공 완료!"
+            },
+            {
+                  "id": "stock-sepa-pivot",
+                  "name": "Stock SEPA Pivot (마크 미너비니 x 댄 쟁거)",
+                  "label": "com.stocksepapivot",
+                  "category": "KRX / US",
+                  "flag": "🇰🇷 🇺🇸",
+                  "type": "Scheduled Alert",
+                  "summary": "마크 미너비니 SEPA 13대 조건 × 댄 쟁거 차트 패턴 피벗 감시 알람 시스템",
+                  "schedule_display": "매일 08:40 (국내장) & 21:30 (미국장)",
+                  "market": "한국 20종목 + 미국 20종목 (총 40종목)",
+                  "strategy": "SEPA 트렌드 템플릿(200일선/150일선/50일선) + VCP 변동성 축소 + 댄 쟁거 피벗 돌파율 정밀 추적",
+                  "tags": [
+                        "Mark Minervini",
+                        "SEPA 13대조건",
+                        "Dan Zanger",
+                        "VCP",
+                        "피벗돌파"
+                  ],
+                  "repo": "https://github.com/bluem00000000n/stock-sepa-pivot",
+                  "local_path": "/Users/tothemoon/stock-sepa-pivot",
+                  "log_path": "/Users/tothemoon/stock-sepa-pivot/logs/alarm.out",
+                  "err_log_path": "/Users/tothemoon/stock-sepa-pivot/logs/alarm.err",
+                  "launchd_registered": true,
+                  "pid": null,
+                  "last_exit_code": 0,
+                  "status_text": "Active (스케줄 대기)",
+                  "status_code": "active",
+                  "last_executed": "2026-10-21 08:40:02",
+                  "executed_today": true,
+                  "recent_logs": [
+                        "[2026-10-19 08:40:00] === [오전 알람] 한국장 개장 브리핑 시작 ===",
+                        "[2026-10-19 08:40:02] ✅ 텔레그램 알림 전송 완료!",
+                        "[2026-10-19 21:30:00] === [야간 알람] 미국장 본장 개장 브리핑 시작 ===",
+                        "[2026-10-19 21:30:02] ✅ 텔레그램 알림 전송 완료!",
+                        "[2026-10-20 08:40:00] === [오전 알람] 한국장 개장 브리핑 시작 ===",
+                        "[2026-10-20 08:40:01] ✅ 텔레그램 알림 전송 완료!",
+                        "[2026-10-20 21:30:00] === [야간 알람] 미국장 본장 개장 브리핑 시작 ===",
+                        "[2026-10-20 21:30:02] ✅ 텔레그램 알림 전송 완료!",
+                        "[2026-10-21 08:40:00] === [오전 알람] 한국장 개장 브리핑 시작 ===",
+                        "[2026-10-21 08:40:02] ✅ 텔레그램 알림 전송 완료!"
+                  ],
+                  "last_log_preview": "[2026-10-21 08:40:02] ✅ 텔레그램 알림 전송 완료!"
+            },
+            {
+                  "id": "stock-swing",
+                  "name": "Stock Swing (무한 스윙 분할 모아가기)",
+                  "label": "com.stockswing.scheduler",
+                  "category": "KRX / US",
+                  "flag": "🇰🇷 🇺🇸",
+                  "type": "Daemon (24/7)",
+                  "summary": "중대형주 및 러셀 2000 자율·진화·무한 스윙 분할 모아가기(Scale-in) 시스템",
+                  "schedule_display": "상시 가동 (개장 1시간 전 실행 & 장중 모니터링)",
+                  "market": "한국(KOSPI200/KOSDAQ150) + 미국(S&P500/NASDAQ/러셀2000) 총 227개 종목",
+                  "strategy": "기계적 Scale-in 분할매수, 변동성 기반 익절/손절 트리거 및 포트폴리오 리밸런싱",
+                  "tags": [
+                        "무한스윙",
+                        "분할매수(Scale-in)",
+                        "러셀2000",
+                        "S&P500",
+                        "실시간데몬"
+                  ],
+                  "repo": "https://github.com/bluem00000000n/stock-swing",
+                  "local_path": "/Users/tothemoon/stock-swing",
+                  "log_path": "/Users/tothemoon/stock-swing/logs/launchd.log",
+                  "err_log_path": "/Users/tothemoon/stock-swing/logs/launchd_err.log",
+                  "launchd_registered": true,
+                  "pid": "11539",
+                  "last_exit_code": -9,
+                  "status_text": "Running (실행 중)",
+                  "status_code": "running",
+                  "last_executed": "2026-10-21 12:33:27",
+                  "executed_today": true,
+                  "recent_logs": [
+                        "[2026-10-21 08:50:16.745279] [한국 증시] 개장 전 정기 브리핑 알람 텔레그램 전송 중 (매매 액션 신호: 발생)...",
+                        "2026-10-21 08:50:18,130 [INFO] ✅ [한국 증시 개장 10분 전 스캔 완료]",
+                        "2026-10-21 09:02:07,779 [INFO] 💓 [하트비트 정상 가동 중] KST 2026-10-21 09:02:07",
+                        "2026-10-21 09:32:11,500 [INFO] 💓 [하트비트 정상 가동 중] KST 2026-10-21 09:32:11",
+                        "2026-10-21 10:02:15,417 [INFO] 💓 [하트비트 정상 가동 중] KST 2026-10-21 10:02:15",
+                        "2026-10-21 10:32:15,664 [INFO] 💓 [하트비트 정상 가동 중] KST 2026-10-21 10:32:15",
+                        "2026-10-21 11:03:19,686 [INFO] 💓 [하트비트 정상 가동 중] KST 2026-10-21 11:03:19",
+                        "2026-10-21 11:33:21,578 [INFO] 💓 [하트비트 정상 가동 중] KST 2026-10-21 11:33:21",
+                        "2026-10-21 12:03:26,050 [INFO] 💓 [하트비트 정상 가동 중] KST 2026-10-21 12:03:26",
+                        "2026-10-21 12:33:27,718 [INFO] 💓 [하트비트 정상 가동 중] KST 2026-10-21 12:33:27"
+                  ],
+                  "last_log_preview": "2026-10-21 12:33:27,718 [INFO] 💓 [하트비트 정상 가동 중] KST 2026-10-21 12:33:27"
+            },
+            {
+                  "id": "stock-us3x",
+                  "name": "Stock US 3X (미국 3배 레버리지 무한매수)",
+                  "label": "com.stock-us3x",
+                  "category": "US",
+                  "flag": "🇺🇸",
+                  "type": "Weekly Scheduled",
+                  "summary": "미국 3배 레버리지 ETF(TQQQ, SOXL, UPRO 등) 무한매수 및 주기적 리밸런싱 알람 시스템",
+                  "schedule_display": "매주 화요일 08:30 & 17:00",
+                  "market": "미국 3대 레버리지 지수 ETF (TQQQ, SOXL, FNGU 등)",
+                  "strategy": "라오어 무한매수법 개량형 퀀트 알고리즘 + 변동성 지수(VIX) 가중 리밸런싱",
+                  "tags": [
+                        "3배 레버리지",
+                        "TQQQ",
+                        "SOXL",
+                        "무한매수법",
+                        "퀀트리밸런싱"
+                  ],
+                  "repo": "https://github.com/bluem00000000n/stock-us3x",
+                  "local_path": "/Users/tothemoon/stock-us3x",
+                  "log_path": "/Users/tothemoon/stock-us3x/logs/launchd.out",
+                  "err_log_path": "/Users/tothemoon/stock-us3x/logs/launchd.err",
+                  "launchd_registered": true,
+                  "pid": null,
+                  "last_exit_code": 0,
+                  "status_text": "Active (스케줄 대기)",
+                  "status_code": "active",
+                  "last_executed": "2026-10-20 17:03:29",
+                  "executed_today": false,
+                  "recent_logs": [
+                        "🚀 [2026-10-20 08:30:02] 주간 정기 멀티에이전트 자금순환 및 무한투자 리포트 파이프라인 가동...",
+                        "✅ Telegram notification sent successfully!",
+                        "✅ 주간 파이프라인 실행 성공 (Run ID: RUN_2026-10-20_13e4750f)",
+                        "🚀 [2026-10-20 17:00:03] 주간 정기 멀티에이전트 자금순환 및 무한투자 리포트 파이프라인 가동...",
+                        "✅ Telegram notification sent successfully!",
+                        "✅ 주간 파이프라인 실행 성공 (Run ID: RUN_2026-10-20_45ceea89)"
+                  ],
+                  "last_log_preview": "✅ 주간 파이프라인 실행 성공 (Run ID: RUN_2026-10-20_45ceea89)"
+            },
+            {
+                  "id": "stock-dividend_top7",
+                  "name": "Stock Dividend Top 7 (주간 배당주 스크리너)",
+                  "label": "com.stock-dividend_top7",
+                  "category": "KRX",
+                  "flag": "🇰🇷",
+                  "type": "Weekly Scheduled",
+                  "summary": "한국 거래소 6대 핵심 배당 기준을 100% 만족하는 상위 7대 고배당 성장주 자동 선별",
+                  "schedule_display": "매주 월요일 08:30",
+                  "market": "한국 (KOSPI & KOSDAQ)",
+                  "strategy": "5년 평균 시가배당률 4%+, 배당성향 건전성, 5년 연속 배당성장, 부채비율 100% 미만 등 6대 조건 스크리닝",
+                  "tags": [
+                        "고배당주",
+                        "배당성장",
+                        "배당수익률",
+                        "텔레그램알림",
+                        "주간스크리너"
+                  ],
+                  "repo": "https://github.com/bluem00000000n/stock-dividend_top7",
+                  "local_path": "/Users/tothemoon/stock-dividend_top7",
+                  "log_path": "/Users/tothemoon/stock-dividend_top7/logs/launchd_stdout.log",
+                  "err_log_path": "/Users/tothemoon/stock-dividend_top7/logs/launchd_stderr.log",
+                  "launchd_registered": true,
+                  "pid": null,
+                  "last_exit_code": 0,
+                  "status_text": "Active (스케줄 대기)",
+                  "status_code": "active",
+                  "last_executed": "2026-10-19 08:30:00",
+                  "executed_today": false,
+                  "recent_logs": [],
+                  "last_log_preview": "최근 로그 기록 없음"
+            },
+            {
+                  "id": "stock-htp-top10",
+                  "name": "HTP Momentum Top 10 (파워 모멘텀 퀀트)",
+                  "label": "com.stock-htp-top10",
+                  "category": "US",
+                  "flag": "🇺🇸",
+                  "type": "Weekly Scheduled",
+                  "summary": "High-to-Price (HTP) 모멘텀 알고리즘 기반 미국 대형주/소형주 주도주 10선 퀀트 추적",
+                  "schedule_display": "매주 화요일 17:00",
+                  "market": "미국 대형주(S&P 500) & 소형주(Russell 2000 / S&P 600)",
+                  "strategy": "HTP 파워 모멘텀 스코어 산출, Gemini AI 기반 퀀트 리포트 자동 생성 및 리밸런싱 추적",
+                  "tags": [
+                        "HTP모멘텀",
+                        "S&P500",
+                        "러셀2000",
+                        "Gemini AI",
+                        "모멘텀TOP10"
+                  ],
+                  "repo": "https://github.com/bluem00000000n/stock-htp-top10",
+                  "local_path": "/Users/tothemoon/stock-htp-top10",
+                  "log_path": "/Users/tothemoon/stock-htp-top10/logs/launchd.out",
+                  "err_log_path": "/Users/tothemoon/stock-htp-top10/logs/launchd.err",
+                  "launchd_registered": true,
+                  "pid": null,
+                  "last_exit_code": 0,
+                  "status_text": "Active (스케줄 대기)",
+                  "status_code": "active",
+                  "last_executed": "2026-10-20 17:00:01",
+                  "executed_today": false,
+                  "recent_logs": [],
+                  "last_log_preview": "최근 로그 기록 없음"
+            },
+            {
+                  "id": "stock-cyclical-screener",
+                  "name": "KRX Cyclical Screener (경기민감주 퀀트)",
+                  "label": "com.stock-cyclical-screener",
+                  "category": "KRX",
+                  "flag": "🇰🇷",
+                  "type": "Daily Scheduled",
+                  "summary": "한국 거래소 경기민감 6대 섹터(반도체/자동차/화학/철강/조선/해운) 퀀트 사이클 스크리너",
+                  "schedule_display": "매일 11:00",
+                  "market": "한국 (KRX 시클리컬 6대 대표 섹터 전종목)",
+                  "strategy": "역발상 시클리컬 투자 밴드(고PER·적자 침체기 매수, 저PER 호황기 매도), 역사적 PBR 밴드 분석",
+                  "tags": [
+                        "경기민감주",
+                        "시클리컬",
+                        "반도체/조선/화학",
+                        "PBR밴드",
+                        "업황사이클"
+                  ],
+                  "repo": "https://github.com/bluem00000000n/stock-cyclical-screener",
+                  "local_path": "/Users/tothemoon/stock-cyclical-screener",
+                  "log_path": "/Users/tothemoon/stock-cyclical-screener/logs/launchd.stdout.log",
+                  "err_log_path": "/Users/tothemoon/stock-cyclical-screener/logs/launchd.stderr.log",
+                  "launchd_registered": true,
+                  "pid": null,
+                  "last_exit_code": 0,
+                  "status_text": "Active (스케줄 대기)",
+                  "status_code": "active",
+                  "last_executed": "기록 없음",
+                  "executed_today": false,
+                  "recent_logs": [],
+                  "last_log_preview": "최근 로그 기록 없음"
+            },
+            {
+                  "id": "kbit-bot",
+                  "name": "K-Bit Stock Bot (특징주 무인 포스팅 봇)",
+                  "label": "com.kbit.stockbot",
+                  "category": "KRX",
+                  "flag": "🇰🇷",
+                  "type": "Daily Scheduled",
+                  "summary": "한국 주식 당일 인기 및 기술적 상승 유망주 60일 캔들 차트 분석 및 자동 포스팅",
+                  "schedule_display": "매일 09:30",
+                  "market": "한국 장중 특징주 & 기술적 돌파 종목",
+                  "strategy": "장중 수급 특징주 포착 + 60일 차트 정배열 필터링 + 기술적 지표 분석 후 자동 포스팅",
+                  "tags": [
+                        "특징주",
+                        "자동발행",
+                        "캔들차트분석",
+                        "장중수급",
+                        "포스팅엔진"
+                  ],
+                  "repo": "https://github.com/bluem00000000n/kbit-bot",
+                  "local_path": "/Users/tothemoon/kbit-bot",
+                  "log_path": "/Users/tothemoon/kbit-bot/logs/launchd.log",
+                  "err_log_path": "/Users/tothemoon/kbit-bot/logs/launchd_err.log",
+                  "launchd_registered": true,
+                  "pid": null,
+                  "last_exit_code": 1,
+                  "status_text": "Notice (코드: 1)",
+                  "status_code": "warning",
+                  "last_executed": "2026-10-14 17:15:57",
+                  "executed_today": false,
+                  "recent_logs": [],
+                  "last_log_preview": "최근 로그 기록 없음"
+            },
+            {
+                  "id": "signal_forge_alert",
+                  "name": "Signal Forge Alert (AI 시장 감시 인텔리전스)",
+                  "label": "signal-forge-alert",
+                  "category": "Global",
+                  "flag": "🌐",
+                  "type": "AI System",
+                  "summary": "유료 API 없는 100% 무료 아키텍처 기반 독립 AI 시장 인텔리전스 & 텔레그램 알림",
+                  "schedule_display": "이벤트 기반 / 수동 실행",
+                  "market": "글로벌 매크로 & 멀티 마켓 인텔리전스",
+                  "strategy": "거시 경제 지표 및 시장 위험 시그널 독립적 관측 및 텔레그램 알람 전송",
+                  "tags": [
+                        "AI Intelligence",
+                        "매크로감시",
+                        "Zero-Paid API",
+                        "텔레그램"
+                  ],
+                  "repo": "https://github.com/bluem00000000n/signal_forge_alert",
+                  "local_path": "/Users/tothemoon/signal_forge_alert",
+                  "log_path": "/Users/tothemoon/signal_forge_alert/runtime/logs/daemon.stdout.log",
+                  "err_log_path": "/Users/tothemoon/signal_forge_alert/runtime/logs/daemon.stderr.log",
+                  "launchd_registered": false,
+                  "pid": null,
+                  "last_exit_code": null,
+                  "status_text": "Ready (수동 준비)",
+                  "status_code": "ready",
+                  "last_executed": "2026-10-21 12:51:01",
+                  "executed_today": true,
+                  "recent_logs": [
+                        "2026-10-21 12:51:01 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035420 (S08_EXPECTATION_FAILURE_LONG LONG) within 60m window.",
+                        "2026-10-21 12:51:01 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035420 (S12_HYPE_TO_FUNDAMENTALS LONG) within 60m window.",
+                        "2026-10-21 12:51:01 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035720 (S07_SECTOR_SYMPATHY LONG) within 60m window.",
+                        "2026-10-21 12:51:01 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035720 (S12_HYPE_TO_FUNDAMENTALS LONG) within 60m window.",
+                        "2026-10-21 12:51:01 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S07_SECTOR_SYMPATHY LONG) within 60m window.",
+                        "2026-10-21 12:51:01 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S11_SUPPLY_ABSORPTION LONG) within 60m window.",
+                        "2026-10-21 12:51:01 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S12_HYPE_TO_FUNDAMENTALS LONG) within 60m window.",
+                        "2026-10-21 12:51:01 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S14_RELATIVE_STRENGTH LONG) within 60m window.",
+                        "2026-10-21 12:51:01 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S15_MULTI_DAY_MOMENTUM LONG) within 60m window.",
+                        "2026-10-21 12:51:01 [INFO] [cli] [DAEMON] Cycle #858 complete: detected=29, alerted=0, dedup=29"
+                  ],
+                  "last_log_preview": "2026-10-21 12:51:01 [INFO] [cli] [DAEMON] Cycle #858 complete: detected=29, alerted=0, dedup=29"
+            }
+      ]
+};
+
+    let appData = INITIAL_DATA;
+    let currentFilter = 'ALL';
+    let searchQuery = '';
+
+    // Async Fetch from data/status.json if hosted on web server
+    async function loadLatestData() {
+      if (window.location.protocol.startsWith('http')) {
+        try {
+          const res = await fetch('data/status.json?t=' + Date.now());
+          if (res.ok) {
+            appData = await res.json();
+          }
+        } catch (e) {
+          console.warn('Using embedded dataset due to fetch error:', e);
+        }
+      }
+      renderDashboard();
+    }
+
+    async function refreshData() {
+      const icon = document.getElementById('refreshIcon');
+      icon.classList.add('fa-spin');
+      try {
+        if (window.location.protocol.startsWith('http')) {
+          // If on local serve.py, trigger /api/refresh
+          const res = await fetch('/api/refresh');
+          if (res.ok) {
+            appData = await res.json();
+          } else {
+            await loadLatestData();
+          }
+        } else {
+          // File protocol
+          alert('로컬 파일(file://) 모드입니다.\n터미널에서 ./update_status.py 를 실행한 뒤 페이지를 새로고침(Cmd+R)해 주세요!\n또는 ./serve.py 를 실행하시면 자동 갱신됩니다.');
+        }
+      } catch (e) {
+        await loadLatestData();
+      } finally {
+        setTimeout(() => {
+          icon.classList.remove('fa-spin');
+          renderDashboard();
+        }, 400);
+      }
+    }
+
+    function renderDashboard() {
+      const summary = appData.summary;
+      document.getElementById('lastUpdated').innerText = summary.updated_at;
+      document.getElementById('metricTotal').innerText = summary.total_projects;
+      document.getElementById('metricActive').innerText = summary.active_daemons;
+      document.getElementById('metricToday').innerText = summary.today_executed;
+      document.getElementById('metricMarkets').innerText = `KRX ${summary.market_stats.KRX} · US ${summary.market_stats.US}`;
+
+      const grid = document.getElementById('projectsGrid');
+      grid.innerHTML = '';
+
+      const filtered = appData.projects.filter(p => {
+        // Filter by category/state
+        if (currentFilter === 'KRX' && !p.category.includes('KRX')) return false;
+        if (currentFilter === 'US' && !p.category.includes('US')) return false;
+        if (currentFilter === 'ACTIVE' && p.status_code !== 'running' && p.status_code !== 'active') return false;
+
+        // Search query
+        if (searchQuery) {
+          const q = searchQuery.toLowerCase();
+          const target = (p.name + p.summary + p.strategy + p.tags.join(' ')).toLowerCase();
+          if (!target.includes(q)) return false;
+        }
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full py-16 text-center text-slate-500">
+            <i class="fa-solid fa-magnifying-glass text-3xl mb-3 text-slate-600"></i>
+            <p class="text-sm">검색 및 필터 조건에 일치하는 프로젝트가 없습니다.</p>
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(p => {
+        const card = createProjectCard(p);
+        grid.appendChild(card);
+      });
+    }
+
+    function createProjectCard(p) {
+      const card = document.createElement('div');
+      card.className = 'glass-card rounded-2xl p-5 flex flex-col justify-between';
+
+      // Status pill styling
+      let statusBadge = '';
+      if (p.status_code === 'running') {
+        statusBadge = `<span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 glow-dot mr-1.5"></span>실행 중 (PID ${p.pid || 'Active'})</span>`;
+      } else if (p.status_code === 'active') {
+        statusBadge = `<span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400 mr-1.5"></span>스케줄 가동</span>`;
+      } else {
+        statusBadge = `<span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-slate-800 text-slate-400 border border-slate-700">스탠바이</span>`;
+      }
+
+      const todayBadge = p.executed_today 
+        ? `<span class="text-[10px] font-medium px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">오늘 완료</span>` 
+        : '';
+
+      const tagsHtml = p.tags.map(t => `<span class="text-[10px] font-medium px-2 py-0.5 rounded bg-slate-800/80 text-slate-400">#${t}</span>`).join(' ');
+
+      card.innerHTML = `
+        <div>
+          <!-- Top Row -->
+          <div class="flex items-start justify-between gap-2 mb-3">
+            <div class="flex items-center space-x-2">
+              <span class="text-lg">${p.flag}</span>
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono">${p.category}</span>
+              ${todayBadge}
+            </div>
+            ${statusBadge}
+          </div>
+
+          <!-- Project Title & Summary -->
+          <h3 class="text-base font-bold text-white mb-1.5 flex items-center justify-between">
+            <span>${p.name}</span>
+          </h3>
+          <p class="text-xs text-slate-300 leading-relaxed mb-4">${p.summary}</p>
+
+          <!-- Strategy Detail -->
+          <div class="bg-slate-900/80 rounded-xl p-3 border border-slate-800/80 text-[11px] space-y-2 mb-4">
+            <div class="flex items-start space-x-2">
+              <span class="text-slate-500 w-12 shrink-0 font-medium">스케줄</span>
+              <span class="text-indigo-300 font-mono font-medium">${p.schedule_display}</span>
+            </div>
+            <div class="flex items-start space-x-2">
+              <span class="text-slate-500 w-12 shrink-0 font-medium">대상</span>
+              <span class="text-slate-300">${p.market}</span>
+            </div>
+            <div class="flex items-start space-x-2">
+              <span class="text-slate-500 w-12 shrink-0 font-medium">전략</span>
+              <span class="text-slate-400 line-clamp-2">${p.strategy}</span>
+            </div>
+          </div>
+
+          <!-- Tags -->
+          <div class="flex flex-wrap gap-1 mb-4">
+            ${tagsHtml}
+          </div>
+        </div>
+
+        <!-- Bottom Action Bar -->
+        <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
+          <div class="text-[11px] text-slate-500 flex items-center truncate max-w-[60%]">
+            <i class="fa-regular fa-clock mr-1 text-[10px]"></i>
+            <span class="truncate">${p.last_executed}</span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <button onclick="openLogModal('${p.id}')" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors flex items-center">
+              <i class="fa-solid fa-list-check mr-1.5 text-[10px]"></i> 로그
+            </button>
+            <a href="${p.repo}" target="_blank" rel="noreferrer" class="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors" title="GitHub 저장소">
+              <i class="fa-brands fa-github text-sm"></i>
+            </a>
+          </div>
+        </div>
+      `;
+      return card;
+    }
+
+    function setFilter(filter) {
+      currentFilter = filter;
+      document.querySelectorAll('.filter-btn').forEach(b => {
+        b.className = 'filter-btn px-3.5 py-1.5 text-xs font-medium rounded-lg bg-slate-800/80 text-slate-300 hover:bg-slate-800 hover:text-white transition-colors';
+      });
+      const activeBtn = document.getElementById('filter-' + filter);
+      if (activeBtn) {
+        activeBtn.className = 'filter-btn px-3.5 py-1.5 text-xs font-medium rounded-lg bg-indigo-600 text-white shadow-sm transition-colors';
+      }
+      renderDashboard();
+    }
+
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+      searchQuery = e.target.value.trim();
+      renderDashboard();
+    });
+
+    // Modal Control
+    function openLogModal(projectId) {
+      const p = appData.projects.find(item => item.id === projectId);
+      if (!p) return;
+
+      document.getElementById('modalTitle').innerText = `${p.name} - 실행 로그`;
+      document.getElementById('modalPath').innerText = p.log_path || '로그 경로 없음';
+
+      const container = document.getElementById('modalLogContent');
+      container.innerHTML = '';
+
+      if (p.recent_logs && p.recent_logs.length > 0) {
+        p.recent_logs.forEach(line => {
+          const div = document.createElement('div');
+          div.className = 'py-0.5 leading-relaxed break-all';
+          if (line.includes('ERROR') || line.includes('Err') || line.includes('fail')) {
+            div.className += ' text-rose-400';
+          } else if (line.includes('성공') || line.includes('완료') || line.includes('✅') || line.includes('🎉')) {
+            div.className += ' text-emerald-400';
+          } else if (line.includes('INFO') || line.includes('💓')) {
+            div.className += ' text-indigo-300';
+          }
+          div.innerText = line;
+          container.appendChild(div);
+        });
+      } else {
+        container.innerHTML = '<div class="text-slate-500 py-6 text-center">기록된 최근 로그가 없거나 아직 실행 전입니다.</div>';
+      }
+
+      document.getElementById('logModal').classList.remove('hidden');
+    }
+
+    function closeLogModal() {
+      document.getElementById('logModal').classList.add('hidden');
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLogModal();
+    });
+
+    // Initialize
+    loadLatestData();
+  </script>
+</body>
+</html>
