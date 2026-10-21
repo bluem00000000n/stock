@@ -275,7 +275,6 @@ def collect_data():
     # 4. 포트폴리오 DB 갱신 및 데이터 취득
     try:
         portfolio_db.init_db()
-        portfolio_db.seed_alarms_and_trades_if_empty()
         portfolio_db.update_trades_and_performance()
         portfolio_data = portfolio_db.get_dashboard_full_data()
     except Exception as e:
@@ -322,6 +321,14 @@ def update_index_html(data):
             with open(index_path, "w", encoding="utf-8") as f:
                 f.write(new_content)
             print(f"✅ index.html 인라인 데이터 동기화 완료")
+        else:
+            # Fallback regex
+            pattern2 = r"(const INITIAL_DATA = )(\{[\s\S]*?\n\s*\});"
+            if re.search(pattern2, content):
+                new_content = re.sub(pattern2, replacement, content, count=1)
+                with open(index_path, "w", encoding="utf-8") as f:
+                    f.write(new_content)
+                print(f"✅ index.html 인라인 데이터 동기화 완료 (pattern2)")
     except Exception as e:
         print(f"Warning: Failed to update index.html inline data: {e}")
 
