@@ -1,8 +1,12 @@
 #!/usr/bin/env python3
 """
 Stock Supervisor - 프로젝트 상태 및 스케줄 데이터 수집기
-로컬의 launchctl 상태, 최근 로그 파일, 프로젝트 메타데이터를 수집하여
-data/status.json 및 index.html의 인라인 데이터를 갱신합니다.
+관리 대상 4대 핵심 프로젝트:
+1. stock-sniper
+2. stock-sepa-pivot
+3. stock-swing
+4. stock-htp-top10
+(stock-us3x, stock-dividend_top7, kbit-bot, signal_forge_alert, stock-cyclical-screener 제외)
 """
 
 import os
@@ -69,40 +73,6 @@ PROJECTS_META = [
         "err_log_path": os.path.join(HOME, "stock-swing/logs/launchd_err.log"),
     },
     {
-        "id": "stock-us3x",
-        "name": "stock-us3x",
-        "label": "com.stock-us3x",
-        "category": "US",
-        "flag": "🇺🇸",
-        "type": "Weekly Scheduled",
-        "summary": "미국 3배 레버리지 ETF(TQQQ, SOXL, UPRO 등) 무한매수 및 주기적 리밸런싱 알람 시스템",
-        "schedule_display": "Tue 08:30 & 17:00",
-        "market": "US 3X Leverage ETFs (TQQQ, SOXL, TECL)",
-        "strategy": "라오어 무한매수법 개량형 퀀트 알고리즘 + 변동성 지수(VIX) 가중 리밸런싱",
-        "tags": ["3X Leverage", "TQQQ", "SOXL", "Infinite Buy", "Rebalancing"],
-        "repo": "https://github.com/bluem00000000n/stock-us3x",
-        "local_path": os.path.join(HOME, "stock-us3x"),
-        "log_path": os.path.join(HOME, "stock-us3x/logs/launchd.out"),
-        "err_log_path": os.path.join(HOME, "stock-us3x/logs/launchd.err"),
-    },
-    {
-        "id": "stock-dividend_top7",
-        "name": "stock-dividend_top7",
-        "label": "com.stock-dividend_top7",
-        "category": "KRX",
-        "flag": "🇰🇷",
-        "type": "Weekly Scheduled",
-        "summary": "한국 거래소 6대 핵심 배당 기준을 100% 만족하는 상위 7대 고배당 성장주 자동 선별",
-        "schedule_display": "Mon 08:30",
-        "market": "KRX (KOSPI & KOSDAQ)",
-        "strategy": "5년 평균 시가배당률 4%+, 배당성향 건전성, 5년 연속 배당성장, 부채비율 100% 미만 등 6대 조건 스크리닝",
-        "tags": ["High Dividend", "Dividend Growth", "DART Verified", "Top 7"],
-        "repo": "https://github.com/bluem00000000n/stock-dividend_top7",
-        "local_path": os.path.join(HOME, "stock-dividend_top7"),
-        "log_path": os.path.join(HOME, "stock-dividend_top7/logs/launchd_stdout.log"),
-        "err_log_path": os.path.join(HOME, "stock-dividend_top7/logs/launchd_stderr.log"),
-    },
-    {
         "id": "stock-htp-top10",
         "name": "stock-htp-top10",
         "label": "com.stock-htp-top10",
@@ -118,62 +88,10 @@ PROJECTS_META = [
         "local_path": os.path.join(HOME, "stock-htp-top10"),
         "log_path": os.path.join(HOME, "stock-htp-top10/logs/launchd.out"),
         "err_log_path": os.path.join(HOME, "stock-htp-top10/logs/launchd.err"),
-    },
-    {
-        "id": "stock-cyclical-screener",
-        "name": "stock-cyclical-screener",
-        "label": "com.stock-cyclical-screener",
-        "category": "KRX",
-        "flag": "🇰🇷",
-        "type": "Daily Scheduled",
-        "summary": "한국 거래소 경기민감 6대 섹터(반도체/자동차/화학/철강/조선/해운) 퀀트 사이클 스크리너",
-        "schedule_display": "Daily 11:00",
-        "market": "KRX Cyclical 6 Sectors",
-        "strategy": "역발상 시클리컬 투자 밴드(고PER·적자 침체기 매수, 저PER 호황기 매도), 역사적 PBR 밴드 분석",
-        "tags": ["Cyclical", "Semi/Auto/Shipbuilding", "PBR Band", "Cycle Quant"],
-        "repo": "https://github.com/bluem00000000n/stock-cyclical-screener",
-        "local_path": os.path.join(HOME, "stock-cyclical-screener"),
-        "log_path": os.path.join(HOME, "stock-cyclical-screener/logs/launchd.stdout.log"),
-        "err_log_path": os.path.join(HOME, "stock-cyclical-screener/logs/launchd.stderr.log"),
-    },
-    {
-        "id": "kbit-bot",
-        "name": "kbit-bot",
-        "label": "com.kbit.stockbot",
-        "category": "KRX",
-        "flag": "🇰🇷",
-        "type": "Daily Scheduled",
-        "summary": "한국 주식 당일 인기 및 기술적 상승 유망주 60일 캔들 차트 분석 및 자동 포스팅",
-        "schedule_display": "Daily 09:30",
-        "market": "KRX Trending Stocks",
-        "strategy": "장중 수급 특징주 포착 + 60일 차트 정배열 필터링 + 기술적 지표 분석 후 자동 포스팅",
-        "tags": ["Market Movers", "Technical Analysis", "Auto Posting"],
-        "repo": "https://github.com/bluem00000000n/kbit-bot",
-        "local_path": os.path.join(HOME, "kbit-bot"),
-        "log_path": os.path.join(HOME, "kbit-bot/logs/launchd.log"),
-        "err_log_path": os.path.join(HOME, "kbit-bot/logs/launchd_err.log"),
-    },
-    {
-        "id": "signal_forge_alert",
-        "name": "signal_forge_alert",
-        "label": "signal-forge-alert",
-        "category": "Global",
-        "flag": "🌐",
-        "type": "AI System",
-        "summary": "유료 API 없는 100% 무료 아키텍처 기반 독립 AI 시장 인텔리전스 & 텔레그램 알림",
-        "schedule_display": "Event-driven / Manual",
-        "market": "Global Macro & Market Signals",
-        "strategy": "거시 경제 지표 및 시장 위험 시그널 독립적 관측 및 텔레그램 알람 전송",
-        "tags": ["AI Intelligence", "Macro Watch", "Zero-Paid API", "Alerts"],
-        "repo": "https://github.com/bluem00000000n/signal_forge_alert",
-        "local_path": os.path.join(HOME, "signal_forge_alert"),
-        "log_path": os.path.join(HOME, "signal_forge_alert/runtime/logs/daemon.stdout.log"),
-        "err_log_path": os.path.join(HOME, "signal_forge_alert/runtime/logs/daemon.stderr.log"),
     }
 ]
 
 def get_launchd_status():
-    """launchctl list 출력을 파싱하여 {label: {'pid': pid, 'status': status}} 형태로 반환"""
     services = {}
     try:
         out = subprocess.check_output(["launchctl", "list"], text=True)
@@ -191,7 +109,6 @@ def get_launchd_status():
     return services
 
 def read_recent_lines(filepath, num_lines=15):
-    """파일에서 최근 n줄 읽기"""
     if not filepath or not os.path.exists(filepath):
         return []
     try:
@@ -216,42 +133,35 @@ def collect_data():
         label = meta["label"]
         ld_info = launchd_map.get(label, {"pid": None, "last_exit_code": None, "registered": False})
         
-        # 로그 파일 분석
         log_path = meta.get("log_path")
         log_exists = log_path and os.path.exists(log_path)
-        last_modified = None
         last_modified_str = "기록 없음"
         recent_logs = []
         is_executed_today = False
 
         if log_exists:
             mtime = os.path.getmtime(log_path)
-            last_modified = mtime
             last_dt = datetime.fromtimestamp(mtime)
             last_modified_str = last_dt.strftime("%Y-%m-%d %H:%M:%S")
             recent_logs = read_recent_lines(log_path, 10)
             if last_dt.strftime("%Y-%m-%d") == today_date:
                 is_executed_today = True
 
-        # 상태 판별
-        # 1. PID가 있으면 실행 중 (Running)
-        # 2. registered되어 있고 최근 exit code가 0이면 정상 대기 중 (Active / Standby)
-        # 3. registered 안 되어 있으면 Inactive
         if ld_info["pid"]:
-            status_text = "Running (실행 중)"
+            status_text = "Running"
             status_code = "running"
             total_active_daemons += 1
         elif ld_info["registered"]:
             if ld_info["last_exit_code"] == 0:
-                status_text = "Active (스케줄 대기)"
+                status_text = "Active"
                 status_code = "active"
                 total_active_daemons += 1
             else:
-                status_text = f"Notice (코드: {ld_info['last_exit_code']})"
+                status_text = f"Notice ({ld_info['last_exit_code']})"
                 status_code = "warning"
                 total_active_daemons += 1
         else:
-            status_text = "Ready (수동 준비)"
+            status_text = "Ready"
             status_code = "ready"
 
         if is_executed_today:
@@ -272,7 +182,7 @@ def collect_data():
             "last_log_preview": last_log_line
         })
 
-    # 4. 포트폴리오 DB 갱신 및 데이터 취득
+    # 포트폴리오 DB 갱신 및 데이터 취득
     try:
         portfolio_db.init_db()
         portfolio_db.update_trades_and_performance()
@@ -288,8 +198,7 @@ def collect_data():
         "today_executed": today_executed_count,
         "market_stats": {
             "KRX": sum(1 for p in projects_data if "KRX" in p["category"]),
-            "US": sum(1 for p in projects_data if "US" in p["category"]),
-            "Global": sum(1 for p in projects_data if "Global" in p["category"])
+            "US": sum(1 for p in projects_data if "US" in p["category"])
         },
         "portfolio": portfolio_data.get("total_performance", {})
     }
@@ -313,22 +222,13 @@ def update_index_html(data):
 
         import re
         data_json = json.dumps(data, ensure_ascii=False, indent=6)
-        pattern = r"(const INITIAL_DATA = )(\{[\s\S]*?\n    \});"
-        replacement = f"\\1{data_json};"
+        pattern = r"(const INITIAL_DATA = )(\{[\s\S]*?\n\s*\});"
 
         if re.search(pattern, content):
-            new_content = re.sub(pattern, replacement, content, count=1)
+            new_content = re.sub(pattern, f"\\1{data_json};", content, count=1)
             with open(index_path, "w", encoding="utf-8") as f:
                 f.write(new_content)
             print(f"✅ index.html 인라인 데이터 동기화 완료")
-        else:
-            # Fallback regex
-            pattern2 = r"(const INITIAL_DATA = )(\{[\s\S]*?\n\s*\});"
-            if re.search(pattern2, content):
-                new_content = re.sub(pattern2, replacement, content, count=1)
-                with open(index_path, "w", encoding="utf-8") as f:
-                    f.write(new_content)
-                print(f"✅ index.html 인라인 데이터 동기화 완료 (pattern2)")
     except Exception as e:
         print(f"Warning: Failed to update index.html inline data: {e}")
 
@@ -344,7 +244,7 @@ def main():
     update_index_html(data)
 
     print(f"✅ 상태 데이터 저장 완료: {json_path}")
-    print(f"📊 총 {data['summary']['total_projects']}개 프로젝트 (가동/대기 중: {data['summary']['active_daemons']}, 오늘 실행: {data['summary']['today_executed']})")
+    print(f"📊 총 {data['summary']['total_projects']}대 핵심 프로젝트 (가동/대기 중: {data['summary']['active_daemons']}, 오늘 실행: {data['summary']['today_executed']})")
 
 if __name__ == "__main__":
     main()
