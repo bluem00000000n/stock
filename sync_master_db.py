@@ -81,7 +81,7 @@ PROJECT_REGISTRY = [
         "id": "stock-cyclical-screener",
         "name": "Cyclical PBR Screener",
         "market": "KOR",
-        "schedule": "Daily 08:00",
+        "schedule": "Daily 08:30",
         "source_type": "json",
         "source_path": os.path.join(BASE_DIR, "stock-cyclical-screener/data/alerts_history.json")
     }

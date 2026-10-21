@@ -153,7 +153,7 @@ PROJECTS_META = [
         "flag": "🇰🇷",
         "type": "Daily Scheduled",
         "summary": "한국 거래소 경기민감 6대 섹터(반도체/자동차/화학/철강/조선/해운) 퀀트 사이클 스크리너",
-        "schedule_display": "Daily 11:00",
+        "schedule_display": "Daily 08:30",
         "market": "KRX Cyclical 6 Sectors",
         "strategy": "역발상 시클리컬 투자 밴드(고PER·적자 침체기 매수, 저PER 호황기 매도), 역사적 PBR 밴드 분석",
         "tags": ["Cyclical", "Semi/Auto/Shipbuilding", "PBR Band", "Cycle Quant"],
