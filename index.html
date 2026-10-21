@@ -225,9 +225,8 @@
           <div>
             <h2 class="text-xs font-bold font-mono text-slate-200 uppercase tracking-wider flex items-center">
               <i class="fa-solid fa-cubes-stacked mr-2 text-rose-500"></i>
-              전략/프로젝트별 수익률 매트릭스 (Performance by Strategy)
+              전략별 수익률 매트릭스
             </h2>
-            <p class="text-[11px] text-slate-400 mt-0.5">내부 데이터베이스 기반 각 퀀트 시스템별 실현·미실현 손익 종합 현황</p>
           </div>
           <div class="text-[11px] font-mono text-slate-400 flex items-center space-x-2">
             <span class="w-2 h-2 rounded-full bg-rose-500"></span>
@@ -343,6 +342,24 @@
     </section>
   </main>
 
+  <!-- Strategy Hover Floating Layer Popup -->
+  <div id="strategyHoverPopup" class="fixed z-50 hidden pointer-events-none transition-opacity duration-150 shadow-2xl rounded-lg border border-desk-border bg-desk-950/95 backdrop-blur-md p-3.5 text-xs font-mono w-80 max-w-[90vw]">
+    <div id="popupHeader" class="flex items-center justify-between pb-2 mb-2 border-b border-desk-border">
+      <span id="popupTitle" class="font-bold text-slate-100 flex items-center">
+        <i class="fa-solid fa-layer-group text-rose-500 mr-1.5"></i>
+        <span>전략명</span>
+      </span>
+      <span id="popupCount" class="text-[10px] px-1.5 py-0.5 rounded bg-desk-800 text-slate-300 border border-desk-border">0종목 보유</span>
+    </div>
+    <div id="popupStockList" class="space-y-1.5 max-h-60 overflow-y-auto">
+      <!-- Dynamic list -->
+    </div>
+    <div class="mt-2.5 pt-2 border-t border-desk-border/80 flex items-center justify-between text-[10px] text-slate-500">
+      <span>실시간 체결 시가 기준</span>
+      <span id="popupAvgReturn" class="font-semibold text-slate-400">평균: 0.0%</span>
+    </div>
+  </div>
+
   <!-- Log Viewer Modal -->
   <div id="logModal" class="fixed inset-0 z-50 hidden bg-black/80 flex items-center justify-center p-4">
     <div class="desk-card rounded w-full max-w-3xl overflow-hidden shadow-2xl flex flex-col max-h-[85vh]">
@@ -374,7 +391,7 @@
     // Embedded Initial Dataset (Auto-synced with status.json)
     const INITIAL_DATA = {
   "summary": {
-    "updated_at": "2026-10-21 14:11:44",
+    "updated_at": "2026-10-21 14:15:34",
     "total_projects": 8,
     "active_daemons": 7,
     "today_executed": 4,
@@ -385,13 +402,13 @@
     },
     "portfolio": {
       "date": "2026-10-21",
-      "daily_return_pct": 1.2,
-      "cumulative_return_pct": 1.19,
+      "daily_return_pct": 1.13,
+      "cumulative_return_pct": 1.13,
       "realized_pnl_pct": 1.13,
-      "unrealized_pnl_pct": 1.2,
+      "unrealized_pnl_pct": 1.13,
       "holding_count": 21,
       "closed_count": 5,
-      "win_rate": 53.8
+      "win_rate": 50.0
     }
   },
   "projects": [
@@ -651,21 +668,21 @@
       "last_exit_code": null,
       "status_text": "Ready",
       "status_code": "ready",
-      "last_executed": "2026-10-21 14:10:05",
+      "last_executed": "2026-10-21 14:13:21",
       "executed_today": true,
       "recent_logs": [
-        "2026-10-21 14:10:05 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035420 (S07_SECTOR_SYMPATHY LONG) within 60m window.",
-        "2026-10-21 14:10:05 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035420 (S12_HYPE_TO_FUNDAMENTALS LONG) within 60m window.",
-        "2026-10-21 14:10:05 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035720 (S07_SECTOR_SYMPATHY LONG) within 60m window.",
-        "2026-10-21 14:10:05 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035720 (S12_HYPE_TO_FUNDAMENTALS LONG) within 60m window.",
-        "2026-10-21 14:10:05 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S07_SECTOR_SYMPATHY LONG) within 60m window.",
-        "2026-10-21 14:10:05 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S11_SUPPLY_ABSORPTION LONG) within 60m window.",
-        "2026-10-21 14:10:05 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S12_HYPE_TO_FUNDAMENTALS LONG) within 60m window.",
-        "2026-10-21 14:10:05 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S14_RELATIVE_STRENGTH LONG) within 60m window.",
-        "2026-10-21 14:10:05 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S15_MULTI_DAY_MOMENTUM LONG) within 60m window.",
-        "2026-10-21 14:10:05 [INFO] [cli] [DAEMON] Cycle #882 complete: detected=28, alerted=0, dedup=28"
+        "2026-10-21 14:13:21 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035420 (S07_SECTOR_SYMPATHY LONG) within 60m window.",
+        "2026-10-21 14:13:21 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035420 (S12_HYPE_TO_FUNDAMENTALS LONG) within 60m window.",
+        "2026-10-21 14:13:21 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035720 (S07_SECTOR_SYMPATHY LONG) within 60m window.",
+        "2026-10-21 14:13:21 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035720 (S12_HYPE_TO_FUNDAMENTALS LONG) within 60m window.",
+        "2026-10-21 14:13:21 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S07_SECTOR_SYMPATHY LONG) within 60m window.",
+        "2026-10-21 14:13:21 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S11_SUPPLY_ABSORPTION LONG) within 60m window.",
+        "2026-10-21 14:13:21 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S12_HYPE_TO_FUNDAMENTALS LONG) within 60m window.",
+        "2026-10-21 14:13:21 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S14_RELATIVE_STRENGTH LONG) within 60m window.",
+        "2026-10-21 14:13:21 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S15_MULTI_DAY_MOMENTUM LONG) within 60m window.",
+        "2026-10-21 14:13:21 [INFO] [cli] [DAEMON] Cycle #883 complete: detected=28, alerted=0, dedup=28"
       ],
-      "last_log_preview": "2026-10-21 14:10:05 [INFO] [cli] [DAEMON] Cycle #882 complete: detected=28, alerted=0, dedup=28"
+      "last_log_preview": "2026-10-21 14:13:21 [INFO] [cli] [DAEMON] Cycle #883 complete: detected=28, alerted=0, dedup=28"
     },
     {
       "id": "stock-cyclical-screener",
@@ -1042,11 +1059,11 @@
       "signal_date": "2026-10-21 08:40:00",
       "entry_price": 21500.0,
       "entry_date": "2026-10-21",
-      "current_price": 23550.0,
+      "current_price": 23500.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": 9.53,
+      "return_pct": 9.3,
       "target_price": 26000.0,
       "stop_loss_price": 20500.0,
       "notes": "227선 스윙 2차 분할 매수 모아가기 (+8.37%)"
@@ -1062,11 +1079,11 @@
       "signal_date": "2026-10-21 08:45:00",
       "entry_price": 9670.0,
       "entry_date": "2026-10-21",
-      "current_price": 9970.0,
+      "current_price": 9940.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": 3.1,
+      "return_pct": 2.79,
       "target_price": 10500.0,
       "stop_loss_price": 9300.0,
       "notes": "거래대금 1,500억 유입 양봉 수급 방어"
@@ -1102,34 +1119,14 @@
       "signal_date": "2026-10-21 10:00:00",
       "entry_price": 193900.0,
       "entry_date": "2026-10-18",
-      "current_price": 196900.0,
+      "current_price": 197000.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": 1.55,
+      "return_pct": 1.6,
       "target_price": 261765.0,
       "stop_loss_price": 183817.0,
       "notes": "Catalyst Breakout 다일간 모멘텀 8.1% 상회 (Score 81.0)"
-    },
-    {
-      "id": 97,
-      "project_id": "stock-swing",
-      "project_name": "stock-swing",
-      "ticker": "004370",
-      "name": "농심",
-      "market": "KRX",
-      "signal_type": "장전알람(227스윙)",
-      "signal_date": "2026-10-21 08:40:00",
-      "entry_price": 404000.0,
-      "entry_date": "2026-10-21",
-      "current_price": 408000.0,
-      "exit_price": null,
-      "exit_date": null,
-      "status": "HOLDING",
-      "return_pct": 0.99,
-      "target_price": 435000.0,
-      "stop_loss_price": 385000.0,
-      "notes": "227선 스윙 2차 분할 누적 포지션 (+1.36%)"
     },
     {
       "id": 75,
@@ -1142,34 +1139,34 @@
       "signal_date": "2026-10-21 08:40:00",
       "entry_price": 1260000.0,
       "entry_date": "2026-10-21",
-      "current_price": 1272000.0,
+      "current_price": 1273000.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": 0.95,
+      "return_pct": 1.03,
       "target_price": 1285000.0,
       "stop_loss_price": 1220000.0,
       "notes": "HBM3E 독점 슈퍼사이클, 20일선 VCP 피벗 돌파"
     },
     {
-      "id": 76,
-      "project_id": "stock-sepa-pivot",
-      "project_name": "stock-sepa-pivot",
-      "ticker": "196170",
-      "name": "알테오젠",
+      "id": 97,
+      "project_id": "stock-swing",
+      "project_name": "stock-swing",
+      "ticker": "004370",
+      "name": "농심",
       "market": "KRX",
-      "signal_type": "장전알람(시가매수)",
+      "signal_type": "장전알람(227스윙)",
       "signal_date": "2026-10-21 08:40:00",
-      "entry_price": 236000.0,
+      "entry_price": 404000.0,
       "entry_date": "2026-10-21",
-      "current_price": 237000.0,
+      "current_price": 407000.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": 0.42,
-      "target_price": 245000.0,
-      "stop_loss_price": 230000.0,
-      "notes": "피하주사(SC) 독점 플랫폼, 하이타이트 플래그 돌파"
+      "return_pct": 0.74,
+      "target_price": 435000.0,
+      "stop_loss_price": 385000.0,
+      "notes": "227선 스윙 2차 분할 누적 포지션 (+1.36%)"
     },
     {
       "id": 70,
@@ -1182,74 +1179,34 @@
       "signal_date": "2026-10-21 08:45:00",
       "entry_price": 88665.0,
       "entry_date": "2026-10-21",
-      "current_price": 88955.0,
+      "current_price": 88965.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": 0.33,
+      "return_pct": 0.34,
       "target_price": 91500.0,
       "stop_loss_price": 87000.0,
       "notes": "지수 대표 ETF 분할 시가 체결"
     },
     {
-      "id": 73,
-      "project_id": "stock-sniper",
-      "project_name": "stock-sniper",
-      "ticker": "036930",
-      "name": "주성엔지니어링",
-      "market": "KRX",
-      "signal_type": "장전알람(시가매수)",
-      "signal_date": "2026-10-21 08:45:00",
-      "entry_price": 202000.0,
-      "entry_date": "2026-10-21",
-      "current_price": 202500.0,
-      "exit_price": null,
-      "exit_date": null,
-      "status": "HOLDING",
-      "return_pct": 0.25,
-      "target_price": 215000.0,
-      "stop_loss_price": 195000.0,
-      "notes": "반도체 ALD 2,200억 수급 방어"
-    },
-    {
-      "id": 72,
-      "project_id": "stock-sniper",
-      "project_name": "stock-sniper",
-      "ticker": "042510",
-      "name": "라온시큐어",
-      "market": "KRX",
-      "signal_type": "장전알람(시가매수)",
-      "signal_date": "2026-10-21 08:45:00",
-      "entry_price": 18170.0,
-      "entry_date": "2026-10-21",
-      "current_price": 18200.0,
-      "exit_price": null,
-      "exit_date": null,
-      "status": "HOLDING",
-      "return_pct": 0.17,
-      "target_price": 19500.0,
-      "stop_loss_price": 17500.0,
-      "notes": "생체인증/양자암호 52주 신고가 돌파권"
-    },
-    {
-      "id": 77,
+      "id": 76,
       "project_id": "stock-sepa-pivot",
       "project_name": "stock-sepa-pivot",
-      "ticker": "003230",
-      "name": "삼양식품",
+      "ticker": "196170",
+      "name": "알테오젠",
       "market": "KRX",
       "signal_type": "장전알람(시가매수)",
       "signal_date": "2026-10-21 08:40:00",
-      "entry_price": 1265000.0,
+      "entry_price": 236000.0,
       "entry_date": "2026-10-21",
-      "current_price": 1267000.0,
+      "current_price": 236500.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": 0.16,
-      "target_price": 1320000.0,
-      "stop_loss_price": 1220000.0,
-      "notes": "글로벌 수출 호조, 컵앤핸들 피벗 돌파"
+      "return_pct": 0.21,
+      "target_price": 245000.0,
+      "stop_loss_price": 230000.0,
+      "notes": "피하주사(SC) 독점 플랫폼, 하이타이트 플래그 돌파"
     },
     {
       "id": 78,
@@ -1262,14 +1219,54 @@
       "signal_date": "2026-10-21 08:40:00",
       "entry_price": 809000.0,
       "entry_date": "2026-10-21",
-      "current_price": 809000.0,
+      "current_price": 810000.0,
+      "exit_price": null,
+      "exit_date": null,
+      "status": "HOLDING",
+      "return_pct": 0.12,
+      "target_price": 835000.0,
+      "stop_loss_price": 785000.0,
+      "notes": "K9/천무 글로벌 수주 모멘텀, 불플래그 패턴"
+    },
+    {
+      "id": 77,
+      "project_id": "stock-sepa-pivot",
+      "project_name": "stock-sepa-pivot",
+      "ticker": "003230",
+      "name": "삼양식품",
+      "market": "KRX",
+      "signal_type": "장전알람(시가매수)",
+      "signal_date": "2026-10-21 08:40:00",
+      "entry_price": 1265000.0,
+      "entry_date": "2026-10-21",
+      "current_price": 1266000.0,
+      "exit_price": null,
+      "exit_date": null,
+      "status": "HOLDING",
+      "return_pct": 0.08,
+      "target_price": 1320000.0,
+      "stop_loss_price": 1220000.0,
+      "notes": "글로벌 수출 호조, 컵앤핸들 피벗 돌파"
+    },
+    {
+      "id": 73,
+      "project_id": "stock-sniper",
+      "project_name": "stock-sniper",
+      "ticker": "036930",
+      "name": "주성엔지니어링",
+      "market": "KRX",
+      "signal_type": "장전알람(시가매수)",
+      "signal_date": "2026-10-21 08:45:00",
+      "entry_price": 202000.0,
+      "entry_date": "2026-10-21",
+      "current_price": 202000.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
       "return_pct": 0.0,
-      "target_price": 835000.0,
-      "stop_loss_price": 785000.0,
-      "notes": "K9/천무 글로벌 수주 모멘텀, 불플래그 패턴"
+      "target_price": 215000.0,
+      "stop_loss_price": 195000.0,
+      "notes": "반도체 ALD 2,200억 수급 방어"
     },
     {
       "id": 80,
@@ -1372,6 +1369,26 @@
       "notes": "비만치료제 수요 폭발, 52주 고점 유지 2위"
     },
     {
+      "id": 72,
+      "project_id": "stock-sniper",
+      "project_name": "stock-sniper",
+      "ticker": "042510",
+      "name": "라온시큐어",
+      "market": "KRX",
+      "signal_type": "장전알람(시가매수)",
+      "signal_date": "2026-10-21 08:45:00",
+      "entry_price": 18170.0,
+      "entry_date": "2026-10-21",
+      "current_price": 18140.0,
+      "exit_price": null,
+      "exit_date": null,
+      "status": "HOLDING",
+      "return_pct": -0.17,
+      "target_price": 19500.0,
+      "stop_loss_price": 17500.0,
+      "notes": "생체인증/양자암호 52주 신고가 돌파권"
+    },
+    {
       "id": 71,
       "project_id": "stock-sniper",
       "project_name": "stock-sniper",
@@ -1382,11 +1399,11 @@
       "signal_date": "2026-10-21 08:45:00",
       "entry_price": 13330.0,
       "entry_date": "2026-10-21",
-      "current_price": 13270.0,
+      "current_price": 13250.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": -0.45,
+      "return_pct": -0.6,
       "target_price": 13800.0,
       "stop_loss_price": 13000.0,
       "notes": "코스닥 지수 수급 지지선 반등"
@@ -1422,11 +1439,11 @@
       "signal_date": "2026-10-21 08:40:00",
       "entry_price": 499500.0,
       "entry_date": "2026-10-21",
-      "current_price": 490500.0,
+      "current_price": 491000.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": -1.8,
+      "return_pct": -1.7,
       "target_price": 515000.0,
       "stop_loss_price": 480000.0,
       "notes": "북미 변압기 쇼티지 수혜, 플랫 베이스 지지"
@@ -1535,20 +1552,20 @@
   "performance": {
     "PORTFOLIO_TOTAL": {
       "date": "2026-10-21",
-      "daily_return_pct": 1.2,
-      "cumulative_return_pct": 1.19,
+      "daily_return_pct": 1.13,
+      "cumulative_return_pct": 1.13,
       "realized_pnl_pct": 1.13,
-      "unrealized_pnl_pct": 1.2,
+      "unrealized_pnl_pct": 1.13,
       "holding_count": 21,
       "closed_count": 5,
-      "win_rate": 53.8
+      "win_rate": 50.0
     },
     "signal_forge_alert": {
       "date": "2026-10-21",
-      "daily_return_pct": 1.55,
-      "cumulative_return_pct": -1.91,
+      "daily_return_pct": 1.6,
+      "cumulative_return_pct": -1.88,
       "realized_pnl_pct": -5.36,
-      "unrealized_pnl_pct": 1.55,
+      "unrealized_pnl_pct": 1.6,
       "holding_count": 1,
       "closed_count": 1,
       "win_rate": 50.0
@@ -1591,24 +1608,24 @@
       "unrealized_pnl_pct": -0.05,
       "holding_count": 5,
       "closed_count": 0,
-      "win_rate": 60.0
+      "win_rate": 80.0
     },
     "stock-sniper": {
       "date": "2026-10-21",
-      "daily_return_pct": 0.68,
-      "cumulative_return_pct": 0.68,
+      "daily_return_pct": 0.47,
+      "cumulative_return_pct": 0.47,
       "realized_pnl_pct": 0.0,
-      "unrealized_pnl_pct": 0.68,
+      "unrealized_pnl_pct": 0.47,
       "holding_count": 5,
       "closed_count": 0,
-      "win_rate": 80.0
+      "win_rate": 40.0
     },
     "stock-swing": {
       "date": "2026-10-21",
-      "daily_return_pct": 5.54,
-      "cumulative_return_pct": 5.54,
+      "daily_return_pct": 5.42,
+      "cumulative_return_pct": 5.42,
       "realized_pnl_pct": 0.0,
-      "unrealized_pnl_pct": 5.54,
+      "unrealized_pnl_pct": 5.42,
       "holding_count": 4,
       "closed_count": 0,
       "win_rate": 100.0
@@ -1734,12 +1751,12 @@
         const isUp = p.cumulative_return_pct >= 0;
 
         const card = document.createElement('div');
-        card.className = 'bg-desk-900 border border-desk-border rounded p-3 font-mono flex flex-col justify-between';
+        card.className = 'bg-desk-900 border border-desk-border rounded p-3 font-mono flex flex-col justify-between cursor-pointer hover:border-desk-500 hover:bg-desk-850/90 transition-all select-none group';
         card.innerHTML = `
           <div>
             <div class="flex items-center justify-between text-[11px] text-slate-400">
-              <span class="font-bold text-slate-200">${s.name}</span>
-              <span class="text-[10px] px-1.5 py-0.2 rounded bg-desk-800 text-slate-400 border border-desk-border">${p.holding_count}종목 보유</span>
+              <span class="font-bold text-slate-200 group-hover:text-rose-400 transition-colors">${s.name}</span>
+              <span class="text-[10px] px-1.5 py-0.2 rounded bg-desk-800 text-slate-400 border border-desk-border group-hover:border-desk-600">${p.holding_count}종목 보유</span>
             </div>
             <div class="text-[11px] text-slate-500 mt-0.5 truncate">${s.label}</div>
           </div>
@@ -1750,8 +1767,95 @@
             </span>
           </div>
         `;
+
+        // 마우스 오버 레이어 팝업 이벤트 바인딩
+        card.addEventListener('mouseenter', (e) => showStrategyPopup(s, e));
+        card.addEventListener('mousemove', (e) => moveStrategyPopup(e));
+        card.addEventListener('mouseleave', hideStrategyPopup);
+
         container.appendChild(card);
       });
+    }
+
+    // 전략 마우스 오버 레이어 팝업 로직
+    function showStrategyPopup(s, e) {
+      const popup = document.getElementById('strategyHoverPopup');
+      if (!popup) return;
+
+      const trades = (appData.trades || []).filter(t => t.project_id === s.id);
+      const holdings = trades.filter(t => t.status === 'HOLDING');
+      const closed = trades.filter(t => t.status === 'CLOSED');
+
+      document.getElementById('popupTitle').innerHTML = `<i class="fa-solid fa-layer-group text-rose-500 mr-1.5"></i><span>${s.name}</span>`;
+      document.getElementById('popupCount').innerText = `${holdings.length}종목 보유 / ${closed.length}청산`;
+
+      const listContainer = document.getElementById('popupStockList');
+      listContainer.innerHTML = '';
+
+      if (holdings.length === 0 && closed.length === 0) {
+        listContainer.innerHTML = '<div class="text-slate-500 text-center py-3">현재 보유 중인 종목이 없습니다.</div>';
+        document.getElementById('popupAvgReturn').innerHTML = '수익률: <span class="text-slate-400">-</span>';
+      } else {
+        const displayItems = holdings.length > 0 ? holdings : closed;
+        displayItems.forEach(t => {
+          const isUp = t.return_pct >= 0;
+          const isHolding = t.status === 'HOLDING';
+          const curOrExit = isHolding ? t.current_price : (t.exit_price || t.current_price);
+          const div = document.createElement('div');
+          div.className = 'flex items-center justify-between p-2 rounded bg-desk-900 border border-desk-border/80 text-[11px]';
+          div.innerHTML = `
+            <div class="flex flex-col max-w-[170px]">
+              <div class="flex items-center space-x-1.5">
+                <span class="font-bold text-slate-100 truncate">${t.name}</span>
+                <span class="text-[9px] px-1 py-0.2 rounded ${isHolding ? 'bg-emerald-950 text-emerald-400 border border-emerald-800' : 'bg-desk-800 text-slate-400'}">${isHolding ? '보유' : '매도'}</span>
+              </div>
+              <div class="text-[10px] text-slate-400 font-mono mt-0.5">
+                ${formatDeskPrice(t.entry_price, t.market)} → ${formatDeskPrice(curOrExit, t.market)}
+              </div>
+            </div>
+            <div class="text-right font-mono">
+              <div class="font-bold text-xs ${isUp ? 'text-krx-up' : 'text-krx-down'}">
+                ${isUp ? '+' : ''}${t.return_pct.toFixed(2)}%
+              </div>
+              <div class="text-[9px] text-slate-500">${t.ticker}</div>
+            </div>
+          `;
+          listContainer.appendChild(div);
+        });
+
+        const totalRet = displayItems.reduce((acc, cur) => acc + (cur.return_pct || 0), 0);
+        const avgRet = displayItems.length > 0 ? (totalRet / displayItems.length).toFixed(2) : 0.0;
+        const isAvgUp = avgRet >= 0;
+        document.getElementById('popupAvgReturn').innerHTML = `보유 평균: <span class="${isAvgUp ? 'text-krx-up font-bold' : 'text-krx-down font-bold'}">${isAvgUp ? '+' : ''}${avgRet}%</span>`;
+      }
+
+      popup.classList.remove('hidden');
+      moveStrategyPopup(e);
+    }
+
+    function moveStrategyPopup(e) {
+      const popup = document.getElementById('strategyHoverPopup');
+      if (!popup || popup.classList.contains('hidden')) return;
+
+      const popupWidth = popup.offsetWidth || 320;
+      const popupHeight = popup.offsetHeight || 220;
+      let x = e.clientX + 16;
+      let y = e.clientY + 16;
+
+      if (x + popupWidth > window.innerWidth - 12) {
+        x = e.clientX - popupWidth - 16;
+      }
+      if (y + popupHeight > window.innerHeight - 12) {
+        y = e.clientY - popupHeight - 16;
+      }
+
+      popup.style.left = `${Math.max(10, x)}px`;
+      popup.style.top = `${Math.max(10, y)}px`;
+    }
+
+    function hideStrategyPopup() {
+      const popup = document.getElementById('strategyHoverPopup');
+      if (popup) popup.classList.add('hidden');
     }
 
     // 2. Trades Table
