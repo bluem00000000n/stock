@@ -311,14 +311,15 @@ def update_index_html(data):
             content = f.read()
 
         import re
-        data_json = json.dumps(data, ensure_ascii=False, indent=6)
+        data_json = json.dumps(data, ensure_ascii=False, indent=2)
         pattern = r"(const INITIAL_DATA = )(\{[\s\S]*?\n\s*\});"
 
         if re.search(pattern, content):
-            new_content = re.sub(pattern, f"\\1{data_json};", content, count=1)
+            # lambda 콜백을 사용하여 JSON 내의 이스케이프 문자(\n 등)가 치환 템플릿에 의해 풀리는 치명적 SyntaxError 방지
+            new_content = re.sub(pattern, lambda m: f"{m.group(1)}{data_json};", content, count=1)
             with open(index_path, "w", encoding="utf-8") as f:
                 f.write(new_content)
-            print(f"✅ index.html 인라인 데이터 동기화 완료")
+            print(f"✅ index.html 인라인 데이터 동기화 완료 (JSON Escape 안전 보장)")
     except Exception as e:
         print(f"Warning: Failed to update index.html inline data: {e}")
 
