@@ -70,14 +70,6 @@ PROJECT_REGISTRY = [
         "source_path": os.path.join(BASE_DIR, "stock-dividend_top7/scanner.log")
     },
     {
-        "id": "kbit-bot",
-        "name": "K-Bit Feature Stock Bot",
-        "market": "KOR",
-        "schedule": "Continuous 09:00-15:30",
-        "source_type": "json",
-        "source_path": os.path.join(BASE_DIR, "kbit-bot/posted_history.json")
-    },
-    {
         "id": "signal_forge_alert",
         "name": "Signal Forge AI Macro",
         "market": "GLOBAL",
@@ -472,7 +464,6 @@ def sync_all_subprojects():
         "stock-htp-top10": sync_stock_htp_top10,
         "stock-us3x": sync_stock_us3x,
         "stock-sepa-pivot": sync_stock_sepa_pivot,
-        "kbit-bot": sync_kbit_bot,
         "stock-cyclical-screener": sync_stock_cyclical,
     }
 

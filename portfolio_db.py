@@ -272,29 +272,7 @@ def reset_and_reload_all_9_projects():
     ))
 
     # =========================================================
-    # 5. kbit-bot (10/21 09:39 장중 특징주 분석)
-    # =========================================================
-    kbit_candidates = [
-        {"ticker": "394800", "name": "쓰리빌리언", "market": "KRX", "target": 11500, "stop": 9200, "note": "10/21 09:39 장중 AI 유전체 분석 수급 급증, 60일선 정배열 돌파"},
-        {"ticker": "466100", "name": "클로봇", "market": "KRX", "target": 14000, "stop": 11000, "note": "10/20 12:44 지능형 로봇 소프트웨어 수급 집중 특징주"}
-    ]
-    cur.execute("""
-    INSERT INTO alarms (project_id, project_name, sent_at, alarm_type, market, title, raw_message, stocks_json)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-    """, (
-        "kbit-bot", "kbit-bot", f"{today_str} 09:39:01", "장중알람", "KRX",
-        "📈 장중 인기 특징주 60일 캔들 차트 기술적 분석 (쓰리빌리언 / 클로봇)",
-        f"""📈 [K-Bit 특징주 봇] 장중 기술적 돌파주 자동 분석
-📅 발행일시: {today_str} 09:39:01
-종목: 쓰리빌리언 (394800)
-- 60일 캔들 차트 분석: 우하향 역배열 배제, 장중 거래량 급증 돌파형 양봉 형성
-- 목표치: 11,500원 / 지지 손절선: 9,200원
-- 매매 수칙: 장중 포스팅 시점 체결가 분할 매수.""",
-        json.dumps(kbit_candidates, ensure_ascii=False)
-    ))
-
-    # =========================================================
-    # 6. signal_forge_alert (10/21 실시간 AI 신호)
+    # 5. signal_forge_alert (10/21 실시간 AI 신호)
     # =========================================================
     signal_forge_candidates = [
         {"ticker": "068270", "name": "셀트리온", "market": "KRX", "entry": 193900, "target": 261765, "stop": 183817, "status": "HOLDING", "note": "Catalyst Breakout 다일간 모멘텀 8.1% 상회 (Score 81.0)"},
@@ -443,22 +421,7 @@ def reset_and_reload_all_9_projects():
             "target_price": s["target"], "stop_loss_price": s["stop"], "notes": s["note"]
         })
 
-    # 5. kbit-bot
-    for s in kbit_candidates:
-        price = get_live_price("KRX", s["ticker"])
-        open_p = price["open"]
-        cur_p = price["current"]
-        ret = round(((cur_p - open_p) / open_p) * 100, 2) if open_p > 0 else 0.0
-        trades_to_insert.append({
-            "project_id": "kbit-bot", "project_name": "kbit-bot",
-            "ticker": s["ticker"], "name": price["name"] if price["name"] != s["ticker"] else s["name"],
-            "market": "KRX", "signal_type": "장중알람(시가매수)", "signal_date": f"{today_str} 09:39:00",
-            "entry_price": open_p, "entry_date": today_str, "current_price": cur_p,
-            "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": ret,
-            "target_price": s["target"], "stop_loss_price": s["stop"], "notes": s["note"]
-        })
-
-    # 6. signal_forge_alert
+    # 5. signal_forge_alert
     for s in signal_forge_candidates:
         if s["status"] == "CLOSED":
             ret = round(((s["exit"] - s["entry"]) / s["entry"]) * 100, 2)

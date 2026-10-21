@@ -299,7 +299,7 @@
           <i class="fa-regular fa-clock mr-2 text-indigo-400"></i>
           프로젝트 모니터링 (Project Monitoring & Execution Schedule)
         </h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-2.5 text-xs font-mono">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2.5 text-xs font-mono">
           <div class="bg-desk-900 border border-desk-border rounded p-2.5">
             <span class="text-indigo-400 font-bold block text-[11px]">08:30 (Mon)</span>
             <div class="font-semibold text-slate-200 mt-0.5 truncate">stock-dividend_top7</div>
@@ -314,11 +314,6 @@
             <span class="text-rose-400 font-bold block text-[11px]">08:45 (Mon-Fri)</span>
             <div class="font-semibold text-rose-200 mt-0.5 truncate">stock-sniper</div>
             <div class="text-[10px] text-rose-300 mt-1">RS Momentum & 52W High</div>
-          </div>
-          <div class="bg-desk-900 border border-desk-border rounded p-2.5">
-            <span class="text-indigo-400 font-bold block text-[11px]">09:30 (Daily)</span>
-            <div class="font-semibold text-slate-200 mt-0.5 truncate">kbit-bot</div>
-            <div class="text-[10px] text-slate-500 mt-1">Technical Chart Bot</div>
           </div>
           <div class="bg-desk-900 border border-desk-border rounded p-2.5">
             <span class="text-indigo-400 font-bold block text-[11px]">11:00 (Daily)</span>
@@ -376,24 +371,24 @@
     // Embedded Initial Dataset (Auto-synced with status.json)
     const INITIAL_DATA = {
   "summary": {
-    "updated_at": "2026-10-21 14:07:26",
-    "total_projects": 9,
-    "active_daemons": 8,
+    "updated_at": "2026-10-21 14:11:44",
+    "total_projects": 8,
+    "active_daemons": 7,
     "today_executed": 4,
     "market_stats": {
-      "KRX": 6,
+      "KRX": 5,
       "US": 4,
       "Global": 1
     },
     "portfolio": {
       "date": "2026-10-21",
-      "daily_return_pct": 1.35,
-      "cumulative_return_pct": 1.26,
-      "realized_pnl_pct": 1.0,
-      "unrealized_pnl_pct": 1.35,
+      "daily_return_pct": 1.2,
+      "cumulative_return_pct": 1.19,
+      "realized_pnl_pct": 1.13,
+      "unrealized_pnl_pct": 1.2,
       "holding_count": 21,
-      "closed_count": 7,
-      "win_rate": 57.1
+      "closed_count": 5,
+      "win_rate": 53.8
     }
   },
   "projects": [
@@ -628,36 +623,6 @@
       "last_log_preview": "최근 로그 기록 없음"
     },
     {
-      "id": "kbit-bot",
-      "name": "kbit-bot",
-      "label": "com.kbit.stockbot",
-      "category": "KRX",
-      "flag": "🇰🇷",
-      "type": "Daily Scheduled",
-      "summary": "한국 주식 당일 인기 및 기술적 상승 유망주 60일 캔들 차트 분석 및 자동 포스팅",
-      "schedule_display": "Daily 09:30",
-      "market": "KRX Trending Stocks",
-      "strategy": "장중 수급 특징주 포착 + 60일 차트 정배열 필터링 + 기술적 지표 분석 후 자동 포스팅",
-      "tags": [
-        "Market Movers",
-        "Technical Analysis",
-        "Auto Posting"
-      ],
-      "repo": "https://github.com/bluem00000000n/kbit-bot",
-      "local_path": "/Users/tothemoon/kbit-bot",
-      "log_path": "/Users/tothemoon/kbit-bot/logs/launchd.log",
-      "err_log_path": "/Users/tothemoon/kbit-bot/logs/launchd_err.log",
-      "launchd_registered": true,
-      "pid": null,
-      "last_exit_code": 0,
-      "status_text": "Active",
-      "status_code": "active",
-      "last_executed": "2026-10-14 17:15:57",
-      "executed_today": false,
-      "recent_logs": [],
-      "last_log_preview": "최근 로그 기록 없음"
-    },
-    {
       "id": "signal_forge_alert",
       "name": "signal_forge_alert",
       "label": "signal-forge-alert",
@@ -683,21 +648,21 @@
       "last_exit_code": null,
       "status_text": "Ready",
       "status_code": "ready",
-      "last_executed": "2026-10-21 14:06:50",
+      "last_executed": "2026-10-21 14:10:05",
       "executed_today": true,
       "recent_logs": [
-        "2026-10-21 14:06:49 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035420 (S07_SECTOR_SYMPATHY LONG) within 60m window.",
-        "2026-10-21 14:06:49 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035420 (S12_HYPE_TO_FUNDAMENTALS LONG) within 60m window.",
-        "2026-10-21 14:06:49 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035720 (S07_SECTOR_SYMPATHY LONG) within 60m window.",
-        "2026-10-21 14:06:49 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035720 (S12_HYPE_TO_FUNDAMENTALS LONG) within 60m window.",
-        "2026-10-21 14:06:50 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S07_SECTOR_SYMPATHY LONG) within 60m window.",
-        "2026-10-21 14:06:50 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S11_SUPPLY_ABSORPTION LONG) within 60m window.",
-        "2026-10-21 14:06:50 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S12_HYPE_TO_FUNDAMENTALS LONG) within 60m window.",
-        "2026-10-21 14:06:50 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S14_RELATIVE_STRENGTH LONG) within 60m window.",
-        "2026-10-21 14:06:50 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S15_MULTI_DAY_MOMENTUM LONG) within 60m window.",
-        "2026-10-21 14:06:50 [INFO] [cli] [DAEMON] Cycle #881 complete: detected=28, alerted=0, dedup=28"
+        "2026-10-21 14:10:05 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035420 (S07_SECTOR_SYMPATHY LONG) within 60m window.",
+        "2026-10-21 14:10:05 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035420 (S12_HYPE_TO_FUNDAMENTALS LONG) within 60m window.",
+        "2026-10-21 14:10:05 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035720 (S07_SECTOR_SYMPATHY LONG) within 60m window.",
+        "2026-10-21 14:10:05 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035720 (S12_HYPE_TO_FUNDAMENTALS LONG) within 60m window.",
+        "2026-10-21 14:10:05 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S07_SECTOR_SYMPATHY LONG) within 60m window.",
+        "2026-10-21 14:10:05 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S11_SUPPLY_ABSORPTION LONG) within 60m window.",
+        "2026-10-21 14:10:05 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S12_HYPE_TO_FUNDAMENTALS LONG) within 60m window.",
+        "2026-10-21 14:10:05 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S14_RELATIVE_STRENGTH LONG) within 60m window.",
+        "2026-10-21 14:10:05 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S15_MULTI_DAY_MOMENTUM LONG) within 60m window.",
+        "2026-10-21 14:10:05 [INFO] [cli] [DAEMON] Cycle #882 complete: detected=28, alerted=0, dedup=28"
       ],
-      "last_log_preview": "2026-10-21 14:06:50 [INFO] [cli] [DAEMON] Cycle #881 complete: detected=28, alerted=0, dedup=28"
+      "last_log_preview": "2026-10-21 14:10:05 [INFO] [cli] [DAEMON] Cycle #882 complete: detected=28, alerted=0, dedup=28"
     },
     {
       "id": "stock-cyclical-screener",
@@ -869,34 +834,6 @@
           "exit_date": "2026-10-21",
           "status": "CLOSED",
           "note": "손절가 이탈 원칙 손절 청산 (-5.36%)"
-        }
-      ]
-    },
-    {
-      "id": 28,
-      "project_id": "kbit-bot",
-      "project_name": "kbit-bot",
-      "sent_at": "2026-10-21 09:39:01",
-      "alarm_type": "장중알람",
-      "market": "KRX",
-      "title": "📈 장중 인기 특징주 60일 캔들 차트 기술적 분석 (쓰리빌리언 / 클로봇)",
-      "raw_message": "📈 [K-Bit 특징주 봇] 장중 기술적 돌파주 자동 분석\n📅 발행일시: 2026-10-21 09:39:01\n종목: 쓰리빌리언 (394800)\n- 60일 캔들 차트 분석: 우하향 역배열 배제, 장중 거래량 급증 돌파형 양봉 형성\n- 목표치: 11,500원 / 지지 손절선: 9,200원\n- 매매 수칙: 장중 포스팅 시점 체결가 분할 매수.",
-      "stocks": [
-        {
-          "ticker": "394800",
-          "name": "쓰리빌리언",
-          "market": "KRX",
-          "target": 11500,
-          "stop": 9200,
-          "note": "10/21 09:39 장중 AI 유전체 분석 수급 급증, 60일선 정배열 돌파"
-        },
-        {
-          "ticker": "466100",
-          "name": "클로봇",
-          "market": "KRX",
-          "target": 14000,
-          "stop": 11000,
-          "note": "10/20 12:44 지능형 로봇 소프트웨어 수급 집중 특징주"
         }
       ]
     },
@@ -1082,11 +1019,11 @@
       "signal_date": "2026-10-21 08:40:00",
       "entry_price": 176900.0,
       "entry_date": "2026-10-21",
-      "current_price": 194700.0,
+      "current_price": 194600.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": 10.06,
+      "return_pct": 10.01,
       "target_price": 205000.0,
       "stop_loss_price": 176900.0,
       "notes": "227선 무한 스윙 3차 트렌치 완주 보유 (+10.17%)"
@@ -1122,11 +1059,11 @@
       "signal_date": "2026-10-21 08:45:00",
       "entry_price": 9670.0,
       "entry_date": "2026-10-21",
-      "current_price": 9990.0,
+      "current_price": 9970.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": 3.31,
+      "return_pct": 3.1,
       "target_price": 10500.0,
       "stop_loss_price": 9300.0,
       "notes": "거래대금 1,500억 유입 양봉 수급 방어"
@@ -1142,34 +1079,14 @@
       "signal_date": "2026-10-21 08:40:00",
       "entry_price": 128800.0,
       "entry_date": "2026-10-21",
-      "current_price": 131000.0,
+      "current_price": 130900.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": 1.71,
+      "return_pct": 1.63,
       "target_price": 145000.0,
       "stop_loss_price": 124000.0,
       "notes": "227선 스윙 2차 분할 포지션 유지 (+1.71%)"
-    },
-    {
-      "id": 75,
-      "project_id": "stock-sepa-pivot",
-      "project_name": "stock-sepa-pivot",
-      "ticker": "000660",
-      "name": "SK하이닉스",
-      "market": "KRX",
-      "signal_type": "장전알람(시가매수)",
-      "signal_date": "2026-10-21 08:40:00",
-      "entry_price": 1260000.0,
-      "entry_date": "2026-10-21",
-      "current_price": 1281000.0,
-      "exit_price": null,
-      "exit_date": null,
-      "status": "HOLDING",
-      "return_pct": 1.67,
-      "target_price": 1285000.0,
-      "stop_loss_price": 1220000.0,
-      "notes": "HBM3E 독점 슈퍼사이클, 20일선 VCP 피벗 돌파"
     },
     {
       "id": 88,
@@ -1182,11 +1099,11 @@
       "signal_date": "2026-10-21 10:00:00",
       "entry_price": 193900.0,
       "entry_date": "2026-10-18",
-      "current_price": 197000.0,
+      "current_price": 196900.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": 1.6,
+      "return_pct": 1.55,
       "target_price": 261765.0,
       "stop_loss_price": 183817.0,
       "notes": "Catalyst Breakout 다일간 모멘텀 8.1% 상회 (Score 81.0)"
@@ -1212,44 +1129,24 @@
       "notes": "227선 스윙 2차 분할 누적 포지션 (+1.36%)"
     },
     {
-      "id": 70,
-      "project_id": "stock-sniper",
-      "project_name": "stock-sniper",
-      "ticker": "069500",
-      "name": "KODEX 200",
+      "id": 75,
+      "project_id": "stock-sepa-pivot",
+      "project_name": "stock-sepa-pivot",
+      "ticker": "000660",
+      "name": "SK하이닉스",
       "market": "KRX",
       "signal_type": "장전알람(시가매수)",
-      "signal_date": "2026-10-21 08:45:00",
-      "entry_price": 88665.0,
+      "signal_date": "2026-10-21 08:40:00",
+      "entry_price": 1260000.0,
       "entry_date": "2026-10-21",
-      "current_price": 89315.0,
+      "current_price": 1272000.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": 0.73,
-      "target_price": 91500.0,
-      "stop_loss_price": 87000.0,
-      "notes": "지수 대표 ETF 분할 시가 체결"
-    },
-    {
-      "id": 73,
-      "project_id": "stock-sniper",
-      "project_name": "stock-sniper",
-      "ticker": "036930",
-      "name": "주성엔지니어링",
-      "market": "KRX",
-      "signal_type": "장전알람(시가매수)",
-      "signal_date": "2026-10-21 08:45:00",
-      "entry_price": 202000.0,
-      "entry_date": "2026-10-21",
-      "current_price": 203000.0,
-      "exit_price": null,
-      "exit_date": null,
-      "status": "HOLDING",
-      "return_pct": 0.5,
-      "target_price": 215000.0,
-      "stop_loss_price": 195000.0,
-      "notes": "반도체 ALD 2,200억 수급 방어"
+      "return_pct": 0.95,
+      "target_price": 1285000.0,
+      "stop_loss_price": 1220000.0,
+      "notes": "HBM3E 독점 슈퍼사이클, 20일선 VCP 피벗 돌파"
     },
     {
       "id": 76,
@@ -1272,6 +1169,46 @@
       "notes": "피하주사(SC) 독점 플랫폼, 하이타이트 플래그 돌파"
     },
     {
+      "id": 70,
+      "project_id": "stock-sniper",
+      "project_name": "stock-sniper",
+      "ticker": "069500",
+      "name": "KODEX 200",
+      "market": "KRX",
+      "signal_type": "장전알람(시가매수)",
+      "signal_date": "2026-10-21 08:45:00",
+      "entry_price": 88665.0,
+      "entry_date": "2026-10-21",
+      "current_price": 88955.0,
+      "exit_price": null,
+      "exit_date": null,
+      "status": "HOLDING",
+      "return_pct": 0.33,
+      "target_price": 91500.0,
+      "stop_loss_price": 87000.0,
+      "notes": "지수 대표 ETF 분할 시가 체결"
+    },
+    {
+      "id": 73,
+      "project_id": "stock-sniper",
+      "project_name": "stock-sniper",
+      "ticker": "036930",
+      "name": "주성엔지니어링",
+      "market": "KRX",
+      "signal_type": "장전알람(시가매수)",
+      "signal_date": "2026-10-21 08:45:00",
+      "entry_price": 202000.0,
+      "entry_date": "2026-10-21",
+      "current_price": 202500.0,
+      "exit_price": null,
+      "exit_date": null,
+      "status": "HOLDING",
+      "return_pct": 0.25,
+      "target_price": 215000.0,
+      "stop_loss_price": 195000.0,
+      "notes": "반도체 ALD 2,200억 수급 방어"
+    },
+    {
       "id": 72,
       "project_id": "stock-sniper",
       "project_name": "stock-sniper",
@@ -1282,11 +1219,11 @@
       "signal_date": "2026-10-21 08:45:00",
       "entry_price": 18170.0,
       "entry_date": "2026-10-21",
-      "current_price": 18240.0,
+      "current_price": 18200.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": 0.39,
+      "return_pct": 0.17,
       "target_price": 19500.0,
       "stop_loss_price": 17500.0,
       "notes": "생체인증/양자암호 52주 신고가 돌파권"
@@ -1302,11 +1239,11 @@
       "signal_date": "2026-10-21 08:40:00",
       "entry_price": 1265000.0,
       "entry_date": "2026-10-21",
-      "current_price": 1268000.0,
+      "current_price": 1267000.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": 0.24,
+      "return_pct": 0.16,
       "target_price": 1320000.0,
       "stop_loss_price": 1220000.0,
       "notes": "글로벌 수출 호조, 컵앤핸들 피벗 돌파"
@@ -1322,11 +1259,11 @@
       "signal_date": "2026-10-21 08:40:00",
       "entry_price": 809000.0,
       "entry_date": "2026-10-21",
-      "current_price": 810000.0,
+      "current_price": 809000.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": 0.12,
+      "return_pct": 0.0,
       "target_price": 835000.0,
       "stop_loss_price": 785000.0,
       "notes": "K9/천무 글로벌 수주 모멘텀, 불플래그 패턴"
@@ -1442,11 +1379,11 @@
       "signal_date": "2026-10-21 08:45:00",
       "entry_price": 13330.0,
       "entry_date": "2026-10-21",
-      "current_price": 13310.0,
+      "current_price": 13270.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": -0.15,
+      "return_pct": -0.45,
       "target_price": 13800.0,
       "stop_loss_price": 13000.0,
       "notes": "코스닥 지수 수급 지지선 반등"
@@ -1462,11 +1399,11 @@
       "signal_date": "2026-10-19 08:30:00",
       "entry_price": 42900.0,
       "entry_date": "2026-10-19",
-      "current_price": 42350.0,
+      "current_price": 42200.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": -1.28,
+      "return_pct": -1.63,
       "target_price": 46000.0,
       "stop_loss_price": 38000.0,
       "notes": "시가배당률 6.8%, 자본건전성 최우수"
@@ -1482,11 +1419,11 @@
       "signal_date": "2026-10-21 08:40:00",
       "entry_price": 499500.0,
       "entry_date": "2026-10-21",
-      "current_price": 492000.0,
+      "current_price": 490500.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": -1.5,
+      "return_pct": -1.8,
       "target_price": 515000.0,
       "stop_loss_price": 480000.0,
       "notes": "북미 변압기 쇼티지 수혜, 플랫 베이스 지지"
@@ -1530,46 +1467,6 @@
       "target_price": null,
       "stop_loss_price": null,
       "notes": "자동차 부품 PBR 호황기 정점 도달, 이익 실현 매도 (+7.30%)"
-    },
-    {
-      "id": 86,
-      "project_id": "kbit-bot",
-      "project_name": "kbit-bot",
-      "ticker": "394800",
-      "name": "쓰리빌리언",
-      "market": "KRX",
-      "signal_type": "장중알람(시가매수)",
-      "signal_date": "2026-10-21 09:39:00",
-      "entry_price": 5250.0,
-      "entry_date": "2026-10-21",
-      "current_price": 5340.0,
-      "exit_price": 5340.0,
-      "exit_date": "2026-10-21",
-      "status": "CLOSED",
-      "return_pct": 1.71,
-      "target_price": 11500.0,
-      "stop_loss_price": 9200.0,
-      "notes": "10/21 09:39 장중 AI 유전체 분석 수급 급증, 60일선 정배열 돌파 | 🛑 손절가 이탈 기계적 손절 청산"
-    },
-    {
-      "id": 87,
-      "project_id": "kbit-bot",
-      "project_name": "kbit-bot",
-      "ticker": "466100",
-      "name": "클로봇",
-      "market": "KRX",
-      "signal_type": "장중알람(시가매수)",
-      "signal_date": "2026-10-21 09:39:00",
-      "entry_price": 19790.0,
-      "entry_date": "2026-10-21",
-      "current_price": 19720.0,
-      "exit_price": 19720.0,
-      "exit_date": "2026-10-21",
-      "status": "CLOSED",
-      "return_pct": -0.35,
-      "target_price": 14000.0,
-      "stop_loss_price": 11000.0,
-      "notes": "10/20 12:44 지능형 로봇 소프트웨어 수급 집중 특징주 | 🎯 목표가 도달 전량 익절"
     },
     {
       "id": 84,
@@ -1635,30 +1532,20 @@
   "performance": {
     "PORTFOLIO_TOTAL": {
       "date": "2026-10-21",
-      "daily_return_pct": 1.35,
-      "cumulative_return_pct": 1.26,
-      "realized_pnl_pct": 1.0,
-      "unrealized_pnl_pct": 1.35,
+      "daily_return_pct": 1.2,
+      "cumulative_return_pct": 1.19,
+      "realized_pnl_pct": 1.13,
+      "unrealized_pnl_pct": 1.2,
       "holding_count": 21,
-      "closed_count": 7,
-      "win_rate": 57.1
-    },
-    "kbit-bot": {
-      "date": "2026-10-21",
-      "daily_return_pct": 0.0,
-      "cumulative_return_pct": 0.68,
-      "realized_pnl_pct": 0.68,
-      "unrealized_pnl_pct": 0.0,
-      "holding_count": 0,
-      "closed_count": 2,
-      "win_rate": 50.0
+      "closed_count": 5,
+      "win_rate": 53.8
     },
     "signal_forge_alert": {
       "date": "2026-10-21",
-      "daily_return_pct": 1.6,
-      "cumulative_return_pct": -1.88,
+      "daily_return_pct": 1.55,
+      "cumulative_return_pct": -1.91,
       "realized_pnl_pct": -5.36,
-      "unrealized_pnl_pct": 1.6,
+      "unrealized_pnl_pct": 1.55,
       "holding_count": 1,
       "closed_count": 1,
       "win_rate": 50.0
@@ -1675,10 +1562,10 @@
     },
     "stock-dividend_top7": {
       "date": "2026-10-21",
-      "daily_return_pct": -1.28,
-      "cumulative_return_pct": -2.02,
+      "daily_return_pct": -1.63,
+      "cumulative_return_pct": -2.13,
       "realized_pnl_pct": -2.38,
-      "unrealized_pnl_pct": -1.28,
+      "unrealized_pnl_pct": -1.63,
       "holding_count": 1,
       "closed_count": 2,
       "win_rate": 0.0
@@ -1695,30 +1582,30 @@
     },
     "stock-sepa-pivot": {
       "date": "2026-10-21",
-      "daily_return_pct": 0.19,
-      "cumulative_return_pct": 0.19,
+      "daily_return_pct": -0.05,
+      "cumulative_return_pct": -0.05,
       "realized_pnl_pct": 0.0,
-      "unrealized_pnl_pct": 0.19,
+      "unrealized_pnl_pct": -0.05,
       "holding_count": 5,
       "closed_count": 0,
-      "win_rate": 80.0
+      "win_rate": 60.0
     },
     "stock-sniper": {
       "date": "2026-10-21",
-      "daily_return_pct": 0.96,
-      "cumulative_return_pct": 0.96,
+      "daily_return_pct": 0.68,
+      "cumulative_return_pct": 0.68,
       "realized_pnl_pct": 0.0,
-      "unrealized_pnl_pct": 0.96,
+      "unrealized_pnl_pct": 0.68,
       "holding_count": 5,
       "closed_count": 0,
       "win_rate": 80.0
     },
     "stock-swing": {
       "date": "2026-10-21",
-      "daily_return_pct": 5.57,
-      "cumulative_return_pct": 5.57,
+      "daily_return_pct": 5.54,
+      "cumulative_return_pct": 5.54,
       "realized_pnl_pct": 0.0,
-      "unrealized_pnl_pct": 5.57,
+      "unrealized_pnl_pct": 5.54,
       "holding_count": 4,
       "closed_count": 0,
       "win_rate": 100.0
@@ -1834,7 +1721,6 @@
         { id: 'stock-swing', name: 'stock-swing', label: 'Daily 08:40 / 21:30 227 Scale-in' },
         { id: 'stock-us3x', name: 'stock-us3x', label: 'Tue 17:00 US 3X Infinite' },
         { id: 'stock-dividend_top7', name: 'stock-dividend_top7', label: 'Mon 08:30 Dividend Top 7' },
-        { id: 'kbit-bot', name: 'kbit-bot', label: 'Daily 09:30 Technical Chart' },
         { id: 'stock-cyclical-screener', name: 'stock-cyclical-screener', label: 'Daily 11:00 Cyclical PBR' },
         { id: 'signal_forge_alert', name: 'signal_forge_alert', label: 'AI Macro Catalyst' },
         { id: 'stock-htp-top10', name: 'stock-htp-top10', label: 'Tue 17:00 HTP Momentum' }
