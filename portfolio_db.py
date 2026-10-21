@@ -28,7 +28,7 @@ from datetime import datetime
 SUPERVISOR_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(SUPERVISOR_DIR, "data")
 os.makedirs(DATA_DIR, exist_ok=True)
-DB_PATH = os.path.join(DATA_DIR, "trading_records.db")
+DB_PATH = os.path.join(DATA_DIR, "stock_master.db")
 
 SSL_CTX = ssl.create_default_context()
 SSL_CTX.check_hostname = False

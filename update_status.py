@@ -20,6 +20,7 @@ import subprocess
 from datetime import datetime
 
 import portfolio_db
+import sync_master_db
 
 HOME = os.path.expanduser("~")
 SUPERVISOR_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -322,6 +323,13 @@ def update_index_html(data):
         print(f"Warning: Failed to update index.html inline data: {e}")
 
 def main():
+    # 1. 하위 9개 프로젝트 데이터 중앙 DB (stock_master.db) 통합 동기화
+    try:
+        sync_master_db.sync_all_subprojects()
+    except Exception as e:
+        print(f"Warning: sync_master_db failed: {e}")
+
+    # 2. 데이터 수집 및 수익률 계산
     data = collect_data()
     data_dir = os.path.join(SUPERVISOR_DIR, "data")
     os.makedirs(data_dir, exist_ok=True)
