@@ -50,29 +50,25 @@
 
 ## 🌐 GitHub Pages로 웹 배포하기
 
-이 프로젝트를 GitHub Pages에 올리면 언제 어디서나 모바일 폰이나 외부 PC에서도 `https://bluem00000000n.github.io/stock-supervisor` 주소로 현황판을 열람할 수 있습니다.
+이 프로젝트를 GitHub Pages에 올리면 언제 어디서나 모바일 폰이나 외부 PC에서도 `https://bluem00000000n.github.io/stock` 주소로 현황판을 열람할 수 있습니다.
 
 ### 1) GitHub에 새 저장소 생성
-GitHub(github.com)에서 `stock-supervisor` 이름으로 새 저장소(Public)를 만듭니다.
+GitHub(github.com)에서 **`stock`** 이름으로 새 저장소(Public)를 만듭니다.
 
 ### 2) 로컬 코드 커밋 & 푸시
 ```bash
 cd /Users/tothemoon/stock-supervisor
-git init
-git add .
-git commit -m "feat: Initial commit for Stock Supervisor dashboard"
-git branch -M main
-git remote add origin https://github.com/bluem00000000n/stock-supervisor.git
+git remote add origin https://github.com/bluem00000000n/stock.git
 git push -u origin main
 ```
 
 ### 3) GitHub Pages 켜기
-1. GitHub 저장소 페이지(`https://github.com/bluem00000000n/stock-supervisor`) 접속
+1. GitHub 저장소 페이지(`https://github.com/bluem00000000n/stock`) 접속
 2. 상단 메뉴 **[Settings]** 탭 클릭
 3. 좌측 사이드바에서 **[Pages]** 클릭
 4. **Branch** 항목에서 `main` 브랜치 및 `/ (root)` 선택 후 **[Save]** 클릭
 5. 1~2분 후 배포가 완료되며 웹 접속 링크가 활성화됩니다:
-   👉 **`https://bluem00000000n.github.io/stock-supervisor`**
+   👉 **`https://bluem00000000n.github.io/stock`**
 
 ---
 
