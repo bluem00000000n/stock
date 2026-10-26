@@ -414,37 +414,105 @@ def sync_kbit_bot(conn):
     return count
 
 def sync_stock_cyclical(conn):
-    """stock-cyclical-screener: alerts_history.json 및 data/state.json 수집"""
-    alerts_path = "/Users/tothemoon/stock-cyclical-screener/data/alerts_history.json"
-    if not os.path.exists(alerts_path):
-        return 0
+    """stock-cyclical-screener: alerts_history.json 및 data/positions.json 수집하여 subproject_signals 및 trades 테이블 동기화"""
+    screener_dir = "/Users/tothemoon/stock-cyclical-screener/data"
+    alerts_path = os.path.join(screener_dir, "alerts_history.json")
+    positions_path = os.path.join(screener_dir, "positions.json")
+
     count = 0
-    try:
-        with open(alerts_path, "r", encoding="utf-8") as f:
-            alerts = json.load(f)
-        now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        for a in alerts:
-            sig_date = a.get("date", datetime.now().strftime("%Y-%m-%d"))
-            for stock_name in a.get("new_sells", []):
-                raw_json = json.dumps({"action": "SELL", "event": a}, ensure_ascii=False)
-                conn.execute("""
-                INSERT INTO subproject_signals (project_id, ticker, name, market, signal_type, signal_date, price, target_price, stop_loss_price, raw_json, created_at)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                ON CONFLICT(project_id, ticker, signal_date, signal_type) DO UPDATE SET
-                    raw_json = excluded.raw_json;
-                """, ("stock-cyclical-screener", stock_name, stock_name, "KOR", "CYCLICAL_SELL", sig_date, None, None, None, raw_json, now))
+    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    # 1. alerts_history.json -> subproject_signals
+    if os.path.exists(alerts_path):
+        try:
+            with open(alerts_path, "r", encoding="utf-8") as f:
+                alerts = json.load(f)
+            for a in alerts:
+                sig_date = a.get("date", datetime.now().strftime("%Y-%m-%d"))
+                for stock_name in a.get("new_sells", []):
+                    raw_json = json.dumps({"action": "SELL", "event": a}, ensure_ascii=False)
+                    conn.execute("""
+                    INSERT INTO subproject_signals (project_id, ticker, name, market, signal_type, signal_date, price, target_price, stop_loss_price, raw_json, created_at)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    ON CONFLICT(project_id, ticker, signal_date, signal_type) DO UPDATE SET
+                        raw_json = excluded.raw_json;
+                    """, ("stock-cyclical-screener", stock_name, stock_name, "KOR", "CYCLICAL_SELL", sig_date, None, None, None, raw_json, now))
+                    count += 1
+                for stock_name in a.get("new_buys", []):
+                    raw_json = json.dumps({"action": "BUY", "event": a}, ensure_ascii=False)
+                    conn.execute("""
+                    INSERT INTO subproject_signals (project_id, ticker, name, market, signal_type, signal_date, price, target_price, stop_loss_price, raw_json, created_at)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    ON CONFLICT(project_id, ticker, signal_date, signal_type) DO UPDATE SET
+                        raw_json = excluded.raw_json;
+                    """, ("stock-cyclical-screener", stock_name, stock_name, "KOR", "CYCLICAL_BUY", sig_date, None, None, None, raw_json, now))
+                    count += 1
+        except Exception as e:
+            print(f"[stock-cyclical-screener] alerts sync error: {e}")
+
+    # 2. positions.json -> trades 테이블 실시간 동기화
+    if os.path.exists(positions_path):
+        try:
+            with open(positions_path, "r", encoding="utf-8") as f:
+                pos_data = json.load(f)
+
+            active = pos_data.get("active_positions", {})
+            closed = pos_data.get("closed_positions", [])
+
+            # 활성 포지션 동기화
+            for code, pos in active.items():
+                cur = conn.cursor()
+                cur.execute("SELECT id FROM trades WHERE project_id = 'stock-cyclical-screener' AND ticker = ? AND status = 'HOLDING'", (code,))
+                row = cur.fetchone()
+                if row:
+                    conn.execute("""
+                    UPDATE trades SET
+                        current_price = ?,
+                        return_pct = ?,
+                        target_price = ?,
+                        stop_loss_price = ?,
+                        updated_at = ?
+                    WHERE id = ?
+                    """, (pos["current_price"], pos["return_pct"], pos["target_price"], pos["stop_price"], now, row[0]))
+                else:
+                    conn.execute("""
+                    INSERT INTO trades (
+                        project_id, project_name, ticker, name, market,
+                        signal_type, signal_date, entry_price, entry_date,
+                        current_price, exit_price, exit_date, status, return_pct,
+                        target_price, stop_loss_price, notes, updated_at
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    """, (
+                        "stock-cyclical-screener", "stock-cyclical-screener", code, pos["name"], "KRX",
+                        "시클리컬_바닥매수", pos["entry_date"], pos["entry_price"], pos["entry_date"],
+                        pos["current_price"], None, None, "HOLDING", pos["return_pct"],
+                        pos["target_price"], pos["stop_price"], pos.get("reason", "PBR 바닥 자율 매수"), now
+                    ))
                 count += 1
-            for stock_name in a.get("new_buys", []):
-                raw_json = json.dumps({"action": "BUY", "event": a}, ensure_ascii=False)
-                conn.execute("""
-                INSERT INTO subproject_signals (project_id, ticker, name, market, signal_type, signal_date, price, target_price, stop_loss_price, raw_json, created_at)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                ON CONFLICT(project_id, ticker, signal_date, signal_type) DO UPDATE SET
-                    raw_json = excluded.raw_json;
-                """, ("stock-cyclical-screener", stock_name, stock_name, "KOR", "CYCLICAL_BUY", sig_date, None, None, None, raw_json, now))
-                count += 1
-    except Exception as e:
-        print(f"[stock-cyclical-screener] sync error: {e}")
+
+            # 청산 포지션 동기화
+            for c in closed:
+                code = c["code"]
+                cur = conn.cursor()
+                cur.execute("SELECT id FROM trades WHERE project_id = 'stock-cyclical-screener' AND ticker = ? AND status = 'CLOSED' AND exit_date = ?", (code, c["exit_date"]))
+                if not cur.fetchone():
+                    conn.execute("""
+                    INSERT INTO trades (
+                        project_id, project_name, ticker, name, market,
+                        signal_type, signal_date, entry_price, entry_date,
+                        current_price, exit_price, exit_date, status, return_pct,
+                        target_price, stop_loss_price, notes, updated_at
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    """, (
+                        "stock-cyclical-screener", "stock-cyclical-screener", code, c["name"], "KRX",
+                        "시클리컬_피크매도", c["exit_date"], c["entry_price"], c["entry_date"],
+                        c["exit_price"], c["exit_price"], c["exit_date"], "CLOSED", c["return_pct"],
+                        None, None, c["exit_reason"], now
+                    ))
+                    count += 1
+        except Exception as e:
+            print(f"[stock-cyclical-screener] positions sync error: {e}")
+
     return count
 
 def sync_all_subprojects():
