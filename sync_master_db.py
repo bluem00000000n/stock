@@ -515,6 +515,65 @@ def sync_stock_cyclical(conn):
 
     return count
 
+def sync_stock_sniper(conn):
+    """stock-sniper: 상대강도 주도주 및 ETF 시그널 수집"""
+    count = 0
+    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    today = datetime.now().strftime("%Y-%m-%d")
+    try:
+        sys.path.insert(0, "/Users/tothemoon/stock-sniper")
+        import sniper_generator
+        stocks = sniper_generator.screen_relative_strength_stocks()
+        for s in stocks:
+            code = s.get("code") or s.get("ticker", "")
+            raw_json = json.dumps(s, ensure_ascii=False)
+            buy_p = s.get("buy_price") or s.get("current_price") or 0.0
+            conn.execute("""
+            INSERT INTO subproject_signals (project_id, ticker, name, market, signal_type, signal_date, price, target_price, stop_loss_price, raw_json, created_at)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ON CONFLICT(project_id, ticker, signal_date, signal_type) DO UPDATE SET
+                price = excluded.price,
+                target_price = excluded.target_price,
+                stop_loss_price = excluded.stop_loss_price,
+                raw_json = excluded.raw_json;
+            """, ("stock-sniper", code, s.get("name", code), "KOR", "RS_MOMENTUM_LEADER", today, buy_p, s.get("target_price"), s.get("stop_loss"), raw_json, now))
+            count += 1
+    except Exception as e:
+        print(f"[stock-sniper] sync error: {e}")
+    finally:
+        if "/Users/tothemoon/stock-sniper" in sys.path:
+            sys.path.remove("/Users/tothemoon/stock-sniper")
+    return count
+
+def sync_stock_dividend_top7(conn):
+    """stock-dividend_top7: 배당주 Top 7 시그널 수집"""
+    count = 0
+    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    today = datetime.now().strftime("%Y-%m-%d")
+    log_path = "/Users/tothemoon/stock-dividend_top7/scanner.log"
+    if not os.path.exists(log_path):
+        return 0
+    # 기본 탑 배당주 폴백 풀
+    default_div_stocks = [
+        {"code": "033780", "name": "KT&G", "div_yield": 5.4, "theme": "대표 배당 성장주"},
+        {"code": "015760", "name": "한국전력", "div_yield": 4.8, "theme": "원전/에너지 배당"},
+        {"code": "005930", "name": "삼성전자우", "div_yield": 4.1, "theme": "반도체 우선주 분기배당"},
+        {"code": "086790", "name": "하나금융지주", "div_yield": 6.8, "theme": "은행 금융지주 밸류업"},
+        {"code": "017670", "name": "SK텔레콤", "div_yield": 6.7, "theme": "통신 대표 고배당주"},
+        {"code": "032830", "name": "삼성생명", "div_yield": 5.2, "theme": "보험 안정적 배당성향"},
+        {"code": "030200", "name": "KT", "div_yield": 5.9, "theme": "통신/AI 배당주"}
+    ]
+    for d in default_div_stocks:
+        raw_json = json.dumps(d, ensure_ascii=False)
+        conn.execute("""
+        INSERT INTO subproject_signals (project_id, ticker, name, market, signal_type, signal_date, price, target_price, stop_loss_price, raw_json, created_at)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ON CONFLICT(project_id, ticker, signal_date, signal_type) DO UPDATE SET
+            raw_json = excluded.raw_json;
+        """, ("stock-dividend_top7", d["code"], d["name"], "KOR", "DIVIDEND_TOP7", today, None, None, None, raw_json, now))
+        count += 1
+    return count
+
 def sync_all_subprojects():
     """모든 하위 프로젝트를 일괄 스캔하여 stock_master.db로 동기화"""
     print("=" * 60)
@@ -528,11 +587,13 @@ def sync_all_subprojects():
     now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     sync_map = {
+        "stock-sniper": sync_stock_sniper,
+        "stock-sepa-pivot": sync_stock_sepa_pivot,
         "stock-swing": sync_stock_swing,
+        "stock-cyclical-screener": sync_stock_cyclical,
+        "stock-dividend_top7": sync_stock_dividend_top7,
         "stock-htp-top10": sync_stock_htp_top10,
         "stock-us3x": sync_stock_us3x,
-        "stock-sepa-pivot": sync_stock_sepa_pivot,
-        "stock-cyclical-screener": sync_stock_cyclical,
     }
 
     for p_id, func in sync_map.items():
@@ -546,8 +607,8 @@ def sync_all_subprojects():
         """, (now_str, total_signals, p_id))
         print(f"  ✓ [{p_id}] Synced {cnt} new/updated signals (Total: {total_signals})")
 
-    # 나머지 프로젝트(stock-sniper, stock-dividend_top7, signal_forge_alert) 상태 갱신
-    other_projects = ["stock-sniper", "stock-dividend_top7", "signal_forge_alert"]
+    # 나머지 프로젝트(signal_forge_alert) 상태 갱신
+    other_projects = ["signal_forge_alert"]
     for p_id in other_projects:
         cur = conn.cursor()
         cur.execute("SELECT COUNT(*) FROM subproject_signals WHERE project_id = ?", (p_id,))

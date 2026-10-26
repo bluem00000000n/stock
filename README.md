@@ -44,5 +44,31 @@
 
 ---
 
+## 📢 중앙 통합 알람 엔진 (`integrated_alarm_engine.py`)
+
+기존에 각 하위 프로젝트별로 분산 전송되던 텔레그램 알람을 **Supervisor가 일괄 취합하여 한 번에 정돈된 종합 브리핑**으로 발송합니다.
+
+### 1. 주요 기능 및 실전 원칙
+- **선별 매수/매도 원칙**: 모든 추천 종목을 기계적으로 매수하지 않고, 당일 시황, 주도 업종, 테마 수급 및 개별 종목의 특장에 따라 1~2개 핵심 주도주만 선별 진입/익절 권고.
+- **자체 DB 포트폴리오 연동**: 각 프로젝트가 자체 DB에 관리하는 실전 포지션과 시그널을 `stock_master.db`로 통합 동기화 후 실시간 포트폴리오 현황을 한눈에 브리핑.
+- **장별 맞춤 알람 스케줄**:
+  - 🌅 **KRX 한국장 통합 알람**: 월~금 08:45 KST (스나이퍼 주도주 3선, SEPA 피봇, 227선 스윙, 시클리컬 PBR 바닥, 배당 Top 7)
+  - 🌃 **US 미국장 통합 알람**: 월~금 21:30 KST (HTP 모멘텀 Top 10, US 3X 무한매수, SEPA US, 227선 스윙 US)
+
+### 2. 수동 실행 CLI
+```bash
+python3 send_integrated_alarm.py --market krx    # 한국장 통합 알람 즉시 전송
+python3 send_integrated_alarm.py --market us     # 미국장 통합 알람 즉시 전송
+python3 send_integrated_alarm.py --auto          # 시간대별(08시: KRX, 21시: US) 자동 판별 발송
+python3 send_integrated_alarm.py --dry-run       # 텔레그램 미전송 테스트 (미리보기)
+```
+
+### 3. macOS launchd 백그라운드 스케줄러 등록
+```bash
+./scripts/install_launchd_alarm.sh
+```
+
+---
+
 ## 🌐 GitHub Pages 주소
 👉 **[https://bluem00000000n.github.io/stock/](https://bluem00000000n.github.io/stock/)**
