@@ -104,12 +104,9 @@
 
         <!-- Navigation Tabs -->
         <nav class="hidden md:flex items-center space-x-1 pl-4 border-l border-desk-border">
-          <button onclick="switchTab('performance')" id="tab-btn-performance" class="tab-btn px-3 py-1.5 text-xs font-semibold rounded bg-desk-800 text-white border border-desk-600 transition-colors">
+          <span class="px-3 py-1.5 text-xs font-semibold rounded bg-desk-800 text-white border border-desk-600">
             <i class="fa-solid fa-chart-line mr-1.5 text-rose-500"></i> 수익률 & 포트폴리오
-          </button>
-          <button onclick="switchTab('systems')" id="tab-btn-systems" class="tab-btn px-3 py-1.5 text-xs font-medium rounded text-slate-400 hover:text-slate-200 hover:bg-desk-850 border border-transparent transition-colors">
-            <i class="fa-solid fa-server mr-1.5 text-indigo-400"></i> 프로젝트 모니터링
-          </button>
+          </span>
         </nav>
       </div>
 
@@ -127,12 +124,6 @@
       </div>
     </div>
   </header>
-
-  <!-- Mobile Sub-nav -->
-  <div class="md:hidden flex items-center justify-around bg-desk-900 border-b border-desk-border px-2 py-1 text-xs font-mono">
-    <button onclick="switchTab('performance')" id="mob-btn-performance" class="mobile-tab-btn py-1.5 px-3 text-rose-400 font-bold border-b-2 border-rose-500 transition-colors">수익률 & 포트폴리오</button>
-    <button onclick="switchTab('systems')" id="mob-btn-systems" class="mobile-tab-btn py-1.5 px-3 text-slate-400 border-b-2 border-transparent transition-colors">프로젝트 모니터링</button>
-  </div>
 
   <!-- Main Body Content -->
   <main class="max-w-[1560px] mx-auto px-4 sm:px-6 py-5 flex-1 w-full space-y-5">
@@ -230,7 +221,7 @@
           </div>
           <div class="text-[11px] font-mono text-slate-400 flex items-center space-x-2">
             <span class="w-2 h-2 rounded-full bg-rose-500"></span>
-            <span>장전알람 > 시가 진입 원칙 적용</span>
+            <span>전략 카드 클릭 시 해당 포트의 종목만 필터링</span>
           </div>
         </div>
 
@@ -240,14 +231,18 @@
       </div>
 
       <!-- Detailed Trades Table -->
-      <div class="desk-card rounded overflow-hidden">
+      <div id="tradesSection" class="desk-card rounded overflow-hidden">
         <div class="p-3.5 border-b border-desk-border bg-desk-900 flex flex-col md:flex-row md:items-center justify-between gap-3">
-          <div class="flex items-center space-x-3">
+          <div class="flex items-center space-x-3 flex-wrap gap-y-1">
             <h3 class="text-xs font-bold font-mono uppercase text-slate-200 flex items-center">
               <i class="fa-solid fa-table-list mr-2 text-slate-400"></i>
               실시간 포트폴리오 포지션 & 체결 내역 (Trades Database)
             </h3>
             <span id="tradesCountBadge" class="text-[10px] font-mono px-2 py-0.5 rounded bg-desk-800 text-slate-300 border border-desk-border">0 종목</span>
+            <button id="strategyFilterBadge" class="hidden text-[10px] font-mono px-2 py-0.5 rounded bg-rose-950/80 text-rose-300 border border-rose-800/80 items-center hover:bg-rose-900 transition-colors cursor-pointer" onclick="selectStrategy(null)" title="전체 종목 보기">
+              <span id="selectedStrategyBadgeText"></span>
+              <i class="fa-solid fa-xmark ml-1.5 text-[11px] text-rose-400"></i>
+            </button>
           </div>
 
           <!-- Filters -->
@@ -287,99 +282,7 @@
 
     
 
-    <!-- ============================================================== -->
-    <!-- TAB 3: 시스템 관제탑 & 스케줄러 (SYSTEM OPERATIONS)           -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- TAB 2: 프로젝트 모니터링 (PROJECT MONITORING & SCHEDULER)       -->
-    <!-- ============================================================== -->
-    <section id="view-systems" class="tab-view hidden space-y-4">
-      
-      <!-- Timeline Header -->
-      <div class="desk-card rounded p-4">
-        <h2 class="text-xs font-bold font-mono text-slate-100 uppercase tracking-wider mb-2 flex items-center">
-          <i class="fa-regular fa-clock mr-2 text-indigo-400"></i>
-          프로젝트 모니터링 (Project Monitoring & Execution Schedule)
-        </h2>
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2.5 text-xs font-mono">
-          <div class="bg-desk-900 border border-desk-border rounded p-2.5">
-            <span class="text-indigo-400 font-bold block text-[11px]">08:30 (Mon)</span>
-            <div class="font-semibold text-slate-200 mt-0.5 truncate">stock-dividend_top7</div>
-            <div class="text-[10px] text-slate-500 mt-1">KRX Dividend Top 7</div>
-          </div>
-          <div class="bg-desk-900 border border-desk-border rounded p-2.5">
-            <span class="text-indigo-400 font-bold block text-[11px]">08:30 (Daily)</span>
-            <div class="font-semibold text-slate-200 mt-0.5 truncate">stock-cyclical-screener</div>
-            <div class="text-[10px] text-slate-500 mt-1">KRX Cyclical 6 Sectors</div>
-          </div>
-          <div class="bg-desk-900 border border-desk-border rounded p-2.5">
-            <span class="text-indigo-400 font-bold block text-[11px]">08:40 (Daily)</span>
-            <div class="font-semibold text-slate-200 mt-0.5 truncate">stock-sepa-pivot & swing</div>
-            <div class="text-[10px] text-slate-500 mt-1">KRX Pivot & Scale-in</div>
-          </div>
-          <div class="bg-desk-900 border border-rose-500/30 rounded p-2.5 bg-rose-950/10">
-            <span class="text-rose-400 font-bold block text-[11px]">08:45 (Mon-Fri)</span>
-            <div class="font-semibold text-rose-200 mt-0.5 truncate">stock-sniper</div>
-            <div class="text-[10px] text-rose-300 mt-1">RS Momentum & 52W High</div>
-          </div>
-          <div class="bg-desk-900 border border-purple-400/40 rounded p-2.5">
-            <span class="text-purple-400 font-bold block text-[11px]">17:00 (Tue)</span>
-            <div class="font-semibold text-slate-200 mt-0.5 truncate">stock-us3x & htp-top10</div>
-            <div class="text-[10px] text-slate-500 mt-1">US 3X & HTP Momentum</div>
-          </div>
-          <div class="bg-desk-900 border border-purple-400/40 rounded p-2.5">
-            <span class="text-purple-400 font-bold block text-[11px]">21:30 (Daily)</span>
-            <div class="font-semibold text-slate-200 mt-0.5 truncate">stock-sepa-pivot & swing</div>
-            <div class="text-[10px] text-slate-500 mt-1">US Pivot & Scale-in</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Systems Grid -->
-      <div id="systemsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <!-- Rendered via JS -->
-      </div>
-    </section>
   </main>
-
-  <!-- Strategy Hover Floating Layer Popup -->
-  <div id="strategyHoverPopup" class="fixed z-50 hidden pointer-events-none transition-opacity duration-150 shadow-2xl rounded-lg border border-desk-border bg-desk-950/95 backdrop-blur-md p-3.5 text-xs font-mono w-80 max-w-[90vw]">
-    <div id="popupHeader" class="flex items-center justify-between pb-2 mb-2 border-b border-desk-border">
-      <span id="popupTitle" class="font-bold text-slate-100 flex items-center">
-        <i class="fa-solid fa-layer-group text-rose-500 mr-1.5"></i>
-        <span>전략명</span>
-      </span>
-      <span id="popupCount" class="text-[10px] px-1.5 py-0.5 rounded bg-desk-800 text-slate-300 border border-desk-border">0종목 보유</span>
-    </div>
-    <div id="popupStockList" class="space-y-1.5 max-h-60 overflow-y-auto">
-      <!-- Dynamic list -->
-    </div>
-    <div class="mt-2.5 pt-2 border-t border-desk-border/80 flex items-center justify-between text-[10px] text-slate-500">
-      <span>실시간 체결 시가 기준</span>
-      <span id="popupAvgReturn" class="font-semibold text-slate-400">평균: 0.0%</span>
-    </div>
-  </div>
-
-  <!-- Log Viewer Modal -->
-  <div id="logModal" class="fixed inset-0 z-50 hidden bg-black/80 flex items-center justify-center p-4">
-    <div class="desk-card rounded w-full max-w-3xl overflow-hidden shadow-2xl flex flex-col max-h-[85vh]">
-      <div class="p-3 border-b border-desk-border flex items-center justify-between bg-desk-950 font-mono text-xs">
-        <div class="flex items-center space-x-2">
-          <i class="fa-solid fa-terminal text-slate-400"></i>
-          <span id="modalTitle" class="font-bold text-slate-200">시스템 실행 로그</span>
-        </div>
-        <button onclick="closeLogModal()" class="text-slate-400 hover:text-white">
-          <i class="fa-solid fa-xmark text-sm"></i>
-        </button>
-      </div>
-      <div id="modalLogContent" class="p-4 overflow-y-auto flex-1 font-mono text-xs bg-desk-950 text-slate-300 space-y-1">
-        <!-- Logs -->
-      </div>
-      <div class="p-2.5 border-t border-desk-border bg-desk-900 flex justify-end">
-        <button onclick="closeLogModal()" class="px-3 py-1 rounded bg-desk-800 hover:bg-desk-700 text-xs text-slate-300 font-mono">닫기</button>
-      </div>
-    </div>
-  </div>
 
   <!-- Footer -->
   <footer class="border-t border-desk-border bg-desk-950 py-4 text-center text-xs font-mono text-slate-500 mt-10">
@@ -391,24 +294,24 @@
     // Embedded Initial Dataset (Auto-synced with status.json)
     const INITIAL_DATA = {
   "summary": {
-    "updated_at": "2026-10-21 14:46:04",
+    "updated_at": "2026-10-26 10:12:22",
     "total_projects": 8,
     "active_daemons": 7,
-    "today_executed": 4,
+    "today_executed": 5,
     "market_stats": {
       "KRX": 5,
       "US": 4,
       "Global": 1
     },
     "portfolio": {
-      "date": "2026-10-21",
-      "daily_return_pct": 1.19,
-      "cumulative_return_pct": 1.21,
-      "realized_pnl_pct": 1.27,
-      "unrealized_pnl_pct": 1.19,
-      "holding_count": 20,
-      "closed_count": 6,
-      "win_rate": 50.0
+      "date": "2026-10-26",
+      "daily_return_pct": 0.0,
+      "cumulative_return_pct": -2.44,
+      "realized_pnl_pct": -4.23,
+      "unrealized_pnl_pct": 0.0,
+      "holding_count": 11,
+      "closed_count": 15,
+      "win_rate": 19.2
     }
   },
   "projects": [
@@ -438,21 +341,21 @@
       "last_exit_code": 0,
       "status_text": "Active",
       "status_code": "active",
-      "last_executed": "2026-10-21 08:45:04",
+      "last_executed": "2026-10-26 08:30:04",
       "executed_today": true,
       "recent_logs": [
-        "[2026-10-20 08:45:00] 🚀 스톡 스나이퍼(Stock-Sniper) 08:45 실행 프로세스 시작 (현재시각: 2026-10-20 08:45:00)",
-        "[2026-10-20 08:45:00] 📊 당일 실전 주문표 및 ETF/종목 수급 데이터 분석 및 메시지 생성 중...",
-        "[2026-10-20 08:45:02] 📤 텔레그램 채널로 실전 알람 발송 중...",
+        "[2026-10-23 08:30:00] 🚀 스톡 스나이퍼(Stock-Sniper) 08:30 실행 프로세스 시작 (현재시각: 2026-10-23 08:30:00)",
+        "[2026-10-23 08:30:00] 📊 당일 실전 주문표 및 ETF/종목 수급 데이터 분석 및 메시지 생성 중...",
+        "[2026-10-23 08:30:03] 📤 텔레그램 채널로 실전 알람 발송 중...",
         "[telegram_sender] ✅ 텔레그램 메시지 전송 성공!",
-        "[2026-10-20 08:45:03] 🎉 텔레그램 알람 전송 성공 완료!",
-        "[2026-10-21 08:45:01] 🚀 스톡 스나이퍼(Stock-Sniper) 08:45 실행 프로세스 시작 (현재시각: 2026-10-21 08:45:01)",
-        "[2026-10-21 08:45:01] 📊 당일 실전 주문표 및 ETF/종목 수급 데이터 분석 및 메시지 생성 중...",
-        "[2026-10-21 08:45:03] 📤 텔레그램 채널로 실전 알람 발송 중...",
+        "[2026-10-23 08:30:04] 🎉 텔레그램 알람 전송 성공 완료!",
+        "[2026-10-26 08:30:00] 🚀 스톡 스나이퍼(Stock-Sniper) 08:30 실행 프로세스 시작 (현재시각: 2026-10-26 08:30:00)",
+        "[2026-10-26 08:30:00] 📊 당일 실전 주문표 및 ETF/종목 수급 데이터 분석 및 메시지 생성 중...",
+        "[2026-10-26 08:30:02] 📤 텔레그램 채널로 실전 알람 발송 중...",
         "[telegram_sender] ✅ 텔레그램 메시지 전송 성공!",
-        "[2026-10-21 08:45:04] 🎉 텔레그램 알람 전송 성공 완료!"
+        "[2026-10-26 08:30:04] 🎉 텔레그램 알람 전송 성공 완료!"
       ],
-      "last_log_preview": "[2026-10-21 08:45:04] 🎉 텔레그램 알람 전송 성공 완료!"
+      "last_log_preview": "[2026-10-26 08:30:04] 🎉 텔레그램 알람 전송 성공 완료!"
     },
     {
       "id": "stock-sepa-pivot",
@@ -481,21 +384,21 @@
       "last_exit_code": 0,
       "status_text": "Active",
       "status_code": "active",
-      "last_executed": "2026-10-21 08:40:02",
+      "last_executed": "2026-10-26 08:30:01",
       "executed_today": true,
       "recent_logs": [
-        "[2026-10-19 08:40:00] === [오전 알람] 한국장 개장 브리핑 시작 ===",
-        "[2026-10-19 08:40:02] ✅ 텔레그램 알림 전송 완료!",
-        "[2026-10-19 21:30:00] === [야간 알람] 미국장 본장 개장 브리핑 시작 ===",
-        "[2026-10-19 21:30:02] ✅ 텔레그램 알림 전송 완료!",
-        "[2026-10-20 08:40:00] === [오전 알람] 한국장 개장 브리핑 시작 ===",
-        "[2026-10-20 08:40:01] ✅ 텔레그램 알림 전송 완료!",
-        "[2026-10-20 21:30:00] === [야간 알람] 미국장 본장 개장 브리핑 시작 ===",
-        "[2026-10-20 21:30:02] ✅ 텔레그램 알림 전송 완료!",
-        "[2026-10-21 08:40:00] === [오전 알람] 한국장 개장 브리핑 시작 ===",
-        "[2026-10-21 08:40:02] ✅ 텔레그램 알림 전송 완료!"
+        "[2026-10-22 23:00:03] === [야간 알람] 미국장 본장 개장 30분 전 브리핑 시작 ===",
+        "[2026-10-22 23:00:03] ✅ 오늘(2026-10-22) 미국장 개장 30분 전 알람이 이미 전송되었습니다. 중복 발송 방지.",
+        "[2026-10-23 08:30:00] === [오전 알람] 한국장 개장 브리핑 시작 ===",
+        "[2026-10-23 08:30:01] ✅ 텔레그램 알림 전송 완료!",
+        "[2026-10-23 22:00:02] === [야간 알람] 미국장 본장 개장 30분 전 브리핑 시작 ===",
+        "[2026-10-23 22:00:04] ✅ 텔레그램 알림 전송 완료!",
+        "[2026-10-23 23:00:01] === [야간 알람] 미국장 본장 개장 30분 전 브리핑 시작 ===",
+        "[2026-10-23 23:00:01] ✅ 오늘(2026-10-23) 미국장 개장 30분 전 알람이 이미 전송되었습니다. 중복 발송 방지.",
+        "[2026-10-26 08:30:00] === [오전 알람] 한국장 개장 브리핑 시작 ===",
+        "[2026-10-26 08:30:01] ✅ 텔레그램 알림 전송 완료!"
       ],
-      "last_log_preview": "[2026-10-21 08:40:02] ✅ 텔레그램 알림 전송 완료!"
+      "last_log_preview": "[2026-10-26 08:30:01] ✅ 텔레그램 알림 전송 완료!"
     },
     {
       "id": "stock-swing",
@@ -524,21 +427,21 @@
       "last_exit_code": -9,
       "status_text": "Running",
       "status_code": "running",
-      "last_executed": "2026-10-21 14:19:50",
+      "last_executed": "2026-10-26 10:08:20",
       "executed_today": true,
       "recent_logs": [
-        "2026-10-21 14:00:04,018 [INFO] 💓 [하트비트 정상 가동 중] KST 2026-10-21 14:00:04",
-        "2026-10-21 14:19:43,546 [INFO] [SHUTDOWN] 시그널 수신 (15). 안전하게 종료 준비...",
-        "2026-10-21 14:19:50,419 [INFO] ========================================================",
-        "2026-10-21 14:19:50,419 [INFO] 🌟 [스윙 분할 모아가기 자율 스케줄러] 가동 시작",
-        "2026-10-21 14:19:50,419 [INFO]    - 한국 증시: 매주 월~금 08:30 KST (개장 30분 전)",
-        "2026-10-21 14:19:50,419 [INFO]    - 미국 증시: 매주 월~금 09:00 ET (개장 30분 전, 현재 KST 환산: 22:00 KST)",
-        "2026-10-21 14:19:50,419 [INFO]    - 알람 정책: 개장 전 유니버스 갱신 결과 + 당일 매매 신호 + 포트폴리오 매일 정기 브리핑",
-        "2026-10-21 14:19:50,420 [INFO]    - 최적화 모드: 저전력 적응형 슬립 & 주기적 가비지 컬렉션(GC) 가동",
-        "2026-10-21 14:19:50,420 [INFO] ========================================================",
-        "2026-10-21 14:19:50,420 [INFO] 🔄 [시스템 기동 자가 진단] (현재 KST: 2026-10-21 14:19:50, ET: 2026-10-21 01:19:50)"
+        "[2026-10-26 08:30:05.682502] [한국 유니버스 갱신] 총 353개 후보군 데이터 수집 중...",
+        "[2026-10-26 08:30:26.642529] [한국 증시] 유니버스 갱신 완료: 총 63개 (신규 0, 제외 0)",
+        "[2026-10-26 08:30:26.644024] [한국 증시] 총 63개 종목(유니버스 63개 + 추가 보유관리 0개) 실데이터 다운로드 및 무결성 검증 시작...",
+        "[한국 증시] 최대 보유 한도(7개) 도달로 신규 진입 대기 (기존 포지션 청산 전까지 진입 제한)",
+        "[2026-10-26 08:30:30.294051] [한국 증시] 개장 전 정기 브리핑 알람 텔레그램 전송 중 (매매 액션 신호: 발생)...",
+        "2026-10-26 08:30:31,717 [INFO] ✅ [한국 증시 개장 30분 전 스캔 완료]",
+        "2026-10-26 08:37:34,868 [INFO] 💓 [하트비트 정상 가동 중] KST 2026-10-26 08:37:34",
+        "2026-10-26 09:08:12,565 [INFO] 💓 [하트비트 정상 가동 중] KST 2026-10-26 09:08:12",
+        "2026-10-26 09:38:16,979 [INFO] 💓 [하트비트 정상 가동 중] KST 2026-10-26 09:38:16",
+        "2026-10-26 10:08:20,585 [INFO] 💓 [하트비트 정상 가동 중] KST 2026-10-26 10:08:20"
       ],
-      "last_log_preview": "2026-10-21 14:19:50,420 [INFO] 🔄 [시스템 기동 자가 진단] (현재 KST: 2026-10-21 14:19:50, ET: 2026-10-21 01:19:50)"
+      "last_log_preview": "2026-10-26 10:08:20,585 [INFO] 💓 [하트비트 정상 가동 중] KST 2026-10-26 10:08:20"
     },
     {
       "id": "stock-htp-top10",
@@ -668,21 +571,21 @@
       "last_exit_code": null,
       "status_text": "Ready",
       "status_code": "ready",
-      "last_executed": "2026-10-21 14:42:59",
+      "last_executed": "2026-10-26 10:11:44",
       "executed_today": true,
       "recent_logs": [
-        "2026-10-21 14:42:58 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035420 (S07_SECTOR_SYMPATHY LONG) within 60m window.",
-        "2026-10-21 14:42:58 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035420 (S12_HYPE_TO_FUNDAMENTALS LONG) within 60m window.",
-        "2026-10-21 14:42:58 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035720 (S07_SECTOR_SYMPATHY LONG) within 60m window.",
-        "2026-10-21 14:42:58 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035720 (S12_HYPE_TO_FUNDAMENTALS LONG) within 60m window.",
-        "2026-10-21 14:42:59 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S07_SECTOR_SYMPATHY LONG) within 60m window.",
-        "2026-10-21 14:42:59 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S11_SUPPLY_ABSORPTION LONG) within 60m window.",
-        "2026-10-21 14:42:59 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S12_HYPE_TO_FUNDAMENTALS LONG) within 60m window.",
-        "2026-10-21 14:42:59 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S14_RELATIVE_STRENGTH LONG) within 60m window.",
-        "2026-10-21 14:42:59 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S15_MULTI_DAY_MOMENTUM LONG) within 60m window.",
-        "2026-10-21 14:42:59 [INFO] [cli] [DAEMON] Cycle #892 complete: detected=28, alerted=0, dedup=28"
+        "2026-10-26 10:11:44 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 005380 (S12_HYPE_TO_FUNDAMENTALS LONG) within 60m window.",
+        "2026-10-26 10:11:44 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035420 (S07_SECTOR_SYMPATHY LONG) within 60m window.",
+        "2026-10-26 10:11:44 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035420 (S12_HYPE_TO_FUNDAMENTALS LONG) within 60m window.",
+        "2026-10-26 10:11:44 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035720 (S07_SECTOR_SYMPATHY LONG) within 60m window.",
+        "2026-10-26 10:11:44 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 035720 (S12_HYPE_TO_FUNDAMENTALS LONG) within 60m window.",
+        "2026-10-26 10:11:44 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S05_FIRST_PULLBACK LONG) within 60m window.",
+        "2026-10-26 10:11:44 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S07_SECTOR_SYMPATHY LONG) within 60m window.",
+        "2026-10-26 10:11:44 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S11_SUPPLY_ABSORPTION LONG) within 60m window.",
+        "2026-10-26 10:11:44 [INFO] [dedup] [DEDUP] Suppressed duplicate signal for 068270 (S12_HYPE_TO_FUNDAMENTALS LONG) within 60m window.",
+        "2026-10-26 10:11:44 [INFO] [cli] [DAEMON] Cycle #2892 complete: detected=27, alerted=0, dedup=27"
       ],
-      "last_log_preview": "2026-10-21 14:42:59 [INFO] [cli] [DAEMON] Cycle #892 complete: detected=28, alerted=0, dedup=28"
+      "last_log_preview": "2026-10-26 10:11:44 [INFO] [cli] [DAEMON] Cycle #2892 complete: detected=27, alerted=0, dedup=27"
     },
     {
       "id": "stock-cyclical-screener",
@@ -710,10 +613,21 @@
       "last_exit_code": 0,
       "status_text": "Active",
       "status_code": "active",
-      "last_executed": "기록 없음",
-      "executed_today": false,
-      "recent_logs": [],
-      "last_log_preview": "최근 로그 기록 없음"
+      "last_executed": "2026-10-26 08:30:16",
+      "executed_today": true,
+      "recent_logs": [
+        "• 금호타이어 (자동차) 5,250원 | PER: 3.9배 (Fwd)",
+        "• 대한조선 (조선) 37,050원 | PER: 4.8배 (Fwd)",
+        "[소형주]",
+        "• 명신산업 (자동차) 9,100원 | PER: 5.4배 (Trail)",
+        "• 성우하이텍 (자동차) 5,320원 | PER: 2.4배 (Trail)",
+        "• 세진중공업 (조선) 7,480원 | PER: 6.6배 (Trail)",
+        "============================================================",
+        "🚀 텔레그램으로 알람을 발송합니다... (신규 매수: 2건, 신규 매도: 3건)",
+        "✅ 텔레그램 알람 발송 완료!",
+        "✅ [2026-10-26 08:30:16] 정기 알람 처리 완료"
+      ],
+      "last_log_preview": "✅ [2026-10-26 08:30:16] 정기 알람 처리 완료"
     }
   ],
   "alarms": [
@@ -1039,11 +953,11 @@
       "signal_date": "2026-10-21 08:40:00",
       "entry_price": 176900.0,
       "entry_date": "2026-10-21",
-      "current_price": 193900.0,
+      "current_price": 188400.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": 9.61,
+      "return_pct": 6.5,
       "target_price": 205000.0,
       "stop_loss_price": 176900.0,
       "notes": "227선 무한 스윙 3차 트렌치 완주 보유 (+10.17%)"
@@ -1059,174 +973,14 @@
       "signal_date": "2026-10-21 08:40:00",
       "entry_price": 21500.0,
       "entry_date": "2026-10-21",
-      "current_price": 23400.0,
+      "current_price": 22300.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": 8.84,
+      "return_pct": 3.72,
       "target_price": 26000.0,
       "stop_loss_price": 20500.0,
       "notes": "227선 스윙 2차 분할 매수 모아가기 (+8.37%)"
-    },
-    {
-      "id": 74,
-      "project_id": "stock-sniper",
-      "project_name": "stock-sniper",
-      "ticker": "002990",
-      "name": "금호건설",
-      "market": "KRX",
-      "signal_type": "장전알람(시가매수)",
-      "signal_date": "2026-10-21 08:45:00",
-      "entry_price": 9670.0,
-      "entry_date": "2026-10-21",
-      "current_price": 10020.0,
-      "exit_price": null,
-      "exit_date": null,
-      "status": "HOLDING",
-      "return_pct": 3.62,
-      "target_price": 10500.0,
-      "stop_loss_price": 9300.0,
-      "notes": "거래대금 1,500억 유입 양봉 수급 방어"
-    },
-    {
-      "id": 96,
-      "project_id": "stock-swing",
-      "project_name": "stock-swing",
-      "ticker": "138040",
-      "name": "메리츠금융지주",
-      "market": "KRX",
-      "signal_type": "장전알람(227스윙)",
-      "signal_date": "2026-10-21 08:40:00",
-      "entry_price": 128800.0,
-      "entry_date": "2026-10-21",
-      "current_price": 131100.0,
-      "exit_price": null,
-      "exit_date": null,
-      "status": "HOLDING",
-      "return_pct": 1.79,
-      "target_price": 145000.0,
-      "stop_loss_price": 124000.0,
-      "notes": "227선 스윙 2차 분할 포지션 유지 (+1.71%)"
-    },
-    {
-      "id": 88,
-      "project_id": "signal_forge_alert",
-      "project_name": "signal_forge_alert",
-      "ticker": "068270",
-      "name": "셀트리온",
-      "market": "KRX",
-      "signal_type": "장중알람",
-      "signal_date": "2026-10-21 10:00:00",
-      "entry_price": 193900.0,
-      "entry_date": "2026-10-18",
-      "current_price": 197200.0,
-      "exit_price": null,
-      "exit_date": null,
-      "status": "HOLDING",
-      "return_pct": 1.7,
-      "target_price": 261765.0,
-      "stop_loss_price": 183817.0,
-      "notes": "Catalyst Breakout 다일간 모멘텀 8.1% 상회 (Score 81.0)"
-    },
-    {
-      "id": 76,
-      "project_id": "stock-sepa-pivot",
-      "project_name": "stock-sepa-pivot",
-      "ticker": "196170",
-      "name": "알테오젠",
-      "market": "KRX",
-      "signal_type": "장전알람(시가매수)",
-      "signal_date": "2026-10-21 08:40:00",
-      "entry_price": 236000.0,
-      "entry_date": "2026-10-21",
-      "current_price": 238500.0,
-      "exit_price": null,
-      "exit_date": null,
-      "status": "HOLDING",
-      "return_pct": 1.06,
-      "target_price": 245000.0,
-      "stop_loss_price": 230000.0,
-      "notes": "피하주사(SC) 독점 플랫폼, 하이타이트 플래그 돌파"
-    },
-    {
-      "id": 97,
-      "project_id": "stock-swing",
-      "project_name": "stock-swing",
-      "ticker": "004370",
-      "name": "농심",
-      "market": "KRX",
-      "signal_type": "장전알람(227스윙)",
-      "signal_date": "2026-10-21 08:40:00",
-      "entry_price": 404000.0,
-      "entry_date": "2026-10-21",
-      "current_price": 408000.0,
-      "exit_price": null,
-      "exit_date": null,
-      "status": "HOLDING",
-      "return_pct": 0.99,
-      "target_price": 435000.0,
-      "stop_loss_price": 385000.0,
-      "notes": "227선 스윙 2차 분할 누적 포지션 (+1.36%)"
-    },
-    {
-      "id": 70,
-      "project_id": "stock-sniper",
-      "project_name": "stock-sniper",
-      "ticker": "069500",
-      "name": "KODEX 200",
-      "market": "KRX",
-      "signal_type": "장전알람(시가매수)",
-      "signal_date": "2026-10-21 08:45:00",
-      "entry_price": 88665.0,
-      "entry_date": "2026-10-21",
-      "current_price": 89360.0,
-      "exit_price": null,
-      "exit_date": null,
-      "status": "HOLDING",
-      "return_pct": 0.78,
-      "target_price": 91500.0,
-      "stop_loss_price": 87000.0,
-      "notes": "지수 대표 ETF 분할 시가 체결"
-    },
-    {
-      "id": 73,
-      "project_id": "stock-sniper",
-      "project_name": "stock-sniper",
-      "ticker": "036930",
-      "name": "주성엔지니어링",
-      "market": "KRX",
-      "signal_type": "장전알람(시가매수)",
-      "signal_date": "2026-10-21 08:45:00",
-      "entry_price": 202000.0,
-      "entry_date": "2026-10-21",
-      "current_price": 203500.0,
-      "exit_price": null,
-      "exit_date": null,
-      "status": "HOLDING",
-      "return_pct": 0.74,
-      "target_price": 215000.0,
-      "stop_loss_price": 195000.0,
-      "notes": "반도체 ALD 2,200억 수급 방어"
-    },
-    {
-      "id": 78,
-      "project_id": "stock-sepa-pivot",
-      "project_name": "stock-sepa-pivot",
-      "ticker": "012450",
-      "name": "한화에어로스페이스",
-      "market": "KRX",
-      "signal_type": "장전알람(시가매수)",
-      "signal_date": "2026-10-21 08:40:00",
-      "entry_price": 809000.0,
-      "entry_date": "2026-10-21",
-      "current_price": 814000.0,
-      "exit_price": null,
-      "exit_date": null,
-      "status": "HOLDING",
-      "return_pct": 0.62,
-      "target_price": 835000.0,
-      "stop_loss_price": 785000.0,
-      "notes": "K9/천무 글로벌 수주 모멘텀, 불플래그 패턴"
     },
     {
       "id": 80,
@@ -1329,64 +1083,64 @@
       "notes": "비만치료제 수요 폭발, 52주 고점 유지 2위"
     },
     {
-      "id": 71,
-      "project_id": "stock-sniper",
-      "project_name": "stock-sniper",
-      "ticker": "229200",
-      "name": "KODEX 코스닥150",
+      "id": 96,
+      "project_id": "stock-swing",
+      "project_name": "stock-swing",
+      "ticker": "138040",
+      "name": "메리츠금융지주",
       "market": "KRX",
-      "signal_type": "장전알람(시가매수)",
-      "signal_date": "2026-10-21 08:45:00",
-      "entry_price": 13330.0,
+      "signal_type": "장전알람(227스윙)",
+      "signal_date": "2026-10-21 08:40:00",
+      "entry_price": 128800.0,
       "entry_date": "2026-10-21",
-      "current_price": 13300.0,
+      "current_price": 126700.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": -0.23,
-      "target_price": 13800.0,
-      "stop_loss_price": 13000.0,
-      "notes": "코스닥 지수 수급 지지선 반등"
+      "return_pct": -1.63,
+      "target_price": 145000.0,
+      "stop_loss_price": 124000.0,
+      "notes": "227선 스윙 2차 분할 포지션 유지 (+1.71%)"
     },
     {
-      "id": 77,
-      "project_id": "stock-sepa-pivot",
-      "project_name": "stock-sepa-pivot",
-      "ticker": "003230",
-      "name": "삼양식품",
+      "id": 88,
+      "project_id": "signal_forge_alert",
+      "project_name": "signal_forge_alert",
+      "ticker": "068270",
+      "name": "셀트리온",
       "market": "KRX",
-      "signal_type": "장전알람(시가매수)",
-      "signal_date": "2026-10-21 08:40:00",
-      "entry_price": 1265000.0,
-      "entry_date": "2026-10-21",
-      "current_price": 1255000.0,
+      "signal_type": "장중알람",
+      "signal_date": "2026-10-21 10:00:00",
+      "entry_price": 193900.0,
+      "entry_date": "2026-10-18",
+      "current_price": 189400.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": -0.79,
-      "target_price": 1320000.0,
-      "stop_loss_price": 1220000.0,
-      "notes": "글로벌 수출 호조, 컵앤핸들 피벗 돌파"
+      "return_pct": -2.32,
+      "target_price": 261765.0,
+      "stop_loss_price": 183817.0,
+      "notes": "Catalyst Breakout 다일간 모멘텀 8.1% 상회 (Score 81.0)"
     },
     {
-      "id": 79,
-      "project_id": "stock-sepa-pivot",
-      "project_name": "stock-sepa-pivot",
-      "ticker": "267260",
-      "name": "HD현대일렉트릭",
+      "id": 97,
+      "project_id": "stock-swing",
+      "project_name": "stock-swing",
+      "ticker": "004370",
+      "name": "농심",
       "market": "KRX",
-      "signal_type": "장전알람(시가매수)",
+      "signal_type": "장전알람(227스윙)",
       "signal_date": "2026-10-21 08:40:00",
-      "entry_price": 499500.0,
+      "entry_price": 404000.0,
       "entry_date": "2026-10-21",
-      "current_price": 493500.0,
+      "current_price": 393000.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": -1.2,
-      "target_price": 515000.0,
-      "stop_loss_price": 480000.0,
-      "notes": "북미 변압기 쇼티지 수혜, 플랫 베이스 지지"
+      "return_pct": -2.72,
+      "target_price": 435000.0,
+      "stop_loss_price": 385000.0,
+      "notes": "227선 스윙 2차 분할 누적 포지션 (+1.36%)"
     },
     {
       "id": 85,
@@ -1399,34 +1153,14 @@
       "signal_date": "2026-10-19 08:30:00",
       "entry_price": 42900.0,
       "entry_date": "2026-10-19",
-      "current_price": 42100.0,
+      "current_price": 41400.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": -1.86,
+      "return_pct": -3.5,
       "target_price": 46000.0,
       "stop_loss_price": 38000.0,
       "notes": "시가배당률 6.8%, 자본건전성 최우수"
-    },
-    {
-      "id": 72,
-      "project_id": "stock-sniper",
-      "project_name": "stock-sniper",
-      "ticker": "042510",
-      "name": "라온시큐어",
-      "market": "KRX",
-      "signal_type": "장전알람(시가매수)",
-      "signal_date": "2026-10-21 08:45:00",
-      "entry_price": 18170.0,
-      "entry_date": "2026-10-21",
-      "current_price": 17830.0,
-      "exit_price": null,
-      "exit_date": null,
-      "status": "HOLDING",
-      "return_pct": -1.87,
-      "target_price": 19500.0,
-      "stop_loss_price": 17500.0,
-      "notes": "생체인증/양자암호 52주 신고가 돌파권"
     },
     {
       "id": 91,
@@ -1509,6 +1243,26 @@
       "notes": "분기배당 및 5년 연속 배당성장률 6.2% | 🎯 목표가 도달 전량 익절"
     },
     {
+      "id": 70,
+      "project_id": "stock-sniper",
+      "project_name": "stock-sniper",
+      "ticker": "069500",
+      "name": "KODEX 200",
+      "market": "KRX",
+      "signal_type": "장전알람(시가매수)",
+      "signal_date": "2026-10-21 08:45:00",
+      "entry_price": 88665.0,
+      "entry_date": "2026-10-21",
+      "current_price": 86200.0,
+      "exit_price": 86200.0,
+      "exit_date": "2026-10-26",
+      "status": "CLOSED",
+      "return_pct": -2.78,
+      "target_price": 91500.0,
+      "stop_loss_price": 87000.0,
+      "notes": "지수 대표 ETF 분할 시가 체결 | 🛑 손절가 이탈 기계적 손절 청산"
+    },
+    {
       "id": 83,
       "project_id": "stock-dividend_top7",
       "project_name": "stock-dividend_top7",
@@ -1529,6 +1283,26 @@
       "notes": "5년 평균 시가배당률 5.4%, 안정 배당성향 | 🎯 목표가 도달 전량 익절"
     },
     {
+      "id": 72,
+      "project_id": "stock-sniper",
+      "project_name": "stock-sniper",
+      "ticker": "042510",
+      "name": "라온시큐어",
+      "market": "KRX",
+      "signal_type": "장전알람(시가매수)",
+      "signal_date": "2026-10-21 08:45:00",
+      "entry_price": 18170.0,
+      "entry_date": "2026-10-21",
+      "current_price": 17420.0,
+      "exit_price": 17420.0,
+      "exit_date": "2026-10-26",
+      "status": "CLOSED",
+      "return_pct": -4.13,
+      "target_price": 19500.0,
+      "stop_loss_price": 17500.0,
+      "notes": "생체인증/양자암호 52주 신고가 돌파권 | 🛑 손절가 이탈 기계적 손절 청산"
+    },
+    {
       "id": 89,
       "project_id": "signal_forge_alert",
       "project_name": "signal_forge_alert",
@@ -1547,31 +1321,171 @@
       "target_price": null,
       "stop_loss_price": null,
       "notes": "손절가 이탈 원칙 손절 청산 (-5.36%)"
+    },
+    {
+      "id": 74,
+      "project_id": "stock-sniper",
+      "project_name": "stock-sniper",
+      "ticker": "002990",
+      "name": "금호건설",
+      "market": "KRX",
+      "signal_type": "장전알람(시가매수)",
+      "signal_date": "2026-10-21 08:45:00",
+      "entry_price": 9670.0,
+      "entry_date": "2026-10-21",
+      "current_price": 9080.0,
+      "exit_price": 9080.0,
+      "exit_date": "2026-10-26",
+      "status": "CLOSED",
+      "return_pct": -6.1,
+      "target_price": 10500.0,
+      "stop_loss_price": 9300.0,
+      "notes": "거래대금 1,500억 유입 양봉 수급 방어 | 🛑 손절가 이탈 기계적 손절 청산"
+    },
+    {
+      "id": 76,
+      "project_id": "stock-sepa-pivot",
+      "project_name": "stock-sepa-pivot",
+      "ticker": "196170",
+      "name": "알테오젠",
+      "market": "KRX",
+      "signal_type": "장전알람(시가매수)",
+      "signal_date": "2026-10-21 08:40:00",
+      "entry_price": 236000.0,
+      "entry_date": "2026-10-21",
+      "current_price": 220500.0,
+      "exit_price": 220500.0,
+      "exit_date": "2026-10-26",
+      "status": "CLOSED",
+      "return_pct": -6.57,
+      "target_price": 245000.0,
+      "stop_loss_price": 230000.0,
+      "notes": "피하주사(SC) 독점 플랫폼, 하이타이트 플래그 돌파 | 🛑 손절가 이탈 기계적 손절 청산"
+    },
+    {
+      "id": 78,
+      "project_id": "stock-sepa-pivot",
+      "project_name": "stock-sepa-pivot",
+      "ticker": "012450",
+      "name": "한화에어로스페이스",
+      "market": "KRX",
+      "signal_type": "장전알람(시가매수)",
+      "signal_date": "2026-10-21 08:40:00",
+      "entry_price": 809000.0,
+      "entry_date": "2026-10-21",
+      "current_price": 747000.0,
+      "exit_price": 747000.0,
+      "exit_date": "2026-10-26",
+      "status": "CLOSED",
+      "return_pct": -7.66,
+      "target_price": 835000.0,
+      "stop_loss_price": 785000.0,
+      "notes": "K9/천무 글로벌 수주 모멘텀, 불플래그 패턴 | 🛑 손절가 이탈 기계적 손절 청산"
+    },
+    {
+      "id": 77,
+      "project_id": "stock-sepa-pivot",
+      "project_name": "stock-sepa-pivot",
+      "ticker": "003230",
+      "name": "삼양식품",
+      "market": "KRX",
+      "signal_type": "장전알람(시가매수)",
+      "signal_date": "2026-10-21 08:40:00",
+      "entry_price": 1265000.0,
+      "entry_date": "2026-10-21",
+      "current_price": 1163000.0,
+      "exit_price": 1163000.0,
+      "exit_date": "2026-10-26",
+      "status": "CLOSED",
+      "return_pct": -8.06,
+      "target_price": 1320000.0,
+      "stop_loss_price": 1220000.0,
+      "notes": "글로벌 수출 호조, 컵앤핸들 피벗 돌파 | 🛑 손절가 이탈 기계적 손절 청산"
+    },
+    {
+      "id": 71,
+      "project_id": "stock-sniper",
+      "project_name": "stock-sniper",
+      "ticker": "229200",
+      "name": "KODEX 코스닥150",
+      "market": "KRX",
+      "signal_type": "장전알람(시가매수)",
+      "signal_date": "2026-10-21 08:45:00",
+      "entry_price": 13330.0,
+      "entry_date": "2026-10-21",
+      "current_price": 12120.0,
+      "exit_price": 12120.0,
+      "exit_date": "2026-10-26",
+      "status": "CLOSED",
+      "return_pct": -9.08,
+      "target_price": 13800.0,
+      "stop_loss_price": 13000.0,
+      "notes": "코스닥 지수 수급 지지선 반등 | 🛑 손절가 이탈 기계적 손절 청산"
+    },
+    {
+      "id": 79,
+      "project_id": "stock-sepa-pivot",
+      "project_name": "stock-sepa-pivot",
+      "ticker": "267260",
+      "name": "HD현대일렉트릭",
+      "market": "KRX",
+      "signal_type": "장전알람(시가매수)",
+      "signal_date": "2026-10-21 08:40:00",
+      "entry_price": 499500.0,
+      "entry_date": "2026-10-21",
+      "current_price": 449500.0,
+      "exit_price": 449500.0,
+      "exit_date": "2026-10-26",
+      "status": "CLOSED",
+      "return_pct": -10.01,
+      "target_price": 515000.0,
+      "stop_loss_price": 480000.0,
+      "notes": "북미 변압기 쇼티지 수혜, 플랫 베이스 지지 | 🛑 손절가 이탈 기계적 손절 청산"
+    },
+    {
+      "id": 73,
+      "project_id": "stock-sniper",
+      "project_name": "stock-sniper",
+      "ticker": "036930",
+      "name": "주성엔지니어링",
+      "market": "KRX",
+      "signal_type": "장전알람(시가매수)",
+      "signal_date": "2026-10-21 08:45:00",
+      "entry_price": 202000.0,
+      "entry_date": "2026-10-21",
+      "current_price": 168200.0,
+      "exit_price": 168200.0,
+      "exit_date": "2026-10-26",
+      "status": "CLOSED",
+      "return_pct": -16.73,
+      "target_price": 215000.0,
+      "stop_loss_price": 195000.0,
+      "notes": "반도체 ALD 2,200억 수급 방어 | 🛑 손절가 이탈 기계적 손절 청산"
     }
   ],
   "performance": {
     "PORTFOLIO_TOTAL": {
-      "date": "2026-10-21",
-      "daily_return_pct": 1.19,
-      "cumulative_return_pct": 1.21,
-      "realized_pnl_pct": 1.27,
-      "unrealized_pnl_pct": 1.19,
-      "holding_count": 20,
-      "closed_count": 6,
-      "win_rate": 50.0
+      "date": "2026-10-26",
+      "daily_return_pct": 0.0,
+      "cumulative_return_pct": -2.44,
+      "realized_pnl_pct": -4.23,
+      "unrealized_pnl_pct": 0.0,
+      "holding_count": 11,
+      "closed_count": 15,
+      "win_rate": 19.2
     },
     "signal_forge_alert": {
-      "date": "2026-10-21",
-      "daily_return_pct": 1.7,
-      "cumulative_return_pct": -1.83,
+      "date": "2026-10-26",
+      "daily_return_pct": -2.32,
+      "cumulative_return_pct": -3.84,
       "realized_pnl_pct": -5.36,
-      "unrealized_pnl_pct": 1.7,
+      "unrealized_pnl_pct": -2.32,
       "holding_count": 1,
       "closed_count": 1,
-      "win_rate": 50.0
+      "win_rate": 0.0
     },
     "stock-cyclical-screener": {
-      "date": "2026-10-21",
+      "date": "2026-10-26",
       "daily_return_pct": 0.0,
       "cumulative_return_pct": 7.89,
       "realized_pnl_pct": 7.89,
@@ -1581,17 +1495,17 @@
       "win_rate": 100.0
     },
     "stock-dividend_top7": {
-      "date": "2026-10-21",
-      "daily_return_pct": -1.86,
-      "cumulative_return_pct": -2.21,
+      "date": "2026-10-26",
+      "daily_return_pct": -3.5,
+      "cumulative_return_pct": -2.76,
       "realized_pnl_pct": -2.38,
-      "unrealized_pnl_pct": -1.86,
+      "unrealized_pnl_pct": -3.5,
       "holding_count": 1,
       "closed_count": 2,
       "win_rate": 0.0
     },
     "stock-htp-top10": {
-      "date": "2026-10-21",
+      "date": "2026-10-26",
       "daily_return_pct": 0.0,
       "cumulative_return_pct": 0.0,
       "realized_pnl_pct": 0.0,
@@ -1601,37 +1515,37 @@
       "win_rate": 0.0
     },
     "stock-sepa-pivot": {
-      "date": "2026-10-21",
-      "daily_return_pct": -0.08,
-      "cumulative_return_pct": 0.33,
-      "realized_pnl_pct": 1.98,
-      "unrealized_pnl_pct": -0.08,
-      "holding_count": 4,
-      "closed_count": 1,
-      "win_rate": 60.0
+      "date": "2026-10-26",
+      "daily_return_pct": 0.0,
+      "cumulative_return_pct": -6.06,
+      "realized_pnl_pct": -6.06,
+      "unrealized_pnl_pct": 0.0,
+      "holding_count": 0,
+      "closed_count": 5,
+      "win_rate": 20.0
     },
     "stock-sniper": {
-      "date": "2026-10-21",
-      "daily_return_pct": 0.61,
-      "cumulative_return_pct": 0.61,
-      "realized_pnl_pct": 0.0,
-      "unrealized_pnl_pct": 0.61,
-      "holding_count": 5,
-      "closed_count": 0,
-      "win_rate": 60.0
+      "date": "2026-10-26",
+      "daily_return_pct": 0.0,
+      "cumulative_return_pct": -7.76,
+      "realized_pnl_pct": -7.76,
+      "unrealized_pnl_pct": 0.0,
+      "holding_count": 0,
+      "closed_count": 5,
+      "win_rate": 0.0
     },
     "stock-swing": {
-      "date": "2026-10-21",
-      "daily_return_pct": 5.31,
-      "cumulative_return_pct": 5.31,
+      "date": "2026-10-26",
+      "daily_return_pct": 1.47,
+      "cumulative_return_pct": 1.47,
       "realized_pnl_pct": 0.0,
-      "unrealized_pnl_pct": 5.31,
+      "unrealized_pnl_pct": 1.47,
       "holding_count": 4,
       "closed_count": 0,
-      "win_rate": 100.0
+      "win_rate": 50.0
     },
     "stock-us3x": {
-      "date": "2026-10-21",
+      "date": "2026-10-26",
       "daily_return_pct": 0.0,
       "cumulative_return_pct": 0.0,
       "realized_pnl_pct": 0.0,
@@ -1646,6 +1560,7 @@
     let appData = INITIAL_DATA;
     let currentTab = 'performance';
     let currentTradeFilter = 'ALL';
+    let selectedStrategy = null;
 
     // Fetch dynamic JSON
     async function loadLatestData() {
@@ -1674,25 +1589,8 @@
 
     function switchTab(tab) {
       currentTab = tab;
-      document.querySelectorAll('.tab-view').forEach(v => v.classList.add('hidden'));
-      document.querySelectorAll('.tab-btn').forEach(b => {
-        b.className = 'tab-btn px-3 py-1.5 text-xs font-medium rounded text-slate-400 hover:text-slate-200 hover:bg-desk-850 border border-transparent transition-colors';
-      });
-      document.querySelectorAll('.mobile-tab-btn').forEach(b => {
-        b.className = 'mobile-tab-btn py-1.5 px-3 text-slate-400 border-b-2 border-transparent transition-colors';
-      });
-
       const activeView = document.getElementById('view-' + tab);
-      const activeBtn = document.getElementById('tab-btn-' + tab);
-      const activeMobBtn = document.getElementById('mob-btn-' + tab);
-
       if (activeView) activeView.classList.remove('hidden');
-      if (activeBtn) {
-        activeBtn.className = 'tab-btn px-3 py-1.5 text-xs font-semibold rounded bg-desk-800 text-white border border-desk-600 transition-colors';
-      }
-      if (activeMobBtn) {
-        activeMobBtn.className = 'mobile-tab-btn py-1.5 px-3 text-rose-400 font-bold border-b-2 border-rose-500 transition-colors';
-      }
     }
 
     function formatDeskPrice(val, market) {
@@ -1725,15 +1623,67 @@
 
       renderStrategyMatrix();
       renderTradesTable();
-      
-      renderSystemsGrid();
+    }
+
+    // Helper: 마지막 알람시간(날짜,시간,초) 취득
+    function getStrategyLastAlarm(s) {
+      const alarms = appData.alarms || [];
+      const sAlarms = alarms.filter(a => a.project_id === s.id || a.project_name === s.id);
+      if (sAlarms.length > 0 && sAlarms[0].sent_at) {
+        return sAlarms[0].sent_at;
+      }
+      const projects = appData.projects || [];
+      const p = projects.find(item => item.id === s.id || item.name === s.id);
+      if (p && p.last_executed && p.last_executed !== '기록 없음') {
+        return p.last_executed;
+      }
+      return '기록 없음';
+    }
+
+    // Helper: 정상동작 상태 표시 취득
+    function getStrategyStatus(s) {
+      const projects = appData.projects || [];
+      const p = projects.find(item => item.id === s.id || item.name === s.id);
+      const code = p ? p.status_code : 'active';
+      const isNormal = code === 'active' || code === 'running' || code === 'ready';
+
+      if (isNormal) {
+        return {
+          text: '정상동작',
+          badgeClass: 'text-emerald-400 bg-emerald-950/60 border-emerald-800/80',
+          dotClass: 'bg-emerald-400 animate-pulse'
+        };
+      } else {
+        return {
+          text: p ? p.status_text : '확인 필요',
+          badgeClass: 'text-amber-400 bg-amber-950/60 border-amber-800/80',
+          dotClass: 'bg-amber-400'
+        };
+      }
+    }
+
+    // 전략 선택/해제 핸들러
+    function selectStrategy(strategyId) {
+      if (selectedStrategy === strategyId) {
+        selectedStrategy = null;
+      } else {
+        selectedStrategy = strategyId;
+      }
+      renderStrategyMatrix();
+      renderTradesTable();
+
+      if (selectedStrategy) {
+        const tableElem = document.getElementById('tradesSection');
+        if (tableElem) {
+          tableElem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      }
     }
 
     // 1. Strategy Performance Matrix
     function renderStrategyMatrix() {
       const container = document.getElementById('strategyMatrix');
       container.innerHTML = '';
-      const perf = appData.performance || {};
 
       const strategies = [
         { id: 'stock-sniper', name: 'stock-sniper', label: 'Mon-Fri 08:45 RS Momentum' },
@@ -1747,115 +1697,43 @@
       ];
 
       strategies.forEach(s => {
-        const p = perf[s.id] || { cumulative_return_pct: 0, daily_return_pct: 0, holding_count: 0, closed_count: 0, win_rate: 0 };
-        const isUp = p.cumulative_return_pct >= 0;
+        const isSelected = selectedStrategy === s.id;
+        const alarmTime = getStrategyLastAlarm(s);
+        const status = getStrategyStatus(s);
 
         const card = document.createElement('div');
-        card.className = 'bg-desk-900 border border-desk-border rounded p-3 font-mono flex flex-col justify-between cursor-pointer hover:border-desk-500 hover:bg-desk-850/90 transition-all select-none group';
+        card.className = `bg-desk-900 border ${isSelected ? 'border-rose-500 ring-1 ring-rose-500/80 bg-rose-950/20' : 'border-desk-border hover:border-slate-500 hover:bg-desk-850/80'} rounded p-3 font-mono flex flex-col justify-between cursor-pointer transition-all select-none group`;
+        card.title = isSelected ? '클릭 시 전체 종목 보기' : '클릭 시 해당 포트의 종목만 필터링';
+
         card.innerHTML = `
           <div>
-            <div class="flex items-center justify-between text-[11px] text-slate-400">
-              <span class="font-bold text-slate-200 group-hover:text-rose-400 transition-colors">${s.name}</span>
-              <span class="text-[10px] px-1.5 py-0.2 rounded bg-desk-800 text-slate-400 border border-desk-border group-hover:border-desk-600">${p.holding_count}종목 보유</span>
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-slate-200 group-hover:text-rose-400 transition-colors text-xs flex items-center">
+                ${isSelected ? '<i class="fa-solid fa-circle-check mr-1.5 text-rose-500 text-[11px]"></i>' : ''}${s.name}
+              </span>
+              <span class="inline-flex items-center text-[10px] font-semibold ${status.badgeClass} px-2 py-0.5 rounded border">
+                <span class="w-1.5 h-1.5 rounded-full ${status.dotClass} mr-1.5"></span>
+                ${status.text}
+              </span>
             </div>
-            <div class="text-[11px] text-slate-500 mt-0.5 truncate">${s.label}</div>
+            <div class="text-[11px] text-slate-500 mt-1 truncate">${s.label}</div>
           </div>
-          <div class="mt-3 pt-2.5 border-t border-desk-border flex items-baseline justify-between">
-            <span class="text-xs text-slate-400">누적 수익:</span>
-            <span class="text-base font-bold ${isUp ? 'text-krx-up' : 'text-krx-down'}">
-              ${isUp ? '+' : ''}${p.cumulative_return_pct.toFixed(1)}%
+          <div class="mt-3 pt-2.5 border-t border-desk-border flex items-center justify-between text-xs">
+            <span class="text-slate-400 text-[11px] flex items-center">
+              <i class="fa-regular fa-bell mr-1.5 text-slate-500"></i>마지막 알람
+            </span>
+            <span class="font-mono text-slate-200 font-medium text-[11px]">
+              ${alarmTime}
             </span>
           </div>
         `;
 
-        // 마우스 오버 레이어 팝업 이벤트 바인딩
-        card.addEventListener('mouseenter', (e) => showStrategyPopup(s, e));
-        card.addEventListener('mousemove', (e) => moveStrategyPopup(e));
-        card.addEventListener('mouseleave', hideStrategyPopup);
+        card.addEventListener('click', () => {
+          selectStrategy(s.id);
+        });
 
         container.appendChild(card);
       });
-    }
-
-    // 전략 마우스 오버 레이어 팝업 로직
-    function showStrategyPopup(s, e) {
-      const popup = document.getElementById('strategyHoverPopup');
-      if (!popup) return;
-
-      const trades = (appData.trades || []).filter(t => t.project_id === s.id);
-      const holdings = trades.filter(t => t.status === 'HOLDING');
-      const closed = trades.filter(t => t.status === 'CLOSED');
-
-      document.getElementById('popupTitle').innerHTML = `<i class="fa-solid fa-layer-group text-rose-500 mr-1.5"></i><span>${s.name}</span>`;
-      document.getElementById('popupCount').innerText = `${holdings.length}종목 보유 / ${closed.length}청산`;
-
-      const listContainer = document.getElementById('popupStockList');
-      listContainer.innerHTML = '';
-
-      if (holdings.length === 0 && closed.length === 0) {
-        listContainer.innerHTML = '<div class="text-slate-500 text-center py-3">현재 보유 중인 종목이 없습니다.</div>';
-        document.getElementById('popupAvgReturn').innerHTML = '수익률: <span class="text-slate-400">-</span>';
-      } else {
-        const displayItems = holdings.length > 0 ? holdings : closed;
-        displayItems.forEach(t => {
-          const isUp = t.return_pct >= 0;
-          const isHolding = t.status === 'HOLDING';
-          const curOrExit = isHolding ? t.current_price : (t.exit_price || t.current_price);
-          const div = document.createElement('div');
-          div.className = 'flex items-center justify-between p-2 rounded bg-desk-900 border border-desk-border/80 text-[11px]';
-          div.innerHTML = `
-            <div class="flex flex-col max-w-[170px]">
-              <div class="flex items-center space-x-1.5">
-                <span class="font-bold text-slate-100 truncate">${t.name}</span>
-                <span class="text-[9px] px-1 py-0.2 rounded ${isHolding ? 'bg-emerald-950 text-emerald-400 border border-emerald-800' : 'bg-desk-800 text-slate-400'}">${isHolding ? '보유' : '매도'}</span>
-              </div>
-              <div class="text-[10px] text-slate-400 font-mono mt-0.5">
-                ${formatDeskPrice(t.entry_price, t.market)} → ${formatDeskPrice(curOrExit, t.market)}
-              </div>
-            </div>
-            <div class="text-right font-mono">
-              <div class="font-bold text-xs ${isUp ? 'text-krx-up' : 'text-krx-down'}">
-                ${isUp ? '+' : ''}${t.return_pct.toFixed(2)}%
-              </div>
-              <div class="text-[9px] text-slate-500">${t.ticker}</div>
-            </div>
-          `;
-          listContainer.appendChild(div);
-        });
-
-        const totalRet = displayItems.reduce((acc, cur) => acc + (cur.return_pct || 0), 0);
-        const avgRet = displayItems.length > 0 ? (totalRet / displayItems.length).toFixed(2) : 0.0;
-        const isAvgUp = avgRet >= 0;
-        document.getElementById('popupAvgReturn').innerHTML = `보유 평균: <span class="${isAvgUp ? 'text-krx-up font-bold' : 'text-krx-down font-bold'}">${isAvgUp ? '+' : ''}${avgRet}%</span>`;
-      }
-
-      popup.classList.remove('hidden');
-      moveStrategyPopup(e);
-    }
-
-    function moveStrategyPopup(e) {
-      const popup = document.getElementById('strategyHoverPopup');
-      if (!popup || popup.classList.contains('hidden')) return;
-
-      const popupWidth = popup.offsetWidth || 320;
-      const popupHeight = popup.offsetHeight || 220;
-      let x = e.clientX + 16;
-      let y = e.clientY + 16;
-
-      if (x + popupWidth > window.innerWidth - 12) {
-        x = e.clientX - popupWidth - 16;
-      }
-      if (y + popupHeight > window.innerHeight - 12) {
-        y = e.clientY - popupHeight - 16;
-      }
-
-      popup.style.left = `${Math.max(10, x)}px`;
-      popup.style.top = `${Math.max(10, y)}px`;
-    }
-
-    function hideStrategyPopup() {
-      const popup = document.getElementById('strategyHoverPopup');
-      if (popup) popup.classList.add('hidden');
     }
 
     // 2. Trades Table
@@ -1865,7 +1743,12 @@
 
       let trades = appData.trades || [];
 
-      // Filter trades
+      // Strategy Filter (해당 포트의 종목만 필터링)
+      if (selectedStrategy) {
+        trades = trades.filter(t => t.project_id === selectedStrategy || t.project_name === selectedStrategy);
+      }
+
+      // Filter trades by status/market
       if (currentTradeFilter === 'HOLDING') {
         trades = trades.filter(t => t.status === 'HOLDING');
       } else if (currentTradeFilter === 'CLOSED') {
@@ -1876,10 +1759,27 @@
         trades = trades.filter(t => t.market === 'US');
       }
 
-      document.getElementById('tradesCountBadge').innerText = `${trades.length}개 체결 종목`;
+      // Badge 업데이트
+      const countBadge = document.getElementById('tradesCountBadge');
+      if (countBadge) {
+        countBadge.innerText = `${trades.length}개 종목`;
+      }
+
+      const stratBadge = document.getElementById('strategyFilterBadge');
+      const stratBadgeText = document.getElementById('selectedStrategyBadgeText');
+      if (stratBadge && stratBadgeText) {
+        if (selectedStrategy) {
+          stratBadge.classList.remove('hidden');
+          stratBadge.classList.add('inline-flex');
+          stratBadgeText.innerText = `전략: ${selectedStrategy}`;
+        } else {
+          stratBadge.classList.add('hidden');
+          stratBadge.classList.remove('inline-flex');
+        }
+      }
 
       if (trades.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="10" class="py-8 text-center text-slate-500 font-mono text-xs">일치하는 체결 내역이 없습니다.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="10" class="py-8 text-center text-slate-500 font-mono text-xs">일치하는 체결 종목이 없습니다.</td></tr>`;
         return;
       }
 
@@ -1941,97 +1841,6 @@
       }
       renderTradesTable();
     }
-
-    // Systems Operations Grid
-    function renderSystemsGrid() {
-      const container = document.getElementById('systemsGrid');
-      container.innerHTML = '';
-      const projects = appData.projects || [];
-
-      projects.forEach(p => {
-        const card = document.createElement('div');
-        card.className = 'desk-card rounded p-4 font-mono flex flex-col justify-between space-y-3';
-
-        const isRunning = p.status_code === 'running';
-        const isActive = p.status_code === 'active';
-
-        card.innerHTML = `
-          <div>
-            <div class="flex items-center justify-between text-xs mb-2">
-              <div class="flex items-center space-x-2">
-                <span class="text-sm">${p.flag || '🌐'}</span>
-                <span class="font-bold text-slate-100">${p.name}</span>
-              </div>
-              <span class="text-[10px] px-1.5 py-0.5 rounded ${isRunning ? 'bg-emerald-950 text-emerald-400 border border-emerald-800' : (isActive ? 'bg-desk-800 text-slate-300 border border-desk-border' : 'bg-desk-850 text-slate-500 border border-desk-border')}">
-                ${p.status_text || '대기'}
-              </span>
-            </div>
-            <div class="text-[11px] text-slate-400 font-sans leading-relaxed mb-3">${p.summary}</div>
-
-            <div class="bg-desk-950 rounded p-2.5 border border-desk-border text-[11px] space-y-1.5">
-              <div class="flex justify-between">
-                <span class="text-slate-500">실행 스케줄:</span>
-                <span class="text-slate-300">${p.schedule_display}</span>
-              </div>
-              <div class="flex justify-between">
-                <span class="text-slate-500">대상 시장:</span>
-                <span class="text-slate-300">${p.market}</span>
-              </div>
-              <div class="flex justify-between">
-                <span class="text-slate-500">최근 실행:</span>
-                <span class="text-slate-400">${p.last_executed}</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="pt-2 border-t border-desk-border flex items-center justify-between text-xs">
-            <button onclick="openLogModal('${p.id}')" class="px-2.5 py-1 rounded bg-desk-800 hover:bg-desk-700 text-slate-300 border border-desk-border text-[11px] transition-colors">
-              <i class="fa-solid fa-list-check mr-1 text-[10px]"></i> 로그 확인
-            </button>
-            <a href="${p.repo}" target="_blank" rel="noreferrer" class="text-slate-400 hover:text-white text-xs" title="GitHub">
-              <i class="fa-brands fa-github text-sm"></i>
-            </a>
-          </div>
-        `;
-        container.appendChild(card);
-      });
-    }
-
-    // Modal Control
-    function openLogModal(projectId) {
-      const p = (appData.projects || []).find(item => item.id === projectId);
-      if (!p) return;
-
-      document.getElementById('modalTitle').innerText = `${p.name} - 실행 로그`;
-      const container = document.getElementById('modalLogContent');
-      container.innerHTML = '';
-
-      if (p.recent_logs && p.recent_logs.length > 0) {
-        p.recent_logs.forEach(line => {
-          const div = document.createElement('div');
-          div.className = 'py-0.5 leading-relaxed break-all';
-          if (line.includes('ERROR') || line.includes('Err')) {
-            div.className += ' text-rose-400';
-          } else if (line.includes('성공') || line.includes('완료') || line.includes('✅')) {
-            div.className += ' text-emerald-400';
-          }
-          div.innerText = line;
-          container.appendChild(div);
-        });
-      } else {
-        container.innerHTML = '<div class="text-slate-500 py-6 text-center">기록된 최근 로그가 없습니다.</div>';
-      }
-
-      document.getElementById('logModal').classList.remove('hidden');
-    }
-
-    function closeLogModal() {
-      document.getElementById('logModal').classList.add('hidden');
-    }
-
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeLogModal();
-    });
 
     // Start
     loadLatestData();
