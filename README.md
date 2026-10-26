@@ -55,15 +55,7 @@
   - 🌅 **KRX 한국장 통합 알람**: 월~금 08:45 KST (스나이퍼 주도주 3선, SEPA 피봇, 227선 스윙, 시클리컬 PBR 바닥, 배당 Top 7)
   - 🌃 **US 미국장 통합 알람**: 월~금 21:30 KST (HTP 모멘텀 Top 10, US 3X 무한매수, SEPA US, 227선 스윙 US)
 
-### 2. 수동 실행 CLI
-```bash
-python3 send_integrated_alarm.py --market krx    # 한국장 통합 알람 즉시 전송
-python3 send_integrated_alarm.py --market us     # 미국장 통합 알람 즉시 전송
-python3 send_integrated_alarm.py --auto          # 시간대별(08시: KRX, 21시: US) 자동 판별 발송
-python3 send_integrated_alarm.py --dry-run       # 텔레그램 미전송 테스트 (미리보기)
-```
-
-### 3. macOS launchd 백그라운드 스케줄러 등록
+### 2. macOS launchd 백그라운드 스케줄러 등록
 ```bash
 ./scripts/install_launchd_alarm.sh
 ```

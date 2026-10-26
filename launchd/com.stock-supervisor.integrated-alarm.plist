@@ -8,8 +8,9 @@
     <key>ProgramArguments</key>
     <array>
         <string>/usr/bin/python3</string>
-        <string>/Users/tothemoon/stock-supervisor/send_integrated_alarm.py</string>
-        <string>--auto</string>
+        <string>/Users/tothemoon/stock-supervisor/integrated_alarm_engine.py</string>
+        <string>--market</string>
+        <string>auto</string>
     </array>
 
     <key>WorkingDirectory</key>
