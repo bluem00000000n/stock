@@ -4,4 +4,5 @@ __pycache__/
 data/*.db
 data/*.db-journal
 data/*.sqlite*
+data/*.log
 .env
