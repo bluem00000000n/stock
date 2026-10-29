@@ -1,0 +1,36 @@
+# SIGNAL FORGE ALERT - Application Configuration
+# Zero External Paid API Key Architecture
+
+app:
+  name: "signal_forge_alert"
+  version: "0.2.0"
+  environment: "development"
+  debug: false
+
+runtime:
+  data_dir: "runtime/data"
+  logs_dir: "runtime/logs"
+  cache_dir: "runtime/cache"
+  database_path: "runtime/data/signal_forge.db"
+
+network:
+  default_timeout_sec: 10
+  max_retries: 3
+  backoff_factor: 2.0
+  user_agent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+
+intelligence:
+  # Primary provider: "rules" (Rule-based NLP regex engine, 0 API key required)
+  # Alternative: "lmstudio" (Local LM Studio server at localhost:1234, 0 API key required)
+  # Fallback: "mock"
+  default_provider: "rules"
+  lm_studio:
+    endpoint: "http://localhost:1234/v1"
+    model: "local-model"
+    timeout_sec: 15
+
+alerts:
+  telegram:
+    enabled: true
+    max_message_chars: 4000
+    rate_limit_per_second: 20

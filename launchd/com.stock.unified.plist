@@ -6,7 +6,7 @@
     <string>com.stock.unified</string>
     <key>ProgramArguments</key>
     <array>
-        <string>/usr/bin/python3</string>
+        <string>/Users/tothemoon/stock-supervisor/.venv/bin/python3</string>
         <string>/Users/tothemoon/stock-supervisor/supervisor/runner.py</string>
         <string>--mode</string>
         <string>auto</string>

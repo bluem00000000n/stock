@@ -1,0 +1,44 @@
+# SIGNAL FORGE ALERT - Alert Rules & Scoring Configuration
+
+tiers:
+  INFO:
+    min_score: 0
+    description: "Informational market update or community mention"
+    notify_telegram: false
+  WATCH:
+    min_score: 50
+    description: "Initial setup forming, added to active monitoring watchlist"
+    notify_telegram: true
+  OPPORTUNITY:
+    min_score: 75
+    description: "Multiple independent indicators aligned (price, volume, catalyst)"
+    notify_telegram: true
+  HIGH_CONVICTION:
+    min_score: 90
+    description: "Rigorous historical validation passed, full risk filters clear"
+    enabled_by_default: false
+    notify_telegram: true
+  RISK_WARNING:
+    min_score: 60
+    description: "Severe risk detected (pump-and-dump, dilution, sudden liquidation cascade)"
+    notify_telegram: true
+  DATA_DEGRADED:
+    min_score: 0
+    description: "Stale data or source connection degraded"
+    notify_telegram: false
+
+deduplication:
+  default_cooldown_minutes: 60
+  strategy_cooldown_overrides:
+    S01_EARLY_BUZZ: 120
+    S18_PREDICTION_VERIFIED: 180
+    C01_PUMP_EXHAUSTION_SHORT: 45
+    C07_SHORT_SQUEEZE_RUNNER_LONG: 45
+
+scoring_weights:
+  price_action: 0.25
+  volume_structure: 0.20
+  fundamental_catalyst: 0.20
+  community_sentiment: 0.15
+  market_regime: 0.10
+  risk_filter_penalty: 0.10

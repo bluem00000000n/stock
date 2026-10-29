@@ -6,17 +6,22 @@ supervisor/alarm_builder.py
 하루 2회 단일 브리핑 체제:
 - 08:40 : 미국장 장마감 통합 브리핑, 🇰🇷 한국장 장전 통합 브리핑
 - 15:00 : 🇰🇷 한국장 종가매수(Strong Close) 최종 타깃 브리핑, 🇺🇸 미국장 장전 통합 브리핑
+
++ [🎯 백찬규 센터장 여의도 실무 스크리너] (성장주 후보 + 중소형 수급주)
++ [🪙 Signal Forge AI 크립토 롱/숏 레이더] 통합
 """
 
 from datetime import datetime
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Optional
 
 
 def build_0840_us_close_kr_open_alarm(
     kr_portfolio: Dict[str, Any],
     us_portfolio: Dict[str, Any],
     macro: Dict[str, Any],
-    kr_buys: List[Dict[str, Any]]
+    kr_buys: List[Dict[str, Any]],
+    screener_signals: Optional[List[Dict[str, Any]]] = None,
+    crypto_signals: Optional[List[Dict[str, Any]]] = None
 ) -> str:
     """
     08:40 브리핑:
@@ -64,22 +69,52 @@ def build_0840_us_close_kr_open_alarm(
     else:
         lines.append("• <i>금일 유효 타점 부재로 신규 진입 보류 및 기존 포지션 관리</i>\n")
 
-    # 3. 한국장 매도 / 청산 실행 알람
+    # 3. 백찬규 센터장 실무 스크리너 타깃
+    if screener_signals:
+        lines.append("━━━━━━━━━━━━━━━━━━━━━━━━━")
+        lines.append("📊 <b>3. 🎯 여의도 실무 스크리너 (백찬규 센터장 조건검색)</b>")
+        growth_picks = [s for s in screener_signals if "성장주" in s.get("strategy_name", "")][:2]
+        mid_picks = [s for s in screener_signals if "중소형" in s.get("strategy_name", "")][:1]
+
+        if growth_picks:
+            lines.append("🚀 <b>[성장주 후보 (시총 1조+ / 27년 영업익 16%+ / ROE 15%+)]</b>")
+            for gp in growth_picks:
+                lines.append(f" • <b>{gp['name']}</b> ({gp['ticker']}) : <b>{int(gp['price']):,}원</b>")
+                lines.append(f"   └ <i>지표:</i> {gp['action_plan']}")
+
+        if mid_picks:
+            lines.append("💎 <b>[중소형 수급가치 (시총 2천억~1조 / 거래량 200%+ / 저PBR)]</b>")
+            for mp in mid_picks:
+                lines.append(f" • <b>{mp['name']}</b> ({mp['ticker']}) : <b>{int(mp['price']):,}원</b>")
+                lines.append(f"   └ <i>지표:</i> {mp['action_plan']}")
+        lines.append("")
+
+    # 4. 바이낸스 선물 크립토 지능 알람 (Signal Forge)
+    if crypto_signals:
+        lines.append("━━━━━━━━━━━━━━━━━━━━━━━━━")
+        lines.append("🪙 <b>4. ⚡ 바이낸스 선물 크립토 롱/숏 레이더 (Signal Forge)</b>")
+        for cs in crypto_signals[:3]:
+            direction = "🟢 LONG" if cs.get("signal_type") == "BUY" else "🔴 SHORT"
+            lines.append(f" • <b>{cs['ticker']}</b> [{direction}] : <b>${cs['price']:,.2f}</b>")
+            lines.append(f"   └ {cs.get('action_plan', '')}")
+        lines.append("")
+
+    # 5. 한국장 매도 / 청산 실행 알람
     sells_sl = kr_portfolio.get("sells_sl", [])
     sells_tp = kr_portfolio.get("sells_tp", [])
     if sells_sl or sells_tp:
-        lines.append("🚨 <b>3. 🇰🇷 한국장 오늘 매도 / 청산 실행 알람</b>")
+        lines.append("🚨 <b>5. 🇰🇷 한국장 오늘 매도 / 청산 실행 알람</b>")
         for s in sells_sl:
             lines.append(f"• 🔴 <b>[손절 청산] {s['name']}</b> ({s['ticker']}) : {s.get('return_pct', 0.0):+.2f}%")
         for s in sells_tp:
             lines.append(f"• 🟢 <b>[목표가 익절] {s['name']}</b> ({s['ticker']}) : {s.get('return_pct', 0.0):+.2f}%")
         lines.append("")
 
-    # 4. 한국장 실시간 운용 포트폴리오
+    # 6. 한국장 실시간 운용 포트폴리오
     kr_active = kr_portfolio.get("active_holdings", [])
     stats = kr_portfolio.get("stats", {})
     lines.append("━━━━━━━━━━━━━━━━━━━━━━━━━")
-    lines.append(f"💼 <b>4. 🇰🇷 한국장 실시간 운용 포트폴리오 ({stats.get('total_holdings', len(kr_active))}종목)</b>")
+    lines.append(f"💼 <b>6. 🇰🇷 한국장 실시간 운용 포트폴리오 ({stats.get('total_holdings', len(kr_active))}종목)</b>")
     lines.append(f"• <b>평균 수익률:</b> <b>{stats.get('avg_return_pct', 0.0):+.2f}%</b> (여유 슬롯: {stats.get('available_slots', 0)}개)")
     if kr_active:
         for h in kr_active[:5]:
@@ -101,7 +136,9 @@ def build_1500_kr_close_us_open_alarm(
     kr_portfolio: Dict[str, Any],
     us_portfolio: Dict[str, Any],
     kr_buys: List[Dict[str, Any]],
-    us_buys: List[Dict[str, Any]]
+    us_buys: List[Dict[str, Any]],
+    screener_signals: Optional[List[Dict[str, Any]]] = None,
+    crypto_signals: Optional[List[Dict[str, Any]]] = None
 ) -> str:
     """
     15:00 브리핑:
@@ -128,7 +165,13 @@ def build_1500_kr_close_us_open_alarm(
     else:
         lines.append("• <i>금일 오버나이트 적합 종목 부재 (현금 비중 유지 권고)</i>")
 
-    # 2. 한국장 포트폴리오 마감 상태
+    # 2. 백찬규 센터장 실무 스크리너 타깃 (종가 선별)
+    if screener_signals:
+        lines.append("\n📊 <b>[여의도 실무 스크리너 종가 선별 타깃]</b>")
+        for s in screener_signals[:3]:
+            lines.append(f"• <b>{s['name']}</b> ({s['ticker']}) : <b>{int(s['price']):,}원</b> | {s['action_plan']}")
+
+    # 3. 한국장 포트폴리오 마감 상태
     kr_active = kr_portfolio.get("active_holdings", [])
     kr_stats = kr_portfolio.get("stats", {})
     lines.append(f"\n💼 <b>한국장 운용 포트폴리오 마감 현황 ({len(kr_active)}종목 | 평균 {kr_stats.get('avg_return_pct', 0.0):+.2f}%)</b>")
@@ -139,7 +182,7 @@ def build_1500_kr_close_us_open_alarm(
 
     lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
 
-    # 3. 미국장 장전 통합 브리핑
+    # 4. 미국장 장전 통합 브리핑
     lines.append("🌃 <b>2. 🇺🇸 미국장 장전 통합 브리핑 (오늘 밤 개장 전략)</b>")
     lines.append("• 3X 레버리지 무한투자와 HTP 모멘텀 TOP 10 결합 운용")
     lines.append("• 피벗가 대비 +5% 초과 추격매수 절대 금지, 2N 스탑 준수\n")
@@ -154,7 +197,7 @@ def build_1500_kr_close_us_open_alarm(
     else:
         lines.append("• <i>미국장 신규 진입 대기 (기존 분할 포지션 유지)</i>")
 
-    # 4. 미국장 활성 포지션
+    # 5. 미국장 활성 포지션
     us_active = us_portfolio.get("active_holdings", [])
     lines.append(f"\n💼 <b>미국장 활성 포지션 현황 ({len(us_active)}종목)</b>")
     if us_active:
@@ -164,6 +207,14 @@ def build_1500_kr_close_us_open_alarm(
             lines.append(f"• {sign} <b>{h['name']}</b> ({h['ticker']}) : <b>{ret:+.2f}%</b> (진입: ${float(h['entry_price']):.2f})")
     else:
         lines.append("• <i>미국장 신규 진입 대기 포지션</i>")
+
+    # 6. 크립토 레이더 (Signal Forge)
+    if crypto_signals:
+        lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
+        lines.append("🪙 <b>3. ⚡ 바이낸스 선물 크립토 롱/숏 지능 레이더</b>")
+        for cs in crypto_signals[:3]:
+            direction = "🟢 LONG" if cs.get("signal_type") == "BUY" else "🔴 SHORT"
+            lines.append(f"• <b>{cs['ticker']}</b> [{direction}] : <b>${cs['price']:,.2f}</b> | {cs.get('action_plan', '')}")
 
     lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
     lines.append("🖥️ <b>트레이딩 데스크:</b> https://bluem00000000n.github.io/stock/")

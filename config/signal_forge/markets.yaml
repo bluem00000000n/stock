@@ -1,0 +1,59 @@
+# SIGNAL FORGE ALERT - Market Universes Configuration
+
+crypto:
+  exchange: "upbit"
+  base_url: "https://api.upbit.com/v1"
+  contract_type: "spot"
+  quote_asset: "KRW"
+  allowed_directions: ["LONG"]
+  default_symbols:
+    - "KRW-BTC"
+    - "KRW-ETH"
+    - "KRW-SOL"
+    - "KRW-XRP"
+    - "KRW-DOGE"
+    - "KRW-ADA"
+    - "KRW-AVAX"
+    - "KRW-SUI"
+  timeframes: ["5m", "15m", "1h", "1d"]
+
+stocks_kr:
+  markets: ["KOSPI", "KOSDAQ"]
+  allowed_directions: ["LONG"]
+  quote_currency: "KRW"
+  default_symbols:
+    - "005930" # Samsung Electronics
+    - "000660" # SK Hynix
+    - "373220" # LG Energy Solution
+    - "207940" # Samsung Biologics
+    - "005380" # Hyundai Motor
+    - "035420" # NAVER
+    - "035720" # Kakao
+    - "068270" # Celltrion
+  data_sources:
+    - name: "naver_finance_web"
+      type: "unauthenticated_scraper"
+      requires_api_key: false
+
+stocks_us:
+  exchanges: ["NYSE", "NASDAQ"]
+  allowed_directions: ["LONG"]
+  quote_currency: "USD"
+  default_symbols:
+    - "AAPL"
+    - "MSFT"
+    - "NVDA"
+    - "AMZN"
+    - "GOOGL"
+    - "META"
+    - "TSLA"
+    - "AMD"
+    - "QQQ"
+    - "SPY"
+  data_sources:
+    - name: "sec_edgar_public"
+      type: "public_filings"
+      requires_api_key: false
+    - name: "yahoo_public_web"
+      type: "unauthenticated_scraper"
+      requires_api_key: false

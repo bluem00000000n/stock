@@ -1,0 +1,23 @@
+# SIGNAL FORGE ALERT - Scheduling Configuration
+
+schedules:
+  market_scanner:
+    crypto_interval_seconds: 60
+    stocks_interval_seconds: 300
+    community_interval_seconds: 180
+  
+  reports:
+    daily:
+      enabled: true
+      cron_kst: "0 18 * * 1-5" # 18:00 KST weekdays
+      description: "Daily summary of signals, performance and watchlist"
+    
+    weekly:
+      enabled: true
+      cron_kst: "0 8 * * 1" # Monday 08:00 KST
+      description: "Weekly Monday review of win-rate, false pumps, and top signals"
+      
+    monthly:
+      enabled: true
+      cron_kst: "0 8 1 * *" # 1st of every month 08:00 KST
+      description: "Monthly performance ranking, community predictive power, and strategy tuning"

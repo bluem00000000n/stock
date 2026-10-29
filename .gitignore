@@ -6,3 +6,6 @@ data/*.db-journal
 data/*.sqlite*
 data/*.log
 .env
+.venv/
+data/screener/*.xlsx
+data/screener/*.csv

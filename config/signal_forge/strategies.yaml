@@ -1,0 +1,140 @@
+# SIGNAL FORGE ALERT - Strategy Catalog Configuration
+# 18 Stock Strategies (LONG ONLY) + 7 Crypto Strategies (LONG & SHORT)
+
+stocks:
+  allowed_directions: ["LONG"]
+  strategies:
+    S01:
+      id: "S01_EARLY_BUZZ"
+      name: "Early Buzz"
+      description: "Surge in community mentions across independent accounts before price reaction"
+      lookback_periods: 20
+      buzz_multiplier: 2.5
+    S02:
+      id: "S02_SILENT_ACCUMULATION"
+      name: "Silent Accumulation"
+      description: "Low-volatility consolidation with positive on-balance volume and tightening spread"
+      consolidation_periods: 14
+      volatility_threshold: 0.02
+    S03:
+      id: "S03_GOOD_NEWS_SLOW_MONEY"
+      name: "Good News Slow Money"
+      description: "Verified fundamental catalyst or earnings beat with delayed market price response"
+      catalyst_window_days: 3
+    S04:
+      id: "S04_CATALYST_BREAKOUT"
+      name: "Catalyst Breakout"
+      description: "Key resistance breakout accompanied by confirmed official disclosure/news and volume"
+      breakout_periods: 20
+      volume_surge_min: 2.0
+    S05:
+      id: "S05_FIRST_PULLBACK"
+      name: "First Pullback"
+      description: "Orderly pullback to 20 EMA in strong upward trend with support confirmation"
+      ema_period: 20
+      max_pullback_pct: 0.05
+    S06:
+      id: "S06_SECTOR_ROTATION"
+      name: "Sector Rotation"
+      description: "Capital inflow into leading sector with broadening leadership among peer stocks"
+      sector_lookback: 10
+    S07:
+      id: "S07_SECTOR_SYMPATHY"
+      name: "Sector Sympathy"
+      description: "Sympathy play on high-quality peer when primary industry leader breaks out"
+      sympathy_lag_bars: 3
+    S08:
+      id: "S08_EXPECTATION_FAILURE_LONG"
+      name: "Expectation Failure Long"
+      description: "Negative news event fails to push price lower, indicating absorption and reversal"
+      reversal_bars: 2
+    S09:
+      id: "S09_SHORT_SQUEEZE_LONG"
+      name: "Short Squeeze Long"
+      description: "High short interest or heavy short volume followed by sharp upside resistance break"
+      short_ratio_min: 0.15
+    S10:
+      id: "S10_FAILED_PUMP_RECOVERY"
+      name: "Failed Pump Recovery"
+      description: "Stock settles after excessive promotion ends and genuine institutional demand recovers"
+      cooling_periods: 30
+    S11:
+      id: "S11_SUPPLY_ABSORPTION"
+      name: "Supply Absorption"
+      description: "Post-lockup expiry or secondary offering supply absorbed without breakdown"
+      support_hold_days: 5
+    S12:
+      id: "S12_HYPE_TO_FUNDAMENTALS"
+      name: "Hype to Fundamentals"
+      description: "Filtering high-quality profitable companies amid speculative sector hype"
+      fundamental_score_min: 70
+    S13:
+      id: "S13_POST_EARNINGS_DRIFT"
+      name: "Post Earnings Drift"
+      description: "Significant positive earnings surprise followed by multi-day upward continuation"
+      drift_window_days: 7
+    S14:
+      id: "S14_RELATIVE_STRENGTH"
+      name: "Relative Strength"
+      description: "Stock consistently outperforms broad benchmark index across multiple timeframes"
+      benchmark_rs_period: 20
+    S15:
+      id: "S15_MULTI_DAY_MOMENTUM"
+      name: "Multi-Day Momentum"
+      description: "Sustained 3-7 day stair-stepping higher with volume confirmation without exhaustion"
+      momentum_days: 5
+    S16:
+      id: "S16_FAILED_BREAKDOWN"
+      name: "Failed Breakdown"
+      description: "Spring action below key support immediately followed by rapid recovery back inside range"
+      spring_bars: 2
+    S17:
+      id: "S17_ATTENTION_REBOUND"
+      name: "Attention Rebound"
+      description: "Speculative attention fades, price stabilizes, and organic demand accumulates"
+      stabilization_days: 7
+    S18:
+      id: "S18_PREDICTION_VERIFIED"
+      name: "Prediction Verified"
+      description: "Public community 7-day surge prediction verified by independent news and order flow"
+      prediction_window_days: 7
+
+crypto:
+  allowed_directions: ["LONG", "SHORT"]
+  strategies:
+    C01:
+      id: "C01_PUMP_EXHAUSTION_SHORT"
+      name: "Pump Exhaustion Short"
+      description: "Parabolic blow-off top failing to make new highs with volume divergence"
+      lookback_periods: 24
+      exhaustion_pct: 0.15
+    C02:
+      id: "C02_SILENT_DISTRIBUTION_SHORT"
+      name: "Silent Distribution Short"
+      description: "Fading community excitement and stealth institutional distribution on high volume"
+      distribution_periods: 20
+    C03:
+      id: "C03_FAILED_BREAKOUT_SHORT"
+      name: "Failed Breakout Short"
+      description: "Bull trap above key resistance followed by aggressive rejection back into range"
+      false_break_bars: 3
+    C04:
+      id: "C04_VWAP_REJECTION_SHORT"
+      name: "VWAP Rejection Short"
+      description: "Price breaks below session VWAP, tests VWAP from below and fails decisively"
+      vwap_period: 24
+    C05:
+      id: "C05_MULTI_DAY_FADE_SHORT"
+      name: "Multi-Day Fade Short"
+      description: "3-7 days extended rally showing declining momentum and impending long liquidation"
+      fade_days: 5
+    C06:
+      id: "C06_REAL_CATALYST_RUNNER_LONG"
+      name: "Real Catalyst Runner Long"
+      description: "Genuine protocol upgrade or major catalyst with expanding spot/futures volume alignment"
+      volume_surge_min: 2.5
+    C07:
+      id: "C07_SHORT_SQUEEZE_RUNNER_LONG"
+      name: "Short Squeeze Runner Long"
+      description: "Negative funding rate and expanding open interest breaking key resistance upward"
+      funding_rate_threshold: -0.0002

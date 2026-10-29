@@ -37,8 +37,10 @@ from strategies import (
     cyclical,
     dividend,
     htp_momentum,
-    us3x
+    us3x,
+    signal_forge_bridge
 )
+from screener.engine import run_screener_analysis
 
 
 def run_pipeline(mode: str = "auto", force: bool = False, dry_run: bool = False) -> bool:
@@ -84,6 +86,35 @@ def run_pipeline(mode: str = "auto", force: bool = False, dry_run: bool = False)
     except Exception as e:
         print(f"⚠️ dividend 오류: {e}")
 
+    # 백찬규 센터장 실무 스크리너 (성장주 후보 + 중소형 수급가치)
+    screener_signals = []
+    try:
+        screener_signals, s_meta = run_screener_analysis()
+        kr_signals.extend(screener_signals)
+        print(f"🎯 실무 스크리너 분석 완료 ({len(screener_signals)}건 포착 / 소스: {s_meta['source']})")
+    except Exception as e:
+        print(f"⚠️ screener 오류: {e}")
+
+    # Signal Forge 25대 퀀트 전략 (한국주식, 미국주식, 크립토)
+    crypto_signals = []
+    try:
+        sf_kr = signal_forge_bridge.run_signal_forge_analysis("stocks_kr")
+        kr_signals.extend(sf_kr)
+    except Exception as e:
+        print(f"⚠️ SignalForge KR 오류: {e}")
+
+    try:
+        sf_us = signal_forge_bridge.run_signal_forge_analysis("stocks_us")
+        us_signals.extend(sf_us)
+    except Exception as e:
+        print(f"⚠️ SignalForge US 오류: {e}")
+
+    try:
+        crypto_signals = signal_forge_bridge.run_signal_forge_analysis("crypto")
+        print(f"🪙 SignalForge 크립토 레이더 스캔 완료 ({len(crypto_signals)}건)")
+    except Exception as e:
+        print(f"⚠️ SignalForge Crypto 오류: {e}")
+
     # 미국장 전략
     try:
         us_signals.extend(htp_momentum.run_analysis())
@@ -119,10 +150,18 @@ def run_pipeline(mode: str = "auto", force: bool = False, dry_run: bool = False)
 
     # 4. 알람 메시지 생성
     if mode in ("0840", "morning"):
-        alarm_text = build_0840_us_close_kr_open_alarm(kr_portfolio, us_portfolio, macro, kr_best_buys)
+        alarm_text = build_0840_us_close_kr_open_alarm(
+            kr_portfolio, us_portfolio, macro, kr_best_buys,
+            screener_signals=screener_signals,
+            crypto_signals=crypto_signals
+        )
         title = f"미국장 장마감 통합 브리핑, 🇰🇷 한국장 장전 통합 브리핑 ({kr_portfolio['date']})"
     else:
-        alarm_text = build_1500_kr_close_us_open_alarm(kr_portfolio, us_portfolio, kr_best_buys, us_best_buys)
+        alarm_text = build_1500_kr_close_us_open_alarm(
+            kr_portfolio, us_portfolio, kr_best_buys, us_best_buys,
+            screener_signals=screener_signals,
+            crypto_signals=crypto_signals
+        )
         title = f"15:00 : 🇰🇷 한국장 종가매수(Strong Close) 최종 타깃 브리핑 , 미국장 장전 통합 브리핑 ({kr_portfolio['date']})"
 
     if dry_run:
