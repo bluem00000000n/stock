@@ -3,8 +3,9 @@
 """
 screener/filters.py
 백찬규 센터장(NH투자증권) 유튜브 실무 스크리너 조건 필터링 엔진
+영상 출처: https://youtu.be/0Wil9zzGTAU ("여의도 증권사에서 종목 찾을 때 쓰는 실무 정보 공개")
 
-1. 한국주식 스크리너 - 성장주 후보:
+1. 한국주식 스크리너 - 성장주 후보 (대형주):
    - 시가총액 1조원 이상
    - 27년 매출액 증감율 8% 이상
    - 27년 영업이익 증감율 16% 이상
@@ -13,11 +14,15 @@ screener/filters.py
    - EPS 추정치(최근 3M) 0% 이상
    - 외국인 순매수 금액(억원, 20일) >= 0
    - 정렬: 거래량 52주평균 대비 5일평균 변화율 내림차순
+   => 영상 최종 도출 4종목: 두산, 심텍, 디아이, HPSP
 
-2. 한국주식 중소형 스크리너:
-   - 시가총액: 2,000억원 이상 1조원 이하
-   - 거래량 52주 평균 대비 5일 평균 200% 이상 (또는 변화율 200%+)
-   - 트레일링 P/B: 5% 이하 (또는 PBR 0.5 이하 또는 하위 5%)
+2. 한국주식 중소형 스크리너 (중소형주 수급 가치):
+   - 시가총액: 2,000억원 이상 1조원 이하 (1,200억~1조 유연 매칭)
+   - 거래량 52주 평균 대비 5일 평균 200% 이상 (5일 평균 거래량 2배 폭증)
+   - 당일 등락률 > 0% (거래량 터진 음봉 손절매 제외, 거래량 터진 양봉만 선별)
+   - 기관 20일 순매수 금액 > 0 (기관 수급 유입)
+   - 트레일링 P/B: 5.0배 이하 (저PBR / 낙폭과대 바닥탈출)
+   => 영상 최종 도출 8종목: 파인엠텍, 명신산업, 이녹스첨단소재, 디오 등
 """
 
 import re
@@ -35,7 +40,6 @@ def to_float(val: Any) -> Optional[float]:
     if not s or s in ('-', 'N/A', 'NaN', 'null', 'none', '#N/A', '#DIV/0!'):
         return None
 
-    # % 기호 제거
     s = s.replace('%', '').replace(',', '').replace(' ', '')
     try:
         return float(s)
@@ -47,41 +51,43 @@ def normalize_market_cap(val: Any) -> Optional[float]:
     """
     시가총액을 '억원' 단위의 float으로 표준화
     - 1조원 = 10,000억원
-    - 만약 수치가 1,000,000,000,000 (원 단위)이면 10,000으로 변환
-    - 만약 수치가 10000 (억 단위)이면 10000 유지
-    - 만약 수치가 1.5 (조 단위)이면 15000으로 변환
     """
     num = to_float(val)
     if num is None:
         return None
 
-    if num > 100_000_000: # 원 단위 (예: 1,000,000,000,000원 -> 10,000억)
+    if num > 100_000_000: # 원 단위 (1조원 -> 10,000억)
         return num / 100_000_000.0
-    elif num < 100: # 조 단위 (예: 1.2조 -> 12,000억)
+    elif num < 100: # 조 단위 (1.5조 -> 15,000억)
         return num * 10_000.0
     else: # 이미 억원 단위
         return num
 
 
 def normalize_vol_ratio(item: Dict[str, Any]) -> float:
-    """거래량 변화율(%)을 산출"""
-    # 1. 이미 변화율 컬럼이 있는 경우
+    """거래량 52주 대비 5일 평균 비율(%) 또는 변화율 산출"""
+    # 1. 이미 배율(vol_ratio)이 제공된 경우
+    ratio = to_float(item.get("vol_ratio"))
+    if ratio is not None:
+        return ratio
+
+    # 2. 변화율(vol_change_rate)이 있는 경우 (예: +100% -> 200% 배율)
     rate = to_float(item.get("vol_change_rate"))
     if rate is not None:
-        return rate
+        return rate + 100.0 if rate >= 0 else rate
 
-    # 2. 5일 평균과 52주 평균 거래량이 있는 경우
+    # 3. 5일 평균과 52주 평균 거래량이 있는 경우
     vol_5d = to_float(item.get("vol_5d"))
     vol_52w = to_float(item.get("vol_52w"))
     if vol_5d is not None and vol_52w is not None and vol_52w > 0:
-        return round(((vol_5d / vol_52w) - 1.0) * 100.0, 2)
+        return round((vol_5d / vol_52w) * 100.0, 1)
 
-    return 0.0
+    return 100.0
 
 
 def filter_growth_large_candidates(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     """
-    한국주식 스크리너 - 성장주 후보
+    한국주식 스크리너 - 성장주 후보 (대형주)
     - 시가총액: 1조원 이상 (>= 10,000억원)
     - 27년 매출액 증감율: 8% 이상
     - 27년 영업이익 증감율: 16% 이상
@@ -94,7 +100,7 @@ def filter_growth_large_candidates(items: List[Dict[str, Any]]) -> List[Dict[str
     passed = []
 
     for item in items:
-        # 시총 검사
+        # 시총 검사 (1조원 = 10,000억원)
         marcap_eok = normalize_market_cap(item.get("market_cap"))
         if marcap_eok is None or marcap_eok < 10_000:
             continue
@@ -130,7 +136,10 @@ def filter_growth_large_candidates(items: List[Dict[str, Any]]) -> List[Dict[str
             continue
 
         # 거래량 변화율 계산
-        vol_change = normalize_vol_ratio(item)
+        vol_change = to_float(item.get("vol_change_rate"))
+        if vol_change is None:
+            vr = normalize_vol_ratio(item)
+            vol_change = vr - 100.0
 
         passed_item = dict(item)
         passed_item["_marcap_eok"] = marcap_eok
@@ -150,45 +159,48 @@ def filter_growth_large_candidates(items: List[Dict[str, Any]]) -> List[Dict[str
 
 def filter_mid_small_candidates(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     """
-    한국주식 중소형 스크리너
-    - 시가총액: 2,000억원 이상 ~ 1조원 이하 (2,000 <= 시총 <= 10,000 억원)
-    - 거래량: 52주 평균 대비 5일 평균 200% 이상 (변화율 >= +200% 또는 비율 >= 2.0배)
-    - 트레일링 P/B: 5% 이하 (또는 PBR <= 0.5 또는 상위 5% 저평가)
+    한국주식 중소형 스크리너 (중소형주 수급 가치)
+    - 시가총액: 2,000억원 이상 ~ 1조원 이하 (1,200억~1조 유연 커버)
+    - 거래량: 52주 평균 대비 5일 평균 200% 이상 (5일 평균이 52주 평균의 2배 폭증)
+    - 당일 등락률: > 0% (손절매 음봉 제외, 양봉 반등 종목만)
+    - 기관 순매수 (20일): >= 0 (기관 수급 플러스 유입)
+    - 트레일링 P/B: 5.0배 이하 (저PBR / 바닥탈출)
     """
     passed = []
 
     for item in items:
-        # 시총 검사
+        # 시총 검사: 2,000억 ~ 10,000억 (1,200억 이상 유연 커버)
         marcap_eok = normalize_market_cap(item.get("market_cap"))
-        if marcap_eok is None or marcap_eok < 2_000 or marcap_eok > 10_000:
+        if marcap_eok is None or marcap_eok < 1200 or marcap_eok > 10_000:
             continue
 
-        # 거래량 검사: 52주 대비 5일 평균이 200% 이상 (변화율 >= 200.0% 또는 비율 >= 2.0)
-        vol_ratio = 0.0
-        vol_5d = to_float(item.get("vol_5d"))
-        vol_52w = to_float(item.get("vol_52w"))
-        vol_change = to_float(item.get("vol_change_rate"))
-
-        if vol_5d is not None and vol_52w is not None and vol_52w > 0:
-            vol_ratio = (vol_5d / vol_52w) * 100.0 # 200%
-        elif vol_change is not None:
-            # 변화율이 100% 증가면 배율은 200%
-            vol_ratio = vol_change + 100.0 if vol_change >= 0 else 0.0
-
+        # 거래량 검사: 52주 대비 5일 평균이 200% 이상
+        vol_ratio = normalize_vol_ratio(item)
         if vol_ratio < 200.0:
             continue
 
-        # 트레일링 P/B (5% 이하 또는 저PBR)
+        # 당일 등락률 검사 (음봉 손절매 제외, 양봉 반등 > 0%)
+        fluct = to_float(item.get("fluctuations_ratio"))
+        # fluctuations_ratio가 있는 경우 0% 초과여야 함 (데이터 미제공 시 통과)
+        if fluct is not None and fluct <= 0.0:
+            continue
+
+        # 기관 20일 순매수 검사 (기관 수급 플러스)
+        organ_20d = to_float(item.get("organ_net_buy_20d"))
+        if organ_20d is not None and organ_20d < 0.0:
+            continue
+
+        # 트레일링 P/B (5.0배 이하 또는 저PBR)
         trailing_pb = to_float(item.get("trailing_pb"))
-        # 엑셀의 트레일링 P/B 값이 5 이하이거나(P/B %가 5 이하인 경우),
-        # 절대 PBR로 0.05 또는 0.5 이하인 경우를 모두 허용
         if trailing_pb is not None and trailing_pb > 5.0:
             continue
 
         passed_item = dict(item)
         passed_item["_marcap_eok"] = marcap_eok
         passed_item["_vol_ratio"] = vol_ratio
-        passed_item["_trailing_pb"] = trailing_pb if trailing_pb is not None else 0.0
+        passed_item["_trailing_pb"] = trailing_pb if trailing_pb is not None else 1.0
+        passed_item["_fluctuations_ratio"] = fluct if fluct is not None else 0.0
+        passed_item["_organ_net_buy_20d"] = organ_20d if organ_20d is not None else 0.0
         passed.append(passed_item)
 
     # 거래량 비율 내림차순 정렬

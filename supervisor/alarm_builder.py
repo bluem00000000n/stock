@@ -72,18 +72,18 @@ def build_0840_us_close_kr_open_alarm(
     # 3. 백찬규 센터장 실무 스크리너 타깃
     if screener_signals:
         lines.append("━━━━━━━━━━━━━━━━━━━━━━━━━")
-        lines.append("📊 <b>3. 🎯 여의도 실무 스크리너 (백찬규 센터장 조건검색)</b>")
-        growth_picks = [s for s in screener_signals if "성장주" in s.get("strategy_name", "")][:2]
-        mid_picks = [s for s in screener_signals if "중소형" in s.get("strategy_name", "")][:1]
+        lines.append("📊 <b>3. 🎯 여의도 실무 스크리너 (백찬규 센터장 조건검색 2대 리스트)</b>")
+        growth_picks = [s for s in screener_signals if "성장주" in s.get("strategy_name", "")]
+        mid_picks = [s for s in screener_signals if "중소형" in s.get("strategy_name", "")]
 
         if growth_picks:
-            lines.append("🚀 <b>[성장주 후보 (시총 1조+ / 27년 영업익 16%+ / ROE 15%+)]</b>")
+            lines.append("🚀 <b>[리스트 1: 성장주 후보 (시총 1조+ / 27년 영업익 16%+ / ROE 15%+)]</b>")
             for gp in growth_picks:
                 lines.append(f" • <b>{gp['name']}</b> ({gp['ticker']}) : <b>{int(gp['price']):,}원</b>")
                 lines.append(f"   └ <i>지표:</i> {gp['action_plan']}")
 
         if mid_picks:
-            lines.append("💎 <b>[중소형 수급가치 (시총 2천억~1조 / 거래량 200%+ / 저PBR)]</b>")
+            lines.append("💎 <b>[리스트 2: 중소형 수급가치 (시총 2천억~1조 / 거래량 200%+ / 저PBR)]</b>")
             for mp in mid_picks:
                 lines.append(f" • <b>{mp['name']}</b> ({mp['ticker']}) : <b>{int(mp['price']):,}원</b>")
                 lines.append(f"   └ <i>지표:</i> {mp['action_plan']}")
@@ -165,11 +165,19 @@ def build_1500_kr_close_us_open_alarm(
     else:
         lines.append("• <i>금일 오버나이트 적합 종목 부재 (현금 비중 유지 권고)</i>")
 
-    # 2. 백찬규 센터장 실무 스크리너 타깃 (종가 선별)
+    # 2. 백찬규 센터장 실무 스크리너 타깃 (종가 선별 2대 리스트)
     if screener_signals:
-        lines.append("\n📊 <b>[여의도 실무 스크리너 종가 선별 타깃]</b>")
-        for s in screener_signals[:3]:
-            lines.append(f"• <b>{s['name']}</b> ({s['ticker']}) : <b>{int(s['price']):,}원</b> | {s['action_plan']}")
+        lines.append("\n📊 <b>[여의도 실무 스크리너 백찬규 센터장 2대 리스트]</b>")
+        growth_picks = [s for s in screener_signals if "성장주" in s.get("strategy_name", "")]
+        mid_picks = [s for s in screener_signals if "중소형" in s.get("strategy_name", "")]
+        if growth_picks:
+            lines.append("🚀 <b>[리스트 1: 성장주 후보 (대형 4선)]</b>")
+            for gp in growth_picks:
+                lines.append(f" • <b>{gp['name']}</b> ({gp['ticker']}) : <b>{int(gp['price']):,}원</b> | {gp['action_plan']}")
+        if mid_picks:
+            lines.append("💎 <b>[리스트 2: 중소형 수급가치 (중소형 8선)]</b>")
+            for mp in mid_picks:
+                lines.append(f" • <b>{mp['name']}</b> ({mp['ticker']}) : <b>{int(mp['price']):,}원</b> | {mp['action_plan']}")
 
     # 3. 한국장 포트폴리오 마감 상태
     kr_active = kr_portfolio.get("active_holdings", [])
