@@ -521,13 +521,12 @@ def sync_stock_sniper(conn):
     now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     today = datetime.now().strftime("%Y-%m-%d")
     try:
-        sys.path.insert(0, "/Users/tothemoon/stock-sniper")
-        import sniper_generator
-        stocks = sniper_generator.screen_relative_strength_stocks()
+        from strategies import sniper
+        stocks = sniper.run_analysis()
         for s in stocks:
-            code = s.get("code") or s.get("ticker", "")
+            code = s.get("ticker", "")
             raw_json = json.dumps(s, ensure_ascii=False)
-            buy_p = s.get("buy_price") or s.get("current_price") or 0.0
+            buy_p = s.get("price", 0.0)
             conn.execute("""
             INSERT INTO subproject_signals (project_id, ticker, name, market, signal_type, signal_date, price, target_price, stop_loss_price, raw_json, created_at)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
@@ -536,7 +535,7 @@ def sync_stock_sniper(conn):
                 target_price = excluded.target_price,
                 stop_loss_price = excluded.stop_loss_price,
                 raw_json = excluded.raw_json;
-            """, ("stock-sniper", code, s.get("name", code), "KOR", "RS_MOMENTUM_LEADER", today, buy_p, s.get("target_price"), s.get("stop_loss"), raw_json, now))
+            """, ("stock-sniper", code, s.get("name", code), "KOR", "RS_MOMENTUM_LEADER", today, buy_p, s.get("target_price"), s.get("stop_loss_price"), raw_json, now))
             count += 1
     except Exception as e:
         print(f"[stock-sniper] sync error: {e}")
