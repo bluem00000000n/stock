@@ -69,24 +69,29 @@ def build_0840_us_close_kr_open_alarm(
     else:
         lines.append("• <i>금일 유효 타점 부재로 신규 진입 보류 및 기존 포지션 관리</i>\n")
 
-    # 3. 백찬규 센터장 실무 스크리너 타깃
+    # 3. 백찬규 센터장 실무 스크리너 분기 운용 (12선 매수/매도 실시간 레이더)
     if screener_signals:
         lines.append("━━━━━━━━━━━━━━━━━━━━━━━━━")
-        lines.append("📊 <b>3. 🎯 여의도 실무 스크리너 (백찬규 센터장 조건검색 2대 리스트)</b>")
+        lines.append("📊 <b>3. 🎯 여의도 실무 스크리너 (분기 12선 매수/매도 실시간 레이더)</b>")
+        lines.append("📌 <i>[운용 원칙] 분기 실적보고 마감 후 정기 재스크리닝 / 실적시즌 전까지 본 12선 내 집중 매수·매도</i>\n")
         growth_picks = [s for s in screener_signals if "성장주" in s.get("strategy_name", "")]
         mid_picks = [s for s in screener_signals if "중소형" in s.get("strategy_name", "")]
 
         if growth_picks:
-            lines.append("🚀 <b>[리스트 1: 성장주 후보 (시총 1조+ / 27년 영업익 16%+ / ROE 15%+)]</b>")
+            lines.append("🚀 <b>[리스트 1: 대형 성장주 4선 실시간 매매 상태]</b>")
             for gp in growth_picks:
-                lines.append(f" • <b>{gp['name']}</b> ({gp['ticker']}) : <b>{int(gp['price']):,}원</b>")
-                lines.append(f"   └ <i>지표:</i> {gp['action_plan']}")
+                action = gp.get("signal_type", "BUY")
+                act_icon = "🟢" if action == "BUY" else ("🟡" if action == "HOLD" else "🔴")
+                lines.append(f" • {act_icon} <b>{gp['name']}</b> ({gp['ticker']}) : <b>{int(gp['price']):,}원</b>")
+                lines.append(f"   └ <i>전술:</i> {gp['action_plan']}")
 
         if mid_picks:
-            lines.append("💎 <b>[리스트 2: 중소형 수급가치 (시총 2천억~1조 / 거래량 200%+ / 저PBR)]</b>")
+            lines.append("\n💎 <b>[리스트 2: 중소형 수급가치 8선 실시간 매매 상태]</b>")
             for mp in mid_picks:
-                lines.append(f" • <b>{mp['name']}</b> ({mp['ticker']}) : <b>{int(mp['price']):,}원</b>")
-                lines.append(f"   └ <i>지표:</i> {mp['action_plan']}")
+                action = mp.get("signal_type", "BUY")
+                act_icon = "🟢" if action == "BUY" else ("🟡" if action == "HOLD" else "🔴")
+                lines.append(f" • {act_icon} <b>{mp['name']}</b> ({mp['ticker']}) : <b>{int(mp['price']):,}원</b>")
+                lines.append(f"   └ <i>전술:</i> {mp['action_plan']}")
         lines.append("")
 
     # 4. 바이낸스 선물 크립토 지능 알람 (Signal Forge)
@@ -165,19 +170,24 @@ def build_1500_kr_close_us_open_alarm(
     else:
         lines.append("• <i>금일 오버나이트 적합 종목 부재 (현금 비중 유지 권고)</i>")
 
-    # 2. 백찬규 센터장 실무 스크리너 타깃 (종가 선별 2대 리스트)
+    # 2. 백찬규 센터장 실무 스크리너 분기 운용 (12선 종가 매매 레이더)
     if screener_signals:
-        lines.append("\n📊 <b>[여의도 실무 스크리너 백찬규 센터장 2대 리스트]</b>")
+        lines.append("\n📊 <b>[여의도 실무 스크리너 12선 종가 매매 레이더]</b>")
+        lines.append("📌 <i>분기 실적시즌 전까지 본 12선 내에서 매수/매도 집행</i>")
         growth_picks = [s for s in screener_signals if "성장주" in s.get("strategy_name", "")]
         mid_picks = [s for s in screener_signals if "중소형" in s.get("strategy_name", "")]
         if growth_picks:
-            lines.append("🚀 <b>[리스트 1: 성장주 후보 (대형 4선)]</b>")
+            lines.append("🚀 <b>[대형 성장주 4선 종가 현황]</b>")
             for gp in growth_picks:
-                lines.append(f" • <b>{gp['name']}</b> ({gp['ticker']}) : <b>{int(gp['price']):,}원</b> | {gp['action_plan']}")
+                action = gp.get("signal_type", "BUY")
+                act_icon = "🟢" if action == "BUY" else ("🟡" if action == "HOLD" else "🔴")
+                lines.append(f" • {act_icon} <b>{gp['name']}</b> ({gp['ticker']}) : <b>{int(gp['price']):,}원</b> | {gp['action_plan']}")
         if mid_picks:
-            lines.append("💎 <b>[리스트 2: 중소형 수급가치 (중소형 8선)]</b>")
+            lines.append("💎 <b>[중소형 수급가치 8선 종가 현황]</b>")
             for mp in mid_picks:
-                lines.append(f" • <b>{mp['name']}</b> ({mp['ticker']}) : <b>{int(mp['price']):,}원</b> | {mp['action_plan']}")
+                action = mp.get("signal_type", "BUY")
+                act_icon = "🟢" if action == "BUY" else ("🟡" if action == "HOLD" else "🔴")
+                lines.append(f" • {act_icon} <b>{mp['name']}</b> ({mp['ticker']}) : <b>{int(mp['price']):,}원</b> | {mp['action_plan']}")
 
     # 3. 한국장 포트폴리오 마감 상태
     kr_active = kr_portfolio.get("active_holdings", [])
