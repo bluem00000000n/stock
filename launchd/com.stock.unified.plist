@@ -57,7 +57,7 @@
             <integer>40</integer>
         </dict>
 
-        <!-- 2. 15:00 🇰🇷 한국장 종가매수(Strong Close) 최종 타깃 브리핑 (15:00 KST, 월~금) -->
+        <!-- 2. 15:00 : 🇰🇷 한국장 종가매수(Strong Close) 최종 타깃 브리핑 , 미국장 장전 통합 브리핑 (15:00 KST, 월~금) -->
         <dict>
             <key>Weekday</key>
             <integer>1</integer>
@@ -97,48 +97,6 @@
             <integer>15</integer>
             <key>Minute</key>
             <integer>0</integer>
-        </dict>
-
-        <!-- 3. 21:30 🇺🇸 미국장 장전 통합 브리핑 (21:30 KST, 월~금) -->
-        <dict>
-            <key>Weekday</key>
-            <integer>1</integer>
-            <key>Hour</key>
-            <integer>21</integer>
-            <key>Minute</key>
-            <integer>30</integer>
-        </dict>
-        <dict>
-            <key>Weekday</key>
-            <integer>2</integer>
-            <key>Hour</key>
-            <integer>21</integer>
-            <key>Minute</key>
-            <integer>30</integer>
-        </dict>
-        <dict>
-            <key>Weekday</key>
-            <integer>3</integer>
-            <key>Hour</key>
-            <integer>21</integer>
-            <key>Minute</key>
-            <integer>30</integer>
-        </dict>
-        <dict>
-            <key>Weekday</key>
-            <integer>4</integer>
-            <key>Hour</key>
-            <integer>21</integer>
-            <key>Minute</key>
-            <integer>30</integer>
-        </dict>
-        <dict>
-            <key>Weekday</key>
-            <integer>5</integer>
-            <key>Hour</key>
-            <integer>21</integer>
-            <key>Minute</key>
-            <integer>30</integer>
         </dict>
     </array>
     <key>EnvironmentVariables</key>

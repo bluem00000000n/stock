@@ -4,11 +4,9 @@
 supervisor/runner.py
 단일 통합 중앙 실행 엔진 (Unified Stock Supervisor Runner)
 
-- 한국장 장전 (08:45)
-- 한국장 종가 (15:10)
-- 미국장 장전 (21:30)
-
-모든 분석, 시그널 저장, 포트폴리오 선별/청산/매수 및 텔레그램 단일 통합 발송을 관제합니다.
+하루 2회 단일 통합 브리핑:
+1. 08:40 : 미국장 장마감 통합 브리핑, 🇰🇷 한국장 장전 통합 브리핑
+2. 15:00 : 🇰🇷 한국장 종가매수(Strong Close) 최종 타깃 브리핑, 미국장 장전 통합 브리핑
 """
 
 import sys
@@ -17,7 +15,6 @@ import argparse
 from datetime import datetime
 from pathlib import Path
 
-# 프로젝트 루트 경로 참조
 BASE_DIR = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(BASE_DIR))
 
@@ -28,12 +25,11 @@ from core.telegram import send_message
 from portfolio.manager import process_portfolio_cycle
 from portfolio.selector import select_best_buys
 from supervisor.alarm_builder import (
-    build_krx_morning_alarm,
-    build_krx_closing_alarm,
-    build_us_night_alarm
+    build_0840_us_close_kr_open_alarm,
+    build_1500_kr_close_us_open_alarm
 )
 
-# 전략 모듈 임포트
+# 7대 전략 모듈 임포트
 from strategies import (
     sniper,
     sepa_pivot,
@@ -49,96 +45,85 @@ def run_pipeline(mode: str = "auto", force: bool = False, dry_run: bool = False)
     init_db()
     now = datetime.now()
 
-    # 1. 실행 모드 자동 감지 (auto)
+    # 1. 실행 모드 자동 감지
     if mode == "auto":
-        hour = now.hour
-        minute = now.minute
-        if hour < 12:
-            mode = "krx_morning"
-        elif hour < 18:
-            mode = "krx_closing"
-        else:
-            mode = "us_night"
+        mode = "0840" if now.hour < 12 else "1500"
 
     print(f"🚀 [Stock Supervisor] 통합 파이프라인 가동 (모드: {mode}, 강제: {force}, Dry-run: {dry_run})")
 
-    # 2. 휴장일 검사
-    if mode in ("krx_morning", "krx_closing"):
-        is_open, reason = is_krx_open()
-        if not is_open and not force:
-            print(f"⏸️ [한국장 휴장] {reason} - 프로세스를 건너뜁니다.")
-            return True
-        market = "KRX"
-    else:
-        is_open, reason = is_us_open()
-        if not is_open and not force:
-            print(f"⏸️ [미국장 휴장] {reason} - 프로세스를 건너뜁니다.")
-            return True
-        market = "US"
+    # 한국장 개장 여부 검사
+    is_kr_open, kr_reason = is_krx_open()
+    if not is_kr_open and not force:
+        print(f"⏸️ [한국장 휴장] {kr_reason} - 당일 통합 브리핑을 건너뜁니다.")
+        return True
 
-    # 3. 전략 분석 실행 및 후보 시그널 수집
-    raw_signals = []
-    print("📊 7대 전략 분석 실행 중...")
+    # 2. 전 전략 분석 실행 (한국장 5대 전략 + 미국장 4대 전략)
+    kr_signals = []
+    us_signals = []
+    print("📊 한국/미국 7대 전략 분석 실행 중...")
 
-    if market == "KRX":
-        try:
-            raw_signals.extend(sniper.run_analysis())
-        except Exception as e:
-            print(f"⚠️ sniper 오류: {e}")
-        try:
-            raw_signals.extend(sepa_pivot.run_analysis("KRX"))
-        except Exception as e:
-            print(f"⚠️ sepa_pivot 오류: {e}")
-        try:
-            raw_signals.extend(swing.run_analysis("KRX"))
-        except Exception as e:
-            print(f"⚠️ swing 오류: {e}")
-        try:
-            raw_signals.extend(cyclical.run_analysis())
-        except Exception as e:
-            print(f"⚠️ cyclical 오류: {e}")
-        try:
-            raw_signals.extend(dividend.run_analysis())
-        except Exception as e:
-            print(f"⚠️ dividend 오류: {e}")
-    else:
-        try:
-            raw_signals.extend(htp_momentum.run_analysis())
-        except Exception as e:
-            print(f"⚠️ htp_momentum 오류: {e}")
-        try:
-            raw_signals.extend(us3x.run_analysis())
-        except Exception as e:
-            print(f"⚠️ us3x 오류: {e}")
-        try:
-            raw_signals.extend(sepa_pivot.run_analysis("US"))
-        except Exception as e:
-            print(f"⚠️ sepa_pivot_us 오류: {e}")
-        try:
-            raw_signals.extend(swing.run_analysis("US"))
-        except Exception as e:
-            print(f"⚠️ swing_us 오류: {e}")
+    # 한국장 전략
+    try:
+        kr_signals.extend(sniper.run_analysis())
+    except Exception as e:
+        print(f"⚠️ sniper 오류: {e}")
+    try:
+        kr_signals.extend(sepa_pivot.run_analysis("KRX"))
+    except Exception as e:
+        print(f"⚠️ sepa_pivot_kr 오류: {e}")
+    try:
+        kr_signals.extend(swing.run_analysis("KRX"))
+    except Exception as e:
+        print(f"⚠️ swing_kr 오류: {e}")
+    try:
+        kr_signals.extend(cyclical.run_analysis())
+    except Exception as e:
+        print(f"⚠️ cyclical 오류: {e}")
+    try:
+        kr_signals.extend(dividend.run_analysis())
+    except Exception as e:
+        print(f"⚠️ dividend 오류: {e}")
 
-    # 원천 시그널 DB 저장
-    saved_count = save_signals(raw_signals)
-    print(f"💾 원천 시그널 {len(raw_signals)}건 수집 (DB {saved_count}건 갱신 완료)")
+    # 미국장 전략
+    try:
+        us_signals.extend(htp_momentum.run_analysis())
+    except Exception as e:
+        print(f"⚠️ htp_momentum 오류: {e}")
+    try:
+        us_signals.extend(us3x.run_analysis())
+    except Exception as e:
+        print(f"⚠️ us3x 오류: {e}")
+    try:
+        us_signals.extend(sepa_pivot.run_analysis("US"))
+    except Exception as e:
+        print(f"⚠️ sepa_pivot_us 오류: {e}")
+    try:
+        us_signals.extend(swing.run_analysis("US"))
+    except Exception as e:
+        print(f"⚠️ swing_us 오류: {e}")
 
-    # 4. 포트폴리오 관리 사이클 실행 (시세 갱신, 손절/익절 자동 청산, 신규 매수 편입)
-    print("💼 포트폴리오 상태 머신 및 자율 선별 실행 중...")
-    portfolio_res = process_portfolio_cycle(raw_signals, market=market)
-    best_buys = select_best_buys(raw_signals, market=market, max_select=3)
+    # DB 저장
+    save_signals(kr_signals)
+    save_signals(us_signals)
+    print(f"💾 시그널 수집 완료 (한국: {len(kr_signals)}건, 미국: {len(us_signals)}건)")
 
-    # 5. 알람 메시지 빌드
+    # 3. 포트폴리오 상태 머신 및 자율 선별 실행
+    print("💼 포트폴리오 상태 머신 및 정예 선별 실행 중...")
+    kr_portfolio = process_portfolio_cycle(kr_signals, market="KRX")
+    us_portfolio = process_portfolio_cycle(us_signals, market="US")
+
+    kr_best_buys = select_best_buys(kr_signals, market="KRX", max_select=3)
+    us_best_buys = select_best_buys(us_signals, market="US", max_select=2)
+
     macro = fetch_us_macro()
-    if mode == "krx_morning":
-        alarm_text = build_krx_morning_alarm(portfolio_res, macro, best_buys)
-        title = f"미국장 장마감 통합 브리핑, 🇰🇷 한국장 장전 통합 브리핑 ({portfolio_res['date']})"
-    elif mode == "krx_closing":
-        alarm_text = build_krx_closing_alarm(portfolio_res, best_buys)
-        title = f"15:00 🇰🇷 한국장 종가매수(Strong Close) 최종 타깃 브리핑 ({portfolio_res['date']})"
+
+    # 4. 알람 메시지 생성
+    if mode in ("0840", "morning"):
+        alarm_text = build_0840_us_close_kr_open_alarm(kr_portfolio, us_portfolio, macro, kr_best_buys)
+        title = f"미국장 장마감 통합 브리핑, 🇰🇷 한국장 장전 통합 브리핑 ({kr_portfolio['date']})"
     else:
-        alarm_text = build_us_night_alarm(portfolio_res, best_buys)
-        title = f"21:30 🇺🇸 미국장 장전 통합 브리핑 ({portfolio_res['date']})"
+        alarm_text = build_1500_kr_close_us_open_alarm(kr_portfolio, us_portfolio, kr_best_buys, us_best_buys)
+        title = f"15:00 : 🇰🇷 한국장 종가매수(Strong Close) 최종 타깃 브리핑 , 미국장 장전 통합 브리핑 ({kr_portfolio['date']})"
 
     if dry_run:
         print("\n" + "=" * 60)
@@ -148,15 +133,15 @@ def run_pipeline(mode: str = "auto", force: bool = False, dry_run: bool = False)
         print("=" * 60)
         return True
 
-    # 6. 중앙 통합 텔레그램 발송
+    # 5. 중앙 통합 텔레그램 발송
     print("📤 중앙 통합 텔레그램 발송 중...")
     success = send_message(alarm_text)
 
     if success:
         print("🎉 텔레그램 통합 알람 발송 완료!")
-        # 7. DB 기록 및 대시보드 파일 갱신
-        project_ids = list(set([s["project_id"] for s in raw_signals]))
-        record_alarm(title, alarm_text, market, project_ids)
+        all_signals = kr_signals + us_signals
+        project_ids = list(set([s["project_id"] for s in all_signals]))
+        record_alarm(title, alarm_text, "ALL", project_ids)
 
         try:
             import update_status
@@ -173,7 +158,7 @@ def run_pipeline(mode: str = "auto", force: bool = False, dry_run: bool = False)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Stock Supervisor Unified Pipeline Runner")
-    parser.add_argument("--mode", choices=["krx_morning", "krx_closing", "us_night", "auto"], default="auto")
+    parser.add_argument("--mode", choices=["0840", "1500", "morning", "closing", "auto"], default="auto")
     parser.add_argument("--force", action="store_true", help="휴장일 무시 강제 실행")
     parser.add_argument("--dry-run", action="store_true", help="알람 발송 없이 결과만 확인")
     args = parser.parse_args()
