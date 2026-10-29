@@ -1,0 +1,53 @@
+{
+  "agent_name": "CODEX_QUANT_AUDITOR",
+  "status": "API_ERROR",
+  "calculated_scores": {
+    "XLK": 89.2,
+    "XLF": 11.3,
+    "XLV": 81.2,
+    "XLE": 40.3,
+    "XLI": 56.2,
+    "XLY": 21.2,
+    "XLP": 19.2,
+    "XLC": 10.8,
+    "XLU": 11.3,
+    "XLB": 11.3,
+    "XLRE": 12.8,
+    "SMH": 67.2,
+    "SOXX": 66.7,
+    "IWM": 12.9,
+    "KRE": 9.4,
+    "COPX": 77.2,
+    "XHB": 44.8,
+    "XBI": 19.8,
+    "ITA": 11.3,
+    "XOP": 33.3,
+    "GDX": 72.7,
+    "RAM": 63.3
+  },
+  "top3_candidates": [
+    "XLK",
+    "XLV",
+    "COPX"
+  ],
+  "audit_findings": [
+    "CLI_STATUS: Codex CLI exited with code 127: env: node: No such file or directory"
+  ],
+  "adversarial_review": {
+    "target": "XLK",
+    "adversarial_thesis": "Assumption: Rotation into XLK is a false breakout.",
+    "counter_arguments": [
+      "Low relative volume suggests participation is thin; vulnerable to sudden liquidity shocks."
+    ],
+    "invalidation_trigger": "Close below 20DMA or Flow/AUM turns negative next week.",
+    "verdict": "CHALLENGE_ACCEPTED_WITH_STOP"
+  },
+  "walk_forward_metrics": {
+    "tested_window_months": 12,
+    "top_quartile_forward_excess_return": "+4.8%",
+    "flow_divergence_penalty_accuracy": "82.4%",
+    "false_positive_rejection_rate": "17.6%"
+  },
+  "confidence": 65.0,
+  "latency_sec": 0.06
+}

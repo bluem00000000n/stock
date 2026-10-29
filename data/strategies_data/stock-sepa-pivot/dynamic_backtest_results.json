@@ -1,0 +1,107 @@
+[
+  {
+    "group": "🇰🇷 한국 대형주 (KR Large)",
+    "pyramiding": {
+      "total_return": 22.2,
+      "mdd": 12.8,
+      "win_rate": 36.4,
+      "payoff_ratio": 3.95,
+      "profit_factor": 1.74,
+      "total_trades": 66,
+      "final_capital": 122179399.0
+    },
+    "lump_sum": {
+      "total_return": 26.1,
+      "mdd": 11.1,
+      "win_rate": 43.1,
+      "payoff_ratio": 4.29,
+      "profit_factor": 1.69,
+      "total_trades": 65,
+      "final_capital": 126144945.0
+    }
+  },
+  {
+    "group": "🇰🇷 한국 중소형주 (KR Mid 2,000억~1.5조)",
+    "pyramiding": {
+      "total_return": 40.4,
+      "mdd": 6.8,
+      "win_rate": 34.2,
+      "payoff_ratio": 7.77,
+      "profit_factor": 3.0,
+      "total_trades": 38,
+      "final_capital": 140388523.0
+    },
+    "lump_sum": {
+      "total_return": 45.9,
+      "mdd": 6.3,
+      "win_rate": 42.5,
+      "payoff_ratio": 7.26,
+      "profit_factor": 2.74,
+      "total_trades": 40,
+      "final_capital": 145881089.0
+    }
+  },
+  {
+    "group": "🇺🇸 미국 대형주 (US Large)",
+    "pyramiding": {
+      "total_return": 29.1,
+      "mdd": 13.2,
+      "win_rate": 41.5,
+      "payoff_ratio": 4.71,
+      "profit_factor": 2.72,
+      "total_trades": 41,
+      "final_capital": 129102629.0
+    },
+    "lump_sum": {
+      "total_return": 28.9,
+      "mdd": 16.3,
+      "win_rate": 51.2,
+      "payoff_ratio": 4.1,
+      "profit_factor": 2.24,
+      "total_trades": 43,
+      "final_capital": 128919382.0
+    }
+  },
+  {
+    "group": "🇺🇸 미국 중소형주 (US Mid)",
+    "pyramiding": {
+      "total_return": 3.2,
+      "mdd": 6.9,
+      "win_rate": 31.2,
+      "payoff_ratio": 3.25,
+      "profit_factor": 1.17,
+      "total_trades": 32,
+      "final_capital": 103246068.0
+    },
+    "lump_sum": {
+      "total_return": 4.9,
+      "mdd": 8.7,
+      "win_rate": 41.2,
+      "payoff_ratio": 3.4,
+      "profit_factor": 1.2,
+      "total_trades": 34,
+      "final_capital": 104930942.0
+    }
+  },
+  {
+    "group": "🌐 한·미 통합 전체 포트폴리오",
+    "pyramiding": {
+      "total_return": 14.2,
+      "mdd": 64.4,
+      "win_rate": 30.3,
+      "payoff_ratio": 3.46,
+      "profit_factor": 1.17,
+      "total_trades": 152,
+      "final_capital": 114155933.0
+    },
+    "lump_sum": {
+      "total_return": 25.7,
+      "mdd": 78.9,
+      "win_rate": 40.4,
+      "payoff_ratio": 3.56,
+      "profit_factor": 1.26,
+      "total_trades": 151,
+      "final_capital": 125707350.0
+    }
+  }
+]

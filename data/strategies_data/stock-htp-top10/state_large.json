@@ -1,0 +1,28 @@
+{
+  "last_date": "2026-10-02",
+  "prev_tickers": [
+    "WBD",
+    "MU",
+    "LITE",
+    "VLO",
+    "STX",
+    "MPC",
+    "MRNA",
+    "PSX",
+    "TRGP",
+    "APA"
+  ],
+  "curr_tickers": [
+    "LITE",
+    "VICR",
+    "MU",
+    "AMD",
+    "ILMN",
+    "VLO",
+    "MPC",
+    "DELL",
+    "MRNA",
+    "HPE"
+  ],
+  "last_sent_date": "2026-10-06"
+}

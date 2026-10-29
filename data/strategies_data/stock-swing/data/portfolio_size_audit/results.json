@@ -1,0 +1,4980 @@
+{
+  "start": "2023-10-07",
+  "end": "2026-10-06",
+  "execution": "previous close signal -> next available open; close-based stops",
+  "fee_one_way": 0.0015,
+  "caveats": [
+    "Current universe: survivorship and selection bias",
+    "Yahoo Finance auto_adjust=True OHLC; downloaded for this audit",
+    "No FX, cash interest or investor-level taxes",
+    "Fractional shares allowed; terminal holdings marked to market; no terminal liquidation fee",
+    "Full-period optimization is in-sample, not evidence of future optimality"
+  ],
+  "results": {
+    "kr_current": [
+      {
+        "cap": 1,
+        "total_return": 13.0935,
+        "cagr": 4.1858,
+        "mdd": 28.7376,
+        "avg_holdings": 0.96,
+        "avg_cash_pct": 40.84,
+        "trades": 55,
+        "win_rate": 32.73,
+        "annual_returns": {
+          "2023": 2.77,
+          "2024": 23.51,
+          "2025": 0.4,
+          "2026": -11.26
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 2,
+        "total_return": 52.4411,
+        "cagr": 15.0854,
+        "mdd": 40.0885,
+        "avg_holdings": 1.92,
+        "avg_cash_pct": 31.66,
+        "trades": 109,
+        "win_rate": 25.69,
+        "annual_returns": {
+          "2023": -4.97,
+          "2024": 19.27,
+          "2025": 48.71,
+          "2026": -9.55
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 3,
+        "total_return": 37.2269,
+        "cagr": 11.1227,
+        "mdd": 31.2668,
+        "avg_holdings": 2.86,
+        "avg_cash_pct": 29.58,
+        "trades": 172,
+        "win_rate": 24.42,
+        "annual_returns": {
+          "2023": 8.81,
+          "2024": 4.27,
+          "2025": 21.83,
+          "2026": -0.72
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 4,
+        "total_return": 22.504,
+        "cagr": 6.9983,
+        "mdd": 28.3718,
+        "avg_holdings": 3.75,
+        "avg_cash_pct": 31.58,
+        "trades": 241,
+        "win_rate": 23.65,
+        "annual_returns": {
+          "2023": 5.92,
+          "2024": -1.41,
+          "2025": 15.25,
+          "2026": 1.79
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 5,
+        "total_return": 85.7432,
+        "cagr": 22.9185,
+        "mdd": 27.456,
+        "avg_holdings": 4.64,
+        "avg_cash_pct": 32.08,
+        "trades": 289,
+        "win_rate": 23.18,
+        "annual_returns": {
+          "2023": 4.36,
+          "2024": 29.87,
+          "2025": 36.49,
+          "2026": 0.4
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 6,
+        "total_return": 103.5808,
+        "cagr": 26.7327,
+        "mdd": 26.2971,
+        "avg_holdings": 5.49,
+        "avg_cash_pct": 32.97,
+        "trades": 346,
+        "win_rate": 23.7,
+        "annual_returns": {
+          "2023": 5.7,
+          "2024": 20.22,
+          "2025": 60.28,
+          "2026": -0.05
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 7,
+        "total_return": 75.4922,
+        "cagr": 20.6148,
+        "mdd": 29.7723,
+        "avg_holdings": 6.28,
+        "avg_cash_pct": 34.31,
+        "trades": 408,
+        "win_rate": 22.79,
+        "annual_returns": {
+          "2023": 5.81,
+          "2024": 14.8,
+          "2025": 52.38,
+          "2026": -5.19
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 8,
+        "total_return": 68.956,
+        "cagr": 19.0988,
+        "mdd": 30.3471,
+        "avg_holdings": 7.04,
+        "avg_cash_pct": 35.55,
+        "trades": 462,
+        "win_rate": 23.16,
+        "annual_returns": {
+          "2023": 9.02,
+          "2024": 14.37,
+          "2025": 45.06,
+          "2026": -6.59
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 9,
+        "total_return": 65.7183,
+        "cagr": 18.3333,
+        "mdd": 26.0184,
+        "avg_holdings": 7.73,
+        "avg_cash_pct": 36.99,
+        "trades": 505,
+        "win_rate": 23.56,
+        "annual_returns": {
+          "2023": 8.32,
+          "2024": 8.78,
+          "2025": 43.58,
+          "2026": -2.04
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 10,
+        "total_return": 71.0972,
+        "cagr": 19.5996,
+        "mdd": 25.3882,
+        "avg_holdings": 8.41,
+        "avg_cash_pct": 37.97,
+        "trades": 551,
+        "win_rate": 24.5,
+        "annual_returns": {
+          "2023": 7.62,
+          "2024": 8.6,
+          "2025": 40.58,
+          "2026": 4.14
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 11,
+        "total_return": 65.8225,
+        "cagr": 18.358,
+        "mdd": 22.2176,
+        "avg_holdings": 8.99,
+        "avg_cash_pct": 39.82,
+        "trades": 598,
+        "win_rate": 24.08,
+        "annual_returns": {
+          "2023": 7.14,
+          "2024": 4.82,
+          "2025": 35.05,
+          "2026": 9.33
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 12,
+        "total_return": 57.3806,
+        "cagr": 16.3149,
+        "mdd": 20.8565,
+        "avg_holdings": 9.39,
+        "avg_cash_pct": 42.45,
+        "trades": 635,
+        "win_rate": 23.62,
+        "annual_returns": {
+          "2023": 7.1,
+          "2024": 1.5,
+          "2025": 31.83,
+          "2026": 9.82
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 13,
+        "total_return": 66.9256,
+        "cagr": 18.6198,
+        "mdd": 20.5626,
+        "avg_holdings": 9.83,
+        "avg_cash_pct": 43.81,
+        "trades": 653,
+        "win_rate": 24.2,
+        "annual_returns": {
+          "2023": 6.52,
+          "2024": 3.27,
+          "2025": 36.4,
+          "2026": 11.26
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 14,
+        "total_return": 71.9334,
+        "cagr": 19.7941,
+        "mdd": 20.0591,
+        "avg_holdings": 10.2,
+        "avg_cash_pct": 45.34,
+        "trades": 666,
+        "win_rate": 24.62,
+        "annual_returns": {
+          "2023": 6.45,
+          "2024": 5.51,
+          "2025": 39.03,
+          "2026": 10.12
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 15,
+        "total_return": 70.1081,
+        "cagr": 19.3688,
+        "mdd": 18.8172,
+        "avg_holdings": 10.48,
+        "avg_cash_pct": 47.42,
+        "trades": 682,
+        "win_rate": 24.78,
+        "annual_returns": {
+          "2023": 6.3,
+          "2024": 4.38,
+          "2025": 38.82,
+          "2026": 10.44
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 16,
+        "total_return": 62.9433,
+        "cagr": 17.6692,
+        "mdd": 18.527,
+        "avg_holdings": 10.69,
+        "avg_cash_pct": 49.67,
+        "trades": 703,
+        "win_rate": 24.32,
+        "annual_returns": {
+          "2023": 5.83,
+          "2024": 3.58,
+          "2025": 34.94,
+          "2026": 10.15
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 17,
+        "total_return": 62.5505,
+        "cagr": 17.5746,
+        "mdd": 17.6346,
+        "avg_holdings": 10.87,
+        "avg_cash_pct": 51.75,
+        "trades": 710,
+        "win_rate": 24.79,
+        "annual_returns": {
+          "2023": 5.49,
+          "2024": 3.82,
+          "2025": 32.63,
+          "2026": 11.91
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 18,
+        "total_return": 62.1107,
+        "cagr": 17.4685,
+        "mdd": 15.347,
+        "avg_holdings": 11.03,
+        "avg_cash_pct": 53.76,
+        "trades": 715,
+        "win_rate": 24.9,
+        "annual_returns": {
+          "2023": 5.19,
+          "2024": 3.62,
+          "2025": 30.23,
+          "2026": 14.2
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 19,
+        "total_return": 58.0221,
+        "cagr": 16.4727,
+        "mdd": 14.6828,
+        "avg_holdings": 11.13,
+        "avg_cash_pct": 55.81,
+        "trades": 724,
+        "win_rate": 24.72,
+        "annual_returns": {
+          "2023": 4.96,
+          "2024": 3.32,
+          "2025": 27.56,
+          "2026": 14.24
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 20,
+        "total_return": 56.1656,
+        "cagr": 16.0149,
+        "mdd": 14.282,
+        "avg_holdings": 11.2,
+        "avg_cash_pct": 57.78,
+        "trades": 729,
+        "win_rate": 24.69,
+        "annual_returns": {
+          "2023": 4.69,
+          "2024": 3.06,
+          "2025": 25.78,
+          "2026": 15.08
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 21,
+        "total_return": 54.5461,
+        "cagr": 15.6125,
+        "mdd": 13.6531,
+        "avg_holdings": 11.31,
+        "avg_cash_pct": 59.29,
+        "trades": 733,
+        "win_rate": 24.97,
+        "annual_returns": {
+          "2023": 4.45,
+          "2024": 2.93,
+          "2025": 24.7,
+          "2026": 15.27
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 22,
+        "total_return": 51.6304,
+        "cagr": 14.881,
+        "mdd": 13.0848,
+        "avg_holdings": 11.36,
+        "avg_cash_pct": 61.0,
+        "trades": 739,
+        "win_rate": 24.9,
+        "annual_returns": {
+          "2023": 4.25,
+          "2024": 2.81,
+          "2025": 23.37,
+          "2026": 14.67
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 23,
+        "total_return": 48.8481,
+        "cagr": 14.1742,
+        "mdd": 12.5564,
+        "avg_holdings": 11.39,
+        "avg_cash_pct": 62.61,
+        "trades": 742,
+        "win_rate": 24.93,
+        "annual_returns": {
+          "2023": 4.07,
+          "2024": 2.71,
+          "2025": 22.15,
+          "2026": 14.01
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 24,
+        "total_return": 48.7176,
+        "cagr": 14.1408,
+        "mdd": 12.6512,
+        "avg_holdings": 11.43,
+        "avg_cash_pct": 64.0,
+        "trades": 745,
+        "win_rate": 24.97,
+        "annual_returns": {
+          "2023": 3.9,
+          "2024": 2.61,
+          "2025": 21.17,
+          "2026": 15.13
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 25,
+        "total_return": 50.3561,
+        "cagr": 14.5584,
+        "mdd": 12.5175,
+        "avg_holdings": 11.47,
+        "avg_cash_pct": 65.29,
+        "trades": 747,
+        "win_rate": 25.03,
+        "annual_returns": {
+          "2023": 3.74,
+          "2024": 2.52,
+          "2025": 20.11,
+          "2026": 17.7
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 26,
+        "total_return": 48.6135,
+        "cagr": 14.1142,
+        "mdd": 12.2727,
+        "avg_holdings": 11.49,
+        "avg_cash_pct": 66.52,
+        "trades": 747,
+        "win_rate": 25.03,
+        "annual_returns": {
+          "2023": 3.6,
+          "2024": 2.43,
+          "2025": 19.32,
+          "2026": 17.37
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 27,
+        "total_return": 46.5528,
+        "cagr": 13.5844,
+        "mdd": 11.8547,
+        "avg_holdings": 11.5,
+        "avg_cash_pct": 67.72,
+        "trades": 748,
+        "win_rate": 25.0,
+        "annual_returns": {
+          "2023": 3.46,
+          "2024": 2.35,
+          "2025": 18.59,
+          "2026": 16.69
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 28,
+        "total_return": 44.697,
+        "cagr": 13.103,
+        "mdd": 11.4635,
+        "avg_holdings": 11.5,
+        "avg_cash_pct": 68.85,
+        "trades": 748,
+        "win_rate": 25.0,
+        "annual_returns": {
+          "2023": 3.34,
+          "2024": 2.28,
+          "2025": 17.92,
+          "2026": 16.1
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 29,
+        "total_return": 42.9821,
+        "cagr": 12.6546,
+        "mdd": 11.0973,
+        "avg_holdings": 11.5,
+        "avg_cash_pct": 69.9,
+        "trades": 748,
+        "win_rate": 25.0,
+        "annual_returns": {
+          "2023": 3.23,
+          "2024": 2.21,
+          "2025": 17.29,
+          "2026": 15.55
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 30,
+        "total_return": 41.3368,
+        "cagr": 12.2209,
+        "mdd": 10.7539,
+        "avg_holdings": 11.5,
+        "avg_cash_pct": 70.88,
+        "trades": 748,
+        "win_rate": 25.0,
+        "annual_returns": {
+          "2023": 3.12,
+          "2024": 2.14,
+          "2025": 16.66,
+          "2026": 15.03
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 31,
+        "total_return": 39.8624,
+        "cagr": 11.8294,
+        "mdd": 10.4311,
+        "avg_holdings": 11.5,
+        "avg_cash_pct": 71.8,
+        "trades": 748,
+        "win_rate": 25.0,
+        "annual_returns": {
+          "2023": 3.02,
+          "2024": 2.08,
+          "2025": 16.11,
+          "2026": 14.55
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 32,
+        "total_return": 38.4886,
+        "cagr": 11.4621,
+        "mdd": 10.1271,
+        "avg_holdings": 11.5,
+        "avg_cash_pct": 72.67,
+        "trades": 748,
+        "win_rate": 25.0,
+        "annual_returns": {
+          "2023": 2.92,
+          "2024": 2.02,
+          "2025": 15.6,
+          "2026": 14.1
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 33,
+        "total_return": 37.2057,
+        "cagr": 11.1169,
+        "mdd": 9.8403,
+        "avg_holdings": 11.5,
+        "avg_cash_pct": 73.48,
+        "trades": 748,
+        "win_rate": 25.0,
+        "annual_returns": {
+          "2023": 2.84,
+          "2024": 1.96,
+          "2025": 15.12,
+          "2026": 13.67
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      }
+    ],
+    "kr_master": [
+      {
+        "cap": 1,
+        "total_return": -32.3317,
+        "cagr": -12.204,
+        "mdd": 49.1523,
+        "avg_holdings": 0.99,
+        "avg_cash_pct": 41.12,
+        "trades": 66,
+        "win_rate": 24.24,
+        "annual_returns": {
+          "2023": -8.34,
+          "2024": 7.92,
+          "2025": -3.69,
+          "2026": -28.97
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 2,
+        "total_return": 38.0595,
+        "cagr": 11.3469,
+        "mdd": 40.8805,
+        "avg_holdings": 1.97,
+        "avg_cash_pct": 32.59,
+        "trades": 137,
+        "win_rate": 21.17,
+        "annual_returns": {
+          "2023": -5.85,
+          "2024": 27.53,
+          "2025": 34.3,
+          "2026": -14.39
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 3,
+        "total_return": 23.0953,
+        "cagr": 7.1701,
+        "mdd": 43.1495,
+        "avg_holdings": 2.94,
+        "avg_cash_pct": 30.01,
+        "trades": 202,
+        "win_rate": 21.29,
+        "annual_returns": {
+          "2023": -4.65,
+          "2024": 18.16,
+          "2025": 30.27,
+          "2026": -16.13
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 4,
+        "total_return": -0.0836,
+        "cagr": -0.0279,
+        "mdd": 42.3376,
+        "avg_holdings": 3.9,
+        "avg_cash_pct": 29.22,
+        "trades": 278,
+        "win_rate": 19.06,
+        "annual_returns": {
+          "2023": 1.31,
+          "2024": -5.19,
+          "2025": 18.94,
+          "2026": -12.54
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 5,
+        "total_return": 6.9353,
+        "cagr": 2.2598,
+        "mdd": 38.8401,
+        "avg_holdings": 4.87,
+        "avg_cash_pct": 29.67,
+        "trades": 336,
+        "win_rate": 20.24,
+        "annual_returns": {
+          "2023": 0.26,
+          "2024": -3.49,
+          "2025": 21.32,
+          "2026": -8.91
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 6,
+        "total_return": 8.5034,
+        "cagr": 2.7571,
+        "mdd": 36.4,
+        "avg_holdings": 5.82,
+        "avg_cash_pct": 29.93,
+        "trades": 401,
+        "win_rate": 20.2,
+        "annual_returns": {
+          "2023": 1.84,
+          "2024": -6.63,
+          "2025": 21.57,
+          "2026": -6.14
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 7,
+        "total_return": 14.7676,
+        "cagr": 4.6972,
+        "mdd": 36.2494,
+        "avg_holdings": 6.76,
+        "avg_cash_pct": 30.08,
+        "trades": 456,
+        "win_rate": 20.83,
+        "annual_returns": {
+          "2023": 2.83,
+          "2024": -1.7,
+          "2025": 22.52,
+          "2026": -7.32
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 8,
+        "total_return": 6.0185,
+        "cagr": 1.9668,
+        "mdd": 36.9072,
+        "avg_holdings": 7.7,
+        "avg_cash_pct": 29.82,
+        "trades": 521,
+        "win_rate": 21.11,
+        "annual_returns": {
+          "2023": 2.53,
+          "2024": -2.23,
+          "2025": 15.9,
+          "2026": -8.75
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 9,
+        "total_return": 1.4392,
+        "cagr": 0.4774,
+        "mdd": 37.651,
+        "avg_holdings": 8.62,
+        "avg_cash_pct": 29.75,
+        "trades": 594,
+        "win_rate": 21.55,
+        "annual_returns": {
+          "2023": 3.67,
+          "2024": -6.97,
+          "2025": 18.48,
+          "2026": -11.22
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 10,
+        "total_return": 14.2181,
+        "cagr": 4.5299,
+        "mdd": 35.9576,
+        "avg_holdings": 9.54,
+        "avg_cash_pct": 29.8,
+        "trades": 656,
+        "win_rate": 21.19,
+        "annual_returns": {
+          "2023": 2.64,
+          "2024": 9.33,
+          "2025": 14.35,
+          "2026": -10.99
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 11,
+        "total_return": 24.5532,
+        "cagr": 7.5915,
+        "mdd": 35.2174,
+        "avg_holdings": 10.46,
+        "avg_cash_pct": 29.77,
+        "trades": 724,
+        "win_rate": 21.41,
+        "annual_returns": {
+          "2023": 3.76,
+          "2024": 6.35,
+          "2025": 22.07,
+          "2026": -7.54
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 12,
+        "total_return": 32.8501,
+        "cagr": 9.9287,
+        "mdd": 30.3292,
+        "avg_holdings": 11.36,
+        "avg_cash_pct": 30.23,
+        "trades": 789,
+        "win_rate": 21.55,
+        "annual_returns": {
+          "2023": 2.97,
+          "2024": 1.21,
+          "2025": 30.05,
+          "2026": -1.98
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 13,
+        "total_return": 37.9273,
+        "cagr": 11.3113,
+        "mdd": 31.3848,
+        "avg_holdings": 12.21,
+        "avg_cash_pct": 30.31,
+        "trades": 848,
+        "win_rate": 21.46,
+        "annual_returns": {
+          "2023": 5.24,
+          "2024": 6.48,
+          "2025": 25.32,
+          "2026": -1.79
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 14,
+        "total_return": 38.4977,
+        "cagr": 11.4645,
+        "mdd": 30.3598,
+        "avg_holdings": 13.1,
+        "avg_cash_pct": 30.62,
+        "trades": 905,
+        "win_rate": 21.66,
+        "annual_returns": {
+          "2023": 4.88,
+          "2024": 4.92,
+          "2025": 25.8,
+          "2026": 0.04
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 15,
+        "total_return": 43.9758,
+        "cagr": 12.9149,
+        "mdd": 28.5636,
+        "avg_holdings": 13.92,
+        "avg_cash_pct": 31.19,
+        "trades": 958,
+        "win_rate": 22.34,
+        "annual_returns": {
+          "2023": 4.45,
+          "2024": 4.75,
+          "2025": 29.34,
+          "2026": 1.73
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 16,
+        "total_return": 43.153,
+        "cagr": 12.6994,
+        "mdd": 27.2939,
+        "avg_holdings": 14.73,
+        "avg_cash_pct": 31.9,
+        "trades": 1017,
+        "win_rate": 22.32,
+        "annual_returns": {
+          "2023": 4.33,
+          "2024": 2.67,
+          "2025": 32.74,
+          "2026": 0.69
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 17,
+        "total_return": 51.6966,
+        "cagr": 14.8978,
+        "mdd": 25.9223,
+        "avg_holdings": 15.55,
+        "avg_cash_pct": 32.37,
+        "trades": 1071,
+        "win_rate": 22.22,
+        "annual_returns": {
+          "2023": 3.86,
+          "2024": 0.62,
+          "2025": 40.95,
+          "2026": 2.99
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 18,
+        "total_return": 51.7329,
+        "cagr": 14.9069,
+        "mdd": 25.8613,
+        "avg_holdings": 16.33,
+        "avg_cash_pct": 32.82,
+        "trades": 1126,
+        "win_rate": 22.47,
+        "annual_returns": {
+          "2023": 4.25,
+          "2024": 1.29,
+          "2025": 40.0,
+          "2026": 2.64
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 19,
+        "total_return": 54.2297,
+        "cagr": 15.5336,
+        "mdd": 25.7884,
+        "avg_holdings": 17.09,
+        "avg_cash_pct": 33.31,
+        "trades": 1186,
+        "win_rate": 22.6,
+        "annual_returns": {
+          "2023": 5.08,
+          "2024": 0.68,
+          "2025": 41.69,
+          "2026": 2.89
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 20,
+        "total_return": 58.8826,
+        "cagr": 16.6837,
+        "mdd": 24.406,
+        "avg_holdings": 17.85,
+        "avg_cash_pct": 33.7,
+        "trades": 1231,
+        "win_rate": 22.83,
+        "annual_returns": {
+          "2023": 4.98,
+          "2024": -0.15,
+          "2025": 47.34,
+          "2026": 2.88
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 21,
+        "total_return": 61.0746,
+        "cagr": 17.2177,
+        "mdd": 23.3406,
+        "avg_holdings": 18.6,
+        "avg_cash_pct": 34.22,
+        "trades": 1295,
+        "win_rate": 22.55,
+        "annual_returns": {
+          "2023": 5.05,
+          "2024": 0.85,
+          "2025": 46.35,
+          "2026": 3.89
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 22,
+        "total_return": 65.202,
+        "cagr": 18.2103,
+        "mdd": 23.5711,
+        "avg_holdings": 19.31,
+        "avg_cash_pct": 34.87,
+        "trades": 1341,
+        "win_rate": 22.97,
+        "annual_returns": {
+          "2023": 5.49,
+          "2024": 0.57,
+          "2025": 50.21,
+          "2026": 3.68
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 23,
+        "total_return": 64.784,
+        "cagr": 18.1105,
+        "mdd": 22.6641,
+        "avg_holdings": 20.04,
+        "avg_cash_pct": 35.45,
+        "trades": 1392,
+        "win_rate": 22.99,
+        "annual_returns": {
+          "2023": 4.87,
+          "2024": 1.57,
+          "2025": 50.13,
+          "2026": 3.05
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 24,
+        "total_return": 63.6299,
+        "cagr": 17.8342,
+        "mdd": 22.0926,
+        "avg_holdings": 20.75,
+        "avg_cash_pct": 36.06,
+        "trades": 1448,
+        "win_rate": 23.41,
+        "annual_returns": {
+          "2023": 4.89,
+          "2024": 1.53,
+          "2025": 47.94,
+          "2026": 3.87
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 25,
+        "total_return": 61.77,
+        "cagr": 17.3861,
+        "mdd": 21.7977,
+        "avg_holdings": 21.4,
+        "avg_cash_pct": 36.72,
+        "trades": 1495,
+        "win_rate": 23.34,
+        "annual_returns": {
+          "2023": 5.09,
+          "2024": 1.39,
+          "2025": 46.52,
+          "2026": 3.61
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 26,
+        "total_return": 62.4507,
+        "cagr": 17.5505,
+        "mdd": 21.253,
+        "avg_holdings": 22.05,
+        "avg_cash_pct": 37.33,
+        "trades": 1548,
+        "win_rate": 23.26,
+        "annual_returns": {
+          "2023": 4.46,
+          "2024": 1.74,
+          "2025": 46.12,
+          "2026": 4.61
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 27,
+        "total_return": 55.9143,
+        "cagr": 15.9526,
+        "mdd": 20.9828,
+        "avg_holdings": 22.66,
+        "avg_cash_pct": 37.99,
+        "trades": 1604,
+        "win_rate": 23.07,
+        "annual_returns": {
+          "2023": 4.2,
+          "2024": 0.43,
+          "2025": 43.28,
+          "2026": 3.98
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 28,
+        "total_return": 63.7138,
+        "cagr": 17.8543,
+        "mdd": 19.9233,
+        "avg_holdings": 23.32,
+        "avg_cash_pct": 38.12,
+        "trades": 1636,
+        "win_rate": 23.35,
+        "annual_returns": {
+          "2023": 3.57,
+          "2024": 1.88,
+          "2025": 46.45,
+          "2026": 5.94
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 29,
+        "total_return": 59.3329,
+        "cagr": 16.7938,
+        "mdd": 19.9252,
+        "avg_holdings": 23.87,
+        "avg_cash_pct": 39.08,
+        "trades": 1682,
+        "win_rate": 23.25,
+        "annual_returns": {
+          "2023": 3.44,
+          "2024": 0.85,
+          "2025": 45.21,
+          "2026": 5.19
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 30,
+        "total_return": 66.2413,
+        "cagr": 18.4576,
+        "mdd": 18.4323,
+        "avg_holdings": 24.45,
+        "avg_cash_pct": 39.61,
+        "trades": 1718,
+        "win_rate": 23.75,
+        "annual_returns": {
+          "2023": 3.14,
+          "2024": 1.99,
+          "2025": 43.5,
+          "2026": 10.13
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 31,
+        "total_return": 63.3385,
+        "cagr": 17.7642,
+        "mdd": 18.3474,
+        "avg_holdings": 24.97,
+        "avg_cash_pct": 40.48,
+        "trades": 1759,
+        "win_rate": 23.71,
+        "annual_returns": {
+          "2023": 2.91,
+          "2024": 0.73,
+          "2025": 43.4,
+          "2026": 9.88
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 32,
+        "total_return": 61.8817,
+        "cagr": 17.4131,
+        "mdd": 17.8382,
+        "avg_holdings": 25.46,
+        "avg_cash_pct": 41.18,
+        "trades": 1797,
+        "win_rate": 23.76,
+        "annual_returns": {
+          "2023": 2.7,
+          "2024": 1.16,
+          "2025": 41.92,
+          "2026": 9.79
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 33,
+        "total_return": 63.2725,
+        "cagr": 17.7483,
+        "mdd": 17.2989,
+        "avg_holdings": 25.91,
+        "avg_cash_pct": 41.86,
+        "trades": 1823,
+        "win_rate": 23.7,
+        "annual_returns": {
+          "2023": 2.57,
+          "2024": 1.15,
+          "2025": 40.41,
+          "2026": 12.08
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 34,
+        "total_return": 69.7372,
+        "cagr": 19.282,
+        "mdd": 17.1478,
+        "avg_holdings": 26.36,
+        "avg_cash_pct": 42.35,
+        "trades": 1845,
+        "win_rate": 23.69,
+        "annual_returns": {
+          "2023": 2.33,
+          "2024": 0.64,
+          "2025": 47.37,
+          "2026": 11.85
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 35,
+        "total_return": 71.4324,
+        "cagr": 19.6777,
+        "mdd": 16.7229,
+        "avg_holdings": 26.77,
+        "avg_cash_pct": 43.12,
+        "trades": 1872,
+        "win_rate": 23.72,
+        "annual_returns": {
+          "2023": 2.21,
+          "2024": 1.14,
+          "2025": 46.27,
+          "2026": 13.37
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 36,
+        "total_return": 66.6443,
+        "cagr": 18.5532,
+        "mdd": 16.3037,
+        "avg_holdings": 27.09,
+        "avg_cash_pct": 43.98,
+        "trades": 1903,
+        "win_rate": 23.54,
+        "annual_returns": {
+          "2023": 2.01,
+          "2024": 0.6,
+          "2025": 44.56,
+          "2026": 12.33
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 37,
+        "total_return": 71.7465,
+        "cagr": 19.7507,
+        "mdd": 16.3676,
+        "avg_holdings": 27.49,
+        "avg_cash_pct": 44.51,
+        "trades": 1921,
+        "win_rate": 23.74,
+        "annual_returns": {
+          "2023": 2.16,
+          "2024": 3.67,
+          "2025": 43.91,
+          "2026": 12.69
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 38,
+        "total_return": 73.1737,
+        "cagr": 20.0814,
+        "mdd": 16.1647,
+        "avg_holdings": 27.88,
+        "avg_cash_pct": 45.13,
+        "trades": 1945,
+        "win_rate": 23.8,
+        "annual_returns": {
+          "2023": 2.26,
+          "2024": 5.48,
+          "2025": 42.08,
+          "2026": 13.0
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 39,
+        "total_return": 72.7875,
+        "cagr": 19.9921,
+        "mdd": 15.1383,
+        "avg_holdings": 28.19,
+        "avg_cash_pct": 45.88,
+        "trades": 1962,
+        "win_rate": 23.85,
+        "annual_returns": {
+          "2023": 2.05,
+          "2024": 4.9,
+          "2025": 42.31,
+          "2026": 13.43
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 40,
+        "total_return": 72.9481,
+        "cagr": 20.0293,
+        "mdd": 14.7595,
+        "avg_holdings": 28.43,
+        "avg_cash_pct": 46.78,
+        "trades": 1978,
+        "win_rate": 23.81,
+        "annual_returns": {
+          "2023": 2.03,
+          "2024": 5.13,
+          "2025": 41.63,
+          "2026": 13.84
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 41,
+        "total_return": 73.3839,
+        "cagr": 20.13,
+        "mdd": 14.4029,
+        "avg_holdings": 28.67,
+        "avg_cash_pct": 47.57,
+        "trades": 1988,
+        "win_rate": 23.84,
+        "annual_returns": {
+          "2023": 1.98,
+          "2024": 5.49,
+          "2025": 40.94,
+          "2026": 14.36
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 42,
+        "total_return": 70.2928,
+        "cagr": 19.412,
+        "mdd": 14.163,
+        "avg_holdings": 28.85,
+        "avg_cash_pct": 48.53,
+        "trades": 2001,
+        "win_rate": 23.84,
+        "annual_returns": {
+          "2023": 1.93,
+          "2024": 5.2,
+          "2025": 39.53,
+          "2026": 13.82
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 43,
+        "total_return": 70.25,
+        "cagr": 19.402,
+        "mdd": 13.8602,
+        "avg_holdings": 29.06,
+        "avg_cash_pct": 49.35,
+        "trades": 2016,
+        "win_rate": 23.86,
+        "annual_returns": {
+          "2023": 1.89,
+          "2024": 5.56,
+          "2025": 38.63,
+          "2026": 14.19
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 44,
+        "total_return": 70.7171,
+        "cagr": 19.511,
+        "mdd": 13.5698,
+        "avg_holdings": 29.26,
+        "avg_cash_pct": 50.11,
+        "trades": 2030,
+        "win_rate": 23.89,
+        "annual_returns": {
+          "2023": 1.85,
+          "2024": 5.27,
+          "2025": 38.36,
+          "2026": 15.08
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 45,
+        "total_return": 70.3708,
+        "cagr": 19.4302,
+        "mdd": 13.3424,
+        "avg_holdings": 29.43,
+        "avg_cash_pct": 50.87,
+        "trades": 2039,
+        "win_rate": 23.93,
+        "annual_returns": {
+          "2023": 1.81,
+          "2024": 5.02,
+          "2025": 38.14,
+          "2026": 15.36
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 46,
+        "total_return": 69.0139,
+        "cagr": 19.1124,
+        "mdd": 13.1869,
+        "avg_holdings": 29.6,
+        "avg_cash_pct": 51.69,
+        "trades": 2048,
+        "win_rate": 23.97,
+        "annual_returns": {
+          "2023": 1.77,
+          "2024": 4.89,
+          "2025": 36.96,
+          "2026": 15.6
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 47,
+        "total_return": 68.1862,
+        "cagr": 18.9176,
+        "mdd": 12.927,
+        "avg_holdings": 29.74,
+        "avg_cash_pct": 52.52,
+        "trades": 2062,
+        "win_rate": 23.96,
+        "annual_returns": {
+          "2023": 1.73,
+          "2024": 4.76,
+          "2025": 35.91,
+          "2026": 16.11
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 48,
+        "total_return": 69.2716,
+        "cagr": 19.1728,
+        "mdd": 12.787,
+        "avg_holdings": 29.86,
+        "avg_cash_pct": 53.34,
+        "trades": 2069,
+        "win_rate": 23.97,
+        "annual_returns": {
+          "2023": 1.69,
+          "2024": 4.68,
+          "2025": 35.34,
+          "2026": 17.49
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 49,
+        "total_return": 71.3145,
+        "cagr": 19.6503,
+        "mdd": 12.4357,
+        "avg_holdings": 29.99,
+        "avg_cash_pct": 54.03,
+        "trades": 2071,
+        "win_rate": 24.05,
+        "annual_returns": {
+          "2023": 1.66,
+          "2024": 4.59,
+          "2025": 36.3,
+          "2026": 18.21
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 50,
+        "total_return": 71.8725,
+        "cagr": 19.78,
+        "mdd": 12.2316,
+        "avg_holdings": 30.14,
+        "avg_cash_pct": 54.69,
+        "trades": 2074,
+        "win_rate": 24.2,
+        "annual_returns": {
+          "2023": 1.63,
+          "2024": 4.53,
+          "2025": 36.89,
+          "2026": 18.19
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 51,
+        "total_return": 72.5339,
+        "cagr": 19.9334,
+        "mdd": 12.3229,
+        "avg_holdings": 30.3,
+        "avg_cash_pct": 55.31,
+        "trades": 2083,
+        "win_rate": 24.29,
+        "annual_returns": {
+          "2023": 1.6,
+          "2024": 4.86,
+          "2025": 36.96,
+          "2026": 18.25
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 52,
+        "total_return": 71.5467,
+        "cagr": 19.7043,
+        "mdd": 12.097,
+        "avg_holdings": 30.42,
+        "avg_cash_pct": 55.98,
+        "trades": 2092,
+        "win_rate": 24.28,
+        "annual_returns": {
+          "2023": 1.57,
+          "2024": 4.77,
+          "2025": 36.74,
+          "2026": 17.89
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 53,
+        "total_return": 71.4891,
+        "cagr": 19.6909,
+        "mdd": 12.1198,
+        "avg_holdings": 30.54,
+        "avg_cash_pct": 56.6,
+        "trades": 2098,
+        "win_rate": 24.31,
+        "annual_returns": {
+          "2023": 1.54,
+          "2024": 4.69,
+          "2025": 35.65,
+          "2026": 18.93
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 54,
+        "total_return": 69.6666,
+        "cagr": 19.2655,
+        "mdd": 12.0515,
+        "avg_holdings": 30.64,
+        "avg_cash_pct": 57.27,
+        "trades": 2107,
+        "win_rate": 24.25,
+        "annual_returns": {
+          "2023": 1.51,
+          "2024": 4.61,
+          "2025": 34.59,
+          "2026": 18.72
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 55,
+        "total_return": 67.5377,
+        "cagr": 18.7646,
+        "mdd": 11.8639,
+        "avg_holdings": 30.74,
+        "avg_cash_pct": 57.91,
+        "trades": 2115,
+        "win_rate": 24.21,
+        "annual_returns": {
+          "2023": 1.48,
+          "2024": 4.53,
+          "2025": 33.77,
+          "2026": 18.07
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 56,
+        "total_return": 66.5062,
+        "cagr": 18.5204,
+        "mdd": 11.6675,
+        "avg_holdings": 30.84,
+        "avg_cash_pct": 58.5,
+        "trades": 2118,
+        "win_rate": 24.36,
+        "annual_returns": {
+          "2023": 1.46,
+          "2024": 4.45,
+          "2025": 33.21,
+          "2026": 17.96
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 57,
+        "total_return": 66.22,
+        "cagr": 18.4525,
+        "mdd": 11.7163,
+        "avg_holdings": 30.94,
+        "avg_cash_pct": 59.06,
+        "trades": 2122,
+        "win_rate": 24.36,
+        "annual_returns": {
+          "2023": 1.43,
+          "2024": 4.38,
+          "2025": 32.55,
+          "2026": 18.45
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 58,
+        "total_return": 64.7926,
+        "cagr": 18.1126,
+        "mdd": 11.529,
+        "avg_holdings": 31.02,
+        "avg_cash_pct": 59.67,
+        "trades": 2127,
+        "win_rate": 24.35,
+        "annual_returns": {
+          "2023": 1.41,
+          "2024": 4.31,
+          "2025": 31.8,
+          "2026": 18.21
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 59,
+        "total_return": 64.744,
+        "cagr": 18.1009,
+        "mdd": 11.5131,
+        "avg_holdings": 31.09,
+        "avg_cash_pct": 60.27,
+        "trades": 2133,
+        "win_rate": 24.38,
+        "annual_returns": {
+          "2023": 1.38,
+          "2024": 4.24,
+          "2025": 31.38,
+          "2026": 18.65
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 60,
+        "total_return": 63.3611,
+        "cagr": 17.7696,
+        "mdd": 11.3341,
+        "avg_holdings": 31.16,
+        "avg_cash_pct": 60.84,
+        "trades": 2138,
+        "win_rate": 24.46,
+        "annual_returns": {
+          "2023": 1.36,
+          "2024": 4.17,
+          "2025": 30.66,
+          "2026": 18.42
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 61,
+        "total_return": 63.8679,
+        "cagr": 17.8913,
+        "mdd": 11.1648,
+        "avg_holdings": 31.27,
+        "avg_cash_pct": 61.29,
+        "trades": 2142,
+        "win_rate": 24.42,
+        "annual_returns": {
+          "2023": 1.34,
+          "2024": 4.11,
+          "2025": 31.61,
+          "2026": 18.02
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 62,
+        "total_return": 62.706,
+        "cagr": 17.612,
+        "mdd": 11.1464,
+        "avg_holdings": 31.33,
+        "avg_cash_pct": 61.82,
+        "trades": 2143,
+        "win_rate": 24.45,
+        "annual_returns": {
+          "2023": 1.32,
+          "2024": 4.04,
+          "2025": 31.16,
+          "2026": 17.68
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 63,
+        "total_return": 61.2908,
+        "cagr": 17.2701,
+        "mdd": 10.9863,
+        "avg_holdings": 31.38,
+        "avg_cash_pct": 62.39,
+        "trades": 2148,
+        "win_rate": 24.39,
+        "annual_returns": {
+          "2023": 1.3,
+          "2024": 3.98,
+          "2025": 30.57,
+          "2026": 17.28
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 64,
+        "total_return": 61.4603,
+        "cagr": 17.3112,
+        "mdd": 10.953,
+        "avg_holdings": 31.41,
+        "avg_cash_pct": 62.93,
+        "trades": 2155,
+        "win_rate": 24.41,
+        "annual_returns": {
+          "2023": 1.28,
+          "2024": 3.92,
+          "2025": 29.92,
+          "2026": 18.08
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 65,
+        "total_return": 60.3081,
+        "cagr": 17.0315,
+        "mdd": 10.798,
+        "avg_holdings": 31.47,
+        "avg_cash_pct": 63.43,
+        "trades": 2159,
+        "win_rate": 24.41,
+        "annual_returns": {
+          "2023": 1.26,
+          "2024": 3.86,
+          "2025": 29.4,
+          "2026": 17.79
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 66,
+        "total_return": 59.6489,
+        "cagr": 16.8709,
+        "mdd": 10.7499,
+        "avg_holdings": 31.55,
+        "avg_cash_pct": 63.87,
+        "trades": 2163,
+        "win_rate": 24.46,
+        "annual_returns": {
+          "2023": 1.24,
+          "2024": 3.81,
+          "2025": 28.83,
+          "2026": 17.92
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 67,
+        "total_return": 58.4979,
+        "cagr": 16.5895,
+        "mdd": 10.6043,
+        "avg_holdings": 31.58,
+        "avg_cash_pct": 64.36,
+        "trades": 2165,
+        "win_rate": 24.43,
+        "annual_returns": {
+          "2023": 1.22,
+          "2024": 3.76,
+          "2025": 28.37,
+          "2026": 17.57
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 68,
+        "total_return": 57.7206,
+        "cagr": 16.3986,
+        "mdd": 10.4612,
+        "avg_holdings": 31.62,
+        "avg_cash_pct": 64.84,
+        "trades": 2166,
+        "win_rate": 24.47,
+        "annual_returns": {
+          "2023": 1.2,
+          "2024": 3.7,
+          "2025": 27.9,
+          "2026": 17.5
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 69,
+        "total_return": 56.7409,
+        "cagr": 16.1571,
+        "mdd": 10.3192,
+        "avg_holdings": 31.65,
+        "avg_cash_pct": 65.31,
+        "trades": 2168,
+        "win_rate": 24.49,
+        "annual_returns": {
+          "2023": 1.19,
+          "2024": 3.65,
+          "2025": 27.44,
+          "2026": 17.27
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 70,
+        "total_return": 55.6767,
+        "cagr": 15.8937,
+        "mdd": 10.1846,
+        "avg_holdings": 31.67,
+        "avg_cash_pct": 65.78,
+        "trades": 2171,
+        "win_rate": 24.46,
+        "annual_returns": {
+          "2023": 1.17,
+          "2024": 3.6,
+          "2025": 26.98,
+          "2026": 16.97
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 71,
+        "total_return": 54.7145,
+        "cagr": 15.6545,
+        "mdd": 10.0547,
+        "avg_holdings": 31.68,
+        "avg_cash_pct": 66.24,
+        "trades": 2172,
+        "win_rate": 24.45,
+        "annual_returns": {
+          "2023": 1.15,
+          "2024": 3.55,
+          "2025": 26.57,
+          "2026": 16.69
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 72,
+        "total_return": 53.8241,
+        "cagr": 15.4323,
+        "mdd": 9.926,
+        "avg_holdings": 31.68,
+        "avg_cash_pct": 66.7,
+        "trades": 2173,
+        "win_rate": 24.44,
+        "annual_returns": {
+          "2023": 1.14,
+          "2024": 3.51,
+          "2025": 26.18,
+          "2026": 16.45
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 73,
+        "total_return": 52.9773,
+        "cagr": 15.2201,
+        "mdd": 9.8003,
+        "avg_holdings": 31.68,
+        "avg_cash_pct": 67.14,
+        "trades": 2173,
+        "win_rate": 24.44,
+        "annual_returns": {
+          "2023": 1.12,
+          "2024": 3.46,
+          "2025": 25.8,
+          "2026": 16.23
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 74,
+        "total_return": 52.1565,
+        "cagr": 15.0137,
+        "mdd": 9.6778,
+        "avg_holdings": 31.68,
+        "avg_cash_pct": 67.58,
+        "trades": 2173,
+        "win_rate": 24.44,
+        "annual_returns": {
+          "2023": 1.11,
+          "2024": 3.42,
+          "2025": 25.43,
+          "2026": 16.02
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 75,
+        "total_return": 51.3604,
+        "cagr": 14.8128,
+        "mdd": 9.5583,
+        "avg_holdings": 31.68,
+        "avg_cash_pct": 68.0,
+        "trades": 2173,
+        "win_rate": 24.44,
+        "annual_returns": {
+          "2023": 1.09,
+          "2024": 3.37,
+          "2025": 25.07,
+          "2026": 15.81
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 76,
+        "total_return": 50.5754,
+        "cagr": 14.6141,
+        "mdd": 9.4417,
+        "avg_holdings": 31.69,
+        "avg_cash_pct": 68.41,
+        "trades": 2173,
+        "win_rate": 24.44,
+        "annual_returns": {
+          "2023": 1.08,
+          "2024": 3.33,
+          "2025": 24.72,
+          "2026": 15.6
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 77,
+        "total_return": 49.8259,
+        "cagr": 14.4236,
+        "mdd": 9.3279,
+        "avg_holdings": 31.69,
+        "avg_cash_pct": 68.82,
+        "trades": 2173,
+        "win_rate": 24.44,
+        "annual_returns": {
+          "2023": 1.06,
+          "2024": 3.29,
+          "2025": 24.38,
+          "2026": 15.4
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 78,
+        "total_return": 49.0979,
+        "cagr": 14.238,
+        "mdd": 9.2168,
+        "avg_holdings": 31.69,
+        "avg_cash_pct": 69.21,
+        "trades": 2173,
+        "win_rate": 24.44,
+        "annual_returns": {
+          "2023": 1.05,
+          "2024": 3.25,
+          "2025": 24.05,
+          "2026": 15.2
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 79,
+        "total_return": 48.3907,
+        "cagr": 14.0572,
+        "mdd": 9.1084,
+        "avg_holdings": 31.69,
+        "avg_cash_pct": 69.59,
+        "trades": 2173,
+        "win_rate": 24.44,
+        "annual_returns": {
+          "2023": 1.04,
+          "2024": 3.21,
+          "2025": 23.73,
+          "2026": 15.01
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 80,
+        "total_return": 47.7034,
+        "cagr": 13.8808,
+        "mdd": 9.0025,
+        "avg_holdings": 31.69,
+        "avg_cash_pct": 69.96,
+        "trades": 2173,
+        "win_rate": 24.44,
+        "annual_returns": {
+          "2023": 1.02,
+          "2024": 3.17,
+          "2025": 23.41,
+          "2026": 14.83
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 81,
+        "total_return": 47.0351,
+        "cagr": 13.7088,
+        "mdd": 8.899,
+        "avg_holdings": 31.69,
+        "avg_cash_pct": 70.33,
+        "trades": 2173,
+        "win_rate": 24.44,
+        "annual_returns": {
+          "2023": 1.01,
+          "2024": 3.13,
+          "2025": 23.11,
+          "2026": 14.65
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 82,
+        "total_return": 46.3851,
+        "cagr": 13.5411,
+        "mdd": 8.7979,
+        "avg_holdings": 31.69,
+        "avg_cash_pct": 70.68,
+        "trades": 2173,
+        "win_rate": 24.44,
+        "annual_returns": {
+          "2023": 1.0,
+          "2024": 3.09,
+          "2025": 22.81,
+          "2026": 14.47
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 83,
+        "total_return": 45.7526,
+        "cagr": 13.3774,
+        "mdd": 8.6991,
+        "avg_holdings": 31.69,
+        "avg_cash_pct": 71.03,
+        "trades": 2173,
+        "win_rate": 24.44,
+        "annual_returns": {
+          "2023": 0.99,
+          "2024": 3.06,
+          "2025": 22.52,
+          "2026": 14.3
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 84,
+        "total_return": 45.1369,
+        "cagr": 13.2175,
+        "mdd": 8.6024,
+        "avg_holdings": 31.69,
+        "avg_cash_pct": 71.37,
+        "trades": 2173,
+        "win_rate": 24.44,
+        "annual_returns": {
+          "2023": 0.98,
+          "2024": 3.02,
+          "2025": 22.24,
+          "2026": 14.14
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 85,
+        "total_return": 44.5375,
+        "cagr": 13.0615,
+        "mdd": 8.5079,
+        "avg_holdings": 31.69,
+        "avg_cash_pct": 71.7,
+        "trades": 2173,
+        "win_rate": 24.44,
+        "annual_returns": {
+          "2023": 0.96,
+          "2024": 2.99,
+          "2025": 21.96,
+          "2026": 13.97
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 86,
+        "total_return": 43.9536,
+        "cagr": 12.9091,
+        "mdd": 8.4154,
+        "avg_holdings": 31.69,
+        "avg_cash_pct": 72.02,
+        "trades": 2173,
+        "win_rate": 24.44,
+        "annual_returns": {
+          "2023": 0.95,
+          "2024": 2.96,
+          "2025": 21.69,
+          "2026": 13.81
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 87,
+        "total_return": 43.3847,
+        "cagr": 12.7602,
+        "mdd": 8.325,
+        "avg_holdings": 31.69,
+        "avg_cash_pct": 72.34,
+        "trades": 2173,
+        "win_rate": 24.44,
+        "annual_returns": {
+          "2023": 0.94,
+          "2024": 2.92,
+          "2025": 21.43,
+          "2026": 13.66
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 88,
+        "total_return": 42.8302,
+        "cagr": 12.6147,
+        "mdd": 8.2364,
+        "avg_holdings": 31.69,
+        "avg_cash_pct": 72.65,
+        "trades": 2173,
+        "win_rate": 24.44,
+        "annual_returns": {
+          "2023": 0.93,
+          "2024": 2.89,
+          "2025": 21.17,
+          "2026": 13.5
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 89,
+        "total_return": 42.2896,
+        "cagr": 12.4724,
+        "mdd": 8.1498,
+        "avg_holdings": 31.69,
+        "avg_cash_pct": 72.95,
+        "trades": 2173,
+        "win_rate": 24.44,
+        "annual_returns": {
+          "2023": 0.92,
+          "2024": 2.86,
+          "2025": 20.92,
+          "2026": 13.35
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 90,
+        "total_return": 41.7623,
+        "cagr": 12.3334,
+        "mdd": 8.0649,
+        "avg_holdings": 31.69,
+        "avg_cash_pct": 73.25,
+        "trades": 2173,
+        "win_rate": 24.44,
+        "annual_returns": {
+          "2023": 0.91,
+          "2024": 2.83,
+          "2025": 20.68,
+          "2026": 13.21
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 91,
+        "total_return": 41.2479,
+        "cagr": 12.1974,
+        "mdd": 7.9818,
+        "avg_holdings": 31.69,
+        "avg_cash_pct": 73.53,
+        "trades": 2173,
+        "win_rate": 24.44,
+        "annual_returns": {
+          "2023": 0.9,
+          "2024": 2.8,
+          "2025": 20.44,
+          "2026": 13.06
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 92,
+        "total_return": 40.7459,
+        "cagr": 12.0643,
+        "mdd": 7.9004,
+        "avg_holdings": 31.69,
+        "avg_cash_pct": 73.82,
+        "trades": 2173,
+        "win_rate": 24.44,
+        "annual_returns": {
+          "2023": 0.89,
+          "2024": 2.77,
+          "2025": 20.2,
+          "2026": 12.93
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 93,
+        "total_return": 40.2559,
+        "cagr": 11.9341,
+        "mdd": 7.8206,
+        "avg_holdings": 31.69,
+        "avg_cash_pct": 74.09,
+        "trades": 2173,
+        "win_rate": 24.44,
+        "annual_returns": {
+          "2023": 0.88,
+          "2024": 2.74,
+          "2025": 19.98,
+          "2026": 12.79
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 94,
+        "total_return": 39.7774,
+        "cagr": 11.8067,
+        "mdd": 7.7424,
+        "avg_holdings": 31.69,
+        "avg_cash_pct": 74.37,
+        "trades": 2173,
+        "win_rate": 24.44,
+        "annual_returns": {
+          "2023": 0.87,
+          "2024": 2.71,
+          "2025": 19.75,
+          "2026": 12.65
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 95,
+        "total_return": 39.3101,
+        "cagr": 11.682,
+        "mdd": 7.6658,
+        "avg_holdings": 31.69,
+        "avg_cash_pct": 74.63,
+        "trades": 2173,
+        "win_rate": 24.44,
+        "annual_returns": {
+          "2023": 0.86,
+          "2024": 2.69,
+          "2025": 19.54,
+          "2026": 12.52
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 96,
+        "total_return": 38.8536,
+        "cagr": 11.5599,
+        "mdd": 7.5907,
+        "avg_holdings": 31.69,
+        "avg_cash_pct": 74.89,
+        "trades": 2173,
+        "win_rate": 24.44,
+        "annual_returns": {
+          "2023": 0.86,
+          "2024": 2.66,
+          "2025": 19.32,
+          "2026": 12.39
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 97,
+        "total_return": 38.4074,
+        "cagr": 11.4403,
+        "mdd": 7.517,
+        "avg_holdings": 31.69,
+        "avg_cash_pct": 75.15,
+        "trades": 2173,
+        "win_rate": 24.44,
+        "annual_returns": {
+          "2023": 0.85,
+          "2024": 2.63,
+          "2025": 19.11,
+          "2026": 12.27
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 98,
+        "total_return": 37.9713,
+        "cagr": 11.3232,
+        "mdd": 7.4448,
+        "avg_holdings": 31.69,
+        "avg_cash_pct": 75.4,
+        "trades": 2173,
+        "win_rate": 24.44,
+        "annual_returns": {
+          "2023": 0.84,
+          "2024": 2.61,
+          "2025": 18.91,
+          "2026": 12.14
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 99,
+        "total_return": 37.545,
+        "cagr": 11.2084,
+        "mdd": 7.3739,
+        "avg_holdings": 31.69,
+        "avg_cash_pct": 75.64,
+        "trades": 2173,
+        "win_rate": 24.44,
+        "annual_returns": {
+          "2023": 0.83,
+          "2024": 2.58,
+          "2025": 18.71,
+          "2026": 12.02
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 100,
+        "total_return": 37.128,
+        "cagr": 11.096,
+        "mdd": 7.3044,
+        "avg_holdings": 31.69,
+        "avg_cash_pct": 75.88,
+        "trades": 2173,
+        "win_rate": 24.44,
+        "annual_returns": {
+          "2023": 0.82,
+          "2024": 2.56,
+          "2025": 18.51,
+          "2026": 11.9
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 101,
+        "total_return": 36.7201,
+        "cagr": 10.9857,
+        "mdd": 7.2362,
+        "avg_holdings": 31.69,
+        "avg_cash_pct": 76.12,
+        "trades": 2173,
+        "win_rate": 24.44,
+        "annual_returns": {
+          "2023": 0.81,
+          "2024": 2.53,
+          "2025": 18.32,
+          "2026": 11.79
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 102,
+        "total_return": 36.321,
+        "cagr": 10.8777,
+        "mdd": 7.1692,
+        "avg_holdings": 31.69,
+        "avg_cash_pct": 76.35,
+        "trades": 2173,
+        "win_rate": 24.44,
+        "annual_returns": {
+          "2023": 0.81,
+          "2024": 2.51,
+          "2025": 18.13,
+          "2026": 11.67
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 103,
+        "total_return": 35.9305,
+        "cagr": 10.7717,
+        "mdd": 7.1035,
+        "avg_holdings": 31.69,
+        "avg_cash_pct": 76.57,
+        "trades": 2173,
+        "win_rate": 24.44,
+        "annual_returns": {
+          "2023": 0.8,
+          "2024": 2.48,
+          "2025": 17.95,
+          "2026": 11.56
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 104,
+        "total_return": 35.5482,
+        "cagr": 10.6678,
+        "mdd": 7.039,
+        "avg_holdings": 31.69,
+        "avg_cash_pct": 76.79,
+        "trades": 2173,
+        "win_rate": 24.44,
+        "annual_returns": {
+          "2023": 0.79,
+          "2024": 2.46,
+          "2025": 17.77,
+          "2026": 11.45
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      }
+    ],
+    "us_current": [
+      {
+        "cap": 1,
+        "total_return": 7.3323,
+        "cagr": 2.3861,
+        "mdd": 18.1642,
+        "avg_holdings": 0.99,
+        "avg_cash_pct": 38.48,
+        "trades": 39,
+        "win_rate": 28.21,
+        "annual_returns": {
+          "2023": 1.79,
+          "2024": 20.1,
+          "2025": -9.65,
+          "2026": -2.83
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 2,
+        "total_return": 7.0756,
+        "cagr": 2.3045,
+        "mdd": 21.9377,
+        "avg_holdings": 1.98,
+        "avg_cash_pct": 29.92,
+        "trades": 83,
+        "win_rate": 22.89,
+        "annual_returns": {
+          "2023": -2.68,
+          "2024": 15.0,
+          "2025": -14.49,
+          "2026": 11.89
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 3,
+        "total_return": 6.0984,
+        "cagr": 1.9924,
+        "mdd": 18.5433,
+        "avg_holdings": 2.97,
+        "avg_cash_pct": 27.01,
+        "trades": 125,
+        "win_rate": 20.0,
+        "annual_returns": {
+          "2023": -3.28,
+          "2024": 20.25,
+          "2025": -9.25,
+          "2026": 0.52
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 4,
+        "total_return": 22.2687,
+        "cagr": 6.9297,
+        "mdd": 11.6225,
+        "avg_holdings": 3.95,
+        "avg_cash_pct": 25.56,
+        "trades": 157,
+        "win_rate": 21.66,
+        "annual_returns": {
+          "2023": 0.57,
+          "2024": 16.57,
+          "2025": 0.55,
+          "2026": 3.73
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 5,
+        "total_return": 7.5728,
+        "cagr": 2.4625,
+        "mdd": 12.831,
+        "avg_holdings": 4.93,
+        "avg_cash_pct": 25.57,
+        "trades": 198,
+        "win_rate": 20.71,
+        "annual_returns": {
+          "2023": 0.15,
+          "2024": 11.93,
+          "2025": -2.04,
+          "2026": -2.04
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 6,
+        "total_return": 14.8644,
+        "cagr": 4.7267,
+        "mdd": 13.6398,
+        "avg_holdings": 5.92,
+        "avg_cash_pct": 23.89,
+        "trades": 227,
+        "win_rate": 22.03,
+        "annual_returns": {
+          "2023": 2.85,
+          "2024": 14.7,
+          "2025": -2.51,
+          "2026": -0.12
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 7,
+        "total_return": 15.118,
+        "cagr": 4.8037,
+        "mdd": 12.6204,
+        "avg_holdings": 6.9,
+        "avg_cash_pct": 23.25,
+        "trades": 260,
+        "win_rate": 23.08,
+        "annual_returns": {
+          "2023": 3.28,
+          "2024": 14.24,
+          "2025": -3.42,
+          "2026": 1.02
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 8,
+        "total_return": 19.6193,
+        "cagr": 6.1519,
+        "mdd": 14.4712,
+        "avg_holdings": 7.89,
+        "avg_cash_pct": 23.22,
+        "trades": 296,
+        "win_rate": 22.64,
+        "annual_returns": {
+          "2023": 3.45,
+          "2024": 17.48,
+          "2025": -6.37,
+          "2026": 5.12
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 9,
+        "total_return": 25.0511,
+        "cagr": 7.7346,
+        "mdd": 13.1884,
+        "avg_holdings": 8.88,
+        "avg_cash_pct": 22.51,
+        "trades": 325,
+        "win_rate": 23.38,
+        "annual_returns": {
+          "2023": 5.24,
+          "2024": 19.03,
+          "2025": -4.98,
+          "2026": 5.06
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 10,
+        "total_return": 32.5835,
+        "cagr": 9.8552,
+        "mdd": 12.9525,
+        "avg_holdings": 9.85,
+        "avg_cash_pct": 22.37,
+        "trades": 369,
+        "win_rate": 24.12,
+        "annual_returns": {
+          "2023": 5.03,
+          "2024": 17.42,
+          "2025": -3.51,
+          "2026": 11.41
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 11,
+        "total_return": 24.5676,
+        "cagr": 7.5956,
+        "mdd": 13.1211,
+        "avg_holdings": 10.83,
+        "avg_cash_pct": 22.58,
+        "trades": 414,
+        "win_rate": 22.95,
+        "annual_returns": {
+          "2023": 5.4,
+          "2024": 14.67,
+          "2025": -4.15,
+          "2026": 7.53
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 12,
+        "total_return": 26.1161,
+        "cagr": 8.0395,
+        "mdd": 12.7764,
+        "avg_holdings": 11.79,
+        "avg_cash_pct": 22.81,
+        "trades": 448,
+        "win_rate": 23.21,
+        "annual_returns": {
+          "2023": 4.35,
+          "2024": 13.33,
+          "2025": -2.89,
+          "2026": 9.81
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 13,
+        "total_return": 21.2007,
+        "cagr": 6.6176,
+        "mdd": 12.8801,
+        "avg_holdings": 12.75,
+        "avg_cash_pct": 23.0,
+        "trades": 489,
+        "win_rate": 22.49,
+        "annual_returns": {
+          "2023": 3.9,
+          "2024": 12.77,
+          "2025": -4.72,
+          "2026": 8.57
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 14,
+        "total_return": 19.3056,
+        "cagr": 6.0591,
+        "mdd": 13.1999,
+        "avg_holdings": 13.71,
+        "avg_cash_pct": 23.11,
+        "trades": 526,
+        "win_rate": 22.62,
+        "annual_returns": {
+          "2023": 4.3,
+          "2024": 11.28,
+          "2025": -5.27,
+          "2026": 8.52
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 15,
+        "total_return": 26.9278,
+        "cagr": 8.2707,
+        "mdd": 13.3413,
+        "avg_holdings": 14.67,
+        "avg_cash_pct": 22.58,
+        "trades": 564,
+        "win_rate": 22.7,
+        "annual_returns": {
+          "2023": 3.89,
+          "2024": 12.09,
+          "2025": 1.18,
+          "2026": 7.72
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 16,
+        "total_return": 22.448,
+        "cagr": 6.982,
+        "mdd": 13.6785,
+        "avg_holdings": 15.61,
+        "avg_cash_pct": 22.6,
+        "trades": 612,
+        "win_rate": 22.88,
+        "annual_returns": {
+          "2023": 5.66,
+          "2024": 9.47,
+          "2025": 0.77,
+          "2026": 5.05
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 17,
+        "total_return": 24.5883,
+        "cagr": 7.6015,
+        "mdd": 13.9409,
+        "avg_holdings": 16.55,
+        "avg_cash_pct": 22.68,
+        "trades": 653,
+        "win_rate": 23.89,
+        "annual_returns": {
+          "2023": 5.34,
+          "2024": 10.45,
+          "2025": -0.3,
+          "2026": 7.4
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 18,
+        "total_return": 23.1894,
+        "cagr": 7.1974,
+        "mdd": 14.024,
+        "avg_holdings": 17.5,
+        "avg_cash_pct": 22.36,
+        "trades": 685,
+        "win_rate": 24.53,
+        "annual_returns": {
+          "2023": 5.37,
+          "2024": 10.49,
+          "2025": -0.04,
+          "2026": 5.86
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 19,
+        "total_return": 22.525,
+        "cagr": 7.0044,
+        "mdd": 14.0473,
+        "avg_holdings": 18.44,
+        "avg_cash_pct": 22.29,
+        "trades": 724,
+        "win_rate": 24.86,
+        "annual_returns": {
+          "2023": 5.1,
+          "2024": 8.39,
+          "2025": 0.24,
+          "2026": 7.3
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 20,
+        "total_return": 20.7861,
+        "cagr": 6.4959,
+        "mdd": 13.5665,
+        "avg_holdings": 19.36,
+        "avg_cash_pct": 22.79,
+        "trades": 770,
+        "win_rate": 24.55,
+        "annual_returns": {
+          "2023": 4.91,
+          "2024": 8.4,
+          "2025": 0.03,
+          "2026": 6.19
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 21,
+        "total_return": 19.2852,
+        "cagr": 6.053,
+        "mdd": 13.5969,
+        "avg_holdings": 20.27,
+        "avg_cash_pct": 23.0,
+        "trades": 812,
+        "win_rate": 24.26,
+        "annual_returns": {
+          "2023": 5.07,
+          "2024": 7.82,
+          "2025": -0.97,
+          "2026": 6.32
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 22,
+        "total_return": 23.7362,
+        "cagr": 7.3557,
+        "mdd": 13.5401,
+        "avg_holdings": 21.18,
+        "avg_cash_pct": 22.95,
+        "trades": 844,
+        "win_rate": 24.29,
+        "annual_returns": {
+          "2023": 5.2,
+          "2024": 5.59,
+          "2025": 0.36,
+          "2026": 11.0
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 23,
+        "total_return": 25.6174,
+        "cagr": 7.8969,
+        "mdd": 13.7189,
+        "avg_holdings": 22.09,
+        "avg_cash_pct": 23.17,
+        "trades": 884,
+        "win_rate": 24.89,
+        "annual_returns": {
+          "2023": 5.1,
+          "2024": 5.26,
+          "2025": 0.99,
+          "2026": 12.43
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 24,
+        "total_return": 28.7522,
+        "cagr": 8.7869,
+        "mdd": 13.49,
+        "avg_holdings": 22.98,
+        "avg_cash_pct": 23.3,
+        "trades": 919,
+        "win_rate": 24.7,
+        "annual_returns": {
+          "2023": 5.49,
+          "2024": 6.0,
+          "2025": 2.92,
+          "2026": 11.88
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 25,
+        "total_return": 30.2431,
+        "cagr": 9.2051,
+        "mdd": 13.4556,
+        "avg_holdings": 23.86,
+        "avg_cash_pct": 23.43,
+        "trades": 962,
+        "win_rate": 24.64,
+        "annual_returns": {
+          "2023": 5.41,
+          "2024": 6.06,
+          "2025": 4.35,
+          "2026": 11.65
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 26,
+        "total_return": 34.7417,
+        "cagr": 10.4479,
+        "mdd": 12.9069,
+        "avg_holdings": 24.79,
+        "avg_cash_pct": 23.22,
+        "trades": 995,
+        "win_rate": 25.23,
+        "annual_returns": {
+          "2023": 5.5,
+          "2024": 5.54,
+          "2025": 5.12,
+          "2026": 15.11
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 27,
+        "total_return": 32.6486,
+        "cagr": 9.8732,
+        "mdd": 12.777,
+        "avg_holdings": 25.64,
+        "avg_cash_pct": 23.71,
+        "trades": 1036,
+        "win_rate": 24.9,
+        "annual_returns": {
+          "2023": 5.84,
+          "2024": 4.85,
+          "2025": 4.43,
+          "2026": 14.47
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 28,
+        "total_return": 28.1519,
+        "cagr": 8.6176,
+        "mdd": 12.5499,
+        "avg_holdings": 26.52,
+        "avg_cash_pct": 23.78,
+        "trades": 1080,
+        "win_rate": 24.35,
+        "annual_returns": {
+          "2023": 5.42,
+          "2024": 4.24,
+          "2025": 3.53,
+          "2026": 12.64
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 29,
+        "total_return": 28.4585,
+        "cagr": 8.7041,
+        "mdd": 12.3347,
+        "avg_holdings": 27.37,
+        "avg_cash_pct": 24.02,
+        "trades": 1122,
+        "win_rate": 24.6,
+        "annual_returns": {
+          "2023": 5.27,
+          "2024": 4.12,
+          "2025": 5.03,
+          "2026": 11.6
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 30,
+        "total_return": 24.8784,
+        "cagr": 7.685,
+        "mdd": 12.22,
+        "avg_holdings": 28.2,
+        "avg_cash_pct": 24.42,
+        "trades": 1168,
+        "win_rate": 24.32,
+        "annual_returns": {
+          "2023": 5.1,
+          "2024": 3.25,
+          "2025": 3.86,
+          "2026": 10.8
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 31,
+        "total_return": 25.5996,
+        "cagr": 7.8918,
+        "mdd": 12.3757,
+        "avg_holdings": 29.04,
+        "avg_cash_pct": 24.62,
+        "trades": 1203,
+        "win_rate": 24.36,
+        "annual_returns": {
+          "2023": 5.01,
+          "2024": 3.48,
+          "2025": 4.03,
+          "2026": 11.1
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 32,
+        "total_return": 25.13,
+        "cagr": 7.7572,
+        "mdd": 12.8832,
+        "avg_holdings": 29.87,
+        "avg_cash_pct": 24.75,
+        "trades": 1242,
+        "win_rate": 24.4,
+        "annual_returns": {
+          "2023": 4.93,
+          "2024": 4.55,
+          "2025": 2.95,
+          "2026": 10.79
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 33,
+        "total_return": 28.1205,
+        "cagr": 8.6087,
+        "mdd": 12.8823,
+        "avg_holdings": 30.7,
+        "avg_cash_pct": 24.94,
+        "trades": 1272,
+        "win_rate": 24.76,
+        "annual_returns": {
+          "2023": 5.0,
+          "2024": 5.2,
+          "2025": 5.0,
+          "2026": 10.45
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 34,
+        "total_return": 32.1754,
+        "cagr": 9.7424,
+        "mdd": 12.9347,
+        "avg_holdings": 31.49,
+        "avg_cash_pct": 25.3,
+        "trades": 1315,
+        "win_rate": 24.87,
+        "annual_returns": {
+          "2023": 4.95,
+          "2024": 5.96,
+          "2025": 6.7,
+          "2026": 11.41
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 35,
+        "total_return": 31.4534,
+        "cagr": 9.5422,
+        "mdd": 13.1847,
+        "avg_holdings": 32.26,
+        "avg_cash_pct": 25.68,
+        "trades": 1346,
+        "win_rate": 24.96,
+        "annual_returns": {
+          "2023": 5.44,
+          "2024": 5.42,
+          "2025": 5.71,
+          "2026": 11.87
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 36,
+        "total_return": 34.0433,
+        "cagr": 10.2568,
+        "mdd": 12.8997,
+        "avg_holdings": 33.06,
+        "avg_cash_pct": 25.81,
+        "trades": 1375,
+        "win_rate": 25.16,
+        "annual_returns": {
+          "2023": 5.72,
+          "2024": 5.61,
+          "2025": 5.94,
+          "2026": 13.33
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 37,
+        "total_return": 31.9052,
+        "cagr": 9.6675,
+        "mdd": 12.9933,
+        "avg_holdings": 33.79,
+        "avg_cash_pct": 26.37,
+        "trades": 1410,
+        "win_rate": 25.04,
+        "annual_returns": {
+          "2023": 6.11,
+          "2024": 4.49,
+          "2025": 5.75,
+          "2026": 12.51
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 38,
+        "total_return": 35.8199,
+        "cagr": 10.7416,
+        "mdd": 12.6386,
+        "avg_holdings": 34.55,
+        "avg_cash_pct": 26.58,
+        "trades": 1440,
+        "win_rate": 25.42,
+        "annual_returns": {
+          "2023": 6.52,
+          "2024": 4.84,
+          "2025": 5.44,
+          "2026": 15.35
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 39,
+        "total_return": 36.6101,
+        "cagr": 10.9559,
+        "mdd": 12.6399,
+        "avg_holdings": 35.28,
+        "avg_cash_pct": 26.97,
+        "trades": 1475,
+        "win_rate": 25.49,
+        "annual_returns": {
+          "2023": 6.57,
+          "2024": 5.24,
+          "2025": 5.22,
+          "2026": 15.77
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 40,
+        "total_return": 35.5418,
+        "cagr": 10.666,
+        "mdd": 12.5609,
+        "avg_holdings": 35.98,
+        "avg_cash_pct": 27.39,
+        "trades": 1511,
+        "win_rate": 25.28,
+        "annual_returns": {
+          "2023": 6.84,
+          "2024": 5.37,
+          "2025": 4.74,
+          "2026": 14.95
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 41,
+        "total_return": 33.0348,
+        "cagr": 9.9797,
+        "mdd": 12.4039,
+        "avg_holdings": 36.64,
+        "avg_cash_pct": 28.01,
+        "trades": 1555,
+        "win_rate": 24.89,
+        "annual_returns": {
+          "2023": 6.54,
+          "2024": 5.37,
+          "2025": 3.95,
+          "2026": 14.0
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 42,
+        "total_return": 33.3197,
+        "cagr": 10.0581,
+        "mdd": 11.9926,
+        "avg_holdings": 37.35,
+        "avg_cash_pct": 28.38,
+        "trades": 1584,
+        "win_rate": 25.13,
+        "annual_returns": {
+          "2023": 6.74,
+          "2024": 5.04,
+          "2025": 3.78,
+          "2026": 14.58
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 43,
+        "total_return": 32.6659,
+        "cagr": 9.8779,
+        "mdd": 11.9248,
+        "avg_holdings": 38.0,
+        "avg_cash_pct": 28.76,
+        "trades": 1611,
+        "win_rate": 25.14,
+        "annual_returns": {
+          "2023": 6.77,
+          "2024": 5.39,
+          "2025": 3.14,
+          "2026": 14.31
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 44,
+        "total_return": 36.6664,
+        "cagr": 10.9712,
+        "mdd": 11.7346,
+        "avg_holdings": 38.66,
+        "avg_cash_pct": 29.17,
+        "trades": 1641,
+        "win_rate": 25.23,
+        "annual_returns": {
+          "2023": 6.87,
+          "2024": 8.15,
+          "2025": 3.29,
+          "2026": 14.48
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 45,
+        "total_return": 35.0509,
+        "cagr": 10.5323,
+        "mdd": 11.6267,
+        "avg_holdings": 39.3,
+        "avg_cash_pct": 29.68,
+        "trades": 1671,
+        "win_rate": 25.25,
+        "annual_returns": {
+          "2023": 6.77,
+          "2024": 5.43,
+          "2025": 3.81,
+          "2026": 15.57
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 46,
+        "total_return": 33.6611,
+        "cagr": 10.1519,
+        "mdd": 11.5247,
+        "avg_holdings": 39.92,
+        "avg_cash_pct": 30.1,
+        "trades": 1700,
+        "win_rate": 25.24,
+        "annual_returns": {
+          "2023": 6.71,
+          "2024": 4.54,
+          "2025": 3.33,
+          "2026": 15.96
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 47,
+        "total_return": 32.0235,
+        "cagr": 9.7003,
+        "mdd": 11.6854,
+        "avg_holdings": 40.52,
+        "avg_cash_pct": 30.55,
+        "trades": 1732,
+        "win_rate": 25.23,
+        "annual_returns": {
+          "2023": 6.65,
+          "2024": 4.27,
+          "2025": 2.81,
+          "2026": 15.49
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 48,
+        "total_return": 31.4754,
+        "cagr": 9.5483,
+        "mdd": 11.412,
+        "avg_holdings": 41.14,
+        "avg_cash_pct": 30.92,
+        "trades": 1761,
+        "win_rate": 25.33,
+        "annual_returns": {
+          "2023": 6.56,
+          "2024": 4.27,
+          "2025": 2.66,
+          "2026": 15.26
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 49,
+        "total_return": 30.7285,
+        "cagr": 9.3405,
+        "mdd": 11.2822,
+        "avg_holdings": 41.68,
+        "avg_cash_pct": 31.41,
+        "trades": 1791,
+        "win_rate": 25.29,
+        "annual_returns": {
+          "2023": 6.38,
+          "2024": 4.53,
+          "2025": 2.08,
+          "2026": 15.17
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 50,
+        "total_return": 30.877,
+        "cagr": 9.3819,
+        "mdd": 10.5792,
+        "avg_holdings": 42.19,
+        "avg_cash_pct": 31.96,
+        "trades": 1815,
+        "win_rate": 25.34,
+        "annual_returns": {
+          "2023": 6.22,
+          "2024": 4.64,
+          "2025": 2.79,
+          "2026": 14.55
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 51,
+        "total_return": 30.0671,
+        "cagr": 9.1559,
+        "mdd": 10.4136,
+        "avg_holdings": 42.69,
+        "avg_cash_pct": 32.58,
+        "trades": 1840,
+        "win_rate": 25.22,
+        "annual_returns": {
+          "2023": 6.09,
+          "2024": 4.18,
+          "2025": 2.66,
+          "2026": 14.63
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 52,
+        "total_return": 30.0864,
+        "cagr": 9.1613,
+        "mdd": 10.3028,
+        "avg_holdings": 43.17,
+        "avg_cash_pct": 33.1,
+        "trades": 1864,
+        "win_rate": 25.27,
+        "annual_returns": {
+          "2023": 5.97,
+          "2024": 4.97,
+          "2025": 2.41,
+          "2026": 14.18
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 53,
+        "total_return": 29.155,
+        "cagr": 8.9002,
+        "mdd": 10.0727,
+        "avg_holdings": 43.62,
+        "avg_cash_pct": 33.7,
+        "trades": 1891,
+        "win_rate": 25.12,
+        "annual_returns": {
+          "2023": 5.86,
+          "2024": 4.8,
+          "2025": 2.18,
+          "2026": 13.92
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 54,
+        "total_return": 29.846,
+        "cagr": 9.094,
+        "mdd": 10.0011,
+        "avg_holdings": 44.07,
+        "avg_cash_pct": 34.26,
+        "trades": 1915,
+        "win_rate": 25.01,
+        "annual_returns": {
+          "2023": 5.76,
+          "2024": 5.17,
+          "2025": 2.13,
+          "2026": 14.3
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 55,
+        "total_return": 31.2501,
+        "cagr": 9.4857,
+        "mdd": 9.8234,
+        "avg_holdings": 44.5,
+        "avg_cash_pct": 34.79,
+        "trades": 1940,
+        "win_rate": 25.21,
+        "annual_returns": {
+          "2023": 5.65,
+          "2024": 5.87,
+          "2025": 1.66,
+          "2026": 15.42
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 56,
+        "total_return": 31.8508,
+        "cagr": 9.6525,
+        "mdd": 9.7617,
+        "avg_holdings": 44.91,
+        "avg_cash_pct": 35.36,
+        "trades": 1960,
+        "win_rate": 25.36,
+        "annual_returns": {
+          "2023": 5.55,
+          "2024": 6.03,
+          "2025": 1.7,
+          "2026": 15.85
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 57,
+        "total_return": 31.3807,
+        "cagr": 9.522,
+        "mdd": 9.5452,
+        "avg_holdings": 45.29,
+        "avg_cash_pct": 35.98,
+        "trades": 1980,
+        "win_rate": 25.25,
+        "annual_returns": {
+          "2023": 5.46,
+          "2024": 5.8,
+          "2025": 1.96,
+          "2026": 15.49
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 58,
+        "total_return": 30.9626,
+        "cagr": 9.4058,
+        "mdd": 9.3678,
+        "avg_holdings": 45.63,
+        "avg_cash_pct": 36.63,
+        "trades": 1995,
+        "win_rate": 25.36,
+        "annual_returns": {
+          "2023": 5.36,
+          "2024": 6.01,
+          "2025": 1.97,
+          "2026": 14.98
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 59,
+        "total_return": 30.085,
+        "cagr": 9.1609,
+        "mdd": 9.2873,
+        "avg_holdings": 45.93,
+        "avg_cash_pct": 37.36,
+        "trades": 2014,
+        "win_rate": 25.17,
+        "annual_returns": {
+          "2023": 5.27,
+          "2024": 6.02,
+          "2025": 1.85,
+          "2026": 14.44
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 60,
+        "total_return": 29.6544,
+        "cagr": 9.0403,
+        "mdd": 9.1462,
+        "avg_holdings": 46.28,
+        "avg_cash_pct": 37.93,
+        "trades": 2031,
+        "win_rate": 25.21,
+        "annual_returns": {
+          "2023": 5.18,
+          "2024": 5.86,
+          "2025": 1.92,
+          "2026": 14.25
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 61,
+        "total_return": 30.0513,
+        "cagr": 9.1514,
+        "mdd": 9.0235,
+        "avg_holdings": 46.59,
+        "avg_cash_pct": 38.5,
+        "trades": 2044,
+        "win_rate": 25.29,
+        "annual_returns": {
+          "2023": 5.1,
+          "2024": 6.14,
+          "2025": 2.14,
+          "2026": 14.14
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 62,
+        "total_return": 28.9134,
+        "cagr": 8.8322,
+        "mdd": 8.8516,
+        "avg_holdings": 46.81,
+        "avg_cash_pct": 39.21,
+        "trades": 2063,
+        "win_rate": 25.11,
+        "annual_returns": {
+          "2023": 5.02,
+          "2024": 5.76,
+          "2025": 2.14,
+          "2026": 13.64
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 63,
+        "total_return": 28.0714,
+        "cagr": 8.5948,
+        "mdd": 8.6871,
+        "avg_holdings": 47.02,
+        "avg_cash_pct": 39.91,
+        "trades": 2079,
+        "win_rate": 25.06,
+        "annual_returns": {
+          "2023": 4.94,
+          "2024": 5.49,
+          "2025": 2.06,
+          "2026": 13.35
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 64,
+        "total_return": 27.1669,
+        "cagr": 8.3387,
+        "mdd": 8.6467,
+        "avg_holdings": 47.23,
+        "avg_cash_pct": 40.6,
+        "trades": 2089,
+        "win_rate": 24.99,
+        "annual_returns": {
+          "2023": 4.86,
+          "2024": 5.23,
+          "2025": 1.94,
+          "2026": 13.05
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 65,
+        "total_return": 28.1319,
+        "cagr": 8.6119,
+        "mdd": 8.5567,
+        "avg_holdings": 47.44,
+        "avg_cash_pct": 41.25,
+        "trades": 2096,
+        "win_rate": 25.0,
+        "annual_returns": {
+          "2023": 4.79,
+          "2024": 5.93,
+          "2025": 1.92,
+          "2026": 13.26
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 66,
+        "total_return": 27.4232,
+        "cagr": 8.4114,
+        "mdd": 8.5531,
+        "avg_holdings": 47.6,
+        "avg_cash_pct": 41.92,
+        "trades": 2106,
+        "win_rate": 24.93,
+        "annual_returns": {
+          "2023": 4.72,
+          "2024": 5.74,
+          "2025": 1.87,
+          "2026": 12.97
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 67,
+        "total_return": 26.6404,
+        "cagr": 8.189,
+        "mdd": 8.527,
+        "avg_holdings": 47.75,
+        "avg_cash_pct": 42.64,
+        "trades": 2116,
+        "win_rate": 24.91,
+        "annual_returns": {
+          "2023": 4.65,
+          "2024": 5.59,
+          "2025": 1.81,
+          "2026": 12.56
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 68,
+        "total_return": 25.9267,
+        "cagr": 7.9854,
+        "mdd": 8.4029,
+        "avg_holdings": 47.91,
+        "avg_cash_pct": 43.32,
+        "trades": 2130,
+        "win_rate": 24.84,
+        "annual_returns": {
+          "2023": 4.58,
+          "2024": 5.52,
+          "2025": 1.64,
+          "2026": 12.27
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 69,
+        "total_return": 25.4652,
+        "cagr": 7.8533,
+        "mdd": 8.445,
+        "avg_holdings": 48.03,
+        "avg_cash_pct": 44.01,
+        "trades": 2139,
+        "win_rate": 24.92,
+        "annual_returns": {
+          "2023": 4.51,
+          "2024": 5.32,
+          "2025": 1.62,
+          "2026": 12.16
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 70,
+        "total_return": 25.0573,
+        "cagr": 7.7364,
+        "mdd": 8.4881,
+        "avg_holdings": 48.14,
+        "avg_cash_pct": 44.69,
+        "trades": 2147,
+        "win_rate": 24.83,
+        "annual_returns": {
+          "2023": 4.45,
+          "2024": 4.98,
+          "2025": 1.59,
+          "2026": 12.26
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 71,
+        "total_return": 24.8908,
+        "cagr": 7.6885,
+        "mdd": 8.2587,
+        "avg_holdings": 48.26,
+        "avg_cash_pct": 45.34,
+        "trades": 2154,
+        "win_rate": 24.84,
+        "annual_returns": {
+          "2023": 4.39,
+          "2024": 5.21,
+          "2025": 1.59,
+          "2026": 11.94
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 72,
+        "total_return": 24.6524,
+        "cagr": 7.62,
+        "mdd": 7.953,
+        "avg_holdings": 48.36,
+        "avg_cash_pct": 45.99,
+        "trades": 2163,
+        "win_rate": 24.78,
+        "annual_returns": {
+          "2023": 4.33,
+          "2024": 5.02,
+          "2025": 1.87,
+          "2026": 11.68
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 73,
+        "total_return": 24.2689,
+        "cagr": 7.5095,
+        "mdd": 7.7863,
+        "avg_holdings": 48.43,
+        "avg_cash_pct": 46.67,
+        "trades": 2172,
+        "win_rate": 24.72,
+        "annual_returns": {
+          "2023": 4.27,
+          "2024": 4.97,
+          "2025": 1.88,
+          "2026": 11.45
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 74,
+        "total_return": 23.8326,
+        "cagr": 7.3836,
+        "mdd": 7.7444,
+        "avg_holdings": 48.49,
+        "avg_cash_pct": 47.32,
+        "trades": 2176,
+        "win_rate": 24.72,
+        "annual_returns": {
+          "2023": 4.21,
+          "2024": 4.91,
+          "2025": 1.84,
+          "2026": 11.22
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 75,
+        "total_return": 23.2508,
+        "cagr": 7.2152,
+        "mdd": 7.7007,
+        "avg_holdings": 48.55,
+        "avg_cash_pct": 47.97,
+        "trades": 2181,
+        "win_rate": 24.71,
+        "annual_returns": {
+          "2023": 4.15,
+          "2024": 4.73,
+          "2025": 1.82,
+          "2026": 10.97
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 76,
+        "total_return": 22.8129,
+        "cagr": 7.0881,
+        "mdd": 7.6211,
+        "avg_holdings": 48.58,
+        "avg_cash_pct": 48.63,
+        "trades": 2184,
+        "win_rate": 24.68,
+        "annual_returns": {
+          "2023": 4.1,
+          "2024": 4.62,
+          "2025": 1.78,
+          "2026": 10.8
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 77,
+        "total_return": 22.4915,
+        "cagr": 6.9946,
+        "mdd": 7.5218,
+        "avg_holdings": 48.59,
+        "avg_cash_pct": 49.28,
+        "trades": 2185,
+        "win_rate": 24.67,
+        "annual_returns": {
+          "2023": 4.05,
+          "2024": 4.55,
+          "2025": 1.76,
+          "2026": 10.66
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 78,
+        "total_return": 22.0253,
+        "cagr": 6.8588,
+        "mdd": 7.5422,
+        "avg_holdings": 48.6,
+        "avg_cash_pct": 49.91,
+        "trades": 2186,
+        "win_rate": 24.66,
+        "annual_returns": {
+          "2023": 4.0,
+          "2024": 4.35,
+          "2025": 1.74,
+          "2026": 10.53
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 79,
+        "total_return": 21.6683,
+        "cagr": 6.7545,
+        "mdd": 7.4591,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 50.53,
+        "trades": 2186,
+        "win_rate": 24.66,
+        "annual_returns": {
+          "2023": 3.95,
+          "2024": 4.24,
+          "2025": 1.72,
+          "2026": 10.39
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 80,
+        "total_return": 21.3392,
+        "cagr": 6.6581,
+        "mdd": 7.4113,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 51.14,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 3.9,
+          "2024": 4.15,
+          "2025": 1.7,
+          "2026": 10.26
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 81,
+        "total_return": 21.061,
+        "cagr": 6.5766,
+        "mdd": 7.3237,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 51.73,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 3.85,
+          "2024": 4.1,
+          "2025": 1.68,
+          "2026": 10.13
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 82,
+        "total_return": 20.7898,
+        "cagr": 6.4969,
+        "mdd": 7.2371,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 52.32,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 3.8,
+          "2024": 4.05,
+          "2025": 1.66,
+          "2026": 10.0
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 83,
+        "total_return": 20.5254,
+        "cagr": 6.4192,
+        "mdd": 7.1524,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 52.88,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 3.76,
+          "2024": 4.01,
+          "2025": 1.65,
+          "2026": 9.88
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 84,
+        "total_return": 20.2677,
+        "cagr": 6.3433,
+        "mdd": 7.0697,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 53.44,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 3.71,
+          "2024": 3.96,
+          "2025": 1.63,
+          "2026": 9.76
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 85,
+        "total_return": 20.0163,
+        "cagr": 6.2692,
+        "mdd": 6.9889,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 53.98,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 3.67,
+          "2024": 3.91,
+          "2025": 1.61,
+          "2026": 9.64
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 86,
+        "total_return": 19.7711,
+        "cagr": 6.1968,
+        "mdd": 6.9099,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 54.51,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 3.63,
+          "2024": 3.87,
+          "2025": 1.59,
+          "2026": 9.53
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 87,
+        "total_return": 19.5318,
+        "cagr": 6.126,
+        "mdd": 6.8326,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 55.03,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 3.58,
+          "2024": 3.83,
+          "2025": 1.58,
+          "2026": 9.41
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 88,
+        "total_return": 19.2982,
+        "cagr": 6.0569,
+        "mdd": 6.7571,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 55.54,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 3.54,
+          "2024": 3.79,
+          "2025": 1.56,
+          "2026": 9.31
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 89,
+        "total_return": 19.0701,
+        "cagr": 5.9892,
+        "mdd": 6.6833,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 56.03,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 3.5,
+          "2024": 3.74,
+          "2025": 1.55,
+          "2026": 9.2
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 90,
+        "total_return": 18.8473,
+        "cagr": 5.9231,
+        "mdd": 6.611,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 56.51,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 3.47,
+          "2024": 3.7,
+          "2025": 1.53,
+          "2026": 9.09
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 91,
+        "total_return": 18.6296,
+        "cagr": 5.8584,
+        "mdd": 6.5403,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 56.99,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 3.43,
+          "2024": 3.66,
+          "2025": 1.52,
+          "2026": 8.99
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 92,
+        "total_return": 18.4169,
+        "cagr": 5.7951,
+        "mdd": 6.4711,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 57.45,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 3.39,
+          "2024": 3.62,
+          "2025": 1.5,
+          "2026": 8.89
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 93,
+        "total_return": 18.209,
+        "cagr": 5.7332,
+        "mdd": 6.4033,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 57.9,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 3.35,
+          "2024": 3.59,
+          "2025": 1.49,
+          "2026": 8.8
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 94,
+        "total_return": 18.0057,
+        "cagr": 5.6726,
+        "mdd": 6.3369,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 58.35,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 3.32,
+          "2024": 3.55,
+          "2025": 1.47,
+          "2026": 8.7
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 95,
+        "total_return": 17.8069,
+        "cagr": 5.6132,
+        "mdd": 6.2719,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 58.78,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 3.28,
+          "2024": 3.51,
+          "2025": 1.46,
+          "2026": 8.61
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 96,
+        "total_return": 17.6124,
+        "cagr": 5.5551,
+        "mdd": 6.2082,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 59.21,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 3.25,
+          "2024": 3.48,
+          "2025": 1.44,
+          "2026": 8.52
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 97,
+        "total_return": 17.4222,
+        "cagr": 5.4981,
+        "mdd": 6.1458,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 59.62,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 3.22,
+          "2024": 3.44,
+          "2025": 1.43,
+          "2026": 8.43
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 98,
+        "total_return": 17.2359,
+        "cagr": 5.4423,
+        "mdd": 6.0847,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 60.03,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 3.18,
+          "2024": 3.41,
+          "2025": 1.42,
+          "2026": 8.34
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 99,
+        "total_return": 17.0536,
+        "cagr": 5.3877,
+        "mdd": 6.0247,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 60.43,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 3.15,
+          "2024": 3.37,
+          "2025": 1.4,
+          "2026": 8.25
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 100,
+        "total_return": 16.8752,
+        "cagr": 5.3341,
+        "mdd": 5.9659,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 60.82,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 3.12,
+          "2024": 3.34,
+          "2025": 1.39,
+          "2026": 8.17
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 101,
+        "total_return": 16.7004,
+        "cagr": 5.2816,
+        "mdd": 5.9083,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 61.21,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 3.09,
+          "2024": 3.31,
+          "2025": 1.38,
+          "2026": 8.09
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 102,
+        "total_return": 16.5291,
+        "cagr": 5.2301,
+        "mdd": 5.8518,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 61.59,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 3.06,
+          "2024": 3.28,
+          "2025": 1.37,
+          "2026": 8.01
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 103,
+        "total_return": 16.3614,
+        "cagr": 5.1795,
+        "mdd": 5.7963,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 61.96,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 3.03,
+          "2024": 3.25,
+          "2025": 1.35,
+          "2026": 7.93
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 104,
+        "total_return": 16.197,
+        "cagr": 5.13,
+        "mdd": 5.7419,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 62.32,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 3.0,
+          "2024": 3.22,
+          "2025": 1.34,
+          "2026": 7.85
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 105,
+        "total_return": 16.0359,
+        "cagr": 5.0814,
+        "mdd": 5.6884,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 62.67,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 2.97,
+          "2024": 3.19,
+          "2025": 1.33,
+          "2026": 7.77
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 106,
+        "total_return": 15.8779,
+        "cagr": 5.0337,
+        "mdd": 5.636,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 63.02,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 2.95,
+          "2024": 3.16,
+          "2025": 1.32,
+          "2026": 7.7
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 107,
+        "total_return": 15.723,
+        "cagr": 4.9869,
+        "mdd": 5.5845,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 63.37,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 2.92,
+          "2024": 3.13,
+          "2025": 1.31,
+          "2026": 7.63
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 108,
+        "total_return": 15.5711,
+        "cagr": 4.9409,
+        "mdd": 5.534,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 63.7,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 2.89,
+          "2024": 3.1,
+          "2025": 1.3,
+          "2026": 7.55
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 109,
+        "total_return": 15.4221,
+        "cagr": 4.8958,
+        "mdd": 5.4844,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 64.03,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 2.86,
+          "2024": 3.07,
+          "2025": 1.29,
+          "2026": 7.48
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 110,
+        "total_return": 15.2759,
+        "cagr": 4.8515,
+        "mdd": 5.4356,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 64.36,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 2.84,
+          "2024": 3.04,
+          "2025": 1.27,
+          "2026": 7.41
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 111,
+        "total_return": 15.1325,
+        "cagr": 4.808,
+        "mdd": 5.3877,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 64.68,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 2.81,
+          "2024": 3.02,
+          "2025": 1.26,
+          "2026": 7.35
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 112,
+        "total_return": 14.9917,
+        "cagr": 4.7653,
+        "mdd": 5.3407,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 64.99,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 2.79,
+          "2024": 2.99,
+          "2025": 1.25,
+          "2026": 7.28
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 113,
+        "total_return": 14.8535,
+        "cagr": 4.7234,
+        "mdd": 5.2944,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 65.3,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 2.76,
+          "2024": 2.97,
+          "2025": 1.24,
+          "2026": 7.21
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 114,
+        "total_return": 14.7179,
+        "cagr": 4.6821,
+        "mdd": 5.249,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 65.6,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 2.74,
+          "2024": 2.94,
+          "2025": 1.23,
+          "2026": 7.15
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 115,
+        "total_return": 14.5846,
+        "cagr": 4.6416,
+        "mdd": 5.2043,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 65.89,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 2.72,
+          "2024": 2.91,
+          "2025": 1.22,
+          "2026": 7.09
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 116,
+        "total_return": 14.4538,
+        "cagr": 4.6018,
+        "mdd": 5.1604,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 66.19,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 2.69,
+          "2024": 2.89,
+          "2025": 1.21,
+          "2026": 7.02
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 117,
+        "total_return": 14.3253,
+        "cagr": 4.5626,
+        "mdd": 5.1172,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 66.47,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 2.67,
+          "2024": 2.87,
+          "2025": 1.2,
+          "2026": 6.96
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 118,
+        "total_return": 14.1991,
+        "cagr": 4.5241,
+        "mdd": 5.0747,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 66.76,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 2.65,
+          "2024": 2.84,
+          "2025": 1.19,
+          "2026": 6.9
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 119,
+        "total_return": 14.075,
+        "cagr": 4.4863,
+        "mdd": 5.033,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 67.03,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 2.62,
+          "2024": 2.82,
+          "2025": 1.18,
+          "2026": 6.84
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 120,
+        "total_return": 13.9531,
+        "cagr": 4.449,
+        "mdd": 4.9919,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 67.31,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 2.6,
+          "2024": 2.8,
+          "2025": 1.18,
+          "2026": 6.79
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 121,
+        "total_return": 13.8333,
+        "cagr": 4.4124,
+        "mdd": 4.9515,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 67.57,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 2.58,
+          "2024": 2.77,
+          "2025": 1.17,
+          "2026": 6.73
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "cap": 122,
+        "total_return": 13.7155,
+        "cagr": 4.3764,
+        "mdd": 4.9117,
+        "avg_holdings": 48.62,
+        "avg_cash_pct": 67.84,
+        "trades": 2187,
+        "win_rate": 24.65,
+        "annual_returns": {
+          "2023": 2.56,
+          "2024": 2.75,
+          "2025": 1.16,
+          "2026": 6.67
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      }
+    ]
+  },
+  "coverage": {
+    "kr_current": {
+      "requested": 33,
+      "available": 33,
+      "missing": []
+    },
+    "kr_master": {
+      "requested": 104,
+      "available": 104,
+      "missing": []
+    },
+    "us_current": {
+      "requested": 122,
+      "available": 122,
+      "missing": []
+    }
+  },
+  "holdout": {
+    "kr_current": {
+      "split": "2025-10-07",
+      "train_best": {
+        "cap": 6,
+        "total_return": 85.3153,
+        "cagr": 36.1018,
+        "mdd": 22.4789,
+        "avg_holdings": 5.54,
+        "avg_cash_pct": 31.69,
+        "trades": 184,
+        "win_rate": 25.0,
+        "annual_returns": {
+          "2023": 5.7,
+          "2024": 20.22,
+          "2025": 45.83
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2025-10-02"
+      },
+      "test_selected": {
+        "cap": 6,
+        "total_return": 1.3399,
+        "cagr": 1.3408,
+        "mdd": 26.2971,
+        "avg_holdings": 5.29,
+        "avg_cash_pct": 37.61,
+        "trades": 161,
+        "win_rate": 21.74,
+        "annual_returns": {
+          "2025": 1.44,
+          "2026": -0.1
+        },
+        "first_session": "2025-10-10",
+        "last_session": "2026-10-06"
+      },
+      "test_current_cap": {
+        "cap": 30,
+        "total_return": 14.3642,
+        "cagr": 14.3747,
+        "mdd": 10.7539,
+        "avg_holdings": 12.36,
+        "avg_cash_pct": 69.76,
+        "trades": 326,
+        "win_rate": 27.3,
+        "annual_returns": {
+          "2025": -0.58,
+          "2026": 15.03
+        },
+        "first_session": "2025-10-10",
+        "last_session": "2026-10-06"
+      }
+    },
+    "kr_master": {
+      "split": "2025-10-07",
+      "train_best": {
+        "cap": 2,
+        "total_return": 53.5142,
+        "cagr": 23.8827,
+        "mdd": 36.6075,
+        "avg_holdings": 1.99,
+        "avg_cash_pct": 31.59,
+        "trades": 72,
+        "win_rate": 25.0,
+        "annual_returns": {
+          "2023": -5.85,
+          "2024": 27.53,
+          "2025": 27.85
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2025-10-02"
+      },
+      "test_selected": {
+        "cap": 2,
+        "total_return": -13.2496,
+        "cagr": -13.2581,
+        "mdd": 40.8805,
+        "avg_holdings": 1.92,
+        "avg_cash_pct": 34.85,
+        "trades": 61,
+        "win_rate": 18.03,
+        "annual_returns": {
+          "2025": 1.33,
+          "2026": -14.39
+        },
+        "first_session": "2025-10-10",
+        "last_session": "2026-10-06"
+      },
+      "test_current_cap": {
+        "cap": 30,
+        "total_return": 17.7419,
+        "cagr": 17.7551,
+        "mdd": 18.4385,
+        "avg_holdings": 21.19,
+        "avg_cash_pct": 49.0,
+        "trades": 635,
+        "win_rate": 25.2,
+        "annual_returns": {
+          "2025": 6.9,
+          "2026": 10.15
+        },
+        "first_session": "2025-10-10",
+        "last_session": "2026-10-06"
+      }
+    },
+    "us_current": {
+      "split": "2025-10-07",
+      "train_best": {
+        "cap": 1,
+        "total_return": 27.3312,
+        "cagr": 12.8318,
+        "mdd": 14.4566,
+        "avg_holdings": 0.99,
+        "avg_cash_pct": 34.44,
+        "trades": 17,
+        "win_rate": 41.18,
+        "annual_returns": {
+          "2023": 1.79,
+          "2024": 20.1,
+          "2025": 4.15
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2025-10-06"
+      },
+      "test_selected": {
+        "cap": 1,
+        "total_return": -17.1905,
+        "cagr": -17.2012,
+        "mdd": 17.9248,
+        "avg_holdings": 1.0,
+        "avg_cash_pct": 47.27,
+        "trades": 22,
+        "win_rate": 13.64,
+        "annual_returns": {
+          "2025": -14.77,
+          "2026": -2.83
+        },
+        "first_session": "2025-10-07",
+        "last_session": "2026-10-06"
+      },
+      "test_current_cap": {
+        "cap": 25,
+        "total_return": 13.5185,
+        "cagr": 13.5284,
+        "mdd": 5.3982,
+        "avg_holdings": 24.08,
+        "avg_cash_pct": 23.68,
+        "trades": 384,
+        "win_rate": 22.14,
+        "annual_returns": {
+          "2025": -0.59,
+          "2026": 14.19
+        },
+        "first_session": "2025-10-07",
+        "last_session": "2026-10-06"
+      }
+    }
+  },
+  "fee_sensitivity": {
+    "kr_current": [
+      {
+        "fee": 0,
+        "cap": 6,
+        "total_return": 126.8571,
+        "cagr": 31.3884,
+        "mdd": 24.3551,
+        "avg_holdings": 5.49,
+        "avg_cash_pct": 32.97,
+        "trades": 346,
+        "win_rate": 24.57,
+        "annual_returns": {
+          "2023": 6.39,
+          "2024": 24.36,
+          "2025": 64.87,
+          "2026": 4.0
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "fee": 0.003,
+        "cap": 6,
+        "total_return": 82.7161,
+        "cagr": 22.2472,
+        "mdd": 28.1868,
+        "avg_holdings": 5.49,
+        "avg_cash_pct": 32.97,
+        "trades": 346,
+        "win_rate": 22.54,
+        "annual_returns": {
+          "2023": 5.02,
+          "2024": 16.23,
+          "2025": 55.82,
+          "2026": -3.94
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      }
+    ],
+    "kr_master": [
+      {
+        "fee": 0,
+        "cap": 41,
+        "total_return": 89.6278,
+        "cagr": 23.7693,
+        "mdd": 13.4905,
+        "avg_holdings": 28.67,
+        "avg_cash_pct": 47.57,
+        "trades": 1988,
+        "win_rate": 24.8,
+        "annual_returns": {
+          "2023": 2.53,
+          "2024": 8.81,
+          "2025": 45.1,
+          "2026": 17.14
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      },
+      {
+        "fee": 0.003,
+        "cap": 41,
+        "total_return": 58.5511,
+        "cagr": 16.6025,
+        "mdd": 15.3041,
+        "avg_holdings": 28.67,
+        "avg_cash_pct": 47.57,
+        "trades": 1988,
+        "win_rate": 23.09,
+        "annual_returns": {
+          "2023": 1.42,
+          "2024": 2.27,
+          "2025": 36.91,
+          "2026": 11.65
+        },
+        "first_session": "2023-10-10",
+        "last_session": "2026-10-06"
+      }
+    ],
+    "us_current": [
+      {
+        "fee": 0,
+        "cap": 44,
+        "total_return": 47.4521,
+        "cagr": 13.8162,
+        "mdd": 10.8129,
+        "avg_holdings": 38.66,
+        "avg_cash_pct": 29.2,
+        "trades": 1641,
+        "win_rate": 26.33,
+        "annual_returns": {
+          "2023": 7.37,
+          "2024": 10.77,
+          "2025": 5.87,
+          "2026": 17.1
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      },
+      {
+        "fee": 0.003,
+        "cap": 44,
+        "total_return": 26.6789,
+        "cagr": 8.1999,
+        "mdd": 12.9897,
+        "avg_holdings": 38.66,
+        "avg_cash_pct": 29.14,
+        "trades": 1641,
+        "win_rate": 23.58,
+        "annual_returns": {
+          "2023": 6.37,
+          "2024": 5.59,
+          "2025": 0.78,
+          "2026": 11.92
+        },
+        "first_session": "2023-10-09",
+        "last_session": "2026-10-06"
+      }
+    ]
+  }
+}

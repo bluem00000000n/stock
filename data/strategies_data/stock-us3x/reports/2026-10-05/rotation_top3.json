@@ -1,0 +1,97 @@
+[
+  {
+    "rank": 1,
+    "underlying_ticker": "XLK",
+    "expression_ticker": "TECL",
+    "leverage": 3.0,
+    "name": "Direxion Daily Technology Bull 3X",
+    "rotation_score": 89.7,
+    "confidence_score": 80.0,
+    "flow_regime": "STRUCTURAL_ACCUMULATION",
+    "price_flow_regime": "CONFIRMED_ACCUMULATION",
+    "main_score": 89.7,
+    "sub_score": 89.7,
+    "codex_score": 89.7,
+    "consensus": "CONSENSUS",
+    "reasons": [
+      "Massive Flow/AUM surge (+3.27%)",
+      "Structural accumulation across 1M, 3M, and 6M horizons",
+      "Golden stack trend (Price > 50DMA > 200DMA)",
+      "Confirmed Accumulation: Dual Price & Institutional Flow expansion",
+      "Alpha Leader: +8.2% vs SPY (1M)"
+    ],
+    "risks": [],
+    "confirmation": [
+      "Dual Price & Flow expansion confirmed (STRUCTURAL_ACCUMULATION)",
+      "Relative Strength Alpha (++8.2% vs SPY)"
+    ],
+    "invalidation": [
+      "Break below 20DMA ($191.27)",
+      "Weekly Net Flow turns negative",
+      "Market VIX surges above 28.0"
+    ]
+  },
+  {
+    "rank": 2,
+    "underlying_ticker": "SOXX",
+    "expression_ticker": "SOXL",
+    "leverage": 3.0,
+    "name": "Direxion Daily Semiconductor Bull 3X",
+    "rotation_score": 86.2,
+    "confidence_score": 80.0,
+    "flow_regime": "STRUCTURAL_ACCUMULATION",
+    "price_flow_regime": "CONFIRMED_ACCUMULATION",
+    "main_score": 86.2,
+    "sub_score": 86.2,
+    "codex_score": 86.2,
+    "consensus": "CONSENSUS",
+    "reasons": [
+      "Massive Flow/AUM surge (+37.12%)",
+      "Structural accumulation across 1M, 3M, and 6M horizons",
+      "Golden stack trend (Price > 50DMA > 200DMA)",
+      "Confirmed Accumulation: Dual Price & Institutional Flow expansion",
+      "Alpha Leader: +16.9% vs SPY (1M)"
+    ],
+    "risks": [],
+    "confirmation": [
+      "Dual Price & Flow expansion confirmed (STRUCTURAL_ACCUMULATION)",
+      "Relative Strength Alpha (++16.9% vs SPY)"
+    ],
+    "invalidation": [
+      "Break below 20DMA ($543.70)",
+      "Weekly Net Flow turns negative",
+      "Market VIX surges above 28.0"
+    ]
+  },
+  {
+    "rank": 3,
+    "underlying_ticker": "RAM",
+    "expression_ticker": "RAM",
+    "leverage": 2.0,
+    "name": "Defiance Daily Target 2X Long Memory & DRAM",
+    "rotation_score": 81.3,
+    "confidence_score": 70.0,
+    "flow_regime": "STRUCTURAL_ACCUMULATION",
+    "price_flow_regime": "CONFIRMED_ACCUMULATION",
+    "main_score": 81.3,
+    "sub_score": 81.3,
+    "codex_score": 81.3,
+    "consensus": "CONSENSUS",
+    "reasons": [
+      "Massive Flow/AUM surge (+53.48%)",
+      "Structural accumulation across 1M, 3M, and 6M horizons",
+      "Confirmed Accumulation: Dual Price & Institutional Flow expansion",
+      "Alpha Leader: +15.7% vs SPY (1M)"
+    ],
+    "risks": [],
+    "confirmation": [
+      "Dual Price & Flow expansion confirmed (STRUCTURAL_ACCUMULATION)",
+      "Relative Strength Alpha (++15.7% vs SPY)"
+    ],
+    "invalidation": [
+      "Break below 20DMA ($13.66)",
+      "Weekly Net Flow turns negative",
+      "Market VIX surges above 28.0"
+    ]
+  }
+]

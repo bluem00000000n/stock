@@ -1,0 +1,96 @@
+[
+  {
+    "rank": 1,
+    "underlying_ticker": "XLE",
+    "expression_ticker": "ERX",
+    "leverage": 2.0,
+    "name": "Direxion Daily Energy Bull 2X",
+    "rotation_score": 91.8,
+    "confidence_score": 95.0,
+    "flow_regime": "STRUCTURAL_ACCUMULATION",
+    "price_flow_regime": "CONFIRMED_ACCUMULATION",
+    "main_score": 91.8,
+    "sub_score": 91.8,
+    "codex_score": 91.8,
+    "consensus": "STRONG_CONSENSUS",
+    "reasons": [
+      "Massive Flow/AUM surge (+44.29%)",
+      "Structural accumulation across 1M, 3M, and 6M horizons",
+      "Golden stack trend (Price > 50DMA > 200DMA)",
+      "Confirmed Accumulation: Dual Price & Institutional Flow expansion",
+      "Alpha Leader: +4.8% vs SPY (1M)"
+    ],
+    "risks": [],
+    "confirmation": [
+      "Dual Price & Flow expansion confirmed (STRUCTURAL_ACCUMULATION)",
+      "Relative Strength Alpha (++4.8% vs SPY)"
+    ],
+    "invalidation": [
+      "Break below 20DMA ($64.19)",
+      "Weekly Net Flow turns negative",
+      "Market VIX surges above 28.0"
+    ]
+  },
+  {
+    "rank": 2,
+    "underlying_ticker": "XLP",
+    "expression_ticker": "XLP",
+    "leverage": 1.0,
+    "name": "Consumer Staples Select Sector SPDR",
+    "rotation_score": 82.7,
+    "confidence_score": 95.0,
+    "flow_regime": "TACTICAL_FLOW",
+    "price_flow_regime": "CONFIRMED_ACCUMULATION",
+    "main_score": 82.7,
+    "sub_score": 82.7,
+    "codex_score": 82.7,
+    "consensus": "STRONG_CONSENSUS",
+    "reasons": [
+      "Massive Flow/AUM surge (+36.03%)",
+      "Golden stack trend (Price > 50DMA > 200DMA)",
+      "Confirmed Accumulation: Dual Price & Institutional Flow expansion",
+      "Alpha Leader: +4.7% vs SPY (1M)"
+    ],
+    "risks": [],
+    "confirmation": [
+      "Dual Price & Flow expansion confirmed (TACTICAL_FLOW)",
+      "Relative Strength Alpha (++4.7% vs SPY)"
+    ],
+    "invalidation": [
+      "Break below 20DMA ($83.10)",
+      "Weekly Net Flow turns negative",
+      "Market VIX surges above 28.0"
+    ]
+  },
+  {
+    "rank": 3,
+    "underlying_ticker": "XLV",
+    "expression_ticker": "CURE",
+    "leverage": 3.0,
+    "name": "Direxion Daily Healthcare Bull 3X",
+    "rotation_score": 81.2,
+    "confidence_score": 95.0,
+    "flow_regime": "EARLY_ROTATION",
+    "price_flow_regime": "CONFIRMED_ACCUMULATION",
+    "main_score": 81.2,
+    "sub_score": 81.2,
+    "codex_score": 81.2,
+    "consensus": "STRONG_CONSENSUS",
+    "reasons": [
+      "Massive Flow/AUM surge (+32.40%)",
+      "Early rotation breakout: 1M & 3M positive against 6M base",
+      "Golden stack trend (Price > 50DMA > 200DMA)",
+      "Confirmed Accumulation: Dual Price & Institutional Flow expansion"
+    ],
+    "risks": [],
+    "confirmation": [
+      "Dual Price & Flow expansion confirmed (EARLY_ROTATION)",
+      "Relative Strength Alpha (++3.7% vs SPY)"
+    ],
+    "invalidation": [
+      "Break below 20DMA ($170.47)",
+      "Weekly Net Flow turns negative",
+      "Market VIX surges above 28.0"
+    ]
+  }
+]

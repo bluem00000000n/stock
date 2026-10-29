@@ -1,0 +1,183 @@
+{
+  "run_id": "RUN_2026-10-26_2f558280",
+  "date": "2026-10-26",
+  "created_at": "2026-10-26T17:30:59.473522",
+  "macro_regime": {
+    "vix": 19.69,
+    "spy_above_dma200": true,
+    "risk_regime": "RISK_ON"
+  },
+  "infinite_top3": [
+    {
+      "rank": 1,
+      "ticker": "TECL",
+      "name": "Direxion Daily Technology Bull 3X",
+      "leverage": 3.0,
+      "score": 98.5,
+      "current_state": "WATCH/ACCUMULATE",
+      "entry_condition": "High suitability score. Prime candidate for next cycle rotation.",
+      "dca_condition": "Split into 20 equal tranches. Execute 0.5 round LOC at avg_price, 0.5 round LOC at avg*(1+Star%).",
+      "risk": "Quarter mode triggered if 19 < T < 20 (forces 25% MOC sell, halts new buys).",
+      "reason": "Score 98.5/100: Turnover=25, EntryPos=20, Mom=15, Regime=RISK_ON"
+    },
+    {
+      "rank": 2,
+      "ticker": "TQQQ",
+      "name": "ProShares UltraPro QQQ",
+      "leverage": 3.0,
+      "score": 94.5,
+      "current_state": "WATCH/ACCUMULATE",
+      "entry_condition": "High suitability score. Prime candidate for next cycle rotation.",
+      "dca_condition": "Split into 20 equal tranches. Execute 0.5 round LOC at avg_price, 0.5 round LOC at avg*(1+Star%).",
+      "risk": "Quarter mode triggered if 19 < T < 20 (forces 25% MOC sell, halts new buys).",
+      "reason": "Score 94.5/100: Turnover=25, EntryPos=20, Mom=11, Regime=RISK_ON"
+    },
+    {
+      "rank": 3,
+      "ticker": "ERX",
+      "name": "Direxion Daily Energy Bull 2X Shares",
+      "leverage": 2.0,
+      "score": 88.0,
+      "current_state": "WATCH/ACCUMULATE",
+      "entry_condition": "High suitability score. Prime candidate for next cycle rotation.",
+      "dca_condition": "Split into 20 equal tranches. Execute 0.5 round LOC at avg_price, 0.5 round LOC at avg*(1+Star%).",
+      "risk": "Quarter mode triggered if 19 < T < 20 (forces 25% MOC sell, halts new buys).",
+      "reason": "Score 88.0/100: Turnover=25, EntryPos=8, Mom=15, Regime=RISK_ON"
+    }
+  ],
+  "rotation_top3": [
+    {
+      "rank": 1,
+      "underlying_ticker": "ERX",
+      "expression_ticker": "ERX",
+      "leverage": 1.0,
+      "name": "ERX Direct",
+      "rotation_score": 96.2,
+      "confidence_score": 95.0,
+      "flow_regime": "STRUCTURAL_ACCUMULATION",
+      "price_flow_regime": "CONFIRMED_ACCUMULATION",
+      "main_score": 96.2,
+      "sub_score": 96.2,
+      "codex_score": 96.2,
+      "consensus": "STRONG_CONSENSUS",
+      "reasons": [
+        "Massive Flow/AUM surge (+3.93%)",
+        "Structural accumulation across 1M, 3M, and 6M horizons",
+        "Golden stack trend (Price > 50DMA > 200DMA)",
+        "Confirmed Accumulation: Dual Price & Institutional Flow expansion",
+        "Alpha Leader: +22.8% vs SPY (1M)",
+        "Volume surge (1.4x 20DMA)"
+      ],
+      "risks": [],
+      "confirmation": [
+        "Dual Price & Flow expansion confirmed (STRUCTURAL_ACCUMULATION)",
+        "Relative Strength Alpha (++22.8% vs SPY)"
+      ],
+      "invalidation": [
+        "Break below 20DMA ($113.24)",
+        "Weekly Net Flow turns negative",
+        "Market VIX surges above 28.0"
+      ]
+    },
+    {
+      "rank": 2,
+      "underlying_ticker": "XOP",
+      "expression_ticker": "GUSH",
+      "leverage": 2.0,
+      "name": "Direxion Daily S&P Oil & Gas E&P Bull 2X",
+      "rotation_score": 92.7,
+      "confidence_score": 95.0,
+      "flow_regime": "STRUCTURAL_ACCUMULATION",
+      "price_flow_regime": "CONFIRMED_ACCUMULATION",
+      "main_score": 92.7,
+      "sub_score": 92.7,
+      "codex_score": 92.7,
+      "consensus": "STRONG_CONSENSUS",
+      "reasons": [
+        "Massive Flow/AUM surge (+27.70%)",
+        "Structural accumulation across 1M, 3M, and 6M horizons",
+        "Golden stack trend (Price > 50DMA > 200DMA)",
+        "Confirmed Accumulation: Dual Price & Institutional Flow expansion",
+        "Alpha Leader: +10.5% vs SPY (1M)"
+      ],
+      "risks": [],
+      "confirmation": [
+        "Dual Price & Flow expansion confirmed (STRUCTURAL_ACCUMULATION)",
+        "Relative Strength Alpha (++10.5% vs SPY)"
+      ],
+      "invalidation": [
+        "Break below 20DMA ($192.04)",
+        "Weekly Net Flow turns negative",
+        "Market VIX surges above 28.0"
+      ]
+    },
+    {
+      "rank": 3,
+      "underlying_ticker": "XLV",
+      "expression_ticker": "CURE",
+      "leverage": 3.0,
+      "name": "Direxion Daily Healthcare Bull 3X",
+      "rotation_score": 88.7,
+      "confidence_score": 95.0,
+      "flow_regime": "STRUCTURAL_ACCUMULATION",
+      "price_flow_regime": "CONFIRMED_ACCUMULATION",
+      "main_score": 88.7,
+      "sub_score": 88.7,
+      "codex_score": 88.7,
+      "consensus": "STRONG_CONSENSUS",
+      "reasons": [
+        "Massive Flow/AUM surge (+62.27%)",
+        "Structural accumulation across 1M, 3M, and 6M horizons",
+        "Golden stack trend (Price > 50DMA > 200DMA)",
+        "Confirmed Accumulation: Dual Price & Institutional Flow expansion",
+        "Alpha Leader: +6.5% vs SPY (1M)"
+      ],
+      "risks": [],
+      "confirmation": [
+        "Dual Price & Flow expansion confirmed (STRUCTURAL_ACCUMULATION)",
+        "Relative Strength Alpha (++6.5% vs SPY)"
+      ],
+      "invalidation": [
+        "Break below 20DMA ($172.48)",
+        "Weekly Net Flow turns negative",
+        "Market VIX surges above 28.0"
+      ]
+    }
+  ],
+  "rotation_battles": {
+    "dusl_vs_utsl": {
+      "winner": "UTSL (Utilities/AI Power Infrastructure)",
+      "rationale": "Utilities leading (XLU 1M: +8.1% vs XLI: -2.5%) driven by power grid and data center energy demand."
+    },
+    "fas_vs_dpst": {
+      "winner": "FAS (Broad Financials)",
+      "rationale": "Money center banks & diversified financials displaying greater stability (XLF: +2.5% vs KRE: +2.1%)."
+    },
+    "spillover_chain": {
+      "status": "ACTIVE_DIFFUSION",
+      "chain": "Semiconductors (SOXL) → Power/CapEx (UTSL/DUSL) → Physical Materials (COPX)",
+      "description": "Semiconductor capital rotation diffusing into physical infrastructure (CapEx/Power) and physical raw materials."
+    }
+  },
+  "money_flow_chain": {
+    "status": "ACTIVE_DIFFUSION",
+    "chain": "Semiconductors (SOXL) → Power/CapEx (UTSL/DUSL) → Physical Materials (COPX)",
+    "description": "Semiconductor capital rotation diffusing into physical infrastructure (CapEx/Power) and physical raw materials."
+  },
+  "agent_statuses": {
+    "AI_MARKET_ANALYST": "OK",
+    "BUILTIN_QUANT_ENGINE": "OK"
+  },
+  "agent_consensus_summary": "STRONG_CONSENSUS (AI Analyst & Built-in Quant Engine align)",
+  "invalidation_conditions": [
+    "Sector leader breaks below 20DMA",
+    "VIX spikes above 28.0 (forcing capital preservation)",
+    "Weekly Net Dollar Flow turns net negative"
+  ],
+  "this_week_action": {
+    "infinite": "Maintain active cycle rules. Top candidate: TECL (Score: 98.5)",
+    "rotation": "Accumulate ERX (1X) based on confirmed institutional flow.",
+    "watch": "Monitor UTSL (Utilities/AI Power Infrastructure) momentum and copper material diffusion."
+  },
+  "degraded_mode": false
+}

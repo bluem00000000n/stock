@@ -1,0 +1,16 @@
+{
+  "agent_name": "SUB_GOOGLE_GENAI_GEMINI",
+  "status": "API_ERROR",
+  "current_leaders": [],
+  "next_rotation": [],
+  "risk_regime": "NEUTRAL",
+  "sector_scores": {},
+  "top3_candidates": [],
+  "contradictions": [
+    "API endpoint unavailable"
+  ],
+  "confidence": 40.0,
+  "rationale": "Sub Gemini remote API call failed or timed out. Operating in degraded fallback mode.",
+  "special_pairs": {},
+  "latency_sec": 7.24
+}

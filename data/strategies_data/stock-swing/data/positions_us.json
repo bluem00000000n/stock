@@ -1,0 +1,474 @@
+{
+  "active_positions": {
+    "AAPL": {
+      "name": "Apple",
+      "stage": 2,
+      "weight_accum": 0.7,
+      "entries": [
+        {
+          "stage": 1,
+          "date": "2026-10-02",
+          "price": 333.69000244140625,
+          "weight": 0.35
+        },
+        {
+          "stage": 2,
+          "date": "2026-10-12",
+          "price": 340.9700012207031,
+          "weight": 0.35
+        }
+      ],
+      "avg_price": 337.33,
+      "highest_price": 348.2200012207031,
+      "stop_price": 320.46,
+      "initial_entry_price": 333.69000244140625,
+      "last_price": 347.1000061035156,
+      "last_update_date": "2026-10-27"
+    },
+    "BRK-B": {
+      "name": "Berkshire Hathaway",
+      "stage": 3,
+      "weight_accum": 1.0,
+      "entries": [
+        {
+          "stage": 1,
+          "date": "2026-10-02",
+          "price": 502.6499938964844,
+          "weight": 0.35
+        },
+        {
+          "stage": 2,
+          "date": "2026-10-12",
+          "price": 517.5999755859375,
+          "weight": 0.35
+        },
+        {
+          "stage": 3,
+          "date": "2026-10-16",
+          "price": 532.02001953125,
+          "weight": 0.3
+        }
+      ],
+      "avg_price": 516.69,
+      "highest_price": 548.5599975585938,
+      "stop_price": 502.6499938964844,
+      "initial_entry_price": 502.6499938964844,
+      "last_price": 542.989990234375,
+      "last_update_date": "2026-10-27"
+    },
+    "XOM": {
+      "name": "ExxonMobil",
+      "stage": 3,
+      "weight_accum": 1.0,
+      "entries": [
+        {
+          "stage": 1,
+          "date": "2026-10-02",
+          "price": 164.00999450683594,
+          "weight": 0.35
+        },
+        {
+          "stage": 2,
+          "date": "2026-10-09",
+          "price": 168.94000244140625,
+          "weight": 0.35
+        },
+        {
+          "stage": 3,
+          "date": "2026-10-13",
+          "price": 174.0800018310547,
+          "weight": 0.3
+        }
+      ],
+      "avg_price": 168.75,
+      "highest_price": 184.5399932861328,
+      "stop_price": 164.00999450683594,
+      "initial_entry_price": 164.00999450683594,
+      "last_price": 179.91000366210938,
+      "last_update_date": "2026-10-27"
+    },
+    "TECH": {
+      "name": "Bio-Techne",
+      "stage": 1,
+      "weight_accum": 0.35,
+      "entries": [
+        {
+          "stage": 1,
+          "date": "2026-10-05",
+          "price": 72.58000183105469,
+          "weight": 0.35
+        }
+      ],
+      "avg_price": 72.58000183105469,
+      "highest_price": 72.69000244140625,
+      "stop_price": 67.5,
+      "initial_entry_price": 72.58000183105469,
+      "last_price": 72.5999984741211,
+      "last_update_date": "2026-10-27"
+    },
+    "VRSN": {
+      "name": "Verisign",
+      "stage": 2,
+      "weight_accum": 0.7,
+      "entries": [
+        {
+          "stage": 1,
+          "date": "2026-10-05",
+          "price": 292.260009765625,
+          "weight": 0.35
+        },
+        {
+          "stage": 2,
+          "date": "2026-10-09",
+          "price": 303.739990234375,
+          "weight": 0.35
+        }
+      ],
+      "avg_price": 298.0,
+      "highest_price": 308.7200012207031,
+      "stop_price": 283.1,
+      "initial_entry_price": 292.260009765625,
+      "last_price": 304.0400085449219,
+      "last_update_date": "2026-10-27"
+    },
+    "CPAY": {
+      "name": "Corpay",
+      "stage": 2,
+      "weight_accum": 0.7,
+      "entries": [
+        {
+          "stage": 1,
+          "date": "2026-10-05",
+          "price": 401.7200012207031,
+          "weight": 0.35
+        },
+        {
+          "stage": 2,
+          "date": "2026-10-20",
+          "price": 408.3599853515625,
+          "weight": 0.35
+        }
+      ],
+      "avg_price": 405.04,
+      "highest_price": 415.010009765625,
+      "stop_price": 384.79,
+      "initial_entry_price": 401.7200012207031,
+      "last_price": 397.0199890136719,
+      "last_update_date": "2026-10-27"
+    }
+  },
+  "trade_history": [
+    {
+      "ticker": "MRK",
+      "name": "Merck & Co.",
+      "stage_reached": 1,
+      "weight_accum": 0.35,
+      "entry_date": "2026-10-02",
+      "exit_date": "2026-10-02",
+      "avg_price": 144.3000030517578,
+      "exit_price": 144.3000030517578,
+      "highest_price": 144.3000030517578,
+      "pnl_pct": 0.0,
+      "reason": "20일선 추세 이탈 (종가: 144.30 < 20선: 146.70, 손익: +0.00%)"
+    },
+    {
+      "ticker": "MRK",
+      "name": "Merck & Co.",
+      "stage_reached": 1,
+      "weight_accum": 0.35,
+      "entry_date": "2026-10-02",
+      "exit_date": "2026-10-02",
+      "avg_price": 144.3000030517578,
+      "exit_price": 144.3000030517578,
+      "highest_price": 144.3000030517578,
+      "pnl_pct": 0.0,
+      "reason": "20일선 추세 이탈 (종가: 144.30 < 20선: 146.70, 손익: +0.00%)"
+    },
+    {
+      "ticker": "MRK",
+      "name": "Merck & Co.",
+      "stage_reached": 1,
+      "weight_accum": 0.35,
+      "entry_date": "2026-10-02",
+      "exit_date": "2026-10-02",
+      "avg_price": 144.3000030517578,
+      "exit_price": 144.3000030517578,
+      "highest_price": 144.3000030517578,
+      "pnl_pct": 0.0,
+      "reason": "20일선 추세 이탈 (종가: 144.30 < 20선: 146.70, 손익: +0.00%)"
+    },
+    {
+      "ticker": "MRK",
+      "name": "Merck & Co.",
+      "stage_reached": 1,
+      "weight_accum": 0.35,
+      "entry_date": "2026-10-02",
+      "exit_date": "2026-10-02",
+      "avg_price": 144.3000030517578,
+      "exit_price": 115.0,
+      "highest_price": 144.3000030517578,
+      "pnl_pct": -20.3,
+      "reason": "Test exit"
+    },
+    {
+      "ticker": "DXCM",
+      "name": "Dexcom",
+      "stage_reached": 1,
+      "weight_accum": 0.35,
+      "entry_date": "2026-10-05",
+      "exit_date": "2026-10-06",
+      "avg_price": 86.9000015258789,
+      "exit_price": 83.38999938964844,
+      "highest_price": 86.9000015258789,
+      "pnl_pct": -4.04,
+      "reason": "20일선 추세 이탈 (종가: 83.39 < 20선: 86.46, 손익: -4.04%)"
+    },
+    {
+      "ticker": "DE",
+      "name": "Deere & Company",
+      "stage_reached": 1,
+      "weight_accum": 0.35,
+      "entry_date": "2026-10-02",
+      "exit_date": "2026-10-07",
+      "avg_price": 687.0,
+      "exit_price": 656.8699951171875,
+      "highest_price": 687.0,
+      "pnl_pct": -4.39,
+      "reason": "20일선 추세 이탈 (종가: 656.87 < 20선: 681.79, 손익: -4.39%)"
+    },
+    {
+      "ticker": "UAL",
+      "name": "United Airlines Holdings",
+      "stage_reached": 1,
+      "weight_accum": 0.35,
+      "entry_date": "2026-10-02",
+      "exit_date": "2026-10-09",
+      "avg_price": 112.51000213623047,
+      "exit_price": 107.45999908447266,
+      "highest_price": 112.51000213623047,
+      "pnl_pct": -4.49,
+      "reason": "20일선 추세 이탈 (종가: 107.46 < 20선: 110.52, 손익: -4.49%)"
+    },
+    {
+      "ticker": "QCOM",
+      "name": "Qualcomm",
+      "stage_reached": 1,
+      "weight_accum": 0.35,
+      "entry_date": "2026-10-02",
+      "exit_date": "2026-10-12",
+      "avg_price": 184.8699951171875,
+      "exit_price": 174.42999267578125,
+      "highest_price": 184.8699951171875,
+      "pnl_pct": -5.65,
+      "reason": "20일선 추세 이탈 (종가: 174.43 < 20선: 185.62, 손익: -5.65%)"
+    },
+    {
+      "ticker": "DELL",
+      "name": "Dell Technologies",
+      "stage_reached": 1,
+      "weight_accum": 0.35,
+      "entry_date": "2026-10-02",
+      "exit_date": "2026-10-14",
+      "avg_price": 562.52001953125,
+      "exit_price": 507.92999267578125,
+      "highest_price": 576.760009765625,
+      "pnl_pct": -9.7,
+      "reason": "손절선 도달 (523.14 이하, 손익: -9.70%)"
+    },
+    {
+      "ticker": "ABBV",
+      "name": "AbbVie",
+      "stage_reached": 3,
+      "weight_accum": 1.0,
+      "entry_date": "2026-10-02",
+      "exit_date": "2026-10-20",
+      "avg_price": 271.3,
+      "exit_price": 282.68,
+      "highest_price": 285.4200134277344,
+      "pnl_pct": 4.19,
+      "reason": "사용자 수동 매도 청산"
+    },
+    {
+      "ticker": "MA",
+      "name": "Mastercard",
+      "stage_reached": 3,
+      "weight_accum": 1.0,
+      "entry_date": "2026-10-05",
+      "exit_date": "2026-10-20",
+      "avg_price": 585.25,
+      "exit_price": 616.4,
+      "highest_price": 617.4199829101562,
+      "pnl_pct": 5.32,
+      "reason": "사용자 수동 매도 청산"
+    },
+    {
+      "ticker": "KMI",
+      "name": "Kinder Morgan",
+      "stage_reached": 3,
+      "weight_accum": 1.0,
+      "entry_date": "2026-10-06",
+      "exit_date": "2026-10-20",
+      "avg_price": 33.09,
+      "exit_price": 33.39,
+      "highest_price": 34.20000076293945,
+      "pnl_pct": 0.91,
+      "reason": "사용자 수동 매도 청산"
+    },
+    {
+      "ticker": "WSM",
+      "name": "Williams-Sonoma, Inc.",
+      "stage_reached": 3,
+      "weight_accum": 1.0,
+      "entry_date": "2026-10-05",
+      "exit_date": "2026-10-20",
+      "avg_price": 244.02,
+      "exit_price": 249.43,
+      "highest_price": 252.02999877929688,
+      "pnl_pct": 2.22,
+      "reason": "사용자 수동 매도 청산"
+    },
+    {
+      "ticker": "TMO",
+      "name": "Thermo Fisher",
+      "stage_reached": 2,
+      "weight_accum": 0.7,
+      "entry_date": "2026-10-02",
+      "exit_date": "2026-10-20",
+      "avg_price": 665.78,
+      "exit_price": 679.38,
+      "highest_price": 690.0,
+      "pnl_pct": 2.04,
+      "reason": "사용자 수동 매도 청산"
+    },
+    {
+      "ticker": "PSX",
+      "name": "Phillips 66",
+      "stage_reached": 2,
+      "weight_accum": 0.7,
+      "entry_date": "2026-10-02",
+      "exit_date": "2026-10-20",
+      "avg_price": 267.15,
+      "exit_price": 290.55,
+      "highest_price": 293.1700134277344,
+      "pnl_pct": 8.76,
+      "reason": "사용자 수동 매도 청산"
+    },
+    {
+      "ticker": "VTRS",
+      "name": "Viatris",
+      "stage_reached": 2,
+      "weight_accum": 0.7,
+      "entry_date": "2026-10-02",
+      "exit_date": "2026-10-20",
+      "avg_price": 18.13,
+      "exit_price": 18.26,
+      "highest_price": 18.65999984741211,
+      "pnl_pct": 0.72,
+      "reason": "사용자 수동 매도 청산"
+    },
+    {
+      "ticker": "HST",
+      "name": "Host Hotels & Resorts",
+      "stage_reached": 2,
+      "weight_accum": 0.7,
+      "entry_date": "2026-10-02",
+      "exit_date": "2026-10-20",
+      "avg_price": 23.26,
+      "exit_price": 24.19,
+      "highest_price": 24.190000534057617,
+      "pnl_pct": 4.0,
+      "reason": "사용자 수동 매도 청산"
+    },
+    {
+      "ticker": "EXPD",
+      "name": "Expeditors International",
+      "stage_reached": 2,
+      "weight_accum": 0.7,
+      "entry_date": "2026-10-02",
+      "exit_date": "2026-10-20",
+      "avg_price": 194.43,
+      "exit_price": 196.81,
+      "highest_price": 198.63999938964844,
+      "pnl_pct": 1.22,
+      "reason": "사용자 수동 매도 청산"
+    },
+    {
+      "ticker": "HUM",
+      "name": "Humana",
+      "stage_reached": 2,
+      "weight_accum": 0.7,
+      "entry_date": "2026-10-05",
+      "exit_date": "2026-10-20",
+      "avg_price": 417.97,
+      "exit_price": 414.98,
+      "highest_price": 433.5,
+      "pnl_pct": -0.72,
+      "reason": "사용자 수동 매도 청산"
+    },
+    {
+      "ticker": "FCX",
+      "name": "Freeport-McMoRan",
+      "stage_reached": 2,
+      "weight_accum": 0.7,
+      "entry_date": "2026-10-02",
+      "exit_date": "2026-10-20",
+      "avg_price": 72.87,
+      "exit_price": 69.75,
+      "highest_price": 73.69000244140625,
+      "pnl_pct": -4.28,
+      "reason": "사용자 수동 매도 청산"
+    },
+    {
+      "ticker": "URI",
+      "name": "United Rentals",
+      "stage_reached": 1,
+      "weight_accum": 0.35,
+      "entry_date": "2026-10-02",
+      "exit_date": "2026-10-20",
+      "avg_price": 1081.0400390625,
+      "exit_price": 1025.0,
+      "highest_price": 1081.0400390625,
+      "pnl_pct": -5.18,
+      "reason": "사용자 수동 매도 청산"
+    },
+    {
+      "ticker": "PH",
+      "name": "Parker-Hannifin",
+      "stage_reached": 1,
+      "weight_accum": 0.35,
+      "entry_date": "2026-10-02",
+      "exit_date": "2026-10-20",
+      "avg_price": 972.5499877929688,
+      "exit_price": 944.6099853515625,
+      "highest_price": 984.9099731445312,
+      "pnl_pct": -2.87,
+      "reason": "20일선 추세 이탈 (종가: 944.61 < 20선: 964.19, 손익: -2.87%)"
+    },
+    {
+      "ticker": "AMZN",
+      "name": "Amazon",
+      "stage_reached": 2,
+      "weight_accum": 0.7,
+      "entry_date": "2026-10-02",
+      "exit_date": "2026-10-22",
+      "avg_price": 253.91,
+      "exit_price": 250.3800048828125,
+      "highest_price": 262.6300048828125,
+      "pnl_pct": -1.39,
+      "reason": "20일선 추세 이탈 (종가: 250.38 < 20선: 254.51, 손익: -1.39%)"
+    },
+    {
+      "ticker": "GOOGL",
+      "name": "Alphabet (Google)",
+      "stage_reached": 2,
+      "weight_accum": 0.7,
+      "entry_date": "2026-10-02",
+      "exit_date": "2026-10-22",
+      "avg_price": 347.0,
+      "exit_price": 324.2200012207031,
+      "highest_price": 352.7200012207031,
+      "pnl_pct": -6.56,
+      "reason": "손절선 도달 (329.65 이하, 손익: -6.56%)"
+    }
+  ]
+}

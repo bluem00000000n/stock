@@ -1,0 +1,6002 @@
+{
+  "000660": {
+    "name": "SK하이닉스",
+    "sector": "반도체",
+    "cap": "대",
+    "closePrice": "1,487,000",
+    "eff_per_str": "4.2배 (Fwd)",
+    "decision": "[팔아라]",
+    "reason": "PER 4.2배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "000990": {
+    "name": "DB하이텍",
+    "sector": "반도체",
+    "cap": "대",
+    "closePrice": "100,200",
+    "eff_per_str": "12.7배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 12.7배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "0017J0": {
+    "name": "세미티에스",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "2,960",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
+    "updatedAt": "2026-10-29"
+  },
+  "059090": {
+    "name": "미코",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "43,300",
+    "eff_per_str": "20.4배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PBR 5.6배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "005290": {
+    "name": "동진쎄미켐",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "41,600",
+    "eff_per_str": "10.2배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 10.2배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "005930": {
+    "name": "삼성전자",
+    "sector": "반도체",
+    "cap": "대",
+    "closePrice": "242,000",
+    "eff_per_str": "5.3배 (Fwd)",
+    "decision": "[팔아라]",
+    "reason": "PER 5.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "005935": {
+    "name": "삼성전자우",
+    "sector": "반도체",
+    "cap": "대",
+    "closePrice": "190,100",
+    "eff_per_str": "4.2배 (Fwd)",
+    "decision": "[팔아라]",
+    "reason": "PER 4.2배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "006200": {
+    "name": "한국전자홀딩스",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "1,407",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "시클리컬 바닥이나 초소형주 재무 부실/자본잠식/한계기업 리스크 점검 필수",
+    "updatedAt": "2026-10-29"
+  },
+  "007660": {
+    "name": "이수페타시스",
+    "sector": "반도체",
+    "cap": "대",
+    "closePrice": "96,800",
+    "eff_per_str": "25.9배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PBR 8.3배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "011930": {
+    "name": "신성이엔지",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "14,600",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
+    "updatedAt": "2026-10-29"
+  },
+  "0155E0": {
+    "name": "해치텍",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "9,770",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "PBR 5.5배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "024850": {
+    "name": "HLB이노베이션",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "14,900",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "레거시 메모리/기판 적자 바닥, 턴어라운드 수혜 기대",
+    "updatedAt": "2026-10-29"
+  },
+  "025560": {
+    "name": "미래산업",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "7,890",
+    "eff_per_str": "7.2배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 7.2배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "029460": {
+    "name": "케이씨",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "38,100",
+    "eff_per_str": "8.9배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 8.9배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "030530": {
+    "name": "원익홀딩스",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "28,000",
+    "eff_per_str": "39.2배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 39.2배 형성 (PBR 2.1배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "031980": {
+    "name": "피에스케이홀딩스",
+    "sector": "반도체",
+    "cap": "대",
+    "closePrice": "193,000",
+    "eff_per_str": "29.6배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PBR 7.7배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "098120": {
+    "name": "마이크로컨텍솔",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "6,810",
+    "eff_per_str": "14.6배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 14.6배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "033160": {
+    "name": "엠케이전자",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "14,560",
+    "eff_per_str": "15.4배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 15.4배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "323350": {
+    "name": "다원넥스뷰",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "3,095",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
+    "updatedAt": "2026-10-29"
+  },
+  "033640": {
+    "name": "네패스",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "24,800",
+    "eff_per_str": "46.9배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 4.5배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "232680": {
+    "name": "라온로보틱스",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "9,440",
+    "eff_per_str": "17.7배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 17.7배 형성 (PBR 1.1배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "036540": {
+    "name": "SFA반도체",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "8,980",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "PBR 3.1배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "071280": {
+    "name": "로체시스템즈",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "3,780",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "PBR 6.0배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "058470": {
+    "name": "리노공업",
+    "sector": "반도체",
+    "cap": "대",
+    "closePrice": "64,300",
+    "eff_per_str": "26.0배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PBR 6.3배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-28"
+  },
+  "357780": {
+    "name": "솔브레인",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "27,700",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "레거시 메모리/기판 적자 바닥, 턴어라운드 수혜 기대",
+    "updatedAt": "2026-10-29"
+  },
+  "036930": {
+    "name": "주성엔지니어링",
+    "sector": "반도체",
+    "cap": "대",
+    "closePrice": "185,500",
+    "eff_per_str": "1204.5배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 14.3배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "039030": {
+    "name": "이오테크닉스",
+    "sector": "반도체",
+    "cap": "대",
+    "closePrice": "418,500",
+    "eff_per_str": "47.5배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 6.9배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "039440": {
+    "name": "에스티아이",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "28,550",
+    "eff_per_str": "23.1배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 23.1배 형성 (PBR 1.5배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "041520": {
+    "name": "이엘씨",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "11,750",
+    "eff_per_str": "8.7배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 8.7배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "042700": {
+    "name": "한미반도체",
+    "sector": "반도체",
+    "cap": "대",
+    "closePrice": "203,500",
+    "eff_per_str": "87.3배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 25.8배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "045100": {
+    "name": "한양이엔지",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "28,100",
+    "eff_per_str": "7.8배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 7.8배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "045300": {
+    "name": "성우테크론",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "3,265",
+    "eff_per_str": "4.8배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 4.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "052860": {
+    "name": "아이앤씨",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "6,610",
+    "eff_per_str": "52.9배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 3.0배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "052900": {
+    "name": "KX하이텍",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "1,094",
+    "eff_per_str": "5.3배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 5.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "053610": {
+    "name": "프로텍",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "65,500",
+    "eff_per_str": "8.0배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 8.0배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "317330": {
+    "name": "덕산테코피아",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "8,460",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
+    "updatedAt": "2026-10-29"
+  },
+  "451220": {
+    "name": "아이엠티",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "8,070",
+    "eff_per_str": "18.6배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 18.6배 형성 (PBR 1.7배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-28"
+  },
+  "054620": {
+    "name": "APS",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "3,435",
+    "eff_per_str": "6.3배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 6.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "054940": {
+    "name": "엑사이엔씨",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "3,705",
+    "eff_per_str": "5.8배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 5.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "058470": {
+    "name": "리노공업",
+    "sector": "반도체",
+    "cap": "대",
+    "closePrice": "63,500",
+    "eff_per_str": "25.6배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PBR 6.2배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "059090": {
+    "name": "미코",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "25,600",
+    "eff_per_str": "53.0배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 4.4배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "059120": {
+    "name": "아진엑스텍",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "6,540",
+    "eff_per_str": "24.2배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 2.8배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "061970": {
+    "name": "LB세미콘",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "3,275",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
+    "updatedAt": "2026-10-29"
+  },
+  "064290": {
+    "name": "인텍플러스",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "63,700",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "PBR 18.7배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "064520": {
+    "name": "테크엘",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "1,410",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
+    "updatedAt": "2026-10-29"
+  },
+  "064760": {
+    "name": "티씨케이",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "220,000",
+    "eff_per_str": "22.9배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PBR 4.5배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "066310": {
+    "name": "큐에스아이",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "7,550",
+    "eff_per_str": "10.9배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 10.9배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "067310": {
+    "name": "하나마이크론",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "37,100",
+    "eff_per_str": "14.4배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 14.4배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "071280": {
+    "name": "로체시스템즈",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "7,930",
+    "eff_per_str": "8.8배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 8.8배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "074600": {
+    "name": "원익QnC",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "27,200",
+    "eff_per_str": "10.0배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PER 10.0배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "077360": {
+    "name": "덕산하이메탈",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "10,680",
+    "eff_per_str": "16.0배 (Fwd)",
+    "decision": "[사라]",
+    "reason": "PER 16.0배 형성 (PBR 2.1배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "077500": {
+    "name": "유니퀘스트",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "11,260",
+    "eff_per_str": "8.0배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 8.0배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "078350": {
+    "name": "한양디지텍",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "41,000",
+    "eff_per_str": "20.2배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 3.1배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "079370": {
+    "name": "제우스",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "12,660",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
+    "updatedAt": "2026-10-29"
+  },
+  "080220": {
+    "name": "제주반도체",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "69,500",
+    "eff_per_str": "10.4배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 10.4배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "080520": {
+    "name": "오디텍",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "2,525",
+    "eff_per_str": "15.0배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 15.0배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "080580": {
+    "name": "오킨스전자",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "29,700",
+    "eff_per_str": "36.2배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 8.7배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "082270": {
+    "name": "젬백스",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "9,040",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "PBR 5.4배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "083310": {
+    "name": "엘오티베큠",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "10,030",
+    "eff_per_str": "137.4배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 137.4배 형성 (PBR 0.6배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "083450": {
+    "name": "GST",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "45,600",
+    "eff_per_str": "15.1배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 15.1배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "084370": {
+    "name": "유진테크",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "115,400",
+    "eff_per_str": "23.8배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 4.8배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "086390": {
+    "name": "유니테스트",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "11,910",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "PBR 2.3배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "087600": {
+    "name": "픽셀플러스",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "3,705",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
+    "updatedAt": "2026-10-29"
+  },
+  "089030": {
+    "name": "테크윙",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "41,000",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "PBR 7.0배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "089790": {
+    "name": "제이티",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "5,950",
+    "eff_per_str": "5.3배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 5.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "089890": {
+    "name": "코세스",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "37,350",
+    "eff_per_str": "39.7배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 6.5배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "089970": {
+    "name": "브이엠",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "45,550",
+    "eff_per_str": "17.9배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 4.7배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "092070": {
+    "name": "디엔에프",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "13,380",
+    "eff_per_str": "39.4배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 39.4배 형성 (PBR 1.0배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "092220": {
+    "name": "KEC",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "2,600",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
+    "updatedAt": "2026-10-29"
+  },
+  "092870": {
+    "name": "엑시콘",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "67,000",
+    "eff_per_str": "42.1배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 4.3배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "093520": {
+    "name": "매커스",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "26,900",
+    "eff_per_str": "12.9배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 12.9배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "093640": {
+    "name": "케이알엠",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "4,060",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
+    "updatedAt": "2026-10-29"
+  },
+  "094170": {
+    "name": "동운아나텍",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "20,300",
+    "eff_per_str": "17.0배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 4.8배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "094360": {
+    "name": "칩스앤미디어",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "12,250",
+    "eff_per_str": "28.1배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 2.9배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "095340": {
+    "name": "ISC",
+    "sector": "반도체",
+    "cap": "대",
+    "closePrice": "165,900",
+    "eff_per_str": "39.3배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PBR 6.0배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "095610": {
+    "name": "테스",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "118,900",
+    "eff_per_str": "21.6배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PBR 4.7배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "097800": {
+    "name": "윈팩",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "2,900",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
+    "updatedAt": "2026-10-29"
+  },
+  "098120": {
+    "name": "마이크로컨텍솔",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "54,000",
+    "eff_per_str": "16.6배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 4.6배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "101160": {
+    "name": "월덱스",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "26,000",
+    "eff_per_str": "5.7배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 5.7배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "101400": {
+    "name": "엔시트론",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "1,637",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
+    "updatedAt": "2026-10-29"
+  },
+  "101490": {
+    "name": "에스앤에스텍",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "41,200",
+    "eff_per_str": "14.0배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 14.0배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "102120": {
+    "name": "어보브반도체",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "7,140",
+    "eff_per_str": "13.2배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 13.2배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "102710": {
+    "name": "이엔에프테크놀로지",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "43,950",
+    "eff_per_str": "9.5배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PER 9.5배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "105330": {
+    "name": "케이엔더블유",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "7,470",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
+    "updatedAt": "2026-10-29"
+  },
+  "110990": {
+    "name": "디아이티",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "15,200",
+    "eff_per_str": "6.5배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 6.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "112290": {
+    "name": "와이씨켐",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "9,690",
+    "eff_per_str": "60.9배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 4.0배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "114810": {
+    "name": "한솔아이원스",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "11,160",
+    "eff_per_str": "15.2배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 15.2배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "117670": {
+    "name": "알파칩스",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "6,650",
+    "eff_per_str": "190.0배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 190.0배 형성 (PBR 2.1배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "119830": {
+    "name": "아이텍",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "5,600",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
+    "updatedAt": "2026-10-29"
+  },
+  "122640": {
+    "name": "예스티",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "28,200",
+    "eff_per_str": "29.9배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PBR 4.1배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "131290": {
+    "name": "티에스이",
+    "sector": "반도체",
+    "cap": "대",
+    "closePrice": "275,000",
+    "eff_per_str": "20.8배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PBR 6.4배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "131970": {
+    "name": "두산테스나",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "105,500",
+    "eff_per_str": "65.5배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PBR 4.5배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "136660": {
+    "name": "큐엠씨",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "2,400",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "시클리컬 바닥이나 초소형주 재무 부실/자본잠식/한계기업 리스크 점검 필수",
+    "updatedAt": "2026-10-29"
+  },
+  "140070": {
+    "name": "서플러스글로벌",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "2,225",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
+    "updatedAt": "2026-10-29"
+  },
+  "142210": {
+    "name": "유니트론텍",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "7,060",
+    "eff_per_str": "3.3배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 3.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "144960": {
+    "name": "뉴파워프라즈마",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "15,400",
+    "eff_per_str": "18.9배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 18.9배 형성 (PBR 2.0배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "146320": {
+    "name": "비씨엔씨",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "9,530",
+    "eff_per_str": "41.1배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 41.1배 형성 (PBR 1.5배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "147760": {
+    "name": "피엠티",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "3,380",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
+    "updatedAt": "2026-10-29"
+  },
+  "149010": {
+    "name": "아이케이세미콘",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "3,320",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "시클리컬 바닥이나 초소형주 재무 부실/자본잠식/한계기업 리스크 점검 필수",
+    "updatedAt": "2026-10-29"
+  },
+  "160980": {
+    "name": "싸이맥스",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "22,000",
+    "eff_per_str": "14.4배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 14.4배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "166090": {
+    "name": "하나머티리얼즈",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "52,600",
+    "eff_per_str": "14.2배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PER 14.2배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "169670": {
+    "name": "코스텍시스템",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "5,600",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "시클리컬 바닥이나 초소형주 재무 부실/자본잠식/한계기업 리스크 점검 필수",
+    "updatedAt": "2026-10-29"
+  },
+  "170920": {
+    "name": "엘티씨",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "40,850",
+    "eff_per_str": "19.9배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 2.9배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "171010": {
+    "name": "램테크놀러지",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "2,470",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
+    "updatedAt": "2026-10-29"
+  },
+  "172670": {
+    "name": "에이엘티",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "10,690",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
+    "updatedAt": "2026-10-29"
+  },
+  "179880": {
+    "name": "멜콘",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "19,210",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
+    "updatedAt": "2026-10-29"
+  },
+  "183300": {
+    "name": "코미코",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "25,350",
+    "eff_per_str": "40.7배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 4.5배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "195870": {
+    "name": "해성디에스",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "53,500",
+    "eff_per_str": "11.2배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PER 11.2배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "200470": {
+    "name": "에이팩트",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "10,930",
+    "eff_per_str": "44.6배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 5.7배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "200710": {
+    "name": "에이디테크놀로지",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "19,600",
+    "eff_per_str": "114.6배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 114.6배 형성 (PBR 1.4배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "212710": {
+    "name": "아이에스티이",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "4,950",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
+    "updatedAt": "2026-10-29"
+  },
+  "217190": {
+    "name": "제너셈",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "8,810",
+    "eff_per_str": "629.3배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 2.4배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "217500": {
+    "name": "러셀",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "1,338",
+    "eff_per_str": "39.4배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 39.4배 형성 (PBR 0.7배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "219130": {
+    "name": "타이거일렉",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "100,800",
+    "eff_per_str": "59.5배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 9.7배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "226590": {
+    "name": "엠디바이스",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "10,190",
+    "eff_per_str": "8.2배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 8.2배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "227950": {
+    "name": "엔투텍",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "1,275",
+    "eff_per_str": "4.1배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 4.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "232140": {
+    "name": "와이씨",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "14,040",
+    "eff_per_str": "33.6배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PBR 3.0배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "232680": {
+    "name": "라온로보틱스",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "9,600",
+    "eff_per_str": "27.1배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 2.6배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "234030": {
+    "name": "싸이닉솔루션",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "2,880",
+    "eff_per_str": "16.2배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 16.2배 형성 (PBR 1.7배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "240810": {
+    "name": "원익IPS",
+    "sector": "반도체",
+    "cap": "대",
+    "closePrice": "99,500",
+    "eff_per_str": "22.9배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PBR 4.5배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "241770": {
+    "name": "메카로",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "34,750",
+    "eff_per_str": "23.6배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 23.6배 형성 (PBR 1.6배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "241790": {
+    "name": "티이엠씨씨엔에스",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "6,860",
+    "eff_per_str": "48.6배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 48.6배 형성 (PBR 0.6배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "252990": {
+    "name": "샘씨엔에스",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "17,820",
+    "eff_per_str": "35.4배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 5.5배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "253590": {
+    "name": "네오셈",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "18,780",
+    "eff_per_str": "50.6배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 6.1배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "254490": {
+    "name": "미래반도체",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "15,000",
+    "eff_per_str": "4.4배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 4.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "264660": {
+    "name": "씨앤지하이테크",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "12,830",
+    "eff_per_str": "6.3배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 6.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "272110": {
+    "name": "케이엔제이",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "27,900",
+    "eff_per_str": "9.3배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 9.3배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "281820": {
+    "name": "케이씨텍",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "95,500",
+    "eff_per_str": "22.4배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 3.3배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "303030": {
+    "name": "지니틱스",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "982",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "시클리컬 바닥이나 초소형주 재무 부실/자본잠식/한계기업 리스크 점검 필수",
+    "updatedAt": "2026-10-29"
+  },
+  "306620": {
+    "name": "지아이에스",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "1,633",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
+    "updatedAt": "2026-10-29"
+  },
+  "311320": {
+    "name": "지오엘리먼트",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "8,260",
+    "eff_per_str": "14.3배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 14.3배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "317330": {
+    "name": "덕산테코피아",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "10,320",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
+    "updatedAt": "2026-10-29"
+  },
+  "319660": {
+    "name": "피에스케이",
+    "sector": "반도체",
+    "cap": "대",
+    "closePrice": "123,400",
+    "eff_per_str": "21.2배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PBR 5.8배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "322310": {
+    "name": "오로스테크놀로지",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "10,760",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
+    "updatedAt": "2026-10-29"
+  },
+  "323350": {
+    "name": "다원넥스뷰",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "13,400",
+    "eff_per_str": "21.3배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 5.1배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "330860": {
+    "name": "네패스아크",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "25,400",
+    "eff_per_str": "20.7배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 20.7배 형성 (PBR 1.7배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "348210": {
+    "name": "넥스틴",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "27,500",
+    "eff_per_str": "183.3배 (Fwd)",
+    "decision": "[사라]",
+    "reason": "PER 183.3배 형성 (PBR 1.9배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "348350": {
+    "name": "위드텍",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "8,880",
+    "eff_per_str": "6.3배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 6.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "355150": {
+    "name": "코스텍시스",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "15,420",
+    "eff_per_str": "56.9배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 4.1배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "356860": {
+    "name": "티엘비",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "41,600",
+    "eff_per_str": "20.3배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PBR 6.1배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "357780": {
+    "name": "솔브레인",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "318,000",
+    "eff_per_str": "14.7배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PER 14.7배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "365590": {
+    "name": "하이딥",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "1,446",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "PBR 10.5배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "382800": {
+    "name": "지앤비에스 에코",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "5,590",
+    "eff_per_str": "8.2배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 8.2배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "388210": {
+    "name": "씨엠티엑스",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "65,700",
+    "eff_per_str": "11.7배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PER 11.7배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "394280": {
+    "name": "오픈엣지테크놀로지",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "7,660",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "PBR 8.6배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "396270": {
+    "name": "넥스트칩",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "1,839",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "PBR 4.4배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "396470": {
+    "name": "워트",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "6,460",
+    "eff_per_str": "20.4배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 20.4배 형성 (PBR 1.5배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "399720": {
+    "name": "가온칩스",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "36,100",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "PBR 6.0배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "402340": {
+    "name": "SK스퀘어",
+    "sector": "반도체",
+    "cap": "대",
+    "closePrice": "921,000",
+    "eff_per_str": "2.5배 (Fwd)",
+    "decision": "[팔아라]",
+    "reason": "PER 2.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "402490": {
+    "name": "그린리소스",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "5,500",
+    "eff_per_str": "10.4배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 10.4배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "403870": {
+    "name": "HPSP",
+    "sector": "반도체",
+    "cap": "대",
+    "closePrice": "47,300",
+    "eff_per_str": "32.4배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PBR 12.3배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "405100": {
+    "name": "큐알티",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "17,870",
+    "eff_per_str": "40.2배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 2.4배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "412350": {
+    "name": "레이저쎌",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "6,400",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "PBR 4.0배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "413300": {
+    "name": "티엘엔지니어링",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "2,120",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "시클리컬 바닥이나 초소형주 재무 부실/자본잠식/한계기업 리스크 점검 필수",
+    "updatedAt": "2026-10-29"
+  },
+  "093640": {
+    "name": "케이알엠",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "4,120",
+    "eff_per_str": "12.4배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 12.4배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "417840": {
+    "name": "저스템",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "13,890",
+    "eff_per_str": "26.2배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 4.5배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "418420": {
+    "name": "라온텍",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "3,085",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "PBR 9.0배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "420770": {
+    "name": "기가비스",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "108,100",
+    "eff_per_str": "46.5배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PBR 6.6배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "424980": {
+    "name": "마이크로투나노",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "9,950",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
+    "updatedAt": "2026-10-29"
+  },
+  "087600": {
+    "name": "픽셀플러스",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "14,250",
+    "eff_per_str": "16.6배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 16.6배 형성 (PBR 1.4배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "425420": {
+    "name": "티에프이",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "84,700",
+    "eff_per_str": "47.2배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 6.9배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "429270": {
+    "name": "시지트로닉스",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "2,995",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
+    "updatedAt": "2026-10-29"
+  },
+  "006200": {
+    "name": "한국전자홀딩스",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "10,180",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "PBR 4.7배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "440110": {
+    "name": "파두",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "51,000",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "PBR 40.0배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "445090": {
+    "name": "에이직랜드",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "18,540",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "PBR 2.4배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "445180": {
+    "name": "퓨릿",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "8,200",
+    "eff_per_str": "7.7배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 7.7배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "451220": {
+    "name": "아이엠티",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "8,230",
+    "eff_per_str": "19.0배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 19.0배 형성 (PBR 1.8배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "452160": {
+    "name": "제이엔비",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "3,255",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
+    "updatedAt": "2026-10-29"
+  },
+  "033170": {
+    "name": "시그네틱스",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "26,400",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "PBR 15.6배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "464500": {
+    "name": "아이언디바이스",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "1,861",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
+    "updatedAt": "2026-10-29"
+  },
+  "101400": {
+    "name": "엔시트론",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "13,430",
+    "eff_per_str": "13.3배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PER 13.3배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "486510": {
+    "name": "글로벌테크놀로지",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "9,030",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "PBR 3.4배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "227950": {
+    "name": "엔투텍",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "20,900",
+    "eff_per_str": "21.7배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 21.7배 형성 (PBR 2.1배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "420770": {
+    "name": "기가비스",
+    "sector": "반도체",
+    "cap": "중",
+    "closePrice": "108,600",
+    "eff_per_str": "46.8배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PBR 6.6배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-28"
+  },
+  "032580": {
+    "name": "피델릭스",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "14,230",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
+    "updatedAt": "2026-10-29"
+  },
+  "303030": {
+    "name": "지니틱스",
+    "sector": "반도체",
+    "cap": "소",
+    "closePrice": "2,475",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "PBR 3.1배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "000040": {
+    "name": "KR모터스",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "1,117",
+    "eff_per_str": "0.7배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 0.7배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "000270": {
+    "name": "기아",
+    "sector": "자동차",
+    "cap": "대",
+    "closePrice": "107,900",
+    "eff_per_str": "5.3배 (Fwd)",
+    "decision": "[팔아라]",
+    "reason": "PER 5.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "001390": {
+    "name": "KG케미칼",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "3,785",
+    "eff_per_str": "2.8배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 2.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "003620": {
+    "name": "KG모빌리티",
+    "sector": "자동차",
+    "cap": "중",
+    "closePrice": "2,545",
+    "eff_per_str": "5.5배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 5.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "005380": {
+    "name": "현대차",
+    "sector": "자동차",
+    "cap": "대",
+    "closePrice": "296,000",
+    "eff_per_str": "8.4배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PER 8.4배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "005385": {
+    "name": "현대차우",
+    "sector": "자동차",
+    "cap": "대",
+    "closePrice": "158,000",
+    "eff_per_str": "4.5배 (Fwd)",
+    "decision": "[팔아라]",
+    "reason": "PER 4.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "005387": {
+    "name": "현대차2우B",
+    "sector": "자동차",
+    "cap": "대",
+    "closePrice": "159,600",
+    "eff_per_str": "4.5배 (Fwd)",
+    "decision": "[팔아라]",
+    "reason": "PER 4.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "005389": {
+    "name": "현대차3우B",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "156,600",
+    "eff_per_str": "4.5배 (Fwd)",
+    "decision": "[팔아라]",
+    "reason": "PER 4.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "067990": {
+    "name": "도이치모터스",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "3,820",
+    "eff_per_str": "49.6배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 49.6배 형성 (PBR 0.3배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "151860": {
+    "name": "KG에코솔루션",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "4,985",
+    "eff_per_str": "1.9배 (Trail)",
+    "decision": "[대기]",
+    "reason": "시클리컬 바닥이나 초소형주 재무 부실/자본잠식/한계기업 리스크 점검 필수",
+    "updatedAt": "2026-10-29"
+  },
+  "000040": {
+    "name": "KR모터스",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "5,850",
+    "eff_per_str": "37.7배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 1.6배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "204320": {
+    "name": "HL만도",
+    "sector": "자동차",
+    "cap": "중",
+    "closePrice": "39,050",
+    "eff_per_str": "9.3배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PER 9.3배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-28"
+  },
+  "012200": {
+    "name": "계양전기",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "1,030",
+    "eff_per_str": "9.3배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 9.3배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "000240": {
+    "name": "한국앤컴퍼니",
+    "sector": "자동차",
+    "cap": "중",
+    "closePrice": "22,800",
+    "eff_per_str": "5.5배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 5.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "040610": {
+    "name": "SG&G",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "2,840",
+    "eff_per_str": "0.5배 (Trail)",
+    "decision": "[대기]",
+    "reason": "시클리컬 바닥이나 초소형주 재무 부실/자본잠식/한계기업 리스크 점검 필수",
+    "updatedAt": "2026-10-28"
+  },
+  "031510": {
+    "name": "오스템",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "1,158",
+    "eff_per_str": "2.8배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 2.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-28"
+  },
+  "024910": {
+    "name": "경창산업",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "1,317",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "섹터 전반 호황 국면 속 개별 적자 지속으로 경쟁력 열위",
+    "updatedAt": "2026-10-28"
+  },
+  "013870": {
+    "name": "지엠비코리아",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "3,530",
+    "eff_per_str": "3.1배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 3.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-28"
+  },
+  "000430": {
+    "name": "대원강업",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "4,030",
+    "eff_per_str": "3.5배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 3.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-28"
+  },
+  "019180": {
+    "name": "티에이치엔",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "4,570",
+    "eff_per_str": "1.1배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 1.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-28"
+  },
+  "038110": {
+    "name": "에코플라스틱",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "1,850",
+    "eff_per_str": "4.4배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 4.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-28"
+  },
+  "170030": {
+    "name": "현대공업",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "4,575",
+    "eff_per_str": "3.0배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 3.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-28"
+  },
+  "000300": {
+    "name": "DH오토넥스",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "4,200",
+    "eff_per_str": "1400.0배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 5.6배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "000430": {
+    "name": "대원강업",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "4,010",
+    "eff_per_str": "3.5배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 3.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "001380": {
+    "name": "SG글로벌",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "814",
+    "eff_per_str": "5.0배 (Trail)",
+    "decision": "[대기]",
+    "reason": "시클리컬 바닥이나 초소형주 재무 부실/자본잠식/한계기업 리스크 점검 필수",
+    "updatedAt": "2026-10-29"
+  },
+  "001420": {
+    "name": "태원물산",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "2,670",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "섹터 전반 호황 국면 속 개별 적자 지속으로 경쟁력 열위",
+    "updatedAt": "2026-10-29"
+  },
+  "0015S0": {
+    "name": "페스카로",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "6,600",
+    "eff_per_str": "14.6배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 14.6배 형성 (PBR 1.1배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "001620": {
+    "name": "케이비아이동국실업",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "1,918",
+    "eff_per_str": "0.9배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 0.9배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "002350": {
+    "name": "넥센타이어",
+    "sector": "자동차",
+    "cap": "중",
+    "closePrice": "5,550",
+    "eff_per_str": "5.0배 (Fwd)",
+    "decision": "[팔아라]",
+    "reason": "PER 5.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "002355": {
+    "name": "넥센타이어1우B",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "3,910",
+    "eff_per_str": "3.5배 (Fwd)",
+    "decision": "[팔아라]",
+    "reason": "PER 3.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "002880": {
+    "name": "디와이에이",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "3,125",
+    "eff_per_str": "2.2배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 2.2배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "002920": {
+    "name": "유성기업",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "1,593",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "섹터 전반 호황 국면 속 개별 적자 지속으로 경쟁력 열위",
+    "updatedAt": "2026-10-29"
+  },
+  "003570": {
+    "name": "SNT다이내믹스",
+    "sector": "자동차",
+    "cap": "중",
+    "closePrice": "26,500",
+    "eff_per_str": "17.9배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 17.9배 형성 (PBR 0.7배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "004100": {
+    "name": "태양금속",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "2,900",
+    "eff_per_str": "6.7배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 6.7배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "004105": {
+    "name": "태양금속우",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "4,000",
+    "eff_per_str": "9.2배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 9.2배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "004490": {
+    "name": "세방전지",
+    "sector": "자동차",
+    "cap": "중",
+    "closePrice": "57,200",
+    "eff_per_str": "5.6배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 5.6배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "005710": {
+    "name": "대원산업",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "10,640",
+    "eff_per_str": "3.0배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 3.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "005720": {
+    "name": "넥센",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "6,040",
+    "eff_per_str": "3.0배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 3.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "005725": {
+    "name": "넥센우",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "4,385",
+    "eff_per_str": "2.1배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 2.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "005850": {
+    "name": "에스엘",
+    "sector": "자동차",
+    "cap": "중",
+    "closePrice": "49,900",
+    "eff_per_str": "6.2배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PER 6.2배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "006660": {
+    "name": "삼성공조",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "11,030",
+    "eff_per_str": "7.8배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 7.8배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "007340": {
+    "name": "DN오토모티브",
+    "sector": "자동차",
+    "cap": "중",
+    "closePrice": "40,150",
+    "eff_per_str": "6.1배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 6.1배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "007530": {
+    "name": "와이엠",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "1,683",
+    "eff_per_str": "12.9배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 12.9배 형성 (PBR 0.6배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "007860": {
+    "name": "서연",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "7,120",
+    "eff_per_str": "1.9배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 1.9배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "009320": {
+    "name": "아진전자부품",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "946",
+    "eff_per_str": "31.5배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 1.4배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "009680": {
+    "name": "모토닉",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "10,000",
+    "eff_per_str": "9.8배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 9.8배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "009900": {
+    "name": "명신산업",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "9,190",
+    "eff_per_str": "5.4배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 5.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "010100": {
+    "name": "한국무브넥스",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "3,170",
+    "eff_per_str": "4.4배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 4.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "010580": {
+    "name": "에스엠벡셀",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "3,510",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "PBR 5.6배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "010690": {
+    "name": "화신",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "6,780",
+    "eff_per_str": "3.3배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 3.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "010770": {
+    "name": "평화홀딩스",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "3,290",
+    "eff_per_str": "1.1배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 1.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "011210": {
+    "name": "현대위아",
+    "sector": "자동차",
+    "cap": "중",
+    "closePrice": "50,400",
+    "eff_per_str": "9.8배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PER 9.8배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "011320": {
+    "name": "유니크",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "3,750",
+    "eff_per_str": "5.1배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 5.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "011330": {
+    "name": "유니켐",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "5,630",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "섹터 전반 호황 국면 속 개별 적자 지속으로 경쟁력 열위",
+    "updatedAt": "2026-10-29"
+  },
+  "012200": {
+    "name": "계양전기",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "2,725",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "PBR 5.0배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "012205": {
+    "name": "계양전기우",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "4,220",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "시클리컬 바닥이나 초소형주 재무 부실/자본잠식/한계기업 리스크 점검 필수",
+    "updatedAt": "2026-10-29"
+  },
+  "012280": {
+    "name": "영화금속",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "4,225",
+    "eff_per_str": "3.3배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 3.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "012330": {
+    "name": "현대모비스",
+    "sector": "자동차",
+    "cap": "대",
+    "closePrice": "352,000",
+    "eff_per_str": "8.0배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PER 8.0배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "012860": {
+    "name": "모베이스전자",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "2,100",
+    "eff_per_str": "6.4배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 6.4배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "013310": {
+    "name": "아진산업",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "2,155",
+    "eff_per_str": "6.6배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 6.6배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "013520": {
+    "name": "화승코퍼레이션",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "2,375",
+    "eff_per_str": "1.6배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 1.6배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "013570": {
+    "name": "디와이",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "3,780",
+    "eff_per_str": "4.4배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 4.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "013720": {
+    "name": "청보",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "2,300",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "섹터 전반 호황 국면 속 개별 적자 지속으로 경쟁력 열위",
+    "updatedAt": "2026-10-29"
+  },
+  "013870": {
+    "name": "지엠비코리아",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "3,530",
+    "eff_per_str": "3.1배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 3.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "015750": {
+    "name": "성우하이텍",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "5,370",
+    "eff_per_str": "2.5배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 2.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "016740": {
+    "name": "두올",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "4,325",
+    "eff_per_str": "6.0배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 6.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "017370": {
+    "name": "우신시스템",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "3,620",
+    "eff_per_str": "4.8배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 4.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "018500": {
+    "name": "동원모빌리티",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "1,264",
+    "eff_per_str": "1.2배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 1.2배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "018880": {
+    "name": "한온시스템",
+    "sector": "자동차",
+    "cap": "대",
+    "closePrice": "3,710",
+    "eff_per_str": "14.4배 (Fwd)",
+    "decision": "[사라]",
+    "reason": "PER 14.4배 형성 (PBR 0.9배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "019180": {
+    "name": "티에이치엔",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "4,565",
+    "eff_per_str": "1.1배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 1.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "019540": {
+    "name": "일지테크",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "4,685",
+    "eff_per_str": "1.3배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 1.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "019770": {
+    "name": "서연탑메탈",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "3,350",
+    "eff_per_str": "3.6배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 3.6배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "020400": {
+    "name": "대동금속",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "2,080",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "시클리컬 바닥이나 초소형주 재무 부실/자본잠식/한계기업 리스크 점검 필수",
+    "updatedAt": "2026-10-29"
+  },
+  "021650": {
+    "name": "한국큐빅",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "1,788",
+    "eff_per_str": "7.5배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 7.5배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "021820": {
+    "name": "세원정공",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "10,500",
+    "eff_per_str": "2.1배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 2.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "023000": {
+    "name": "삼원강재",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "2,075",
+    "eff_per_str": "6.3배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 6.3배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "023800": {
+    "name": "인지컨트롤스",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "4,660",
+    "eff_per_str": "3.1배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 3.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "023810": {
+    "name": "인팩",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "5,100",
+    "eff_per_str": "9.1배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 9.1배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "024120": {
+    "name": "KB오토시스",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "3,090",
+    "eff_per_str": "4.5배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 4.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "024740": {
+    "name": "한일단조",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "2,130",
+    "eff_per_str": "11.2배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 11.2배 형성 (PBR 0.5배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "024830": {
+    "name": "세원물산",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "7,970",
+    "eff_per_str": "4.9배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 4.9배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "024900": {
+    "name": "디와이덕양",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "2,080",
+    "eff_per_str": "26.0배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 26.0배 형성 (PBR 0.6배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "024910": {
+    "name": "경창산업",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "1,345",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "섹터 전반 호황 국면 속 개별 적자 지속으로 경쟁력 열위",
+    "updatedAt": "2026-10-29"
+  },
+  "025440": {
+    "name": "DH오토웨어",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "3,000",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "섹터 전반 호황 국면 속 개별 적자 지속으로 경쟁력 열위",
+    "updatedAt": "2026-10-29"
+  },
+  "025530": {
+    "name": "SJM홀딩스",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "3,490",
+    "eff_per_str": "3.2배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 3.2배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "025540": {
+    "name": "한국단자",
+    "sector": "자동차",
+    "cap": "중",
+    "closePrice": "52,100",
+    "eff_per_str": "4.3배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 4.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "031510": {
+    "name": "오스템",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "1,158",
+    "eff_per_str": "2.8배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 2.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "033250": {
+    "name": "체시스",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "3,740",
+    "eff_per_str": "3.6배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 3.6배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "033310": {
+    "name": "엠투엔",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "1,321",
+    "eff_per_str": "18.4배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 18.4배 형성 (PBR 0.3배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "033530": {
+    "name": "SJG세종",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "5,880",
+    "eff_per_str": "1.7배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 1.7배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "036530": {
+    "name": "SNT홀딩스",
+    "sector": "자동차",
+    "cap": "중",
+    "closePrice": "49,400",
+    "eff_per_str": "8.1배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 8.1배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "038110": {
+    "name": "에코플라스틱",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "1,848",
+    "eff_per_str": "4.4배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 4.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "038880": {
+    "name": "아이에이",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "3,180",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "섹터 전반 호황 국면 속 개별 적자 지속으로 경쟁력 열위",
+    "updatedAt": "2026-10-29"
+  },
+  "040610": {
+    "name": "SG&G",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "2,830",
+    "eff_per_str": "0.5배 (Trail)",
+    "decision": "[대기]",
+    "reason": "시클리컬 바닥이나 초소형주 재무 부실/자본잠식/한계기업 리스크 점검 필수",
+    "updatedAt": "2026-10-29"
+  },
+  "041020": {
+    "name": "폴라리스오피스",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "2,810",
+    "eff_per_str": "18.7배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 1.6배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "041650": {
+    "name": "상신브레이크",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "1,944",
+    "eff_per_str": "8.9배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 8.9배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "041930": {
+    "name": "SY동아",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "4,755",
+    "eff_per_str": "4.3배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 4.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "043370": {
+    "name": "피에이치에이",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "11,740",
+    "eff_per_str": "4.3배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 4.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "047400": {
+    "name": "유니온머티리얼",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "746",
+    "eff_per_str": "6.2배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 6.2배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "048430": {
+    "name": "유라테크",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "5,360",
+    "eff_per_str": "8.2배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 8.2배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "053060": {
+    "name": "세동",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "1,245",
+    "eff_per_str": "4.2배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 4.2배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "053270": {
+    "name": "구영테크",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "1,885",
+    "eff_per_str": "1.8배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 1.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "053700": {
+    "name": "삼보모터스",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "3,680",
+    "eff_per_str": "9.7배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 9.7배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "060980": {
+    "name": "HL홀딩스",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "34,950",
+    "eff_per_str": "5.8배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 5.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "064960": {
+    "name": "SNT모티브",
+    "sector": "자동차",
+    "cap": "중",
+    "closePrice": "24,500",
+    "eff_per_str": "6.9배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PER 6.9배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "065500": {
+    "name": "오리엔트정공",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "878",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "섹터 전반 호황 국면 속 개별 적자 지속으로 경쟁력 열위",
+    "updatedAt": "2026-10-29"
+  },
+  "066590": {
+    "name": "스모트로닉",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "2,095",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "섹터 전반 호황 국면 속 개별 적자 지속으로 경쟁력 열위",
+    "updatedAt": "2026-10-29"
+  },
+  "067570": {
+    "name": "엔브이에이치코리아",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "1,591",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "섹터 전반 호황 국면 속 개별 적자 지속으로 경쟁력 열위",
+    "updatedAt": "2026-10-29"
+  },
+  "071850": {
+    "name": "캐스텍코리아",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "1,194",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "섹터 전반 호황 국면 속 개별 적자 지속으로 경쟁력 열위",
+    "updatedAt": "2026-10-29"
+  },
+  "072470": {
+    "name": "우리산업홀딩스",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "1,978",
+    "eff_per_str": "3.1배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 3.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "073240": {
+    "name": "금호타이어",
+    "sector": "자동차",
+    "cap": "중",
+    "closePrice": "5,190",
+    "eff_per_str": "3.9배 (Fwd)",
+    "decision": "[팔아라]",
+    "reason": "PER 3.9배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "075180": {
+    "name": "새론오토모티브",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "2,820",
+    "eff_per_str": "5.3배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 5.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "078590": {
+    "name": "휴림에이텍",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "2,780",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "섹터 전반 호황 국면 속 개별 적자 지속으로 경쟁력 열위",
+    "updatedAt": "2026-10-29"
+  },
+  "080470": {
+    "name": "성창오토텍",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "2,640",
+    "eff_per_str": "3.9배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 3.9배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "085910": {
+    "name": "네오티스",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "21,300",
+    "eff_per_str": "32.8배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 3.9배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "087260": {
+    "name": "모바일어플라이언스",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "247",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "시클리컬 바닥이나 초소형주 재무 부실/자본잠식/한계기업 리스크 점검 필수",
+    "updatedAt": "2026-10-29"
+  },
+  "088290": {
+    "name": "이원컴포텍",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "2,520",
+    "eff_per_str": "70.0배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 2.4배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "089470": {
+    "name": "HDC현대EP",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "3,685",
+    "eff_per_str": "3.6배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 3.6배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "090080": {
+    "name": "평화산업",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "898",
+    "eff_per_str": "1.8배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 1.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "090150": {
+    "name": "아이윈",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "5,650",
+    "eff_per_str": "1.0배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 1.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "092200": {
+    "name": "디아이씨",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "4,750",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "PBR 1.2배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "092780": {
+    "name": "DYP",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "3,110",
+    "eff_per_str": "3.3배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 3.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "093380": {
+    "name": "풍강",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "2,640",
+    "eff_per_str": "4.8배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 4.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "093510": {
+    "name": "엔지브이아이",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "467",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "시클리컬 바닥이나 초소형주 재무 부실/자본잠식/한계기업 리스크 점검 필수",
+    "updatedAt": "2026-10-29"
+  },
+  "097780": {
+    "name": "에코볼트",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "1,250",
+    "eff_per_str": "59.5배 (Trail)",
+    "decision": "[대기]",
+    "reason": "시클리컬 바닥이나 초소형주 재무 부실/자본잠식/한계기업 리스크 점검 필수",
+    "updatedAt": "2026-10-29"
+  },
+  "100250": {
+    "name": "진양홀딩스",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "2,915",
+    "eff_per_str": "1.5배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 1.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "101330": {
+    "name": "모베이스",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "3,590",
+    "eff_per_str": "2.7배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 2.7배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "104040": {
+    "name": "디에스엠",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "3,295",
+    "eff_per_str": "45.8배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 45.8배 형성 (PBR 0.8배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "105550": {
+    "name": "엣지파운드리",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "1,350",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "섹터 전반 호황 국면 속 개별 적자 지속으로 경쟁력 열위",
+    "updatedAt": "2026-10-29"
+  },
+  "113810": {
+    "name": "디젠스",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "2,825",
+    "eff_per_str": "8.2배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 8.2배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "116100": {
+    "name": "태양기계",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "650",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "시클리컬 바닥이나 초소형주 재무 부실/자본잠식/한계기업 리스크 점검 필수",
+    "updatedAt": "2026-10-29"
+  },
+  "118990": {
+    "name": "모트렉스",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "5,640",
+    "eff_per_str": "8.0배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 8.0배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "122350": {
+    "name": "삼기",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "1,577",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "섹터 전반 호황 국면 속 개별 적자 지속으로 경쟁력 열위",
+    "updatedAt": "2026-10-29"
+  },
+  "122690": {
+    "name": "서진오토모티브",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "1,456",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "섹터 전반 호황 국면 속 개별 적자 지속으로 경쟁력 열위",
+    "updatedAt": "2026-10-29"
+  },
+  "123040": {
+    "name": "엠에스오토텍",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "1,717",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "섹터 전반 호황 국면 속 개별 적자 지속으로 경쟁력 열위",
+    "updatedAt": "2026-10-29"
+  },
+  "123410": {
+    "name": "코리아에프티",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "4,960",
+    "eff_per_str": "3.3배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 3.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "123700": {
+    "name": "SJM",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "3,120",
+    "eff_per_str": "2.7배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 2.7배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "125490": {
+    "name": "한라캐스트",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "11,440",
+    "eff_per_str": "71.1배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 3.8배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "126640": {
+    "name": "화신정공",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "3,105",
+    "eff_per_str": "5.0배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 5.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "128540": {
+    "name": "에코캡",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "897",
+    "eff_per_str": "2.4배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 2.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "130500": {
+    "name": "GH신소재",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "1,773",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "섹터 전반 호황 국면 속 개별 적자 지속으로 경쟁력 열위",
+    "updatedAt": "2026-10-29"
+  },
+  "130740": {
+    "name": "티피씨글로벌",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "1,937",
+    "eff_per_str": "1.3배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 1.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "140660": {
+    "name": "위월드",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "705",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "시클리컬 바닥이나 초소형주 재무 부실/자본잠식/한계기업 리스크 점검 필수",
+    "updatedAt": "2026-10-29"
+  },
+  "143210": {
+    "name": "핸즈코퍼레이션",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "1,199",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "섹터 전반 호황 국면 속 개별 적자 지속으로 경쟁력 열위",
+    "updatedAt": "2026-10-29"
+  },
+  "145210": {
+    "name": "다이나믹디자인",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "2,240",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "시클리컬 바닥이나 초소형주 재무 부실/자본잠식/한계기업 리스크 점검 필수",
+    "updatedAt": "2026-10-29"
+  },
+  "146060": {
+    "name": "율촌",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "990",
+    "eff_per_str": "7.2배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 7.2배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "161390": {
+    "name": "한국타이어앤테크놀로지",
+    "sector": "자동차",
+    "cap": "대",
+    "closePrice": "56,800",
+    "eff_per_str": "5.6배 (Fwd)",
+    "decision": "[팔아라]",
+    "reason": "PER 5.6배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "170030": {
+    "name": "현대공업",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "4,600",
+    "eff_per_str": "3.1배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 3.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "198940": {
+    "name": "한주라이트메탈",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "1,187",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "섹터 전반 호황 국면 속 개별 적자 지속으로 경쟁력 열위",
+    "updatedAt": "2026-10-29"
+  },
+  "200880": {
+    "name": "서연이화",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "10,340",
+    "eff_per_str": "2.2배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 2.2배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "204320": {
+    "name": "HL만도",
+    "sector": "자동차",
+    "cap": "중",
+    "closePrice": "38,650",
+    "eff_per_str": "9.2배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PER 9.2배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "208860": {
+    "name": "다산디엠씨",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "8,770",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "섹터 전반 호황 국면 속 개별 적자 지속으로 경쟁력 열위",
+    "updatedAt": "2026-10-29"
+  },
+  "212560": {
+    "name": "네오오토",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "9,080",
+    "eff_per_str": "8.5배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 8.5배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "214330": {
+    "name": "금호에이치티",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "7,390",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "섹터 전반 호황 국면 속 개별 적자 지속으로 경쟁력 열위",
+    "updatedAt": "2026-10-29"
+  },
+  "215360": {
+    "name": "우리산업",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "6,100",
+    "eff_per_str": "2.6배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 2.6배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "234100": {
+    "name": "폴라리스세원",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "2,315",
+    "eff_per_str": "13.4배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 13.4배 형성 (PBR 0.2배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "241690": {
+    "name": "유니테크노",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "3,205",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "섹터 전반 호황 국면 속 개별 적자 지속으로 경쟁력 열위",
+    "updatedAt": "2026-10-29"
+  },
+  "265560": {
+    "name": "영화테크",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "5,740",
+    "eff_per_str": "2.1배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 2.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "271940": {
+    "name": "일진하이솔루스",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "10,700",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "PBR 1.2배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "290120": {
+    "name": "DH오토리드",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "2,035",
+    "eff_per_str": "1.8배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 1.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "308170": {
+    "name": "씨티알모빌리티",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "3,935",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "섹터 전반 호황 국면 속 개별 적자 지속으로 경쟁력 열위",
+    "updatedAt": "2026-10-29"
+  },
+  "310870": {
+    "name": "디와이씨",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "1,569",
+    "eff_per_str": "4.4배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 4.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "312610": {
+    "name": "에이에프더블류",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "37",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "시클리컬 바닥이나 초소형주 재무 부실/자본잠식/한계기업 리스크 점검 필수",
+    "updatedAt": "2026-10-29"
+  },
+  "123040": {
+    "name": "엠에스오토텍",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "5,900",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "PBR 2.2배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "336680": {
+    "name": "탑런토탈솔루션",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "2,860",
+    "eff_per_str": "47.7배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 47.7배 형성 (PBR 0.6배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "353590": {
+    "name": "오토앤",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "1,539",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "시클리컬 바닥이나 초소형주 재무 부실/자본잠식/한계기업 리스크 점검 필수",
+    "updatedAt": "2026-10-29"
+  },
+  "065500": {
+    "name": "오리엔트정공",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "52,200",
+    "eff_per_str": "102.5배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 2.1배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "080470": {
+    "name": "성창오토텍",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "2,660",
+    "eff_per_str": "1.4배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 1.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "419050": {
+    "name": "삼기에너지솔루션즈",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "2,570",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "PBR 2.0배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "424960": {
+    "name": "스마트레이더시스템",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "3,100",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "PBR 1.9배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "437730": {
+    "name": "삼현",
+    "sector": "자동차",
+    "cap": "중",
+    "closePrice": "49,800",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "PBR 13.3배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "448900": {
+    "name": "한국피아이엠",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "51,400",
+    "eff_per_str": "142.0배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 5.3배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "463480": {
+    "name": "모티브링크",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "3,130",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "섹터 전반 호황 국면 속 개별 적자 지속으로 경쟁력 열위",
+    "updatedAt": "2026-10-29"
+  },
+  "900070": {
+    "name": "글로벌에스엠",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "1,032",
+    "eff_per_str": "11.0배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 11.0배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "123410": {
+    "name": "코리아에프티",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "52,400",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
+    "updatedAt": "2026-10-29"
+  },
+  "000210": {
+    "name": "DL",
+    "sector": "화학",
+    "cap": "중",
+    "closePrice": "41,950",
+    "eff_per_str": "6.7배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 6.7배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "021820": {
+    "name": "세원정공",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "20,300",
+    "eff_per_str": "3.3배 (Trail)",
+    "decision": "[대기]",
+    "reason": "시클리컬 바닥이나 초소형주 재무 부실/자본잠식/한계기업 리스크 점검 필수",
+    "updatedAt": "2026-10-29"
+  },
+  "024830": {
+    "name": "세원물산",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "7,890",
+    "eff_per_str": "4.8배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 4.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-28"
+  },
+  "010770": {
+    "name": "평화홀딩스",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "3,300",
+    "eff_per_str": "1.1배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 1.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-28"
+  },
+  "023810": {
+    "name": "인팩",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "5,090",
+    "eff_per_str": "9.1배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 9.1배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-28"
+  },
+  "214330": {
+    "name": "금호에이치티",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "7,390",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "섹터 전반 호황 국면 속 개별 적자 지속으로 경쟁력 열위",
+    "updatedAt": "2026-10-28"
+  },
+  "011330": {
+    "name": "유니켐",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "5,560",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "섹터 전반 호황 국면 속 개별 적자 지속으로 경쟁력 열위",
+    "updatedAt": "2026-10-28"
+  },
+  "140660": {
+    "name": "위월드",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "705",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "시클리컬 바닥이나 초소형주 재무 부실/자본잠식/한계기업 리스크 점검 필수",
+    "updatedAt": "2026-10-28"
+  },
+  "354320": {
+    "name": "알멕",
+    "sector": "자동차",
+    "cap": "소",
+    "closePrice": "52,200",
+    "eff_per_str": "102.5배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 2.1배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-28"
+  },
+  "017890": {
+    "name": "한국알콜",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "12,650",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
+    "updatedAt": "2026-10-29"
+  },
+  "217910": {
+    "name": "에스제이켐",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "287",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "시클리컬 바닥이나 초소형주 재무 부실/자본잠식/한계기업 리스크 점검 필수",
+    "updatedAt": "2026-10-28"
+  },
+  "121600": {
+    "name": "나노신소재",
+    "sector": "화학",
+    "cap": "중",
+    "closePrice": "61,300",
+    "eff_per_str": "48.7배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 2.8배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-28"
+  },
+  "006840": {
+    "name": "AK홀딩스",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "6,980",
+    "eff_per_str": "5.6배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 5.6배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-28"
+  },
+  "126600": {
+    "name": "BGF에코머티리얼즈",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "3,250",
+    "eff_per_str": "12.8배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 12.8배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-28"
+  },
+  "027580": {
+    "name": "상보",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "1,710",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
+    "updatedAt": "2026-10-28"
+  },
+  "115570": {
+    "name": "스타플렉스",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "2,645",
+    "eff_per_str": "1.4배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 1.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-28"
+  },
+  "104830": {
+    "name": "원익머트리얼즈",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "37,500",
+    "eff_per_str": "7.9배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PER 7.9배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-28"
+  },
+  "093370": {
+    "name": "후성",
+    "sector": "화학",
+    "cap": "중",
+    "closePrice": "10,810",
+    "eff_per_str": "31.8배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 3.2배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-28"
+  },
+  "051915": {
+    "name": "LG화학우",
+    "sector": "화학",
+    "cap": "중",
+    "closePrice": "110,700",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
+    "updatedAt": "2026-10-28"
+  },
+  "285130": {
+    "name": "SK케미칼",
+    "sector": "화학",
+    "cap": "중",
+    "closePrice": "41,350",
+    "eff_per_str": "109.1배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 109.1배 형성 (PBR 0.3배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-28"
+  },
+  "251370": {
+    "name": "와이엠티",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "7,590",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
+    "updatedAt": "2026-10-28"
+  },
+  "005690": {
+    "name": "파미셀",
+    "sector": "화학",
+    "cap": "중",
+    "closePrice": "10,300",
+    "eff_per_str": "13.3배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 13.3배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-28"
+  },
+  "125210": {
+    "name": "아모그린텍",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "5,710",
+    "eff_per_str": "17.7배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 17.7배 형성 (PBR 1.1배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-28"
+  },
+  "003670": {
+    "name": "포스코퓨처엠",
+    "sector": "화학",
+    "cap": "대",
+    "closePrice": "168,100",
+    "eff_per_str": "453.1배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PBR 3.6배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-28"
+  },
+  "013000": {
+    "name": "세우글로벌",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "1,220",
+    "eff_per_str": "6.4배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 6.4배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-28"
+  },
+  "0010F0": {
+    "name": "보원케미칼",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "3,420",
+    "eff_per_str": "29.7배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 29.7배 형성 (PBR 1.1배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "457190": {
+    "name": "이수스페셜티케미컬",
+    "sector": "화학",
+    "cap": "중",
+    "closePrice": "76,800",
+    "eff_per_str": "350.7배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 16.8배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-28"
+  },
+  "002360": {
+    "name": "SH에너지화학",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "4,735",
+    "eff_per_str": "28.4배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 28.4배 형성 (PBR 0.9배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "001550": {
+    "name": "조비",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "9,660",
+    "eff_per_str": "19.6배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 19.6배 형성 (PBR 0.8배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "001570": {
+    "name": "금양",
+    "sector": "화학",
+    "cap": "중",
+    "closePrice": "9,900",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
+    "updatedAt": "2026-10-29"
+  },
+  "002100": {
+    "name": "경농",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "8,890",
+    "eff_per_str": "11.5배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 11.5배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "002360": {
+    "name": "SH에너지화학",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "3,860",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
+    "updatedAt": "2026-10-29"
+  },
+  "002810": {
+    "name": "삼영무역",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "19,970",
+    "eff_per_str": "5.5배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 5.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "002840": {
+    "name": "미원상사",
+    "sector": "화학",
+    "cap": "중",
+    "closePrice": "127,000",
+    "eff_per_str": "11.4배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 11.4배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "002960": {
+    "name": "한국쉘석유",
+    "sector": "화학",
+    "cap": "중",
+    "closePrice": "525,000",
+    "eff_per_str": "13.3배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 13.3배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "003080": {
+    "name": "SB성보",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "2,200",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
+    "updatedAt": "2026-10-29"
+  },
+  "003240": {
+    "name": "태광산업",
+    "sector": "화학",
+    "cap": "중",
+    "closePrice": "819,000",
+    "eff_per_str": "7.7배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 7.7배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "003650": {
+    "name": "미창석유",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "116,200",
+    "eff_per_str": "1.6배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 1.6배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "003670": {
+    "name": "포스코퓨처엠",
+    "sector": "화학",
+    "cap": "대",
+    "closePrice": "168,900",
+    "eff_per_str": "455.3배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PBR 3.6배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "003720": {
+    "name": "삼영",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "5,370",
+    "eff_per_str": "8.9배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 8.9배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "003780": {
+    "name": "진양산업",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "5,620",
+    "eff_per_str": "12.6배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 12.6배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "003830": {
+    "name": "대한화섬",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "105,600",
+    "eff_per_str": "9.0배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 9.0배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "004000": {
+    "name": "롯데정밀화학",
+    "sector": "화학",
+    "cap": "중",
+    "closePrice": "35,900",
+    "eff_per_str": "4.4배 (Fwd)",
+    "decision": "[팔아라]",
+    "reason": "PER 4.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "004090": {
+    "name": "한국석유",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "11,210",
+    "eff_per_str": "9.6배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 9.6배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "004430": {
+    "name": "송원산업",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "10,360",
+    "eff_per_str": "5.3배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 5.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "004840": {
+    "name": "DRB동일",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "3,820",
+    "eff_per_str": "6.3배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 6.3배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "005070": {
+    "name": "코스모신소재",
+    "sector": "화학",
+    "cap": "중",
+    "closePrice": "39,850",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "PBR 2.5배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "005420": {
+    "name": "코스모화학",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "9,970",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "PBR 1.6배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "005690": {
+    "name": "파미셀",
+    "sector": "화학",
+    "cap": "중",
+    "closePrice": "10,230",
+    "eff_per_str": "13.2배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 13.2배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "005950": {
+    "name": "이수화학",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "9,390",
+    "eff_per_str": "2.9배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 2.9배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "006650": {
+    "name": "대한유화",
+    "sector": "화학",
+    "cap": "중",
+    "closePrice": "80,300",
+    "eff_per_str": "9.3배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PER 9.3배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "006840": {
+    "name": "AK홀딩스",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "6,600",
+    "eff_per_str": "5.3배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 5.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "006890": {
+    "name": "태경케미컬",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "4,475",
+    "eff_per_str": "7.3배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 7.3배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "007590": {
+    "name": "동방아그로",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "5,320",
+    "eff_per_str": "7.9배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 7.9배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "007690": {
+    "name": "국도화학",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "30,300",
+    "eff_per_str": "5.3배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 5.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "007770": {
+    "name": "한일화학",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "7,800",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
+    "updatedAt": "2026-10-29"
+  },
+  "008370": {
+    "name": "원풍",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "5,340",
+    "eff_per_str": "6.8배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 6.8배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "010060": {
+    "name": "OCI홀딩스",
+    "sector": "화학",
+    "cap": "대",
+    "closePrice": "180,300",
+    "eff_per_str": "25.1배 (Fwd)",
+    "decision": "[사라]",
+    "reason": "PER 25.1배 형성 (PBR 0.8배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "010640": {
+    "name": "진양폴리",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "2,405",
+    "eff_per_str": "12.2배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 12.2배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "011170": {
+    "name": "롯데케미칼",
+    "sector": "화학",
+    "cap": "중",
+    "closePrice": "47,900",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
+    "updatedAt": "2026-10-29"
+  },
+  "011500": {
+    "name": "한농화성",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "13,190",
+    "eff_per_str": "21.5배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 21.5배 형성 (PBR 1.1배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "011780": {
+    "name": "금호석유화학",
+    "sector": "화학",
+    "cap": "중",
+    "closePrice": "106,800",
+    "eff_per_str": "5.7배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PER 5.7배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "011785": {
+    "name": "금호석유화학우",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "45,100",
+    "eff_per_str": "2.4배 (Fwd)",
+    "decision": "[팔아라]",
+    "reason": "PER 2.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "011790": {
+    "name": "SKC",
+    "sector": "화학",
+    "cap": "대",
+    "closePrice": "82,900",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "PBR 2.0배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "012610": {
+    "name": "경인양행",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "3,090",
+    "eff_per_str": "6.4배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 6.4배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "013000": {
+    "name": "세우글로벌",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "1,205",
+    "eff_per_str": "6.3배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 6.3배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "014190": {
+    "name": "원익큐브",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "1,132",
+    "eff_per_str": "6.1배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 6.1배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "014440": {
+    "name": "영보화학",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "4,700",
+    "eff_per_str": "5.1배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 5.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "014680": {
+    "name": "한솔케미칼",
+    "sector": "화학",
+    "cap": "중",
+    "closePrice": "219,500",
+    "eff_per_str": "14.5배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PBR 2.1배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "014830": {
+    "name": "유니드",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "51,500",
+    "eff_per_str": "5.8배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PER 5.8배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "017860": {
+    "name": "DS단석",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "9,980",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
+    "updatedAt": "2026-10-29"
+  },
+  "017890": {
+    "name": "한국알콜",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "16,140",
+    "eff_per_str": "8.7배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 8.7배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "023450": {
+    "name": "동남합성",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "29,350",
+    "eff_per_str": "8.7배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 8.7배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "023900": {
+    "name": "풍국주정",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "6,770",
+    "eff_per_str": "8.1배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 8.1배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "024070": {
+    "name": "WISCOM",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "1,769",
+    "eff_per_str": "8.6배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 8.6배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "025000": {
+    "name": "KPX케미칼",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "61,300",
+    "eff_per_str": "2.7배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 2.7배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "025860": {
+    "name": "남해화학",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "5,520",
+    "eff_per_str": "23.3배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 23.3배 형성 (PBR 0.5배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "027410": {
+    "name": "BGF",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "3,455",
+    "eff_per_str": "5.0배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 5.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "027580": {
+    "name": "상보",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "1,686",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "시클리컬 바닥이나 초소형주 재무 부실/자본잠식/한계기업 리스크 점검 필수",
+    "updatedAt": "2026-10-29"
+  },
+  "033500": {
+    "name": "동성화인텍",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "12,910",
+    "eff_per_str": "4.9배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 4.9배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "036640": {
+    "name": "HRS",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "4,795",
+    "eff_per_str": "4.8배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 4.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "036670": {
+    "name": "삼양케이씨아이",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "4,840",
+    "eff_per_str": "6.2배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 6.2배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "042040": {
+    "name": "케이피엠테크",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "5,140",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
+    "updatedAt": "2026-10-29"
+  },
+  "045060": {
+    "name": "오공",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "2,060",
+    "eff_per_str": "4.0배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 4.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "045520": {
+    "name": "크린앤사이언스",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "2,570",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "시클리컬 바닥이나 초소형주 재무 부실/자본잠식/한계기업 리스크 점검 필수",
+    "updatedAt": "2026-10-29"
+  },
+  "048830": {
+    "name": "엔피케이",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "933",
+    "eff_per_str": "17.0배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 17.0배 형성 (PBR 0.4배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "050760": {
+    "name": "에스폴리텍",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "1,209",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "시클리컬 바닥이나 초소형주 재무 부실/자본잠식/한계기업 리스크 점검 필수",
+    "updatedAt": "2026-10-29"
+  },
+  "051630": {
+    "name": "진양화학",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "2,115",
+    "eff_per_str": "25.5배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 25.5배 형성 (PBR 1.1배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "051910": {
+    "name": "LG화학",
+    "sector": "화학",
+    "cap": "대",
+    "closePrice": "236,000",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
+    "updatedAt": "2026-10-29"
+  },
+  "051915": {
+    "name": "LG화학우",
+    "sector": "화학",
+    "cap": "중",
+    "closePrice": "107,300",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
+    "updatedAt": "2026-10-29"
+  },
+  "066430": {
+    "name": "아이로보틱스",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "1,980",
+    "eff_per_str": "70.7배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 1.8배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "069260": {
+    "name": "TKG휴켐스",
+    "sector": "화학",
+    "cap": "중",
+    "closePrice": "14,950",
+    "eff_per_str": "9.5배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 9.5배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "083420": {
+    "name": "그린케미칼",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "4,440",
+    "eff_per_str": "5.3배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 5.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "086520": {
+    "name": "에코프로",
+    "sector": "화학",
+    "cap": "대",
+    "closePrice": "76,700",
+    "eff_per_str": "74.0배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 4.6배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "091970": {
+    "name": "LSK아이로봇",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "2,920",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
+    "updatedAt": "2026-10-29"
+  },
+  "092230": {
+    "name": "KPX홀딩스",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "91,100",
+    "eff_per_str": "1.3배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 1.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "093370": {
+    "name": "후성",
+    "sector": "화학",
+    "cap": "중",
+    "closePrice": "10,560",
+    "eff_per_str": "31.1배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 3.1배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "097870": {
+    "name": "효성오앤비",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "4,070",
+    "eff_per_str": "40.7배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 40.7배 형성 (PBR 0.4배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "101240": {
+    "name": "씨큐브",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "3,175",
+    "eff_per_str": "3.2배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 3.2배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "101360": {
+    "name": "에코앤드림",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "10,200",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
+    "updatedAt": "2026-10-29"
+  },
+  "102260": {
+    "name": "동성케미컬",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "3,480",
+    "eff_per_str": "4.2배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 4.2배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "103660": {
+    "name": "씨앗",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "1,275",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "시클리컬 바닥이나 초소형주 재무 부실/자본잠식/한계기업 리스크 점검 필수",
+    "updatedAt": "2026-10-29"
+  },
+  "104480": {
+    "name": "티케이케미칼",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "1,764",
+    "eff_per_str": "2.6배 (Trail)",
+    "decision": "[대기]",
+    "reason": "시클리컬 바닥이나 초소형주 재무 부실/자본잠식/한계기업 리스크 점검 필수",
+    "updatedAt": "2026-10-29"
+  },
+  "104830": {
+    "name": "원익머트리얼즈",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "37,350",
+    "eff_per_str": "7.9배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PER 7.9배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "107590": {
+    "name": "미원홀딩스",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "56,300",
+    "eff_per_str": "2.5배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 2.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "115570": {
+    "name": "스타플렉스",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "2,630",
+    "eff_per_str": "1.4배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 1.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "120110": {
+    "name": "코오롱인더",
+    "sector": "화학",
+    "cap": "중",
+    "closePrice": "40,400",
+    "eff_per_str": "5.9배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PER 5.9배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "120115": {
+    "name": "코오롱인더우",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "22,650",
+    "eff_per_str": "3.3배 (Fwd)",
+    "decision": "[팔아라]",
+    "reason": "PER 3.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "120240": {
+    "name": "대정화금",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "14,200",
+    "eff_per_str": "6.0배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 6.0배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "121600": {
+    "name": "나노신소재",
+    "sector": "화학",
+    "cap": "중",
+    "closePrice": "61,300",
+    "eff_per_str": "48.7배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 2.8배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "125210": {
+    "name": "아모그린텍",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "5,620",
+    "eff_per_str": "17.4배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 17.4배 형성 (PBR 1.1배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "126600": {
+    "name": "BGF에코머티리얼즈",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "3,230",
+    "eff_per_str": "12.8배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 12.8배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "134380": {
+    "name": "미원화학",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "11,130",
+    "eff_per_str": "6.0배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 6.0배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "136410": {
+    "name": "아셈스",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "3,305",
+    "eff_per_str": "5.6배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 5.6배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "161000": {
+    "name": "애경케미칼",
+    "sector": "화학",
+    "cap": "중",
+    "closePrice": "10,580",
+    "eff_per_str": "25.8배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 25.8배 형성 (PBR 0.7배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "163280": {
+    "name": "에어레인",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "3,695",
+    "eff_per_str": "7.3배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 7.3배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "163560": {
+    "name": "동일고무벨트",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "5,270",
+    "eff_per_str": "2.9배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 2.9배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "177350": {
+    "name": "베셀",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "896",
+    "eff_per_str": "9.0배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 9.0배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "178920": {
+    "name": "PI첨단소재",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "15,800",
+    "eff_per_str": "11.4배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 11.4배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "187790": {
+    "name": "나노",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "2,300",
+    "eff_per_str": "45.1배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 1.7배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "196700": {
+    "name": "웹스",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "1,305",
+    "eff_per_str": "3.9배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 3.9배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "217910": {
+    "name": "에스제이켐",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "287",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "시클리컬 바닥이나 초소형주 재무 부실/자본잠식/한계기업 리스크 점검 필수",
+    "updatedAt": "2026-10-29"
+  },
+  "220260": {
+    "name": "켐트로스",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "4,290",
+    "eff_per_str": "58.0배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 58.0배 형성 (PBR 1.4배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "221980": {
+    "name": "케이디켐",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "9,220",
+    "eff_per_str": "4.4배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 4.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "222420": {
+    "name": "쎄노텍",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "1,027",
+    "eff_per_str": "12.7배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 12.7배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "238540": {
+    "name": "나노솔루션",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "103,800",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
+    "updatedAt": "2026-10-29"
+  },
+  "025000": {
+    "name": "KPX케미칼",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "4,560",
+    "eff_per_str": "23.4배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 23.4배 형성 (PBR 1.0배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "004090": {
+    "name": "한국석유",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "7,620",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
+    "updatedAt": "2026-10-29"
+  },
+  "268280": {
+    "name": "미원에스씨",
+    "sector": "화학",
+    "cap": "중",
+    "closePrice": "128,000",
+    "eff_per_str": "7.3배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 7.3배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "281740": {
+    "name": "레이크머티리얼즈",
+    "sector": "화학",
+    "cap": "중",
+    "closePrice": "11,360",
+    "eff_per_str": "54.4배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 4.9배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "285130": {
+    "name": "SK케미칼",
+    "sector": "화학",
+    "cap": "중",
+    "closePrice": "41,650",
+    "eff_per_str": "109.9배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 109.9배 형성 (PBR 0.3배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "28513K": {
+    "name": "SK케미칼우",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "23,250",
+    "eff_per_str": "61.4배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 61.4배 형성 (PBR 0.2배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "285800": {
+    "name": "진영",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "3,550",
+    "eff_per_str": "7.3배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 7.4배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "268280": {
+    "name": "미원에스씨",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "2,750",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "PBR 1.9배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "294140": {
+    "name": "레몬",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "2,265",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "PBR 7.7배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "007770": {
+    "name": "한일화학",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "45,800",
+    "eff_per_str": "6.3배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 6.3배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "298050": {
+    "name": "HS효성첨단소재",
+    "sector": "화학",
+    "cap": "중",
+    "closePrice": "141,900",
+    "eff_per_str": "8.4배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PER 8.4배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "318000": {
+    "name": "KBG",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "2,460",
+    "eff_per_str": "13.5배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 13.5배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "332290": {
+    "name": "누보",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "4,155",
+    "eff_per_str": "5.8배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 5.8배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "352940": {
+    "name": "인바이오",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "1,901",
+    "eff_per_str": "35.9배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 35.9배 형성 (PBR 0.5배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "101360": {
+    "name": "에코앤드림",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "28,900",
+    "eff_per_str": "34.9배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 3.4배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "456040": {
+    "name": "OCI",
+    "sector": "화학",
+    "cap": "중",
+    "closePrice": "58,600",
+    "eff_per_str": "60.7배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 60.7배 형성 (PBR 0.4배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "045520": {
+    "name": "크린앤사이언스",
+    "sector": "화학",
+    "cap": "중",
+    "closePrice": "76,200",
+    "eff_per_str": "347.9배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 16.6배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "900290": {
+    "name": "GRT",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "2,845",
+    "eff_per_str": "3.0배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 3.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "091970": {
+    "name": "LSK아이로봇",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "2,810",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
+    "updatedAt": "2026-10-28"
+  },
+  "000760": {
+    "name": "이화산업",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "12,650",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
+    "updatedAt": "2026-10-28"
+  },
+  "286750": {
+    "name": "나노실리칸첨단소재",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "2,750",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "PBR 1.9배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-28"
+  },
+  "178920": {
+    "name": "PI첨단소재",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "15,830",
+    "eff_per_str": "11.4배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 11.4배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-28"
+  },
+  "103660": {
+    "name": "씨앗",
+    "sector": "화학",
+    "cap": "소",
+    "closePrice": "1,275",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "시클리컬 바닥이나 초소형주 재무 부실/자본잠식/한계기업 리스크 점검 필수",
+    "updatedAt": "2026-10-28"
+  },
+  "133820": {
+    "name": "화인베스틸",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "3,085",
+    "eff_per_str": "68.6배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 68.6배 형성 (PBR 0.4배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "023440": {
+    "name": "제이스코홀딩스",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "521",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
+    "updatedAt": "2026-10-29"
+  },
+  "016380": {
+    "name": "KG스틸",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "1,439",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "시클리컬 바닥이나 초소형주 재무 부실/자본잠식/한계기업 리스크 점검 필수",
+    "updatedAt": "2026-10-29"
+  },
+  "025550": {
+    "name": "한국선재",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "2,110",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
+    "updatedAt": "2026-10-29"
+  },
+  "025890": {
+    "name": "한국주강",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "2,535",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
+    "updatedAt": "2026-10-29"
+  },
+  "026910": {
+    "name": "광진실업",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "3,690",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "PBR 1.4배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "026940": {
+    "name": "부국철강",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "1,954",
+    "eff_per_str": "18.8배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 18.8배 형성 (PBR 0.3배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "037760": {
+    "name": "쎄니트",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "2,430",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
+    "updatedAt": "2026-10-29"
+  },
+  "008970": {
+    "name": "KBI동양철관",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "1,919",
+    "eff_per_str": "9.5배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 9.5배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "048470": {
+    "name": "대동스틸",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "2,520",
+    "eff_per_str": "8.1배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 8.1배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "053260": {
+    "name": "금강철강",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "5,770",
+    "eff_per_str": "17.0배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 17.0배 형성 (PBR 0.7배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "058650": {
+    "name": "세아홀딩스",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "120,000",
+    "eff_per_str": "4.8배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 4.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "060380": {
+    "name": "동양에스텍",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "1,194",
+    "eff_per_str": "8.8배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 8.8배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "069730": {
+    "name": "DSR제강",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "5,150",
+    "eff_per_str": "2.2배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 2.2배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "021045": {
+    "name": "대호특수강우",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "1,574",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "시클리컬 바닥이나 초소형주 재무 부실/자본잠식/한계기업 리스크 점검 필수",
+    "updatedAt": "2026-10-29"
+  },
+  "084010": {
+    "name": "대한제강",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "8,920",
+    "eff_per_str": "17.7배 (Fwd)",
+    "decision": "[사라]",
+    "reason": "PER 17.7배 형성 (PBR 0.3배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "092790": {
+    "name": "넥스틸",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "11,220",
+    "eff_per_str": "30.7배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 30.7배 형성 (PBR 0.6배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "104700": {
+    "name": "한국철강",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "9,950",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
+    "updatedAt": "2026-10-29"
+  },
+  "120030": {
+    "name": "조선선재",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "72,700",
+    "eff_per_str": "6.8배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 6.8배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "133820": {
+    "name": "화인베스틸",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "945",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
+    "updatedAt": "2026-10-29"
+  },
+  "139990": {
+    "name": "아주스틸",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "2,135",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
+    "updatedAt": "2026-10-29"
+  },
+  "140520": {
+    "name": "대창스틸",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "1,989",
+    "eff_per_str": "6.4배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 6.4배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "162300": {
+    "name": "신스틸",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "1,825",
+    "eff_per_str": "62.9배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 62.9배 형성 (PBR 0.9배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "176590": {
+    "name": "코나솔",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "1,938",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "시클리컬 바닥이나 초소형주 재무 부실/자본잠식/한계기업 리스크 점검 필수",
+    "updatedAt": "2026-10-29"
+  },
+  "263770": {
+    "name": "유에스티",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "1,453",
+    "eff_per_str": "9.1배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 9.1배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "306200": {
+    "name": "세아제강",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "119,800",
+    "eff_per_str": "3.8배 (Fwd)",
+    "decision": "[팔아라]",
+    "reason": "PER 3.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "460850": {
+    "name": "동국씨엠",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "4,920",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
+    "updatedAt": "2026-10-29"
+  },
+  "460860": {
+    "name": "동국제강",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "9,160",
+    "eff_per_str": "31.5배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 31.5배 형성 (PBR 0.2배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "005010": {
+    "name": "휴스틸",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "3,460",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
+    "updatedAt": "2026-10-29"
+  },
+  "000970": {
+    "name": "한국주철관",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "6,300",
+    "eff_per_str": "8.4배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 8.4배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "001080": {
+    "name": "MH머트리얼즈",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "3,845",
+    "eff_per_str": "132.6배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 132.6배 형성 (PBR 0.3배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "001230": {
+    "name": "동국홀딩스",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "1,890",
+    "eff_per_str": "2.6배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 2.6배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "001430": {
+    "name": "세아베스틸지주",
+    "sector": "철강",
+    "cap": "중",
+    "closePrice": "31,200",
+    "eff_per_str": "12.8배 (Fwd)",
+    "decision": "[사라]",
+    "reason": "PER 12.8배 형성 (PBR 0.6배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "001770": {
+    "name": "SHD",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "3,925",
+    "eff_per_str": "7.1배 (Trail)",
+    "decision": "[대기]",
+    "reason": "시클리컬 바닥이나 초소형주 재무 부실/자본잠식/한계기업 리스크 점검 필수",
+    "updatedAt": "2026-10-29"
+  },
+  "001940": {
+    "name": "KISCO홀딩스",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "23,200",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
+    "updatedAt": "2026-10-29"
+  },
+  "002220": {
+    "name": "한일철강",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "2,725",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
+    "updatedAt": "2026-10-29"
+  },
+  "001770": {
+    "name": "SHD",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "14,700",
+    "eff_per_str": "8.2배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 8.2배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "001430": {
+    "name": "세아베스틸지주",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "1,259",
+    "eff_per_str": "32.3배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 32.3배 형성 (PBR 0.2배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "021045": {
+    "name": "대호특수강우",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "11,110",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "PBR 1.2배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "001230": {
+    "name": "동국홀딩스",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "94,700",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
+    "updatedAt": "2026-10-29"
+  },
+  "004020": {
+    "name": "현대제철",
+    "sector": "철강",
+    "cap": "대",
+    "closePrice": "26,550",
+    "eff_per_str": "48.1배 (Fwd)",
+    "decision": "[사라]",
+    "reason": "PER 48.1배 형성 (PBR 0.2배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "004890": {
+    "name": "동일산업",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "34,100",
+    "eff_per_str": "23.3배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 23.3배 형성 (PBR 0.2배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "000590": {
+    "name": "CS홀딩스",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "71,900",
+    "eff_per_str": "3.5배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 3.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "071090": {
+    "name": "하이스틸",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "3,645",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
+    "updatedAt": "2026-10-29"
+  },
+  "005490": {
+    "name": "POSCO홀딩스",
+    "sector": "철강",
+    "cap": "대",
+    "closePrice": "282,000",
+    "eff_per_str": "11.7배 (Fwd)",
+    "decision": "[사라]",
+    "reason": "PER 11.7배 형성 (PBR 0.4배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "007280": {
+    "name": "한국특강",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "2,115",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
+    "updatedAt": "2026-10-29"
+  },
+  "008420": {
+    "name": "문배철강",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "1,954",
+    "eff_per_str": "5.1배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 5.1배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "003030": {
+    "name": "세아제강지주",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "1,247",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
+    "updatedAt": "2026-10-29"
+  },
+  "162300": {
+    "name": "신스틸",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "1,829",
+    "eff_per_str": "63.1배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 63.1배 형성 (PBR 0.9배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-28"
+  },
+  "009190": {
+    "name": "대양금속",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "818",
+    "eff_per_str": "7.2배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 7.3배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "460860": {
+    "name": "동국제강",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "11,110",
+    "eff_per_str": "29.4배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 3.7배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "005160": {
+    "name": "동국산업",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "1,831",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
+    "updatedAt": "2026-10-29"
+  },
+  "026910": {
+    "name": "광진실업",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "7,300",
+    "eff_per_str": "5.0배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 5.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "016380": {
+    "name": "KG스틸",
+    "sector": "철강",
+    "cap": "중",
+    "closePrice": "5,120",
+    "eff_per_str": "2.9배 (Fwd)",
+    "decision": "[팔아라]",
+    "reason": "PER 2.9배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "017480": {
+    "name": "삼현철강",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "4,595",
+    "eff_per_str": "6.8배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 6.8배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "021040": {
+    "name": "대호특수강",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "1,100",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[사라]",
+    "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
+    "updatedAt": "2026-10-29"
+  },
+  "085310": {
+    "name": "엔케이",
+    "sector": "조선",
+    "cap": "소",
+    "closePrice": "8,630",
+    "eff_per_str": "14.1배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 14.1배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "176590": {
+    "name": "코나솔",
+    "sector": "철강",
+    "cap": "소",
+    "closePrice": "10,310",
+    "eff_per_str": "14.7배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 14.7배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "443060": {
+    "name": "HD현대마린솔루션",
+    "sector": "조선",
+    "cap": "대",
+    "closePrice": "174,800",
+    "eff_per_str": "25.0배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PBR 8.8배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "439260": {
+    "name": "대한조선",
+    "sector": "조선",
+    "cap": "중",
+    "closePrice": "37,150",
+    "eff_per_str": "4.8배 (Fwd)",
+    "decision": "[팔아라]",
+    "reason": "PER 4.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "333430": {
+    "name": "일승",
+    "sector": "조선",
+    "cap": "소",
+    "closePrice": "3,050",
+    "eff_per_str": "7.1배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 7.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "329180": {
+    "name": "HD현대중공업",
+    "sector": "조선",
+    "cap": "대",
+    "closePrice": "285,500",
+    "eff_per_str": "9.5배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PER 9.5배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "267250": {
+    "name": "HD현대",
+    "sector": "조선",
+    "cap": "대",
+    "closePrice": "145,100",
+    "eff_per_str": "3.0배 (Fwd)",
+    "decision": "[팔아라]",
+    "reason": "PER 3.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "217590": {
+    "name": "티엠씨",
+    "sector": "조선",
+    "cap": "소",
+    "closePrice": "11,550",
+    "eff_per_str": "139.2배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 139.2배 형성 (PBR 2.4배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "108380": {
+    "name": "대양전기공업",
+    "sector": "조선",
+    "cap": "소",
+    "closePrice": "15,290",
+    "eff_per_str": "5.0배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 5.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "103230": {
+    "name": "에스앤더블류",
+    "sector": "조선",
+    "cap": "소",
+    "closePrice": "1,540",
+    "eff_per_str": "6.9배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 6.9배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "101930": {
+    "name": "인화정공",
+    "sector": "조선",
+    "cap": "소",
+    "closePrice": "6,840",
+    "eff_per_str": "12.7배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 12.7배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "101000": {
+    "name": "KS인더스트리",
+    "sector": "조선",
+    "cap": "소",
+    "closePrice": "993",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "시클리컬 바닥이나 초소형주 재무 부실/자본잠식/한계기업 리스크 점검 필수",
+    "updatedAt": "2026-10-29"
+  },
+  "099410": {
+    "name": "동방선기",
+    "sector": "조선",
+    "cap": "소",
+    "closePrice": "2,525",
+    "eff_per_str": "3.1배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 3.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "096350": {
+    "name": "대창솔루션",
+    "sector": "조선",
+    "cap": "소",
+    "closePrice": "1,652",
+    "eff_per_str": "118.0배 (Trail)",
+    "decision": "[사라]",
+    "reason": "PER 118.0배 형성 (PBR 1.9배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
+    "updatedAt": "2026-10-29"
+  },
+  "092460": {
+    "name": "한라IMS",
+    "sector": "조선",
+    "cap": "소",
+    "closePrice": "14,290",
+    "eff_per_str": "8.6배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 8.6배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "0008Z0": {
+    "name": "에스엔시스",
+    "sector": "조선",
+    "cap": "소",
+    "closePrice": "19,700",
+    "eff_per_str": "10.2배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 10.2배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "082740": {
+    "name": "한화엔진",
+    "sector": "조선",
+    "cap": "중",
+    "closePrice": "33,100",
+    "eff_per_str": "14.8배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PER 14.8배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "077970": {
+    "name": "STX엔진",
+    "sector": "조선",
+    "cap": "중",
+    "closePrice": "16,450",
+    "eff_per_str": "9.8배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 9.8배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "075580": {
+    "name": "세진중공업",
+    "sector": "조선",
+    "cap": "소",
+    "closePrice": "7,390",
+    "eff_per_str": "6.6배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 6.6배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "073010": {
+    "name": "케이에스피",
+    "sector": "조선",
+    "cap": "소",
+    "closePrice": "2,620",
+    "eff_per_str": "13.3배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 13.3배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "071970": {
+    "name": "HD현대마린엔진",
+    "sector": "조선",
+    "cap": "중",
+    "closePrice": "40,700",
+    "eff_per_str": "10.8배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PER 10.8배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "065570": {
+    "name": "삼영이엔씨",
+    "sector": "조선",
+    "cap": "소",
+    "closePrice": "764",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "시클리컬 바닥이나 초소형주 재무 부실/자본잠식/한계기업 리스크 점검 필수",
+    "updatedAt": "2026-10-29"
+  },
+  "054540": {
+    "name": "삼영엠텍",
+    "sector": "조선",
+    "cap": "소",
+    "closePrice": "5,490",
+    "eff_per_str": "4.8배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 4.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "054180": {
+    "name": "메디콕스",
+    "sector": "조선",
+    "cap": "소",
+    "closePrice": "2,295",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "시클리컬 바닥이나 초소형주 재무 부실/자본잠식/한계기업 리스크 점검 필수",
+    "updatedAt": "2026-10-29"
+  },
+  "085310": {
+    "name": "엔케이",
+    "sector": "조선",
+    "cap": "소",
+    "closePrice": "8,600",
+    "eff_per_str": "14.1배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 14.1배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-28"
+  },
+  "042660": {
+    "name": "한화오션",
+    "sector": "조선",
+    "cap": "대",
+    "closePrice": "52,500",
+    "eff_per_str": "8.2배 (Fwd)",
+    "decision": "[팔아라]",
+    "reason": "PER 8.2배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "038010": {
+    "name": "제일테크노스",
+    "sector": "조선",
+    "cap": "소",
+    "closePrice": "5,520",
+    "eff_per_str": "3.8배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 3.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "017960": {
+    "name": "한국카본",
+    "sector": "조선",
+    "cap": "중",
+    "closePrice": "15,790",
+    "eff_per_str": "7.0배 (Fwd)",
+    "decision": "[팔아라]",
+    "reason": "PER 7.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "014940": {
+    "name": "오리엔탈정공",
+    "sector": "조선",
+    "cap": "소",
+    "closePrice": "3,725",
+    "eff_per_str": "8.1배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 8.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "010140": {
+    "name": "삼성중공업",
+    "sector": "조선",
+    "cap": "대",
+    "closePrice": "16,510",
+    "eff_per_str": "15.8배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PER 15.8배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "009540": {
+    "name": "HD한국조선해양",
+    "sector": "조선",
+    "cap": "대",
+    "closePrice": "241,500",
+    "eff_per_str": "4.4배 (Fwd)",
+    "decision": "[팔아라]",
+    "reason": "PER 4.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "003280": {
+    "name": "흥아해운",
+    "sector": "해운",
+    "cap": "소",
+    "closePrice": "1,697",
+    "eff_per_str": "17.3배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 1.5배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "005880": {
+    "name": "대한해운",
+    "sector": "해운",
+    "cap": "중",
+    "closePrice": "1,862",
+    "eff_per_str": "3.2배 (Fwd)",
+    "decision": "[팔아라]",
+    "reason": "PER 3.2배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "011200": {
+    "name": "HMM",
+    "sector": "해운",
+    "cap": "대",
+    "closePrice": "22,150",
+    "eff_per_str": "9.0배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PER 9.0배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "028670": {
+    "name": "팬오션",
+    "sector": "해운",
+    "cap": "대",
+    "closePrice": "5,720",
+    "eff_per_str": "6.2배 (Fwd)",
+    "decision": "[대기]",
+    "reason": "PER 6.2배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "044450": {
+    "name": "KSS해운",
+    "sector": "해운",
+    "cap": "소",
+    "closePrice": "11,760",
+    "eff_per_str": "2.4배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 2.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "054300": {
+    "name": "팬스타엔터프라이즈",
+    "sector": "해운",
+    "cap": "소",
+    "closePrice": "870",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "섹터 전반 호황 국면 속 개별 적자 지속으로 경쟁력 열위",
+    "updatedAt": "2026-10-29"
+  },
+  "067900": {
+    "name": "와이엔텍",
+    "sector": "해운",
+    "cap": "소",
+    "closePrice": "5,680",
+    "eff_per_str": "3.5배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 3.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-29"
+  },
+  "054300": {
+    "name": "팬스타엔터프라이즈",
+    "sector": "해운",
+    "cap": "소",
+    "closePrice": "5,790",
+    "eff_per_str": "25.3배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 2.0배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-29"
+  },
+  "124560": {
+    "name": "태웅로직스",
+    "sector": "해운",
+    "cap": "소",
+    "closePrice": "1,921",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "섹터 전반 호황 국면 속 개별 적자 지속으로 경쟁력 열위",
+    "updatedAt": "2026-10-29"
+  },
+  "109070": {
+    "name": "주성코퍼레이션",
+    "sector": "해운",
+    "cap": "소",
+    "closePrice": "5,770",
+    "eff_per_str": "25.2배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PBR 2.0배로 자산가치 고평가. 시클리컬 침체 바닥이 아닌 성장/테마 프리미엄 국면으로 역발상 매수 제외",
+    "updatedAt": "2026-10-28"
+  },
+  "129260": {
+    "name": "인터지스",
+    "sector": "해운",
+    "cap": "소",
+    "closePrice": "1,765",
+    "eff_per_str": "7.4배 (Trail)",
+    "decision": "[대기]",
+    "reason": "PER 7.4배로 중간 밴드 위치, 추세적 방향성 확인 대기",
+    "updatedAt": "2026-10-29"
+  },
+  "044450": {
+    "name": "KSS해운",
+    "sector": "해운",
+    "cap": "소",
+    "closePrice": "11,720",
+    "eff_per_str": "2.4배 (Trail)",
+    "decision": "[팔아라]",
+    "reason": "PER 2.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
+    "updatedAt": "2026-10-28"
+  },
+  "465770": {
+    "name": "STX그린로지스",
+    "sector": "해운",
+    "cap": "소",
+    "closePrice": "1,889",
+    "eff_per_str": "적자 (N/A)",
+    "decision": "[대기]",
+    "reason": "시클리컬 바닥이나 초소형주 재무 부실/자본잠식/한계기업 리스크 점검 필수",
+    "updatedAt": "2026-10-29"
+  }
+}

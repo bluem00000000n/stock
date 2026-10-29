@@ -1,0 +1,96 @@
+[
+  {
+    "rank": 1,
+    "underlying_ticker": "SOXX",
+    "expression_ticker": "SOXL",
+    "leverage": 3.0,
+    "name": "Direxion Daily Semiconductor Bull 3X",
+    "rotation_score": 89.1,
+    "confidence_score": 95.0,
+    "flow_regime": "STRUCTURAL_ACCUMULATION",
+    "price_flow_regime": "CONFIRMED_ACCUMULATION",
+    "main_score": 86.2,
+    "sub_score": 96.0,
+    "codex_score": 86.2,
+    "consensus": "STRONG_CONSENSUS",
+    "reasons": [
+      "Massive Flow/AUM surge (+25.57%)",
+      "Structural accumulation across 1M, 3M, and 6M horizons",
+      "Golden stack trend (Price > 50DMA > 200DMA)",
+      "Confirmed Accumulation: Dual Price & Institutional Flow expansion",
+      "Alpha Leader: +8.8% vs SPY (1M)"
+    ],
+    "risks": [],
+    "confirmation": [
+      "Dual Price & Flow expansion confirmed (STRUCTURAL_ACCUMULATION)",
+      "Relative Strength Alpha (++8.8% vs SPY)"
+    ],
+    "invalidation": [
+      "Break below 20DMA ($552.77)",
+      "Weekly Net Flow turns negative",
+      "Market VIX surges above 28.0"
+    ]
+  },
+  {
+    "rank": 2,
+    "underlying_ticker": "XLK",
+    "expression_ticker": "TECL",
+    "leverage": 3.0,
+    "name": "Direxion Daily Technology Bull 3X",
+    "rotation_score": 88.6,
+    "confidence_score": 95.0,
+    "flow_regime": "STRUCTURAL_ACCUMULATION",
+    "price_flow_regime": "CONFIRMED_ACCUMULATION",
+    "main_score": 88.7,
+    "sub_score": 88.5,
+    "codex_score": 88.7,
+    "consensus": "STRONG_CONSENSUS",
+    "reasons": [
+      "Massive Flow/AUM surge (+3.14%)",
+      "Structural accumulation across 1M, 3M, and 6M horizons",
+      "Golden stack trend (Price > 50DMA > 200DMA)",
+      "Confirmed Accumulation: Dual Price & Institutional Flow expansion",
+      "Alpha Leader: +5.7% vs SPY (1M)"
+    ],
+    "risks": [],
+    "confirmation": [
+      "Dual Price & Flow expansion confirmed (STRUCTURAL_ACCUMULATION)",
+      "Relative Strength Alpha (++5.7% vs SPY)"
+    ],
+    "invalidation": [
+      "Break below 20DMA ($193.33)",
+      "Weekly Net Flow turns negative",
+      "Market VIX surges above 28.0"
+    ]
+  },
+  {
+    "rank": 3,
+    "underlying_ticker": "COPX",
+    "expression_ticker": "COPX",
+    "leverage": 1.0,
+    "name": "Global X Copper Miners ETF",
+    "rotation_score": 68.6,
+    "confidence_score": 90.0,
+    "flow_regime": "STRUCTURAL_ACCUMULATION",
+    "price_flow_regime": "EARLY_ACCUMULATION",
+    "main_score": 73.2,
+    "sub_score": 58.0,
+    "codex_score": 73.2,
+    "consensus": "MIXED",
+    "reasons": [
+      "Massive Flow/AUM surge (+1.68%)",
+      "Structural accumulation across 1M, 3M, and 6M horizons",
+      "Early Spring: Institutional accumulation while price temporarily depressed"
+    ],
+    "risks": [],
+    "confirmation": [
+      "Dual Price & Flow expansion confirmed (STRUCTURAL_ACCUMULATION)",
+      "Relative Strength Alpha (+-12.9% vs SPY)"
+    ],
+    "invalidation": [
+      "Break below 20DMA ($86.19)",
+      "Weekly Net Flow turns negative",
+      "Market VIX surges above 28.0"
+    ]
+  }
+]

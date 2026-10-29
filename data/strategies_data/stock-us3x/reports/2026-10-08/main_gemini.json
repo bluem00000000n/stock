@@ -1,0 +1,63 @@
+{
+  "agent_name": "MAIN_ANTIGRAVITY_GEMINI",
+  "status": "OK",
+  "current_leaders": [
+    "XLK",
+    "SOXX",
+    "COPX"
+  ],
+  "next_rotation": [
+    "SMH",
+    "RAM",
+    "XOP"
+  ],
+  "risk_regime": "RISK_ON",
+  "sector_scores": {
+    "XLK": 88.7,
+    "XLF": 10.8,
+    "XLV": 30.8,
+    "XLE": 32.8,
+    "XLI": 12.8,
+    "XLY": 13.7,
+    "XLP": 11.3,
+    "XLC": 13.8,
+    "XLU": 13.3,
+    "XLB": 10.3,
+    "XLRE": 13.3,
+    "SMH": 69.2,
+    "SOXX": 86.2,
+    "IWM": 11.9,
+    "KRE": 10.9,
+    "COPX": 73.2,
+    "XHB": 12.8,
+    "XBI": 14.8,
+    "ITA": 11.8,
+    "XOP": 33.3,
+    "GDX": 24.2,
+    "RAM": 67.8
+  },
+  "top3_candidates": [
+    "XLK",
+    "SOXX",
+    "COPX"
+  ],
+  "contradictions": [],
+  "confidence": 88.0,
+  "rationale": "Market Regime: RISK_ON (VIX: 15.08). Capital concentration is actively clustering in XLK (88.7pts), SOXX (86.2pts), COPX (73.2pts). DUSL (Industrials/CapEx) leads the CapEx vs Energy battle, while FAS (Broad Financials) dominates financial liquidity. Spillover dynamic: INDEPENDENT_CONSOLIDATION.",
+  "special_pairs": {
+    "dusl_vs_utsl": {
+      "winner": "DUSL (Industrials/CapEx)",
+      "rationale": "Industrials outperforming (XLI 1M: -3.8% vs XLU: -5.3%) with higher capital flow confirmation."
+    },
+    "fas_vs_dpst": {
+      "winner": "FAS (Broad Financials)",
+      "rationale": "Money center banks & diversified financials displaying greater stability (XLF: -6.2% vs KRE: -7.3%)."
+    },
+    "spillover_chain": {
+      "status": "INDEPENDENT_CONSOLIDATION",
+      "chain": "Semiconductors (SOXL) → Power/CapEx (UTSL/DUSL) → Physical Materials (COPX)",
+      "description": "Subsectors consolidating within individual supply/demand dynamics."
+    }
+  },
+  "latency_sec": 0.0
+}

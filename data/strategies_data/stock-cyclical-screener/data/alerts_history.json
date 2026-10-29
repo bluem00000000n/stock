@@ -1,0 +1,109 @@
+[
+  {
+    "date": "2026-10-21",
+    "new_buys_count": 0,
+    "new_sells_count": 1,
+    "new_buys": [],
+    "new_sells": [
+      "서연"
+    ],
+    "total_buys": 122,
+    "total_sells": 133
+  },
+  {
+    "date": "2026-10-22",
+    "new_buys_count": 3,
+    "new_sells_count": 3,
+    "new_buys": [
+      "에프에스티",
+      "엘케이켐",
+      "켐트로스"
+    ],
+    "new_sells": [
+      "송원산업",
+      "세아홀딩스",
+      "한라IMS"
+    ],
+    "total_buys": 124,
+    "total_sells": 134
+  },
+  {
+    "date": "2026-10-23",
+    "new_buys_count": 6,
+    "new_sells_count": 4,
+    "new_buys": [
+      "HLB이노베이션",
+      "유니테스트",
+      "제너셈",
+      "덕산테코피아",
+      "세미파이브",
+      "티엠씨"
+    ],
+    "new_sells": [
+      "세방전지",
+      "명신산업",
+      "OCI",
+      "한화오션"
+    ],
+    "total_buys": 125,
+    "total_sells": 137
+  },
+  {
+    "date": "2026-10-26",
+    "new_buys_count": 2,
+    "new_sells_count": 1,
+    "new_buys": [
+      "큐알티",
+      "상보"
+    ],
+    "new_sells": [
+      "삼영무역"
+    ],
+    "total_buys": 122,
+    "total_sells": 141
+  },
+  {
+    "date": "2026-10-27",
+    "new_buys_count": 0,
+    "new_sells_count": 1,
+    "new_buys": [],
+    "new_sells": [
+      "프로텍"
+    ],
+    "total_buys": 121,
+    "total_sells": 141
+  },
+  {
+    "date": "2026-10-28",
+    "new_buys_count": 6,
+    "new_sells_count": 0,
+    "new_buys": [
+      "티이엠씨",
+      "덕산하이메탈",
+      "싸이닉솔루션",
+      "한일단조",
+      "상보",
+      "동국제강"
+    ],
+    "new_sells": [],
+    "total_buys": 123,
+    "total_sells": 138
+  },
+  {
+    "date": "2026-10-29",
+    "new_buys_count": 5,
+    "new_sells_count": 1,
+    "new_buys": [
+      "덕산하이메탈",
+      "싸이닉솔루션",
+      "티이엠씨",
+      "한일단조",
+      "동국제강"
+    ],
+    "new_sells": [
+      "삼영무역"
+    ],
+    "total_buys": 125,
+    "total_sells": 138
+  }
+]

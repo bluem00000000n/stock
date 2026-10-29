@@ -1,0 +1,38 @@
+[
+  {
+    "rank": 1,
+    "ticker": "TECL",
+    "name": "Direxion Daily Technology Bull 3X",
+    "leverage": 3.0,
+    "score": 100.0,
+    "current_state": "WATCH/ACCUMULATE",
+    "entry_condition": "High suitability score. Prime candidate for next cycle rotation.",
+    "dca_condition": "Split into 20 equal tranches. Execute 0.5 round LOC at avg_price, 0.5 round LOC at avg*(1+Star%).",
+    "risk": "Quarter mode triggered if 19 < T < 20 (forces 25% MOC sell, halts new buys).",
+    "reason": "Score 100.0/100: Turnover=25, EntryPos=20, Mom=15, Regime=RISK_ON"
+  },
+  {
+    "rank": 2,
+    "ticker": "TQQQ",
+    "name": "ProShares UltraPro QQQ",
+    "leverage": 3.0,
+    "score": 94.5,
+    "current_state": "WATCH/ACCUMULATE",
+    "entry_condition": "High suitability score. Prime candidate for next cycle rotation.",
+    "dca_condition": "Split into 20 equal tranches. Execute 0.5 round LOC at avg_price, 0.5 round LOC at avg*(1+Star%).",
+    "risk": "Quarter mode triggered if 19 < T < 20 (forces 25% MOC sell, halts new buys).",
+    "reason": "Score 94.5/100: Turnover=25, EntryPos=20, Mom=11, Regime=RISK_ON"
+  },
+  {
+    "rank": 3,
+    "ticker": "DPST",
+    "name": "Direxion Daily Regional Banks Bull 3X",
+    "leverage": 3.0,
+    "score": 88.0,
+    "current_state": "WATCH/ACCUMULATE",
+    "entry_condition": "High suitability score. Prime candidate for next cycle rotation.",
+    "dca_condition": "Split into 20 equal tranches. Execute 0.5 round LOC at avg_price, 0.5 round LOC at avg*(1+Star%).",
+    "risk": "Quarter mode triggered if 19 < T < 20 (forces 25% MOC sell, halts new buys).",
+    "reason": "Score 88.0/100: Turnover=25, EntryPos=20, Mom=7, Regime=RISK_ON"
+  }
+]

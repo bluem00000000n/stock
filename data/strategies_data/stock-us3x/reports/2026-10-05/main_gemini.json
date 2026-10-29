@@ -1,0 +1,63 @@
+{
+  "agent_name": "MAIN_ANTIGRAVITY_GEMINI",
+  "status": "OK",
+  "current_leaders": [
+    "XLK",
+    "SOXX",
+    "RAM"
+  ],
+  "next_rotation": [
+    "SMH",
+    "COPX",
+    "XOP"
+  ],
+  "risk_regime": "RISK_ON",
+  "sector_scores": {
+    "XLK": 89.7,
+    "XLF": 10.3,
+    "XLV": 17.3,
+    "XLE": 32.3,
+    "XLI": 11.3,
+    "XLY": 12.8,
+    "XLP": 10.8,
+    "XLC": 12.9,
+    "XLU": 13.3,
+    "XLB": 11.4,
+    "XLRE": 11.4,
+    "SMH": 72.2,
+    "SOXX": 86.2,
+    "IWM": 13.9,
+    "KRE": 11.4,
+    "COPX": 61.7,
+    "XHB": 12.8,
+    "XBI": 19.3,
+    "ITA": 11.8,
+    "XOP": 32.8,
+    "GDX": 22.2,
+    "RAM": 81.3
+  },
+  "top3_candidates": [
+    "XLK",
+    "SOXX",
+    "RAM"
+  ],
+  "contradictions": [],
+  "confidence": 88.0,
+  "rationale": "Market Regime: RISK_ON (VIX: 16.29). Capital concentration is actively clustering in XLK (89.7pts), SOXX (86.2pts), RAM (81.3pts). DUSL (Industrials/CapEx) leads the CapEx vs Energy battle, while DPST (Regional Banks) dominates financial liquidity. Spillover dynamic: INDEPENDENT_CONSOLIDATION.",
+  "special_pairs": {
+    "dusl_vs_utsl": {
+      "winner": "DUSL (Industrials/CapEx)",
+      "rationale": "Industrials outperforming (XLI 1M: -1.6% vs XLU: -6.7%) with higher capital flow confirmation."
+    },
+    "fas_vs_dpst": {
+      "winner": "DPST (Regional Banks)",
+      "rationale": "Regional banking high-beta catch-up rally underway (KRE: -4.7% vs XLF: -7.2%)."
+    },
+    "spillover_chain": {
+      "status": "INDEPENDENT_CONSOLIDATION",
+      "chain": "Semiconductors (SOXL) → Power/CapEx (UTSL/DUSL) → Physical Materials (COPX)",
+      "description": "Subsectors consolidating within individual supply/demand dynamics."
+    }
+  },
+  "latency_sec": 0.0
+}

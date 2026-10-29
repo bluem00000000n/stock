@@ -1,0 +1,28 @@
+{
+  "last_date": "2026-10-02",
+  "prev_tickers": [
+    "AXTI",
+    "SNDK",
+    "SLS",
+    "PRAX",
+    "AAOI",
+    "MU",
+    "WDC",
+    "VICR",
+    "MRNA",
+    "ICHR"
+  ],
+  "curr_tickers": [
+    "SNDK",
+    "AAOI",
+    "VICR",
+    "MU",
+    "MRNA",
+    "LITE",
+    "WDC",
+    "STX",
+    "CIEN",
+    "INTC"
+  ],
+  "last_sent_date": "2026-10-06"
+}

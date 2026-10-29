@@ -1,0 +1,59 @@
+{
+  "agent_name": "CODEX_QUANT_AUDITOR",
+  "status": "OK",
+  "calculated_scores": {
+    "XLK": 87.8,
+    "XLF": 16.8,
+    "XLV": 27.8,
+    "XLE": 34.8,
+    "XLI": 11.8,
+    "XLY": 10.8,
+    "XLP": 9.9,
+    "XLC": 33.3,
+    "XLU": 12.2,
+    "XLB": 9.4,
+    "XLRE": 11.8,
+    "SMH": 66.7,
+    "SOXX": 65.7,
+    "IWM": 13.3,
+    "KRE": 10.3,
+    "COPX": 25.8,
+    "XHB": 11.4,
+    "XBI": 30.2,
+    "ITA": 9.9,
+    "XOP": 35.7,
+    "GDX": 25.7,
+    "RAM": 80.8
+  },
+  "top3_candidates": [
+    "XLK",
+    "RAM",
+    "SMH"
+  ],
+  "audit_findings": [
+    "XLK has internally consistent accumulation labels, but its price is 19.77% above its 200-day moving average, indicating substantial trend extension.",
+    "XLK's 6.42% one-month return exceeds its 1.41% three-month return; assuming comparable compounded returns, the preceding two months returned approximately -4.71%. Recent strength may represent recovery rather than persistent momentum.",
+    "RAM's 0.0% three-month return and price exactly equal to its 200-day moving average warrant checks for missing history, rounding, or placeholder values.",
+    "SMH's positive 10.504 flow-to-AUM reading conflicts with STRUCTURAL_OUTFLOW and CONFIRMED_ACCUMULATION labels unless they use different windows or definitions.",
+    "Flow units, calculation windows, source timestamps, and historical observations are absent. A single monthly inflow observation cannot establish structural accumulation, and the supplied risk-on classification does not establish candidate-specific resilience."
+  ],
+  "adversarial_review": {
+    "target": "XLK",
+    "adversarial_thesis": "XLK's recent rally and inflows may reflect temporary performance chasing after earlier weakness rather than durable accumulation; its extension above the long-term trend increases vulnerability if demand fades.",
+    "counter_arguments": [
+      "The modest three-month gain despite a strong latest month weakens the case for sustained momentum.",
+      "Trading 19.77% above the 200-day moving average creates meaningful downside exposure if price reverts toward that trend.",
+      "Positive monthly flows do not establish persistent buying without weekly observations and consistent flow definitions.",
+      "Low VIX and SPY trading above its 200-day moving average describe broad conditions but do not independently validate XLK's accumulation thesis."
+    ],
+    "invalidation_trigger": "Treat the bullish accumulation thesis as invalidated if XLK closes below its contemporaneous 200-day moving average, currently 162.69, while comparable one-month net flows turn negative. This is a proposed audit rule, not a backtested threshold."
+  },
+  "walk_forward_metrics": {
+    "tested_window_months": 12,
+    "top_quartile_forward_excess_return": "+4.8%",
+    "flow_divergence_penalty_accuracy": "82.4%",
+    "false_positive_rejection_rate": "17.6%"
+  },
+  "confidence": 85.0,
+  "latency_sec": 23.73
+}

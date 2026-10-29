@@ -1,0 +1,99 @@
+[
+  {
+    "rank": 1,
+    "underlying_ticker": "ERX",
+    "expression_ticker": "ERX",
+    "leverage": 1.0,
+    "name": "ERX Direct",
+    "rotation_score": 96.2,
+    "confidence_score": 95.0,
+    "flow_regime": "STRUCTURAL_ACCUMULATION",
+    "price_flow_regime": "CONFIRMED_ACCUMULATION",
+    "main_score": 96.2,
+    "sub_score": 96.2,
+    "codex_score": 96.2,
+    "consensus": "STRONG_CONSENSUS",
+    "reasons": [
+      "Massive Flow/AUM surge (+3.93%)",
+      "Structural accumulation across 1M, 3M, and 6M horizons",
+      "Golden stack trend (Price > 50DMA > 200DMA)",
+      "Confirmed Accumulation: Dual Price & Institutional Flow expansion",
+      "Alpha Leader: +22.8% vs SPY (1M)",
+      "Volume surge (1.4x 20DMA)"
+    ],
+    "risks": [],
+    "confirmation": [
+      "Dual Price & Flow expansion confirmed (STRUCTURAL_ACCUMULATION)",
+      "Relative Strength Alpha (++22.8% vs SPY)"
+    ],
+    "invalidation": [
+      "Break below 20DMA ($113.24)",
+      "Weekly Net Flow turns negative",
+      "Market VIX surges above 28.0"
+    ]
+  },
+  {
+    "rank": 2,
+    "underlying_ticker": "XOP",
+    "expression_ticker": "GUSH",
+    "leverage": 2.0,
+    "name": "Direxion Daily S&P Oil & Gas E&P Bull 2X",
+    "rotation_score": 92.7,
+    "confidence_score": 95.0,
+    "flow_regime": "STRUCTURAL_ACCUMULATION",
+    "price_flow_regime": "CONFIRMED_ACCUMULATION",
+    "main_score": 92.7,
+    "sub_score": 92.7,
+    "codex_score": 92.7,
+    "consensus": "STRONG_CONSENSUS",
+    "reasons": [
+      "Massive Flow/AUM surge (+27.70%)",
+      "Structural accumulation across 1M, 3M, and 6M horizons",
+      "Golden stack trend (Price > 50DMA > 200DMA)",
+      "Confirmed Accumulation: Dual Price & Institutional Flow expansion",
+      "Alpha Leader: +10.5% vs SPY (1M)"
+    ],
+    "risks": [],
+    "confirmation": [
+      "Dual Price & Flow expansion confirmed (STRUCTURAL_ACCUMULATION)",
+      "Relative Strength Alpha (++10.5% vs SPY)"
+    ],
+    "invalidation": [
+      "Break below 20DMA ($192.04)",
+      "Weekly Net Flow turns negative",
+      "Market VIX surges above 28.0"
+    ]
+  },
+  {
+    "rank": 3,
+    "underlying_ticker": "XLV",
+    "expression_ticker": "CURE",
+    "leverage": 3.0,
+    "name": "Direxion Daily Healthcare Bull 3X",
+    "rotation_score": 88.7,
+    "confidence_score": 95.0,
+    "flow_regime": "STRUCTURAL_ACCUMULATION",
+    "price_flow_regime": "CONFIRMED_ACCUMULATION",
+    "main_score": 88.7,
+    "sub_score": 88.7,
+    "codex_score": 88.7,
+    "consensus": "STRONG_CONSENSUS",
+    "reasons": [
+      "Massive Flow/AUM surge (+62.27%)",
+      "Structural accumulation across 1M, 3M, and 6M horizons",
+      "Golden stack trend (Price > 50DMA > 200DMA)",
+      "Confirmed Accumulation: Dual Price & Institutional Flow expansion",
+      "Alpha Leader: +6.5% vs SPY (1M)"
+    ],
+    "risks": [],
+    "confirmation": [
+      "Dual Price & Flow expansion confirmed (STRUCTURAL_ACCUMULATION)",
+      "Relative Strength Alpha (++6.5% vs SPY)"
+    ],
+    "invalidation": [
+      "Break below 20DMA ($172.48)",
+      "Weekly Net Flow turns negative",
+      "Market VIX surges above 28.0"
+    ]
+  }
+]

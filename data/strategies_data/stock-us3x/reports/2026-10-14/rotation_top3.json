@@ -1,0 +1,98 @@
+[
+  {
+    "rank": 1,
+    "underlying_ticker": "TECL",
+    "expression_ticker": "TECL",
+    "leverage": 1.0,
+    "name": "TECL Direct",
+    "rotation_score": 93.2,
+    "confidence_score": 95.0,
+    "flow_regime": "STRUCTURAL_ACCUMULATION",
+    "price_flow_regime": "CONFIRMED_ACCUMULATION",
+    "main_score": 93.2,
+    "sub_score": 93.2,
+    "codex_score": 93.2,
+    "consensus": "STRONG_CONSENSUS",
+    "reasons": [
+      "Massive Flow/AUM surge (+5.98%)",
+      "Structural accumulation across 1M, 3M, and 6M horizons",
+      "Golden stack trend (Price > 50DMA > 200DMA)",
+      "Confirmed Accumulation: Dual Price & Institutional Flow expansion",
+      "Alpha Leader: +17.7% vs SPY (1M)"
+    ],
+    "risks": [],
+    "confirmation": [
+      "Dual Price & Flow expansion confirmed (STRUCTURAL_ACCUMULATION)",
+      "Relative Strength Alpha (++17.7% vs SPY)"
+    ],
+    "invalidation": [
+      "Break below 20DMA ($232.51)",
+      "Weekly Net Flow turns negative",
+      "Market VIX surges above 28.0"
+    ]
+  },
+  {
+    "rank": 2,
+    "underlying_ticker": "XLE",
+    "expression_ticker": "ERX",
+    "leverage": 2.0,
+    "name": "Direxion Daily Energy Bull 2X",
+    "rotation_score": 87.8,
+    "confidence_score": 95.0,
+    "flow_regime": "STRUCTURAL_ACCUMULATION",
+    "price_flow_regime": "CONFIRMED_ACCUMULATION",
+    "main_score": 87.8,
+    "sub_score": 87.8,
+    "codex_score": 87.8,
+    "consensus": "STRONG_CONSENSUS",
+    "reasons": [
+      "Massive Flow/AUM surge (+47.72%)",
+      "Structural accumulation across 1M, 3M, and 6M horizons",
+      "Golden stack trend (Price > 50DMA > 200DMA)",
+      "Confirmed Accumulation: Dual Price & Institutional Flow expansion"
+    ],
+    "risks": [],
+    "confirmation": [
+      "Dual Price & Flow expansion confirmed (STRUCTURAL_ACCUMULATION)",
+      "Relative Strength Alpha (++1.9% vs SPY)"
+    ],
+    "invalidation": [
+      "Break below 20DMA ($63.44)",
+      "Weekly Net Flow turns negative",
+      "Market VIX surges above 28.0"
+    ]
+  },
+  {
+    "rank": 3,
+    "underlying_ticker": "SOXX",
+    "expression_ticker": "SOXL",
+    "leverage": 3.0,
+    "name": "Direxion Daily Semiconductor Bull 3X",
+    "rotation_score": 85.7,
+    "confidence_score": 95.0,
+    "flow_regime": "STRUCTURAL_ACCUMULATION",
+    "price_flow_regime": "CONFIRMED_ACCUMULATION",
+    "main_score": 85.7,
+    "sub_score": 85.7,
+    "codex_score": 85.7,
+    "consensus": "STRONG_CONSENSUS",
+    "reasons": [
+      "Massive Flow/AUM surge (+230.21%)",
+      "Structural accumulation across 1M, 3M, and 6M horizons",
+      "Golden stack trend (Price > 50DMA > 200DMA)",
+      "Confirmed Accumulation: Dual Price & Institutional Flow expansion",
+      "Alpha Leader: +7.1% vs SPY (1M)",
+      "Volume surge (1.3x 20DMA)"
+    ],
+    "risks": [],
+    "confirmation": [
+      "Dual Price & Flow expansion confirmed (STRUCTURAL_ACCUMULATION)",
+      "Relative Strength Alpha (++7.1% vs SPY)"
+    ],
+    "invalidation": [
+      "Break below 20DMA ($561.31)",
+      "Weekly Net Flow turns negative",
+      "Market VIX surges above 28.0"
+    ]
+  }
+]

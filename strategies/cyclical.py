@@ -15,7 +15,7 @@ from typing import List, Dict, Any
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from core.market_data import fetch_krx_price
 
-CYC_DATA_DIR = Path("/Users/tothemoon/stock-cyclical-screener/data")
+CYC_DATA_DIR = Path(__file__).resolve().parent.parent / "data" / "strategies_data" / "stock-cyclical-screener" / "data"
 
 
 def run_analysis() -> List[Dict[str, Any]]:

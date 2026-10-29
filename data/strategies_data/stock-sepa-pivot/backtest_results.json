@@ -1,0 +1,50 @@
+[
+  {
+    "name": "1. [추천] 15:10 종가매수 (일시불 + -6% 손절 + 20일선 트레일링)",
+    "avg_return": 18.4,
+    "avg_mdd": 20.5,
+    "win_rate": 42.2,
+    "profit_factor": 1.56,
+    "payoff_ratio": 3.64
+  },
+  {
+    "name": "2. 장중 돌파 매수 (일시불 + -6% 손절 + 20일선 트레일링)",
+    "avg_return": 24.3,
+    "avg_mdd": 24.0,
+    "win_rate": 42.8,
+    "profit_factor": 2.3,
+    "payoff_ratio": 5.19
+  },
+  {
+    "name": "3. 피라미딩 적립식 (15:10 종가매수 + 수익 시 불타기 + -6% 손절)",
+    "avg_return": 29.6,
+    "avg_mdd": 18.1,
+    "win_rate": 30.9,
+    "profit_factor": 1.98,
+    "payoff_ratio": 3.26
+  },
+  {
+    "name": "4. 눌림목 매수 (Pullback 확인 + -6% 손절 + 20일선 트레일링)",
+    "avg_return": 0.0,
+    "avg_mdd": 0.0,
+    "win_rate": 0.0,
+    "profit_factor": 0.0,
+    "payoff_ratio": 0.0
+  },
+  {
+    "name": "5. 느슨한 손절 (-15% 손절 + 50일선 장기 트레일링)",
+    "avg_return": 31.1,
+    "avg_mdd": 30.6,
+    "win_rate": 49.3,
+    "profit_factor": 11.88,
+    "payoff_ratio": 2.37
+  },
+  {
+    "name": "6. 무손절 존버 (손절 없음 / Buy & Hold)",
+    "avg_return": 36.8,
+    "avg_mdd": 31.6,
+    "win_rate": 37.2,
+    "profit_factor": 11.36,
+    "payoff_ratio": 1.88
+  }
+]

@@ -1,0 +1,63 @@
+{
+  "agent_name": "MAIN_ANTIGRAVITY_GEMINI",
+  "status": "OK",
+  "current_leaders": [
+    "XLE",
+    "XLP",
+    "XLV"
+  ],
+  "next_rotation": [
+    "XLK",
+    "GDX",
+    "XLY"
+  ],
+  "risk_regime": "RISK_ON",
+  "sector_scores": {
+    "XLK": 72.2,
+    "XLF": 11.8,
+    "XLV": 81.2,
+    "XLE": 91.8,
+    "XLI": 56.2,
+    "XLY": 69.2,
+    "XLP": 82.7,
+    "XLC": 14.8,
+    "XLU": 67.7,
+    "XLB": 68.7,
+    "XLRE": 10.8,
+    "SMH": 17.2,
+    "SOXX": 46.7,
+    "IWM": 9.9,
+    "KRE": 10.3,
+    "COPX": 66.6,
+    "XHB": 18.2,
+    "XBI": 14.8,
+    "ITA": 12.3,
+    "XOP": 41.3,
+    "GDX": 71.7,
+    "RAM": 56.8
+  },
+  "top3_candidates": [
+    "XLE",
+    "XLP",
+    "XLV"
+  ],
+  "contradictions": [],
+  "confidence": 88.0,
+  "rationale": "Market Regime: RISK_ON (VIX: 18.6). Capital concentration is actively clustering in XLE (91.8pts), XLP (82.7pts), XLV (81.2pts). UTSL (Utilities/AI Power Infrastructure) leads the CapEx vs Energy battle, while FAS (Broad Financials) dominates financial liquidity. Spillover dynamic: ACTIVE_DIFFUSION.",
+  "special_pairs": {
+    "dusl_vs_utsl": {
+      "winner": "UTSL (Utilities/AI Power Infrastructure)",
+      "rationale": "Utilities leading (XLU 1M: +0.6% vs XLI: -1.8%) driven by power grid and data center energy demand."
+    },
+    "fas_vs_dpst": {
+      "winner": "FAS (Broad Financials)",
+      "rationale": "Money center banks & diversified financials displaying greater stability (XLF: -1.4% vs KRE: -4.8%)."
+    },
+    "spillover_chain": {
+      "status": "ACTIVE_DIFFUSION",
+      "chain": "Semiconductors (SOXL) → Power/CapEx (UTSL/DUSL) → Physical Materials (COPX)",
+      "description": "Semiconductor capital rotation diffusing into physical infrastructure (CapEx/Power) and physical raw materials."
+    }
+  },
+  "latency_sec": 0.0
+}

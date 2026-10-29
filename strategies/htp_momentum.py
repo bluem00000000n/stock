@@ -11,7 +11,7 @@ import json
 from pathlib import Path
 from typing import List, Dict, Any
 
-HTP_DIR = Path("/Users/tothemoon/stock-htp-top10")
+HTP_DIR = Path(__file__).resolve().parent.parent / "data" / "strategies_data" / "stock-htp-top10"
 
 
 def run_analysis() -> List[Dict[str, Any]]:

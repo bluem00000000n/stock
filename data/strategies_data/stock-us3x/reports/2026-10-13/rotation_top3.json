@@ -1,0 +1,96 @@
+[
+  {
+    "rank": 1,
+    "underlying_ticker": "TECL",
+    "expression_ticker": "TECL",
+    "leverage": 1.0,
+    "name": "TECL Direct",
+    "rotation_score": 93.2,
+    "confidence_score": 95.0,
+    "flow_regime": "STRUCTURAL_ACCUMULATION",
+    "price_flow_regime": "CONFIRMED_ACCUMULATION",
+    "main_score": 93.2,
+    "sub_score": 93.2,
+    "codex_score": 93.2,
+    "consensus": "STRONG_CONSENSUS",
+    "reasons": [
+      "Massive Flow/AUM surge (+4.75%)",
+      "Structural accumulation across 1M, 3M, and 6M horizons",
+      "Golden stack trend (Price > 50DMA > 200DMA)",
+      "Confirmed Accumulation: Dual Price & Institutional Flow expansion",
+      "Alpha Leader: +11.4% vs SPY (1M)"
+    ],
+    "risks": [],
+    "confirmation": [
+      "Dual Price & Flow expansion confirmed (STRUCTURAL_ACCUMULATION)",
+      "Relative Strength Alpha (++11.4% vs SPY)"
+    ],
+    "invalidation": [
+      "Break below 20DMA ($230.53)",
+      "Weekly Net Flow turns negative",
+      "Market VIX surges above 28.0"
+    ]
+  },
+  {
+    "rank": 2,
+    "underlying_ticker": "XLV",
+    "expression_ticker": "CURE",
+    "leverage": 3.0,
+    "name": "Direxion Daily Healthcare Bull 3X",
+    "rotation_score": 81.7,
+    "confidence_score": 95.0,
+    "flow_regime": "EARLY_ROTATION",
+    "price_flow_regime": "CONFIRMED_ACCUMULATION",
+    "main_score": 81.7,
+    "sub_score": 81.7,
+    "codex_score": 81.7,
+    "consensus": "STRONG_CONSENSUS",
+    "reasons": [
+      "Massive Flow/AUM surge (+65.01%)",
+      "Early rotation breakout: 1M & 3M positive against 6M base",
+      "Golden stack trend (Price > 50DMA > 200DMA)",
+      "Confirmed Accumulation: Dual Price & Institutional Flow expansion"
+    ],
+    "risks": [],
+    "confirmation": [
+      "Dual Price & Flow expansion confirmed (EARLY_ROTATION)",
+      "Relative Strength Alpha (++2.2% vs SPY)"
+    ],
+    "invalidation": [
+      "Break below 20DMA ($168.90)",
+      "Weekly Net Flow turns negative",
+      "Market VIX surges above 28.0"
+    ]
+  },
+  {
+    "rank": 3,
+    "underlying_ticker": "GDX",
+    "expression_ticker": "NUGT",
+    "leverage": 2.0,
+    "name": "Direxion Daily Gold Miners Bull 2X",
+    "rotation_score": 73.1,
+    "confidence_score": 90.0,
+    "flow_regime": "EARLY_ROTATION",
+    "price_flow_regime": "EARLY_ACCUMULATION",
+    "main_score": 73.1,
+    "sub_score": 73.1,
+    "codex_score": 73.1,
+    "consensus": "CONSENSUS",
+    "reasons": [
+      "Massive Flow/AUM surge (+67.76%)",
+      "Early rotation breakout: 1M & 3M positive against 6M base",
+      "High flow persistence (71% positive accumulation days)",
+      "Early Spring: Institutional accumulation while price temporarily depressed"
+    ],
+    "risks": [],
+    "confirmation": [
+      "Dual Price & Flow expansion confirmed (EARLY_ROTATION)",
+      "Relative Strength Alpha (+-10.6% vs SPY)"
+    ],
+    "invalidation": [
+      "Break below 20DMA ($90.71)",
+      "Weekly Net Flow turns negative",
+      "Market VIX surges above 28.0"
+    ]
+  }
+]

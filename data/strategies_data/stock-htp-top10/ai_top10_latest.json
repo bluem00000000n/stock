@@ -1,0 +1,147 @@
+{
+  "large_cap_top10": [
+    {
+      "rank": 1,
+      "ticker": "NVDA",
+      "name": "NVIDIA Corporation",
+      "sector": "Information Technology",
+      "reason": "52주 최고가 대비 낙폭이 극히 제한적이며 200일 이평선 지지력이 매우 강함. AI 가속기 시장 독점으로 실적 가속도(EPS 증가율)와 기관 순매수세가 HTP 모멘텀 최상위 달성."
+    },
+    {
+      "rank": 2,
+      "ticker": "LLY",
+      "name": "Eli Lilly and Company",
+      "sector": "Healthcare",
+      "reason": "마운자로/젭바운드 수요 폭발로 펀더멘털 성장성이 가속화됨. 추세적 우상향 곡선을 그리며 52주 고점 형성 후 이탈이 적어 강한 HTP 모멘텀 점수를 기록."
+    },
+    {
+      "rank": 3,
+      "ticker": "META",
+      "name": "Meta Platforms, Inc.",
+      "sector": "Communication Services",
+      "reason": "AI 기반 광고 효율화와 비용 절감 구조 개편으로 EPS 성장률 폭발. 200일선 상단에서 높은 상승 탄력을 유지하며 수급 안정성이 우수함."
+    },
+    {
+      "rank": 4,
+      "ticker": "AVGO",
+      "name": "Broadcom Inc.",
+      "sector": "Information Technology",
+      "reason": "커스텀 AI 칩 및 네트워킹 장비 수주 증가로 실적 모멘텀 강화. 주가 변동성 대비 high/start 비율이 우수하며 주요 이평선 지지력이 탁월함."
+    },
+    {
+      "rank": 5,
+      "ticker": "PLTR",
+      "name": "Palantir Technologies Inc.",
+      "sector": "Information Technology",
+      "reason": "AIP 플랫폼 도입 확대로 상업 부문 매출 가속화. 최근 S&P 500 편입과 함께 강력한 기관 수급 유입 및 높은 고점 경신 모멘텀 보유."
+    },
+    {
+      "rank": 6,
+      "ticker": "GE",
+      "name": "GE Aerospace",
+      "sector": "Industrials",
+      "reason": "분적 이후 항공 엔진 및 애프터마켓 수요 호조로 펀더멘털 대폭 개선. 주가가 200일선을 지속 상회하며 고점 부근에서 강력한 지지선 형성."
+    },
+    {
+      "rank": 7,
+      "ticker": "VRT",
+      "name": "Vertiv Holdings Co",
+      "sector": "Industrials",
+      "reason": "AI 데이터센터 액체 냉각 솔루션 글로벌 1위 기업. 수주 잔고와 매출 가속도가 매분기 경신되며 HTP 스코어 상위권 유지."
+    },
+    {
+      "rank": 8,
+      "ticker": "ANET",
+      "name": "Arista Networks, Inc.",
+      "sector": "Information Technology",
+      "reason": "클라우드 및 AI 데이터센터용 고성능 스위치 시장 점유율 확대. 견고한 마진율과 지속적인 고점 경신으로 손실 방어 및 추세 모멘텀 탁월."
+    },
+    {
+      "rank": 9,
+      "ticker": "COST",
+      "name": "Costco Wholesale Corporation",
+      "sector": "Consumer Staples",
+      "reason": "경기 변동과 무관한 회원제 기반의 강한 실적 펀더멘털. low-volatility 상승 추세를 그리며 200일선 지지 기반 지속적 52주 고점 갱신."
+    },
+    {
+      "rank": 10,
+      "ticker": "NFLX",
+      "name": "Netflix, Inc.",
+      "sector": "Communication Services",
+      "reason": "계정 공유 유료화 및 광고 요금제 안착으로 가입자 증가세 가속화. 최고가 대비 조정 폭이 작고 수급 흐름이 견고함."
+    }
+  ],
+  "russell2000_top10": [
+    {
+      "rank": 1,
+      "ticker": "POWL",
+      "name": "Powell Industries Inc.",
+      "sector": "Industrials",
+      "reason": "전력망 및 데이터센터 장비 수요 폭발로 EPS 가속도가 매우 가파름. 52주 고점 대비 낙폭이 5% 미만으로 HTP 모멘텀 스코어 상위 0.1% 유지 중이며 200일 이동평균선 상단에서 강력한 기관 순매수 유입."
+    },
+    {
+      "rank": 2,
+      "ticker": "MOD",
+      "name": "Modine Manufacturing Co.",
+      "sector": "Industrials",
+      "reason": "AI 데이터센터 열관리(Cooling) 솔루션 모멘텀으로 P_high/P_start 비율이 러셀 2000 최고 수준. 200일선 지지 기반 견조한 정배열 흐름과 지속적인 어닝 서프라이즈 연출."
+    },
+    {
+      "rank": 3,
+      "ticker": "TMDX",
+      "name": "TransMedics Group Inc.",
+      "sector": "Healthcare",
+      "reason": "장기 이식 시장 독점력과 자체 물류 항공망 확보로 매출 및 이익 가속도가 기하급수적 상승. 기술적 눌림목 시 200일선 강력 지지 후 52주 신고가 재돌파 시도."
+    },
+    {
+      "rank": 4,
+      "ticker": "ROOT",
+      "name": "Root Inc.",
+      "sector": "Financials",
+      "reason": "AI 기반 머신러닝 언더라이팅으로 폭발적인 흑자 전환 달성. 형성기간 내 가파른 상승률을 기록하며 거래량이 폭증하는 전형적인 수급 우위 HTP 모멘텀 주도주."
+    },
+    {
+      "rank": 5,
+      "ticker": "SKWD",
+      "name": "Skyward Specialty Insurance Group Inc.",
+      "sector": "Financials",
+      "reason": "특수 보험 분야에서의 뛰어난 언더라이팅 수익성과 높은 ROE 기록. 지수 조정기에도 52주 고점 부근에서 가격 방어력이 탁월하며 헤지펀드 기관 수급 지속 유입."
+    },
+    {
+      "rank": 6,
+      "ticker": "SFM",
+      "name": "Sprouts Farmers Market Inc.",
+      "sector": "Consumer Staples",
+      "reason": "경기 방어주 특성과 자체 브랜드(PB) 매출 확대로 실적 가속화 달성. 소매 유통 섹터 내 압도적인 상대강도(RS)와 200일선 우상향 정배열 지속."
+    },
+    {
+      "rank": 7,
+      "ticker": "SMR",
+      "name": "NuScale Power Corp.",
+      "sector": "Energy",
+      "reason": "소형모듈원자로(SMR) 섹터의 대장주로 빅테크 전력 계약 모멘텀 수혜. 52주 Formation Period 내 최고가 상승 폭(P_high/P_start)이 극대화된 고변동성 리딩 퀀트 종목."
+    },
+    {
+      "rank": 8,
+      "ticker": "CVNA",
+      "name": "Carvana Co.",
+      "sector": "Consumer Discretionary",
+      "reason": "압도적인 턴어라운드 및 단위당 GPU 이익 개선으로 시장 예상을 지속 상회. 200일선 지지와 함께 52주 고점 갱신이 진행되는 강력한 수급 유입주."
+    },
+    {
+      "rank": 9,
+      "ticker": "SG",
+      "name": "Sweetgreen Inc.",
+      "sector": "Consumer Discretionary",
+      "reason": "로봇 자동화 매장(Infinite Kitchen) 확대를 통한 마진율 상승 및 매출 성장 가속화. 지속적인 52주 신고가 경신 패턴을 보이며 하방 방어력 우수."
+    },
+    {
+      "rank": 10,
+      "ticker": "CLSK",
+      "name": "CleanSpark Inc.",
+      "sector": "Financials",
+      "reason": "비트코인 채굴 효율성 최고 수준 유지로 가상자산 상승 모멘텀을 주가에 가장 강하게 반영. 200일선 상단에서 높은 펀더멘털 가속도와 변동성 모멘텀을 동시 보유."
+    }
+  ],
+  "generated_at": "2026-10-12 10:09:28"
+}

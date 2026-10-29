@@ -1,0 +1,702 @@
+[
+  {
+    "ticker": "TECH",
+    "name": "Bio-Techne",
+    "sector": "S&P500 / Health Care"
+  },
+  {
+    "ticker": "AAPL",
+    "name": "Apple Inc.",
+    "sector": "S&P500 / Information Technology"
+  },
+  {
+    "ticker": "XOM",
+    "name": "ExxonMobil",
+    "sector": "S&P500 / Energy"
+  },
+  {
+    "ticker": "CPAY",
+    "name": "Corpay",
+    "sector": "S&P500 / Financials"
+  },
+  {
+    "ticker": "BRK-B",
+    "name": "Berkshire Hathaway",
+    "sector": "S&P500 / Financials"
+  },
+  {
+    "ticker": "VRSN",
+    "name": "Verisign",
+    "sector": "S&P500 / Information Technology"
+  },
+  {
+    "ticker": "MRNA",
+    "name": "Moderna",
+    "sector": "S&P500 / Health Care"
+  },
+  {
+    "ticker": "NSIT",
+    "name": "Insight Enterprises, Inc.",
+    "sector": "SmallCap / Industrials"
+  },
+  {
+    "ticker": "XNCR",
+    "name": "Xencor Inc",
+    "sector": "SmallCap / Health Care"
+  },
+  {
+    "ticker": "CBRL",
+    "name": "Cracker Barrel",
+    "sector": "SmallCap / Consumer Discretionary"
+  },
+  {
+    "ticker": "CRL",
+    "name": "Charles River Laboratories",
+    "sector": "S&P500 / Health Care"
+  },
+  {
+    "ticker": "CRWD",
+    "name": "CrowdStrike",
+    "sector": "S&P500 / Information Technology"
+  },
+  {
+    "ticker": "PANW",
+    "name": "Palo Alto Networks",
+    "sector": "S&P500 / Information Technology"
+  },
+  {
+    "ticker": "RNG",
+    "name": "RingCentral, Inc.",
+    "sector": "SmallCap / Information Technology"
+  },
+  {
+    "ticker": "CRSR",
+    "name": "Corsair Gaming",
+    "sector": "SmallCap / Information Technology"
+  },
+  {
+    "ticker": "NTAP",
+    "name": "NetApp",
+    "sector": "S&P500 / Information Technology"
+  },
+  {
+    "ticker": "ILMN",
+    "name": "Illumina, Inc.",
+    "sector": "S&P500 / Health Care"
+  },
+  {
+    "ticker": "AZTA",
+    "name": "Azenta, Inc.",
+    "sector": "SmallCap / Health Care"
+  },
+  {
+    "ticker": "VEEV",
+    "name": "Veeva Systems",
+    "sector": "S&P500 / Health Care"
+  },
+  {
+    "ticker": "PAYC",
+    "name": "Paycom",
+    "sector": "SmallCap / Industrials"
+  },
+  {
+    "ticker": "CON",
+    "name": "Concentra Group Holdings Parent, Inc.",
+    "sector": "SmallCap / Health Care"
+  },
+  {
+    "ticker": "BBY",
+    "name": "Best Buy",
+    "sector": "S&P500 / Consumer Discretionary"
+  },
+  {
+    "ticker": "VSXY",
+    "name": "Victoria's Secret",
+    "sector": "SmallCap / Consumer Discretionary"
+  },
+  {
+    "ticker": "RVTY",
+    "name": "Revvity",
+    "sector": "S&P500 / Health Care"
+  },
+  {
+    "ticker": "BOX",
+    "name": "Box, Inc.",
+    "sector": "SmallCap / Information Technology"
+  },
+  {
+    "ticker": "DELL",
+    "name": "Dell Technologies",
+    "sector": "S&P500 / Information Technology"
+  },
+  {
+    "ticker": "ZBRA",
+    "name": "Zebra Technologies",
+    "sector": "S&P500 / Information Technology"
+  },
+  {
+    "ticker": "HZO",
+    "name": "MarineMax, Inc.",
+    "sector": "SmallCap / Consumer Discretionary"
+  },
+  {
+    "ticker": "FTRE",
+    "name": "Fortrea",
+    "sector": "SmallCap / Health Care"
+  },
+  {
+    "ticker": "AMRX",
+    "name": "Amneal Pharmaceuticals",
+    "sector": "SmallCap / Health Care"
+  },
+  {
+    "ticker": "KSS",
+    "name": "Kohl's Corp.",
+    "sector": "SmallCap / Consumer Discretionary"
+  },
+  {
+    "ticker": "FTNT",
+    "name": "Fortinet",
+    "sector": "S&P500 / Information Technology"
+  },
+  {
+    "ticker": "FIVN",
+    "name": "Five9, Inc.",
+    "sector": "SmallCap / Information Technology"
+  },
+  {
+    "ticker": "HUM",
+    "name": "Humana",
+    "sector": "S&P500 / Health Care"
+  },
+  {
+    "ticker": "PCRX",
+    "name": "Pacira BioSciences, Inc.",
+    "sector": "SmallCap / Health Care"
+  },
+  {
+    "ticker": "CAKE",
+    "name": "The Cheesecake Factory, Inc.",
+    "sector": "SmallCap / Consumer Discretionary"
+  },
+  {
+    "ticker": "A",
+    "name": "Agilent Technologies",
+    "sector": "S&P500 / Health Care"
+  },
+  {
+    "ticker": "MMSI",
+    "name": "Merit Medical Systems, Inc.",
+    "sector": "SmallCap / Health Care"
+  },
+  {
+    "ticker": "NSP",
+    "name": "Insperity",
+    "sector": "SmallCap / Industrials"
+  },
+  {
+    "ticker": "PEB",
+    "name": "Pebblebrook Hotel Trust",
+    "sector": "SmallCap / Real Estate"
+  },
+  {
+    "ticker": "CVI",
+    "name": "CVR Energy, Inc.",
+    "sector": "SmallCap / Energy"
+  },
+  {
+    "ticker": "HPQ",
+    "name": "HP Inc.",
+    "sector": "S&P500 / Information Technology"
+  },
+  {
+    "ticker": "MPC",
+    "name": "Marathon Petroleum",
+    "sector": "S&P500 / Energy"
+  },
+  {
+    "ticker": "SAFT",
+    "name": "Safety Insurance Group, Inc.",
+    "sector": "SmallCap / Financials"
+  },
+  {
+    "ticker": "PRGS",
+    "name": "Progress Software Corporation",
+    "sector": "SmallCap / Information Technology"
+  },
+  {
+    "ticker": "USPH",
+    "name": "U.S. Physical Therapy, Inc.",
+    "sector": "SmallCap / Health Care"
+  },
+  {
+    "ticker": "TMO",
+    "name": "Thermo Fisher Scientific",
+    "sector": "S&P500 / Health Care"
+  },
+  {
+    "ticker": "ITGR",
+    "name": "Integer Holdings Corporation",
+    "sector": "SmallCap / Health Care"
+  },
+  {
+    "ticker": "IQV",
+    "name": "IQVIA",
+    "sector": "S&P500 / Health Care"
+  },
+  {
+    "ticker": "NEO",
+    "name": "NeoGenomics Laboratories, Inc.",
+    "sector": "SmallCap / Health Care"
+  },
+  {
+    "ticker": "P",
+    "name": "Everpure",
+    "sector": "S&P500 / Information Technology"
+  },
+  {
+    "ticker": "LFST",
+    "name": "Lifestance Health",
+    "sector": "SmallCap / Health Care"
+  },
+  {
+    "ticker": "CDW",
+    "name": "CDW Corporation",
+    "sector": "S&P500 / Information Technology"
+  },
+  {
+    "ticker": "CERT",
+    "name": "Certara, Inc.",
+    "sector": "SmallCap / Health Care"
+  },
+  {
+    "ticker": "HPE",
+    "name": "Hewlett Packard Enterprise",
+    "sector": "S&P500 / Information Technology"
+  },
+  {
+    "ticker": "ABBV",
+    "name": "AbbVie",
+    "sector": "S&P500 / Health Care"
+  },
+  {
+    "ticker": "CNK",
+    "name": "Cinemark Holdings, Inc.",
+    "sector": "SmallCap / Communication Services"
+  },
+  {
+    "ticker": "PAYO",
+    "name": "Payoneer Global Inc.",
+    "sector": "SmallCap / Financials"
+  },
+  {
+    "ticker": "LGND",
+    "name": "Ligand Pharmaceuticals, Inc.",
+    "sector": "SmallCap / Health Care"
+  },
+  {
+    "ticker": "AMGN",
+    "name": "Amgen",
+    "sector": "S&P500 / Health Care"
+  },
+  {
+    "ticker": "ALRM",
+    "name": "Alarm.Com, Inc.",
+    "sector": "SmallCap / Financials"
+  },
+  {
+    "ticker": "VSTS",
+    "name": "Vestis",
+    "sector": "SmallCap / Industrials"
+  },
+  {
+    "ticker": "HSTM",
+    "name": "HealthStream, Inc.",
+    "sector": "SmallCap / Health Care"
+  },
+  {
+    "ticker": "APLE",
+    "name": "Apple Hospitality REIT, Inc.",
+    "sector": "SmallCap / Real Estate"
+  },
+  {
+    "ticker": "SCSC",
+    "name": "ScanSource, Inc.",
+    "sector": "SmallCap / Information Technology"
+  },
+  {
+    "ticker": "DDOG",
+    "name": "Datadog",
+    "sector": "S&P500 / Information Technology"
+  },
+  {
+    "ticker": "CRVL",
+    "name": "CorVel Corporation",
+    "sector": "SmallCap / Health Care"
+  },
+  {
+    "ticker": "APA",
+    "name": "APA Corporation",
+    "sector": "S&P500 / Energy"
+  },
+  {
+    "ticker": "SDGR",
+    "name": "Schrödinger, Inc.",
+    "sector": "SmallCap / Health Care"
+  },
+  {
+    "ticker": "DRH",
+    "name": "DiamondRock Hospitality Company",
+    "sector": "SmallCap / Real Estate"
+  },
+  {
+    "ticker": "RAL",
+    "name": "Ralliant Corp",
+    "sector": "SmallCap / Information Technology"
+  },
+  {
+    "ticker": "WAT",
+    "name": "Waters Corporation",
+    "sector": "S&P500 / Health Care"
+  },
+  {
+    "ticker": "ALLE",
+    "name": "Allegion",
+    "sector": "S&P500 / Industrials"
+  },
+  {
+    "ticker": "RHI",
+    "name": "Robert Half",
+    "sector": "SmallCap / Industrials"
+  },
+  {
+    "ticker": "EXPD",
+    "name": "Expeditors International",
+    "sector": "S&P500 / Industrials"
+  },
+  {
+    "ticker": "AAMI",
+    "name": "Acadian Asset Management Inc.",
+    "sector": "SmallCap / Financials"
+  },
+  {
+    "ticker": "IOSP",
+    "name": "Innospec, Inc.",
+    "sector": "SmallCap / Materials"
+  },
+  {
+    "ticker": "PSX",
+    "name": "Phillips 66",
+    "sector": "S&P500 / Energy"
+  },
+  {
+    "ticker": "PLTR",
+    "name": "Palantir Technologies",
+    "sector": "S&P500 / Information Technology"
+  },
+  {
+    "ticker": "BIIB",
+    "name": "Biogen",
+    "sector": "S&P500 / Health Care"
+  },
+  {
+    "ticker": "ABM",
+    "name": "ABM Industries, Inc.",
+    "sector": "SmallCap / Industrials"
+  },
+  {
+    "ticker": "URBN",
+    "name": "Urban Outfitters, Inc.",
+    "sector": "SmallCap / Consumer Discretionary"
+  },
+  {
+    "ticker": "TRV",
+    "name": "Travelers Companies (The)",
+    "sector": "S&P500 / Financials"
+  },
+  {
+    "ticker": "MTD",
+    "name": "Mettler Toledo",
+    "sector": "S&P500 / Health Care"
+  },
+  {
+    "ticker": "ETSY",
+    "name": "Etsy",
+    "sector": "SmallCap / Consumer Discretionary"
+  },
+  {
+    "ticker": "LTH",
+    "name": "Life Time Group Holdings, Inc.",
+    "sector": "SmallCap / Consumer Discretionary"
+  },
+  {
+    "ticker": "LLY",
+    "name": "Lilly (Eli)",
+    "sector": "S&P500 / Health Care"
+  },
+  {
+    "ticker": "WSM",
+    "name": "Williams-Sonoma, Inc.",
+    "sector": "S&P500 / Consumer Discretionary"
+  },
+  {
+    "ticker": "RAMP",
+    "name": "LiveRamp Holdings, Inc.",
+    "sector": "SmallCap / Information Technology"
+  },
+  {
+    "ticker": "ADP",
+    "name": "Automatic Data Processing",
+    "sector": "S&P500 / Industrials"
+  },
+  {
+    "ticker": "SIG",
+    "name": "Signet Jewelers",
+    "sector": "SmallCap / Consumer Discretionary"
+  },
+  {
+    "ticker": "SHO",
+    "name": "Sunstone Hotel Investors, Inc.",
+    "sector": "SmallCap / Real Estate"
+  },
+  {
+    "ticker": "SCL",
+    "name": "Stepan Company",
+    "sector": "SmallCap / Materials"
+  },
+  {
+    "ticker": "COP",
+    "name": "ConocoPhillips",
+    "sector": "S&P500 / Energy"
+  },
+  {
+    "ticker": "DXC",
+    "name": "DXC Technology",
+    "sector": "SmallCap / Information Technology"
+  },
+  {
+    "ticker": "GO",
+    "name": "Grocery Outlet",
+    "sector": "SmallCap / Consumer Staples"
+  },
+  {
+    "ticker": "DV",
+    "name": "DoubleVerify Holdings Inc.",
+    "sector": "SmallCap / Communication Services"
+  },
+  {
+    "ticker": "RXO",
+    "name": "RXO, Inc.",
+    "sector": "SmallCap / Industrials"
+  },
+  {
+    "ticker": "DGX",
+    "name": "Quest Diagnostics",
+    "sector": "S&P500 / Health Care"
+  },
+  {
+    "ticker": "LPG",
+    "name": "Dorian LPG Ltd.",
+    "sector": "SmallCap / Energy"
+  },
+  {
+    "ticker": "WST",
+    "name": "West Pharmaceutical Services",
+    "sector": "S&P500 / Health Care"
+  },
+  {
+    "ticker": "HAS",
+    "name": "Hasbro",
+    "sector": "S&P500 / Consumer Discretionary"
+  },
+  {
+    "ticker": "GKOS",
+    "name": "Glaukos Corp.",
+    "sector": "SmallCap / Health Care"
+  },
+  {
+    "ticker": "LH",
+    "name": "Labcorp",
+    "sector": "S&P500 / Health Care"
+  },
+  {
+    "ticker": "DHR",
+    "name": "Danaher Corporation",
+    "sector": "S&P500 / Health Care"
+  },
+  {
+    "ticker": "HCI",
+    "name": "HCI Group, Inc.",
+    "sector": "SmallCap / Financials"
+  },
+  {
+    "ticker": "URI",
+    "name": "United Rentals",
+    "sector": "S&P500 / Industrials"
+  },
+  {
+    "ticker": "EGBN",
+    "name": "Eagle Bancorp Inc",
+    "sector": "SmallCap / Financials"
+  },
+  {
+    "ticker": "CAH",
+    "name": "Cardinal Health",
+    "sector": "S&P500 / Health Care"
+  },
+  {
+    "ticker": "ZD",
+    "name": "Ziff Davis",
+    "sector": "SmallCap / Communication Services"
+  },
+  {
+    "ticker": "BDX",
+    "name": "Becton Dickinson",
+    "sector": "S&P500 / Health Care"
+  },
+  {
+    "ticker": "FFIV",
+    "name": "F5, Inc.",
+    "sector": "S&P500 / Information Technology"
+  },
+  {
+    "ticker": "CVX",
+    "name": "Chevron Corporation",
+    "sector": "S&P500 / Energy"
+  },
+  {
+    "ticker": "EIG",
+    "name": "Employers Holdings, Inc.",
+    "sector": "SmallCap / Financials"
+  },
+  {
+    "ticker": "PTC",
+    "name": "PTC Inc.",
+    "sector": "S&P500 / Information Technology"
+  },
+  {
+    "ticker": "SM",
+    "name": "SM Energy Company",
+    "sector": "SmallCap / Energy"
+  },
+  {
+    "ticker": "KDP",
+    "name": "Keurig Dr Pepper",
+    "sector": "S&P500 / Consumer Staples"
+  },
+  {
+    "ticker": "MATX",
+    "name": "Matson, Inc.",
+    "sector": "SmallCap / Industrials"
+  },
+  {
+    "ticker": "ADUS",
+    "name": "Addus HomeCare Corp.",
+    "sector": "SmallCap / Health Care"
+  },
+  {
+    "ticker": "MSFT",
+    "name": "Microsoft",
+    "sector": "S&P500 / Information Technology"
+  },
+  {
+    "ticker": "ACA",
+    "name": "Arcosa, Inc.",
+    "sector": "SmallCap / Industrials"
+  },
+  {
+    "ticker": "HST",
+    "name": "Host Hotels & Resorts",
+    "sector": "S&P500 / Real Estate"
+  },
+  {
+    "ticker": "EOG",
+    "name": "EOG Resources",
+    "sector": "S&P500 / Energy"
+  },
+  {
+    "ticker": "HNI",
+    "name": "HNI Corporation",
+    "sector": "SmallCap / Industrials"
+  },
+  {
+    "ticker": "VIR",
+    "name": "Vir Biotechnology, Inc.",
+    "sector": "SmallCap / Health Care"
+  },
+  {
+    "ticker": "TMP",
+    "name": "Tompkins Financial Corporation",
+    "sector": "SmallCap / Financials"
+  },
+  {
+    "ticker": "LQDT",
+    "name": "Liquidity Services, Inc.",
+    "sector": "SmallCap / Industrials"
+  },
+  {
+    "ticker": "GILD",
+    "name": "Gilead Sciences",
+    "sector": "S&P500 / Health Care"
+  },
+  {
+    "ticker": "MET",
+    "name": "MetLife",
+    "sector": "S&P500 / Financials"
+  },
+  {
+    "ticker": "MD",
+    "name": "Pediatrix Medical Group",
+    "sector": "SmallCap / Health Care"
+  },
+  {
+    "ticker": "TGTX",
+    "name": "TG Therapeutics, Inc.",
+    "sector": "SmallCap / Health Care"
+  },
+  {
+    "ticker": "LXP",
+    "name": "Lexington Realty Trust",
+    "sector": "SmallCap / Real Estate"
+  },
+  {
+    "ticker": "SJM",
+    "name": "J.M. Smucker Company (The)",
+    "sector": "S&P500 / Consumer Staples"
+  },
+  {
+    "ticker": "CHEF",
+    "name": "Chefs' Warehouse, Inc.",
+    "sector": "SmallCap / Consumer Staples"
+  },
+  {
+    "ticker": "ENR",
+    "name": "Energizer",
+    "sector": "SmallCap / Consumer Staples"
+  },
+  {
+    "ticker": "TRGP",
+    "name": "Targa Resources",
+    "sector": "S&P500 / Energy"
+  },
+  {
+    "ticker": "EMR",
+    "name": "Emerson Electric",
+    "sector": "S&P500 / Industrials"
+  },
+  {
+    "ticker": "FDS",
+    "name": "FactSet",
+    "sector": "S&P500 / Financials"
+  },
+  {
+    "ticker": "WLY",
+    "name": "John Wiley & Sons",
+    "sector": "SmallCap / Communication Services"
+  },
+  {
+    "ticker": "DNOW",
+    "name": "NOW Inc",
+    "sector": "SmallCap / Industrials"
+  }
+]

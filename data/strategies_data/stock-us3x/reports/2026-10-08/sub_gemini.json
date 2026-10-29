@@ -1,0 +1,53 @@
+{
+  "agent_name": "SUB_GOOGLE_GENAI_GEMINI",
+  "status": "OK",
+  "current_leaders": [
+    "SOXX",
+    "SMH",
+    "XLK"
+  ],
+  "next_rotation": [
+    "COPX",
+    "RAM",
+    "XLV"
+  ],
+  "risk_regime": "RISK_ON",
+  "sector_scores": {
+    "XLK": 88.5,
+    "XLF": 22.0,
+    "XLV": 52.0,
+    "XLE": 48.0,
+    "XLI": 32.0,
+    "XLY": 35.0,
+    "XLP": 28.0,
+    "XLC": 44.0,
+    "XLU": 20.0,
+    "XLB": 24.0,
+    "XLRE": 15.0,
+    "SMH": 92.0,
+    "SOXX": 96.0,
+    "IWM": 21.0,
+    "KRE": 10.0,
+    "COPX": 58.0,
+    "XHB": 25.0,
+    "XBI": 18.0,
+    "ITA": 16.0,
+    "XOP": 46.0,
+    "GDX": 38.0,
+    "RAM": 50.0
+  },
+  "top3_candidates": [
+    "SOXX",
+    "SMH",
+    "XLK"
+  ],
+  "contradictions": [
+    "SMH lists flow_regime as STRUCTURAL_OUTFLOW despite positive flow_to_aum_1m (+14.19%) and CONFIRMED_ACCUMULATION price_flow_regime.",
+    "COPX and RAM exhibit early accumulation inflows (+1.68% and +28.65% flow/AUM) while 1-month returns remain heavily negative (-11.44% and -6.12%).",
+    "XLE and XOP maintain double-digit 3-month price gains (+15.58% and +18.05%) despite experiencing severe capital outflows."
+  ],
+  "confidence": 88.0,
+  "rationale": "The broader market reflects a strong RISK_ON backdrop with low VIX and SPY above its 200 DMA, though breadth is extremely narrow. Semiconductors and Tech (SOXX, SMH, XLK) are leading momentum and capital flows convincingly. Emerging rotational signals are visible in depressed assets like COPX and RAM, but high-conviction exposure remains strictly focused on confirmed tech leadership.",
+  "special_pairs": {},
+  "latency_sec": 14.79
+}
