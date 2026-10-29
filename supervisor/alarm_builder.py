@@ -13,32 +13,35 @@ from typing import Dict, Any, List
 
 
 def build_krx_morning_alarm(portfolio_res: Dict[str, Any], macro: Dict[str, Any], best_buys: List[Dict[str, Any]]) -> str:
-    """한국장 08:45 아침 통합 실전 브리핑 메시지 생성"""
+    """한국장 08:40 미국장 장마감 & 한국장 장전 통합 브리핑 메시지 생성"""
     now = datetime.now()
     weekdays_kr = ["월", "화", "수", "목", "금", "토", "일"]
     today_str = f"{now.year}년 {now.month:02d}월 {now.day:02d}일 ({weekdays_kr[now.weekday()]})"
 
     lines = []
-    lines.append("🌅 <b>[STOCK SUPERVISOR] KRX 한국장 통합 실전 브리핑</b>")
-    lines.append(f"📅 <b>일시:</b> {today_str} 08:45 KST")
+    lines.append("🌅 <b>[STOCK SUPERVISOR] 미국장 장마감 & 🇰🇷 한국장 장전 통합 브리핑</b>")
+    lines.append(f"📅 <b>일시:</b> {today_str} 08:40 KST")
     lines.append("━━━━━━━━━━━━━━━━━━━━━━━━━")
     lines.append("💡 <b>[실전 포트폴리오 트레이딩 원칙]</b>")
     lines.append("• <b>모든 종목을 기계적으로 매수하지 마십시오!</b>")
     lines.append("• 7대 전략 시그널 중 정밀 2차 검증을 통과한 1~2개 주도주만 선별 진입합니다.")
     lines.append("━━━━━━━━━━━━━━━━━━━━━━━━━\n")
 
-    # 1. 시황 및 매크로
-    lines.append("🌐 <b>1. 당일 장전 시황 & 매크로 환경</b>")
+    # 1. 미국장 마감 결과 및 글로벌 매크로
+    lines.append("🌐 <b>1. 🇺🇸 미국장 장마감 결과 & 글로벌 매크로</b>")
     dow = macro.get("dow", {})
     nasdaq = macro.get("nasdaq", {})
     sp500 = macro.get("sp500", {})
     usd_krw = macro.get("usd_krw", "1,330.0")
 
-    lines.append(f"• 야간 미 증시: 나스닥 ({nasdaq.get('pct', 0.0):+.2f}%) | S&P500 ({sp500.get('pct', 0.0):+.2f}%) | 환율: {usd_krw}원")
-    lines.append("• <b>당일 전술:</b> 시초가 갭상승 추격매수 금지. 5분봉 매도세 소진 및 손익비(RR) 1.5 이상 확인 시 선별 출정.\n")
+    lines.append(f"• 다우: {dow.get('val', '-')} ({dow.get('pct', 0.0):+.2f}%)")
+    lines.append(f"• 나스닥: {nasdaq.get('val', '-')} ({nasdaq.get('pct', 0.0):+.2f}%)")
+    lines.append(f"• S&P 500: {sp500.get('val', '-')} ({sp500.get('pct', 0.0):+.2f}%)")
+    lines.append(f"• 원/달러 환율: <b>{usd_krw}원</b>")
+    lines.append("• <b>당일 전술:</b> 미 증시 마감 흐름을 반영하여 시초가 갭상승 추격매수 금지. 5분봉 매도세 소진 및 손익비(RR) 1.5 이상 확인 시 선별 출정.\n")
 
     # 2. 오늘의 엄선 신규 매수
-    lines.append("🎯 <b>2. 오늘의 엄선 매수 후보 (TOP Pick)</b>")
+    lines.append("🎯 <b>2. 🇰🇷 한국장 오늘의 엄선 매수 후보 (TOP Pick)</b>")
     new_buys = portfolio_res.get("new_buys", [])
     picks = new_buys if new_buys else best_buys[:2]
 
@@ -95,13 +98,13 @@ def build_krx_morning_alarm(portfolio_res: Dict[str, Any], macro: Dict[str, Any]
 
 
 def build_krx_closing_alarm(portfolio_res: Dict[str, Any], best_buys: List[Dict[str, Any]]) -> str:
-    """한국장 15:10 종가매수(Strong Close) 통합 브리핑 메시지 생성"""
+    """한국장 15:00 종가매수(Strong Close) 최종 타깃 브리핑 메시지 생성"""
     now = datetime.now()
     today_str = now.strftime("%Y-%m-%d")
 
     lines = []
-    lines.append("🎯 <b>[STOCK SUPERVISOR] 🇰🇷 한국 KRX 종가매수 최종 타깃</b>")
-    lines.append(f"📅 <b>기준일자:</b> {today_str} | ⏰ 장마감 20분 전 골든타임")
+    lines.append("🎯 <b>[STOCK SUPERVISOR] 🇰🇷 한국장 종가매수(Strong Close) 최종 타깃 브리핑</b>")
+    lines.append(f"📅 <b>기준일자:</b> {today_str} | ⏰ 15:00 KST (장마감 30분 전 골든타임)")
     lines.append("━━━━━━━━━━━━━━━━━━━━━━━━━")
     lines.append("🏆 <b>[팔리 Strong Close x 5일선 종가 지지 모델]</b>")
     lines.append("• 당일 상위 25% 이내(CLV>=75%) 안착 및 5일선 위에 종가가 안착한 종목만 오버나이트 허용")
@@ -125,13 +128,13 @@ def build_krx_closing_alarm(portfolio_res: Dict[str, Any], best_buys: List[Dict[
 
 
 def build_us_night_alarm(portfolio_res: Dict[str, Any], best_buys: List[Dict[str, Any]]) -> str:
-    """미국장 21:30 야간 본장 개장 전 통합 브리핑 메시지 생성"""
+    """미국장 21:30 미국장 장전 통합 브리핑 메시지 생성"""
     now = datetime.now()
     today_str = now.strftime("%Y-%m-%d")
 
     lines = []
-    lines.append("🌃 <b>[STOCK SUPERVISOR] US 미국장 통합 실전 브리핑</b>")
-    lines.append(f"📅 <b>기준일자:</b> {today_str} | 21:30 KST (본장 개장 전)")
+    lines.append("🌃 <b>[STOCK SUPERVISOR] 🇺🇸 미국장 장전 통합 브리핑</b>")
+    lines.append(f"📅 <b>기준일자:</b> {today_str} | ⏰ 21:30 KST (미국 본장 개장 전)")
     lines.append("━━━━━━━━━━━━━━━━━━━━━━━━━")
     lines.append("💡 <b>[미국장 실전 운용 원칙]</b>")
     lines.append("• 3X 레버리지 무한투자와 HTP 모멘텀 TOP 10을 결합하여 지수 대비 초과 수익 추구")

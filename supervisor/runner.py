@@ -132,13 +132,13 @@ def run_pipeline(mode: str = "auto", force: bool = False, dry_run: bool = False)
     macro = fetch_us_macro()
     if mode == "krx_morning":
         alarm_text = build_krx_morning_alarm(portfolio_res, macro, best_buys)
-        title = f"KRX 한국장 장전 통합 브리핑 ({portfolio_res['date']})"
+        title = f"미국장 장마감 통합 브리핑, 🇰🇷 한국장 장전 통합 브리핑 ({portfolio_res['date']})"
     elif mode == "krx_closing":
         alarm_text = build_krx_closing_alarm(portfolio_res, best_buys)
-        title = f"KRX 한국장 종가매수 최종 타깃 ({portfolio_res['date']})"
+        title = f"15:00 🇰🇷 한국장 종가매수(Strong Close) 최종 타깃 브리핑 ({portfolio_res['date']})"
     else:
         alarm_text = build_us_night_alarm(portfolio_res, best_buys)
-        title = f"US 미국장 본장 개장 전 브리핑 ({portfolio_res['date']})"
+        title = f"21:30 🇺🇸 미국장 장전 통합 브리핑 ({portfolio_res['date']})"
 
     if dry_run:
         print("\n" + "=" * 60)
