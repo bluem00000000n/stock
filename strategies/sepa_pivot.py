@@ -12,7 +12,7 @@ from typing import List, Dict, Any
 
 # 상위 core 모듈 참조
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from core.market_data import fetch_krx_price
+from core.market_data import fetch_krx_price, fetch_us_price
 
 WATCHLIST = {
     "KR_LARGE": [
@@ -67,8 +67,8 @@ def run_analysis(market: str = "KRX") -> List[Dict[str, Any]]:
                 "name": item["name"],
                 "signal_type": "BUY",
                 "price": cur_price,
-                "target_price": pivot_val,
-                "target_price_2": tp1_val,
+                "target_price": tp1_val,
+                "target_price_2": tp2_val,
                 "stop_loss_price": stop_val,
                 "risk_reward_ratio": rr,
                 "score": float(item["score"]),
@@ -102,8 +102,8 @@ def run_analysis(market: str = "KRX") -> List[Dict[str, Any]]:
                 "name": item["name"],
                 "signal_type": "BUY",
                 "price": cur_price,
-                "target_price": pivot_val,
-                "target_price_2": tp1_val,
+                "target_price": tp1_val,
+                "target_price_2": tp2_val,
                 "stop_loss_price": stop_val,
                 "risk_reward_ratio": rr,
                 "score": float(item["score"]),
@@ -120,8 +120,17 @@ def run_analysis(market: str = "KRX") -> List[Dict[str, Any]]:
             })
     else:
         for item in WATCHLIST["US_LARGE"]:
+            ticker = item["ticker"]
+            p_info = fetch_us_price(ticker)
+            cur_price = p_info["price"] if p_info["price"] > 0 else float(item["pivot"])
             pivot_val = float(item["pivot"])
-            stop_val = float(item["stop"])
+            # 피봇이 현재가와 크게 괴리되어 있으면 현재가 기반 타점으로 자동 보정
+            if cur_price > 0 and abs(cur_price - pivot_val) / pivot_val > 0.3:
+                pivot_val = round(cur_price * 1.02, 2)
+                stop_val = round(cur_price * 0.94, 2)
+            else:
+                stop_val = float(item["stop"])
+
             tp1_val = round(pivot_val * 1.10, 2)
             tp2_val = round(pivot_val * 1.20, 2)
             rr = round((tp1_val - pivot_val) / max(0.1, (pivot_val - stop_val)), 2)
@@ -131,12 +140,12 @@ def run_analysis(market: str = "KRX") -> List[Dict[str, Any]]:
                 "strategy_name": "SEPA x 피봇 (US 대형주)",
                 "market": "US",
                 "cap_size": "대형주",
-                "ticker": item["ticker"],
-                "name": item["name"],
+                "ticker": ticker,
+                "name": p_info["name"] or item["name"],
                 "signal_type": "BUY",
-                "price": pivot_val,
-                "target_price": pivot_val,
-                "target_price_2": tp1_val,
+                "price": cur_price,
+                "target_price": tp1_val,
+                "target_price_2": tp2_val,
                 "stop_loss_price": stop_val,
                 "risk_reward_ratio": rr,
                 "score": float(item["score"]),
@@ -153,8 +162,16 @@ def run_analysis(market: str = "KRX") -> List[Dict[str, Any]]:
             })
 
         for item in WATCHLIST["US_MID"]:
+            ticker = item["ticker"]
+            p_info = fetch_us_price(ticker)
+            cur_price = p_info["price"] if p_info["price"] > 0 else float(item["pivot"])
             pivot_val = float(item["pivot"])
-            stop_val = float(item["stop"])
+            if cur_price > 0 and abs(cur_price - pivot_val) / pivot_val > 0.3:
+                pivot_val = round(cur_price * 1.02, 2)
+                stop_val = round(cur_price * 0.94, 2)
+            else:
+                stop_val = float(item["stop"])
+
             tp1_val = round(pivot_val * 1.10, 2)
             tp2_val = round(pivot_val * 1.20, 2)
             rr = round((tp1_val - pivot_val) / max(0.1, (pivot_val - stop_val)), 2)
@@ -164,12 +181,12 @@ def run_analysis(market: str = "KRX") -> List[Dict[str, Any]]:
                 "strategy_name": "SEPA x 피봇 (US 중소형주)",
                 "market": "US",
                 "cap_size": "중소형주",
-                "ticker": item["ticker"],
-                "name": item["name"],
+                "ticker": ticker,
+                "name": p_info["name"] or item["name"],
                 "signal_type": "BUY",
-                "price": pivot_val,
-                "target_price": pivot_val,
-                "target_price_2": tp1_val,
+                "price": cur_price,
+                "target_price": tp1_val,
+                "target_price_2": tp2_val,
                 "stop_loss_price": stop_val,
                 "risk_reward_ratio": rr,
                 "score": float(item["score"]),
