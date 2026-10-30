@@ -47,11 +47,11 @@ def run_analysis(market: str = "KRX") -> List[Dict[str, Any]]:
     signals = []
 
     if market.upper() in ("KRX", "KR", "KOR"):
-        items = WATCHLIST["KR_LARGE"] + WATCHLIST["KR_MID"]
-        for item in items:
+        for item in WATCHLIST["KR_LARGE"]:
+            item_copy = dict(item)
+            item_copy["cap_size"] = "대형주"
             p_info = fetch_krx_price(item["code"])
             cur_price = p_info["price"] if p_info["price"] > 0 else float(item["pivot"])
-
             pivot_val = float(item["pivot"])
             stop_val = float(item["stop"])
             tp1_val = round(pivot_val * 1.08)
@@ -60,8 +60,9 @@ def run_analysis(market: str = "KRX") -> List[Dict[str, Any]]:
 
             signals.append({
                 "project_id": "stock-sepa-pivot",
-                "strategy_name": "SEPA x 피봇",
+                "strategy_name": "SEPA x 피봇 (대형주)",
                 "market": "KRX",
+                "cap_size": "대형주",
                 "ticker": item["code"],
                 "name": item["name"],
                 "signal_type": "BUY",
@@ -71,19 +72,54 @@ def run_analysis(market: str = "KRX") -> List[Dict[str, Any]]:
                 "stop_loss_price": stop_val,
                 "risk_reward_ratio": rr,
                 "score": float(item["score"]),
-                "sector": item["market"],
-                "theme": item["theme"],
+                "sector": f"대형주 / {item['market']}",
+                "theme": f"[대형주] {item['theme']}",
                 "pattern": item["pattern"],
-                "action_plan": f"피봇({pivot_val:,}원) 돌파 및 {item['farley_swing']}. 2N스탑 {item['turtle_stop']:,}원 엄수",
+                "action_plan": f"[대형주] 피봇({pivot_val:,}원) 돌파 및 {item['farley_swing']}. 2N스탑 {item['turtle_stop']:,}원 엄수",
                 "raw_data": {
+                    "cap_size": "대형주",
+                    "turtle_stop": item["turtle_stop"],
+                    "farley_swing": item["farley_swing"],
+                    "pattern": item["pattern"]
+                }
+            })
+
+        for item in WATCHLIST["KR_MID"]:
+            p_info = fetch_krx_price(item["code"])
+            cur_price = p_info["price"] if p_info["price"] > 0 else float(item["pivot"])
+            pivot_val = float(item["pivot"])
+            stop_val = float(item["stop"])
+            tp1_val = round(pivot_val * 1.08)
+            tp2_val = round(pivot_val * 1.15)
+            rr = round((tp1_val - pivot_val) / max(1.0, (pivot_val - stop_val)), 2)
+
+            signals.append({
+                "project_id": "stock-sepa-pivot",
+                "strategy_name": "SEPA x 피봇 (중소형주)",
+                "market": "KRX",
+                "cap_size": "중소형주",
+                "ticker": item["code"],
+                "name": item["name"],
+                "signal_type": "BUY",
+                "price": cur_price,
+                "target_price": pivot_val,
+                "target_price_2": tp1_val,
+                "stop_loss_price": stop_val,
+                "risk_reward_ratio": rr,
+                "score": float(item["score"]),
+                "sector": f"중소형주 / {item['market']}",
+                "theme": f"[중소형주] {item['theme']}",
+                "pattern": item["pattern"],
+                "action_plan": f"[중소형주] 피봇({pivot_val:,}원) 돌파 및 {item['farley_swing']}. 2N스탑 {item['turtle_stop']:,}원 엄수",
+                "raw_data": {
+                    "cap_size": "중소형주",
                     "turtle_stop": item["turtle_stop"],
                     "farley_swing": item["farley_swing"],
                     "pattern": item["pattern"]
                 }
             })
     else:
-        items = WATCHLIST["US_LARGE"] + WATCHLIST["US_MID"]
-        for item in items:
+        for item in WATCHLIST["US_LARGE"]:
             pivot_val = float(item["pivot"])
             stop_val = float(item["stop"])
             tp1_val = round(pivot_val * 1.10, 2)
@@ -92,8 +128,9 @@ def run_analysis(market: str = "KRX") -> List[Dict[str, Any]]:
 
             signals.append({
                 "project_id": "stock-sepa-pivot",
-                "strategy_name": "SEPA x 피봇 (US)",
+                "strategy_name": "SEPA x 피봇 (US 대형주)",
                 "market": "US",
+                "cap_size": "대형주",
                 "ticker": item["ticker"],
                 "name": item["name"],
                 "signal_type": "BUY",
@@ -103,11 +140,45 @@ def run_analysis(market: str = "KRX") -> List[Dict[str, Any]]:
                 "stop_loss_price": stop_val,
                 "risk_reward_ratio": rr,
                 "score": float(item["score"]),
-                "sector": item["market"],
-                "theme": item["theme"],
+                "sector": f"대형주 / {item['market']}",
+                "theme": f"[대형주] {item['theme']}",
                 "pattern": item["pattern"],
-                "action_plan": f"피봇(${pivot_val:.2f}) 돌파 및 {item['farley_swing']}. 손절 ${stop_val:.2f} 엄수",
+                "action_plan": f"[대형주] 피봇(${pivot_val:.2f}) 돌파 및 {item['farley_swing']}. 손절 ${stop_val:.2f} 엄수",
                 "raw_data": {
+                    "cap_size": "대형주",
+                    "turtle_stop": item["turtle_stop"],
+                    "farley_swing": item["farley_swing"],
+                    "pattern": item["pattern"]
+                }
+            })
+
+        for item in WATCHLIST["US_MID"]:
+            pivot_val = float(item["pivot"])
+            stop_val = float(item["stop"])
+            tp1_val = round(pivot_val * 1.10, 2)
+            tp2_val = round(pivot_val * 1.20, 2)
+            rr = round((tp1_val - pivot_val) / max(0.1, (pivot_val - stop_val)), 2)
+
+            signals.append({
+                "project_id": "stock-sepa-pivot",
+                "strategy_name": "SEPA x 피봇 (US 중소형주)",
+                "market": "US",
+                "cap_size": "중소형주",
+                "ticker": item["ticker"],
+                "name": item["name"],
+                "signal_type": "BUY",
+                "price": pivot_val,
+                "target_price": pivot_val,
+                "target_price_2": tp1_val,
+                "stop_loss_price": stop_val,
+                "risk_reward_ratio": rr,
+                "score": float(item["score"]),
+                "sector": f"중소형주 / {item['market']}",
+                "theme": f"[중소형주] {item['theme']}",
+                "pattern": item["pattern"],
+                "action_plan": f"[중소형주] 피봇(${pivot_val:.2f}) 돌파 및 {item['farley_swing']}. 손절 ${stop_val:.2f} 엄수",
+                "raw_data": {
+                    "cap_size": "중소형주",
                     "turtle_stop": item["turtle_stop"],
                     "farley_swing": item["farley_swing"],
                     "pattern": item["pattern"]

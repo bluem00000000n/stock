@@ -61,8 +61,9 @@ def build_0840_us_close_kr_open_alarm(
     if picks:
         for idx, p in enumerate(picks, 1):
             badge = "🔥 <b>[복수전략 교차검증]</b> " if p.get("is_multi_confirmed") else ""
+            cap_badge = f"<b>[{p.get('cap_size', '대형주')}]</b> "
             strategies = ", ".join(p.get("strategies", []))
-            lines.append(f"■ {idx}. {badge}<b>{p['name']}</b> ({p['ticker']} / {p.get('sector', '주도주')})")
+            lines.append(f"■ {idx}. {badge}{cap_badge}<b>{p['name']}</b> ({p['ticker']} / {p.get('sector', '주도주')})")
             lines.append(f" • 기준가: <b>{int(p['price']):,}원</b> | 🎯 목표가: <b>{int(p['target_price']):,}원</b>")
             lines.append(f" • 🛑 기계적 손절가: <b>{int(p['stop_loss_price']):,}원</b> (RR: {p.get('risk_reward_ratio', 1.5)})")
             lines.append(f" • <i>포착 재료/전략:</i> {p.get('theme', '')[:60]} ({strategies})")
@@ -204,7 +205,8 @@ def build_1500_kr_close_us_open_alarm(
     picks = kr_buys[:2]
     if picks:
         for idx, p in enumerate(picks, 1):
-            lines.append(f"■ {idx}. <b>{p['name']}</b> ({p['ticker']}) | 종가: <b>{int(p['price']):,}원</b>")
+            cap_badge = f"<b>[{p.get('cap_size', '대형주')}]</b> "
+            lines.append(f"■ {idx}. {cap_badge}<b>{p['name']}</b> ({p['ticker']}) | 종가: <b>{int(p['price']):,}원</b>")
             lines.append(f"   🛑 손절가: <b>{int(p['stop_loss_price']):,}원</b> | 🎯 1차목표가: <b>{int(p['target_price']):,}원</b>")
             lines.append(f"   └ <i>특장/테마:</i> {p.get('theme', '')[:50]}")
     else:
@@ -252,7 +254,8 @@ def build_1500_kr_close_us_open_alarm(
     us_picks = us_buys[:2]
     if us_picks:
         for idx, p in enumerate(us_picks, 1):
-            lines.append(f"■ {idx}. <b>{p['name']}</b> ({p['ticker']} / {p.get('sector', 'US')})")
+            cap_badge = f"<b>[{p.get('cap_size', '대형주')}]</b> "
+            lines.append(f"■ {idx}. {cap_badge}<b>{p['name']}</b> ({p['ticker']} / {p.get('sector', 'US')})")
             lines.append(f"   • 기준가: <b>${p['price']:.2f}</b> | 🎯 목표: <b>${p['target_price']:.2f}</b> | 🛑 손절: <b>${p['stop_loss_price']:.2f}</b>")
             lines.append(f"   └ <i>실전 운용:</i> {p.get('action_plan', '')[:60]}")
     else:

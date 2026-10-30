@@ -24,11 +24,16 @@ def select_best_buys(candidate_signals: List[Dict[str, Any]], market: str = "KRX
     ticker_map = {}
     for s in candidate_signals:
         ticker = s["ticker"]
+        cap_size = s.get("cap_size")
+        if not cap_size:
+            cap_size = "대형주" if "대형" in s.get("sector", "") or "KOSPI" in s.get("sector", "") or "S&P" in s.get("sector", "") else "중소형주"
+
         if ticker not in ticker_map:
             ticker_map[ticker] = {
                 "ticker": ticker,
                 "name": s["name"],
                 "market": s["market"],
+                "cap_size": cap_size,
                 "base_score": float(s.get("score", 80.0)),
                 "strategies": [s.get("strategy_name", "")],
                 "prices": [float(s.get("price", 0.0))],
@@ -58,6 +63,7 @@ def select_best_buys(candidate_signals: List[Dict[str, Any]], market: str = "KRX
             "ticker": ticker,
             "name": info["name"],
             "market": info["market"],
+            "cap_size": info.get("cap_size", "대형주"),
             "final_score": round(final_score, 1),
             "strategies": list(set(info["strategies"])),
             "price": info["prices"][0],
