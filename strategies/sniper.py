@@ -2,7 +2,9 @@
 # -*- coding: utf-8 -*-
 """
 strategies/sniper.py
-스톡 스나이퍼 전략 (RS 상대강도 & 52주 신고가 주도주 + 지수 ETF 타점)
+스톡 스나이퍼 전략 (RS 상대강도 & 52주 신고가 주도주 타점)
+- 한국장(KRX): KRX 호가단위, 1차(-1.2%)/2차(-3.0%) 분할, 손절 -3.5%, 목표가 +5.5%/+10.5%, 원화(원)
+- 미국장(US): 센트단위(2자리), 높은 ATR 변동성 완충 손절 -5.5%, 목표가 +8.5%/+16.0%, 달러($), 실시간 시세 연동
 순수 분석 모듈: 텔레그램 발송 코드 없음, List[Dict] 시그널 반환
 """
 
@@ -13,7 +15,7 @@ from typing import List, Dict, Any
 
 # 상위 core 모듈 참조
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from core.market_data import fetch_krx_price, fetch_url_json
+from core.market_data import fetch_krx_price, fetch_us_price
 
 
 def get_krx_tick_size(price: float) -> int:
@@ -34,7 +36,7 @@ def get_krx_tick_size(price: float) -> int:
         return 1000
 
 
-def round_to_tick(price: float) -> int:
+def round_to_krx_tick(price: float) -> int:
     tick = get_krx_tick_size(price)
     return int(round(price / tick) * tick)
 
@@ -47,7 +49,8 @@ def calc_rr_ratio(buy_price: float, sl_price: float, tp_price: float) -> float:
     return round(reward / risk, 2)
 
 
-CANDIDATE_POOL = [
+# 🇰🇷 한국장 스나이퍼 후보 풀 (RS 상대강도 우상향 및 신고가 주도주)
+CANDIDATE_POOL_KR = [
     {"code": "042510", "name": "라온시큐어", "sector": "보안·인증",
      "theme": "글로벌 생체인증·양자암호 수주 모멘텀, 지수 폭락장 속 52주 신고가 돌파",
      "condition": "지지 후 5분봉 저점 상승 및 거래량 유지 확인"},
@@ -74,56 +77,136 @@ CANDIDATE_POOL = [
      "condition": "20일선 지지 확인 및 전일 고가 돌파 시 진입"}
 ]
 
+# 🇺🇸 미국장 스나이퍼 후보 풀 (RS 상대강도 최상위 빅테크 & 고성장 주도주)
+CANDIDATE_POOL_US = [
+    {"ticker": "NVDA", "name": "Nvidia", "sector": "AI 반도체",
+     "theme": "블랙웰 B200 풀캐파 가동, AI 인프라 글로벌 독점 및 사상 최고가권",
+     "condition": "20일 EMA 지지 및 시초가 갭 메우기 완료 후 반등 확인"},
+    {"ticker": "PLTR", "name": "Palantir", "sector": "엔터프라이즈 AI",
+     "theme": "AIP 플랫폼 상용화 급증 및 미 국방부 수주 모멘텀, S&P500 최상위 모멘텀",
+     "condition": "전일 고가 지지선 안착 및 거래량 실린 양봉 확인"},
+    {"ticker": "AVGO", "name": "Broadcom", "sector": "AI 네트워킹·ASIC",
+     "theme": "빅테크 맞춤형 AI 가속기 및 네트워킹 스위치 독점적 지배력",
+     "condition": "10일선 지지 확인 후 ORB(초반 30분) 돌파 시 진입"},
+    {"ticker": "APP", "name": "AppLovin", "sector": "AI 애드테크",
+     "theme": "AXON 2.0 엔진 기반 폭발적 매출·영업이익 서프라이즈, 주도주 랠리",
+     "condition": "장초반 변동성 소진 후 5분봉 지지선 형성 시 진입"},
+    {"ticker": "TSLA", "name": "Tesla", "sector": "자율주행·EV",
+     "theme": "FSD V13 완전자율주행 및 사이버캡/에너지 저장장치(Megapack) 성장",
+     "condition": "주요 지지 이평선(20일선) 지지 및 전일 종가 상회 확인"},
+    {"ticker": "CRWD", "name": "CrowdStrike", "sector": "클라우드 보안",
+     "theme": "차세대 엔드포인트 Falcon 플랫폼 수주 회복 및 강력한 턴어라운드",
+     "condition": "박스권 상단 돌파 및 매물대 소화 확인 시 진입"},
+    {"ticker": "MSFT", "name": "Microsoft", "sector": "클라우드·AI",
+     "theme": "애저 클라우드 성장 가속 및 M365 코파일럿 B2B 도입 확산",
+     "condition": "50일선 지지 반등 및 빅테크 수급 확인"},
+    {"ticker": "AMZN", "name": "Amazon", "sector": "클라우드·커머스",
+     "theme": "AWS AI 서비스 고성장 및 리테일 물류 효율화 마진 극대화",
+     "condition": "직전 박스권 고점 안착 확인 시 진입"}
+]
 
-def run_analysis() -> List[Dict[str, Any]]:
-    """스톡 스나이퍼 전략 분석 실행 및 시그널 리스트 반환"""
+
+def run_analysis(market: str = "KRX") -> List[Dict[str, Any]]:
+    """스톡 스나이퍼 전략 분석 실행 (한국 KRX / 미국 US 지원)"""
     signals = []
+    is_kr = market.upper() in ("KRX", "KR", "KOR")
 
-    for c in CANDIDATE_POOL:
-        p_info = fetch_krx_price(c["code"])
-        cur_price = p_info["price"]
-        if cur_price <= 0:
-            continue
+    if is_kr:
+        for c in CANDIDATE_POOL_KR:
+            p_info = fetch_krx_price(c["code"])
+            cur_price = p_info["price"]
+            if cur_price <= 0:
+                continue
 
-        # 타점 산출
-        buy1 = round_to_tick(cur_price * 0.988)
-        buy2 = round_to_tick(cur_price * 0.970)
-        sl = round_to_tick(buy1 * 0.965)          # -3.5% 손절
-        tp1 = round_to_tick(buy1 * 1.055)         # +5.5% 1차 목표
-        tp2 = round_to_tick(buy1 * 1.105)         # +10.5% 2차 목표
-        rr1 = calc_rr_ratio(buy1, sl, tp1)
+            # 한국장 타점 산출 (KRX 호가 단위 준수)
+            buy1 = round_to_krx_tick(cur_price * 0.988)
+            buy2 = round_to_krx_tick(cur_price * 0.970)
+            sl = round_to_krx_tick(buy1 * 0.965)          # -3.5% 손절
+            tp1 = round_to_krx_tick(buy1 * 1.055)         # +5.5% 1차 목표
+            tp2 = round_to_krx_tick(buy1 * 1.105)         # +10.5% 2차 목표
+            rr1 = calc_rr_ratio(buy1, sl, tp1)
 
-        score = 85.0
-        if p_info["change_pct"] > 0:
-            score += 5.0
-        if rr1 >= 1.5:
-            score += 5.0
+            score = 85.0
+            if p_info["change_pct"] > 0:
+                score += 5.0
+            if rr1 >= 1.5:
+                score += 5.0
 
-        signals.append({
-            "project_id": "stock-sniper",
-            "strategy_name": "스톡 스나이퍼",
-            "market": "KRX",
-            "ticker": c["code"],
-            "name": p_info["name"] or c["name"],
-            "signal_type": "BUY",
-            "price": cur_price,
-            "target_price": tp1,
-            "target_price_2": tp2,
-            "stop_loss_price": sl,
-            "risk_reward_ratio": rr1,
-            "score": score,
-            "sector": c["sector"],
-            "theme": c["theme"],
-            "pattern": "RS 상대강도 우상향",
-            "action_plan": f"1차 {buy1:,}원 / 2차 {buy2:,}원 분할 매수. {c['condition']}",
-            "raw_data": {
-                "change_pct": p_info["change_pct"],
-                "volume": p_info["volume"],
-                "buy_1": buy1,
-                "buy_2": buy2,
-                "tp_2": tp2
-            }
-        })
+            signals.append({
+                "project_id": "stock-sniper",
+                "strategy_name": "스톡 스나이퍼",
+                "market": "KRX",
+                "ticker": c["code"],
+                "name": p_info["name"] or c["name"],
+                "signal_type": "BUY",
+                "price": cur_price,
+                "target_price": tp1,
+                "target_price_2": tp2,
+                "stop_loss_price": sl,
+                "risk_reward_ratio": rr1,
+                "score": score,
+                "sector": c["sector"],
+                "theme": c["theme"],
+                "pattern": "RS 상대강도 우상향",
+                "action_plan": f"1차 {buy1:,}원 / 2차 {buy2:,}원 분할 매수. {c['condition']}",
+                "raw_data": {
+                    "change_pct": p_info["change_pct"],
+                    "volume": p_info["volume"],
+                    "buy_1": buy1,
+                    "buy_2": buy2,
+                    "tp_2": tp2
+                }
+            })
+    else:
+        # 🇺🇸 미국장 스나이퍼 분석: 센트 단위, 미국 변동성 최적화 손절/목표가
+        for c in CANDIDATE_POOL_US:
+            ticker = c["ticker"]
+            p_info = fetch_us_price(ticker)
+            cur_price = p_info["price"]
+            if cur_price <= 0:
+                continue
+
+            # 미국장 타점 산출:
+            # - 높은 일일 변동성(ATR) 고려: 1차 -1.5% 눌림목, 2차 -3.5% 20일선 지지선
+            # - 손절선 -5.5% (약 1.8 ATR 완충하여 장중 휩소 노이즈 스탑아웃 방지)
+            # - 목표가: 1차 +8.5%, 2차 +16.0% (상한가 제한 없는 미국장 특성 반영하여 손익비 1.55+ 확보)
+            buy1 = round(cur_price * 0.985, 2)
+            buy2 = round(cur_price * 0.965, 2)
+            sl = round(buy1 * 0.945, 2)              # -5.5% 손절
+            tp1 = round(buy1 * 1.085, 2)             # +8.5% 1차 목표
+            tp2 = round(buy1 * 1.160, 2)             # +16.0% 2차 목표
+            rr1 = calc_rr_ratio(buy1, sl, tp1)
+
+            score = 88.0
+            if p_info["change_pct"] > 0:
+                score += 4.0
+            if rr1 >= 1.5:
+                score += 5.0
+
+            signals.append({
+                "project_id": "stock-sniper",
+                "strategy_name": "스톡 스나이퍼 (US)",
+                "market": "US",
+                "ticker": ticker,
+                "name": p_info["name"] or c["name"],
+                "signal_type": "BUY",
+                "price": cur_price,
+                "target_price": tp1,
+                "target_price_2": tp2,
+                "stop_loss_price": sl,
+                "risk_reward_ratio": rr1,
+                "score": score,
+                "sector": c["sector"],
+                "theme": c["theme"],
+                "pattern": "RS 초강세 주도주 눌림목",
+                "action_plan": f"1차 ${buy1:.2f} / 2차 ${buy2:.2f} 분할 매수. {c['condition']}. 손절 ${sl:.2f} 엄수",
+                "raw_data": {
+                    "change_pct": p_info["change_pct"],
+                    "buy_1": buy1,
+                    "buy_2": buy2,
+                    "tp_2": tp2
+                }
+            })
 
     # 점수 기준 정렬 후 상위 5선 반환
     signals.sort(key=lambda x: x["score"], reverse=True)
@@ -131,7 +214,12 @@ def run_analysis() -> List[Dict[str, Any]]:
 
 
 if __name__ == "__main__":
-    res = run_analysis()
-    print(f"✅ 스나이퍼 분석 완료 ({len(res)}종목 포착)")
-    for s in res[:2]:
-        print(f"• {s['name']} ({s['ticker']}) - {s['price']:,}원 | 목표 {s['target_price']:,}원 / 손절 {s['stop_loss_price']:,}원 (RR {s['risk_reward_ratio']})")
+    kr = run_analysis("KRX")
+    print(f"✅ 스나이퍼 한국장 분석 완료 ({len(kr)}종목 포착)")
+    for s in kr[:2]:
+        print(f"• [KR] {s['name']} ({s['ticker']}) - {s['price']:,}원 | 목표 {s['target_price']:,}원 / 손절 {s['stop_loss_price']:,}원 (RR {s['risk_reward_ratio']})")
+
+    us = run_analysis("US")
+    print(f"✅ 스나이퍼 미국장 분석 완료 ({len(us)}종목 포착)")
+    for s in us[:3]:
+        print(f"• [US] {s['name']} ({s['ticker']}) - ${s['price']:.2f} | 1차목표 ${s['target_price']:.2f} / 손절 ${s['stop_loss_price']:.2f} (RR {s['risk_reward_ratio']})")

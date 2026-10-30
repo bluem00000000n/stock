@@ -109,13 +109,17 @@ def inspect_portfolio_exits(active_holdings: List[Dict[str, Any]]) -> Tuple[List
 
         ret_pct = round(((cur_price - entry_price) / entry_price) * 100, 2) if entry_price > 0 else 0.0
 
+        is_us = h.get("market") == "US"
+        stop_str = f"${stop_price:.2f}" if is_us else f"{stop_price:,.0f}원"
+        target_str = f"${target_price:.2f}" if is_us else f"{target_price:,.0f}원"
+
         # 손절 조건: 손절가 이하로 이탈했거나 -7% 초과 하락 시
         if (stop_price > 0 and cur_price <= stop_price) or ret_pct <= -7.0:
             sells_sl.append({
                 **h,
                 "exit_price": cur_price,
                 "return_pct": ret_pct,
-                "exit_reason": f"손절가({stop_price:,.0f}원) 이탈 ({ret_pct:+.2f}%) 즉시 청산"
+                "exit_reason": f"손절가({stop_str}) 이탈 ({ret_pct:+.2f}%) 즉시 청산"
             })
         # 익절 조건: 1차 목표가 도달 (+10% 이상)
         elif target_price > 0 and cur_price >= target_price:
@@ -123,7 +127,7 @@ def inspect_portfolio_exits(active_holdings: List[Dict[str, Any]]) -> Tuple[List
                 **h,
                 "exit_price": cur_price,
                 "return_pct": ret_pct,
-                "exit_reason": f"목표가({target_price:,.0f}원) 도달 ({ret_pct:+.2f}%) 분할 익절"
+                "exit_reason": f"목표가({target_str}) 도달 ({ret_pct:+.2f}%) 분할 익절"
             })
 
     return sells_sl, sells_tp

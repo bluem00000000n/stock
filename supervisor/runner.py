@@ -67,9 +67,9 @@ def run_pipeline(mode: str = "auto", force: bool = False, dry_run: bool = False)
 
     # 한국장 전략
     try:
-        kr_signals.extend(sniper.run_analysis())
+        kr_signals.extend(sniper.run_analysis("KRX"))
     except Exception as e:
-        print(f"⚠️ sniper 오류: {e}")
+        print(f"⚠️ sniper_kr 오류: {e}")
     try:
         kr_signals.extend(sepa_pivot.run_analysis("KRX"))
     except Exception as e:
@@ -126,6 +126,10 @@ def run_pipeline(mode: str = "auto", force: bool = False, dry_run: bool = False)
         print(f"⚠️ SignalForge Crypto 오류: {e}")
 
     # 미국장 전략
+    try:
+        us_signals.extend(sniper.run_analysis("US"))
+    except Exception as e:
+        print(f"⚠️ sniper_us 오류: {e}")
     try:
         us_signals.extend(htp_momentum.run_analysis())
     except Exception as e:

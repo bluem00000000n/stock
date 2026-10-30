@@ -245,8 +245,8 @@ def build_1500_kr_close_us_open_alarm(
 
     # 4. 미국장 장전 통합 브리핑
     lines.append("🌃 <b>2. 🇺🇸 미국장 장전 통합 브리핑 (오늘 밤 개장 전략)</b>")
-    lines.append("• 3X 레버리지 무한투자와 HTP 모멘텀 TOP 10 결합 운용")
-    lines.append("• 피벗가 대비 +5% 초과 추격매수 절대 금지, 2N 스탑 준수\n")
+    lines.append("• 미국 5대 전략(스나이퍼, 227선 스윙, SEPA 피봇, HTP 모멘텀, 3X 무한투자) 결합 정밀 운용")
+    lines.append("• 상하한가 없는 미 증시 특성 반영: 손절선 및 익절폭 완충, 피벗가 대비 +5% 초과 추격매수 금지\n")
 
     lines.append("🚀 <b>[미국장 오늘의 엄선 타깃 TOP 2]</b>")
     us_picks = us_buys[:2]
