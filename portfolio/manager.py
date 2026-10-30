@@ -17,12 +17,12 @@ from typing import List, Dict, Any
 # 상위 core 및 selector 모듈 참조
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from core.database import get_db_connection, get_active_holdings
-from core.market_data import fetch_krx_price
+from core.market_data import fetch_krx_price, fetch_us_price
 from portfolio.selector import select_best_buys, inspect_portfolio_exits
 
 
 def update_holdings_prices(market: str = "KRX") -> List[Dict[str, Any]]:
-    """보유 포지션(HOLDING)의 최신 가격 및 수익률을 DB에 동기화"""
+    """보유 포지션(HOLDING)의 최신 가격 및 수익률을 DB에 동기화 (한국/미국 전종목 실시간 반영)"""
     holdings = get_active_holdings(market=market)
     now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
@@ -34,19 +34,28 @@ def update_holdings_prices(market: str = "KRX") -> List[Dict[str, Any]]:
             ticker = h["ticker"]
             entry_price = float(h["entry_price"])
             cur_price = float(h["current_price"])
+            h_name = h["name"]
 
             if is_kr:
                 p_info = fetch_krx_price(ticker)
-                if p_info["price"] > 0:
+                if p_info.get("price", 0) > 0:
                     cur_price = p_info["price"]
+                    if p_info.get("name"):
+                        h_name = p_info["name"]
+            else:
+                us_info = fetch_us_price(ticker)
+                if us_info.get("price", 0) > 0:
+                    cur_price = us_info["price"]
+                    if us_info.get("name") and us_info["name"] != ticker:
+                        h_name = us_info["name"]
 
             ret_pct = round(((cur_price - entry_price) / entry_price) * 100, 2) if entry_price > 0 else 0.0
 
             cur.execute("""
                 UPDATE trades 
-                SET current_price = ?, return_pct = ?, updated_at = ?
+                SET current_price = ?, name = ?, return_pct = ?, updated_at = ?
                 WHERE id = ?
-            """, (cur_price, ret_pct, now_str, h["id"]))
+            """, (cur_price, h_name, ret_pct, now_str, h["id"]))
 
         conn.commit()
 

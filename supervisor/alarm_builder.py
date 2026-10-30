@@ -115,21 +115,34 @@ def build_0840_us_close_kr_open_alarm(
             lines.append(f"• 🟢 <b>[목표가 익절] {s['name']}</b> ({s['ticker']}) : {s.get('return_pct', 0.0):+.2f}%")
         lines.append("")
 
-    # 6. 한국장 실시간 운용 포트폴리오
+    # 6. 한국장 실시간 운용 포트폴리오 (전종목 100% 완전 출력)
     kr_active = kr_portfolio.get("active_holdings", [])
-    stats = kr_portfolio.get("stats", {})
+    kr_stats = kr_portfolio.get("stats", {})
     lines.append("━━━━━━━━━━━━━━━━━━━━━━━━━")
-    lines.append(f"💼 <b>6. 🇰🇷 한국장 실시간 운용 포트폴리오 ({stats.get('total_holdings', len(kr_active))}종목)</b>")
-    lines.append(f"• <b>평균 수익률:</b> <b>{stats.get('avg_return_pct', 0.0):+.2f}%</b> (여유 슬롯: {stats.get('available_slots', 0)}개)")
+    lines.append(f"💼 <b>6. 🇰🇷 한국장 실시간 운용 포트폴리오 (총 {kr_stats.get('total_holdings', len(kr_active))}종목 전체)</b>")
+    lines.append(f"• <b>포트폴리오 평균 수익률:</b> <b>{kr_stats.get('avg_return_pct', 0.0):+.2f}%</b> (가용 슬롯: {kr_stats.get('available_slots', 0)}개)")
     if kr_active:
-        for h in kr_active[:5]:
+        for idx, h in enumerate(kr_active, 1):
             ret = float(h.get("return_pct", 0.0))
             sign = "🟢" if ret >= 0 else "🔵"
-            lines.append(f"{sign} <b>{h['name']}</b> ({h['ticker']}) : <b>{ret:+.2f}%</b> (진입: {int(h['entry_price']):,}원)")
-        if len(kr_active) > 5:
-            lines.append(f"   <i>(외 {len(kr_active)-5}개 보유 종목 대시보드에서 실시간 확인)</i>")
+            lines.append(f" {idx}. {sign} <b>{h['name']}</b> ({h['ticker']}) : <b>{ret:+.2f}%</b> (진입: {int(h['entry_price']):,}원 ➔ 현재: {int(h['current_price']):,}원)")
     else:
         lines.append("• <i>현재 100% 현금 보유 대기 상태</i>")
+    lines.append("")
+
+    # 7. 미국장 실시간 운용 포트폴리오 (전종목 100% 완전 출력)
+    us_active = us_portfolio.get("active_holdings", [])
+    us_stats = us_portfolio.get("stats", {})
+    lines.append("━━━━━━━━━━━━━━━━━━━━━━━━━")
+    lines.append(f"💼 <b>7. 🇺🇸 미국장 실시간 운용 포트폴리오 (총 {us_stats.get('total_holdings', len(us_active))}종목 전체)</b>")
+    lines.append(f"• <b>포트폴리오 평균 수익률:</b> <b>{us_stats.get('avg_return_pct', 0.0):+.2f}%</b> (가용 슬롯: {us_stats.get('available_slots', 0)}개)")
+    if us_active:
+        for idx, h in enumerate(us_active, 1):
+            ret = float(h.get("return_pct", 0.0))
+            sign = "🟢" if ret >= 0 else "🔵"
+            lines.append(f" {idx}. {sign} <b>{h['name']}</b> ({h['ticker']}) : <b>{ret:+.2f}%</b> (진입: ${float(h['entry_price']):.2f} ➔ 현재: ${float(h['current_price']):.2f})")
+    else:
+        lines.append("• <i>현재 미국장 보유 포지션 없음 (신규 진입 대기)</i>")
 
     lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
     lines.append("🖥️ <b>트레이딩 데스크:</b> https://bluem00000000n.github.io/stock/")
@@ -189,14 +202,17 @@ def build_1500_kr_close_us_open_alarm(
                 act_icon = "🟢" if action == "BUY" else ("🟡" if action == "HOLD" else "🔴")
                 lines.append(f" • {act_icon} <b>{mp['name']}</b> ({mp['ticker']}) : <b>{int(mp['price']):,}원</b> | {mp['action_plan']}")
 
-    # 3. 한국장 포트폴리오 마감 상태
+    # 3. 한국장 포트폴리오 마감 상태 (전종목 100% 완전 출력)
     kr_active = kr_portfolio.get("active_holdings", [])
     kr_stats = kr_portfolio.get("stats", {})
-    lines.append(f"\n💼 <b>한국장 운용 포트폴리오 마감 현황 ({len(kr_active)}종목 | 평균 {kr_stats.get('avg_return_pct', 0.0):+.2f}%)</b>")
-    for h in kr_active[:4]:
-        ret = float(h.get("return_pct", 0.0))
-        sign = "🟢" if ret >= 0 else "🔵"
-        lines.append(f"• {sign} <b>{h['name']}</b>: <b>{ret:+.2f}%</b> (현재가 {int(h['current_price']):,}원)")
+    lines.append(f"\n💼 <b>한국장 실시간 운용 포트폴리오 마감 현황 (총 {kr_stats.get('total_holdings', len(kr_active))}종목 전체 | 평균 {kr_stats.get('avg_return_pct', 0.0):+.2f}%)</b>")
+    if kr_active:
+        for idx, h in enumerate(kr_active, 1):
+            ret = float(h.get("return_pct", 0.0))
+            sign = "🟢" if ret >= 0 else "🔵"
+            lines.append(f" {idx}. {sign} <b>{h['name']}</b> ({h['ticker']}) : <b>{ret:+.2f}%</b> (진입: {int(h['entry_price']):,}원 ➔ 현재: {int(h['current_price']):,}원)")
+    else:
+        lines.append("• <i>현재 보유 포지션 없음 (현금 대기)</i>")
 
     lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
 
@@ -215,16 +231,17 @@ def build_1500_kr_close_us_open_alarm(
     else:
         lines.append("• <i>미국장 신규 진입 대기 (기존 분할 포지션 유지)</i>")
 
-    # 5. 미국장 활성 포지션
+    # 5. 미국장 실시간 운용 포트폴리오 (전종목 100% 완전 출력)
     us_active = us_portfolio.get("active_holdings", [])
-    lines.append(f"\n💼 <b>미국장 활성 포지션 현황 ({len(us_active)}종목)</b>")
+    us_stats = us_portfolio.get("stats", {})
+    lines.append(f"\n💼 <b>미국장 실시간 운용 포트폴리오 개장전 현황 (총 {us_stats.get('total_holdings', len(us_active))}종목 전체 | 평균 {us_stats.get('avg_return_pct', 0.0):+.2f}%)</b>")
     if us_active:
-        for h in us_active[:4]:
+        for idx, h in enumerate(us_active, 1):
             ret = float(h.get("return_pct", 0.0))
             sign = "🟢" if ret >= 0 else "🔵"
-            lines.append(f"• {sign} <b>{h['name']}</b> ({h['ticker']}) : <b>{ret:+.2f}%</b> (진입: ${float(h['entry_price']):.2f})")
+            lines.append(f" {idx}. {sign} <b>{h['name']}</b> ({h['ticker']}) : <b>{ret:+.2f}%</b> (진입: ${float(h['entry_price']):.2f} ➔ 현재: ${float(h['current_price']):.2f})")
     else:
-        lines.append("• <i>미국장 신규 진입 대기 포지션</i>")
+        lines.append("• <i>미국장 보유 포지션 없음 (신규 진입 대기)</i>")
 
     # 6. 크립토 레이더 (Signal Forge)
     if crypto_signals:

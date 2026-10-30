@@ -66,6 +66,39 @@ def fetch_krx_price(code: str) -> Dict[str, Any]:
     return res
 
 
+def fetch_us_price(ticker: str) -> Dict[str, Any]:
+    """네이버 증권 해외 주식 API를 통한 미국 주식/ETF 실시간 시세 조회"""
+    clean_ticker = ticker.strip().upper()
+    if f"us_{clean_ticker}" in _CACHE:
+        return _CACHE[f"us_{clean_ticker}"]
+
+    res = {
+        "ticker": clean_ticker,
+        "name": clean_ticker,
+        "price": 0.0,
+        "change_pct": 0.0
+    }
+
+    # NASDAQ(.O), NYSE(.N), NYSE American(.K), bare ticker 순차 조회
+    for suffix in [".O", ".N", ".K", ""]:
+        sym = f"{clean_ticker}{suffix}"
+        url = f"https://api.stock.naver.com/stock/{sym}/basic"
+        data = fetch_url_json(url, timeout=4)
+        if data and "closePrice" in data:
+            try:
+                res["name"] = data.get("stockName", clean_ticker)
+                close_price_str = str(data.get("closePrice", "0")).replace(",", "")
+                res["price"] = float(close_price_str)
+                change_rate_str = str(data.get("fluctuationsRatio", "0")).replace(",", "")
+                res["change_pct"] = float(change_rate_str)
+                break
+            except Exception:
+                continue
+
+    _CACHE[f"us_{clean_ticker}"] = res
+    return res
+
+
 def fetch_us_macro() -> Dict[str, Any]:
     """야간 미 증시 3대 지수, 환율, 국채 금리 수집"""
     if "us_macro" in _CACHE:
