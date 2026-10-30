@@ -21,6 +21,7 @@ def build_0840_us_close_kr_open_alarm(
     macro: Dict[str, Any],
     kr_buys: List[Dict[str, Any]],
     screener_signals: Optional[List[Dict[str, Any]]] = None,
+    us_screener_signals: Optional[List[Dict[str, Any]]] = None,
     crypto_signals: Optional[List[Dict[str, Any]]] = None
 ) -> str:
     """
@@ -94,6 +95,31 @@ def build_0840_us_close_kr_open_alarm(
                 lines.append(f"   └ <i>전술:</i> {mp['action_plan']}")
         lines.append("")
 
+    # 4. 미국장 실무 스크리너 분기 운용 (12선 매수/매도 실시간 레이더)
+    if us_screener_signals:
+        lines.append("━━━━━━━━━━━━━━━━━━━━━━━━━")
+        lines.append("📊 <b>4. 🎯 🇺🇸 미국장 실무 스크리너 (분기 12선 매수/매도 실시간 레이더)</b>")
+        lines.append("📌 <i>[운용 원칙] 시총 기준: 대형 $10B+ / 중소형 $1B~$10B | 12선 내 집중 매수·매도</i>\n")
+        us_growth = [s for s in us_screener_signals if "대형" in s.get("strategy_name", "")]
+        us_mid = [s for s in us_screener_signals if "중소형" in s.get("strategy_name", "")]
+
+        if us_growth:
+            lines.append("🚀 <b>[리스트 1: 미국 대형 성장주 4선 ($10B+)]</b>")
+            for gp in us_growth:
+                action = gp.get("signal_type", "BUY")
+                act_icon = "🟢" if action == "BUY" else ("🟡" if action == "HOLD" else "🔴")
+                lines.append(f" • {act_icon} <b>{gp['name']}</b> ({gp['ticker']}) : <b>${float(gp['price']):.2f}</b>")
+                lines.append(f"   └ <i>전술:</i> {gp['action_plan']}")
+
+        if us_mid:
+            lines.append("\n💎 <b>[리스트 2: 미국 중소형 수급가치 8선 ($1B~$10B)]</b>")
+            for mp in us_mid:
+                action = mp.get("signal_type", "BUY")
+                act_icon = "🟢" if action == "BUY" else ("🟡" if action == "HOLD" else "🔴")
+                lines.append(f" • {act_icon} <b>{mp['name']}</b> ({mp['ticker']}) : <b>${float(mp['price']):.2f}</b>")
+                lines.append(f"   └ <i>전술:</i> {mp['action_plan']}")
+        lines.append("")
+
     # 4. 바이낸스 선물 크립토 지능 알람 (Signal Forge)
     if crypto_signals:
         lines.append("━━━━━━━━━━━━━━━━━━━━━━━━━")
@@ -156,6 +182,7 @@ def build_1500_kr_close_us_open_alarm(
     kr_buys: List[Dict[str, Any]],
     us_buys: List[Dict[str, Any]],
     screener_signals: Optional[List[Dict[str, Any]]] = None,
+    us_screener_signals: Optional[List[Dict[str, Any]]] = None,
     crypto_signals: Optional[List[Dict[str, Any]]] = None
 ) -> str:
     """
@@ -230,6 +257,25 @@ def build_1500_kr_close_us_open_alarm(
             lines.append(f"   └ <i>실전 운용:</i> {p.get('action_plan', '')[:60]}")
     else:
         lines.append("• <i>미국장 신규 진입 대기 (기존 분할 포지션 유지)</i>")
+
+    # 4-2. 미국장 실무 스크리너 12선 개장전 레이더
+    if us_screener_signals:
+        lines.append("\n📊 <b>[미국장 실무 스크리너 12선 개장전 매매 레이더]</b>")
+        lines.append("📌 <i>시총 기준: 대형 $10B+ / 중소형 $1B~$10B | 분기 내 집중 매수·매도</i>")
+        us_growth = [s for s in us_screener_signals if "대형" in s.get("strategy_name", "")]
+        us_mid = [s for s in us_screener_signals if "중소형" in s.get("strategy_name", "")]
+        if us_growth:
+            lines.append("🚀 <b>[미국 대형 성장주 4선 ($10B+)]</b>")
+            for gp in us_growth:
+                action = gp.get("signal_type", "BUY")
+                act_icon = "🟢" if action == "BUY" else ("🟡" if action == "HOLD" else "🔴")
+                lines.append(f" • {act_icon} <b>{gp['name']}</b> ({gp['ticker']}) : <b>${float(gp['price']):.2f}</b> | {gp['action_plan']}")
+        if us_mid:
+            lines.append("💎 <b>[미국 중소형 수급가치 8선 ($1B~$10B)]</b>")
+            for mp in us_mid:
+                action = mp.get("signal_type", "BUY")
+                act_icon = "🟢" if action == "BUY" else ("🟡" if action == "HOLD" else "🔴")
+                lines.append(f" • {act_icon} <b>{mp['name']}</b> ({mp['ticker']}) : <b>${float(mp['price']):.2f}</b> | {mp['action_plan']}")
 
     # 5. 미국장 실시간 운용 포트폴리오 (전종목 100% 완전 출력)
     us_active = us_portfolio.get("active_holdings", [])

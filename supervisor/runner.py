@@ -41,6 +41,7 @@ from strategies import (
     signal_forge_bridge
 )
 from screener.engine import run_screener_analysis
+from screener.us_screener import run_us_screener_analysis
 
 
 def run_pipeline(mode: str = "auto", force: bool = False, dry_run: bool = False) -> bool:
@@ -86,7 +87,7 @@ def run_pipeline(mode: str = "auto", force: bool = False, dry_run: bool = False)
     except Exception as e:
         print(f"⚠️ dividend 오류: {e}")
 
-    # 백찬규 센터장 실무 스크리너 (성장주 후보 + 중소형 수급가치)
+    # 백찬규 센터장 실무 스크리너 (한국장: 성장주 후보 + 중소형 수급가치)
     screener_signals = []
     try:
         screener_signals, s_meta = run_screener_analysis()
@@ -94,6 +95,15 @@ def run_pipeline(mode: str = "auto", force: bool = False, dry_run: bool = False)
         print(f"🎯 실무 스크리너 분석 완료 ({len(screener_signals)}건 포착 / 소스: {s_meta['source']})")
     except Exception as e:
         print(f"⚠️ screener 오류: {e}")
+
+    # 백찬규 센터장 실무 스크리너 (미국장: 대형 성장 $10B+ / 중소형 수급 $1B~$10B)
+    us_screener_signals = []
+    try:
+        us_screener_signals, us_meta = run_us_screener_analysis()
+        us_signals.extend(us_screener_signals)
+        print(f"🎯 미국장 실무 스크리너 분석 완료 ({len(us_screener_signals)}건 포착 / 시총: 대형 {us_meta['large_threshold']}, 중소형 {us_meta['mid_small_threshold']})")
+    except Exception as e:
+        print(f"⚠️ us_screener 오류: {e}")
 
     # Signal Forge 25대 퀀트 전략 (한국주식, 미국주식, 크립토)
     crypto_signals = []
@@ -153,6 +163,7 @@ def run_pipeline(mode: str = "auto", force: bool = False, dry_run: bool = False)
         alarm_text = build_0840_us_close_kr_open_alarm(
             kr_portfolio, us_portfolio, macro, kr_best_buys,
             screener_signals=screener_signals,
+            us_screener_signals=us_screener_signals,
             crypto_signals=crypto_signals
         )
         title = f"미국장 장마감 통합 브리핑, 🇰🇷 한국장 장전 통합 브리핑 ({kr_portfolio['date']})"
@@ -160,6 +171,7 @@ def run_pipeline(mode: str = "auto", force: bool = False, dry_run: bool = False)
         alarm_text = build_1500_kr_close_us_open_alarm(
             kr_portfolio, us_portfolio, kr_best_buys, us_best_buys,
             screener_signals=screener_signals,
+            us_screener_signals=us_screener_signals,
             crypto_signals=crypto_signals
         )
         title = f"15:00 : 🇰🇷 한국장 종가매수(Strong Close) 최종 타깃 브리핑 , 미국장 장전 통합 브리핑 ({kr_portfolio['date']})"

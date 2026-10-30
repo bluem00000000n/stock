@@ -1,0 +1,161 @@
+{
+  "quarter": "2026-Q3",
+  "screened_date": "2026-10-30",
+  "next_screening_expected": "2026-11-20 (미국 3Q 어닝시즌 종료 후)",
+  "rules": {
+    "large_cap_threshold": "$10B 이상 (100억 달러)",
+    "mid_small_cap_threshold": "$1B ~ $10B (10억~100억 달러)"
+  },
+  "growth_large": [
+    {
+      "ticker": "NVDA",
+      "name": "엔비디아",
+      "screener_type": "GROWTH_LARGE",
+      "market_cap_b": 5149.0,
+      "sales_growth_27": 28.5,
+      "op_growth_27": 36.2,
+      "roe_26": 65.4,
+      "eps_chg_1m": 4.2,
+      "eps_chg_3m": 8.5,
+      "vol_ratio": 165.0,
+      "trailing_pb": 22.5,
+      "theme": "AI 가속기 및 블랙웰(Blackwell) 아키텍처 글로벌 독점",
+      "video_note": "월가 AI 반도체 컨센서스 1위 상향 대형 성장주"
+    },
+    {
+      "ticker": "AVGO",
+      "name": "브로드컴",
+      "screener_type": "GROWTH_LARGE",
+      "market_cap_b": 810.0,
+      "sales_growth_27": 22.0,
+      "op_growth_27": 29.5,
+      "roe_26": 28.5,
+      "eps_chg_1m": 3.1,
+      "eps_chg_3m": 5.4,
+      "vol_ratio": 152.0,
+      "trailing_pb": 12.8,
+      "theme": "빅테크 맞춤형 커스텀 ASIC AI 칩 및 네트워킹",
+      "video_note": "구글/메타 커스텀 TPU 및 AI 스위치 독점 수혜"
+    },
+    {
+      "ticker": "PLTR",
+      "name": "팔란티어",
+      "screener_type": "GROWTH_LARGE",
+      "market_cap_b": 142.0,
+      "sales_growth_27": 26.5,
+      "op_growth_27": 42.0,
+      "roe_26": 21.0,
+      "eps_chg_1m": 5.8,
+      "eps_chg_3m": 12.0,
+      "vol_ratio": 185.0,
+      "trailing_pb": 18.2,
+      "theme": "기업용 AI 플랫폼 AIP(Artificial Intelligence Platform) 폭발적 채택",
+      "video_note": "미 국방부 및 상업용 부문 영업이익률 레버리지 폭발"
+    },
+    {
+      "ticker": "APP",
+      "name": "앱러빈",
+      "screener_type": "GROWTH_LARGE",
+      "market_cap_b": 88.0,
+      "sales_growth_27": 31.0,
+      "op_growth_27": 48.5,
+      "roe_26": 38.0,
+      "eps_chg_1m": 6.5,
+      "eps_chg_3m": 15.2,
+      "vol_ratio": 192.0,
+      "trailing_pb": 16.5,
+      "theme": "AI 머신러닝 광고 추천 엔진 AXON 2.0 고성장",
+      "video_note": "이커머스 광고 확장으로 27년 영업익 폭증 컨센서스"
+    }
+  ],
+  "mid_small": [
+    {
+      "ticker": "SYM",
+      "name": "심보틱",
+      "screener_type": "MID_SMALL",
+      "market_cap_b": 8.8,
+      "vol_ratio": 285.0,
+      "fluctuations_ratio": 2.5,
+      "trailing_pb": 4.2,
+      "theme": "월마트 공급 AI 기반 차세대 물류창고 자동화 로봇",
+      "video_note": "수주잔고 230억 달러 돌파 및 거래량 280% 폭증 바닥탈출"
+    },
+    {
+      "ticker": "DUOL",
+      "name": "듀오링고",
+      "screener_type": "MID_SMALL",
+      "market_cap_b": 8.2,
+      "vol_ratio": 260.0,
+      "fluctuations_ratio": 3.8,
+      "trailing_pb": 4.8,
+      "theme": "생성형 AI 결합 글로벌 1위 언어 교육 SaaS",
+      "video_note": "유료 구독자 50% 급증 및 흑자 전환 레버리지 본격화"
+    },
+    {
+      "ticker": "CELH",
+      "name": "셀시어스",
+      "screener_type": "MID_SMALL",
+      "market_cap_b": 6.5,
+      "vol_ratio": 240.0,
+      "fluctuations_ratio": 1.8,
+      "trailing_pb": 3.5,
+      "theme": "펩시 유통망 피트니스 에너지음료 낙폭과대 바닥 반등",
+      "video_note": "재고 조정 완료 후 PBR 최저 바닥권 거래량 240% 급증"
+    },
+    {
+      "ticker": "IONQ",
+      "name": "이온큐",
+      "screener_type": "MID_SMALL",
+      "market_cap_b": 4.5,
+      "vol_ratio": 270.0,
+      "fluctuations_ratio": 5.2,
+      "trailing_pb": 4.1,
+      "theme": "이온트랩 양자컴퓨팅 하드웨어 및 미 공군 계약",
+      "video_note": "양자 하드웨어 상용화 기대감 및 기관 순매수 유입"
+    },
+    {
+      "ticker": "SOUN",
+      "name": "사운드하운드AI",
+      "screener_type": "MID_SMALL",
+      "market_cap_b": 2.2,
+      "vol_ratio": 295.0,
+      "fluctuations_ratio": 4.5,
+      "trailing_pb": 3.8,
+      "theme": "자동차 및 레스토랑 음성 대화형 AI 플랫폼",
+      "video_note": "엔비디아 지분 투자 및 거래량 295% 폭증 양봉"
+    },
+    {
+      "ticker": "JOBY",
+      "name": "조비에비에이션",
+      "screener_type": "MID_SMALL",
+      "market_cap_b": 4.1,
+      "vol_ratio": 230.0,
+      "fluctuations_ratio": 2.1,
+      "trailing_pb": 2.9,
+      "theme": "도요타 추가 투자 및 FAA 형식 인증 단계 eVTOL",
+      "video_note": "UAM 에어택시 상용화 가시권 진입 거래량 폭증"
+    },
+    {
+      "ticker": "SPT",
+      "name": "스프라우트소셜",
+      "screener_type": "MID_SMALL",
+      "market_cap_b": 1.8,
+      "vol_ratio": 220.0,
+      "fluctuations_ratio": 1.5,
+      "trailing_pb": 1.8,
+      "theme": "엔터프라이즈 소셜미디어 관리 및 분석 SaaS",
+      "video_note": "극단적 저PBR(1.8배) 밸류에이션 바닥 탈출 거래량 유입"
+    },
+    {
+      "ticker": "RXRX",
+      "name": "리커전파마",
+      "screener_type": "MID_SMALL",
+      "market_cap_b": 2.1,
+      "vol_ratio": 255.0,
+      "fluctuations_ratio": 3.0,
+      "trailing_pb": 2.4,
+      "theme": "엔비디아 바이오네모(BioNeMo) 파트너십 AI 신약 플랫폼",
+      "video_note": "AI 생물학 파이프라인 확장 및 기관 13F 순매수"
+    }
+  ]
+}
