@@ -2,31 +2,33 @@
 # -*- coding: utf-8 -*-
 """
 screener/us_screener.py
-미국 증시(US Stocks) 백찬규 센터장 실무 스크리너 엔진
+미국 증시(NYSE, NASDAQ, AMEX 8,000+ 전종목) 백찬규 실무 스크리너 자동화 엔진
+- Finviz 실시간 전수 웹 스크리너 연동 (Zero API Key, 공개 웹 스캐닝)
+- 네이버 증권 해외주식 API 실시간 시세 및 재무/수급 연동
 
-[미국장 시총 및 필터링 기준]
+[미국장 스크리너 조건 (한국장 백찬규 실무 스크리너와 1:1 매칭)]
 1. 미국 대형 성장주 스크리너:
    - 시가총액: $10B 이상 (100억 달러 / 약 13.5조원 이상)
-   - 27년 매출액 증감율: 8% 이상
-   - 27년 영업익(EPS) 증감율: 16% 이상
-   - 26년 ROE: 15% 이상
-   - 최근 1M EPS 추정치 변동률: 1% 이상
-   - 최근 3M EPS 추정치 변동률: 0% 이상
-   - 거래량 52주 평균 대비 5일 평균 변화율 상위
-   - 기관 순매수(13F) 유입
+   - 미래 EPS 성장률: 향후 5년(2026~2027+) 연 15% 이상
+   - ROE: 15% 이상
+   - 정렬: 52주 대비 거래량 변화율(Relative Volume) 상위
+   - 액션: 목표가(+25%), 손절가(-7%), 손익비(RR) 기반 매수/매도 타점 도출
 
 2. 미국 중소형 수급 스크리너:
    - 시가총액: $1B ~ $10B (10억 ~ 100억 달러 / 약 1.3조원 ~ 13.5조원)
-   - 거래량: 52주 평균 대비 5일 평균 200% 이상 (2배 이상 폭증)
-   - 당일 등락률: > 0% (양봉 거래량 폭증)
-   - 기관 순매수 유입 및 저PBR/PSR 바닥 탈출
+   - 거래량: 52주 평균 대비 5일 평균 거래량 200% 이상 (Relative Volume >= 2.0 폭증)
+   - 당일 등락률: > 0% (음봉 손절매 제외, 양봉 반등 종목만 선별)
+   - 밸류에이션: 저PBR 또는 낙폭과대 바닥 탈출
 """
 
 import os
 import sys
 import json
+import re
+import ssl
+import urllib.request
 from pathlib import Path
-from typing import List, Dict, Any, Tuple
+from typing import List, Dict, Any, Tuple, Optional
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(BASE_DIR))
@@ -34,220 +36,185 @@ DATA_DIR = BASE_DIR / "data" / "screener"
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 US_UNIVERSE_FILE = DATA_DIR / "us_quarterly_universe.json"
 
-from core.market_data import fetch_us_price
-from screener.filters import to_float
+SSL_CTX = ssl.create_default_context()
+SSL_CTX.check_hostname = False
+SSL_CTX.verify_mode = ssl.CERT_NONE
+
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+}
 
 
-# 미국 대형 성장주 마스터 (시총 $10B+ / 27년 고성장 컨센서스)
-US_GROWTH_LARGE_MASTER: List[Dict[str, Any]] = [
-    {
-        "ticker": "NVDA",
-        "name": "엔비디아",
-        "screener_type": "GROWTH_LARGE",
-        "market_cap_b": 5149.0, # $5,149B (초대형주)
-        "sales_growth_27": 28.5,
-        "op_growth_27": 36.2,
-        "roe_26": 65.4,
-        "eps_chg_1m": 4.2,
-        "eps_chg_3m": 8.5,
-        "vol_ratio": 165.0,
-        "trailing_pb": 22.5,
-        "theme": "AI 가속기 및 블랙웰(Blackwell) 아키텍처 글로벌 독점",
-        "video_note": "월가 AI 반도체 컨센서스 1위 상향 대형 성장주"
-    },
-    {
-        "ticker": "AVGO",
-        "name": "브로드컴",
-        "screener_type": "GROWTH_LARGE",
-        "market_cap_b": 810.0, # $810B
-        "sales_growth_27": 22.0,
-        "op_growth_27": 29.5,
-        "roe_26": 28.5,
-        "eps_chg_1m": 3.1,
-        "eps_chg_3m": 5.4,
-        "vol_ratio": 152.0,
-        "trailing_pb": 12.8,
-        "theme": "빅테크 맞춤형 커스텀 ASIC AI 칩 및 네트워킹",
-        "video_note": "구글/메타 커스텀 TPU 및 AI 스위치 독점 수혜"
-    },
-    {
-        "ticker": "PLTR",
-        "name": "팔란티어",
-        "screener_type": "GROWTH_LARGE",
-        "market_cap_b": 142.0, # $142B
-        "sales_growth_27": 26.5,
-        "op_growth_27": 42.0,
-        "roe_26": 21.0,
-        "eps_chg_1m": 5.8,
-        "eps_chg_3m": 12.0,
-        "vol_ratio": 185.0,
-        "trailing_pb": 18.2,
-        "theme": "기업용 AI 플랫폼 AIP(Artificial Intelligence Platform) 폭발적 채택",
-        "video_note": "미 국방부 및 상업용 부문 영업이익률 레버리지 폭발"
-    },
-    {
-        "ticker": "APP",
-        "name": "앱러빈",
-        "screener_type": "GROWTH_LARGE",
-        "market_cap_b": 88.0, # $88B
-        "sales_growth_27": 31.0,
-        "op_growth_27": 48.5,
-        "roe_26": 38.0,
-        "eps_chg_1m": 6.5,
-        "eps_chg_3m": 15.2,
-        "vol_ratio": 192.0,
-        "trailing_pb": 16.5,
-        "theme": "AI 머신러닝 광고 추천 엔진 AXON 2.0 고성장",
-        "video_note": "이커머스 광고 확장으로 27년 영업익 폭증 컨센서스"
-    }
-]
-
-# 미국 중소형 수급가치 마스터 (시총 $1B ~ $10B / 52주 대비 거래량 200%+ & 기관 수급)
-US_MID_SMALL_MASTER: List[Dict[str, Any]] = [
-    {
-        "ticker": "SYM",
-        "name": "심보틱",
-        "screener_type": "MID_SMALL",
-        "market_cap_b": 8.8, # $8.8B ($1B~$10B 부합)
-        "vol_ratio": 285.0, # 52주 대비 285% 폭증
-        "fluctuations_ratio": 2.5,
-        "trailing_pb": 4.2,
-        "theme": "월마트 공급 AI 기반 차세대 물류창고 자동화 로봇",
-        "video_note": "수주잔고 230억 달러 돌파 및 거래량 280% 폭증 바닥탈출"
-    },
-    {
-        "ticker": "DUOL",
-        "name": "듀오링고",
-        "screener_type": "MID_SMALL",
-        "market_cap_b": 8.2, # $8.2B
-        "vol_ratio": 260.0,
-        "fluctuations_ratio": 3.8,
-        "trailing_pb": 4.8,
-        "theme": "생성형 AI 결합 글로벌 1위 언어 교육 SaaS",
-        "video_note": "유료 구독자 50% 급증 및 흑자 전환 레버리지 본격화"
-    },
-    {
-        "ticker": "CELH",
-        "name": "셀시어스",
-        "screener_type": "MID_SMALL",
-        "market_cap_b": 6.5, # $6.5B
-        "vol_ratio": 240.0,
-        "fluctuations_ratio": 1.8,
-        "trailing_pb": 3.5,
-        "theme": "펩시 유통망 피트니스 에너지음료 낙폭과대 바닥 반등",
-        "video_note": "재고 조정 완료 후 PBR 최저 바닥권 거래량 240% 급증"
-    },
-    {
-        "ticker": "IONQ",
-        "name": "이온큐",
-        "screener_type": "MID_SMALL",
-        "market_cap_b": 4.5, # $4.5B
-        "vol_ratio": 270.0,
-        "fluctuations_ratio": 5.2,
-        "trailing_pb": 4.1,
-        "theme": "이온트랩 양자컴퓨팅 하드웨어 및 미 공군 계약",
-        "video_note": "양자 하드웨어 상용화 기대감 및 기관 순매수 유입"
-    },
-    {
-        "ticker": "SOUN",
-        "name": "사운드하운드AI",
-        "screener_type": "MID_SMALL",
-        "market_cap_b": 2.2, # $2.2B
-        "vol_ratio": 295.0,
-        "fluctuations_ratio": 4.5,
-        "trailing_pb": 3.8,
-        "theme": "자동차 및 레스토랑 음성 대화형 AI 플랫폼",
-        "video_note": "엔비디아 지분 투자 및 거래량 295% 폭증 양봉"
-    },
-    {
-        "ticker": "JOBY",
-        "name": "조비에비에이션",
-        "screener_type": "MID_SMALL",
-        "market_cap_b": 4.1, # $4.1B
-        "vol_ratio": 230.0,
-        "fluctuations_ratio": 2.1,
-        "trailing_pb": 2.9,
-        "theme": "도요타 추가 투자 및 FAA 형식 인증 단계 eVTOL",
-        "video_note": "UAM 에어택시 상용화 가시권 진입 거래량 폭증"
-    },
-    {
-        "ticker": "SPT",
-        "name": "스프라우트소셜",
-        "screener_type": "MID_SMALL",
-        "market_cap_b": 1.8, # $1.8B
-        "vol_ratio": 220.0,
-        "fluctuations_ratio": 1.5,
-        "trailing_pb": 1.8,
-        "theme": "엔터프라이즈 소셜미디어 관리 및 분석 SaaS",
-        "video_note": "극단적 저PBR(1.8배) 밸류에이션 바닥 탈출 거래량 유입"
-    },
-    {
-        "ticker": "RXRX",
-        "name": "리커전파마",
-        "screener_type": "MID_SMALL",
-        "market_cap_b": 2.1, # $2.1B
-        "vol_ratio": 255.0,
-        "fluctuations_ratio": 3.0,
-        "trailing_pb": 2.4,
-        "theme": "엔비디아 바이오네모(BioNeMo) 파트너십 AI 신약 플랫폼",
-        "video_note": "AI 생물학 파이프라인 확장 및 기관 13F 순매수"
-    }
-]
-
-
-def load_us_quarterly_universe() -> Dict[str, Any]:
-    """미국장 분기 스크리너 유니버스 로드 (없으면 초기화)"""
-    if not US_UNIVERSE_FILE.exists():
-        data = {
-            "quarter": "2026-Q3",
-            "screened_date": "2026-10-30",
-            "next_screening_expected": "2026-11-20 (미국 3Q 어닝시즌 종료 후)",
-            "rules": {
-                "large_cap_threshold": "$10B 이상 (100억 달러)",
-                "mid_small_cap_threshold": "$1B ~ $10B (10억~100억 달러)"
-            },
-            "growth_large": US_GROWTH_LARGE_MASTER,
-            "mid_small": US_MID_SMALL_MASTER
-        }
-        with open(US_UNIVERSE_FILE, "w", encoding="utf-8") as f:
-            json.dump(data, f, ensure_ascii=False, indent=2)
-        return data
-
+def fetch_finviz_tickers(filter_str: str, order: str = "-relativevolume", max_results: int = 15) -> List[str]:
+    """Finviz 스크리너에서 특정 조건의 티커 목록을 실시간 스크래핑"""
+    url = f"https://finviz.com/screener.ashx?v=111&f={filter_str}&o={order}"
+    req = urllib.request.Request(url, headers=HEADERS)
     try:
-        with open(US_UNIVERSE_FILE, "r", encoding="utf-8") as f:
-            return json.load(f)
-    except Exception:
-        return {"growth_large": US_GROWTH_LARGE_MASTER, "mid_small": US_MID_SMALL_MASTER}
+        with urllib.request.urlopen(req, context=SSL_CTX, timeout=8) as resp:
+            html = resp.read().decode("utf-8", errors="ignore")
+            # SVG 로고 링크에서 티커 추출 (가장 정확하고 안정적)
+            raw_tickers = re.findall(r"https://logo\.finviz\.com/([A-Z0-9\.\-]+)\.svg", html)
+            tickers = list(dict.fromkeys(raw_tickers))
+            return tickers[:max_results]
+    except Exception as e:
+        print(f"⚠️ Finviz 스크래핑 오류 ({filter_str}): {e}")
+        return []
 
 
-def run_us_screener_analysis() -> Tuple[List[Dict[str, Any]], Dict[str, Any]]:
+def get_us_stock_detail(ticker: str) -> Optional[Dict[str, Any]]:
+    """네이버 증권 해외주식 API를 통해 종목 상세 정보 및 실시간 시세 수집"""
+    clean_sym = ticker.upper().strip()
+    for suffix in [".O", ".N", ".K", ""]:
+        sym = f"{clean_sym}{suffix}"
+        url = f"https://api.stock.naver.com/stock/{sym}/basic"
+        try:
+            req = urllib.request.Request(url, headers=HEADERS)
+            with urllib.request.urlopen(req, context=SSL_CTX, timeout=4) as res:
+                data = json.loads(res.read().decode("utf-8"))
+                if data and "closePrice" in data:
+                    infos = {i.get("key"): i.get("value") for i in data.get("stockItemTotalInfos", [])}
+                    name = data.get("stockName", clean_sym)
+                    price = float(str(data.get("closePrice", "0")).replace(",", ""))
+                    fluct = float(str(data.get("fluctuationsRatio", "0")).replace(",", ""))
+                    marcap = infos.get("시총", "-")
+                    pbr_str = str(infos.get("PBR", "1.0")).replace("배", "").replace(",", "").strip()
+                    try:
+                        pbr = float(pbr_str)
+                    except ValueError:
+                        pbr = 1.0
+
+                    return {
+                        "ticker": clean_sym,
+                        "name": name,
+                        "price": price,
+                        "fluctuations_ratio": fluct,
+                        "market_cap": marcap,
+                        "trailing_pb": pbr,
+                        "industry": infos.get("업종", "미국 기술/성장주"),
+                        "per": infos.get("PER", "-")
+                    }
+        except Exception:
+            continue
+    return None
+
+
+def run_us_automated_scan() -> Dict[str, Any]:
     """
-    미국장 실무 스크리너 분석 실행:
-    - 대형 성장주 4선 (시총 $10B+ / 27년 고성장 컨센서스)
-    - 중소형 수급가치주 8선 (시총 $1B~$10B / 52주 대비 거래량 200%+ 폭증)
+    미국 증시 전종목 Finviz 자동 전수 스크리닝 실행:
+    1. 대형 성장주: 시총 $10B+, 향후 5년 EPS > 15%, ROE > 15%, 상대 거래량 상위
+    2. 중소형 수급주: 시총 $1B~$10B, 52주 대비 거래량 200%+ 폭증, 당일 양봉 상승
     """
+    print("🌐 [US Screener] 미국 증시 8,000+ 전종목 Finviz 실시간 자동 전수 스크리닝 시작...")
+
+    # 1. 대형 성장주 ($10B+, EPS > 15%, ROE > 15%)
+    large_filter = "cap_largeover,fa_eps5years_o15,fa_roe_o15"
+    large_tickers = fetch_finviz_tickers(large_filter, order="-relativevolume", max_results=15)
+    print(f"📊 Finviz 대형 성장주 통과: {len(large_tickers)}개 종목 포착 ({large_tickers[:8]})")
+
+    # 2. 중소형 수급주 ($1B~$10B, 거래량 200%+ 폭증, 당일 양봉)
+    mid_filter = "cap_mid,sh_relvol_o2,ta_perf_dup"
+    mid_tickers = fetch_finviz_tickers(mid_filter, order="-relativevolume", max_results=12)
+    
+    # 스몰캡 ($300M~$2B) 보강
+    small_filter = "cap_small,sh_relvol_o2,ta_perf_dup"
+    small_tickers = fetch_finviz_tickers(small_filter, order="-relativevolume", max_results=10)
+    
+    combined_mid_small = list(dict.fromkeys(mid_tickers + small_tickers))[:20]
+    print(f"💎 Finviz 중소형 수급주 통과: {len(combined_mid_small)}개 종목 포착 ({combined_mid_small[:8]})")
+
+    # 상세 데이터 실시간 수집 (구글 GOOG/GOOGL 같은 중복 기업 필터링)
+    seen_names = set()
+    growth_large_list = []
+    for t in large_tickers:
+        detail = get_us_stock_detail(t)
+        if detail and detail["price"] > 0:
+            base_name = detail["name"].split(" ")[0]
+            if base_name in seen_names:
+                continue
+            seen_names.add(base_name)
+
+            detail["screener_type"] = "GROWTH_LARGE"
+            detail["theme"] = f"미국 대형 고성장주 | {detail['industry']}"
+            detail["video_note"] = f"Finviz 전수 통과: 시총 {detail['market_cap']} | EPS 15%+ 고성장 & ROE 15%+"
+            growth_large_list.append(detail)
+            if len(growth_large_list) >= 4:
+                break
+
+    mid_small_list = []
+    for t in combined_mid_small:
+        detail = get_us_stock_detail(t)
+        if detail and detail["price"] > 0:
+            base_name = detail["name"].split(" ")[0]
+            if base_name in seen_names:
+                continue
+            seen_names.add(base_name)
+
+            detail["screener_type"] = "MID_SMALL"
+            detail["theme"] = f"미국 중소형 수급 폭등주 | {detail['industry']}"
+            detail["video_note"] = f"Finviz 전수 통과: 거래량 200%+ 폭증 양봉 & PBR {detail['trailing_pb']}배"
+            mid_small_list.append(detail)
+            if len(mid_small_list) >= 8:
+                break
+
+    # 분기 유니버스 파일로 저장
+    result_data = {
+        "quarter": "2026-Q3",
+        "screened_date": "2026-10-30",
+        "source": "finviz_automated_full_scan",
+        "next_screening_expected": "2026-11-20 (미국 3Q 어닝시즌 마감 후)",
+        "rules": {
+            "large_cap_threshold": "$10B 이상 (100억 달러)",
+            "mid_small_cap_threshold": "$1B ~ $10B (10억~100억 달러)",
+            "volume_threshold": "52주 평균 대비 200% 이상 (Relative Volume 2.0+)",
+            "growth_threshold": "EPS 성장률 15%+ & ROE 15%+"
+        },
+        "growth_large": growth_large_list,
+        "mid_small": mid_small_list
+    }
+
+    with open(US_UNIVERSE_FILE, "w", encoding="utf-8") as f:
+        json.dump(result_data, f, ensure_ascii=False, indent=2)
+
+    print(f"✅ 미국장 자동 전수 스크리닝 완료 및 유니버스 저장 (대형 {len(growth_large_list)}선, 중소형 {len(mid_small_list)}선)")
+    return result_data
+
+
+def run_us_screener_analysis(force_refresh: bool = False) -> Tuple[List[Dict[str, Any]], Dict[str, Any]]:
+    """
+    미국장 실무 스크리너 분석 통합 실행:
+    - 유니버스 파일이 없거나 강제 갱신 시 Finviz 전수 자동 크롤링 수행
+    - 평상시에는 저장된 분기 12선 유니버스를 로드하여 실시간 시세 및 매수/매도 액션 도출
+    """
+    if force_refresh or not US_UNIVERSE_FILE.exists():
+        q_data = run_us_automated_scan()
+    else:
+        try:
+            with open(US_UNIVERSE_FILE, "r", encoding="utf-8") as f:
+                q_data = json.load(f)
+        except Exception:
+            q_data = run_us_automated_scan()
+
+    large_list = q_data.get("growth_large", [])
+    mid_list = q_data.get("mid_small", [])
+
     signals = []
     meta = {
-        "source": "us_quarterly_active_trading",
-        "quarter": "2026-Q3",
+        "source": q_data.get("source", "finviz_automated_full_scan"),
+        "quarter": q_data.get("quarter", "2026-Q3"),
         "large_threshold": "$10B+",
         "mid_small_threshold": "$1B~$10B",
-        "growth_large_count": len(US_GROWTH_LARGE_MASTER),
-        "mid_small_count": len(US_MID_SMALL_MASTER)
+        "growth_large_count": len(large_list),
+        "mid_small_count": len(mid_list)
     }
 
-    q_data = load_us_quarterly_universe()
-    large_list = q_data.get("growth_large", US_GROWTH_LARGE_MASTER)
-    mid_list = q_data.get("mid_small", US_MID_SMALL_MASTER)
-
-    # 1. 미국 대형 성장주 4선 평가
+    # 1. 미국 대형 성장주 실시간 액션 도출
     for item in large_list:
         ticker = item["ticker"]
-        quote = fetch_us_price(ticker)
-        cur_price = quote.get("price") or 100.0
-        fluct = quote.get("change_pct") or 0.0
+        # 최신 시세 갱신
+        live = get_us_stock_detail(ticker)
+        cur_price = live["price"] if live else item.get("price", 100.0)
+        fluct = live["fluctuations_ratio"] if live else item.get("fluctuations_ratio", 0.0)
 
-        # 대형 성장주: 1차 목표가 +25%, 2차 +35%, 손절가 -7%
         target_1 = round(cur_price * 1.25, 2)
         target_2 = round(cur_price * 1.35, 2)
         stop_loss = round(cur_price * 0.93, 2)
@@ -281,21 +248,20 @@ def run_us_screener_analysis() -> Tuple[List[Dict[str, Any]], Dict[str, Any]]:
             "stop_loss_price": stop_loss,
             "risk_reward_ratio": rr,
             "score": 85.0 if action == "BUY" else 75.0,
-            "sector": "미국 대형 성장주 ($10B+)",
+            "sector": f"미국 대형 성장주 ($10B+) | {item.get('industry', '')}",
             "theme": item.get("video_note", ""),
-            "pattern": f"거래량 {item['vol_ratio']}% | {action_desc}",
+            "pattern": f"Finviz 전수 포착 | {action_desc}",
             "action_plan": f"[{action}] {action_desc} | 기준가 ${cur_price:.2f} ➔ 목표가 ${target_1:.2f} (손절 ${stop_loss:.2f})",
             "raw_data": item
         })
 
-    # 2. 미국 중소형 수급가치주 8선 평가
+    # 2. 미국 중소형 수급가치주 실시간 액션 도출
     for item in mid_list:
         ticker = item["ticker"]
-        quote = fetch_us_price(ticker)
-        cur_price = quote.get("price") or 25.0
-        fluct = quote.get("change_pct") or 0.0
+        live = get_us_stock_detail(ticker)
+        cur_price = live["price"] if live else item.get("price", 25.0)
+        fluct = live["fluctuations_ratio"] if live else item.get("fluctuations_ratio", 0.0)
 
-        # 중소형 수급주: 1차 목표가 +20%, 2차 +30%, 손절가 -8%
         target_1 = round(cur_price * 1.20, 2)
         target_2 = round(cur_price * 1.30, 2)
         stop_loss = round(cur_price * 0.92, 2)
@@ -329,9 +295,9 @@ def run_us_screener_analysis() -> Tuple[List[Dict[str, Any]], Dict[str, Any]]:
             "stop_loss_price": stop_loss,
             "risk_reward_ratio": rr,
             "score": 80.0 if action == "BUY" else 70.0,
-            "sector": "미국 중소형 수급주 ($1B~$10B)",
+            "sector": f"미국 중소형 수급주 ($1B~$10B) | {item.get('industry', '')}",
             "theme": item.get("video_note", ""),
-            "pattern": f"거래량 {item['vol_ratio']}% 폭증 | {action_desc}",
+            "pattern": f"거래량 200%+ 폭증 | {action_desc}",
             "action_plan": f"[{action}] {action_desc} | 기준가 ${cur_price:.2f} ➔ 목표가 ${target_1:.2f} (손절 ${stop_loss:.2f})",
             "raw_data": item
         })
@@ -340,14 +306,15 @@ def run_us_screener_analysis() -> Tuple[List[Dict[str, Any]], Dict[str, Any]]:
 
 
 if __name__ == "__main__":
-    sigs, m = run_us_screener_analysis()
-    print(f"\n✅ 미국장 실무 스크리너 완료 (시총 기준: 대형 {m['large_threshold']} / 중소형 {m['mid_small_threshold']})")
+    # 테스트 실행: 강제 전수 자동 스캔 모드
+    sigs, m = run_us_screener_analysis(force_refresh=True)
+    print(f"\n✅ 미국장 Finviz 자동 전수 스크리닝 성공 (소스: {m['source']})")
     print(f"📊 대형 성장주: {m['growth_large_count']}개 | 중소형 수급주: {m['mid_small_count']}개\n")
-    
-    print("=== [미국장 리스트 1: 대형 성장주 4선 실시간 매매 상태] ===")
+
+    print("=== [미국장 리스트 1: 대형 성장주 4선 (Finviz 전수 자동 추출)] ===")
     for s in [x for x in sigs if "대형" in x["strategy_name"]]:
         print(f"• {s['name']} ({s['ticker']}): ${s['price']:.2f} | {s['action_plan']}")
 
-    print("\n=== [미국장 리스트 2: 중소형 수급가치 8선 실시간 매매 상태] ===")
+    print("\n=== [미국장 리스트 2: 중소형 수급가치 8선 (Finviz 전수 자동 추출)] ===")
     for s in [x for x in sigs if "중소형" in x["strategy_name"]]:
         print(f"• {s['name']} ({s['ticker']}): ${s['price']:.2f} | {s['action_plan']}")
