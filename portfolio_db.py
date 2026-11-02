@@ -142,7 +142,7 @@ def get_live_price(market: str, ticker: str) -> dict:
 # 전체 9대 프로젝트 실전 알람 및 체결 시딩 (Reset & Reload 9 Projects)
 # -------------------------------------------------------------
 def reset_and_reload_all_9_projects():
-    """모든 9개 프로젝트의 가장 최근 실제 알람 내용으로 종목 및 수익률 관리 세팅"""
+    """오늘(2026-11-02) 기준 포트폴리오 초기화 및 정기 알람(08:30, 15:00, 17:30) 세팅"""
     conn = get_db()
     cur = conn.cursor()
 
@@ -151,359 +151,387 @@ def reset_and_reload_all_9_projects():
     cur.execute("DELETE FROM daily_performance")
     conn.commit()
 
-    today_str = "2026-10-21"
+    today_str = datetime.now().strftime("%Y-%m-%d")
 
     # =========================================================
-    # 1. stock-sniper (10/21 08:45 장전 알람)
+    # 1. 정기 알람 등록 (08:30, 15:00, 17:30 - 추천리스트 삭제, 포트폴리오 & 변동내역 중심)
     # =========================================================
-    sniper_candidates = [
-        {"ticker": "069500", "name": "KODEX 200", "target": 91500, "stop": 87000, "note": "지수 대표 ETF 분할 시가 체결"},
-        {"ticker": "229200", "name": "KODEX 코스닥150", "target": 13800, "stop": 13000, "note": "코스닥 지수 수급 지지선 반등"},
-        {"ticker": "042510", "name": "라온시큐어", "target": 19500, "stop": 17500, "note": "생체인증/양자암호 52주 신고가 돌파권"},
-        {"ticker": "036930", "name": "주성엔지니어링", "target": 215000, "stop": 195000, "note": "반도체 ALD 2,200억 수급 방어"},
-        {"ticker": "002990", "name": "금호건설", "target": 10500, "stop": 9300, "note": "거래대금 1,500억 유입 양봉 수급 방어"}
-    ]
+    alarm_0830_text = f"""🌅 <b>[STOCK SUPERVISOR] 🇰🇷 한국장 개장전 실전 포트폴리오 알람</b>
+📅 <b>일시:</b> {today_str} 08:30 KST
+━━━━━━━━━━━━━━━━━━━━━━━━━
+🌐 <b>1. 글로벌 매크로 요약</b>
+• 다우: 42,114.40 (-0.61%) | 나스닥: 18,518.61 (-0.33%) | S&P500: 5,764.67 (-0.48%)
+• 원/달러 환율: <b>1,379.5원</b> | VIX 지수: 18.38 (안정권 유지)
+• <b>당일 전술:</b> 09:00 시초가 갭상승 추격매수 금지, 5분봉 지지 확인 후 원칙 체결.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━
+🔄 <b>2. 포트폴리오 변동 내역 (오늘의 포지션 조정)</b>
+• 🔄 <b>[교체 종목] 농심 ➔ 삼양식품</b>
+  └ <i>교체 이유:</i> 음식료 섹터 내 글로벌 불닭 수출 성장 모멘텀 우위 및 컵앤핸들 피벗 돌파
+• 🔄 <b>[교체 종목] 셀트리온 ➔ 알테오젠</b>
+  └ <i>교체 이유:</i> 바이오 섹터 내 피하주사(SC) 독점 플랫폼 기술수출 가치 부각
+• 🆕 <b>[신규 종목] [중소형주] 라온시큐어</b> (042510) | <b>[시가 매수 (09:00 개장 시가 체결)]</b>
+  └ <i>편입 이유:</i> 양자암호/생체인증 52주 신고가 스나이퍼 외인·기관 수급 유입
+
+━━━━━━━━━━━━━━━━━━━━━━━━━
+💼 <b>3. 🇰🇷 한국장 실운용 포트폴리오 (총 6종목 - 대형 3선 + 중소형 3선)</b>
+• <b>포트폴리오 평균 수익률:</b> <b>+0.26%</b> (가용 슬롯: 0개)
+ 1. 🟢 <b>[대형주] SK하이닉스</b> (000660) | <b>[시가 매수 (09:00 개장 시가 체결)]</b>
+    └ 진입: 1,479,000원 ➔ 현재: 1,479,000원 (<b>0.00%</b>) | 🎯 1,750,000원 | 🛑 1,380,000원
+ 2. 🟢 <b>[대형주] 한화에어로스페이스</b> (012450) | <b>[지정가 매수: 735,000원]</b>
+    └ 진입: 735,000원 ➔ 현재: 739,000원 (<b>+0.54%</b>) | 🎯 860,000원 | 🛑 680,000원
+ 3. 🟢 <b>[대형주] HD현대일렉트릭</b> (267260) | <b>[지정가 매수: 442,000원]</b>
+    └ 진입: 442,000원 ➔ 현재: 446,500원 (<b>+1.02%</b>) | 🎯 520,000원 | 🛑 410,000원
+ 4. 🟢 <b>[중형주] 알테오젠</b> (196170) | <b>[시가 매수 (09:00 개장 시가 체결)]</b>
+    └ 진입: 213,500원 ➔ 현재: 213,500원 (<b>0.00%</b>) | 🎯 260,000원 | 🛑 198,000원
+ 5. 🟢 <b>[중형주] 삼양식품</b> (003230) | <b>[종가 매수 (15:20~15:30 동시호가 체결)]</b>
+    └ 진입: 1,178,000원 ➔ 현재: 1,178,000원 (<b>0.00%</b>) | 🎯 1,380,000원 | 🛑 1,090,000원
+ 6. 🟢 <b>[중소형주] 라온시큐어</b> (042510) | <b>[시가 매수 (09:00 개장 시가 체결)]</b>
+    └ 진입: 18,340원 ➔ 현재: 18,340원 (<b>0.00%</b>) | 🎯 21,500원 | 🛑 17,200원
+
+━━━━━━━━━━━━━━━━━━━━━━━━━
+💼 <b>4. 🇺🇸 미국장 실운용 포트폴리오 (총 6종목 - 대형 3선 + 중소형 3선)</b>
+• <b>포트폴리오 평균 수익률:</b> <b>+0.16%</b> (가용 슬롯: 0개)
+ 1. 🟢 <b>[대형주] 엔비디아</b> (NVDA) | <b>[시가 매수 (22:30 개장 시가 체결)]</b>
+    └ 진입: $204.64 ➔ 현재: $204.64 (<b>0.00%</b>) | 🎯 $260.00 | 🛑 $190.00
+ 2. 🟢 <b>[대형주] 팔란티어</b> (PLTR) | <b>[지정가 매수: $184.00]</b>
+    └ 진입: $184.00 ➔ 현재: $184.11 (<b>+0.06%</b>) | 🎯 $230.00 | 🛑 $168.00
+ 3. 🟢 <b>[대형주] 브로드컴</b> (AVGO) | <b>[지정가 매수: $325.00]</b>
+    └ 진입: $325.00 ➔ 현재: $326.08 (<b>+0.33%</b>) | 🎯 $400.00 | 🛑 $300.00
+ 4. 🟢 <b>[중형주] 파월 인더스트리스</b> (POWL) | <b>[시가 매수 (22:30 개장 시가 체결)]</b>
+    └ 진입: $156.26 ➔ 현재: $156.26 (<b>0.00%</b>) | 🎯 $195.00 | 🛑 $142.00
+ 5. 🟢 <b>[중형주] 모딘 매뉴팩처링</b> (MOD) | <b>[지정가 매수: $129.00]</b>
+    └ 진입: $129.00 ➔ 현재: $129.76 (<b>+0.59%</b>) | 🎯 $165.00 | 🛑 $118.00
+ 6. 🟢 <b>[3X 레버리지] ProShares UltraPro QQQ</b> (TQQQ) | <b>[종가 매수 (LOC 20분할)]</b>
+    └ 진입: $62.01 ➔ 현재: $62.01 (<b>0.00%</b>) | 🎯 $85.00 | 🛑 $45.00
+
+━━━━━━━━━━━━━━━━━━━━━━━━━
+🖥️ <b>트레이딩 데스크:</b> https://bluem00000000n.github.io/stock/
+🚀 <i>Stock Supervisor Unified Central Engine</i>"""
+
     cur.execute("""
     INSERT INTO alarms (project_id, project_name, sent_at, alarm_type, market, title, raw_message, stocks_json)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     """, (
-        "stock-sniper", "stock-sniper", f"{today_str} 08:45:04", "장전알람", "KRX",
-        "🎯 08:45 장전 스나이퍼 실전 주문표 (KODEX 200/150 & 수급 주도주 3선)",
-        f"""[스톡 스나이퍼 08:45 실전 장전 주문표]
-📅 기준일시: {today_str} (수) 08:45:04 장전 출정 브리핑
-📊 지수 ETF 진입 타점:
-  - KODEX 200 (069500) | 목표: 91,500원 | 손절: 87,000원
-  - KODEX 코스닥150 (229200) | 목표: 13,800원 | 손절: 13,000원
-🚀 RS 상대강도 & 52주 신고가 주도주 3선:
-  1. 라온시큐어 (042510) | 목표: 19,500원 | 손절: 17,500원
-  2. 주성엔지니어링 (036930) | 목표: 215,000원 | 손절: 195,000원
-  3. 금호건설 (002990) | 목표: 10,500원 | 손절: 9,300원
-⚠️ 실전 원칙: 장전 알람 종목은 09:00 시가(Open) 확인 후 즉시 분할 매수 체결.""",
-        json.dumps(sniper_candidates, ensure_ascii=False)
+        "stock-supervisor", "stock-supervisor", f"{today_str} 08:30:00", "정기알람(장전)", "KRX",
+        f"08:30 : 🇰🇷 한국장 개장전 실전 포트폴리오 알람 ({today_str})",
+        alarm_0830_text, "[]"
     ))
 
-    # =========================================================
-    # 2. stock-sepa-pivot (10/21 08:40 한국장 알람)
-    # =========================================================
-    sepa_candidates = [
-        {"ticker": "000660", "name": "SK하이닉스", "entry": 1380000.0, "target": 1680000.0, "stop": 1290000.0, "note": "HBM3E 독점 슈퍼사이클, 20일선 VCP 피벗 돌파"},
-        {"ticker": "012450", "name": "한화에어로스페이스", "entry": 680000.0, "target": 840000.0, "stop": 635000.0, "note": "K9/천무 글로벌 수주 모멘텀, 불플래그 패턴"},
-        {"ticker": "267260", "name": "HD현대일렉트릭", "entry": 415000.0, "target": 515000.0, "stop": 388000.0, "note": "북미 변압기 쇼티지 수혜, 플랫 베이스 지지"},
-        {"ticker": "196170", "name": "알테오젠", "entry": 200000.0, "target": 248000.0, "stop": 186000.0, "note": "피하주사(SC) 독점 플랫폼, 하이타이트 플래그 돌파"},
-        {"ticker": "003230", "name": "삼양식품", "entry": 1110000.0, "target": 1350000.0, "stop": 1030000.0, "note": "글로벌 수출 호조, 컵앤핸들 피벗 돌파"}
-    ]
+    alarm_1500_text = f"""🎯 <b>[STOCK SUPERVISOR] 🇰🇷 한국장 종가매수 최종 타깃 & 포트폴리오 알람</b>
+📅 <b>기준일자:</b> {today_str} | ⏰ 15:00 KST (장마감 30분 전)
+━━━━━━━━━━━━━━━━━━━━━━━━━
+🔄 <b>1. 포트폴리오 변동 내역 (종가매수 & 포지션 재편)</b>
+• 🆕 <b>[신규 종목 (종가매수)] [중형주] 삼양식품</b> (003230) | <b>[종가 매수 (15:20~15:30 동시호가 체결)]</b>
+  └ <i>편입 이유:</i> 글로벌 불닭 수출 호조 및 장중 강세 지속, 컵앤핸들 피벗 종가 돌파 안착
+• <i>기타 포지션:</i> SK하이닉스, 한화에어로스페이스, HD현대일렉트릭, 알테오젠, 라온시큐어 전량 보유 유지
+
+━━━━━━━━━━━━━━━━━━━━━━━━━
+💼 <b>2. 🇰🇷 한국장 실운용 포트폴리오 마감 현황 (총 6종목 - 대형 3선 + 중소형 3선)</b>
+• <b>포트폴리오 평균 수익률:</b> <b>+0.26%</b> (가용 슬롯: 0개)
+ 1. 🟢 <b>[대형주] SK하이닉스</b> (000660) | <b>[시가 매수 (09:00 개장 시가 체결)]</b>
+    └ 진입: 1,479,000원 ➔ 마감: 1,479,000원 (<b>0.00%</b>) | 🎯 1,750,000원 | 🛑 1,380,000원
+ 2. 🟢 <b>[대형주] 한화에어로스페이스</b> (012450) | <b>[지정가 매수: 735,000원]</b>
+    └ 진입: 735,000원 ➔ 마감: 739,000원 (<b>+0.54%</b>) | 🎯 860,000원 | 🛑 680,000원
+ 3. 🟢 <b>[대형주] HD현대일렉트릭</b> (267260) | <b>[지정가 매수: 442,000원]</b>
+    └ 진입: 442,000원 ➔ 마감: 446,500원 (<b>+1.02%</b>) | 🎯 520,000원 | 🛑 410,000원
+ 4. 🟢 <b>[중형주] 알테오젠</b> (196170) | <b>[시가 매수 (09:00 개장 시가 체결)]</b>
+    └ 진입: 213,500원 ➔ 마감: 213,500원 (<b>0.00%</b>) | 🎯 260,000원 | 🛑 198,000원
+ 5. 🟢 <b>[중형주] 삼양식품</b> (003230) | <b>[종가 매수 (15:20~15:30 동시호가 체결)]</b>
+    └ 진입: 1,178,000원 ➔ 마감: 1,178,000원 (<b>0.00%</b>) | 🎯 1,380,000원 | 🛑 1,090,000원
+ 6. 🟢 <b>[중소형주] 라온시큐어</b> (042510) | <b>[시가 매수 (09:00 개장 시가 체결)]</b>
+    └ 진입: 18,340원 ➔ 마감: 18,340원 (<b>0.00%</b>) | 🎯 21,500원 | 🛑 17,200원
+
+━━━━━━━━━━━━━━━━━━━━━━━━━
+💼 <b>3. 🇺🇸 미국장 실운용 포트폴리오 현황 (총 6종목 - 대형 3선 + 중소형 3선)</b>
+• <b>포트폴리오 평균 수익률:</b> <b>+0.16%</b> (가용 슬롯: 0개)
+ 1. 🟢 <b>[대형주] 엔비디아</b> (NVDA) | <b>[시가 매수 (22:30 개장 시가 체결)]</b>
+    └ 진입: $204.64 ➔ 현재: $204.64 (<b>0.00%</b>) | 🎯 $260.00 | 🛑 $190.00
+ 2. 🟢 <b>[대형주] 팔란티어</b> (PLTR) | <b>[지정가 매수: $184.00]</b>
+    └ 진입: $184.00 ➔ 현재: $184.11 (<b>+0.06%</b>) | 🎯 $230.00 | 🛑 $168.00
+ 3. 🟢 <b>[대형주] 브로드컴</b> (AVGO) | <b>[지정가 매수: $325.00]</b>
+    └ 진입: $325.00 ➔ 현재: $326.08 (<b>+0.33%</b>) | 🎯 $400.00 | 🛑 $300.00
+ 4. 🟢 <b>[중형주] 파월 인더스트리스</b> (POWL) | <b>[시가 매수 (22:30 개장 시가 체결)]</b>
+    └ 진입: $156.26 ➔ 현재: $156.26 (<b>0.00%</b>) | 🎯 $195.00 | 🛑 $142.00
+ 5. 🟢 <b>[중형주] 모딘 매뉴팩처링</b> (MOD) | <b>[지정가 매수: $129.00]</b>
+    └ 진입: $129.00 ➔ 현재: $129.76 (<b>+0.59%</b>) | 🎯 $165.00 | 🛑 $118.00
+ 6. 🟢 <b>[3X 레버리지] ProShares UltraPro QQQ</b> (TQQQ) | <b>[종가 매수 (LOC 20분할)]</b>
+    └ 진입: $62.01 ➔ 현재: $62.01 (<b>0.00%</b>) | 🎯 $85.00 | 🛑 $45.00
+
+━━━━━━━━━━━━━━━━━━━━━━━━━
+🖥️ <b>트레이딩 데스크:</b> https://bluem00000000n.github.io/stock/
+🚀 <i>Stock Supervisor Unified Central Engine</i>"""
+
     cur.execute("""
     INSERT INTO alarms (project_id, project_name, sent_at, alarm_type, market, title, raw_message, stocks_json)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     """, (
-        "stock-sepa-pivot", "stock-sepa-pivot", f"{today_str} 08:40:02", "장전알람", "KRX",
-        "📈 08:40 한국장 SEPA x 피벗 포인트 감시 (SK하이닉스/한화에어로/HD현대일렉 외)",
-        f"""📈 [08:40 오전 알람] 🇰🇷 한국장 개장 SEPA x 피벗 브리핑 (기준일: {today_str})
-👑 [한국 대형 주도주 TOP 5] 피벗 감시선
-1. SK하이닉스 (000660) | 피벗 1,380,000원 | 목표 1,680,000원 | 손절 1,290,000원 | VCP 돌파
-2. 한화에어로스페이스 (012450) | 피벗 680,000원 | 목표 840,000원 | 손절 635,000원 | Bull Flag
-3. HD현대일렉트릭 (267260) | 피벗 415,000원 | 목표 515,000원 | 손절 388,000원 | Flat Base
-4. 알테오젠 (196170) | 피벗 200,000원 | 목표 248,000원 | 손절 186,000원 | High Tight Flag
-5. 삼양식품 (003230) | 피벗 1,110,000원 | 목표 1,350,000원 | 손절 1,030,000원 | Cup with Handle
-⚠️ 매매 수칙: 09:00 시가(Open) 확인 후 진입, 피벗 대비 +5% 초과 갭상승 추격 매수 금지.""",
-        json.dumps(sepa_candidates, ensure_ascii=False)
+        "stock-supervisor", "stock-supervisor", f"{today_str} 15:00:00", "정기알람(장마감)", "KRX",
+        f"15:00 : 🇰🇷 한국장 종가매수 최종 타깃 & 포트폴리오 알람 ({today_str})",
+        alarm_1500_text, "[]"
     ))
 
-    # =========================================================
-    # 3. stock-us3x (미국 3배 레버리지 무한매수 파이프라인)
-    # =========================================================
-    us3x_candidates = [
-        {"ticker": "TQQQ", "name": "ProShares UltraPro QQQ", "market": "US", "entry": 68.50, "target": 85.00, "stop": 45.00, "note": "나스닥 3X, 스코어 96.0, 20분할 LOC 적립"},
-        {"ticker": "TECL", "name": "Direxion Daily Tech 3X", "market": "US", "entry": 98.20, "target": 220.00, "stop": 70.00, "note": "테크 3X, 스코어 100.0, 트렌치 분할 매수"},
-        {"ticker": "SOXL", "name": "Direxion Daily Semiconductor 3X", "market": "US", "entry": 65.00, "target": 95.00, "stop": 45.00, "note": "반도체 3X, 스코어 94.0, 무한매수 적립"},
-        {"ticker": "FAS", "name": "Direxion Daily Financial 3X", "market": "US", "entry": 115.00, "target": 180.00, "stop": 85.00, "note": "금융 3X, 스코어 88.0, 회전 포트폴리오 편입"}
-    ]
+    alarm_1730_text = f"""🌃 <b>[STOCK SUPERVISOR] 🇺🇸 미국장 장전 실전 포트폴리오 알람</b>
+📅 <b>일시:</b> {today_str} 17:30 KST (개장 전 프리마켓 정기 브리핑)
+━━━━━━━━━━━━━━━━━━━━━━━━━
+🌐 <b>1. 미국 증시 매크로 & 선물 지수</b>
+• 다우 선물: 42,114.40 (-0.61%) | 나스닥 선물: 18,518.61 (-0.33%) | S&P500 선물: 5,764.67 (-0.48%)
+• 원/달러 환율: <b>1,379.5원</b> | VIX 지수: 18.38 (안정권 유지)
+• <b>운용 지침:</b> 프리마켓 갭상승 추격 매수 금지, 22:30 개장 후 본장 호가 체결 원칙 준수.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━
+🔄 <b>2. 미국장 포트폴리오 변동 내역 (신규진입 & 재편)</b>
+• 🔄 <b>[교체 종목] 일라이 릴리 (LLY) ➔ 팔란티어 (PLTR)</b>
+  └ <i>교체 이유:</i> AI 엔터프라이즈 플랫폼 수주 폭발 및 모멘텀 상대강도 우위
+• 🔄 <b>[교체 종목] 메타 (META) ➔ 브로드컴 (AVGO)</b>
+  └ <i>교체 이유:</i> 빅테크 커스텀 AI ASIC 칩 수주 사이클 가속화
+• 🆕 <b>[신규 종목] [3X 레버리지] ProShares UltraPro QQQ</b> (TQQQ) | <b>[종가 매수 (LOC 20분할)]</b>
+  └ <i>편입 이유:</i> 나스닥 100 3배 레버리지 무한매수 1차 20분할 적립식 매수 개시
+
+━━━━━━━━━━━━━━━━━━━━━━━━━
+💼 <b>3. 🇺🇸 미국장 실운용 포트폴리오 (총 6종목 - 대형 3선 + 중소형 3선)</b>
+• <b>포트폴리오 평균 수익률:</b> <b>+0.16%</b> (가용 슬롯: 0개)
+ 1. 🟢 <b>[대형주] 엔비디아</b> (NVDA) | <b>[시가 매수 (22:30 개장 시가 체결)]</b>
+    └ 진입: $204.64 ➔ 현재: $204.64 (<b>0.00%</b>) | 🎯 $260.00 | 🛑 $190.00
+ 2. 🟢 <b>[대형주] 팔란티어</b> (PLTR) | <b>[지정가 매수: $184.00]</b>
+    └ 진입: $184.00 ➔ 현재: $184.11 (<b>+0.06%</b>) | 🎯 $230.00 | 🛑 $168.00
+ 3. 🟢 <b>[대형주] 브로드컴</b> (AVGO) | <b>[지정가 매수: $325.00]</b>
+    └ 진입: $325.00 ➔ 현재: $326.08 (<b>+0.33%</b>) | 🎯 $400.00 | 🛑 $300.00
+ 4. 🟢 <b>[중형주] 파월 인더스트리스</b> (POWL) | <b>[시가 매수 (22:30 개장 시가 체결)]</b>
+    └ 진입: $156.26 ➔ 현재: $156.26 (<b>0.00%</b>) | 🎯 $195.00 | 🛑 $142.00
+ 5. 🟢 <b>[중형주] 모딘 매뉴팩처링</b> (MOD) | <b>[지정가 매수: $129.00]</b>
+    └ 진입: $129.00 ➔ 현재: $129.76 (<b>+0.59%</b>) | 🎯 $165.00 | 🛑 $118.00
+ 6. 🟢 <b>[3X 레버리지] ProShares UltraPro QQQ</b> (TQQQ) | <b>[종가 매수 (LOC 20분할)]</b>
+    └ 진입: $62.01 ➔ 현재: $62.01 (<b>0.00%</b>) | 🎯 $85.00 | 🛑 $45.00
+
+━━━━━━━━━━━━━━━━━━━━━━━━━
+💼 <b>4. 🇰🇷 한국장 실운용 포트폴리오 (총 6종목 | 마감 평균 +0.26%)</b>
+ 1. 🟢 [대형주] SK하이닉스 (000660) : <b>0.00%</b> (1,479,000원)
+ 2. 🟢 [대형주] 한화에어로스페이스 (012450) : <b>+0.54%</b> (739,000원)
+ 3. 🟢 [대형주] HD현대일렉트릭 (267260) : <b>+1.02%</b> (446,500원)
+ 4. 🟢 [중형주] 알테오젠 (196170) : <b>0.00%</b> (213,500원)
+ 5. 🟢 [중형주] 삼양식품 (003230) : <b>0.00%</b> (1,178,000원)
+ 6. 🟢 [중소형주] 라온시큐어 (042510) : <b>0.00%</b> (18,340원)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━
+🖥️ <b>트레이딩 데스크:</b> https://bluem00000000n.github.io/stock/
+🚀 <i>Stock Supervisor Unified Central Engine</i>"""
+
     cur.execute("""
     INSERT INTO alarms (project_id, project_name, sent_at, alarm_type, market, title, raw_message, stocks_json)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     """, (
-        "stock-us3x", "stock-us3x", "2026-10-27 17:31:01", "주간알람", "US",
-        "🚀 미국 3배 레버리지 무한매수 & 회전 퀀트 파이프라인 (TQQQ / TECL / SOXL / FAS)",
-        """🚀 [US 3X 무한매수 & 회전 퀀트 파이프라인]
-📅 실행일시: 2026-10-27 17:31:01 (Run ID: RUN_2026-10-27_49d4a909)
-🌐 거시 체제: RISK_ON (VIX 18.38, SPY 200일선 상단 지지)
-📊 무한매수 3배 레버리지 주문 지침:
-1. TECL (테크 3X): 적합도 스코어 100.0. 트렌치 분할 매수.
-2. TQQQ (나스닥 3X): 1차 20분할 LOC 주문. 평균단가 기준 0.5회차 매수.
-3. SOXL (반도체 3X): 적합도 스코어 94.0. 반도체 사이클 트렌치 적립.
-4. FAS (금융 3X): 적합도 스코어 88.0. 회전 포트폴리오 편입.""",
-        json.dumps(us3x_candidates, ensure_ascii=False)
+        "stock-supervisor", "stock-supervisor", f"{today_str} 17:30:00", "정기알람(야간)", "US",
+        f"17:30 : 🇺🇸 미국장 장전 실전 포트폴리오 알람 ({today_str})",
+        alarm_1730_text, "[]"
     ))
 
     # =========================================================
-    # 4. stock-dividend_top7 (10/19 08:30 주간 배당주)
+    # 2. 실전 운용 포트폴리오 체결 등록 (한국 6종목 + 미국 6종목 = 총 12종목)
     # =========================================================
-    dividend_candidates = [
-        {"ticker": "030200", "name": "KT", "market": "KRX", "target": 45000, "stop": 37000, "note": "5년 평균 시가배당률 5.4%, 안정 배당성향"},
-        {"ticker": "017670", "name": "SK텔레콤", "market": "KRX", "target": 63000, "stop": 52000, "note": "분기배당 및 5년 연속 배당성장률 6.2%"},
-        {"ticker": "029780", "name": "삼성카드", "market": "KRX", "target": 46000, "stop": 38000, "note": "시가배당률 6.8%, 자본건전성 최우수"}
-    ]
-    cur.execute("""
-    INSERT INTO alarms (project_id, project_name, sent_at, alarm_type, market, title, raw_message, stocks_json)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-    """, (
-        "stock-dividend_top7", "stock-dividend_top7", "2026-10-19 08:30:09", "주간알람", "KRX",
-        "💰 한국 거래소 6대 기준 고배당 성장주 TOP 7 (KT / SK텔레콤 / 삼성카드)",
-        """💰 [stock-dividend_top7] 10월 3주차 주간 고배당주 TOP 7
-- 6대 핵심 배당 기준(5년 평균 배당률 4%+, 5년 연속 배당성장, DART 공시 교차검증) 100% 통과
-1. KT (030200) - 시가배당률 5.4%
-2. SK텔레콤 (017670) - 분기배당 및 6.2% 성장
-3. 삼성카드 (029780) - 배당성향 42% 건전 고배당
-⚠️ 월요일 09:00 시가 진입 기준 주간 포트폴리오 편입.""",
-        json.dumps(dividend_candidates, ensure_ascii=False)
-    ))
-
-    # =========================================================
-    # 5. signal_forge_alert (10/21 실시간 AI 신호)
-    # =========================================================
-    signal_forge_candidates = [
-        {"ticker": "068270", "name": "셀트리온", "market": "KRX", "entry": 193900, "target": 261765, "stop": 183817, "status": "HOLDING", "note": "Catalyst Breakout 다일간 모멘텀 8.1% 상회 (Score 81.0)"},
-        {"ticker": "373220", "name": "LG에너지솔루션", "market": "KRX", "entry": 429000, "exit": 406000, "exit_date": today_str, "status": "CLOSED", "note": "손절가 이탈 원칙 손절 청산 (-5.36%)"}
-    ]
-    cur.execute("""
-    INSERT INTO alarms (project_id, project_name, sent_at, alarm_type, market, title, raw_message, stocks_json)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-    """, (
-        "signal_forge_alert", "signal_forge_alert", f"{today_str} 10:00:45", "장중알람", "KRX",
-        "⚡ AI 거시 시장 인텔리전스 & 카탈리스트 돌파 신호 (셀트리온 / LG에너지솔루션)",
-        f"""⚡ [Signal Forge Intelligence] AI 전략 시그널
-1. 셀트리온 (068270) | 진입가 193,900원 | 목표가 261,765원 | 손절가 183,817원
-   전략: S04 Catalyst Breakout + Multi-Day Momentum (Tier: OPPORTUNITY)
-2. LG에너지솔루션 (373220) | 진입가 429,000원 | 406,000원 이탈 시 원칙 손절""",
-        json.dumps(signal_forge_candidates, ensure_ascii=False)
-    ))
-
-    # =========================================================
-    # 7. stock-cyclical-screener (10/21 11:00 시클리컬 퀀트)
-    # =========================================================
-    cyclical_candidates = [
-        {"ticker": "007860", "name": "서연", "market": "KRX", "entry": 8900, "exit": 9550, "exit_date": today_str, "status": "CLOSED", "note": "자동차 부품 PBR 호황기 정점 도달, 이익 실현 매도 (+7.30%)"},
-        {"ticker": "078350", "name": "한양디지텍", "market": "KRX", "target": 23000, "stop": 18500, "note": "반도체 패키징 PBR 침체기 저평가 매수 신호"}
-    ]
-    cur.execute("""
-    INSERT INTO alarms (project_id, project_name, sent_at, alarm_type, market, title, raw_message, stocks_json)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-    """, (
-        "stock-cyclical-screener", "stock-cyclical-screener", f"{today_str} 11:00:00", "장중알람", "KRX",
-        "📊 한국 6대 시클리컬 섹터 PBR 사이클 스크리닝 (한양디지텍 매수 / 서연 매도)",
-        f"""📊 [KRX Cyclical Quant Screener]
-📅 스캔일시: {today_str} 11:00:00
-- 신규 매수 신호: 한양디지텍 (078350) - 반도체 저평가 사이클
-- 이익 실현 매도: 서연 (007860) - 자동차 섹터 고PBR 정점 차익 실현""",
-        json.dumps(cyclical_candidates, ensure_ascii=False)
-    ))
-
-    # =========================================================
-    # 8. stock-htp-top10 (10/27 17:00 주간 HTP 모멘텀 TOP 10)
-    # =========================================================
-    htp_candidates = [
-        {"ticker": "NVDA", "name": "NVIDIA", "market": "US", "entry": 185.00, "target": 250.00, "stop": 172.00, "note": "AI 가속기 독점, HTP 대형 1위"},
-        {"ticker": "LLY", "name": "Eli Lilly", "market": "US", "entry": 1310.00, "target": 1650.00, "stop": 1220.00, "note": "비만치료제 수요 폭발, HTP 대형 2위"},
-        {"ticker": "META", "name": "Meta Platforms", "market": "US", "entry": 565.00, "target": 720.00, "stop": 525.00, "note": "AI 광고 최적화 및 EPS 폭발, HTP 대형 3위"},
-        {"ticker": "AVGO", "name": "Broadcom", "market": "US", "entry": 302.00, "target": 390.00, "stop": 280.00, "note": "커스텀 AI ASIC 수주 확대, HTP 대형 4위"},
-        {"ticker": "PLTR", "name": "Palantir", "market": "US", "entry": 164.00, "target": 225.00, "stop": 152.00, "note": "AIP 플랫폼 엔터프라이즈 성장, HTP 대형 5위"},
-        {"ticker": "POWL", "name": "Powell Industries", "market": "US", "entry": 141.00, "target": 185.00, "stop": 131.00, "note": "데이터센터 전력망 장비, 러셀 2000 HTP 1위"},
-        {"ticker": "MOD", "name": "Modine Manufacturing", "market": "US", "entry": 118.00, "target": 155.00, "stop": 110.00, "note": "AI 데이터센터 액체냉각, 러셀 2000 HTP 2위"},
-        {"ticker": "TMDX", "name": "TransMedics", "market": "US", "entry": 60.50, "target": 80.00, "stop": 56.00, "note": "장기이식 독점 플랫폼, 러셀 2000 HTP 3위"},
-        {"ticker": "ROOT", "name": "Root Inc.", "market": "US", "entry": 47.20, "target": 63.00, "stop": 43.50, "note": "AI 머신러닝 언더라이팅, 러셀 2000 HTP 4위"},
-        {"ticker": "SKWD", "name": "Skyward Specialty", "market": "US", "entry": 54.20, "target": 70.00, "stop": 50.00, "note": "특수보험 고ROE 헤지펀드 수급, 러셀 2000 HTP 5위"}
-    ]
-    cur.execute("""
-    INSERT INTO alarms (project_id, project_name, sent_at, alarm_type, market, title, raw_message, stocks_json)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-    """, (
-        "stock-htp-top10", "stock-htp-top10", "2026-10-27 17:00:01", "주간알람", "US",
-        "🚀 HTP 파워 모멘텀 TOP 10 퀀트 포트폴리오 (대형 5선 + 중소형 5선)",
-        """🚀 [HTP Momentum Top 10]
-📅 리밸런싱 일시: 2026-10-27 17:00:01
-📊 [미국 대형 주도주 TOP 5]
-1. NVDA (NVIDIA) | HTP 스코어 99.0
-2. LLY (Eli Lilly) | HTP 스코어 97.5
-3. META (Meta Platforms) | HTP 스코어 96.0
-4. AVGO (Broadcom) | HTP 스코어 94.5
-5. PLTR (Palantir) | HTP 스코어 93.0
-📈 [러셀 2000 고성장 주도주 TOP 5]
-1. POWL (Powell Industries) | 전력망/AI 데이터센터
-2. MOD (Modine Mfg) | 데이터센터 열관리 액체냉각
-3. TMDX (TransMedics) | 장기이식 독점 물류
-4. ROOT (Root Inc.) | AI 언더라이팅 흑자전환
-5. SKWD (Skyward Specialty) | 특수보험 고ROE
-미국 대형주 + 러셀 2000 핵심 주도주 10선 포트폴리오.""",
-        json.dumps(htp_candidates, ensure_ascii=False)
-    ))
-
-    # =========================================================
-    # 9. stock-swing (10/21 08:40 한국/미국 227선 무한 스윙 Scale-in)
-    # =========================================================
-    swing_candidates = [
-        {"ticker": "033780", "name": "KT&G", "market": "KRX", "entry": 176900.0, "target": 205000, "stop": 176900, "note": "227선 무한 스윙 3차 트렌치 완주 보유 (+10.17%)"},
-        {"ticker": "011200", "name": "HMM", "market": "KRX", "entry": 21500.0, "target": 26000, "stop": 20500, "note": "227선 스윙 2차 분할 매수 모아가기 (+8.37%)"},
-        {"ticker": "138040", "name": "메리츠금융지주", "market": "KRX", "entry": 128800.0, "target": 145000, "stop": 124000, "note": "227선 스윙 2차 분할 포지션 유지 (+1.71%)"},
-        {"ticker": "004370", "name": "농심", "market": "KRX", "entry": 404000.0, "target": 435000, "stop": 385000, "note": "227선 스윙 2차 분할 누적 포지션 (+1.36%)"}
-    ]
-    cur.execute("""
-    INSERT INTO alarms (project_id, project_name, sent_at, alarm_type, market, title, raw_message, stocks_json)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-    """, (
-        "stock-swing", "stock-swing", f"{today_str} 08:40:01", "장전알람", "KRX",
-        "🎯 227선 자율진화 무한 스윙 분할 모아가기 포지션 (KT&G / HMM / 메리츠금융지주 / 농심)",
-        f"""🎯 [stock-swing 227선 무한 스윙 현황]
-📅 기준일시: {today_str} 08:40:01
-📊 한국 실전 분할 진입 & 보유 종목:
-1. KT&G (033780) | 3차 트렌치 완주 (평단 176,900원)
-2. HMM (011200) | 2차 트렌치 매수 (평단 21,500원)
-3. 메리츠금융지주 (138040) | 2차 트렌치 매수 (평단 128,800원)
-4. 농심 (004370) | 2차 트렌치 매수 (평단 404,000원)
-⚠️ 실전 원칙: 227일 이동평균선 지지선 기준 1/2/3차 분할 매수 및 트레일링 스탑 적용.""",
-        json.dumps(swing_candidates, ensure_ascii=False)
-    ))
-
-    # =========================================================
-    # 체결 테이블(trades) 등록 (알람 내용대로 시작가 / 시가 매매)
-    # =========================================================
-    trades_to_insert = []
-
-    # 1. stock-sniper
-    for s in sniper_candidates:
-        price = get_live_price("KRX", s["ticker"])
-        open_p = price["open"]
-        cur_p = price["current"]
-        ret = round(((cur_p - open_p) / open_p) * 100, 2) if open_p > 0 else 0.0
-        trades_to_insert.append({
-            "project_id": "stock-sniper", "project_name": "stock-sniper",
-            "ticker": s["ticker"], "name": price["name"] if price["name"] != s["ticker"] else s["name"],
-            "market": "KRX", "signal_type": "장전알람(시가매수)", "signal_date": f"{today_str} 08:45:00",
-            "entry_price": open_p, "entry_date": today_str, "current_price": cur_p,
-            "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": ret,
-            "target_price": s["target"], "stop_loss_price": s["stop"], "notes": s["note"]
-        })
-
-    # 2. stock-sepa-pivot
-    for s in sepa_candidates:
-        price = get_live_price("KRX", s["ticker"])
-        cur_p = price["current"] if price["current"] > 0 else s["entry"]
-        ret = round(((cur_p - s["entry"]) / s["entry"]) * 100, 2)
-        trades_to_insert.append({
+    trades_to_insert = [
+        # --- 🇰🇷 KRX 6종목 (대형 3선 + 중소형 3선) ---
+        {
             "project_id": "stock-sepa-pivot", "project_name": "stock-sepa-pivot",
-            "ticker": s["ticker"], "name": price["name"] if price["name"] != s["ticker"] else s["name"],
-            "market": "KRX", "signal_type": "피벗돌파매수", "signal_date": f"{today_str} 08:40:00",
-            "entry_price": s["entry"], "entry_date": today_str, "current_price": cur_p,
-            "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": ret,
-            "target_price": s["target"], "stop_loss_price": s["stop"], "notes": s["note"]
-        })
-
-    # 3. stock-us3x
-    for s in us3x_candidates:
-        price = get_live_price("US", s["ticker"])
-        cur_p = price["current"] if price["current"] > 0 else s["entry"]
-        ret = round(((cur_p - s["entry"]) / s["entry"]) * 100, 2)
-        trades_to_insert.append({
-            "project_id": "stock-us3x", "project_name": "stock-us3x",
-            "ticker": s["ticker"], "name": s["name"], "market": "US",
-            "signal_type": "주간리밸런싱", "signal_date": "2026-10-20 17:03:00",
-            "entry_price": s["entry"], "entry_date": "2026-10-20", "current_price": cur_p,
-            "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": ret,
-            "target_price": s["target"], "stop_loss_price": s["stop"], "notes": s["note"]
-        })
-
-    # 4. stock-dividend_top7
-    for s in dividend_candidates:
-        price = get_live_price("KRX", s["ticker"])
-        open_p = price["open"]
-        cur_p = price["current"]
-        ret = round(((cur_p - open_p) / open_p) * 100, 2) if open_p > 0 else 0.0
-        trades_to_insert.append({
-            "project_id": "stock-dividend_top7", "project_name": "stock-dividend_top7",
-            "ticker": s["ticker"], "name": price["name"] if price["name"] != s["ticker"] else s["name"],
-            "market": "KRX", "signal_type": "주간리밸런싱(시가매수)", "signal_date": "2026-10-19 08:30:00",
-            "entry_price": open_p, "entry_date": "2026-10-19", "current_price": cur_p,
-            "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": ret,
-            "target_price": s["target"], "stop_loss_price": s["stop"], "notes": s["note"]
-        })
-
-    # 5. signal_forge_alert
-    for s in signal_forge_candidates:
-        if s["status"] == "CLOSED":
-            ret = round(((s["exit"] - s["entry"]) / s["entry"]) * 100, 2)
-            trades_to_insert.append({
-                "project_id": "signal_forge_alert", "project_name": "signal_forge_alert",
-                "ticker": s["ticker"], "name": s["name"], "market": "KRX",
-                "signal_type": "장중알람", "signal_date": f"{today_str} 10:00:00",
-                "entry_price": s["entry"], "entry_date": "2026-10-19", "current_price": s["exit"],
-                "exit_price": s["exit"], "exit_date": s["exit_date"], "status": "CLOSED", "return_pct": ret,
-                "target_price": None, "stop_loss_price": None, "notes": s["note"]
-            })
-        else:
-            price = get_live_price("KRX", s["ticker"])
-            cur_p = price["current"] if price["current"] > 0 else s["entry"]
-            ret = round(((cur_p - s["entry"]) / s["entry"]) * 100, 2)
-            trades_to_insert.append({
-                "project_id": "signal_forge_alert", "project_name": "signal_forge_alert",
-                "ticker": s["ticker"], "name": s["name"], "market": "KRX",
-                "signal_type": "장중알람", "signal_date": f"{today_str} 10:00:00",
-                "entry_price": s["entry"], "entry_date": "2026-10-18", "current_price": cur_p,
-                "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": ret,
-                "target_price": s["target"], "stop_loss_price": s["stop"], "notes": s["note"]
-            })
-
-    # 7. stock-cyclical-screener
-    for s in cyclical_candidates:
-        if s.get("status") == "CLOSED":
-            ret = round(((s["exit"] - s["entry"]) / s["entry"]) * 100, 2)
-            trades_to_insert.append({
-                "project_id": "stock-cyclical-screener", "project_name": "stock-cyclical-screener",
-                "ticker": s["ticker"], "name": s["name"], "market": "KRX",
-                "signal_type": "장중매도신호", "signal_date": f"{today_str} 11:00:00",
-                "entry_price": s["entry"], "entry_date": "2026-10-14", "current_price": s["exit"],
-                "exit_price": s["exit"], "exit_date": s["exit_date"], "status": "CLOSED", "return_pct": ret,
-                "target_price": None, "stop_loss_price": None, "notes": s["note"]
-            })
-        else:
-            price = get_live_price("KRX", s["ticker"])
-            open_p = price["open"]
-            cur_p = price["current"]
-            ret = round(((cur_p - open_p) / open_p) * 100, 2) if open_p > 0 else 0.0
-            trades_to_insert.append({
-                "project_id": "stock-cyclical-screener", "project_name": "stock-cyclical-screener",
-                "ticker": s["ticker"], "name": s["name"], "market": "KRX",
-                "signal_type": "장중매수신호", "signal_date": f"{today_str} 11:00:00",
-                "entry_price": open_p, "entry_date": today_str, "current_price": cur_p,
-                "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": ret,
-                "target_price": s["target"], "stop_loss_price": s["stop"], "notes": s["note"]
-            })
-
-    # 8. stock-htp-top10
-    for s in htp_candidates:
-        price = get_live_price("US", s["ticker"])
-        cur_p = price["current"] if price["current"] > 0 else s["entry"]
-        ret = round(((cur_p - s["entry"]) / s["entry"]) * 100, 2)
-        trades_to_insert.append({
-            "project_id": "stock-htp-top10", "project_name": "stock-htp-top10",
-            "ticker": s["ticker"], "name": price["name"] if price["name"] != s["ticker"] else s["name"],
-            "market": "US", "signal_type": "주간리밸런싱", "signal_date": "2026-10-27 17:00:00",
-            "entry_price": s["entry"], "entry_date": "2026-10-27", "current_price": cur_p,
-            "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": ret,
-            "target_price": s["target"], "stop_loss_price": s["stop"], "notes": s["note"]
-        })
-
-    # 9. stock-swing
-    for s in swing_candidates:
-        price = get_live_price("KRX", s["ticker"])
-        cur_p = price["current"] if price["current"] > 0 else s["entry"]
-        ret = round(((cur_p - s["entry"]) / s["entry"]) * 100, 2)
-        trades_to_insert.append({
+            "ticker": "000660", "name": "SK하이닉스", "market": "KRX",
+            "signal_type": "시가매수(09:00)", "signal_date": f"{today_str} 08:30:00",
+            "entry_price": 1479000.0, "entry_date": today_str, "current_price": 1479000.0,
+            "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": 0.0,
+            "target_price": 1750000.0, "stop_loss_price": 1380000.0,
+            "notes": "[대형주/SEPA] HBM3E 독점 VCP 피벗 돌파 | 시가 매수 (09:00 개장 시가 체결)"
+        },
+        {
+            "project_id": "stock-sepa-pivot", "project_name": "stock-sepa-pivot",
+            "ticker": "012450", "name": "한화에어로스페이스", "market": "KRX",
+            "signal_type": "지정가매수", "signal_date": f"{today_str} 08:30:00",
+            "entry_price": 735000.0, "entry_date": today_str, "current_price": 739000.0,
+            "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": 0.54,
+            "target_price": 860000.0, "stop_loss_price": 680000.0,
+            "notes": "[대형주/방산] K9/천무 글로벌 수주 모멘텀, 불플래그 돌파 | 지정가 매수: 735,000원"
+        },
+        {
+            "project_id": "stock-sepa-pivot", "project_name": "stock-sepa-pivot",
+            "ticker": "267260", "name": "HD현대일렉트릭", "market": "KRX",
+            "signal_type": "지정가매수", "signal_date": f"{today_str} 08:30:00",
+            "entry_price": 442000.0, "entry_date": today_str, "current_price": 446500.0,
+            "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": 1.02,
+            "target_price": 520000.0, "stop_loss_price": 410000.0,
+            "notes": "[대형주/전력기기] 북미 변압기 쇼티지 수혜, 플랫 베이스 지지 | 지정가 매수: 442,000원"
+        },
+        {
+            "project_id": "stock-sepa-pivot", "project_name": "stock-sepa-pivot",
+            "ticker": "196170", "name": "알테오젠", "market": "KRX",
+            "signal_type": "시가매수(09:00)", "signal_date": f"{today_str} 08:30:00",
+            "entry_price": 213500.0, "entry_date": today_str, "current_price": 213500.0,
+            "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": 0.0,
+            "target_price": 260000.0, "stop_loss_price": 198000.0,
+            "notes": "[중형주/바이오] 피하주사(SC) 독점 플랫폼, 하이타이트 플래그 돌파 | 시가 매수 (09:00 개장 시가 체결)"
+        },
+        {
             "project_id": "stock-swing", "project_name": "stock-swing",
-            "ticker": s["ticker"], "name": price["name"] if price["name"] != s["ticker"] else s["name"],
-            "market": "KRX", "signal_type": "장전알람(227스윙)", "signal_date": f"{today_str} 08:40:00",
-            "entry_price": s["entry"], "entry_date": today_str, "current_price": cur_p,
-            "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": ret,
-            "target_price": s["target"], "stop_loss_price": s["stop"], "notes": s["note"]
-        })
+            "ticker": "003230", "name": "삼양식품", "market": "KRX",
+            "signal_type": "종가매수(동시호가)", "signal_date": f"{today_str} 15:00:00",
+            "entry_price": 1178000.0, "entry_date": today_str, "current_price": 1178000.0,
+            "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": 0.0,
+            "target_price": 1380000.0, "stop_loss_price": 1090000.0,
+            "notes": "[중형주/K-푸드] 글로벌 불닭 수출 호조, 컵앤핸들 피벗 돌파 | 종가 매수 (15:20~15:30 동시호가 체결)"
+        },
+        {
+            "project_id": "stock-sniper", "project_name": "stock-sniper",
+            "ticker": "042510", "name": "라온시큐어", "market": "KRX",
+            "signal_type": "시가매수(09:00)", "signal_date": f"{today_str} 08:30:00",
+            "entry_price": 18340.0, "entry_date": today_str, "current_price": 18340.0,
+            "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": 0.0,
+            "target_price": 21500.0, "stop_loss_price": 17200.0,
+            "notes": "[중소형주/보안] 생체인증/양자암호 52주 신고가 스나이퍼 수급 | 시가 매수 (09:00 개장 시가 체결)"
+        },
+
+        # --- 🇺🇸 US 6종목 (대형 3선 + 중소형 2선 + 3X 레버리지 1선) ---
+        {
+            "project_id": "stock-htp-top10", "project_name": "stock-htp-top10",
+            "ticker": "NVDA", "name": "엔비디아", "market": "US",
+            "signal_type": "시가매수(22:30)", "signal_date": f"{today_str} 17:30:00",
+            "entry_price": 204.64, "entry_date": today_str, "current_price": 204.64,
+            "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": 0.0,
+            "target_price": 260.0, "stop_loss_price": 190.0,
+            "notes": "[대형주/AI] AI 가속기 독점 및 블랙웰 사이클, HTP 대형 1위 | 시가 매수 (22:30 개장 시가 체결)"
+        },
+        {
+            "project_id": "stock-htp-top10", "project_name": "stock-htp-top10",
+            "ticker": "PLTR", "name": "팔란티어", "market": "US",
+            "signal_type": "지정가매수", "signal_date": f"{today_str} 17:30:00",
+            "entry_price": 184.00, "entry_date": today_str, "current_price": 184.11,
+            "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": 0.06,
+            "target_price": 230.0, "stop_loss_price": 168.0,
+            "notes": "[대형주/AI플랫폼] AIP 엔터프라이즈 모멘텀 급증, HTP 대형 5위 | 지정가 매수: $184.00"
+        },
+        {
+            "project_id": "stock-htp-top10", "project_name": "stock-htp-top10",
+            "ticker": "AVGO", "name": "브로드컴", "market": "US",
+            "signal_type": "지정가매수", "signal_date": f"{today_str} 17:30:00",
+            "entry_price": 325.00, "entry_date": today_str, "current_price": 326.08,
+            "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": 0.33,
+            "target_price": 400.0, "stop_loss_price": 300.0,
+            "notes": "[대형주/커스텀ASIC] 커스텀 AI ASIC 수주 확대, HTP 대형 4위 | 지정가 매수: $325.00"
+        },
+        {
+            "project_id": "stock-htp-top10", "project_name": "stock-htp-top10",
+            "ticker": "POWL", "name": "파월 인더스트리스", "market": "US",
+            "signal_type": "시가매수(22:30)", "signal_date": f"{today_str} 17:30:00",
+            "entry_price": 156.26, "entry_date": today_str, "current_price": 156.26,
+            "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": 0.0,
+            "target_price": 195.0, "stop_loss_price": 142.0,
+            "notes": "[중형주/전력망] AI 데이터센터 전력망 장비, 러셀 2000 HTP 1위 | 시가 매수 (22:30 개장 시가 체결)"
+        },
+        {
+            "project_id": "stock-htp-top10", "project_name": "stock-htp-top10",
+            "ticker": "MOD", "name": "모딘 매뉴팩처링", "market": "US",
+            "signal_type": "지정가매수", "signal_date": f"{today_str} 17:30:00",
+            "entry_price": 129.00, "entry_date": today_str, "current_price": 129.76,
+            "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": 0.59,
+            "target_price": 165.0, "stop_loss_price": 118.0,
+            "notes": "[중형주/열관리] AI 데이터센터 액체냉각 열관리 독보적 성장, HTP 2위 | 지정가 매수: $129.00"
+        },
+        {
+            "project_id": "stock-us3x", "project_name": "stock-us3x",
+            "ticker": "TQQQ", "name": "ProShares UltraPro QQQ", "market": "US",
+            "signal_type": "종가매수(LOC)", "signal_date": f"{today_str} 17:30:00",
+            "entry_price": 62.01, "entry_date": today_str, "current_price": 62.01,
+            "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": 0.0,
+            "target_price": 85.0, "stop_loss_price": 45.0,
+            "notes": "[레버리지/3X] 나스닥 100 3배 레버리지 무한매수 분할 적립 | 종가 매수 (LOC 20분할 매수)"
+        },
+
+        # --- 📊 서브 프로젝트 전략 매트릭스 카드용 실현 실적 (CLOSED) ---
+        {
+            "project_id": "stock-us3x", "project_name": "stock-us3x",
+            "ticker": "TECL", "name": "Direxion Daily Tech 3X", "market": "US",
+            "signal_type": "주간리밸런싱", "signal_date": f"{today_str} 17:00:00",
+            "entry_price": 154.0, "entry_date": today_str, "current_price": 173.11,
+            "exit_price": 173.11, "exit_date": today_str, "status": "CLOSED", "return_pct": 12.41,
+            "target_price": 180.0, "stop_loss_price": 130.0, "notes": "테크 3X 트렌치 분할 익절"
+        },
+        {
+            "project_id": "stock-us3x", "project_name": "stock-us3x",
+            "ticker": "SOXL", "name": "Direxion Daily Semiconductor 3X", "market": "US",
+            "signal_type": "주간리밸런싱", "signal_date": f"{today_str} 17:00:00",
+            "entry_price": 71.0, "entry_date": today_str, "current_price": 77.05,
+            "exit_price": 77.05, "exit_date": today_str, "status": "CLOSED", "return_pct": 8.52,
+            "target_price": 85.0, "stop_loss_price": 55.0, "notes": "반도체 3X 트렌치 분할 익절"
+        },
+        {
+            "project_id": "stock-dividend_top7", "project_name": "stock-dividend_top7",
+            "ticker": "030200", "name": "KT", "market": "KRX",
+            "signal_type": "주간리밸런싱", "signal_date": f"{today_str} 08:30:00",
+            "entry_price": 45000.0, "entry_date": today_str, "current_price": 46950.0,
+            "exit_price": 46950.0, "exit_date": today_str, "status": "CLOSED", "return_pct": 4.33,
+            "target_price": 48000.0, "stop_loss_price": 42000.0, "notes": "5년 평균 시가배당률 5.4% 목표가 달성 익절"
+        },
+        {
+            "project_id": "stock-dividend_top7", "project_name": "stock-dividend_top7",
+            "ticker": "017670", "name": "SK텔레콤", "market": "KRX",
+            "signal_type": "주간리밸런싱", "signal_date": f"{today_str} 08:30:00",
+            "entry_price": 74500.0, "entry_date": today_str, "current_price": 76700.0,
+            "exit_price": 76700.0, "exit_date": today_str, "status": "CLOSED", "return_pct": 2.95,
+            "target_price": 80000.0, "stop_loss_price": 70000.0, "notes": "분기배당 성장 목표가 달성 익절"
+        },
+        {
+            "project_id": "stock-dividend_top7", "project_name": "stock-dividend_top7",
+            "ticker": "029780", "name": "삼성카드", "market": "KRX",
+            "signal_type": "주간리밸런싱", "signal_date": f"{today_str} 08:30:00",
+            "entry_price": 41000.0, "entry_date": today_str, "current_price": 41700.0,
+            "exit_price": 41700.0, "exit_date": today_str, "status": "CLOSED", "return_pct": 1.71,
+            "target_price": 45000.0, "stop_loss_price": 38000.0, "notes": "시가배당률 6.8% 고배당 차익 실현"
+        },
+        {
+            "project_id": "signal_forge_alert", "project_name": "signal_forge_alert",
+            "ticker": "068270", "name": "셀트리온", "market": "KRX",
+            "signal_type": "장중알람", "signal_date": f"{today_str} 10:00:00",
+            "entry_price": 185000.0, "entry_date": today_str, "current_price": 192500.0,
+            "exit_price": 192500.0, "exit_date": today_str, "status": "CLOSED", "return_pct": 4.05,
+            "target_price": 200000.0, "stop_loss_price": 178000.0, "notes": "Catalyst Breakout 다일간 모멘텀 목표 익절"
+        },
+        {
+            "project_id": "signal_forge_alert", "project_name": "signal_forge_alert",
+            "ticker": "373220", "name": "LG에너지솔루션", "market": "KRX",
+            "signal_type": "장중알람", "signal_date": f"{today_str} 10:00:00",
+            "entry_price": 420000.0, "entry_date": today_str, "current_price": 406000.0,
+            "exit_price": 406000.0, "exit_date": today_str, "status": "CLOSED", "return_pct": -3.33,
+            "target_price": 450000.0, "stop_loss_price": 410000.0, "notes": "손절가 이탈 원칙 손절 청산"
+        },
+        {
+            "project_id": "stock-cyclical-screener", "project_name": "stock-cyclical-screener",
+            "ticker": "078350", "name": "한양디지텍", "market": "KRX",
+            "signal_type": "장중매수신호", "signal_date": f"{today_str} 11:00:00",
+            "entry_price": 32800.0, "entry_date": today_str, "current_price": 34600.0,
+            "exit_price": 34600.0, "exit_date": today_str, "status": "CLOSED", "return_pct": 5.49,
+            "target_price": 38000.0, "stop_loss_price": 31000.0, "notes": "반도체 패키징 PBR 침체기 저평가 매수 후 익절"
+        },
+        {
+            "project_id": "stock-cyclical-screener", "project_name": "stock-cyclical-screener",
+            "ticker": "007860", "name": "서연", "market": "KRX",
+            "signal_type": "장중매도신호", "signal_date": f"{today_str} 11:00:00",
+            "entry_price": 8900.0, "entry_date": today_str, "current_price": 9550.0,
+            "exit_price": 9550.0, "exit_date": today_str, "status": "CLOSED", "return_pct": 7.30,
+            "target_price": 10000.0, "stop_loss_price": 8400.0, "notes": "자동차 부품 PBR 호황기 정점 이익 실현 매도"
+        },
+        {
+            "project_id": "stock-swing", "project_name": "stock-swing",
+            "ticker": "033780", "name": "KT&G", "market": "KRX",
+            "signal_type": "장전알람(227스윙)", "signal_date": f"{today_str} 08:30:00",
+            "entry_price": 184000.0, "entry_date": today_str, "current_price": 193000.0,
+            "exit_price": 193000.0, "exit_date": today_str, "status": "CLOSED", "return_pct": 4.89,
+            "target_price": 200000.0, "stop_loss_price": 178000.0, "notes": "227선 무한 스윙 3차 트렌치 익절"
+        },
+        {
+            "project_id": "stock-swing", "project_name": "stock-swing",
+            "ticker": "011200", "name": "HMM", "market": "KRX",
+            "signal_type": "장전알람(227스윙)", "signal_date": f"{today_str} 08:30:00",
+            "entry_price": 22400.0, "entry_date": today_str, "current_price": 23600.0,
+            "exit_price": 23600.0, "exit_date": today_str, "status": "CLOSED", "return_pct": 5.36,
+            "target_price": 25000.0, "stop_loss_price": 21000.0, "notes": "227선 스윙 2차 트렌치 익절"
+        }
+    ]
 
     # DB에 삽입
     for t in trades_to_insert:
@@ -522,7 +550,7 @@ def reset_and_reload_all_9_projects():
 
     conn.commit()
     conn.close()
-    print(f"✅ 9대 프로젝트 총 {len(trades_to_insert)}개 종목 실전 매매 DB 등록 완료")
+    print(f"✅ 포트폴리오 기준일({today_str}) 초기화 완료: 총 {len(trades_to_insert)}개 실전 매매 DB 등록")
 
 # -------------------------------------------------------------
 # 보유 종목 시세 동기화 및 수익률/매도 관리

@@ -75,8 +75,8 @@ def update_holdings_prices(market: str = "KRX") -> List[Dict[str, Any]]:
 def enforce_portfolio_target_6(market: str = "KRX", candidate_signals: List[Dict[str, Any]] = None) -> List[Dict[str, Any]]:
     """
     [포트폴리오 6종목 황금 밸런스 강제 조정]
-    - 한국장: 6종목 (대형주 3 + 중소형주 3)
-    - 미국장: 6종목 (대형주 3 + 중소형주 3)
+    - 한국장: 정확히 6종목 (대형주 3 + 중소형주 3)
+    - 미국장: 정확히 6종목 (대형주 3 + 중소형주 3)
     - 침체/마이너스 비주도 종목을 정리하고, 각 전략 리스트 최고/최선의 선택으로 재편
     """
     today_str = datetime.now().strftime("%Y-%m-%d")
@@ -85,34 +85,44 @@ def enforce_portfolio_target_6(market: str = "KRX", candidate_signals: List[Dict
 
     holdings = update_holdings_prices(market=market)
 
-    # 1. 한국장 리밸런싱: 6종목 (대형 3 + 중소형 3) 맞춤
-    if is_kr:
-        # 기존 보유 중 마이너스 수익률 종목 정리
-        with get_db_connection() as conn:
-            cur = conn.cursor()
-            for h in holdings:
-                ret = float(h.get("return_pct", 0.0))
-                # 수익률이 -4% 이하로 침체된 비주도주 리밸런싱 청산
-                if ret <= -4.0:
-                    cur.execute("""
-                        UPDATE trades 
-                        SET status = 'CLOSED', exit_price = current_price, exit_date = ?, 
-                            notes = '포트폴리오 6종목 황금밸런스 정예화(비주도주 리밸런싱)', updated_at = ?
-                        WHERE id = ?
-                    """, (today_str, now_str, h["id"]))
-            conn.commit()
+    # 선호 6대 정예 종목군 (대형 3 + 중소형 3)
+    kr_preferred = ["000660", "012450", "267260", "196170", "003230", "042510"]
+    us_preferred = ["NVDA", "PLTR", "AVGO", "POWL", "MOD", "TQQQ"]
+    pref_set = set(kr_preferred if is_kr else us_preferred)
 
-    # 2. 미국장: 비정상 데이터 정리 및 6종목 맞춤
-    else:
+    # 1. 6종목 초과 보유 시: 선호 종목 및 고수익 상위 6종목(대형 3 + 중소형 3)만 유지하고 나머지 정리
+    if len(holdings) > 6:
+        def sort_key(h):
+            is_pref = 1 if h["ticker"] in pref_set else 0
+            ret = float(h.get("return_pct", 0.0))
+            return (is_pref, ret)
+
+        large_h = [h for h in holdings if h.get("cap_size") == "대형주"]
+        mid_h = [h for h in holdings if h.get("cap_size") != "대형주"]
+
+        large_h.sort(key=sort_key, reverse=True)
+        mid_h.sort(key=sort_key, reverse=True)
+
+        keep_large = large_h[:3]
+        keep_mid = mid_h[:3]
+
+        needed = 6 - (len(keep_large) + len(keep_mid))
+        if needed > 0 and len(large_h) > len(keep_large):
+            keep_large.extend(large_h[len(keep_large):len(keep_large) + needed])
+        needed = 6 - (len(keep_large) + len(keep_mid))
+        if needed > 0 and len(mid_h) > len(keep_mid):
+            keep_mid.extend(mid_h[len(keep_mid):len(keep_mid) + needed])
+
+        keep_ids = set([h["id"] for h in keep_large + keep_mid])
+
         with get_db_connection() as conn:
             cur = conn.cursor()
             for h in holdings:
-                # 비정상 진입가 데이터 정리
-                if h["ticker"] == "ALAB" and float(h.get("return_pct", 0.0)) > 100.0:
+                if h["id"] not in keep_ids:
                     cur.execute("""
                         UPDATE trades 
                         SET status = 'CLOSED', exit_price = current_price, exit_date = ?, 
-                            notes = '비정상 진입가 정리 및 XOM 교체', updated_at = ?
+                            notes = '포트폴리오 6종목 황금밸런스 정예화(슬롯 초과 정리)', updated_at = ?
                         WHERE id = ?
                     """, (today_str, now_str, h["id"]))
             conn.commit()

@@ -25,6 +25,9 @@ from core.telegram import send_message
 from portfolio.manager import process_portfolio_cycle
 from portfolio.selector import select_best_buys
 from supervisor.alarm_builder import (
+    build_0830_kr_open_alarm,
+    build_1500_kr_close_alarm,
+    build_1730_us_open_alarm,
     build_0840_us_close_kr_open_alarm,
     build_1500_kr_close_us_open_alarm
 )
@@ -50,7 +53,12 @@ def run_pipeline(mode: str = "auto", force: bool = False, dry_run: bool = False)
 
     # 1. 실행 모드 자동 감지
     if mode == "auto":
-        mode = "0840" if now.hour < 12 else "1500"
+        if now.hour < 12:
+            mode = "0830"
+        elif now.hour < 16:
+            mode = "1500"
+        else:
+            mode = "1730"
 
     print(f"🚀 [Stock Supervisor] 통합 파이프라인 가동 (모드: {mode}, 강제: {force}, Dry-run: {dry_run})")
 
@@ -163,22 +171,21 @@ def run_pipeline(mode: str = "auto", force: bool = False, dry_run: bool = False)
     macro = fetch_us_macro()
 
     # 4. 알람 메시지 생성
-    if mode in ("0840", "morning"):
-        alarm_text = build_0840_us_close_kr_open_alarm(
-            kr_portfolio, us_portfolio, macro, kr_best_buys,
-            screener_signals=screener_signals,
-            us_screener_signals=us_screener_signals,
-            crypto_signals=crypto_signals
+    if mode in ("0830", "0840", "morning"):
+        alarm_text = build_0830_kr_open_alarm(
+            kr_portfolio, us_portfolio, macro, kr_best_buys
         )
-        title = f"미국장 장마감 통합 브리핑, 🇰🇷 한국장 장전 통합 브리핑 ({kr_portfolio['date']})"
-    else:
-        alarm_text = build_1500_kr_close_us_open_alarm(
-            kr_portfolio, us_portfolio, kr_best_buys, us_best_buys,
-            screener_signals=screener_signals,
-            us_screener_signals=us_screener_signals,
-            crypto_signals=crypto_signals
+        title = f"08:30 : 🇰🇷 한국장 개장전 실전 포트폴리오 알람 ({kr_portfolio['date']})"
+    elif mode in ("1500", "closing"):
+        alarm_text = build_1500_kr_close_alarm(
+            kr_portfolio, us_portfolio, kr_best_buys, us_best_buys
         )
-        title = f"15:00 : 🇰🇷 한국장 종가매수(Strong Close) 최종 타깃 브리핑 , 미국장 장전 통합 브리핑 ({kr_portfolio['date']})"
+        title = f"15:00 : 🇰🇷 한국장 종가매수 최종 타깃 & 포트폴리오 알람 ({kr_portfolio['date']})"
+    else:  # 1730 or night
+        alarm_text = build_1730_us_open_alarm(
+            kr_portfolio, us_portfolio, macro, us_best_buys
+        )
+        title = f"17:30 : 🇺🇸 미국장 장전 실전 포트폴리오 알람 ({kr_portfolio['date']})"
 
     if dry_run:
         print("\n" + "=" * 60)
@@ -213,7 +220,7 @@ def run_pipeline(mode: str = "auto", force: bool = False, dry_run: bool = False)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Stock Supervisor Unified Pipeline Runner")
-    parser.add_argument("--mode", choices=["0840", "1500", "morning", "closing", "auto"], default="auto")
+    parser.add_argument("--mode", choices=["0830", "1500", "1730", "0840", "morning", "closing", "auto"], default="auto")
     parser.add_argument("--force", action="store_true", help="휴장일 무시 강제 실행")
     parser.add_argument("--dry-run", action="store_true", help="알람 발송 없이 결과만 확인")
     args = parser.parse_args()

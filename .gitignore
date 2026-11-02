@@ -7,5 +7,6 @@ data/*.sqlite*
 data/*.log
 .env
 .venv/
+logs/
 data/screener/*.xlsx
 data/screener/*.csv

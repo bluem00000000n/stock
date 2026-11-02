@@ -2,178 +2,196 @@
 # -*- coding: utf-8 -*-
 """
 supervisor/alarm_builder.py
-통합 알람 메시지 생성 모듈
-하루 2회 단일 브리핑 체제:
-- 08:40 : 미국장 장마감 통합 브리핑, 🇰🇷 한국장 장전 통합 브리핑
-- 15:00 : 🇰🇷 한국장 종가매수(Strong Close) 최종 타깃 브리핑, 🇺🇸 미국장 장전 통합 브리핑
+통합 정기 알람 메시지 생성 모듈
+정기 알람 시간:
+- 08:30 KST : 🇰🇷 한국장 개장전 실전 포트폴리오 알람 (시가/지정가 매수 신규진입 & 현재 포트폴리오)
+- 15:00 KST : 🇰🇷 한국장 종가매수 최종 타깃 & 포트폴리오 알람 (종가매수 신규진입 & 현재 포트폴리오)
+- 17:30 KST : 🇺🇸 미국장 장전 실전 포트폴리오 알람 (미국장 시가/지정가 매수 신규진입 & 현재 포트폴리오)
 
-+ [🎯 백찬규 센터장 여의도 실무 스크리너] (성장주 후보 + 중소형 수급주)
-+ [🪙 Signal Forge AI 크립토 롱/숏 레이더] 통합
+[사용자 핵심 원칙 준수]
+1. 추천 종목 리스트 전면 삭제 (스크리너 12선, 크립토 레이더 등 비보유 후보 리스트 제외)
+2. 현재 실운용 포트폴리오 (한국 6종목 + 미국 6종목) 실시간 상세 출력
+3. 포트폴리오 변동 내역 (교체 종목, 신규종목, 매도/제외 종목 및 간단한 이유) 상단 명시
+4. 신규 진입 시 매수 유형 명확히 표시:
+   - 지정가 매수: [지정가 매수: X원 / $X]
+   - 시가 매수: [시가 매수 (09:00 시가 체결)] / [시가 매수]
+   - 종가 매수: [종가 매수 (15:20~15:30 동시호가 체결)] / [종가 매수 (LOC)]
 """
 
 from datetime import datetime
 from typing import Dict, Any, List, Optional
 
 
-def build_0840_us_close_kr_open_alarm(
+def format_order_type(item: Dict[str, Any], market: str = "KRX") -> str:
+    """주문 체결 방식 표기 (지정가 / 시가 매수 / 종가 매수)"""
+    sig = str(item.get("signal_type", ""))
+    notes = str(item.get("notes", ""))
+    action = str(item.get("action_plan", ""))
+    is_kr = market.upper() in ("KRX", "KR", "KOR")
+
+    # 1. 지정가
+    if "지정가" in sig or "지정가" in notes:
+        if "지정가 매수:" in sig:
+            return f"[{sig.strip()}]"
+        p = item.get("entry_price") or item.get("price") or item.get("pivot", 0)
+        try:
+            p_val = float(p)
+            if p_val > 0:
+                return f"[지정가 매수: {int(p_val):,}원]" if is_kr else f"[지정가 매수: ${p_val:.2f}]"
+        except Exception:
+            pass
+        return "[지정가 매수]"
+
+    # 2. 종가 매수 (Strong Close / LOC)
+    if "종가" in sig or "종가" in notes or "Strong Close" in action or "LOC" in notes:
+        return "[종가 매수 (15:20~15:30 동시호가 체결)]" if is_kr else "[종가 매수 (LOC 20분할)]"
+
+    # 3. 시가 매수
+    if "시가" in sig or "시가" in notes or "장전" in sig or "ORB" in action:
+        return "[시가 매수 (09:00 개장 시가 체결)]" if is_kr else "[시가 매수 (22:30 개장 시가 체결)]"
+
+    return "[시가 매수]" if is_kr else "[시가 매수]"
+
+
+def format_reason(item: Dict[str, Any]) -> str:
+    """종목 변동/편입 사유 추출 (간단히)"""
+    notes = item.get("notes") or ""
+    theme = item.get("theme") or ""
+    reason = item.get("reason") or ""
+    action = item.get("action_plan") or ""
+
+    clean = notes
+    for prefix in ["[대형주]", "[중소형주]", "[3X 레버리지]"]:
+        clean = clean.replace(prefix, "").strip()
+    if "|" in clean:
+        clean = clean.split("|")[0].strip()
+
+    res = clean or theme or reason or action or "실시간 퀀트 모멘텀 상위"
+    return res[:48]
+
+
+# =============================================================
+# 1. 08:30 KST 정기 알람 (한국장 개장전 포트폴리오)
+# =============================================================
+def build_0830_kr_open_alarm(
     kr_portfolio: Dict[str, Any],
     us_portfolio: Dict[str, Any],
     macro: Dict[str, Any],
-    kr_buys: List[Dict[str, Any]],
+    kr_buys: List[Dict[str, Any]] = None,
     screener_signals: Optional[List[Dict[str, Any]]] = None,
     us_screener_signals: Optional[List[Dict[str, Any]]] = None,
     crypto_signals: Optional[List[Dict[str, Any]]] = None
 ) -> str:
-    """
-    08:40 브리핑:
-    [미국장 장마감 통합 브리핑, 🇰🇷 한국장 장전 통합 브리핑]
-    """
     now = datetime.now()
     weekdays_kr = ["월", "화", "수", "목", "금", "토", "일"]
     today_str = f"{now.year}년 {now.month:02d}월 {now.day:02d}일 ({weekdays_kr[now.weekday()]})"
 
     lines = []
-    lines.append("🌅 <b>[STOCK SUPERVISOR] 미국장 장마감 통합 브리핑, 🇰🇷 한국장 장전 통합 브리핑</b>")
-    lines.append(f"📅 <b>일시:</b> {today_str} 08:40 KST")
+    lines.append("🌅 <b>[STOCK SUPERVISOR] 🇰🇷 한국장 개장전 실전 포트폴리오 알람</b>")
+    lines.append(f"📅 <b>일시:</b> {today_str} 08:30 KST")
     lines.append("━━━━━━━━━━━━━━━━━━━━━━━━━")
 
-    # 1. 미국장 마감 결과 및 글로벌 매크로
-    lines.append("🌐 <b>1. 🇺🇸 미국장 장마감 결과 & 글로벌 매크로</b>")
+    # 1. 글로벌 매크로 요약 (간단히)
     dow = macro.get("dow", {})
     nasdaq = macro.get("nasdaq", {})
     sp500 = macro.get("sp500", {})
-    usd_krw = macro.get("usd_krw", "1,330.0")
+    usd_krw = macro.get("usd_krw", "1,379.5")
 
-    lines.append(f"• 다우: {dow.get('val', '-')} ({dow.get('pct', 0.0):+.2f}%)")
-    lines.append(f"• 나스닥: {nasdaq.get('val', '-')} ({nasdaq.get('pct', 0.0):+.2f}%)")
-    lines.append(f"• S&P 500: {sp500.get('val', '-')} ({sp500.get('pct', 0.0):+.2f}%)")
-    lines.append(f"• 원/달러 환율: <b>{usd_krw}원</b>")
+    lines.append("🌐 <b>1. 글로벌 매크로 요약</b>")
+    lines.append(f"• 다우: {dow.get('val', '-')} ({dow.get('pct', 0.0):+.2f}%) | 나스닥: {nasdaq.get('val', '-')} ({nasdaq.get('pct', 0.0):+.2f}%) | S&P500: {sp500.get('val', '-')} ({sp500.get('pct', 0.0):+.2f}%)")
+    lines.append(f"• 원/달러 환율: <b>{usd_krw}원</b> | VIX: {macro.get('vix', '18.38')}")
+    lines.append("• <b>당일 전술:</b> 09:00 시초가 갭상승 추격매수 금지, 5분봉 지지 확인 후 원칙 체결.")
 
-    us_active = us_portfolio.get("active_holdings", [])
-    if us_active:
-        us_summary = ", ".join([f"{h['name']}({h.get('return_pct', 0.0):+.1f}%)" for h in us_active[:4]])
-        lines.append(f"• <b>미국장 포지션 현황:</b> {us_summary}")
-    lines.append("• <b>장전 시초가 전술:</b> 미 증시 마감 흐름을 반영하여 시초가 갭상승 추격매수 금지. 5분봉 매도세 소진 및 손익비(RR) 1.5 이상 확인 시 선별 출정.\n")
+    # 2. 포트폴리오 변동 내역 (교체 / 신규진입 / 매도제외 및 이유)
+    lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
+    lines.append("🔄 <b>2. 포트폴리오 변동 내역 (오늘의 포지션 조정)</b>")
 
-    # 2. 한국장 오늘의 엄선 매수 후보
-    lines.append("🎯 <b>2. 🇰🇷 한국장 오늘의 엄선 매수 후보 (TOP Pick)</b>")
-    picks = kr_buys[:2]
-    if picks:
-        for idx, p in enumerate(picks, 1):
-            badge = "🔥 <b>[복수전략 교차검증]</b> " if p.get("is_multi_confirmed") else ""
-            cap_badge = f"<b>[{p.get('cap_size', '대형주')}]</b> "
-            strategies = ", ".join(p.get("strategies", []))
-            lines.append(f"■ {idx}. {badge}{cap_badge}<b>{p['name']}</b> ({p['ticker']} / {p.get('sector', '주도주')})")
-            lines.append(f" • 기준가: <b>{int(p['price']):,}원</b> | 🎯 목표가: <b>{int(p['target_price']):,}원</b>")
-            lines.append(f" • 🛑 기계적 손절가: <b>{int(p['stop_loss_price']):,}원</b> (RR: {p.get('risk_reward_ratio', 1.5)})")
-            lines.append(f" • <i>포착 재료/전략:</i> {p.get('theme', '')[:60]} ({strategies})")
-            lines.append(f" • <i>실전 지침:</i> {p.get('action_plan', '시가 지지 확인 후 분할 매수')}\n")
-    else:
-        lines.append("• <i>금일 유효 타점 부재로 신규 진입 보류 및 기존 포지션 관리</i>\n")
-
-    # 3. 백찬규 센터장 실무 스크리너 분기 운용 (12선 매수/매도 실시간 레이더)
-    if screener_signals:
-        lines.append("━━━━━━━━━━━━━━━━━━━━━━━━━")
-        lines.append("📊 <b>3. 🎯 여의도 실무 스크리너 (분기 12선 매수/매도 실시간 레이더)</b>")
-        lines.append("📌 <i>[운용 원칙] 분기 실적보고 마감 후 정기 재스크리닝 / 실적시즌 전까지 본 12선 내 집중 매수·매도</i>\n")
-        growth_picks = [s for s in screener_signals if "성장주" in s.get("strategy_name", "")]
-        mid_picks = [s for s in screener_signals if "중소형" in s.get("strategy_name", "")]
-
-        if growth_picks:
-            lines.append("🚀 <b>[리스트 1: 대형 성장주 4선 실시간 매매 상태]</b>")
-            for gp in growth_picks:
-                action = gp.get("signal_type", "BUY")
-                act_icon = "🟢" if action == "BUY" else ("🟡" if action == "HOLD" else "🔴")
-                lines.append(f" • {act_icon} <b>{gp['name']}</b> ({gp['ticker']}) : <b>{int(gp['price']):,}원</b>")
-                lines.append(f"   └ <i>전술:</i> {gp['action_plan']}")
-
-        if mid_picks:
-            lines.append("\n💎 <b>[리스트 2: 중소형 수급가치 8선 실시간 매매 상태]</b>")
-            for mp in mid_picks:
-                action = mp.get("signal_type", "BUY")
-                act_icon = "🟢" if action == "BUY" else ("🟡" if action == "HOLD" else "🔴")
-                lines.append(f" • {act_icon} <b>{mp['name']}</b> ({mp['ticker']}) : <b>{int(mp['price']):,}원</b>")
-                lines.append(f"   └ <i>전술:</i> {mp['action_plan']}")
-        lines.append("")
-
-    # 4. 미국장 실무 스크리너 분기 운용 (12선 매수/매도 실시간 레이더)
-    if us_screener_signals:
-        lines.append("━━━━━━━━━━━━━━━━━━━━━━━━━")
-        lines.append("📊 <b>4. 🎯 🇺🇸 미국장 실무 스크리너 (분기 12선 매수/매도 실시간 레이더)</b>")
-        lines.append("📌 <i>[운용 원칙] 시총 기준: 대형 $10B+ / 중소형 $1B~$10B | 12선 내 집중 매수·매도</i>\n")
-        us_growth = [s for s in us_screener_signals if "대형" in s.get("strategy_name", "")]
-        us_mid = [s for s in us_screener_signals if "중소형" in s.get("strategy_name", "")]
-
-        if us_growth:
-            lines.append("🚀 <b>[리스트 1: 미국 대형 성장주 4선 ($10B+)]</b>")
-            for gp in us_growth:
-                action = gp.get("signal_type", "BUY")
-                act_icon = "🟢" if action == "BUY" else ("🟡" if action == "HOLD" else "🔴")
-                lines.append(f" • {act_icon} <b>{gp['name']}</b> ({gp['ticker']}) : <b>${float(gp['price']):.2f}</b>")
-                lines.append(f"   └ <i>전술:</i> {gp['action_plan']}")
-
-        if us_mid:
-            lines.append("\n💎 <b>[리스트 2: 미국 중소형 수급가치 8선 ($1B~$10B)]</b>")
-            for mp in us_mid:
-                action = mp.get("signal_type", "BUY")
-                act_icon = "🟢" if action == "BUY" else ("🟡" if action == "HOLD" else "🔴")
-                lines.append(f" • {act_icon} <b>{mp['name']}</b> ({mp['ticker']}) : <b>${float(mp['price']):.2f}</b>")
-                lines.append(f"   └ <i>전술:</i> {mp['action_plan']}")
-        lines.append("")
-
-    # 4. 바이낸스 선물 크립토 지능 알람 (Signal Forge)
-    if crypto_signals:
-        lines.append("━━━━━━━━━━━━━━━━━━━━━━━━━")
-        lines.append("🪙 <b>4. ⚡ 바이낸스 선물 크립토 롱/숏 레이더 (Signal Forge)</b>")
-        for cs in crypto_signals[:3]:
-            direction = "🟢 LONG" if cs.get("signal_type") == "BUY" else "🔴 SHORT"
-            lines.append(f" • <b>{cs['ticker']}</b> [{direction}] : <b>${cs['price']:,.2f}</b>")
-            lines.append(f"   └ {cs.get('action_plan', '')}")
-        lines.append("")
-
-    # 5. 한국장 매도 / 청산 실행 알람
+    new_buys = kr_portfolio.get("new_buys", [])
     sells_sl = kr_portfolio.get("sells_sl", [])
     sells_tp = kr_portfolio.get("sells_tp", [])
-    if sells_sl or sells_tp:
-        lines.append("🚨 <b>5. 🇰🇷 한국장 오늘 매도 / 청산 실행 알람</b>")
-        for s in sells_sl:
-            lines.append(f"• 🔴 <b>[손절 청산] {s['name']}</b> ({s['ticker']}) : {s.get('return_pct', 0.0):+.2f}%")
+    replacements = kr_portfolio.get("replacements", [])
+
+    has_changes = False
+
+    if replacements:
+        has_changes = True
+        for r in replacements:
+            lines.append(f"• 🔄 <b>[교체 종목] {r.get('old_name')} ➔ {r.get('new_name')}</b>")
+            lines.append(f"  └ <i>교체 이유:</i> {r.get('reason', '비주도주 정리 및 신규 주도주 교체')}")
+
+    if new_buys:
+        has_changes = True
+        for b in new_buys:
+            o_type = format_order_type(b, "KRX")
+            cap_b = f"[{b.get('cap_size', '대형주')}] "
+            lines.append(f"• 🆕 <b>[신규 종목] {cap_b}{b['name']}</b> ({b['ticker']}) | <b>{o_type}</b>")
+            lines.append(f"  └ <i>편입 이유:</i> {format_reason(b)}")
+
+    if sells_tp:
+        has_changes = True
         for s in sells_tp:
             lines.append(f"• 🟢 <b>[목표가 익절] {s['name']}</b> ({s['ticker']}) : {s.get('return_pct', 0.0):+.2f}%")
-        lines.append("")
+            lines.append(f"  └ <i>매도 이유:</i> 1차 목표가 도달에 따른 전량 차익 실현")
+    if sells_sl:
+        has_changes = True
+        for s in sells_sl:
+            lines.append(f"• 🔴 <b>[손절 청산] {s['name']}</b> ({s['ticker']}) : {s.get('return_pct', 0.0):+.2f}%")
+            lines.append(f"  └ <i>손절 이유:</i> 기계적 손절선 이탈에 따른 리스크 관리")
 
-    # 6. 한국장 실시간 운용 포트폴리오 (전종목 100% 완전 출력 - 대형 3선 + 중소형 3선)
+    if not has_changes:
+        lines.append("• <i>포트폴리오 변동 내역: 기존 6종목 100% 정상 유지 (교체/제외 없음)</i>")
+
+    # 3. 한국장 실운용 포트폴리오 (대형 3선 + 중소형 3선)
     kr_active = kr_portfolio.get("active_holdings", [])
     kr_stats = kr_portfolio.get("stats", {})
     large_c = kr_stats.get("large_count", sum(1 for h in kr_active if h.get("cap_size") == "대형주"))
     mid_c = kr_stats.get("mid_count", sum(1 for h in kr_active if h.get("cap_size") != "대형주"))
-    lines.append("━━━━━━━━━━━━━━━━━━━━━━━━━")
-    lines.append(f"💼 <b>6. 🇰🇷 한국장 실시간 운용 포트폴리오 (총 {kr_stats.get('total_holdings', len(kr_active))}종목 전체 - 대형 {large_c}선 + 중소형 {mid_c}선)</b>")
-    lines.append(f"• <b>포트폴리오 평균 수익률:</b> <b>{kr_stats.get('avg_return_pct', 0.0):+.2f}%</b> (가용 슬롯: {kr_stats.get('available_slots', 0)}개)")
+    avg_ret = kr_stats.get("avg_return_pct", 0.0)
+
+    lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
+    lines.append(f"💼 <b>3. 🇰🇷 한국장 실운용 포트폴리오 (총 {len(kr_active)}종목 - 대형 {large_c}선 + 중소형 {mid_c}선)</b>")
+    lines.append(f"• <b>포트폴리오 평균 수익률:</b> <b>{avg_ret:+.2f}%</b> (가용 슬롯: {kr_stats.get('available_slots', 0)}개)")
+
     if kr_active:
         for idx, h in enumerate(kr_active, 1):
             ret = float(h.get("return_pct", 0.0))
             sign = "🟢" if ret >= 0 else "🔵"
             cap_b = f"[{h.get('cap_size', '대형주')}] "
-            lines.append(f" {idx}. {sign} <b>{cap_b}{h['name']}</b> ({h['ticker']}) : <b>{ret:+.2f}%</b> (진입: {int(h['entry_price']):,}원 ➔ 현재: {int(h['current_price']):,}원)")
+            o_type = format_order_type(h, "KRX")
+            cur_p = int(float(h.get("current_price", 0)))
+            entry_p = int(float(h.get("entry_price", 0)))
+            tgt_p = int(float(h.get("target_price", 0))) if h.get("target_price") else 0
+            stp_p = int(float(h.get("stop_loss_price", 0))) if h.get("stop_loss_price") else 0
+
+            lines.append(f" {idx}. {sign} <b>{cap_b}{h['name']}</b> ({h['ticker']}) | <b>{o_type}</b>")
+            lines.append(f"    └ 진입: {entry_p:,}원 ➔ 현재: {cur_p:,}원 (<b>{ret:+.2f}%</b>) | 🎯 {tgt_p:,}원 | 🛑 {stp_p:,}원")
     else:
         lines.append("• <i>현재 100% 현금 보유 대기 상태</i>")
-    lines.append("")
 
-    # 7. 미국장 실시간 운용 포트폴리오 (전종목 100% 완전 출력 - 대형 3선 + 중소형 3선)
+    # 4. 미국장 실운용 포트폴리오 (대형 3선 + 중소형 3선)
     us_active = us_portfolio.get("active_holdings", [])
     us_stats = us_portfolio.get("stats", {})
     us_large_c = us_stats.get("large_count", sum(1 for h in us_active if h.get("cap_size") == "대형주"))
     us_mid_c = us_stats.get("mid_count", sum(1 for h in us_active if h.get("cap_size") != "대형주"))
-    lines.append("━━━━━━━━━━━━━━━━━━━━━━━━━")
-    lines.append(f"💼 <b>7. 🇺🇸 미국장 실시간 운용 포트폴리오 (총 {us_stats.get('total_holdings', len(us_active))}종목 전체 - 대형 {us_large_c}선 + 중소형 {us_mid_c}선)</b>")
-    lines.append(f"• <b>포트폴리오 평균 수익률:</b> <b>{us_stats.get('avg_return_pct', 0.0):+.2f}%</b> (가용 슬롯: {us_stats.get('available_slots', 0)}개)")
+    us_avg_ret = us_stats.get("avg_return_pct", 0.0)
+
+    lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
+    lines.append(f"💼 <b>4. 🇺🇸 미국장 실운용 포트폴리오 (총 {len(us_active)}종목 - 대형 {us_large_c}선 + 중소형 {us_mid_c}선)</b>")
+    lines.append(f"• <b>포트폴리오 평균 수익률:</b> <b>{us_avg_ret:+.2f}%</b> (가용 슬롯: {us_stats.get('available_slots', 0)}개)")
+
     if us_active:
         for idx, h in enumerate(us_active, 1):
             ret = float(h.get("return_pct", 0.0))
             sign = "🟢" if ret >= 0 else "🔵"
             cap_b = f"[{h.get('cap_size', '대형주')}] "
-            lines.append(f" {idx}. {sign} <b>{cap_b}{h['name']}</b> ({h['ticker']}) : <b>{ret:+.2f}%</b> (진입: ${float(h['entry_price']):.2f} ➔ 현재: ${float(h['current_price']):.2f})")
+            o_type = format_order_type(h, "US")
+            cur_p = float(h.get("current_price", 0))
+            entry_p = float(h.get("entry_price", 0))
+            tgt_p = float(h.get("target_price", 0)) if h.get("target_price") else 0
+            stp_p = float(h.get("stop_loss_price", 0)) if h.get("stop_loss_price") else 0
+
+            lines.append(f" {idx}. {sign} <b>{cap_b}{h['name']}</b> ({h['ticker']}) | <b>{o_type}</b>")
+            lines.append(f"    └ 진입: ${entry_p:.2f} ➔ 현재: ${cur_p:.2f} (<b>{ret:+.2f}%</b>) | 🎯 ${tgt_p:.2f} | 🛑 ${stp_p:.2f}")
     else:
         lines.append("• <i>현재 미국장 보유 포지션 없음 (신규 진입 대기)</i>")
 
@@ -183,136 +201,245 @@ def build_0840_us_close_kr_open_alarm(
     return "\n".join(lines)
 
 
-def build_1500_kr_close_us_open_alarm(
+# =============================================================
+# 2. 15:00 KST 정기 알람 (한국장 종가매수 최종 타깃 & 포트폴리오)
+# =============================================================
+def build_1500_kr_close_alarm(
     kr_portfolio: Dict[str, Any],
     us_portfolio: Dict[str, Any],
-    kr_buys: List[Dict[str, Any]],
-    us_buys: List[Dict[str, Any]],
+    kr_buys: List[Dict[str, Any]] = None,
+    us_buys: List[Dict[str, Any]] = None,
     screener_signals: Optional[List[Dict[str, Any]]] = None,
     us_screener_signals: Optional[List[Dict[str, Any]]] = None,
     crypto_signals: Optional[List[Dict[str, Any]]] = None
 ) -> str:
-    """
-    15:00 브리핑:
-    [15:00 : 🇰🇷 한국장 종가매수(Strong Close) 최종 타깃 브리핑, 미국장 장전 통합 브리핑]
-    """
     now = datetime.now()
     weekdays_kr = ["월", "화", "수", "목", "금", "토", "일"]
     today_str = f"{now.year}년 {now.month:02d}월 {now.day:02d}일 ({weekdays_kr[now.weekday()]})"
 
     lines = []
-    lines.append("🎯 <b>[STOCK SUPERVISOR] 🇰🇷 한국장 종가매수(Strong Close) 최종 타깃 브리핑, 미국장 장전 통합 브리핑</b>")
+    lines.append("🎯 <b>[STOCK SUPERVISOR] 🇰🇷 한국장 종가매수 최종 타깃 & 포트폴리오 알람</b>")
     lines.append(f"📅 <b>기준일자:</b> {today_str} | ⏰ 15:00 KST (장마감 30분 전)")
     lines.append("━━━━━━━━━━━━━━━━━━━━━━━━━")
 
-    # 1. 한국장 종가매수 정예 후보
-    lines.append("🏆 <b>1. 🇰🇷 한국장 종가매수(Strong Close) 정예 후보</b>")
-    lines.append("• 5일선 종가 안착 & 상위 25% 이내 마감 예상 종목만 오버나이트 허용 (체결 즉시 -6% 손절 예약)")
-    picks = kr_buys[:2]
-    if picks:
-        for idx, p in enumerate(picks, 1):
-            cap_badge = f"<b>[{p.get('cap_size', '대형주')}]</b> "
-            lines.append(f"■ {idx}. {cap_badge}<b>{p['name']}</b> ({p['ticker']}) | 종가: <b>{int(p['price']):,}원</b>")
-            lines.append(f"   🛑 손절가: <b>{int(p['stop_loss_price']):,}원</b> | 🎯 1차목표가: <b>{int(p['target_price']):,}원</b>")
-            lines.append(f"   └ <i>특장/테마:</i> {p.get('theme', '')[:50]}")
-    else:
-        lines.append("• <i>금일 오버나이트 적합 종목 부재 (현금 비중 유지 권고)</i>")
+    # 1. 포트폴리오 변동 내역 (종가매수 & 포지션 재편)
+    lines.append("🔄 <b>1. 포트폴리오 변동 내역 (종가매수 & 포지션 재편)</b>")
 
-    # 2. 백찬규 센터장 실무 스크리너 분기 운용 (12선 종가 매매 레이더)
-    if screener_signals:
-        lines.append("\n📊 <b>[여의도 실무 스크리너 12선 종가 매매 레이더]</b>")
-        lines.append("📌 <i>분기 실적시즌 전까지 본 12선 내에서 매수/매도 집행</i>")
-        growth_picks = [s for s in screener_signals if "성장주" in s.get("strategy_name", "")]
-        mid_picks = [s for s in screener_signals if "중소형" in s.get("strategy_name", "")]
-        if growth_picks:
-            lines.append("🚀 <b>[대형 성장주 4선 종가 현황]</b>")
-            for gp in growth_picks:
-                action = gp.get("signal_type", "BUY")
-                act_icon = "🟢" if action == "BUY" else ("🟡" if action == "HOLD" else "🔴")
-                lines.append(f" • {act_icon} <b>{gp['name']}</b> ({gp['ticker']}) : <b>{int(gp['price']):,}원</b> | {gp['action_plan']}")
-        if mid_picks:
-            lines.append("💎 <b>[중소형 수급가치 8선 종가 현황]</b>")
-            for mp in mid_picks:
-                action = mp.get("signal_type", "BUY")
-                act_icon = "🟢" if action == "BUY" else ("🟡" if action == "HOLD" else "🔴")
-                lines.append(f" • {act_icon} <b>{mp['name']}</b> ({mp['ticker']}) : <b>{int(mp['price']):,}원</b> | {mp['action_plan']}")
+    new_buys = kr_portfolio.get("new_buys", [])
+    sells_sl = kr_portfolio.get("sells_sl", [])
+    sells_tp = kr_portfolio.get("sells_tp", [])
+    replacements = kr_portfolio.get("replacements", [])
 
-    # 3. 한국장 포트폴리오 마감 상태 (전종목 100% 완전 출력 - 대형 3선 + 중소형 3선)
+    has_changes = False
+
+    if replacements:
+        has_changes = True
+        for r in replacements:
+            lines.append(f"• 🔄 <b>[교체 종목] {r.get('old_name')} ➔ {r.get('new_name')}</b>")
+            lines.append(f"  └ <i>교체 이유:</i> {r.get('reason', '비주도주 정리 및 신규 주도주 교체')}")
+
+    if new_buys:
+        has_changes = True
+        for b in new_buys:
+            o_type = format_order_type(b, "KRX")
+            if "[지정가" not in o_type:
+                o_type = "[종가 매수 (15:20~15:30 동시호가 체결)]"
+            cap_b = f"[{b.get('cap_size', '대형주')}] "
+            lines.append(f"• 🆕 <b>[신규 종목 (종가매수)] {cap_b}{b['name']}</b> ({b['ticker']}) | <b>{o_type}</b>")
+            lines.append(f"  └ <i>편입 이유:</i> {format_reason(b)}")
+
+    if sells_tp:
+        has_changes = True
+        for s in sells_tp:
+            lines.append(f"• 🟢 <b>[목표가 익절] {s['name']}</b> ({s['ticker']}) : {s.get('return_pct', 0.0):+.2f}%")
+            lines.append(f"  └ <i>매도 이유:</i> 1차 목표가 도달에 따른 전량 차익 실현")
+    if sells_sl:
+        has_changes = True
+        for s in sells_sl:
+            lines.append(f"• 🔴 <b>[손절 청산] {s['name']}</b> ({s['ticker']}) : {s.get('return_pct', 0.0):+.2f}%")
+            lines.append(f"  └ <i>손절 이유:</i> 기계적 손절선 이탈에 따른 리스크 관리")
+
+    if not has_changes:
+        lines.append("• <i>포트폴리오 변동 내역: 기존 6종목 정상 유지 (교체/제외 없음)</i>")
+
+    # 2. 한국장 실운용 포트폴리오 마감 현황
     kr_active = kr_portfolio.get("active_holdings", [])
     kr_stats = kr_portfolio.get("stats", {})
     large_c = kr_stats.get("large_count", sum(1 for h in kr_active if h.get("cap_size") == "대형주"))
     mid_c = kr_stats.get("mid_count", sum(1 for h in kr_active if h.get("cap_size") != "대형주"))
-    lines.append(f"\n💼 <b>한국장 실시간 운용 포트폴리오 마감 현황 (총 {kr_stats.get('total_holdings', len(kr_active))}종목 전체 - 대형 {large_c}선 + 중소형 {mid_c}선 | 평균 {kr_stats.get('avg_return_pct', 0.0):+.2f}%)</b>")
+    avg_ret = kr_stats.get("avg_return_pct", 0.0)
+
+    lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
+    lines.append(f"💼 <b>2. 🇰🇷 한국장 실운용 포트폴리오 마감 현황 (총 {len(kr_active)}종목 - 대형 {large_c}선 + 중소형 {mid_c}선)</b>")
+    lines.append(f"• <b>포트폴리오 평균 수익률:</b> <b>{avg_ret:+.2f}%</b> (가용 슬롯: {kr_stats.get('available_slots', 0)}개)")
+
     if kr_active:
         for idx, h in enumerate(kr_active, 1):
             ret = float(h.get("return_pct", 0.0))
             sign = "🟢" if ret >= 0 else "🔵"
             cap_b = f"[{h.get('cap_size', '대형주')}] "
-            lines.append(f" {idx}. {sign} <b>{cap_b}{h['name']}</b> ({h['ticker']}) : <b>{ret:+.2f}%</b> (진입: {int(h['entry_price']):,}원 ➔ 현재: {int(h['current_price']):,}원)")
+            o_type = format_order_type(h, "KRX")
+            cur_p = int(float(h.get("current_price", 0)))
+            entry_p = int(float(h.get("entry_price", 0)))
+            tgt_p = int(float(h.get("target_price", 0))) if h.get("target_price") else 0
+            stp_p = int(float(h.get("stop_loss_price", 0))) if h.get("stop_loss_price") else 0
+
+            lines.append(f" {idx}. {sign} <b>{cap_b}{h['name']}</b> ({h['ticker']}) | <b>{o_type}</b>")
+            lines.append(f"    └ 진입: {entry_p:,}원 ➔ 마감: {cur_p:,}원 (<b>{ret:+.2f}%</b>) | 🎯 {tgt_p:,}원 | 🛑 {stp_p:,}원")
     else:
         lines.append("• <i>현재 보유 포지션 없음 (현금 대기)</i>")
 
-    lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
-
-    # 4. 미국장 장전 통합 브리핑
-    lines.append("🌃 <b>2. 🇺🇸 미국장 장전 통합 브리핑 (오늘 밤 개장 전략)</b>")
-    lines.append("• 미국 5대 전략(스나이퍼, 227선 스윙, SEPA 피봇, HTP 모멘텀, 3X 무한투자) 결합 정밀 운용")
-    lines.append("• 상하한가 없는 미 증시 특성 반영: 손절선 및 익절폭 완충, 피벗가 대비 +5% 초과 추격매수 금지\n")
-
-    lines.append("🚀 <b>[미국장 오늘의 엄선 타깃 TOP 2]</b>")
-    us_picks = us_buys[:2]
-    if us_picks:
-        for idx, p in enumerate(us_picks, 1):
-            cap_badge = f"<b>[{p.get('cap_size', '대형주')}]</b> "
-            lines.append(f"■ {idx}. {cap_badge}<b>{p['name']}</b> ({p['ticker']} / {p.get('sector', 'US')})")
-            lines.append(f"   • 기준가: <b>${p['price']:.2f}</b> | 🎯 목표: <b>${p['target_price']:.2f}</b> | 🛑 손절: <b>${p['stop_loss_price']:.2f}</b>")
-            lines.append(f"   └ <i>실전 운용:</i> {p.get('action_plan', '')[:60]}")
-    else:
-        lines.append("• <i>미국장 신규 진입 대기 (기존 분할 포지션 유지)</i>")
-
-    # 4-2. 미국장 실무 스크리너 12선 개장전 레이더
-    if us_screener_signals:
-        lines.append("\n📊 <b>[미국장 실무 스크리너 12선 개장전 매매 레이더]</b>")
-        lines.append("📌 <i>시총 기준: 대형 $10B+ / 중소형 $1B~$10B | 분기 내 집중 매수·매도</i>")
-        us_growth = [s for s in us_screener_signals if "대형" in s.get("strategy_name", "")]
-        us_mid = [s for s in us_screener_signals if "중소형" in s.get("strategy_name", "")]
-        if us_growth:
-            lines.append("🚀 <b>[미국 대형 성장주 4선 ($10B+)]</b>")
-            for gp in us_growth:
-                action = gp.get("signal_type", "BUY")
-                act_icon = "🟢" if action == "BUY" else ("🟡" if action == "HOLD" else "🔴")
-                lines.append(f" • {act_icon} <b>{gp['name']}</b> ({gp['ticker']}) : <b>${float(gp['price']):.2f}</b> | {gp['action_plan']}")
-        if us_mid:
-            lines.append("💎 <b>[미국 중소형 수급가치 8선 ($1B~$10B)]</b>")
-            for mp in us_mid:
-                action = mp.get("signal_type", "BUY")
-                act_icon = "🟢" if action == "BUY" else ("🟡" if action == "HOLD" else "🔴")
-                lines.append(f" • {act_icon} <b>{mp['name']}</b> ({mp['ticker']}) : <b>${float(mp['price']):.2f}</b> | {mp['action_plan']}")
-
-    # 5. 미국장 실시간 운용 포트폴리오 (전종목 100% 완전 출력 - 대형 3선 + 중소형 3선)
+    # 3. 미국장 실운용 포트폴리오 현황
     us_active = us_portfolio.get("active_holdings", [])
     us_stats = us_portfolio.get("stats", {})
     us_large_c = us_stats.get("large_count", sum(1 for h in us_active if h.get("cap_size") == "대형주"))
     us_mid_c = us_stats.get("mid_count", sum(1 for h in us_active if h.get("cap_size") != "대형주"))
-    lines.append(f"\n💼 <b>미국장 실시간 운용 포트폴리오 개장전 현황 (총 {us_stats.get('total_holdings', len(us_active))}종목 전체 - 대형 {us_large_c}선 + 중소형 {us_mid_c}선 | 평균 {us_stats.get('avg_return_pct', 0.0):+.2f}%)</b>")
+    us_avg_ret = us_stats.get("avg_return_pct", 0.0)
+
+    lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
+    lines.append(f"💼 <b>3. 🇺🇸 미국장 실운용 포트폴리오 현황 (총 {len(us_active)}종목 - 대형 {us_large_c}선 + 중소형 {us_mid_c}선)</b>")
+    lines.append(f"• <b>포트폴리오 평균 수익률:</b> <b>{us_avg_ret:+.2f}%</b> (가용 슬롯: {us_stats.get('available_slots', 0)}개)")
+
     if us_active:
         for idx, h in enumerate(us_active, 1):
             ret = float(h.get("return_pct", 0.0))
             sign = "🟢" if ret >= 0 else "🔵"
             cap_b = f"[{h.get('cap_size', '대형주')}] "
-            lines.append(f" {idx}. {sign} <b>{cap_b}{h['name']}</b> ({h['ticker']}) : <b>{ret:+.2f}%</b> (진입: ${float(h['entry_price']):.2f} ➔ 현재: ${float(h['current_price']):.2f})")
+            o_type = format_order_type(h, "US")
+            cur_p = float(h.get("current_price", 0))
+            entry_p = float(h.get("entry_price", 0))
+            tgt_p = float(h.get("target_price", 0)) if h.get("target_price") else 0
+            stp_p = float(h.get("stop_loss_price", 0)) if h.get("stop_loss_price") else 0
+
+            lines.append(f" {idx}. {sign} <b>{cap_b}{h['name']}</b> ({h['ticker']}) | <b>{o_type}</b>")
+            lines.append(f"    └ 진입: ${entry_p:.2f} ➔ 현재: ${cur_p:.2f} (<b>{ret:+.2f}%</b>) | 🎯 ${tgt_p:.2f} | 🛑 ${stp_p:.2f}")
     else:
         lines.append("• <i>미국장 보유 포지션 없음 (신규 진입 대기)</i>")
-
-    # 6. 크립토 레이더 (Signal Forge)
-    if crypto_signals:
-        lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
-        lines.append("🪙 <b>3. ⚡ 바이낸스 선물 크립토 롱/숏 지능 레이더</b>")
-        for cs in crypto_signals[:3]:
-            direction = "🟢 LONG" if cs.get("signal_type") == "BUY" else "🔴 SHORT"
-            lines.append(f"• <b>{cs['ticker']}</b> [{direction}] : <b>${cs['price']:,.2f}</b> | {cs.get('action_plan', '')}")
 
     lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
     lines.append("🖥️ <b>트레이딩 데스크:</b> https://bluem00000000n.github.io/stock/")
     lines.append("🚀 <i>Stock Supervisor Unified Central Engine</i>")
     return "\n".join(lines)
+
+
+# =============================================================
+# 3. 17:30 KST 정기 알람 (미국장 장전 실전 포트폴리오)
+# =============================================================
+def build_1730_us_open_alarm(
+    kr_portfolio: Dict[str, Any],
+    us_portfolio: Dict[str, Any],
+    macro: Dict[str, Any],
+    us_buys: List[Dict[str, Any]] = None,
+    screener_signals: Optional[List[Dict[str, Any]]] = None,
+    us_screener_signals: Optional[List[Dict[str, Any]]] = None,
+    crypto_signals: Optional[List[Dict[str, Any]]] = None
+) -> str:
+    now = datetime.now()
+    weekdays_kr = ["월", "화", "수", "목", "금", "토", "일"]
+    today_str = f"{now.year}년 {now.month:02d}월 {now.day:02d}일 ({weekdays_kr[now.weekday()]})"
+
+    lines = []
+    lines.append("🌃 <b>[STOCK SUPERVISOR] 🇺🇸 미국장 장전 실전 포트폴리오 알람</b>")
+    lines.append(f"📅 <b>일시:</b> {today_str} 17:30 KST (개장 전 프리마켓 정기 브리핑)")
+    lines.append("━━━━━━━━━━━━━━━━━━━━━━━━━")
+
+    # 1. 글로벌 매크로 및 프리마켓 현황
+    dow = macro.get("dow", {})
+    nasdaq = macro.get("nasdaq", {})
+    sp500 = macro.get("sp500", {})
+    usd_krw = macro.get("usd_krw", "1,379.5")
+
+    lines.append("🌐 <b>1. 미국 증시 매크로 & 선물 지수</b>")
+    lines.append(f"• 다우 선물: {dow.get('val', '-')} ({dow.get('pct', 0.0):+.2f}%) | 나스닥 선물: {nasdaq.get('val', '-')} ({nasdaq.get('pct', 0.0):+.2f}%) | S&P500: {sp500.get('val', '-')} ({sp500.get('pct', 0.0):+.2f}%)")
+    lines.append(f"• 원/달러 환율: <b>{usd_krw}원</b> | VIX 지수: {macro.get('vix', '18.38')}")
+    lines.append("• <b>운용 지침:</b> 프리마켓 갭상승 추격 매수 금지, 22:30 개장 후 본장 호가 체결 원칙 준수.")
+
+    # 2. 미국장 포트폴리오 변동 내역
+    lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
+    lines.append("🔄 <b>2. 미국장 포트폴리오 변동 내역 (신규진입 & 재편)</b>")
+
+    new_buys = us_portfolio.get("new_buys", [])
+    sells_sl = us_portfolio.get("sells_sl", [])
+    sells_tp = us_portfolio.get("sells_tp", [])
+    replacements = us_portfolio.get("replacements", [])
+
+    has_changes = False
+
+    if replacements:
+        has_changes = True
+        for r in replacements:
+            lines.append(f"• 🔄 <b>[교체 종목] {r.get('old_name')} ➔ {r.get('new_name')}</b>")
+            lines.append(f"  └ <i>교체 이유:</i> {r.get('reason', '비주도주 정리 및 신규 주도주 교체')}")
+
+    if new_buys:
+        has_changes = True
+        for b in new_buys:
+            o_type = format_order_type(b, "US")
+            cap_b = f"[{b.get('cap_size', '대형주')}] "
+            lines.append(f"• 🆕 <b>[신규 종목] {cap_b}{b['name']}</b> ({b['ticker']}) | <b>{o_type}</b>")
+            lines.append(f"  └ <i>편입 이유:</i> {format_reason(b)}")
+
+    if sells_tp:
+        has_changes = True
+        for s in sells_tp:
+            lines.append(f"• 🟢 <b>[목표가 익절] {s['name']}</b> ({s['ticker']}) : {s.get('return_pct', 0.0):+.2f}%")
+            lines.append(f"  └ <i>매도 이유:</i> 1차 목표가 도달에 따른 전량 차익 실현")
+    if sells_sl:
+        has_changes = True
+        for s in sells_sl:
+            lines.append(f"• 🔴 <b>[손절 청산] {s['name']}</b> ({s['ticker']}) : {s.get('return_pct', 0.0):+.2f}%")
+            lines.append(f"  └ <i>손절 이유:</i> 기계적 손절선 이탈에 따른 리스크 관리")
+
+    if not has_changes:
+        lines.append("• <i>미국장 포트폴리오 변동 내역: 기존 6종목 100% 정상 유지 (교체/제외 없음)</i>")
+
+    # 3. 미국장 실운용 포트폴리오 (대형 3선 + 중소형 3선)
+    us_active = us_portfolio.get("active_holdings", [])
+    us_stats = us_portfolio.get("stats", {})
+    us_large_c = us_stats.get("large_count", sum(1 for h in us_active if h.get("cap_size") == "대형주"))
+    us_mid_c = us_stats.get("mid_count", sum(1 for h in us_active if h.get("cap_size") != "대형주"))
+    us_avg_ret = us_stats.get("avg_return_pct", 0.0)
+
+    lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
+    lines.append(f"💼 <b>3. 🇺🇸 미국장 실운용 포트폴리오 (총 {len(us_active)}종목 - 대형 {us_large_c}선 + 중소형 {us_mid_c}선)</b>")
+    lines.append(f"• <b>포트폴리오 평균 수익률:</b> <b>{us_avg_ret:+.2f}%</b> (가용 슬롯: {us_stats.get('available_slots', 0)}개)")
+
+    if us_active:
+        for idx, h in enumerate(us_active, 1):
+            ret = float(h.get("return_pct", 0.0))
+            sign = "🟢" if ret >= 0 else "🔵"
+            cap_b = f"[{h.get('cap_size', '대형주')}] "
+            o_type = format_order_type(h, "US")
+            cur_p = float(h.get("current_price", 0))
+            entry_p = float(h.get("entry_price", 0))
+            tgt_p = float(h.get("target_price", 0)) if h.get("target_price") else 0
+            stp_p = float(h.get("stop_loss_price", 0)) if h.get("stop_loss_price") else 0
+
+            lines.append(f" {idx}. {sign} <b>{cap_b}{h['name']}</b> ({h['ticker']}) | <b>{o_type}</b>")
+            lines.append(f"    └ 진입: ${entry_p:.2f} ➔ 현재: ${cur_p:.2f} (<b>{ret:+.2f}%</b>) | 🎯 ${tgt_p:.2f} | 🛑 ${stp_p:.2f}")
+    else:
+        lines.append("• <i>미국장 보유 포지션 없음 (신규 진입 대기)</i>")
+
+    # 4. 한국장 실운용 포트폴리오 마감 요약
+    kr_active = kr_portfolio.get("active_holdings", [])
+    kr_stats = kr_portfolio.get("stats", {})
+    avg_kr = kr_stats.get("avg_return_pct", 0.0)
+
+    lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
+    lines.append(f"💼 <b>4. 🇰🇷 한국장 실운용 포트폴리오 (총 {len(kr_active)}종목 | 마감 평균 {avg_kr:+.2f}%)</b>")
+    if kr_active:
+        for idx, h in enumerate(kr_active, 1):
+            ret = float(h.get("return_pct", 0.0))
+            sign = "🟢" if ret >= 0 else "🔵"
+            cap_b = f"[{h.get('cap_size', '대형주')}] "
+            lines.append(f" {idx}. {sign} <b>{cap_b}{h['name']}</b> ({h['ticker']}) : <b>{ret:+.2f}%</b> ({int(float(h.get('current_price', 0))):,}원)")
+
+    lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
+    lines.append("🖥️ <b>트레이딩 데스크:</b> https://bluem00000000n.github.io/stock/")
+    lines.append("🚀 <i>Stock Supervisor Unified Central Engine</i>")
+    return "\n".join(lines)
+
+
+# 하위 호환성 별칭
+build_0840_us_close_kr_open_alarm = build_0830_kr_open_alarm
+build_1500_kr_close_us_open_alarm = build_1500_kr_close_alarm
