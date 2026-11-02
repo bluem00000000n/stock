@@ -11,6 +11,10 @@ import json
 from pathlib import Path
 from typing import List, Dict, Any
 
+# 상위 core 모듈 참조
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from core.market_data import fetch_us_price
+
 HTP_DIR = Path(__file__).resolve().parent.parent / "data" / "strategies_data" / "stock-htp-top10"
 
 
@@ -25,7 +29,7 @@ def run_analysis() -> List[Dict[str, Any]]:
         with open(json_path, "r", encoding="utf-8") as f:
             data = json.load(f)
             large_cap = data.get("large_cap_top10", [])
-            small_cap = data.get("small_cap_top10", [])
+            small_cap = data.get("russell2000_top10", []) or data.get("small_cap_top10", [])
     except Exception:
         return signals
 
@@ -36,18 +40,28 @@ def run_analysis() -> List[Dict[str, Any]]:
         sector = item.get("sector", "Tech")
         reason = item.get("reason", "52주 최고가권 HTP 퀀트 모멘텀 상위")
 
+        p_info = fetch_us_price(ticker)
+        cur_price = p_info.get("price", 0.0)
+        if cur_price <= 0:
+            cur_price = 100.0
+
+        target_1 = round(cur_price * 1.15, 2)
+        target_2 = round(cur_price * 1.25, 2)
+        stop_loss = round(cur_price * 0.92, 2)
+        rr = round((target_1 - cur_price) / max(0.01, cur_price - stop_loss), 2)
+
         signals.append({
             "project_id": "stock-htp-top10",
             "strategy_name": "HTP 모멘텀 (미국 대형)",
             "market": "US",
             "ticker": ticker,
-            "name": name,
+            "name": p_info.get("name") or name,
             "signal_type": "BUY",
-            "price": 100.0,
-            "target_price": 115.0,
-            "target_price_2": 125.0,
-            "stop_loss_price": 93.0,
-            "risk_reward_ratio": 2.14,
+            "price": cur_price,
+            "target_price": target_1,
+            "target_price_2": target_2,
+            "stop_loss_price": stop_loss,
+            "risk_reward_ratio": rr,
             "score": 100.0 - (rank * 1.5),
             "sector": sector,
             "theme": reason,
@@ -60,25 +74,35 @@ def run_analysis() -> List[Dict[str, Any]]:
             }
         })
 
-    for item in small_cap[:3]:
+    for item in small_cap[:5]:
         rank = item.get("rank", 1)
         ticker = item.get("ticker", "")
         name = item.get("name", ticker)
         sector = item.get("sector", "Growth")
         reason = item.get("reason", "러셀2000 고성장 HTP 모멘텀")
 
+        p_info = fetch_us_price(ticker)
+        cur_price = p_info.get("price", 0.0)
+        if cur_price <= 0:
+            cur_price = 50.0
+
+        target_1 = round(cur_price * 1.18, 2)
+        target_2 = round(cur_price * 1.28, 2)
+        stop_loss = round(cur_price * 0.91, 2)
+        rr = round((target_1 - cur_price) / max(0.01, cur_price - stop_loss), 2)
+
         signals.append({
             "project_id": "stock-htp-top10",
             "strategy_name": "HTP 모멘텀 (미국 중소형)",
             "market": "US",
             "ticker": ticker,
-            "name": name,
+            "name": p_info.get("name") or name,
             "signal_type": "BUY",
-            "price": 50.0,
-            "target_price": 60.0,
-            "target_price_2": 68.0,
-            "stop_loss_price": 46.0,
-            "risk_reward_ratio": 2.5,
+            "price": cur_price,
+            "target_price": target_1,
+            "target_price_2": target_2,
+            "stop_loss_price": stop_loss,
+            "risk_reward_ratio": rr,
             "score": 93.0 - (rank * 1.5),
             "sector": sector,
             "theme": reason,
@@ -92,7 +116,7 @@ def run_analysis() -> List[Dict[str, Any]]:
         })
 
     signals.sort(key=lambda x: x["score"], reverse=True)
-    return signals[:6]
+    return signals
 
 
 if __name__ == "__main__":

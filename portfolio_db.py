@@ -186,25 +186,25 @@ def reset_and_reload_all_9_projects():
     # 2. stock-sepa-pivot (10/21 08:40 한국장 알람)
     # =========================================================
     sepa_candidates = [
-        {"ticker": "000660", "name": "SK하이닉스", "target": 1285000, "stop": 1220000, "note": "HBM3E 독점 슈퍼사이클, 20일선 VCP 피벗 돌파"},
-        {"ticker": "196170", "name": "알테오젠", "target": 245000, "stop": 230000, "note": "피하주사(SC) 독점 플랫폼, 하이타이트 플래그 돌파"},
-        {"ticker": "003230", "name": "삼양식품", "target": 1320000, "stop": 1220000, "note": "글로벌 수출 호조, 컵앤핸들 피벗 돌파"},
-        {"ticker": "012450", "name": "한화에어로스페이스", "target": 835000, "stop": 785000, "note": "K9/천무 글로벌 수주 모멘텀, 불플래그 패턴"},
-        {"ticker": "267260", "name": "HD현대일렉트릭", "target": 515000, "stop": 480000, "note": "북미 변압기 쇼티지 수혜, 플랫 베이스 지지"}
+        {"ticker": "000660", "name": "SK하이닉스", "entry": 1380000.0, "target": 1680000.0, "stop": 1290000.0, "note": "HBM3E 독점 슈퍼사이클, 20일선 VCP 피벗 돌파"},
+        {"ticker": "012450", "name": "한화에어로스페이스", "entry": 680000.0, "target": 840000.0, "stop": 635000.0, "note": "K9/천무 글로벌 수주 모멘텀, 불플래그 패턴"},
+        {"ticker": "267260", "name": "HD현대일렉트릭", "entry": 415000.0, "target": 515000.0, "stop": 388000.0, "note": "북미 변압기 쇼티지 수혜, 플랫 베이스 지지"},
+        {"ticker": "196170", "name": "알테오젠", "entry": 200000.0, "target": 248000.0, "stop": 186000.0, "note": "피하주사(SC) 독점 플랫폼, 하이타이트 플래그 돌파"},
+        {"ticker": "003230", "name": "삼양식품", "entry": 1110000.0, "target": 1350000.0, "stop": 1030000.0, "note": "글로벌 수출 호조, 컵앤핸들 피벗 돌파"}
     ]
     cur.execute("""
     INSERT INTO alarms (project_id, project_name, sent_at, alarm_type, market, title, raw_message, stocks_json)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     """, (
         "stock-sepa-pivot", "stock-sepa-pivot", f"{today_str} 08:40:02", "장전알람", "KRX",
-        "📈 08:40 한국장 SEPA x 피벗 포인트 감시 (SK하이닉스/알테오젠/삼양식품 외)",
+        "📈 08:40 한국장 SEPA x 피벗 포인트 감시 (SK하이닉스/한화에어로/HD현대일렉 외)",
         f"""📈 [08:40 오전 알람] 🇰🇷 한국장 개장 SEPA x 피벗 브리핑 (기준일: {today_str})
 👑 [한국 대형 주도주 TOP 5] 피벗 감시선
-1. SK하이닉스 (000660) | 피벗 1,285,000원 | 손절 1,220,000원 | Ascending Triangle
-2. 알테오젠 (196170) | 피벗 245,000원 | 손절 230,000원 | High Tight Flag
-3. 삼양식품 (003230) | 피벗 1,320,000원 | 손절 1,220,000원 | Cup with Handle
-4. 한화에어로스페이스 (012450) | 피벗 835,000원 | 손절 785,000원 | Bull Flag
-5. HD현대일렉트릭 (267260) | 피벗 515,000원 | 손절 480,000원 | Flat Base
+1. SK하이닉스 (000660) | 피벗 1,380,000원 | 목표 1,680,000원 | 손절 1,290,000원 | VCP 돌파
+2. 한화에어로스페이스 (012450) | 피벗 680,000원 | 목표 840,000원 | 손절 635,000원 | Bull Flag
+3. HD현대일렉트릭 (267260) | 피벗 415,000원 | 목표 515,000원 | 손절 388,000원 | Flat Base
+4. 알테오젠 (196170) | 피벗 200,000원 | 목표 248,000원 | 손절 186,000원 | High Tight Flag
+5. 삼양식품 (003230) | 피벗 1,110,000원 | 목표 1,350,000원 | 손절 1,030,000원 | Cup with Handle
 ⚠️ 매매 수칙: 09:00 시가(Open) 확인 후 진입, 피벗 대비 +5% 초과 갭상승 추격 매수 금지.""",
         json.dumps(sepa_candidates, ensure_ascii=False)
     ))
@@ -299,22 +299,41 @@ def reset_and_reload_all_9_projects():
     ))
 
     # =========================================================
-    # 8. stock-htp-top10 (10/20 17:00 주간 모멘텀)
+    # 8. stock-htp-top10 (10/27 17:00 주간 HTP 모멘텀 TOP 10)
     # =========================================================
     htp_candidates = [
-        {"ticker": "NVDA", "name": "NVIDIA", "market": "US", "entry": 139.20, "target": 158.00, "stop": 128.00, "note": "AI 가속기 독점, HTP 파워 모멘텀 1위"},
-        {"ticker": "LLY", "name": "Eli Lilly", "market": "US", "entry": 915.00, "target": 980.00, "stop": 860.00, "note": "비만치료제 수요 폭발, 52주 고점 유지 2위"}
+        {"ticker": "NVDA", "name": "NVIDIA", "market": "US", "entry": 185.00, "target": 250.00, "stop": 172.00, "note": "AI 가속기 독점, HTP 대형 1위"},
+        {"ticker": "LLY", "name": "Eli Lilly", "market": "US", "entry": 1310.00, "target": 1650.00, "stop": 1220.00, "note": "비만치료제 수요 폭발, HTP 대형 2위"},
+        {"ticker": "META", "name": "Meta Platforms", "market": "US", "entry": 565.00, "target": 720.00, "stop": 525.00, "note": "AI 광고 최적화 및 EPS 폭발, HTP 대형 3위"},
+        {"ticker": "AVGO", "name": "Broadcom", "market": "US", "entry": 302.00, "target": 390.00, "stop": 280.00, "note": "커스텀 AI ASIC 수주 확대, HTP 대형 4위"},
+        {"ticker": "PLTR", "name": "Palantir", "market": "US", "entry": 164.00, "target": 225.00, "stop": 152.00, "note": "AIP 플랫폼 엔터프라이즈 성장, HTP 대형 5위"},
+        {"ticker": "POWL", "name": "Powell Industries", "market": "US", "entry": 141.00, "target": 185.00, "stop": 131.00, "note": "데이터센터 전력망 장비, 러셀 2000 HTP 1위"},
+        {"ticker": "MOD", "name": "Modine Manufacturing", "market": "US", "entry": 118.00, "target": 155.00, "stop": 110.00, "note": "AI 데이터센터 액체냉각, 러셀 2000 HTP 2위"},
+        {"ticker": "TMDX", "name": "TransMedics", "market": "US", "entry": 60.50, "target": 80.00, "stop": 56.00, "note": "장기이식 독점 플랫폼, 러셀 2000 HTP 3위"},
+        {"ticker": "ROOT", "name": "Root Inc.", "market": "US", "entry": 47.20, "target": 63.00, "stop": 43.50, "note": "AI 머신러닝 언더라이팅, 러셀 2000 HTP 4위"},
+        {"ticker": "SKWD", "name": "Skyward Specialty", "market": "US", "entry": 54.20, "target": 70.00, "stop": 50.00, "note": "특수보험 고ROE 헤지펀드 수급, 러셀 2000 HTP 5위"}
     ]
     cur.execute("""
     INSERT INTO alarms (project_id, project_name, sent_at, alarm_type, market, title, raw_message, stocks_json)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     """, (
-        "stock-htp-top10", "stock-htp-top10", "2026-10-20 17:00:01", "주간알람", "US",
-        "🚀 HTP 파워 모멘텀 TOP 10 퀀트 포트폴리오 (NVDA / LLY)",
+        "stock-htp-top10", "stock-htp-top10", "2026-10-27 17:00:01", "주간알람", "US",
+        "🚀 HTP 파워 모멘텀 TOP 10 퀀트 포트폴리오 (대형 5선 + 중소형 5선)",
         """🚀 [HTP Momentum Top 10]
-1. NVDA (NVIDIA) | 비중 15% | HTP 점수 99점
-2. LLY (Eli Lilly) | 비중 15% | HTP 점수 97점
-미국 대형주 주도주 팩터 리밸런싱 주문표.""",
+📅 리밸런싱 일시: 2026-10-27 17:00:01
+📊 [미국 대형 주도주 TOP 5]
+1. NVDA (NVIDIA) | HTP 스코어 99.0
+2. LLY (Eli Lilly) | HTP 스코어 97.5
+3. META (Meta Platforms) | HTP 스코어 96.0
+4. AVGO (Broadcom) | HTP 스코어 94.5
+5. PLTR (Palantir) | HTP 스코어 93.0
+📈 [러셀 2000 고성장 주도주 TOP 5]
+1. POWL (Powell Industries) | 전력망/AI 데이터센터
+2. MOD (Modine Mfg) | 데이터센터 열관리 액체냉각
+3. TMDX (TransMedics) | 장기이식 독점 물류
+4. ROOT (Root Inc.) | AI 언더라이팅 흑자전환
+5. SKWD (Skyward Specialty) | 특수보험 고ROE
+미국 대형주 + 러셀 2000 핵심 주도주 10선 포트폴리오.""",
         json.dumps(htp_candidates, ensure_ascii=False)
     ))
 
@@ -367,14 +386,13 @@ def reset_and_reload_all_9_projects():
     # 2. stock-sepa-pivot
     for s in sepa_candidates:
         price = get_live_price("KRX", s["ticker"])
-        open_p = price["open"]
-        cur_p = price["current"]
-        ret = round(((cur_p - open_p) / open_p) * 100, 2) if open_p > 0 else 0.0
+        cur_p = price["current"] if price["current"] > 0 else s["entry"]
+        ret = round(((cur_p - s["entry"]) / s["entry"]) * 100, 2)
         trades_to_insert.append({
             "project_id": "stock-sepa-pivot", "project_name": "stock-sepa-pivot",
             "ticker": s["ticker"], "name": price["name"] if price["name"] != s["ticker"] else s["name"],
-            "market": "KRX", "signal_type": "장전알람(시가매수)", "signal_date": f"{today_str} 08:40:00",
-            "entry_price": open_p, "entry_date": today_str, "current_price": cur_p,
+            "market": "KRX", "signal_type": "피벗돌파매수", "signal_date": f"{today_str} 08:40:00",
+            "entry_price": s["entry"], "entry_date": today_str, "current_price": cur_p,
             "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": ret,
             "target_price": s["target"], "stop_loss_price": s["stop"], "notes": s["note"]
         })
@@ -466,9 +484,9 @@ def reset_and_reload_all_9_projects():
         ret = round(((cur_p - s["entry"]) / s["entry"]) * 100, 2)
         trades_to_insert.append({
             "project_id": "stock-htp-top10", "project_name": "stock-htp-top10",
-            "ticker": s["ticker"], "name": s["name"], "market": "US",
-            "signal_type": "주간리밸런싱", "signal_date": "2026-10-20 17:00:00",
-            "entry_price": s["entry"], "entry_date": "2026-10-20", "current_price": cur_p,
+            "ticker": s["ticker"], "name": price["name"] if price["name"] != s["ticker"] else s["name"],
+            "market": "US", "signal_type": "주간리밸런싱", "signal_date": "2026-10-27 17:00:00",
+            "entry_price": s["entry"], "entry_date": "2026-10-27", "current_price": cur_p,
             "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": ret,
             "target_price": s["target"], "stop_loss_price": s["stop"], "notes": s["note"]
         })

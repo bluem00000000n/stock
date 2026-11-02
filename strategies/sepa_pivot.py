@@ -54,6 +54,10 @@ def run_analysis(market: str = "KRX") -> List[Dict[str, Any]]:
             cur_price = p_info["price"] if p_info["price"] > 0 else float(item["pivot"])
             pivot_val = float(item["pivot"])
             stop_val = float(item["stop"])
+            # 피봇이 현재가와 크게 괴리되어 있으면 현재가 기반 타점으로 자동 보정
+            if cur_price > 0 and abs(cur_price - pivot_val) / pivot_val > 0.3:
+                pivot_val = round(cur_price * 1.02)
+                stop_val = round(cur_price * 0.94)
             tp1_val = round(pivot_val * 1.08)
             tp2_val = round(pivot_val * 1.15)
             rr = round((tp1_val - pivot_val) / max(1.0, (pivot_val - stop_val)), 2)
@@ -89,6 +93,10 @@ def run_analysis(market: str = "KRX") -> List[Dict[str, Any]]:
             cur_price = p_info["price"] if p_info["price"] > 0 else float(item["pivot"])
             pivot_val = float(item["pivot"])
             stop_val = float(item["stop"])
+            # 피봇이 현재가와 크게 괴리되어 있으면 현재가 기반 타점으로 자동 보정
+            if cur_price > 0 and abs(cur_price - pivot_val) / pivot_val > 0.3:
+                pivot_val = round(cur_price * 1.02)
+                stop_val = round(cur_price * 0.94)
             tp1_val = round(pivot_val * 1.08)
             tp2_val = round(pivot_val * 1.15)
             rr = round((tp1_val - pivot_val) / max(1.0, (pivot_val - stop_val)), 2)
