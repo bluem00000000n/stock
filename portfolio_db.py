@@ -102,51 +102,36 @@ def init_db():
     conn.commit()
     conn.close()
 
+from core.market_data import fetch_krx_price as core_fetch_krx, fetch_us_price as core_fetch_us
+
 # -------------------------------------------------------------
-# 실시간 시세 API (네이버 증권 / 야후 파이낸스)
+# 실시간 시세 API (core.market_data 통합 연동)
 # -------------------------------------------------------------
 def fetch_krx_price(code: str) -> dict:
     try:
-        url = f"https://polling.finance.naver.com/api/realtime/domestic/stock/{code}"
-        req = urllib.request.Request(url, headers=HEADERS)
-        with urllib.request.urlopen(req, timeout=4, context=SSL_CTX) as res:
-            data = json.loads(res.read().decode())
-            if "datas" in data and len(data["datas"]) > 0:
-                item = data["datas"][0]
-                close_p = float(str(item.get("closePrice", "0")).replace(",", ""))
-                open_p = float(str(item.get("openPrice", "0")).replace(",", ""))
-                if open_p == 0:
-                    open_p = close_p
-                return {
-                    "name": item.get("stockName", code),
-                    "open": open_p,
-                    "current": close_p,
-                    "change_rate": float(item.get("fluctuationsRatio", 0.0))
-                }
+        info = core_fetch_krx(code)
+        p = float(info.get("price", 0.0))
+        return {
+            "name": info.get("name", code),
+            "open": p,
+            "current": p,
+            "change_rate": float(info.get("change_pct", 0.0))
+        }
     except Exception:
-        pass
-    return {"name": code, "open": 0.0, "current": 0.0, "change_rate": 0.0}
+        return {"name": code, "open": 0.0, "current": 0.0, "change_rate": 0.0}
 
 def fetch_us_price(symbol: str) -> dict:
     try:
-        url = f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?interval=1d&range=2d"
-        req = urllib.request.Request(url, headers=HEADERS)
-        with urllib.request.urlopen(req, timeout=4, context=SSL_CTX) as res:
-            data = json.loads(res.read().decode())
-            meta = data["chart"]["result"][0]["meta"]
-            cur_p = float(meta.get("regularMarketPrice", 0.0))
-            open_p = float(meta.get("regularMarketOpen", cur_p))
-            if open_p == 0:
-                open_p = cur_p
-            return {
-                "name": symbol,
-                "open": open_p,
-                "current": cur_p,
-                "change_rate": 0.0
-            }
+        info = core_fetch_us(symbol)
+        p = float(info.get("price", 0.0))
+        return {
+            "name": info.get("name", symbol),
+            "open": p,
+            "current": p,
+            "change_rate": float(info.get("change_pct", 0.0))
+        }
     except Exception:
-        pass
-    return {"name": symbol, "open": 0.0, "current": 0.0, "change_rate": 0.0}
+        return {"name": symbol, "open": 0.0, "current": 0.0, "change_rate": 0.0}
 
 def get_live_price(market: str, ticker: str) -> dict:
     if market == "KRX":
@@ -225,26 +210,28 @@ def reset_and_reload_all_9_projects():
     ))
 
     # =========================================================
-    # 3. stock-us3x (10/20 17:03 주간 알람)
+    # 3. stock-us3x (미국 3배 레버리지 무한매수 파이프라인)
     # =========================================================
     us3x_candidates = [
-        {"ticker": "TQQQ", "name": "ProShares UltraPro QQQ", "market": "US", "entry": 68.50, "target": 85.00, "stop": 62.00, "note": "스코어 96.0, 20분할 LOC 1차 누적"},
-        {"ticker": "TECL", "name": "Direxion Daily Tech 3X", "market": "US", "entry": 98.20, "target": 120.00, "stop": 88.00, "note": "스코어 95.0, 테크 3X 트렌치 진입"},
-        {"ticker": "FAS", "name": "Direxion Daily Financial 3X", "market": "US", "entry": 115.00, "target": 138.00, "stop": 105.00, "note": "스코어 88.0, 금융 3X 회전 분할"}
+        {"ticker": "TQQQ", "name": "ProShares UltraPro QQQ", "market": "US", "entry": 68.50, "target": 85.00, "stop": 45.00, "note": "나스닥 3X, 스코어 96.0, 20분할 LOC 적립"},
+        {"ticker": "TECL", "name": "Direxion Daily Tech 3X", "market": "US", "entry": 98.20, "target": 220.00, "stop": 70.00, "note": "테크 3X, 스코어 100.0, 트렌치 분할 매수"},
+        {"ticker": "SOXL", "name": "Direxion Daily Semiconductor 3X", "market": "US", "entry": 65.00, "target": 95.00, "stop": 45.00, "note": "반도체 3X, 스코어 94.0, 무한매수 적립"},
+        {"ticker": "FAS", "name": "Direxion Daily Financial 3X", "market": "US", "entry": 115.00, "target": 180.00, "stop": 85.00, "note": "금융 3X, 스코어 88.0, 회전 포트폴리오 편입"}
     ]
     cur.execute("""
     INSERT INTO alarms (project_id, project_name, sent_at, alarm_type, market, title, raw_message, stocks_json)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     """, (
-        "stock-us3x", "stock-us3x", "2026-10-20 17:03:29", "주간알람", "US",
-        "🚀 미국 3배 레버리지 무한매수 & 회전 퀀트 파이프라인 (TQQQ / TECL / FAS)",
+        "stock-us3x", "stock-us3x", "2026-10-27 17:31:01", "주간알람", "US",
+        "🚀 미국 3배 레버리지 무한매수 & 회전 퀀트 파이프라인 (TQQQ / TECL / SOXL / FAS)",
         """🚀 [US 3X 무한매수 & 회전 퀀트 파이프라인]
-📅 실행일시: 2026-10-20 17:03:29 (Run ID: RUN_2026-10-20_45ceea89)
-🌐 거시 체제: RISK_ON (VIX 18.6, SPY 200일선 상단 지지)
-📊 무한매수 TOP 3 주문 지침:
-1. TQQQ (나스닥 3X): 1차 20분할 LOC 주문. 평균단가 기준 0.5회차 매수.
-2. TECL (테크 3X): 적합도 스코어 95.0. 트렌치 분할 매수.
-3. FAS (금융 3X): 적합도 스코어 88.0. 회전 포트폴리오 편입.""",
+📅 실행일시: 2026-10-27 17:31:01 (Run ID: RUN_2026-10-27_49d4a909)
+🌐 거시 체제: RISK_ON (VIX 18.38, SPY 200일선 상단 지지)
+📊 무한매수 3배 레버리지 주문 지침:
+1. TECL (테크 3X): 적합도 스코어 100.0. 트렌치 분할 매수.
+2. TQQQ (나스닥 3X): 1차 20분할 LOC 주문. 평균단가 기준 0.5회차 매수.
+3. SOXL (반도체 3X): 적합도 스코어 94.0. 반도체 사이클 트렌치 적립.
+4. FAS (금융 3X): 적합도 스코어 88.0. 회전 포트폴리오 편입.""",
         json.dumps(us3x_candidates, ensure_ascii=False)
     ))
 
@@ -550,12 +537,13 @@ def update_trades_and_performance():
                 exit_d = None
 
                 # 매도시 데이터베이스 기입 후 수익률 관리
+                # 단, stock-us3x(3배 레버리지 무한매수)는 분할 적립형 전략이므로 손절선 청산 없이 HOLDING 유지
                 if target_p and cur_p >= target_p:
                     status = "CLOSED"
                     exit_p = cur_p
                     exit_d = today_str
                     notes = f"{notes} | 🎯 목표가 도달 전량 익절"
-                elif stop_p and cur_p <= stop_p:
+                elif stop_p and cur_p <= stop_p and row["project_id"] != "stock-us3x":
                     status = "CLOSED"
                     exit_p = cur_p
                     exit_d = today_str

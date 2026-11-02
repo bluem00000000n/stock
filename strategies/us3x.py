@@ -11,6 +11,10 @@ import json
 from pathlib import Path
 from typing import List, Dict, Any
 
+# 상위 core 모듈 참조
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from core.market_data import fetch_us_price
+
 US3X_DIR = Path(__file__).resolve().parent.parent / "data" / "strategies_data" / "stock-us3x"
 
 
@@ -50,17 +54,26 @@ def run_analysis() -> List[Dict[str, Any]]:
         dca_cond = item.get("dca_condition", "20분할 LOC 매수")
         reason = item.get("reason", "무한투자 적합도 최상위")
 
+        p_info = fetch_us_price(ticker)
+        cur_price = p_info.get("price", 0.0)
+        if cur_price <= 0:
+            cur_price = 50.0
+
+        target_p = round(cur_price * 1.15, 2)
+        target_p2 = round(cur_price * 1.25, 2)
+        stop_p = round(cur_price * 0.85, 2)
+
         signals.append({
             "project_id": "stock-us3x",
             "strategy_name": "US 3X 무한레버리지",
             "market": "US",
             "ticker": ticker,
-            "name": name,
+            "name": p_info.get("name") or name,
             "signal_type": "BUY" if risk_regime == "RISK_ON" else "HOLD",
-            "price": 50.0,
-            "target_price": 55.0,
-            "target_price_2": 60.0,
-            "stop_loss_price": 42.0,
+            "price": cur_price,
+            "target_price": target_p,
+            "target_price_2": target_p2,
+            "stop_loss_price": stop_p,
             "risk_reward_ratio": 2.5,
             "score": score,
             "sector": "3X 레버리지 ETF",
