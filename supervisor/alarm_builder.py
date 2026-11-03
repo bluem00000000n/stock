@@ -134,22 +134,22 @@ PORTFOLIO_LEGEND = "• <b>수익률 상태 범례:</b> 🟢 수익(+) | 🔵 �
 
 # 1순위 추천/보유 종목 매수 불가 시 즉시 집행하는 2순위 대체 예비 종목 풀
 KR_BACKUP_ALTERNATIVES = {
-    "012450": {"ticker": "064350", "name": "현대로템", "cap": "대형", "reason": "K2 전차 수출 랠리 & VCP 2차 피봇 돌파"},
-    "093320": {"ticker": "075950", "name": "산일전기", "cap": "중형", "reason": "AI 데이터센터 특수변압기 VCP 돌파 2순위"},
-    "031980": {"ticker": "058470", "name": "리노공업", "cap": "중형", "reason": "반도체 테스트 소켓 글로벌 독점력 및 피봇 지지 2순위"},
-    "000660": {"ticker": "005930", "name": "삼성전자", "cap": "대형", "reason": "외인 패시브 수급 전환 1순위 대형주"},
-    "042700": {"ticker": "403870", "name": "HPSP", "cap": "중형", "reason": "고압 수소 어닐링 독점력 및 기관 수급 2순위"},
-    "042510": {"ticker": "042700", "name": "한미반도체", "cap": "중형", "reason": "외인·기관 양매수 HBM TC본더 스나이퍼 1위"},
-    "267260": {"ticker": "053800", "name": "안랩", "cap": "중형", "reason": "227일선 플랫 지지 스윙 스코어 1위 (119,100원)"}
+    "012450": {"ticker": "064350", "name": "현대로템", "cap": "대형", "reason": "1단계 [선발대] 주봉 과매도(RSI 27.7) & MACD 히스토그램 반등 바닥 탈출"},
+    "093320": {"ticker": "075950", "name": "산일전기", "cap": "중형", "reason": "1단계 [선발대] AI 데이터센터 변압기 VCP 눌림목 지지 (RSI 40.9)"},
+    "031980": {"ticker": "058470", "name": "리노공업", "cap": "중형", "reason": "1단계 [선발대] 반도체 테스트 소켓 바닥 다지기 (RSI 35.6)"},
+    "000660": {"ticker": "005930", "name": "삼성전자", "cap": "대형", "reason": "1단계 [선발대] 주봉 RSI 43.0 바닥 다지기 & 히스토그램 축소 반등"},
+    "042700": {"ticker": "403870", "name": "HPSP", "cap": "중형", "reason": "1단계 [선발대] 고압 수소 어닐링 독점력 및 RSI 42.8 지지선"},
+    "042510": {"ticker": "042700", "name": "한미반도체", "cap": "중형", "reason": "1단계 [선발대] 외인·기관 양매수 HBM TC본더 스나이퍼 1위"},
+    "267260": {"ticker": "053800", "name": "안랩", "cap": "중형", "reason": "2단계 [대세확증] 주봉 MACD 0선 위 골든크로스 & RSI 75.1 초강세 모멘텀"}
 }
 
 US_BACKUP_ALTERNATIVES = {
-    "NVDA": {"ticker": "META", "name": "메타 플랫폼스", "cap": "대형", "reason": "AI 추천 알고리즘 및 광고 실적 HTP 2위"},
-    "AVGO": {"ticker": "LLY", "name": "일라이 릴리", "cap": "대형", "reason": "비만 치료제 메가트렌드 HTP 파워 모멘텀 1위"},
-    "AAPL": {"ticker": "MSFT", "name": "마이크로소프트", "cap": "대형", "reason": "클라우드 애저(Azure) AI 인프라 실적 모멘텀"},
-    "PLTR": {"ticker": "ALAB", "name": "아스테라 랩스", "cap": "중형", "reason": "AI PCIe 인터커넥트 VCP 돌파 1위"},
-    "APP": {"ticker": "VRT", "name": "버티브 홀딩스", "cap": "중형", "reason": "AI 데이터센터 전력/냉각 피봇 돌파 2위"},
-    "CPAY": {"ticker": "XOM", "name": "엑슨모빌", "cap": "대형", "reason": "227일선 우량 가치주 지지 스윙 스코어 1위"}
+    "NVDA": {"ticker": "META", "name": "메타 플랫폼스", "cap": "대형", "reason": "2단계 [대세확증] AI 추천 알고리즘 및 광고 실적 HTP 2위"},
+    "AVGO": {"ticker": "LLY", "name": "일라이 릴리", "cap": "대형", "reason": "2단계 [대세확증] 비만 치료제 메가트렌드 HTP 파워 모멘텀 1위"},
+    "AAPL": {"ticker": "MSFT", "name": "마이크로소프트", "cap": "대형", "reason": "1단계 [선발대] 클라우드 애저(Azure) AI 인프라 지지선 스윙"},
+    "PLTR": {"ticker": "ALAB", "name": "아스테라 랩스", "cap": "중형", "reason": "2단계 [대세확증] AI PCIe 인터커넥트 VCP 돌파 1위"},
+    "APP": {"ticker": "VRT", "name": "버티브 홀딩스", "cap": "중형", "reason": "2단계 [대세확증] AI 데이터센터 전력/냉각 피봇 돌파 2위"},
+    "CPAY": {"ticker": "XOM", "name": "엑슨모빌", "cap": "대형", "reason": "1단계 [선발대] 227일선 우량 가치주 지지 스윙 스코어 1위"}
 }
 
 
@@ -275,8 +275,17 @@ def format_strategy_grouped_portfolio(
             else:
                 is_new = (ticker in new_tickers) or h.get("is_new_entry", False)
                 status_tag = format_holding_status(h, market, is_new=is_new)
-                out.append(f" • {sign} <b>[{short_cap}] {name}</b> ({ticker}) | <b>{status_tag}</b>")
+                notes = h.get("notes", "")
+                stage_tag = ""
+                if "[2단계 대세확증]" in notes:
+                    stage_tag = " • 🔥 <b>[2단계 대세확증]</b>"
+                elif "[1단계 선발대]" in notes:
+                    stage_tag = " • 🛡️ <b>[1단계 선발대]</b>"
+
+                out.append(f" • {sign} <b>[{short_cap}] {name}</b> ({ticker}) | <b>{status_tag}</b>{stage_tag}")
                 out.append(f"    {price_line}")
+                if notes:
+                    out.append(f"    └ 💡 <i>{notes}</i>")
                 if alt:
                     out.append(f"    └ 🥈 <b>[2순위 대체 예비] {alt['name']}</b> ({alt['ticker']} / {alt['cap']}) : <i>{alt['reason']}</i>")
 
