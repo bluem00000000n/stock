@@ -84,12 +84,14 @@ KR_STRATEGY_WEIGHT_MULTIPLIERS = {
     "cyclical": 1.07
 }
 
-# 🇺🇸 미국장 (US): HTP(35%) + SEPA(25%) + US3X(20%) + 스나이퍼(12%) + 스윙(8%) = 100%
+# 🇺🇸 미국장 (US): HTP(35%) + SEPA/Stage2부활(25%) + US3X(20%) + 스나이퍼(12%) + 스윙(8%) = 100%
 US_STRATEGY_WEIGHT_MULTIPLIERS = {
     "stock-htp-top10": 1.35,         # 35% (샤프 1.62, CAGR 23.8%, HTP 모멘텀 미국 1위)
     "htp_momentum": 1.35,
     "stock-sepa-pivot": 1.25,        # 25% (샤프 1.65, 손익비 7.65, Stage 2 추세추종)
     "sepa_pivot": 1.25,
+    "stock-stage2-revival": 1.25,    # 25% (미국 중소형 2차 파동 부활 동급 가중치)
+    "stage2_revival": 1.25,
     "stock-us3x": 1.20,              # 20% (CAGR 24.4%, 승률 58.0%, TQQQ 분할 적립)
     "us3x": 1.20,
     "stock-sniper": 1.12,            # 12% (나스닥 RS 90+ 신고가 돌파)
@@ -102,6 +104,8 @@ US_STRATEGY_WEIGHT_MULTIPLIERS = {
 STRATEGY_WEIGHT_MULTIPLIERS = {
     "stock-sepa-pivot": 1.28,
     "sepa_pivot": 1.28,
+    "stock-stage2-revival": 1.25,
+    "stage2_revival": 1.25,
     "stock-sniper": 1.22,
     "sniper": 1.22,
     "stock-htp-top10": 1.20,

@@ -32,7 +32,7 @@ from supervisor.alarm_builder import (
     build_1500_kr_close_us_open_alarm
 )
 
-# 6대 핵심 전략 모듈 임포트 (배당 전략 제외)
+# 6대 핵심 전략 모듈 임포트 (미국 2차 파동 부활 전략 탑재)
 from strategies import (
     sniper,
     sepa_pivot,
@@ -40,6 +40,7 @@ from strategies import (
     cyclical,
     htp_momentum,
     us3x,
+    stage2_revival,
     signal_forge_bridge
 )
 from screener.engine import run_screener_analysis
@@ -149,6 +150,10 @@ def run_pipeline(mode: str = "auto", force: bool = False, dry_run: bool = False)
         us_signals.extend(swing.run_analysis("US"))
     except Exception as e:
         print(f"⚠️ swing_us 오류: {e}")
+    try:
+        us_signals.extend(stage2_revival.run_analysis())
+    except Exception as e:
+        print(f"⚠️ stage2_revival 오류: {e}")
 
     # DB 저장
     save_signals(kr_signals)
