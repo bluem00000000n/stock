@@ -216,6 +216,125 @@ def select_best_buys(candidate_signals: List[Dict[str, Any]], market: str = "KRX
     return selected
 
 
+# ==============================================================================
+# 단독 독립 전략 (Dedicated Independent Strategies)
+# - 코어 전략 가중치와 무관하게 고유의 전용 슬롯을 배정받아 독립 운영
+# ==============================================================================
+DEDICATED_STRATEGIES = {
+    "stock-us3x", "us3x",
+    "stock-stage2-revival", "stage2_revival",
+    "signal-forge-alert", "signal_forge"
+}
+
+
+def select_strategy_diversified_buys(
+    candidate_signals: List[Dict[str, Any]],
+    current_holdings: List[Dict[str, Any]],
+    market: str = "KRX",
+    target_total: int = 6
+) -> List[Dict[str, Any]]:
+    """
+    [전략 다각화 및 가중치 보너스 기반 정예 포트폴리오 선별 엔진]
+    1. 단독 전략 (US3X, Stage2 Revival, Signal Forge):
+       - 코어 가중치와 무관하게 전용 슬롯 독립 운영 (US3X 1선, 중소형부활 1~2선)
+    2. 코어 전략 (수급스나이퍼, SEPA, 스윙, HTP 등):
+       - 고득점 전략 위주 쏠림 방지: 참여 전략별 1등 종목을 기본 1개씩 우선 배분 (Base Allocation)
+       - 가중치 및 스코어 최상위 전략에 +1개 보너스 슬롯 추가 배분 (Merit Bonus Slot)
+    3. 대형주 / 중소형주 균형 유지
+    """
+    available_slots = max(0, target_total - len(current_holdings))
+    if available_slots <= 0:
+        return []
+
+    is_kr = market.upper() in ("KRX", "KR", "KOR")
+    holding_tickers = {h["ticker"] for h in current_holdings}
+
+    # 1. 시그널 스코어링
+    scored_candidates = score_and_aggregate_signals(candidate_signals, market=market)
+    candidates_by_ticker = {c["ticker"]: c for c in scored_candidates}
+
+    # 2. 단독 전략 및 코어 전략 후보 분류
+    dedicated_candidates = []
+    core_candidates_by_strat = {}
+
+    for s in candidate_signals:
+        t = s.get("ticker")
+        if not t or t in holding_tickers or t not in candidates_by_ticker:
+            continue
+        pid = s.get("project_id", "")
+        c_obj = candidates_by_ticker[t]
+
+        if pid in DEDICATED_STRATEGIES:
+            if c_obj not in dedicated_candidates:
+                dedicated_candidates.append(c_obj)
+        else:
+            strat_key = pid or "core"
+            if strat_key not in core_candidates_by_strat:
+                core_candidates_by_strat[strat_key] = []
+            if c_obj not in core_candidates_by_strat[strat_key]:
+                core_candidates_by_strat[strat_key].append(c_obj)
+
+    selected = []
+
+    # 3. Step 1: 미국 단독 전략 필요 슬롯 우선 배분 (US3X 1선, 중소형부활 1~2선 등)
+    if not is_kr:
+        for c in dedicated_candidates:
+            if len(selected) >= available_slots:
+                break
+            if c["ticker"] not in holding_tickers:
+                selected.append(c)
+                holding_tickers.add(c["ticker"])
+
+    rem_slots = available_slots - len(selected)
+    if rem_slots <= 0:
+        return selected
+
+    # 4. Step 2: 코어 전략 기본 배분 (전략별 1등 1개씩 우선 배분하여 쏠림 방지)
+    current_strats = set()
+    for h in current_holdings:
+        p_name = h.get("project_name") or h.get("project_id") or ""
+        current_strats.add(p_name)
+
+    weight_table = KR_STRATEGY_WEIGHT_MULTIPLIERS if is_kr else US_STRATEGY_WEIGHT_MULTIPLIERS
+    sorted_strats = sorted(
+        core_candidates_by_strat.keys(),
+        key=lambda k: weight_table.get(k, 1.0),
+        reverse=True
+    )
+
+    # 참여 전략당 1개씩 기본 배분
+    for strat in sorted_strats:
+        if rem_slots <= 0:
+            break
+        if strat not in current_strats and core_candidates_by_strat[strat]:
+            top_cand = core_candidates_by_strat[strat][0]
+            if top_cand["ticker"] not in holding_tickers:
+                selected.append(top_cand)
+                holding_tickers.add(top_cand["ticker"])
+                current_strats.add(strat)
+                rem_slots -= 1
+
+    # 5. Step 3: 보너스 슬롯 배분 (가중치 상위 전략에 +1개 추가)
+    if rem_slots > 0:
+        for strat in sorted_strats:
+            if rem_slots <= 0:
+                break
+            unselected = [c for c in core_candidates_by_strat[strat] if c["ticker"] not in holding_tickers]
+            if unselected:
+                selected.append(unselected[0])
+                holding_tickers.add(unselected[0]["ticker"])
+                rem_slots -= 1
+
+    # 6. Step 4: 잔여 슬롯 채우기 (전체 점수 상위 후보)
+    if rem_slots > 0:
+        remaining = [c for c in scored_candidates if c["ticker"] not in holding_tickers]
+        for c in remaining[:rem_slots]:
+            selected.append(c)
+            holding_tickers.add(c["ticker"])
+
+    return selected
+
+
 def select_balanced_portfolio_buys(
     candidate_signals: List[Dict[str, Any]],
     current_holdings: List[Dict[str, Any]],
@@ -226,9 +345,18 @@ def select_balanced_portfolio_buys(
 ) -> List[Dict[str, Any]]:
     """
     [포트폴리오 6종목 황금 밸런스 선별 엔진]
-    - 대형주만 편중 금지: 대형주 목표 3선 + 중형/중소형주 목표 3선
-    - 현재 보유 중인 대형/중형 구성을 분석하여 부족한 파트를 최우선 보충
+    - 전략 다각화 우선: select_strategy_diversified_buys 실행
+    - 대형주 편중 방지 및 부족 파트 보충
     """
+    strat_buys = select_strategy_diversified_buys(
+        candidate_signals=candidate_signals,
+        current_holdings=current_holdings,
+        market=market,
+        target_total=target_total
+    )
+    if strat_buys:
+        return strat_buys
+
     available_slots = max(0, target_total - len(current_holdings))
     if available_slots <= 0:
         return []

@@ -14,7 +14,7 @@
     "current_price": 36.33,
     "discount_from_peak_pct": -6.8,
     "gain_from_trough_pct": 1716.5,
-    "updated_at": "2026-11-03 10:53:42"
+    "updated_at": "2026-11-03 11:13:28"
   },
   {
     "ticker": "RKLB",
@@ -31,7 +31,7 @@
     "current_price": 52.07,
     "discount_from_peak_pct": 148.0,
     "gain_from_trough_pct": 1346.4,
-    "updated_at": "2026-11-03 10:53:42"
+    "updated_at": "2026-11-03 11:13:28"
   },
   {
     "ticker": "POWL",
@@ -48,7 +48,7 @@
     "current_price": 154.01,
     "discount_from_peak_pct": 28.3,
     "gain_from_trough_pct": 242.2,
-    "updated_at": "2026-11-03 10:53:42"
+    "updated_at": "2026-11-03 11:13:28"
   },
   {
     "ticker": "MOD",
@@ -65,7 +65,7 @@
     "current_price": 123.34,
     "discount_from_peak_pct": 54.2,
     "gain_from_trough_pct": 393.4,
-    "updated_at": "2026-11-03 10:53:42"
+    "updated_at": "2026-11-03 11:13:28"
   },
   {
     "ticker": "CRDO",
@@ -82,7 +82,7 @@
     "current_price": 140.02,
     "discount_from_peak_pct": 400.1,
     "gain_from_trough_pct": 1650.3,
-    "updated_at": "2026-11-03 10:53:43"
+    "updated_at": "2026-11-03 11:13:28"
   },
   {
     "ticker": "AEHR",
@@ -99,7 +99,7 @@
     "current_price": 51.47,
     "discount_from_peak_pct": -4.7,
     "gain_from_trough_pct": 441.8,
-    "updated_at": "2026-11-03 10:53:43"
+    "updated_at": "2026-11-03 11:13:28"
   },
   {
     "ticker": "OKLO",
@@ -116,7 +116,7 @@
     "current_price": 23.52,
     "discount_from_peak_pct": -9.5,
     "gain_from_trough_pct": 343.8,
-    "updated_at": "2026-11-03 10:53:44"
+    "updated_at": "2026-11-03 11:13:28"
   },
   {
     "ticker": "TEM",
@@ -133,7 +133,7 @@
     "current_price": 78.48,
     "discount_from_peak_pct": 4.6,
     "gain_from_trough_pct": 201.8,
-    "updated_at": "2026-11-03 10:53:44"
+    "updated_at": "2026-11-03 11:13:28"
   },
   {
     "ticker": "ALAB",
@@ -150,7 +150,7 @@
     "current_price": 229.67,
     "discount_from_peak_pct": 141.8,
     "gain_from_trough_pct": 538.0,
-    "updated_at": "2026-11-03 10:53:45"
+    "updated_at": "2026-11-03 11:13:28"
   },
   {
     "ticker": "IONQ",
@@ -167,6 +167,6 @@
     "current_price": 28.17,
     "discount_from_peak_pct": -19.5,
     "gain_from_trough_pct": 839.0,
-    "updated_at": "2026-11-03 10:53:46"
+    "updated_at": "2026-11-03 11:13:28"
   }
 ]
