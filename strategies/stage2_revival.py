@@ -245,14 +245,61 @@ def run_analysis() -> List[Dict[str, Any]]:
     return run_daily_surveillance()
 
 
+def build_tuesday_review_block() -> str:
+    """화요일 오후 정기 점검 리포트 블록 생성 (매수 종목 발생 시 상세 안내)"""
+    signals = run_daily_surveillance()
+    buy_signals = [s for s in signals if s.get("signal_type") == "BUY"]
+
+    lines = []
+    lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
+    lines.append("🚀 <b>[화요일 주간 특별 점검] 🇺🇸 미국 중소형 2차 파동 부활 (Stage 2 Revival)</b>")
+    lines.append("💡 <i>원칙: 1차 거품 붕괴 후 실적(수주잔고/흑자전환)으로 2단계 상승 전환된 종목 저격</i>")
+
+    if buy_signals:
+        lines.append(f"🔥 <b>[금주 신규 매수 유효 타점: 총 {len(buy_signals)}종목 포착]</b>")
+        for idx, s in enumerate(buy_signals, 1):
+            cur_p = s["price"]
+            tgt_1 = s["target_price"]
+            tgt_2 = s["target_price_2"]
+            stop_p = s["stop_loss_price"]
+            pivot_base = round(tgt_1 / 1.20, 2)
+            raw = s.get("raw_data", {})
+            lines.append(f" {idx}. 🟢 <b>[{s['cap_size']}] {s['name']} ({s['ticker']})</b> | <b>[매수 유효 타점]</b>")
+            lines.append(f"    └ 현재가: ${cur_p:.2f} (피벗: ${pivot_base:.2f}) | 🎯 1차: ${tgt_1:.2f} | 🎯 2차: ${tgt_2:.2f} | 🛑 손절: ${stop_p:.2f}")
+            lines.append(f"    └ <i>실적 촉매:</i> {raw.get('catalyst', s['theme'])}")
+            lines.append(f"    └ <i>국면 진단:</i> {raw.get('stage', s['pattern'])}")
+    else:
+        lines.append("📋 <b>[금주 점검 결과]</b> 현재 2단계 피벗 돌파 조건을 만족한 신규 매수 종목 없음")
+        lines.append("• 1차 거품주(OKLO 등) 및 바닥 다지기 진행주(AEHR 등)는 계속 관망 유지 (기회비용 보존)")
+
+    return "\n".join(lines)
+
+
+def run_tuesday_weekly_review(send_telegram: bool = True) -> bool:
+    """매주 화요일 오후 독립 실행 함수 (텔레그램 즉시 발송 지원)"""
+    from core.telegram import send_message
+    today_str = datetime.now().strftime("%Y년 %m월 %d일 (화)")
+    block = build_tuesday_review_block()
+    msg = f"📅 <b>[STOCK SUPERVISOR] {today_str} 오후 정기 점검</b>{block}"
+
+    print(msg)
+    if send_telegram:
+        return send_message(msg)
+    return True
+
+
 if __name__ == "__main__":
-    print("=" * 80)
-    print("🚀 [미국 중소형 성장주 2차 파동 부활 전략] 일간 감시 실행")
-    print("=" * 80)
-    res = run_daily_surveillance()
-    print(f"✅ 총 {len(res)}개 2단계 전환 유효 종목 포착\n")
-    for s in res:
-        print(f"• [{s['signal_type']}] {s['name']} ({s['ticker']}) - 현재가: ${s['price']} | 피벗: ${s['target_price']}")
-        print(f"  └ 국면: {s['pattern']} | 손익비: {s['risk_reward_ratio']}")
-        print(f"  └ 실적 촉매제: {s['theme']}")
-        print(f"  └ 행동 강령: {s['action_plan']}\n")
+    if len(sys.argv) > 1 and sys.argv[1] == "--tuesday":
+        run_tuesday_weekly_review(send_telegram=True)
+    else:
+        print("=" * 80)
+        print("🚀 [미국 중소형 성장주 2차 파동 부활 전략] 일간 감시 실행")
+        print("=" * 80)
+        res = run_daily_surveillance()
+        print(f"✅ 총 {len(res)}개 2단계 전환 유효 종목 포착\n")
+        for s in res:
+            print(f"• [{s['signal_type']}] {s['name']} ({s['ticker']}) - 현재가: ${s['price']} | 피벗: ${s['target_price']}")
+            print(f"  └ 국면: {s['pattern']} | 손익비: {s['risk_reward_ratio']}")
+            print(f"  └ 실적 촉매제: {s['theme']}")
+            print(f"  └ 행동 강령: {s['action_plan']}\n")
+        print(build_tuesday_review_block())
