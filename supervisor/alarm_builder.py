@@ -121,8 +121,7 @@ def get_holding_strategy_key(h: Dict[str, Any], market: str = "KRX") -> str:
 KR_STRATEGY_DISPLAY = [
     ("sepa_pivot", "🚀 <b>[코어: SEPA x 피봇 돌파]</b>", "Stage 2 VCP 변동성축소"),
     ("sniper", "🎯 <b>[코어: 수급 스나이퍼]</b>", "외인·기관 양매수 주도주"),
-    ("swing", "🛡️ <b>[코어: 227선 무한 스윙]</b>", "227일선/플랫 지지"),
-    ("cyclical", "🔄 <b>[코어: 시클리컬 턴어라운드]</b>", "PBR 극단 저평가 턴어라운드")
+    ("swing", "🛡️ <b>[코어: 227선 무한 스윙]</b>", "227일선/플랫 지지")
 ]
 
 US_STRATEGY_DISPLAY = [
@@ -255,6 +254,7 @@ def build_standalone_tracks_block(section_no: int = 5) -> str:
     1. 📡 [단독: Signal Forge AI 레이더] : 셀트리온(068270) 보유 포지션 및 25대 퀀트 실시간 매수 타깃
     2. 🌱 [단독: 중소형 2차 파동 부활] : 파월 인더스트리스(POWL), 모딘 매뉴팩처링(MOD)
     3. ⚡ [단독: US 3X 레버리지] : ProShares UltraPro QQQ (TQQQ) 무한매수 분할적립
+    4. 🔄 [단독: 시클리컬 턴어라운드] : PBR 역사적 바닥 역발상 퀀트 (POSCO홀딩스, LG화학우 등 6대 시클리컬)
     """
     lines = []
     lines.append(f"\n━━━━━━━━━━━━━━━━━━━━━━━━━")
@@ -269,8 +269,8 @@ def build_standalone_tracks_block(section_no: int = 5) -> str:
             rows = conn.execute("""
                 SELECT * FROM trades 
                 WHERE status = 'HOLDING' AND (
-                    LOWER(project_id) IN ('signal_forge_alert', 'signal-forge-alert', 'signal_forge', 'stock-stage2-revival', 'stage2_revival', 'stock-us3x', 'us3x')
-                    OR ticker IN ('068270', 'POWL', 'MOD', 'TQQQ')
+                    LOWER(project_id) IN ('signal_forge_alert', 'signal-forge-alert', 'signal_forge', 'stock-stage2-revival', 'stage2_revival', 'stock-us3x', 'us3x', 'stock-cyclical-screener', 'cyclical')
+                    OR ticker IN ('068270', 'POWL', 'MOD', 'TQQQ', '005490', '051915', '018880', '011170', '004020', '234100')
                 )
                 ORDER BY id ASC
             """).fetchall()
@@ -347,6 +347,31 @@ def build_standalone_tracks_block(section_no: int = 5) -> str:
                     lines.append(f"    └ <i>운용 원칙:</i> {clean_notes}")
     else:
         lines.append(" • <i>현재 3X 레버리지 편입 대기 중</i>")
+
+    # 4. 시클리컬 턴어라운드 (단독 독립 운용 트랙)
+    cyc_holdings = [t for t in standalone_trades if "cyclical" in (t.get("project_id") or "").lower() or t.get("ticker") in ("005490", "051915", "018880", "011170", "004020", "234100")]
+    lines.append(f"\n🔄 <b>[단독: 시클리컬 턴어라운드]</b> (역사적 PBR 바닥 역발상 퀀트 - 6대 섹터 턴어라운드 {len(cyc_holdings)}선)")
+    if cyc_holdings:
+        for h in cyc_holdings:
+            ticker = h.get("ticker", "")
+            name = h.get("name", ticker)
+            cur_p = int(float(h.get("current_price", 0)))
+            entry_p = int(float(h.get("entry_price", 0)))
+            ret = float(h.get("return_pct", 0.0))
+            sign = "🟢" if ret > 0 else ("🔵" if ret < 0 else "⚪")
+            tgt_p = int(float(h.get("target_price", 0))) if h.get("target_price") else int(entry_p * 1.4)
+            stp_p = int(float(h.get("stop_loss_price", 0))) if h.get("stop_loss_price") else int(entry_p * 0.85)
+            cap = classify_cap_size(ticker, name, market="KRX")
+            short_cap = "대형" if "대형" in cap else ("소형" if "소" in cap else "중형")
+            lines.append(f" • {sign} <b>[{short_cap}] {name}</b> ({ticker}) | <b>[바닥 턴어라운드]</b>")
+            lines.append(f"    └ 진입: {entry_p:,}원 ➔ 현재: {cur_p:,}원 (<b>{ret:+.2f}%</b>) | 🎯 {tgt_p:,}원 | 🛑 {stp_p:,}원")
+            notes = h.get("notes", "")
+            if notes:
+                clean_notes = notes.split('|')[0].strip().replace("[시클리컬 바닥 매수 턴어라운드]", "").replace("코어 포트폴리오 6종목 황금밸런스 정예화(슬롯 초과 정리)", "").strip()
+                if clean_notes:
+                    lines.append(f"    └ <i>PBR/턴어라운드 근거:</i> {clean_notes}")
+    else:
+        lines.append(" • <i>현재 시클리컬 포지션 없음 (모니터링 중)</i>")
 
     return "\n".join(lines)
 
@@ -434,7 +459,7 @@ def build_0830_kr_open_alarm(
     avg_ret = kr_stats.get("avg_return_pct", 0.0)
 
     lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
-    lines.append(f"💼 <b>3. 🇰🇷 한국장 코어 실운용 포트폴리오 (정예 {len(kr_active)}종목 - 대형 {large_c}선 + 중소형 {mid_c}선)</b>")
+    lines.append(f"💼 <b>3. 🇰🇷 한국장 코어 실운용 포트폴리오 (정예 {len(kr_active)}종목 - 대형 {large_c}선 : 중소형 {mid_c}선 [1:1 황금밸런스])</b>")
     lines.append(f"• <b>코어 포트폴리오 평균 수익률:</b> <b>{avg_ret:+.2f}%</b> (가용 슬롯: {kr_stats.get('available_slots', 0)}개)")
     lines.append(PORTFOLIO_LEGEND)
     lines.extend(format_strategy_grouped_portfolio(kr_active, market="KRX", new_tickers=new_tickers, is_summary=False))
@@ -605,7 +630,7 @@ def build_1500_kr_close_alarm(
     avg_ret = kr_stats.get("avg_return_pct", 0.0)
 
     lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
-    lines.append(f"💼 <b>3. 🇰🇷 한국장 코어 실운용 포트폴리오 마감 현황 (정예 {len(kr_active)}종목 - 대형 {large_c}선 + 중소형 {mid_c}선)</b>")
+    lines.append(f"💼 <b>3. 🇰🇷 한국장 코어 실운용 포트폴리오 마감 현황 (정예 {len(kr_active)}종목 - 대형 {large_c}선 : 중소형 {mid_c}선 [1:1 황금밸런스])</b>")
     lines.append(f"• <b>코어 포트폴리오 평균 수익률:</b> <b>{avg_ret:+.2f}%</b> (가용 슬롯: {kr_stats.get('available_slots', 0)}개)")
     lines.append(PORTFOLIO_LEGEND)
     lines.extend(format_strategy_grouped_portfolio(kr_active, market="KRX", new_tickers=new_tickers, is_summary=False))
@@ -726,7 +751,7 @@ def build_1730_us_open_alarm(
     avg_kr = kr_stats.get("avg_return_pct", 0.0)
 
     lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
-    lines.append(f"💼 <b>4. 🇰🇷 한국장 코어 실운용 포트폴리오 (정예 {len(kr_active)}종목 - 대형 {kr_large_c}선 + 중소형 {kr_mid_c}선 | 마감 평균 {avg_kr:+.2f}%)</b>")
+    lines.append(f"💼 <b>4. 🇰🇷 한국장 코어 실운용 포트폴리오 (정예 {len(kr_active)}종목 - 대형 {kr_large_c}선 : 중소형 {kr_mid_c}선 [1:1 황금밸런스] | 마감 평균 {avg_kr:+.2f}%)</b>")
     lines.append(PORTFOLIO_LEGEND)
     try:
         kr_mkt = fetch_krx_market_summary()
