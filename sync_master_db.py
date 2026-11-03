@@ -63,11 +63,11 @@ PROJECT_REGISTRY = [
     },
     {
         "id": "signal_forge_alert",
-        "name": "Signal Forge AI Macro",
+        "name": "Signal Forge AI Macro & 25 Quant Signals",
         "market": "GLOBAL",
-        "schedule": "Continuous Daemon",
-        "source_type": "log",
-        "source_path": os.path.join(BASE_DIR, "signal_forge_alert/logs")
+        "schedule": "Daily 08:30 / 15:00 / 17:30",
+        "source_type": "sqlite",
+        "source_path": "/Users/tothemoon/runtime/data/signal_forge.db"
     },
     {
         "id": "stock-cyclical-screener",
@@ -536,33 +536,47 @@ def sync_stock_sniper(conn):
             sys.path.remove("/Users/tothemoon/stock-sniper")
     return count
 
-def sync_stock_dividend_top7(conn):
-    """stock-dividend_top7: 배당주 Top 7 시그널 수집"""
+def sync_signal_forge_alert(conn):
+    """signal_forge_alert: 25대 퀀트 인텔리전스 시그널 동기화 (runtime/data/signal_forge.db)"""
     count = 0
     now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    today = datetime.now().strftime("%Y-%m-%d")
-    log_path = "/Users/tothemoon/stock-dividend_top7/scanner.log"
-    if not os.path.exists(log_path):
+    db_path = "/Users/tothemoon/runtime/data/signal_forge.db"
+    if not os.path.exists(db_path):
         return 0
-    # 기본 탑 배당주 폴백 풀
-    default_div_stocks = [
-        {"code": "033780", "name": "KT&G", "div_yield": 5.4, "theme": "대표 배당 성장주"},
-        {"code": "015760", "name": "한국전력", "div_yield": 4.8, "theme": "원전/에너지 배당"},
-        {"code": "005930", "name": "삼성전자우", "div_yield": 4.1, "theme": "반도체 우선주 분기배당"},
-        {"code": "086790", "name": "하나금융지주", "div_yield": 6.8, "theme": "은행 금융지주 밸류업"},
-        {"code": "017670", "name": "SK텔레콤", "div_yield": 6.7, "theme": "통신 대표 고배당주"},
-        {"code": "032830", "name": "삼성생명", "div_yield": 5.2, "theme": "보험 안정적 배당성향"},
-        {"code": "030200", "name": "KT", "div_yield": 5.9, "theme": "통신/AI 배당주"}
-    ]
-    for d in default_div_stocks:
-        raw_json = json.dumps(d, ensure_ascii=False)
-        conn.execute("""
-        INSERT INTO subproject_signals (project_id, ticker, name, market, signal_type, signal_date, price, target_price, stop_loss_price, raw_json, created_at)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        ON CONFLICT(project_id, ticker, signal_date, signal_type) DO UPDATE SET
-            raw_json = excluded.raw_json;
-        """, ("stock-dividend_top7", d["code"], d["name"], "KOR", "DIVIDEND_TOP7", today, None, None, None, raw_json, now))
-        count += 1
+
+    try:
+        sf_conn = sqlite3.connect(db_path)
+        cur = sf_conn.cursor()
+        cur.execute("""
+            SELECT symbol, asset_type, direction, strategy_name, price, trigger_reason, score, created_at, indicators_json
+            FROM signals ORDER BY id DESC LIMIT 100
+        """)
+        rows = cur.fetchall()
+        sf_conn.close()
+
+        for sym, asset, direction, strat, price, reason, score, created, raw in rows:
+            m_tag = "KRX" if asset == "STOCK_KR" else ("US" if asset == "STOCK_US" else "CRYPTO")
+            sig_type = f"{strat} ({direction})"
+            sig_date = created[:10] if created else datetime.now().strftime("%Y-%m-%d")
+            p_val = float(price) if price else 0.0
+
+            master_cur = conn.cursor()
+            master_cur.execute("""
+            INSERT OR REPLACE INTO subproject_signals 
+            (project_id, ticker, name, market, signal_type, signal_date, price, target_price, stop_loss_price, raw_json, created_at)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """, (
+                "signal_forge_alert", sym, sym, m_tag, sig_type, sig_date,
+                p_val,
+                round(p_val * 1.15, 2),
+                round(p_val * 0.95, 2),
+                raw or json.dumps({"strategy": strat, "direction": direction, "reason": reason, "score": score}, ensure_ascii=False),
+                now
+            ))
+            count += 1
+    except Exception as e:
+        print(f"⚠️ sync_signal_forge_alert 오류: {e}")
+
     return count
 
 def sync_all_subprojects():
@@ -584,6 +598,7 @@ def sync_all_subprojects():
         "stock-cyclical-screener": sync_stock_cyclical,
         "stock-htp-top10": sync_stock_htp_top10,
         "stock-us3x": sync_stock_us3x,
+        "signal_forge_alert": sync_signal_forge_alert,
     }
 
     for p_id, func in sync_map.items():
@@ -597,8 +612,8 @@ def sync_all_subprojects():
         """, (now_str, total_signals, p_id))
         print(f"  ✓ [{p_id}] Synced {cnt} new/updated signals (Total: {total_signals})")
 
-    # 나머지 프로젝트(signal_forge_alert) 상태 갱신
-    other_projects = ["signal_forge_alert"]
+    # 기타 대기 프로젝트 상태 갱신
+    other_projects = []
     for p_id in other_projects:
         cur = conn.cursor()
         cur.execute("SELECT COUNT(*) FROM subproject_signals WHERE project_id = ?", (p_id,))
