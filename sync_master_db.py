@@ -75,7 +75,11 @@ PROJECT_REGISTRY = [
         "market": "KOR",
         "schedule": "Daily 08:30",
         "source_type": "json",
-        "source_path": os.path.join(BASE_DIR, "stock-cyclical-screener/data/alerts_history.json")
+        "source_path": (
+            os.path.join(DATA_DIR, "strategies_data", "stock-cyclical-screener", "data", "alerts_history.json")
+            if os.path.exists(os.path.join(DATA_DIR, "strategies_data", "stock-cyclical-screener", "data", "alerts_history.json"))
+            else os.path.join(BASE_DIR, "stock-cyclical-screener/data/alerts_history.json")
+        )
     }
 ]
 
@@ -407,7 +411,9 @@ def sync_kbit_bot(conn):
 
 def sync_stock_cyclical(conn):
     """stock-cyclical-screener: alerts_history.json 및 data/positions.json 수집하여 subproject_signals 및 trades 테이블 동기화"""
-    screener_dir = "/Users/tothemoon/stock-cyclical-screener/data"
+    screener_dir = os.path.join(DATA_DIR, "strategies_data", "stock-cyclical-screener", "data")
+    if not os.path.exists(screener_dir):
+        screener_dir = "/Users/tothemoon/stock-cyclical-screener/data"
     alerts_path = os.path.join(screener_dir, "alerts_history.json")
     positions_path = os.path.join(screener_dir, "positions.json")
 
@@ -454,18 +460,19 @@ def sync_stock_cyclical(conn):
             # 활성 포지션 동기화
             for code, pos in active.items():
                 cur = conn.cursor()
-                cur.execute("SELECT id FROM trades WHERE project_id = 'stock-cyclical-screener' AND ticker = ? AND status = 'HOLDING'", (code,))
+                cur.execute("SELECT id, status FROM trades WHERE project_id = 'stock-cyclical-screener' AND ticker = ?", (code,))
                 row = cur.fetchone()
                 if row:
-                    conn.execute("""
-                    UPDATE trades SET
-                        current_price = ?,
-                        return_pct = ?,
-                        target_price = ?,
-                        stop_loss_price = ?,
-                        updated_at = ?
-                    WHERE id = ?
-                    """, (pos["current_price"], pos["return_pct"], pos["target_price"], pos["stop_price"], now, row[0]))
+                    if row["status"] == "HOLDING":
+                        conn.execute("""
+                        UPDATE trades SET
+                            current_price = ?,
+                            return_pct = ?,
+                            target_price = ?,
+                            stop_loss_price = ?,
+                            updated_at = ?
+                        WHERE id = ?
+                        """, (pos["current_price"], pos["return_pct"], pos["target_price"], pos["stop_price"], now, row["id"]))
                 else:
                     conn.execute("""
                     INSERT INTO trades (

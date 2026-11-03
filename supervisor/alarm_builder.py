@@ -111,7 +111,7 @@ def get_holding_strategy_key(h: Dict[str, Any], market: str = "KRX") -> str:
             return "sniper"
         if "swing" in pid or "스윙" in notes or ticker in ("267260", "003230"):
             return "swing"
-        if "cyclical" in pid or "시클리컬" in notes:
+        if "cyclical" in pid or "시클리컬" in notes or ticker in ("005490", "004020", "011170", "051915", "018880", "234100"):
             return "cyclical"
         if "signal" in pid or "forge" in pid:
             return "signal_forge"
@@ -121,7 +121,8 @@ def get_holding_strategy_key(h: Dict[str, Any], market: str = "KRX") -> str:
 KR_STRATEGY_DISPLAY = [
     ("sepa_pivot", "🚀 <b>[코어: SEPA x 피봇 돌파]</b>", "Stage 2 VCP 변동성축소"),
     ("sniper", "🎯 <b>[코어: 수급 스나이퍼]</b>", "외인·기관 양매수 주도주"),
-    ("swing", "🛡️ <b>[코어: 227선 무한 스윙]</b>", "227일선/플랫 지지")
+    ("swing", "🛡️ <b>[코어: 227선 무한 스윙]</b>", "227일선/플랫 지지"),
+    ("cyclical", "🔄 <b>[코어: 시클리컬 턴어라운드]</b>", "PBR 극단 저평가 턴어라운드")
 ]
 
 US_STRATEGY_DISPLAY = [

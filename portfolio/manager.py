@@ -96,35 +96,30 @@ def enforce_portfolio_target_6(market: str = "KRX", candidate_signals: List[Dict
     core_holdings = [h for h in holdings if (h.get("project_id") or "").lower() not in STANDALONE_PROJECT_IDS]
     standalone_holdings = [h for h in holdings if (h.get("project_id") or "").lower() in STANDALONE_PROJECT_IDS]
 
-    # 코어 6대 정예 종목군 (3개년 백테스트 최적 조합)
-    kr_preferred = ["000660", "012450", "267260", "093320", "003230", "042510"]
+    # 코어 6대 정예 종목군 (3개년 백테스트 최적 조합: SEPA 2선 + 스나이퍼 2선 + 스윙 1선 + 시클리컬 1선)
+    kr_preferred = ["000660", "012450", "267260", "093320", "005490", "042510"]
     us_preferred = ["NVDA", "AVGO", "AAPL", "PLTR", "APP", "CPAY"]
     pref_set = set(kr_preferred if is_kr else us_preferred)
 
     # 1. 코어 6종목 초과 보유 시에만 코어 종목 내에서 정리 (단독 전략은 절대 손대지 않음)
     if len(core_holdings) > 6:
-        def sort_key(h):
-            is_pref = 1 if h["ticker"] in pref_set else 0
-            ret = float(h.get("return_pct", 0.0))
-            return (is_pref, ret)
+        pref_holdings = [h for h in core_holdings if h["ticker"] in pref_set]
+        other_holdings = [h for h in core_holdings if h["ticker"] not in pref_set]
 
-        large_h = [h for h in core_holdings if h.get("cap_size") == "대형주"]
-        mid_h = [h for h in core_holdings if h.get("cap_size") != "대형주"]
+        # 백테스트 최적 6선(pref_set: SEPA 2, 스나이퍼 2, 스윙 1, 시클리컬 1) 우선 보존
+        keep_holdings = pref_holdings[:6]
+        if len(keep_holdings) < 6:
+            # 부족한 슬롯은 수익률 및 캡사이즈 순으로 보충
+            large_h = [h for h in other_holdings if h.get("cap_size") == "대형주"]
+            mid_h = [h for h in other_holdings if h.get("cap_size") != "대형주"]
+            large_h.sort(key=lambda h: float(h.get("return_pct", 0.0)), reverse=True)
+            mid_h.sort(key=lambda h: float(h.get("return_pct", 0.0)), reverse=True)
 
-        large_h.sort(key=sort_key, reverse=True)
-        mid_h.sort(key=sort_key, reverse=True)
+            needed = 6 - len(keep_holdings)
+            rem = (mid_h + large_h)[:needed]
+            keep_holdings.extend(rem)
 
-        keep_large = large_h[:3]
-        keep_mid = mid_h[:3]
-
-        needed = 6 - (len(keep_large) + len(keep_mid))
-        if needed > 0 and len(large_h) > len(keep_large):
-            keep_large.extend(large_h[len(keep_large):len(keep_large) + needed])
-        needed = 6 - (len(keep_large) + len(keep_mid))
-        if needed > 0 and len(mid_h) > len(keep_mid):
-            keep_mid.extend(mid_h[len(keep_mid):len(keep_mid) + needed])
-
-        keep_ids = set([h["id"] for h in keep_large + keep_mid])
+        keep_ids = set([h["id"] for h in keep_holdings])
         # 단독 전략 ID도 보존 목록에 추가
         for s in standalone_holdings:
             keep_ids.add(s["id"])
