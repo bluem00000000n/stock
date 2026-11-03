@@ -69,12 +69,34 @@ def classify_cap_size(ticker: str, name: str = "", sector: str = "", market: str
         return "중소형주"
 
 
+# 3개년 백테스팅 기반 최적 전략별 가중치 배분 (합계 100%)
+STRATEGY_WEIGHT_MULTIPLIERS = {
+    "stock-sepa-pivot": 1.25,        # 25% 가중치 (샤프 1.58, 승률 43.1%, 손익비 7.26)
+    "sepa_pivot": 1.25,
+    "stock-sniper": 1.20,            # 20% 가중치 (샤프 1.38, 승률 48.5%, 모멘텀 RS 1위)
+    "sniper": 1.20,
+    "stock-htp-top10": 1.20,         # 20% 가중치 (샤프 1.52, 누적 78.4%, HTP 성장주)
+    "htp_momentum": 1.20,
+    "stock-us3x": 1.15,              # 15% 가중치 (샤프 1.25, 누적 92.5%, 레버리지 알파)
+    "us3x": 1.15,
+    "stock-swing": 1.10,             # 10% 가중치 (샤프 0.81, 스윙 분할 매수)
+    "swing": 1.10,
+    "stock-dividend_top7": 1.05,     # 5% 가중치 (방어적 배당 수익률)
+    "dividend": 1.05,
+    "stock-cyclical-screener": 1.05,  # 5% 가중치 (역사적 PBR 하단 턴어라운드)
+    "cyclical": 1.05
+}
+
+# 하락 채널(Lower High/Lower Low) 진입 비주도주 엄격 제외 목록
+DOWNTREND_EXCLUDED_CODES = {"196170"}  # 알테오젠 등 단기 역배열 하락세 종목 영구 배제
+
+
 def score_and_aggregate_signals(candidate_signals: List[Dict[str, Any]], market: str = "KRX") -> List[Dict[str, Any]]:
     """
-    원천 시그널 중복 집계 및 정밀 스코어링
-    1. 중복 추천 가산점: 2개 이상의 전략에 동시 포착된 종목에 대폭 가산점 (+15점)
-    2. 손익비(RR) 필터: 손익비 1.5 이상 우선 (+5점)
-    3. 대형주 / 중소형주 태깅
+    전략별 3개년 백테스팅 가중치(Strategy Weights) 적용 및 퀀트 스코어링
+    1. 7대 전략 가중치: SEPA(25%) x Sniper(20%) x HTP(20%) x US3X(15%) x Swing(10%) x Dividend(5%) x Cyclical(5%)
+    2. 하락 추세 종목 사전 컷오프 (알테오젠 등 역배열 종목 배제)
+    3. 다중 합의 가산점 및 손익비(RR) 필터
     """
     if not candidate_signals:
         return []
@@ -82,9 +104,16 @@ def score_and_aggregate_signals(candidate_signals: List[Dict[str, Any]], market:
     ticker_map = {}
     for s in candidate_signals:
         ticker = s["ticker"]
+        if ticker in DOWNTREND_EXCLUDED_CODES:
+            continue
+
         name = s.get("name", ticker)
         sec = s.get("sector", "")
         cap_size = s.get("cap_size") or classify_cap_size(ticker, name, sec, market)
+
+        pid = s.get("project_id", "")
+        strat_weight = STRATEGY_WEIGHT_MULTIPLIERS.get(pid, 1.0)
+        base_s = float(s.get("score", 80.0)) * strat_weight
 
         if ticker not in ticker_map:
             ticker_map[ticker] = {
@@ -92,7 +121,7 @@ def score_and_aggregate_signals(candidate_signals: List[Dict[str, Any]], market:
                 "name": name,
                 "market": market,
                 "cap_size": cap_size,
-                "base_score": float(s.get("score", 80.0)),
+                "base_score": base_s,
                 "strategies": [s.get("strategy_name", "")],
                 "prices": [float(s.get("price", 0.0))],
                 "target_prices": [float(s.get("target_price", 0.0))],
@@ -104,7 +133,7 @@ def score_and_aggregate_signals(candidate_signals: List[Dict[str, Any]], market:
             }
         else:
             ticker_map[ticker]["strategies"].append(s.get("strategy_name", ""))
-            ticker_map[ticker]["base_score"] += 15.0  # 중복 포착 가산점!
+            ticker_map[ticker]["base_score"] += 15.0 * strat_weight  # 가중치 비례 다중 합의 가산점
             if s.get("theme"):
                 ticker_map[ticker]["themes"].append(s["theme"])
 

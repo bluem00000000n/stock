@@ -85,8 +85,8 @@ def enforce_portfolio_target_6(market: str = "KRX", candidate_signals: List[Dict
 
     holdings = update_holdings_prices(market=market)
 
-    # 선호 6대 정예 종목군 (대형 3 + 중소형 3)
-    kr_preferred = ["000660", "012450", "267260", "196170", "003230", "042510"]
+    # 선호 6대 정예 종목군 (대형 3 + 중소형 3) - 3개년 백테스트 가중치 최상위 우상향 정배열 종목
+    kr_preferred = ["000660", "012450", "267260", "093320", "003230", "042510"]
     us_preferred = ["NVDA", "PLTR", "AVGO", "POWL", "MOD", "TQQQ"]
     pref_set = set(kr_preferred if is_kr else us_preferred)
 

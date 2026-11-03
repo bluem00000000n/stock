@@ -330,60 +330,60 @@ def reset_and_reload_all_9_projects():
     # 2. 실전 운용 포트폴리오 체결 등록 (한국 6종목 + 미국 6종목 = 총 12종목)
     # =========================================================
     trades_to_insert = [
-        # --- 🇰🇷 KRX 6종목 (대형 3선 + 중소형 3선) ---
+        # --- 🇰🇷 KRX 6종목 (대형 3선 + 중소형 3선) : 3개년 백테스트 가중치 기반 오늘(2026-11-03)부터 신규 체결 ---
         {
             "project_id": "stock-sepa-pivot", "project_name": "stock-sepa-pivot",
             "ticker": "000660", "name": "SK하이닉스", "market": "KRX",
             "signal_type": "시가매수(09:00)", "signal_date": f"{today_str} 08:30:00",
-            "entry_price": 1479000.0, "entry_date": today_str, "current_price": 1479000.0,
+            "entry_price": 1389000.0, "entry_date": today_str, "current_price": 1389000.0,
             "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": 0.0,
-            "target_price": 1750000.0, "stop_loss_price": 1380000.0,
-            "notes": "[대형주/SEPA] HBM3E 독점 VCP 피벗 돌파 | 시가 매수 (09:00 개장 시가 체결)"
+            "target_price": 1750000.0, "stop_loss_price": 1310000.0,
+            "notes": "[대형주/SEPA 25% 가중치] HBM3E 독점 VCP 피벗 돌파 | 시가 매수 (09:00 개장 시가 체결)"
         },
         {
-            "project_id": "stock-sepa-pivot", "project_name": "stock-sepa-pivot",
+            "project_id": "stock-sniper", "project_name": "stock-sniper",
             "ticker": "012450", "name": "한화에어로스페이스", "market": "KRX",
             "signal_type": "지정가매수", "signal_date": f"{today_str} 08:30:00",
-            "entry_price": 735000.0, "entry_date": today_str, "current_price": 739000.0,
-            "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": 0.54,
+            "entry_price": 735000.0, "entry_date": today_str, "current_price": 735000.0,
+            "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": 0.0,
             "target_price": 860000.0, "stop_loss_price": 680000.0,
-            "notes": "[대형주/방산] K9/천무 글로벌 수주 모멘텀, 불플래그 돌파 | 지정가 매수: 735,000원"
+            "notes": "[대형주/스나이퍼 20% 가중치] K9/천무 글로벌 수주 모멘텀, 불플래그 돌파 | 지정가 매수: 735,000원"
         },
         {
             "project_id": "stock-sepa-pivot", "project_name": "stock-sepa-pivot",
             "ticker": "267260", "name": "HD현대일렉트릭", "market": "KRX",
             "signal_type": "지정가매수", "signal_date": f"{today_str} 08:30:00",
-            "entry_price": 442000.0, "entry_date": today_str, "current_price": 446500.0,
-            "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": 1.02,
-            "target_price": 520000.0, "stop_loss_price": 410000.0,
-            "notes": "[대형주/전력기기] 북미 변압기 쇼티지 수혜, 플랫 베이스 지지 | 지정가 매수: 442,000원"
+            "entry_price": 431500.0, "entry_date": today_str, "current_price": 431500.0,
+            "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": 0.0,
+            "target_price": 520000.0, "stop_loss_price": 405000.0,
+            "notes": "[대형주/SEPA 25% 가중치] 북미 변압기 쇼티지 수혜, 플랫 베이스 지지 | 지정가 매수: 431,500원"
         },
         {
             "project_id": "stock-sepa-pivot", "project_name": "stock-sepa-pivot",
-            "ticker": "196170", "name": "알테오젠", "market": "KRX",
-            "signal_type": "시가매수(09:00)", "signal_date": f"{today_str} 08:30:00",
-            "entry_price": 213500.0, "entry_date": today_str, "current_price": 213500.0,
+            "ticker": "093320", "name": "케이아이엔엑스", "market": "KRX",
+            "signal_type": "지정가매수", "signal_date": f"{today_str} 08:30:00",
+            "entry_price": 175000.0, "entry_date": today_str, "current_price": 175000.0,
             "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": 0.0,
-            "target_price": 260000.0, "stop_loss_price": 198000.0,
-            "notes": "[중형주/바이오] 피하주사(SC) 독점 플랫폼, 하이타이트 플래그 돌파 | 시가 매수 (09:00 개장 시가 체결)"
+            "target_price": 210000.0, "stop_loss_price": 161000.0,
+            "notes": "[중소형주/SEPA 25% 가중치] 과천 AI IDC 가동 & 52주 신고가 하이타이트 플래그 돌파 | 지정가 매수: 175,000원"
         },
         {
             "project_id": "stock-swing", "project_name": "stock-swing",
             "ticker": "003230", "name": "삼양식품", "market": "KRX",
             "signal_type": "종가매수(동시호가)", "signal_date": f"{today_str} 15:00:00",
-            "entry_price": 1178000.0, "entry_date": today_str, "current_price": 1178000.0,
+            "entry_price": 1159000.0, "entry_date": today_str, "current_price": 1159000.0,
             "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": 0.0,
             "target_price": 1380000.0, "stop_loss_price": 1090000.0,
-            "notes": "[중형주/K-푸드] 글로벌 불닭 수출 호조, 컵앤핸들 피벗 돌파 | 종가 매수 (15:20~15:30 동시호가 체결)"
+            "notes": "[중소형주/스윙 10% 가중치] 글로벌 불닭 수출 호조, 컵앤핸들 지지 | 종가 매수 (15:20~15:30 동시호가 체결)"
         },
         {
             "project_id": "stock-sniper", "project_name": "stock-sniper",
             "ticker": "042510", "name": "라온시큐어", "market": "KRX",
             "signal_type": "시가매수(09:00)", "signal_date": f"{today_str} 08:30:00",
-            "entry_price": 18340.0, "entry_date": today_str, "current_price": 18340.0,
+            "entry_price": 19300.0, "entry_date": today_str, "current_price": 19300.0,
             "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": 0.0,
-            "target_price": 21500.0, "stop_loss_price": 17200.0,
-            "notes": "[중소형주/보안] 생체인증/양자암호 52주 신고가 스나이퍼 수급 | 시가 매수 (09:00 개장 시가 체결)"
+            "target_price": 22500.0, "stop_loss_price": 17900.0,
+            "notes": "[중소형주/스나이퍼 20% 가중치] 생체인증/양자암호 52주 신고가 스나이퍼 수급 1위 | 시가 매수 (09:00 개장 시가 체결)"
         },
 
         # --- 🇺🇸 US 6종목 (대형 3선 + 중소형 2선 + 3X 레버리지 1선) ---
@@ -391,55 +391,55 @@ def reset_and_reload_all_9_projects():
             "project_id": "stock-htp-top10", "project_name": "stock-htp-top10",
             "ticker": "NVDA", "name": "엔비디아", "market": "US",
             "signal_type": "시가매수(22:30)", "signal_date": f"{today_str} 17:30:00",
-            "entry_price": 204.64, "entry_date": today_str, "current_price": 204.64,
+            "entry_price": 202.06, "entry_date": today_str, "current_price": 202.06,
             "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": 0.0,
             "target_price": 260.0, "stop_loss_price": 190.0,
-            "notes": "[대형주/AI] AI 가속기 독점 및 블랙웰 사이클, HTP 대형 1위 | 시가 매수 (22:30 개장 시가 체결)"
+            "notes": "[대형주/HTP 20% 가중치] AI 가속기 독점 및 블랙웰 사이클, HTP 대형 1위 | 시가 매수 (22:30 개장 시가 체결)"
         },
         {
             "project_id": "stock-htp-top10", "project_name": "stock-htp-top10",
             "ticker": "PLTR", "name": "팔란티어", "market": "US",
             "signal_type": "지정가매수", "signal_date": f"{today_str} 17:30:00",
-            "entry_price": 184.00, "entry_date": today_str, "current_price": 184.11,
-            "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": 0.06,
+            "entry_price": 178.34, "entry_date": today_str, "current_price": 178.34,
+            "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": 0.0,
             "target_price": 230.0, "stop_loss_price": 168.0,
-            "notes": "[대형주/AI플랫폼] AIP 엔터프라이즈 모멘텀 급증, HTP 대형 5위 | 지정가 매수: $184.00"
+            "notes": "[대형주/HTP 20% 가중치] AIP 엔터프라이즈 모멘텀 급증, HTP 대형 5위 | 지정가 매수: $178.34"
         },
         {
             "project_id": "stock-htp-top10", "project_name": "stock-htp-top10",
             "ticker": "AVGO", "name": "브로드컴", "market": "US",
             "signal_type": "지정가매수", "signal_date": f"{today_str} 17:30:00",
-            "entry_price": 325.00, "entry_date": today_str, "current_price": 326.08,
-            "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": 0.33,
+            "entry_price": 322.23, "entry_date": today_str, "current_price": 322.23,
+            "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": 0.0,
             "target_price": 400.0, "stop_loss_price": 300.0,
-            "notes": "[대형주/커스텀ASIC] 커스텀 AI ASIC 수주 확대, HTP 대형 4위 | 지정가 매수: $325.00"
+            "notes": "[대형주/HTP 20% 가중치] 커스텀 AI ASIC 수주 확대, HTP 대형 4위 | 지정가 매수: $322.23"
         },
         {
             "project_id": "stock-htp-top10", "project_name": "stock-htp-top10",
             "ticker": "POWL", "name": "파월 인더스트리스", "market": "US",
             "signal_type": "시가매수(22:30)", "signal_date": f"{today_str} 17:30:00",
-            "entry_price": 156.26, "entry_date": today_str, "current_price": 156.26,
+            "entry_price": 154.01, "entry_date": today_str, "current_price": 154.01,
             "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": 0.0,
             "target_price": 195.0, "stop_loss_price": 142.0,
-            "notes": "[중형주/전력망] AI 데이터센터 전력망 장비, 러셀 2000 HTP 1위 | 시가 매수 (22:30 개장 시가 체결)"
+            "notes": "[중소형주/HTP 20% 가중치] AI 데이터센터 전력망 장비, 러셀 2000 HTP 1위 | 시가 매수 (22:30 개장 시가 체결)"
         },
         {
             "project_id": "stock-htp-top10", "project_name": "stock-htp-top10",
             "ticker": "MOD", "name": "모딘 매뉴팩처링", "market": "US",
             "signal_type": "지정가매수", "signal_date": f"{today_str} 17:30:00",
-            "entry_price": 129.00, "entry_date": today_str, "current_price": 129.76,
-            "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": 0.59,
+            "entry_price": 123.34, "entry_date": today_str, "current_price": 123.34,
+            "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": 0.0,
             "target_price": 165.0, "stop_loss_price": 118.0,
-            "notes": "[중형주/열관리] AI 데이터센터 액체냉각 열관리 독보적 성장, HTP 2위 | 지정가 매수: $129.00"
+            "notes": "[중소형주/HTP 20% 가중치] AI 데이터센터 액체냉각 열관리 독보적 성장, HTP 2위 | 지정가 매수: $123.34"
         },
         {
             "project_id": "stock-us3x", "project_name": "stock-us3x",
             "ticker": "TQQQ", "name": "ProShares UltraPro QQQ", "market": "US",
             "signal_type": "종가매수(LOC)", "signal_date": f"{today_str} 17:30:00",
-            "entry_price": 62.01, "entry_date": today_str, "current_price": 62.01,
+            "entry_price": 59.46, "entry_date": today_str, "current_price": 59.46,
             "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": 0.0,
             "target_price": 85.0, "stop_loss_price": 45.0,
-            "notes": "[레버리지/3X] 나스닥 100 3배 레버리지 무한매수 분할 적립 | 종가 매수 (LOC 20분할 매수)"
+            "notes": "[3X 레버리지/US3X 15% 가중치] 나스닥 100 3배 레버리지 무한매수 분할 적립 | 종가 매수 (LOC 20분할 매수)"
         },
 
         # --- 📊 서브 프로젝트 전략 매트릭스 카드용 실현 실적 (CLOSED) ---
