@@ -105,7 +105,7 @@ def get_holding_strategy_key(h: Dict[str, Any], market: str = "KRX") -> str:
             return "swing"
         return "htp_momentum"
     else:
-        if "sepa" in pid or "sepa" in notes or ticker in ("012450", "093320", "031980"):
+        if "sepa" in pid or "sepa" in notes or ticker in ("000100", "086280", "093320", "031980"):
             return "sepa_pivot"
         if "sniper" in pid or "스나이퍼" in notes or ticker in ("000660", "042510", "042700"):
             return "sniper"
@@ -134,7 +134,7 @@ PORTFOLIO_LEGEND = "• <b>수익률 상태 범례:</b> 🟢 수익(+) | 🔵 �
 
 # 1순위 추천/보유 종목 매수 불가 시 즉시 집행하는 2순위 대체 예비 종목 풀
 KR_BACKUP_ALTERNATIVES = {
-    "012450": {"ticker": "064350", "name": "현대로템", "cap": "대형", "reason": "1단계 [선발대] 주봉 과매도(RSI 27.7) & MACD 히스토그램 반등 바닥 탈출"},
+    "000100": {"ticker": "086280", "name": "현대글로비스", "cap": "대형", "reason": "1단계 [선발대] 20주선 위 완성차 해상운송 글로벌 물류 신고가 (RSI 49.7 골든크로스)"},
     "093320": {"ticker": "075950", "name": "산일전기", "cap": "중형", "reason": "1단계 [선발대] AI 데이터센터 변압기 VCP 눌림목 지지 (RSI 40.9)"},
     "031980": {"ticker": "058470", "name": "리노공업", "cap": "중형", "reason": "1단계 [선발대] 반도체 테스트 소켓 바닥 다지기 (RSI 35.6)"},
     "000660": {"ticker": "005930", "name": "삼성전자", "cap": "대형", "reason": "1단계 [선발대] 주봉 RSI 43.0 바닥 다지기 & 히스토그램 축소 반등"},

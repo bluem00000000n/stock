@@ -18,15 +18,16 @@ from core.market_data import fetch_krx_price, fetch_us_price
 
 WATCHLIST = {
     "KR_LARGE": [
+        {"name": "유한양행", "code": "000100", "market": "코스피", "pivot": 78000, "stop": 72500, "turtle_stop": 73000, "farley_swing": "20주선 위 렉라자 VCP 돌파 직전", "pattern": "Cup with Handle", "score": 99, "theme": "렉라자(레이저티닙) 글로벌 FDA 상업화 랠리"},
+        {"name": "현대글로비스", "code": "086280", "market": "코스피", "pivot": 204000, "stop": 191000, "turtle_stop": 193000, "farley_swing": "20주선 지지 및 RSI 골든크로스 돌파", "pattern": "Flat Base", "score": 97, "theme": "완성차 해상운송 글로벌 물류 신고가"},
         {"name": "SK하이닉스", "code": "000660", "market": "코스피", "pivot": 1420000, "stop": 1330000, "turtle_stop": 1340000, "farley_swing": "첫 1시간 ORB 돌파 감시", "pattern": "Ascending Triangle", "score": 98, "theme": "HBM3E/HBM4 독점 공급"},
-        {"name": "한화에어로스페이스", "code": "012450", "market": "코스피", "pivot": 745000, "stop": 690000, "turtle_stop": 700000, "farley_swing": "첫 1시간 ORB 상회 안착", "pattern": "Bull Flag", "score": 98, "theme": "지상방산 해외 수주 및 불플래그 돌파"},
         {"name": "HD현대일렉트릭", "code": "267260", "market": "코스피", "pivot": 435000, "stop": 405000, "turtle_stop": 410000, "farley_swing": "플랫베이스 지지 반등 스윙", "pattern": "Flat Base", "score": 98, "theme": "북미 초고압 변압기 쇼티지"},
     ],
     "KR_MID": [
         {"name": "케이아이엔엑스", "code": "093320", "market": "코스닥", "pivot": 175000, "stop": 161000, "turtle_stop": 164000, "farley_swing": "과천 IDC 하이타이트 플래그 돌파", "pattern": "High Tight Flag", "score": 99, "theme": "과천 AI IDC 본격 가동 및 52주 신고가 우상향"},
-        {"name": "라온시큐어", "code": "042510", "market": "코스닥", "pivot": 19000, "stop": 17500, "turtle_stop": 17800, "farley_swing": "52주 신고가 스나이퍼 수급 분출", "pattern": "Ascending Triangle", "score": 98, "theme": "글로벌 생체인증/양자암호 주도 수급"},
-        {"name": "피에스케이홀딩스", "code": "031980", "market": "코스닥", "pivot": 170000, "stop": 158000, "turtle_stop": 160000, "farley_swing": "VCP 3차 수축 돌파", "pattern": "VCP", "score": 96, "theme": "HBM 패키징 디스컴 장비"},
+        {"name": "피에스케이홀딩스", "code": "031980", "market": "코스닥", "pivot": 170000, "stop": 158000, "turtle_stop": 160000, "farley_swing": "VCP 3차 수축 돌파", "pattern": "VCP", "score": 98, "theme": "HBM 패키징 디스컴 장비 독점력"},
         {"name": "산일전기", "code": "075950", "market": "코스피", "pivot": 68000, "stop": 63200, "turtle_stop": 64200, "farley_swing": "Strong Close 안착 스윙", "pattern": "Bull Flag", "score": 96, "theme": "북미 특수변압기 직납 고성장"},
+        {"name": "라온시큐어", "code": "042510", "market": "코스닥", "pivot": 19000, "stop": 17500, "turtle_stop": 17800, "farley_swing": "52주 신고가 스나이퍼 수급 분출", "pattern": "Ascending Triangle", "score": 96, "theme": "글로벌 생체인증/양자암호 주도 수급"},
     ],
     "US_LARGE": [
         {"ticker": "NVDA", "name": "Nvidia", "market": "NASDAQ", "pivot": 144.0, "stop": 135.3, "turtle_stop": 137.7, "farley_swing": "첫 1시간 ORB 돌파 감시", "pattern": "Ascending Triangle", "score": 98, "theme": "블랙웰 B200 풀캐파 가동"},

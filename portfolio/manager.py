@@ -98,9 +98,9 @@ def enforce_portfolio_target_6(market: str = "KRX", candidate_signals: List[Dict
     standalone_holdings = [h for h in holdings if (h.get("project_id") or "").lower() in STANDALONE_PROJECT_IDS]
 
     # 코어 6대 정예 종목군 (대형 3선 : 중소형 3선 1:1 황금밸런스)
-    # 한국: SEPA 3선(대형 1 + 중소 2) + 스나이퍼 2선(대형 1 + 중소 1) + 스윙 1선(대형 1)
+    # 한국: SEPA 3선(대형 1[유한양행] + 중소 2[케이아이엔엑스, 피에스케이홀딩스]) + 스나이퍼 2선(대형 1[SK하이닉스] + 중소 1[한미반도체]) + 스윙 1선(대형 1[HD현대일렉트릭])
     # 미국: HTP 3선(대형 3) + SEPA 2선(중소 2) + 스윙 1선(중소 1)
-    kr_preferred = ["012450", "000660", "267260", "093320", "031980", "042700"]
+    kr_preferred = ["000100", "000660", "267260", "093320", "031980", "042700"]
     us_preferred = ["NVDA", "AVGO", "AAPL", "PLTR", "APP", "CPAY"]
     pref_set = set(kr_preferred if is_kr else us_preferred)
 
