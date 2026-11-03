@@ -90,33 +90,48 @@ KR_MID_SNIPER = [
 # 🇺🇸 미국장 스나이퍼 후보 풀 (대형주 4선 + 중소형주 4선: 한국과 동일 구조)
 # ==============================================================================
 US_LARGE_SNIPER = [
-    {"ticker": "NVDA", "name": "Nvidia", "sector": "AI 반도체", "cap_size": "대형주",
+    {"ticker": "NVDA", "name": "Nvidia", "sector": "Information Technology", "cap_size": "대형주",
      "theme": "블랙웰 B200 풀캐파 가동, AI 인프라 글로벌 독점 및 사상 최고가권",
      "condition": "20일 EMA 지지 및 시초가 갭 메우기 완료 후 반등 확인"},
-    {"ticker": "MSFT", "name": "Microsoft", "sector": "클라우드·AI", "cap_size": "대형주",
-     "theme": "애저 클라우드 성장 가속 및 M365 코파일럿 B2B 도입 확산",
-     "condition": "50일선 지지 반등 및 빅테크 수급 확인"},
-    {"ticker": "AVGO", "name": "Broadcom", "sector": "AI 네트워킹·ASIC", "cap_size": "대형주",
+    {"ticker": "LLY", "name": "Eli Lilly", "sector": "Healthcare", "cap_size": "대형주",
+     "theme": "GLP-1 비만치료제 젭바운드/마운자로 글로벌 시장 독점적 랠리",
+     "condition": "20일선 지지 후 전일 고가 돌파 시 진입"},
+    {"ticker": "GE", "name": "GE Aerospace", "sector": "Industrials", "cap_size": "대형주",
+     "theme": "항공우주 엔진 및 애프터마켓 수주 잔고 사상 최대치 경신",
+     "condition": "50일선 지지 반등 및 대형주 수급 유입 확인"},
+    {"ticker": "COST", "name": "Costco", "sector": "Consumer Staples", "cap_size": "대형주",
+     "theme": "경기방어적 멤버십 기반 안정적 이익 성장 및 52주 신고가 우상향",
+     "condition": "플랫 베이스 지지선 안착 확인 후 진입"},
+    {"ticker": "AVGO", "name": "Broadcom", "sector": "Information Technology", "cap_size": "대형주",
      "theme": "빅테크 맞춤형 AI 가속기 및 네트워킹 스위치 독점적 지배력",
      "condition": "10일선 지지 확인 후 ORB(초반 30분) 돌파 시 진입"},
-    {"ticker": "TSLA", "name": "Tesla", "sector": "자율주행·EV", "cap_size": "대형주",
-     "theme": "FSD V13 완전자율주행 및 사이버캡/에너지 저장장치(Megapack) 성장",
-     "condition": "주요 지지 이평선(20일선) 지지 및 전일 종가 상회 확인"}
+    {"ticker": "JPM", "name": "JPMorgan Chase", "sector": "Financials", "cap_size": "대형주",
+     "theme": "미국 대형 금융주 순이자이익 견조 및 글로벌 IB 자문 수수료 급증",
+     "condition": "20일선 지지 확인 후 전일 고가 돌파 시 진입"},
+    {"ticker": "XOM", "name": "ExxonMobil", "sector": "Energy", "cap_size": "대형주",
+     "theme": "에너지 메이저 정제마진 회복 및 주주환원 자사주 매입 모멘텀",
+     "condition": "200일선 지지 반등 확인 시 진입"}
 ]
 
 US_MID_SNIPER = [
-    {"ticker": "PLTR", "name": "Palantir", "sector": "엔터프라이즈 AI", "cap_size": "중소형주",
+    {"ticker": "TMDX", "name": "TransMedics", "sector": "Healthcare", "cap_size": "중소형주",
+     "theme": "장기이식 보존 시스템(OCS) 글로벌 독점 및 전용 항공 물류 성장",
+     "condition": "20일선 지지 확인 및 수급 1순위 돌파"},
+    {"ticker": "POWL", "name": "Powell Industries", "sector": "Industrials", "cap_size": "중소형주",
+     "theme": "AI 데이터센터 전력망 및 특수 배전반 수주잔고 폭발적 증가",
+     "condition": "VCP 수축 후 박스권 상단 돌파 시 진입"},
+    {"ticker": "VRT", "name": "Vertiv Holdings", "sector": "Industrials", "cap_size": "중소형주",
+     "theme": "하이퍼스케일 AI 데이터센터 액체냉각 및 전력 솔루션 수주 1위",
+     "condition": "신고가 부근 지지 후 5분봉 저점 상승 확인"},
+    {"ticker": "PLTR", "name": "Palantir", "sector": "Information Technology", "cap_size": "중소형주",
      "theme": "AIP 플랫폼 상용화 급증 및 미 국방부 수주 모멘텀, S&P500 최상위 모멘텀",
      "condition": "전일 고가 지지선 안착 및 거래량 실린 양봉 확인"},
-    {"ticker": "APP", "name": "AppLovin", "sector": "AI 애드테크", "cap_size": "중소형주",
+    {"ticker": "APP", "name": "AppLovin", "sector": "Information Technology", "cap_size": "중소형주",
      "theme": "AXON 2.0 엔진 기반 폭발적 매출·영업이익 서프라이즈, 주도주 랠리",
      "condition": "장초반 변동성 소진 후 5분봉 지지선 형성 시 진입"},
-    {"ticker": "CRWD", "name": "CrowdStrike", "sector": "클라우드 보안", "cap_size": "중소형주",
-     "theme": "차세대 엔드포인트 Falcon 플랫폼 수주 회복 및 강력한 턴어라운드",
-     "condition": "박스권 상단 돌파 및 매물대 소화 확인 시 진입"},
-    {"ticker": "ALAB", "name": "Astera Labs", "sector": "AI 고속 인터페이스", "cap_size": "중소형주",
-     "theme": "PCIe 6.0/CXL 리타이머 독점, AI 클러스터 고속 연결 수혜",
-     "condition": "신고가 돌파 후 5일선 지지 확인 시 진입"}
+    {"ticker": "ROOT", "name": "Root Inc", "sector": "Financials", "cap_size": "중소형주",
+     "theme": "AI 머신러닝 자동차보험 손해율 개선 및 턴어라운드 흑자 전환",
+     "condition": "골든크로스 안착 및 거래량 유지 확인"}
 ]
 
 

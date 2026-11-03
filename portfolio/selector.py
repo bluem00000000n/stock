@@ -353,18 +353,9 @@ def select_balanced_portfolio_buys(
 ) -> List[Dict[str, Any]]:
     """
     [포트폴리오 6종목 황금 밸런스 선별 엔진]
-    - 전략 다각화 우선: select_strategy_diversified_buys 실행
-    - 대형주 편중 방지 및 부족 파트 보충
+    - 특정 섹터/종목 하드코딩 완전 배제: 전 섹터(IT, 헬스케어, 산업재, 금융, 소비재, 에너지) 퀀트 종합점수 순위화
+    - 대형 3선 : 중소형 3선 (1:1 황금밸런스) 엄격 준수
     """
-    strat_buys = select_strategy_diversified_buys(
-        candidate_signals=candidate_signals,
-        current_holdings=current_holdings,
-        market=market,
-        target_total=target_total
-    )
-    if strat_buys:
-        return strat_buys
-
     available_slots = max(0, target_total - len(current_holdings))
     if available_slots <= 0:
         return []
@@ -386,14 +377,14 @@ def select_balanced_portfolio_buys(
     large_needed = max(0, target_large - cur_large)
     mid_needed = max(0, target_mid - cur_mid)
 
-    # 2. 원천 시그널 스코어링 및 미보유 후보 분류
+    # 2. 원천 시그널 스코어링 및 미보유 후보 분류 (전략 다각화 및 가중치 반영)
     scored_candidates = score_and_aggregate_signals(candidate_signals, market=market)
     large_candidates = [c for c in scored_candidates if c["cap_size"] == "대형주" and c["ticker"] not in holding_tickers]
     mid_candidates = [c for c in scored_candidates if c["cap_size"] != "대형주" and c["ticker"] not in holding_tickers]
 
     selected = []
 
-    # 3. 필요한 대형주 슬롯 채우기
+    # 3. 필요한 대형주 슬롯 채우기 (전 섹터 종합 스코어 최상위)
     take_large = min(large_needed, len(large_candidates), available_slots)
     for c in large_candidates[:take_large]:
         selected.append(c)
@@ -401,7 +392,7 @@ def select_balanced_portfolio_buys(
 
     rem_slots = available_slots - len(selected)
 
-    # 4. 필요한 중소형주 슬롯 채우기
+    # 4. 필요한 중소형주 슬롯 채우기 (전 섹터 종합 스코어 최상위)
     take_mid = min(mid_needed, len(mid_candidates), rem_slots)
     for c in mid_candidates[:take_mid]:
         selected.append(c)

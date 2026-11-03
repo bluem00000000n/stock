@@ -97,26 +97,17 @@ def enforce_portfolio_target_6(market: str = "KRX", candidate_signals: List[Dict
     core_holdings = [h for h in holdings if (h.get("project_id") or "").lower() not in STANDALONE_PROJECT_IDS]
     standalone_holdings = [h for h in holdings if (h.get("project_id") or "").lower() in STANDALONE_PROJECT_IDS]
 
-    # 코어 6대 정예 종목군 (대형 3선 : 중소형 3선 1:1 황금밸런스)
-    # 한국: SEPA 3선(대형 1[유한양행] + 중소 2[케이아이엔엑스, 피에스케이홀딩스]) + 스나이퍼 2선(대형 1[SK하이닉스] + 중소 1[한미반도체]) + 스윙 1선(대형 1[HD현대일렉트릭])
-    # 미국: HTP 3선(대형 3) + SEPA 2선(중소 2) + 스윙 1선(중소 1)
-    kr_preferred = ["000100", "000660", "267260", "093320", "031980", "042700"]
-    us_preferred = ["NVDA", "AVGO", "AAPL", "PLTR", "APP", "CPAY"]
-    pref_set = set(kr_preferred if is_kr else us_preferred)
-
-    # 1. 코어 6종목 초과 보유 시에만 코어 종목 내에서 대형 3: 중소형 3 (1:1 비율)로 정리 (단독 전략은 절대 손대지 않음)
+    # 1. 코어 6종목 초과 보유 시에만 코어 종목 내에서 대형 3: 중소형 3 (1:1 비율)로 수익률 순 정예화 (단독 전략은 절대 손대지 않음)
     if len(core_holdings) > 6:
-        pref_large = [h for h in core_holdings if h["ticker"] in pref_set and h.get("cap_size") == "대형주"]
-        pref_mid = [h for h in core_holdings if h["ticker"] in pref_set and h.get("cap_size") != "대형주"]
+        large_holdings = [h for h in core_holdings if h.get("cap_size") == "대형주"]
+        mid_holdings = [h for h in core_holdings if h.get("cap_size") != "대형주"]
 
-        other_large = [h for h in core_holdings if h["ticker"] not in pref_set and h.get("cap_size") == "대형주"]
-        other_mid = [h for h in core_holdings if h["ticker"] not in pref_set and h.get("cap_size") != "대형주"]
+        # 특정 종목/섹터 하드코딩 우대 없이, 실제 실현/평가 수익률(return_pct) 최상위 순으로 자율 유지
+        large_holdings.sort(key=lambda h: float(h.get("return_pct", 0.0)), reverse=True)
+        mid_holdings.sort(key=lambda h: float(h.get("return_pct", 0.0)), reverse=True)
 
-        other_large.sort(key=lambda h: float(h.get("return_pct", 0.0)), reverse=True)
-        other_mid.sort(key=lambda h: float(h.get("return_pct", 0.0)), reverse=True)
-
-        keep_large = (pref_large + other_large)[:3]
-        keep_mid = (pref_mid + other_mid)[:3]
+        keep_large = large_holdings[:3]
+        keep_mid = mid_holdings[:3]
 
         keep_holdings = keep_large + keep_mid
         keep_ids = set([h["id"] for h in keep_holdings])
@@ -131,7 +122,7 @@ def enforce_portfolio_target_6(market: str = "KRX", candidate_signals: List[Dict
                     cur.execute("""
                         UPDATE trades 
                         SET status = 'CLOSED', exit_price = current_price, exit_date = ?, 
-                            notes = '코어 포트폴리오 대형 3: 중소형 3 (1:1 황금밸런스) 정예화', updated_at = ?
+                            notes = '코어 포트폴리오 대형 3: 중소형 3 (1:1 황금밸런스) 수익률 순 정예화', updated_at = ?
                         WHERE id = ?
                     """, (today_str, now_str, h["id"]))
             conn.commit()

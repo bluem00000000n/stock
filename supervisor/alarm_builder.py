@@ -144,12 +144,19 @@ KR_BACKUP_ALTERNATIVES = {
 }
 
 US_BACKUP_ALTERNATIVES = {
-    "NVDA": {"ticker": "META", "name": "메타 플랫폼스", "cap": "대형", "reason": "2단계 [대세확증] AI 추천 알고리즘 및 광고 실적 HTP 2위"},
-    "AVGO": {"ticker": "LLY", "name": "일라이 릴리", "cap": "대형", "reason": "2단계 [대세확증] 비만 치료제 메가트렌드 HTP 파워 모멘텀 1위"},
-    "AAPL": {"ticker": "MSFT", "name": "마이크로소프트", "cap": "대형", "reason": "1단계 [선발대] 클라우드 애저(Azure) AI 인프라 지지선 스윙"},
+    "NVDA": {"ticker": "META", "name": "메타 플랫폼스", "cap": "대형", "reason": "2단계 [대세확증] 빅테크 커뮤니케이션/AI HTP 상위"},
+    "LLY": {"ticker": "TMDX", "name": "트랜스메딕스", "cap": "중형", "reason": "2단계 [대세확증] 헬스케어 메가트렌드 장기이식 독점 OCS 기술력"},
+    "GE": {"ticker": "CAT", "name": "캐터필러", "cap": "대형", "reason": "1단계 [선발대] 인프라/중장비 52주 신고가 글로벌 수주 랠리"},
+    "COST": {"ticker": "WMT", "name": "월마트", "cap": "대형", "reason": "1단계 [선발대] 경기방어 필수소비재 52주 신고가 우상향"},
+    "AVGO": {"ticker": "MSFT", "name": "마이크로소프트", "cap": "대형", "reason": "1단계 [선발대] 클라우드 애저(Azure) B2B AI 인프라 안정성"},
+    "JPM": {"ticker": "BRK-B", "name": "버크셔 해서웨이", "cap": "대형", "reason": "1단계 [선발대] 우량 금융/가치주 227선 지지 스윙"},
+    "XOM": {"ticker": "CVX", "name": "쉐브론", "cap": "대형", "reason": "1단계 [선발대] 에너지 배당 및 정제마진 회복"},
+    "POWL": {"ticker": "VRT", "name": "버티브 홀딩스", "cap": "중형", "reason": "2단계 [대세확증] AI 데이터센터 액체냉각 및 전력 인프라 1위"},
+    "MOD": {"ticker": "CRDO", "name": "크레도 테크", "cap": "중형", "reason": "2단계 [대세확증] 데이터센터 고속 연결 부활 파동"},
     "PLTR": {"ticker": "ALAB", "name": "아스테라 랩스", "cap": "중형", "reason": "2단계 [대세확증] AI PCIe 인터커넥트 VCP 돌파 1위"},
-    "APP": {"ticker": "VRT", "name": "버티브 홀딩스", "cap": "중형", "reason": "2단계 [대세확증] AI 데이터센터 전력/냉각 피봇 돌파 2위"},
-    "CPAY": {"ticker": "XOM", "name": "엑슨모빌", "cap": "대형", "reason": "1단계 [선발대] 227일선 우량 가치주 지지 스윙 스코어 1위"}
+    "APP": {"ticker": "RDDT", "name": "레딧", "cap": "중형", "reason": "2단계 [대세확증] AI 데이터 라이선싱 고성장"},
+    "ROOT": {"ticker": "CPAY", "name": "코페이", "cap": "대형", "reason": "1단계 [선발대] 핀테크/금융 지지 스윙"},
+    "TMDX": {"ticker": "KNSA", "name": "키닉사 파마", "cap": "중형", "reason": "2단계 [대세확증] 자가면역 질환 라이선스 고성장"}
 }
 
 
@@ -227,16 +234,41 @@ def format_strategy_grouped_portfolio(
         if market.upper() in ("KRX", "KR"):
             return ["• <i>현재 한국장 보유 포지션 없음 (신규 진입 대기)</i>"]
         else:
-            return [
-                "• <i>현재 미국장 보유 포지션 없음 (미국장 개장 21:30~22:30 KST 일정에 맞추어 1순위/2순위 자동 분할 매수 집행 및 포트폴리오 업데이트 예정)</i>",
-                "• 📋 <b>[오늘 밤 미국장 매수 대기 예정 리스트 (대형 3선 : 중소형 3선 [1:1])]</b>",
-                "   ├ 🏆 <b>[HTP/대형] 엔비디아 (NVDA)</b> ➔ 🥈 2순위 대체: 메타 플랫폼스 (META)",
-                "   ├ 🏆 <b>[HTP/대형] 브로드컴 (AVGO)</b> ➔ 🥈 2순위 대체: 일라이 릴리 (LLY)",
-                "   ├ 🏆 <b>[HTP/대형] 애플 (AAPL)</b> ➔ 🥈 2순위 대체: 마이크로소프트 (MSFT)",
-                "   ├ 🚀 <b>[SEPA/중형] 팔란티어 (PLTR)</b> ➔ 🥈 2순위 대체: 아스테라 랩스 (ALAB)",
-                "   ├ 🚀 <b>[SEPA/중형] 앱러빈 (APP)</b> ➔ 🥈 2순위 대체: 버티브 홀딩스 (VRT)",
-                "   └ 🛡️ <b>[스윙/대형] 콜페이 (CPAY)</b> ➔ 🥈 2순위 대체: 엑슨모빌 (XOM)"
+            waiting_lines = [
+                "• <i>현재 미국장 보유 포지션 없음 (미국장 개장 21:30~22:30 KST 일정에 맞추어 전 섹터 퀀트 스코어 기반 자동 분할 매수 집행 및 포트폴리오 업데이트 예정)</i>",
+                "• 📋 <b>[오늘 밤 미국장 매수 대기 예정 후보 (전 섹터 퀀트 다각화: 대형 3선 : 중소형 3선 [1:1])]</b>"
             ]
+            try:
+                from portfolio.selector import select_balanced_portfolio_buys
+                from strategies import htp_momentum, sniper, sepa_pivot, swing, stage2_revival
+                us_cands = []
+                try: us_cands.extend(htp_momentum.run_analysis())
+                except Exception: pass
+                try: us_cands.extend(sniper.run_analysis("US"))
+                except Exception: pass
+                try: us_cands.extend(sepa_pivot.run_analysis("US"))
+                except Exception: pass
+                try: us_cands.extend(swing.run_analysis("US"))
+                except Exception: pass
+                try: us_cands.extend(stage2_revival.run_analysis())
+                except Exception: pass
+
+                best_us = select_balanced_portfolio_buys(us_cands, current_holdings=[], market="US", target_total=6, target_large=3, target_mid=3)
+                if best_us:
+                    for idx, b in enumerate(best_us, 1):
+                        t = b.get("ticker", "")
+                        nm = b.get("name", t)
+                        cap = b.get("cap_size", "대형주")
+                        sec = b.get("sector", "전략모멘텀")
+                        strats = ", ".join(b.get("strategies", []))
+                        alt = US_BACKUP_ALTERNATIVES.get(t)
+                        alt_str = f" ➔ 🥈 2순위 대체: {alt['name']} ({alt['ticker']})" if alt else ""
+                        prefix = "   ├" if idx < len(best_us) else "   └"
+                        waiting_lines.append(f"{prefix} 🎯 <b>[{cap}/{sec}] {nm} ({t})</b>{alt_str} (전략: {strats})")
+                    return waiting_lines
+            except Exception:
+                pass
+            return waiting_lines
 
     is_kr = market.upper() in ("KRX", "KR", "KOR")
     new_tickers = new_tickers or set()
