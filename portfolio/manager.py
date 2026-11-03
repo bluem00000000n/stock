@@ -73,10 +73,7 @@ def update_holdings_prices(market: str = "KRX") -> List[Dict[str, Any]]:
 
 
 STANDALONE_PROJECT_IDS = {
-    "stock-us3x", "us3x",
-    "stock-stage2-revival", "stage2_revival",
-    "signal_forge_alert", "signal-forge-alert", "signal_forge",
-    "stock-cyclical-screener", "cyclical"
+    "stock-us3x", "us3x"
 }
 
 

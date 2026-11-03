@@ -18,49 +18,47 @@ from core.market_data import fetch_krx_price, fetch_us_price
 
 WATCHLIST = {
     "KR_LARGE": [
-        {"name": "유한양행", "code": "000100", "market": "코스피", "pivot": 78000, "stop": 72500, "turtle_stop": 73000, "farley_swing": "20주선 위 렉라자 VCP 돌파 직전", "pattern": "Cup with Handle", "score": 99, "theme": "렉라자(레이저티닙) 글로벌 FDA 상업화 랠리"},
-        {"name": "현대글로비스", "code": "086280", "market": "코스피", "pivot": 204000, "stop": 191000, "turtle_stop": 193000, "farley_swing": "20주선 지지 및 RSI 골든크로스 돌파", "pattern": "Flat Base", "score": 97, "theme": "완성차 해상운송 글로벌 물류 신고가"},
-        {"name": "SK하이닉스", "code": "000660", "market": "코스피", "pivot": 1420000, "stop": 1330000, "turtle_stop": 1340000, "farley_swing": "첫 1시간 ORB 돌파 감시", "pattern": "Ascending Triangle", "score": 98, "theme": "HBM3E/HBM4 독점 공급"},
-        {"name": "HD현대일렉트릭", "code": "267260", "market": "코스피", "pivot": 435000, "stop": 405000, "turtle_stop": 410000, "farley_swing": "플랫베이스 지지 반등 스윙", "pattern": "Flat Base", "score": 98, "theme": "북미 초고압 변압기 쇼티지"},
+        {"name": "삼성E&A", "code": "028050", "market": "코스피", "pivot": 62000, "stop": 57600, "turtle_stop": 58500, "farley_swing": "20일선 지지 52주 신고가 VCP 돌파", "pattern": "Cup with Handle", "score": 99, "theme": "친환경 플랜트 및 대형 EPC 글로벌 수주 랠리"},
+        {"name": "삼성화재", "code": "000810", "market": "코스피", "pivot": 660000, "stop": 615000, "turtle_stop": 625000, "farley_swing": "신고가 박스권 돌파 양매수", "pattern": "Flat Base", "score": 98, "theme": "밸류업 및 역대 최대 순이익 주주환원"},
+        {"name": "셀트리온", "code": "068270", "market": "코스피", "pivot": 192000, "stop": 181000, "turtle_stop": 183000, "farley_swing": "20주선 위 VCP 매물 소화 후 돌파", "pattern": "Ascending Triangle", "score": 98, "theme": "짐펜트라 미국 PBM 등재 및 바이오시밀러 초고성장"},
+        {"name": "KT&G", "code": "033780", "market": "코스피", "pivot": 194000, "stop": 182000, "turtle_stop": 184000, "farley_swing": "신고가 안착 우상향 스윙", "pattern": "High Tight Flag", "score": 97, "theme": "글로벌 NGP 전자담배 랠리 및 밸류업 프로그램"},
     ],
     "KR_MID": [
-        {"name": "케이아이엔엑스", "code": "093320", "market": "코스닥", "pivot": 175000, "stop": 161000, "turtle_stop": 164000, "farley_swing": "과천 IDC 하이타이트 플래그 돌파", "pattern": "High Tight Flag", "score": 99, "theme": "과천 AI IDC 본격 가동 및 52주 신고가 우상향"},
-        {"name": "피에스케이홀딩스", "code": "031980", "market": "코스닥", "pivot": 170000, "stop": 158000, "turtle_stop": 160000, "farley_swing": "VCP 3차 수축 돌파", "pattern": "VCP", "score": 98, "theme": "HBM 패키징 디스컴 장비 독점력"},
-        {"name": "산일전기", "code": "075950", "market": "코스피", "pivot": 68000, "stop": 63200, "turtle_stop": 64200, "farley_swing": "Strong Close 안착 스윙", "pattern": "Bull Flag", "score": 96, "theme": "북미 특수변압기 직납 고성장"},
-        {"name": "라온시큐어", "code": "042510", "market": "코스닥", "pivot": 19000, "stop": 17500, "turtle_stop": 17800, "farley_swing": "52주 신고가 스나이퍼 수급 분출", "pattern": "Ascending Triangle", "score": 96, "theme": "글로벌 생체인증/양자암호 주도 수급"},
+        {"name": "케이아이엔엑스", "code": "093320", "market": "코스닥", "pivot": 176000, "stop": 164000, "turtle_stop": 166000, "farley_swing": "과천 IDC 하이타이트 플래그 돌파", "pattern": "High Tight Flag", "score": 99, "theme": "과천 AI IDC 본격 가동 및 52주 신고가 우상향"},
+        {"name": "안랩", "code": "053800", "market": "코스닥", "pivot": 115000, "stop": 104000, "turtle_stop": 106000, "farley_swing": "보안 대장주 52주 신고가 VCP 돌파", "pattern": "VCP", "score": 98, "theme": "차세대 클라우드/AI 보안 솔루션 수급 분출"},
+        {"name": "티에프이", "code": "425420", "market": "코스닥", "pivot": 79000, "stop": 73000, "turtle_stop": 74500, "farley_swing": "테스트 소켓 2차 파동 돌파", "pattern": "Bull Flag", "score": 97, "theme": "AI 반도체 테스트 소켓 국산화 선도"},
+        {"name": "타이거일렉", "code": "219130", "market": "코스닥", "pivot": 96000, "stop": 89000, "turtle_stop": 90500, "farley_swing": "인쇄회로기판 초강세 52주 신고가", "pattern": "Ascending Triangle", "score": 96, "theme": "고다층 초고밀도 반도체 검사용 기판 공급확대"},
     ],
     "US_LARGE": [
-        {"ticker": "NVDA", "name": "Nvidia", "market": "NASDAQ", "sector": "Information Technology", "pivot": 144.0, "stop": 135.3, "turtle_stop": 137.7, "farley_swing": "첫 1시간 ORB 돌파 감시", "pattern": "Ascending Triangle", "score": 98, "theme": "블랙웰 B200 풀캐파 가동"},
-        {"ticker": "LLY", "name": "Eli Lilly", "market": "NYSE", "sector": "Healthcare", "pivot": 930.0, "stop": 870.0, "turtle_stop": 880.0, "farley_swing": "20일선 지지 젭바운드 글로벌 랠리", "pattern": "Cup with Handle", "score": 98, "theme": "GLP-1 비만/당뇨 치료제 글로벌 1위 공급확대"},
-        {"ticker": "GE", "name": "GE Aerospace", "market": "NYSE", "sector": "Industrials", "pivot": 190.0, "stop": 178.0, "turtle_stop": 180.0, "farley_swing": "200일선 상단 52주 신고가 안착", "pattern": "High Tight Flag", "score": 97, "theme": "항공우주 엔진 및 애프터마켓 수주 폭발"},
-        {"ticker": "COST", "name": "Costco", "market": "NASDAQ", "sector": "Consumer Staples", "pivot": 920.0, "stop": 865.0, "turtle_stop": 875.0, "farley_swing": "플랫베이스 지지 우상향 스윙", "pattern": "Flat Base", "score": 96, "theme": "글로벌 멤버십 갱신율 93% 초우량 펀더멘털"},
-        {"ticker": "PLTR", "name": "Palantir", "market": "NYSE", "sector": "Information Technology", "pivot": 65.0, "stop": 61.0, "turtle_stop": 61.8, "farley_swing": "Strong Close 초고속 모멘텀", "pattern": "High Tight Flag", "score": 99, "theme": "AIP 엔터프라이즈 폭발적 수요"},
-        {"ticker": "AVGO", "name": "Broadcom", "market": "NASDAQ", "sector": "Information Technology", "pivot": 192.0, "stop": 180.4, "turtle_stop": 183.2, "farley_swing": "베이스 돌파 첫 1시간 ORB", "pattern": "Flat Base", "score": 97, "theme": "커스텀 AI ASIC & 네트워킹"},
-        {"ticker": "JPM", "name": "JPMorgan Chase", "market": "NYSE", "sector": "Financials", "pivot": 225.0, "stop": 210.0, "turtle_stop": 212.0, "farley_swing": "신고가 박스권 돌파", "pattern": "Flat Base", "score": 95, "theme": "순이자이익 및 글로벌 IB 수수료 호조"},
-        {"ticker": "XOM", "name": "ExxonMobil", "market": "NYSE", "sector": "Energy", "pivot": 125.0, "stop": 116.0, "turtle_stop": 118.0, "farley_swing": "200일선 지지 반등", "pattern": "Cup with Handle", "score": 94, "theme": "에너지 메이저 현금흐름 및 자사주 매입"}
+        {"ticker": "LLY", "name": "Eli Lilly", "market": "NYSE", "sector": "Healthcare", "pivot": 1420.0, "stop": 1330.0, "turtle_stop": 1350.0, "farley_swing": "20일선 지지 젭바운드 글로벌 랠리", "pattern": "Cup with Handle", "score": 99, "theme": "GLP-1 비만/당뇨 치료제 글로벌 1위 공급확대"},
+        {"ticker": "COST", "name": "Costco", "market": "NASDAQ", "sector": "Consumer Staples", "pivot": 1050.0, "stop": 980.0, "turtle_stop": 995.0, "farley_swing": "플랫베이스 지지 우상향 스윙", "pattern": "Flat Base", "score": 98, "theme": "글로벌 멤버십 갱신율 93% 초우량 펀더멘털"},
+        {"ticker": "XOM", "name": "ExxonMobil", "market": "NYSE", "sector": "Energy", "pivot": 182.0, "stop": 170.0, "turtle_stop": 172.0, "farley_swing": "200일선 지지 반등 52주 신고가권", "pattern": "Cup with Handle", "score": 97, "theme": "에너지 메이저 막대한 현금흐름 및 자사주 매입"},
+        {"ticker": "JPM", "name": "JPMorgan Chase", "market": "NYSE", "sector": "Financials", "pivot": 345.0, "stop": 320.0, "turtle_stop": 325.0, "farley_swing": "신고가 박스권 돌파", "pattern": "Flat Base", "score": 97, "theme": "순이자이익 및 글로벌 IB 수수료 호조"},
+        {"ticker": "NVDA", "name": "Nvidia", "market": "NASDAQ", "sector": "Information Technology", "pivot": 205.0, "stop": 190.0, "turtle_stop": 193.0, "farley_swing": "첫 1시간 ORB 돌파 감시", "pattern": "Ascending Triangle", "score": 98, "theme": "블랙웰 B200 풀캐파 가동"},
+        {"ticker": "PLTR", "name": "Palantir", "market": "NYSE", "sector": "Information Technology", "pivot": 180.0, "stop": 165.0, "turtle_stop": 168.0, "farley_swing": "Strong Close 초고속 모멘텀", "pattern": "High Tight Flag", "score": 98, "theme": "AIP 엔터프라이즈 폭발적 수요"},
+        {"ticker": "WMT", "name": "Walmart", "market": "NYSE", "sector": "Consumer Staples", "pivot": 129.0, "stop": 121.0, "turtle_stop": 123.0, "farley_swing": "신고가 안착 우상향 스윙", "pattern": "Flat Base", "score": 96, "theme": "글로벌 이커머스 및 광고 매출 폭발"},
+        {"ticker": "MCK", "name": "McKesson", "market": "NYSE", "sector": "Healthcare", "pivot": 1010.0, "stop": 940.0, "turtle_stop": 955.0, "farley_swing": "200일선 상단 52주 신고가 안착", "pattern": "High Tight Flag", "score": 96, "theme": "의약품 유통 및 바이오 솔루션 안정적 성장"}
     ],
     "US_MID": [
-        {"ticker": "TMDX", "name": "TransMedics", "market": "NASDAQ", "sector": "Healthcare", "pivot": 145.0, "stop": 133.0, "turtle_stop": 135.0, "farley_swing": "장기이식 OCS 독점 2차 돌파", "pattern": "High Tight Flag", "score": 98, "theme": "장기 보존 이식 시스템 독점 및 자체 항공물류"},
-        {"ticker": "POWL", "name": "Powell Industries", "market": "NASDAQ", "sector": "Industrials", "pivot": 154.0, "stop": 142.0, "turtle_stop": 144.0, "farley_swing": "전력 인프라 VCP 돌파", "pattern": "VCP", "score": 98, "theme": "AI 데이터센터 및 변전소 배전 장비 수주잔고 급증"},
-        {"ticker": "VRT", "name": "Vertiv Holdings", "market": "NYSE", "sector": "Industrials", "pivot": 115.0, "stop": 105.0, "turtle_stop": 107.0, "farley_swing": "액체냉각 신고가 스윙", "pattern": "Bull Flag", "score": 97, "theme": "하이퍼스케일 AI 데이터센터 액체냉각 솔루션 1위"},
-        {"ticker": "APP", "name": "AppLovin", "market": "NASDAQ", "sector": "Information Technology", "pivot": 220.0, "stop": 204.6, "turtle_stop": 208.6, "farley_swing": "신고가 스윙 모멘텀", "pattern": "High Tight Flag", "score": 99, "theme": "AXON 2.0 AI 애드테크 초고성장"},
-        {"ticker": "ROOT", "name": "Root Inc", "market": "NASDAQ", "sector": "Financials", "pivot": 85.0, "stop": 76.0, "turtle_stop": 78.0, "farley_swing": "턴어라운드 흑자전환 돌파", "pattern": "Cup with Handle", "score": 96, "theme": "AI 머신러닝 자동차보험 흑자전환 턴어라운드"},
-        {"ticker": "ALAB", "name": "Astera Labs", "market": "NASDAQ", "sector": "Information Technology", "pivot": 88.5, "stop": 82.3, "turtle_stop": 83.7, "farley_swing": "신고가 스윙 모멘텀", "pattern": "High Tight Flag", "score": 98, "theme": "PCIe 6.0/CXL 리타이머 독점"},
-        {"ticker": "KNSA", "name": "Kiniksa Pharma", "market": "NASDAQ", "sector": "Healthcare", "pivot": 84.0, "stop": 78.0, "turtle_stop": 79.0, "farley_swing": "자가면역 2단계 플랫베이스 돌파", "pattern": "Flat Base", "score": 95, "theme": "심혈관/자가면역 질환 아칼리스텝 라이선스 고성장"}
+        {"ticker": "CRWD", "name": "CrowdStrike", "market": "NASDAQ", "sector": "Information Technology", "pivot": 245.0, "stop": 228.0, "turtle_stop": 232.0, "farley_swing": "팔콘 플랫폼 신고가 스윙 모멘텀", "pattern": "High Tight Flag", "score": 99, "theme": "차세대 엔드포인트 보안 플랫폼 1위"},
+        {"ticker": "PANW", "name": "Palo Alto Networks", "market": "NASDAQ", "sector": "Information Technology", "pivot": 355.0, "stop": 330.0, "turtle_stop": 335.0, "farley_swing": "보안 플랫폼 통합 VCP 돌파", "pattern": "VCP", "score": 98, "theme": "차세대 방화벽 및 클라우드 보안 독점"},
+        {"ticker": "SPOT", "name": "Spotify", "market": "NYSE", "sector": "Communication Services", "pivot": 600.0, "stop": 560.0, "turtle_stop": 570.0, "farley_swing": "신고가 박스권 돌파", "pattern": "High Tight Flag", "score": 98, "theme": "글로벌 유료 구독자 급증 및 영업이익률 레버리지"},
+        {"ticker": "CAH", "name": "Cardinal Health", "market": "NYSE", "sector": "Healthcare", "pivot": 256.0, "stop": 240.0, "turtle_stop": 243.0, "farley_swing": "플랫베이스 지지 돌파", "pattern": "Flat Base", "score": 96, "theme": "글로벌 제약 유통 및 특수 의약품 고성장"},
+        {"ticker": "COR", "name": "Cencora", "market": "NYSE", "sector": "Healthcare", "pivot": 340.0, "stop": 318.0, "turtle_stop": 322.0, "farley_swing": "52주 신고가권 안착 스윙", "pattern": "Bull Flag", "score": 96, "theme": "글로벌 헬스케어 유통 과점 지배력"}
     ]
 }
 
 
 def verify_minervini_trend_template(code: str, cur_price: float) -> bool:
     """마크 미너비니 2단계 상승 국면(Stage 2 Uptrend) 트렌드 템플릿 필터
-    - 밑으로 깔리는 종목(역배열, 50일선 이탈, 고점 대비 -28% 초과 낙폭) 엄격 배제
+    - 밑으로 깔리는 종목(역배열, 60일선 이탈, 고점 대비 -20% 초과 낙폭) 엄격 배제
     - 신고가 근처에서 노는 주도주(Leader)만 통과 (특정 종목 하드코딩 배제 완전 제거)
     """
     if cur_price <= 0:
         return False
     try:
         import urllib.request, xml.etree.ElementTree as ET
-        url = f"https://fchart.stock.naver.com/sise.nhn?symbol={code}&timeframe=day&count=60&requestType=0"
+        url = f"https://fchart.stock.naver.com/sise.nhn?symbol={code}&timeframe=day&count=120&requestType=0"
         req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
         with urllib.request.urlopen(req, timeout=3) as resp:
             xml_data = resp.read().decode("euc-kr", errors="ignore")
@@ -68,12 +66,13 @@ def verify_minervini_trend_template(code: str, cur_price: float) -> bool:
             items = root.findall(".//item")
             if len(items) >= 40:
                 closes = [int(it.attrib.get("data", "").split("|")[4]) for it in items]
-                ma50 = sum(closes[-50:]) / len(closes[-50:])
-                h_period = max(closes)
-                pct_h = (cur_price - h_period) / h_period
-                if pct_h < -0.28:
+                highs = [int(it.attrib.get("data", "").split("|")[2]) for it in items]
+                ma60 = sum(closes[-60:]) / len(closes[-60:])
+                h_period = max(highs)
+                pct_h = ((cur_price - h_period) / h_period) * 100
+                if pct_h < -20.0:
                     return False
-                if cur_price < ma50 * 0.95:
+                if cur_price < ma60:
                     return False
     except Exception:
         pass

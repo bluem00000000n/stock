@@ -576,37 +576,9 @@ def sync_stock_cyclical(conn):
             active = pos_data.get("active_positions", {})
             closed = pos_data.get("closed_positions", [])
 
-            # 활성 포지션 동기화
-            for code, pos in active.items():
-                cur = conn.cursor()
-                cur.execute("SELECT id, status FROM trades WHERE project_id = 'stock-cyclical-screener' AND ticker = ?", (code,))
-                row = cur.fetchone()
-                if row:
-                    if row["status"] == "HOLDING":
-                        conn.execute("""
-                        UPDATE trades SET
-                            current_price = ?,
-                            return_pct = ?,
-                            target_price = ?,
-                            stop_loss_price = ?,
-                            updated_at = ?
-                        WHERE id = ?
-                        """, (pos["current_price"], pos["return_pct"], pos["target_price"], pos["stop_price"], now, row["id"]))
-                else:
-                    conn.execute("""
-                    INSERT INTO trades (
-                        project_id, project_name, ticker, name, market,
-                        signal_type, signal_date, entry_price, entry_date,
-                        current_price, exit_price, exit_date, status, return_pct,
-                        target_price, stop_loss_price, notes, updated_at
-                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                    """, (
-                        "stock-cyclical-screener", "stock-cyclical-screener", code, pos["name"], "KRX",
-                        "시클리컬_바닥매수", pos["entry_date"], pos["entry_price"], pos["entry_date"],
-                        pos["current_price"], None, None, "HOLDING", pos["return_pct"],
-                        pos["target_price"], pos["stop_price"], pos.get("reason", "PBR 바닥 자율 매수"), now
-                    ))
-                count += 1
+            # 활성 포지션: trades 테이블에 강제 HOLDING 주입하지 않고 시그널 아카이브로만 관리
+            # (포트폴리오 HOLDING은 portfolio/manager.py 및 Stage 2 트렌드 템플릿 필터 통과 종목만 편입)
+            pass
 
             # 청산 포지션 동기화
             for c in closed:

@@ -105,15 +105,13 @@ def get_holding_strategy_key(h: Dict[str, Any], market: str = "KRX") -> str:
             return "swing"
         return "htp_momentum"
     else:
-        if "sepa" in pid or "sepa" in notes or ticker in ("000100", "086280", "093320", "031980"):
+        if "sepa" in pid or "sepa" in notes or ticker in ("028050", "093320"):
             return "sepa_pivot"
-        if "sniper" in pid or "스나이퍼" in notes or ticker in ("000660", "042510", "042700"):
+        if "sniper" in pid or "스나이퍼" in notes or ticker in ("000810", "068270"):
             return "sniper"
-        if "swing" in pid or "스윙" in notes or ticker in ("267260", "003230"):
+        if "swing" in pid or "스윙" in notes or ticker in ("053800", "425420", "219130", "033780"):
             return "swing"
-        if "cyclical" in pid or "시클리컬" in notes or ticker in ("005490", "004020", "011170", "051915", "018880", "234100"):
-            return "cyclical"
-        if "signal" in pid or "forge" in pid or ticker == "068270":
+        if "signal" in pid or "forge" in pid:
             return "signal_forge"
         return "sniper"
 
@@ -134,29 +132,23 @@ PORTFOLIO_LEGEND = "• <b>수익률 상태 범례:</b> 🟢 수익(+) | 🔵 �
 
 # 1순위 추천/보유 종목 매수 불가 시 즉시 집행하는 2순위 대체 예비 종목 풀
 KR_BACKUP_ALTERNATIVES = {
-    "000100": {"ticker": "086280", "name": "현대글로비스", "cap": "대형", "reason": "1단계 [선발대] 20주선 위 완성차 해상운송 글로벌 물류 신고가 (RSI 49.7 골든크로스)"},
-    "093320": {"ticker": "075950", "name": "산일전기", "cap": "중형", "reason": "1단계 [선발대] AI 데이터센터 변압기 VCP 눌림목 지지 (RSI 40.9)"},
-    "031980": {"ticker": "058470", "name": "리노공업", "cap": "중형", "reason": "1단계 [선발대] 반도체 테스트 소켓 바닥 다지기 (RSI 35.6)"},
-    "000660": {"ticker": "005930", "name": "삼성전자", "cap": "대형", "reason": "1단계 [선발대] 주봉 RSI 43.0 바닥 다지기 & 히스토그램 축소 반등"},
-    "042700": {"ticker": "403870", "name": "HPSP", "cap": "중형", "reason": "1단계 [선발대] 고압 수소 어닐링 독점력 및 RSI 42.8 지지선"},
-    "042510": {"ticker": "042700", "name": "한미반도체", "cap": "중형", "reason": "1단계 [선발대] 외인·기관 양매수 HBM TC본더 스나이퍼 1위"},
-    "267260": {"ticker": "053800", "name": "안랩", "cap": "중형", "reason": "2단계 [대세확증] 주봉 MACD 0선 위 골든크로스 & RSI 75.1 초강세 모멘텀"}
+    "028050": {"ticker": "033780", "name": "KT&G", "cap": "대형", "reason": "Stage 2 [우상향] 52주 신고가 안착 및 밸류업 프로그램 랠리"},
+    "000810": {"ticker": "068270", "name": "셀트리온", "cap": "대형", "reason": "Stage 2 [우상향] 짐펜트라 미국 PBM 등재 확대 및 기관 쌍끌이 매수"},
+    "068270": {"ticker": "000810", "name": "삼성화재", "cap": "대형", "reason": "Stage 2 [우상향] 역대 최대 순이익 밸류업 대장주 및 외인 집중 순매수"},
+    "093320": {"ticker": "219130", "name": "타이거일렉", "cap": "중형", "reason": "Stage 2 [우상향] 고다층 초고밀도 검사용 기판 공급확대 52주 신고가"},
+    "053800": {"ticker": "425420", "name": "티에프이", "cap": "중형", "reason": "Stage 2 [우상향] AI 고성능 반도체 테스트 소켓 국산화 선도"},
+    "425420": {"ticker": "219130", "name": "타이거일렉", "cap": "중형", "reason": "Stage 2 [우상향] 인쇄회로기판 수급 분출 및 신고가 돌파"}
 }
 
 US_BACKUP_ALTERNATIVES = {
-    "NVDA": {"ticker": "META", "name": "메타 플랫폼스", "cap": "대형", "reason": "2단계 [대세확증] 빅테크 커뮤니케이션/AI HTP 상위"},
-    "LLY": {"ticker": "TMDX", "name": "트랜스메딕스", "cap": "중형", "reason": "2단계 [대세확증] 헬스케어 메가트렌드 장기이식 독점 OCS 기술력"},
-    "GE": {"ticker": "CAT", "name": "캐터필러", "cap": "대형", "reason": "1단계 [선발대] 인프라/중장비 52주 신고가 글로벌 수주 랠리"},
-    "COST": {"ticker": "WMT", "name": "월마트", "cap": "대형", "reason": "1단계 [선발대] 경기방어 필수소비재 52주 신고가 우상향"},
-    "AVGO": {"ticker": "MSFT", "name": "마이크로소프트", "cap": "대형", "reason": "1단계 [선발대] 클라우드 애저(Azure) B2B AI 인프라 안정성"},
-    "JPM": {"ticker": "BRK-B", "name": "버크셔 해서웨이", "cap": "대형", "reason": "1단계 [선발대] 우량 금융/가치주 227선 지지 스윙"},
-    "XOM": {"ticker": "CVX", "name": "쉐브론", "cap": "대형", "reason": "1단계 [선발대] 에너지 배당 및 정제마진 회복"},
-    "POWL": {"ticker": "VRT", "name": "버티브 홀딩스", "cap": "중형", "reason": "2단계 [대세확증] AI 데이터센터 액체냉각 및 전력 인프라 1위"},
-    "MOD": {"ticker": "CRDO", "name": "크레도 테크", "cap": "중형", "reason": "2단계 [대세확증] 데이터센터 고속 연결 부활 파동"},
-    "PLTR": {"ticker": "ALAB", "name": "아스테라 랩스", "cap": "중형", "reason": "2단계 [대세확증] AI PCIe 인터커넥트 VCP 돌파 1위"},
-    "APP": {"ticker": "RDDT", "name": "레딧", "cap": "중형", "reason": "2단계 [대세확증] AI 데이터 라이선싱 고성장"},
-    "ROOT": {"ticker": "CPAY", "name": "코페이", "cap": "대형", "reason": "1단계 [선발대] 핀테크/금융 지지 스윙"},
-    "TMDX": {"ticker": "KNSA", "name": "키닉사 파마", "cap": "중형", "reason": "2단계 [대세확증] 자가면역 질환 라이선스 고성장"}
+    "LLY": {"ticker": "COST", "name": "코스트코", "cap": "대형", "reason": "Stage 2 [우상향] 멤버십 갱신율 93% 초우량 52주 신고가"},
+    "COST": {"ticker": "WMT", "name": "월마트", "cap": "대형", "reason": "Stage 2 [우상향] 경기방어 필수소비재 52주 신고가 우상향"},
+    "XOM": {"ticker": "JPM", "name": "JP모건 체이스", "cap": "대형", "reason": "Stage 2 [우상향] 순이자이익 견조 및 글로벌 IB 자문 호조"},
+    "JPM": {"ticker": "XOM", "name": "엑손모빌", "cap": "대형", "reason": "Stage 2 [우상향] 에너지 메이저 막대한 현금흐름 및 자사주 매입"},
+    "NVDA": {"ticker": "PLTR", "name": "팔란티어", "cap": "대형", "reason": "Stage 2 [우상향] AIP 플랫폼 상용화 급증 S&P500 최상위 모멘텀"},
+    "PLTR": {"ticker": "CRWD", "name": "크라우드스트라이크", "cap": "중형", "reason": "Stage 2 [우상향] 팔콘 차세대 보안 플랫폼 52주 신고가 회복"},
+    "CRWD": {"ticker": "PANW", "name": "팔로알토 네트웍스", "cap": "중형", "reason": "Stage 2 [우상향] 통합 사이버보안 플랫폼 VCP 수축 후 박스권 상단 돌파"},
+    "PANW": {"ticker": "SPOT", "name": "스포티파이", "cap": "중형", "reason": "Stage 2 [우상향] 글로벌 유료 구독자 급증 52주 신고가 랠리"}
 }
 
 
@@ -347,10 +339,10 @@ def build_standalone_tracks_block(section_no: int = 5) -> str:
     """
     [단독 독립 운용 트랙 블록]
     - 코어 6종목 포트폴리오 N수에 포함되지 않는 독립 계좌/단독 운용 트랙
-    1. 📡 [단독: Signal Forge AI 레이더] : 셀트리온(068270) 보유 포지션 및 25대 퀀트 실시간 매수 타깃
-    2. 🌱 [단독: 중소형 2차 파동 부활] : 파월 인더스트리스(POWL), 모딘 매뉴팩처링(MOD)
+    1. 📡 [단독: Signal Forge AI 레이더] : 25대 퀀트 실시간 매수 타깃
+    2. 🌱 [단독: 중소형 2차 파동 부활] : Stage 2 부활 모멘텀
     3. ⚡ [단독: US 3X 레버리지] : ProShares UltraPro QQQ (TQQQ) 무한매수 분할적립
-    4. 🔄 [단독: 시클리컬 턴어라운드] : PBR 역사적 바닥 역발상 퀀트 (POSCO홀딩스, LG화학우 등 6대 시클리컬)
+    4. 🔄 [단독: 시클리컬 턴어라운드] : 극단 저평가 턴어라운드 모니터링
     """
     lines = []
     lines.append(f"\n━━━━━━━━━━━━━━━━━━━━━━━━━")
@@ -364,9 +356,11 @@ def build_standalone_tracks_block(section_no: int = 5) -> str:
             conn.row_factory = sqlite3.Row
             rows = conn.execute("""
                 SELECT * FROM trades 
-                WHERE status = 'HOLDING' AND (
-                    LOWER(project_id) IN ('signal_forge_alert', 'signal-forge-alert', 'signal_forge', 'stock-stage2-revival', 'stage2_revival', 'stock-us3x', 'us3x', 'stock-cyclical-screener', 'cyclical')
-                    OR ticker IN ('068270', 'POWL', 'MOD', 'TQQQ', '005490', '051915', '018880', '011170', '004020', '234100')
+                WHERE status = 'HOLDING' AND LOWER(project_id) IN (
+                    'signal_forge_alert', 'signal-forge-alert', 'signal_forge',
+                    'stock-stage2-revival', 'stage2_revival',
+                    'stock-us3x', 'us3x',
+                    'stock-cyclical-screener', 'cyclical'
                 )
                 ORDER BY id ASC
             """).fetchall()
@@ -375,7 +369,7 @@ def build_standalone_tracks_block(section_no: int = 5) -> str:
         standalone_trades = []
 
     # 1. Signal Forge AI 레이더
-    sf_holdings = [t for t in standalone_trades if t.get("ticker") == "068270" or "signal" in (t.get("project_id") or "").lower()]
+    sf_holdings = [t for t in standalone_trades if "signal" in (t.get("project_id") or "").lower()]
     lines.append("\n📡 <b>[단독: Signal Forge AI 레이더]</b> (25대 퀀트 매크로 & 실시간 레이더)")
     if sf_holdings:
         for h in sf_holdings:
@@ -403,7 +397,7 @@ def build_standalone_tracks_block(section_no: int = 5) -> str:
             lines.append(f"    └ <i>포착 근거:</i> {t['reason']}")
 
     # 2. 중소형 2차 파동 부활
-    s2_holdings = [t for t in standalone_trades if t.get("ticker") in ("POWL", "MOD") or "stage2" in (t.get("project_id") or "").lower()]
+    s2_holdings = [t for t in standalone_trades if "stage2" in (t.get("project_id") or "").lower() or "revival" in (t.get("project_id") or "").lower()]
     lines.append("\n🌱 <b>[단독: 중소형 2차 파동 부활]</b> (10배주 라이프사이클 실적 퀀텀점프)")
     if s2_holdings:
         for h in s2_holdings:
@@ -424,7 +418,7 @@ def build_standalone_tracks_block(section_no: int = 5) -> str:
         lines.append(" • <i>현재 부활 전략 편입 대기 중</i>")
 
     # 3. US 3X 레버리지
-    us3x_holdings = [t for t in standalone_trades if t.get("ticker") in ("TQQQ", "SOXL", "UPRO") or "3x" in (t.get("project_id") or "").lower()]
+    us3x_holdings = [t for t in standalone_trades if "3x" in (t.get("project_id") or "").lower()]
     lines.append("\n⚡ <b>[단독: US 3X 레버리지]</b> (나스닥 100 무한매수 분할 적립)")
     if us3x_holdings:
         for h in us3x_holdings:
@@ -445,8 +439,8 @@ def build_standalone_tracks_block(section_no: int = 5) -> str:
         lines.append(" • <i>현재 3X 레버리지 편입 대기 중</i>")
 
     # 4. 시클리컬 턴어라운드 (단독 독립 운용 트랙)
-    cyc_holdings = [t for t in standalone_trades if "cyclical" in (t.get("project_id") or "").lower() or t.get("ticker") in ("005490", "051915", "018880", "011170", "004020", "234100")]
-    lines.append(f"\n🔄 <b>[단독: 시클리컬 턴어라운드]</b> (역사적 PBR 바닥 역발상 퀀트 - 6대 섹터 턴어라운드 {len(cyc_holdings)}선)")
+    cyc_holdings = [t for t in standalone_trades if "cyclical" in (t.get("project_id") or "").lower()]
+    lines.append(f"\n🔄 <b>[단독: 시클리컬 턴어라운드]</b> (역사적 PBR 바닥 역발상 퀀트)")
     if cyc_holdings:
         for h in cyc_holdings:
             ticker = h.get("ticker", "")
@@ -467,7 +461,7 @@ def build_standalone_tracks_block(section_no: int = 5) -> str:
                 if clean_notes:
                     lines.append(f"    └ <i>PBR/턴어라운드 근거:</i> {clean_notes}")
     else:
-        lines.append(" • <i>현재 시클리컬 포지션 없음 (모니터링 중)</i>")
+        lines.append(" • <i>현재 시클리컬 포지션 없음 (Stage 2 추세추종 원칙에 따라 우하향 역배열 종목 배제)</i>")
 
     return "\n".join(lines)
 

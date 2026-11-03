@@ -15,7 +15,7 @@ US_MEGA_LARGE_TICKERS = {
     "NVDA", "MSFT", "AAPL", "AMZN", "GOOG", "GOOGL", "META", "TSLA",
     "AVGO", "BRK-B", "XOM", "LLY", "TSM", "JNJ", "JPM", "V", "WMT",
     "PG", "UNH", "MA", "HD", "CVX", "MRK", "COST", "ABBV", "FTNT",
-    "FFIV", "CAT", "MRNA", "VRSN", "CRL"
+    "FFIV", "CAT", "MRNA", "VRSN", "CRL", "MCK"
 }
 
 # 한국장 코스피 우량 대형주 집합
@@ -23,7 +23,7 @@ KR_LARGE_CODES = {
     "005930", "000660", "005380", "000270", "068270", "005490", "035420",
     "033780", "011200", "028050", "051910", "051915", "000150", "222800",
     "003160", "012450", "003230", "267260", "029780", "004370", "004020",
-    "011170", "018880", "017670"
+    "011170", "018880", "017670", "000810"
 }
 
 
@@ -32,15 +32,15 @@ def classify_cap_size(ticker: str, name: str = "", sector: str = "", market: str
     is_kr = market.upper() in ("KRX", "KR", "KOR")
     if is_kr:
         clean_code = ticker.strip().zfill(6)
-        if clean_code in ("000660", "012450", "267260"):
+        if clean_code in ("000660", "012450", "267260", "000810", "028050", "068270"):
             return "대형주"
-        if clean_code in ("196170", "003230", "042510"):
+        if clean_code in ("196170", "003230", "042510", "093320", "053800", "425420", "219130"):
             return "중소형주"
 
         mid_priority_codes = {
             "003230", "196170", "403870", "425420", "053800", "093320", "042510",
             "036930", "161580", "080220", "000250", "042700", "075950",
-            "033100", "031980", "441270", "295310", "253590", "087800"
+            "033100", "031980", "441270", "295310", "253590", "087800", "219130"
         }
         if clean_code in mid_priority_codes:
             return "중소형주"
@@ -51,16 +51,16 @@ def classify_cap_size(ticker: str, name: str = "", sector: str = "", market: str
         clean_tick = ticker.upper().strip()
         if clean_tick in ("TQQQ", "TECL", "SOXL", "FAS", "UPRO", "FNGU"):
             return "3X 레버리지"
-        if clean_tick in ("NVDA", "PLTR", "AVGO", "AAPL", "MSFT", "AMZN", "GOOGL", "META", "TSLA", "LLY"):
+        if clean_tick in ("NVDA", "PLTR", "AVGO", "AAPL", "MSFT", "AMZN", "GOOGL", "META", "TSLA", "LLY", "COST", "XOM", "JPM", "WMT", "MCK"):
             return "대형주"
-        if clean_tick in ("POWL", "MOD", "TMDX", "ROOT", "SKWD"):
+        if clean_tick in ("POWL", "MOD", "TMDX", "ROOT", "SKWD", "CRWD", "PANW", "SPOT", "CAH", "COR"):
             return "중소형주"
 
         # 중소형/모멘텀주 우선 분류
         mid_priority_us = {
             "APP", "CRWD", "ALAB", "TECH", "CPAY", "RDDT", "CRDO",
             "CROX", "ADT", "BHC", "PRCH", "NCLH", "PURR", "MESO", "OPCH",
-            "NSIT", "XNCR", "CBRL"
+            "NSIT", "XNCR", "CBRL", "PANW", "SPOT", "CAH", "COR"
         }
         if clean_tick in mid_priority_us:
             return "중소형주"
@@ -118,6 +118,105 @@ STRATEGY_WEIGHT_MULTIPLIERS = {
     "cyclical": 1.05
 }
 
+# ==============================================================================
+# 마크 미너비니 2단계 상승 국면(Stage 2 Uptrend) 트렌드 템플릿 하드 게이트
+# ==============================================================================
+_STAGE2_CACHE: Dict[str, bool] = {}
+
+def verify_stage2_trend_template(ticker: str, market: str = "KRX", cur_price: float = 0.0) -> bool:
+    """
+    마크 미너비니 2단계 상승 국면(Stage 2 Uptrend) 트렌드 템플릿 하드 게이트:
+    - 우하향, 역배열, 고점 대비 20% 초과 폭락한 역추세/바닥주 원천 배제
+    - 한국장(KRX): 최근 120영업일 기준 고점 대비 -20% 이내, 저점 대비 +15% 이상, 현재가 > MA60
+    - 미국장(US): 52주 신고가 대비 -20% 이내, 52주 최저가 대비 +15% 이상
+    """
+    cache_key = f"{market.upper()}_{ticker.upper()}"
+    if cache_key in _STAGE2_CACHE:
+        return _STAGE2_CACHE[cache_key]
+
+    is_kr = market.upper() in ("KRX", "KR", "KOR")
+    if is_kr:
+        clean_code = ticker.strip().zfill(6)
+        try:
+            import urllib.request, xml.etree.ElementTree as ET
+            url = f"https://fchart.stock.naver.com/sise.nhn?symbol={clean_code}&timeframe=day&count=120&requestType=0"
+            req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+            with urllib.request.urlopen(req, timeout=4) as resp:
+                xml_data = resp.read().decode("euc-kr", errors="ignore")
+                root = ET.fromstring(xml_data)
+                items = root.findall(".//item")
+                if len(items) >= 40:
+                    closes = [int(it.attrib.get("data", "").split("|")[4]) for it in items]
+                    highs = [int(it.attrib.get("data", "").split("|")[2]) for it in items]
+                    lows = [int(it.attrib.get("data", "").split("|")[3]) for it in items]
+
+                    price = cur_price if cur_price > 0 else closes[-1]
+                    ma60 = sum(closes[-60:]) / len(closes[-60:])
+                    ma120 = sum(closes[-120:]) / len(closes)
+                    h_max = max(highs)
+                    l_min = min(lows)
+
+                    pct_from_high = ((price - h_max) / h_max) * 100
+                    pct_from_low = ((price - l_min) / l_min) * 100
+
+                    # 1. 고점 대비 낙폭이 -20% 이내 (미너비니 원칙: 주도주는 신고가 근처에서 놂)
+                    # 2. 바닥 탈출 확인 (저점 대비 +15% 이상)
+                    # 3. 60일 이동평균선 상회 (중기 우상향)
+                    # 4. 60선이 120선 대비 극단적 역배열(0.92 미만)이 아닐 것
+                    if pct_from_high < -20.0 or pct_from_low < 15.0 or price < ma60 or ma60 < ma120 * 0.92:
+                        _STAGE2_CACHE[cache_key] = False
+                        return False
+                    _STAGE2_CACHE[cache_key] = True
+                    return True
+        except Exception:
+            pass
+        _STAGE2_CACHE[cache_key] = True
+        return True
+    else:
+        clean_tick = ticker.upper().strip()
+        if clean_tick in ("TQQQ", "SOXL", "TECL", "FNGU", "UPRO"):
+            _STAGE2_CACHE[cache_key] = True
+            return True
+        try:
+            import urllib.request, json
+            for suffix in [".O", ".N", ".K", ""]:
+                url = f"https://api.stock.naver.com/stock/{clean_tick}{suffix}/basic"
+                req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+                try:
+                    with urllib.request.urlopen(req, timeout=3) as resp:
+                        data = json.loads(resp.read().decode("utf-8"))
+                        if not data or "closePrice" not in data:
+                            continue
+                        cur_str = str(data.get("closePrice", "0")).replace(",", "")
+                        price = cur_price if cur_price > 0 else float(cur_str)
+                        if price <= 0:
+                            continue
+                        h52, l52 = 0.0, 0.0
+                        for it in data.get("stockItemTotalInfos", []):
+                            c_key = it.get("code", "")
+                            val_str = str(it.get("value", "0")).replace(",", "").replace("$", "")
+                            if c_key == "highPriceOf52Weeks":
+                                try: h52 = float(val_str)
+                                except: pass
+                            elif c_key == "lowPriceOf52Weeks":
+                                try: l52 = float(val_str)
+                                except: pass
+                        if h52 > 0:
+                            pct_h = ((price - h52) / h52) * 100
+                            pct_l = ((price - l52) / l52) * 100 if l52 > 0 else 50.0
+                            if pct_h < -20.0 or pct_l < 15.0:
+                                _STAGE2_CACHE[cache_key] = False
+                                return False
+                            _STAGE2_CACHE[cache_key] = True
+                            return True
+                except Exception:
+                    continue
+        except Exception:
+            pass
+        _STAGE2_CACHE[cache_key] = True
+        return True
+
+
 # 하락 채널 및 이상 시그널 알고리즘 필터 (특정 종목 하드코딩 배제 제거 -> 수학적 검증)
 def is_valid_signal_candidate(signal: Dict[str, Any]) -> bool:
     price = float(signal.get("price", 0.0))
@@ -127,6 +226,14 @@ def is_valid_signal_candidate(signal: Dict[str, Any]) -> bool:
     sl = float(signal.get("stop_loss_price", 0.0))
     if sl > 0 and sl >= price:
         return False
+
+    ticker = signal.get("ticker", "")
+    market = signal.get("market", "KRX")
+    # 마크 미너비니 2단계 상승 국면(Stage 2 Uptrend) 트렌드 템플릿 필터 적용
+    # 우하향/역배열/고점대비 -20% 초과 낙폭 종목 원천 차단
+    if not verify_stage2_trend_template(ticker, market=market, cur_price=price):
+        return False
+
     return True
 
 
