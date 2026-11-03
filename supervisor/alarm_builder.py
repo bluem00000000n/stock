@@ -105,15 +105,15 @@ def get_holding_strategy_key(h: Dict[str, Any], market: str = "KRX") -> str:
             return "swing"
         return "htp_momentum"
     else:
-        if "sepa" in pid or "sepa" in notes or ticker in ("012450", "093320"):
+        if "sepa" in pid or "sepa" in notes or ticker in ("012450", "093320", "031980"):
             return "sepa_pivot"
-        if "sniper" in pid or "스나이퍼" in notes or ticker in ("000660", "042510"):
+        if "sniper" in pid or "스나이퍼" in notes or ticker in ("000660", "042510", "042700"):
             return "sniper"
         if "swing" in pid or "스윙" in notes or ticker in ("267260", "003230"):
             return "swing"
         if "cyclical" in pid or "시클리컬" in notes or ticker in ("005490", "004020", "011170", "051915", "018880", "234100"):
             return "cyclical"
-        if "signal" in pid or "forge" in pid:
+        if "signal" in pid or "forge" in pid or ticker == "068270":
             return "signal_forge"
         return "sniper"
 
@@ -138,6 +138,7 @@ KR_BACKUP_ALTERNATIVES = {
     "093320": {"ticker": "075950", "name": "산일전기", "cap": "중형", "reason": "AI 데이터센터 특수변압기 VCP 돌파 2순위"},
     "031980": {"ticker": "058470", "name": "리노공업", "cap": "중형", "reason": "반도체 테스트 소켓 글로벌 독점력 및 피봇 지지 2순위"},
     "000660": {"ticker": "005930", "name": "삼성전자", "cap": "대형", "reason": "외인 패시브 수급 전환 1순위 대형주"},
+    "042700": {"ticker": "403870", "name": "HPSP", "cap": "중형", "reason": "고압 수소 어닐링 독점력 및 기관 수급 2순위"},
     "042510": {"ticker": "042700", "name": "한미반도체", "cap": "중형", "reason": "외인·기관 양매수 HBM TC본더 스나이퍼 1위"},
     "267260": {"ticker": "053800", "name": "안랩", "cap": "중형", "reason": "227일선 플랫 지지 스윙 스코어 1위 (119,100원)"}
 }
@@ -210,8 +211,19 @@ def format_strategy_grouped_portfolio(
     보유 포트폴리오를 전략별 그룹 헤더로 명확히 분리하여 미려하고 직관적으로 포맷팅
     """
     if not holdings:
-        empty_msg = "• <i>현재 보유 포지션 없음 (현금 대기)</i>" if market.upper() in ("KRX", "KR") else "• <i>현재 미국장 보유 포지션 없음 (신규 진입 대기)</i>"
-        return [empty_msg]
+        if market.upper() in ("KRX", "KR"):
+            return ["• <i>현재 한국장 보유 포지션 없음 (신규 진입 대기)</i>"]
+        else:
+            return [
+                "• <i>현재 미국장 보유 포지션 없음 (미국장 개장 21:30~22:30 KST 일정에 맞추어 1순위/2순위 자동 분할 매수 집행 및 포트폴리오 업데이트 예정)</i>",
+                "• 📋 <b>[오늘 밤 미국장 매수 대기 예정 리스트 (대형 3선 : 중소형 3선 [1:1])]</b>",
+                "   ├ 🏆 <b>[HTP/대형] 엔비디아 (NVDA)</b> ➔ 🥈 2순위 대체: 메타 플랫폼스 (META)",
+                "   ├ 🏆 <b>[HTP/대형] 브로드컴 (AVGO)</b> ➔ 🥈 2순위 대체: 일라이 릴리 (LLY)",
+                "   ├ 🏆 <b>[HTP/대형] 애플 (AAPL)</b> ➔ 🥈 2순위 대체: 마이크로소프트 (MSFT)",
+                "   ├ 🚀 <b>[SEPA/중형] 팔란티어 (PLTR)</b> ➔ 🥈 2순위 대체: 아스테라 랩스 (ALAB)",
+                "   ├ 🚀 <b>[SEPA/중형] 앱러빈 (APP)</b> ➔ 🥈 2순위 대체: 버티브 홀딩스 (VRT)",
+                "   └ 🛡️ <b>[스윙/대형] 콜페이 (CPAY)</b> ➔ 🥈 2순위 대체: 엑슨모빌 (XOM)"
+            ]
 
     is_kr = market.upper() in ("KRX", "KR", "KOR")
     new_tickers = new_tickers or set()
@@ -673,7 +685,7 @@ def build_1500_kr_close_alarm(
     us_avg_ret = us_stats.get("avg_return_pct", 0.0)
 
     lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
-    lines.append(f"💼 <b>4. 🇺🇸 미국장 코어 실운용 포트폴리오 현황 (정예 {len(us_active)}종목 - 대형 {us_large_c}선 + 중소형 {us_mid_c}선)</b>")
+    lines.append(f"💼 <b>4. 🇺🇸 미국장 코어 실운용 포트폴리오 현황 (정예 {len(us_active)}종목 - 대형 {us_large_c}선 : 중소형 {us_mid_c}선 [1:1 황금밸런스])</b>")
     lines.append(f"• <b>코어 포트폴리오 평균 수익률:</b> <b>{us_avg_ret:+.2f}%</b> (가용 슬롯: {us_stats.get('available_slots', 0)}개)")
     lines.append(PORTFOLIO_LEGEND)
     lines.extend(format_strategy_grouped_portfolio(us_active, market="US", new_tickers=None, is_summary=False))

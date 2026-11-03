@@ -80,6 +80,14 @@ PROJECT_REGISTRY = [
             if os.path.exists(os.path.join(DATA_DIR, "strategies_data", "stock-cyclical-screener", "data", "alerts_history.json"))
             else os.path.join(BASE_DIR, "stock-cyclical-screener/data/alerts_history.json")
         )
+    },
+    {
+        "id": "stock-stage2-revival",
+        "name": "Stage 2 Revival Screener",
+        "market": "USA",
+        "schedule": "Daily 21:30",
+        "source_type": "json",
+        "source_path": os.path.join(DATA_DIR, "strategies_data", "stock-stage2-revival", "monthly_pool.json")
     }
 ]
 

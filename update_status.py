@@ -144,6 +144,23 @@ PROJECTS_META = [
         "local_path": os.path.join(HOME, "stock-cyclical-screener"),
         "log_path": os.path.join(HOME, "stock-cyclical-screener/logs/launchd.stdout.log"),
         "err_log_path": os.path.join(HOME, "stock-cyclical-screener/logs/launchd.stderr.log"),
+    },
+    {
+        "id": "stock-stage2-revival",
+        "name": "stock-stage2-revival",
+        "label": "com.stock-stage2-revival",
+        "category": "US",
+        "flag": "🇺🇸",
+        "type": "Daily Scheduled",
+        "summary": "10배주 라이프사이클 기반 중소형 2차 파동 부활 퀀트 시스템 (POWL, MOD 등)",
+        "schedule_display": "Daily 21:30",
+        "market": "US Russell 2000 & Mid-cap",
+        "strategy": "Stage 2 VCP 돌파 이후 50일선/200일선 지지 2차 파동 부활주 선별 추세추종",
+        "tags": ["Stage 2 Revival", "10X Lifecycle", "Mid-Small Cap", "Trend Following"],
+        "repo": "https://github.com/bluem00000000n/stock-stage2-revival",
+        "local_path": os.path.join(SUPERVISOR_DIR, "data/strategies_data/stock-stage2-revival"),
+        "log_path": os.path.join(HOME, "stock-stage2-revival/logs/launchd.log"),
+        "err_log_path": os.path.join(HOME, "stock-stage2-revival/logs/launchd_err.log"),
     }
 ]
 
