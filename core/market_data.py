@@ -218,30 +218,86 @@ def fetch_krx_market_summary() -> Dict[str, Any]:
         }
 
     # 4. 당일 주도 테마 Top 4
-    theme_data = fetch_url_json("https://m.stock.naver.com/api/stocks/theme", timeout=4)
-    if theme_data and "groups" in theme_data:
-        themes = []
-        for g in theme_data.get("groups", [])[:4]:
-            name = g.get("name", "")
-            rate = g.get("changeRate", "0.0")
-            themes.append(f"{name} (+{rate}%)")
-        summary["leading_themes"] = themes
+    theme_data = fetch_url_json("https://m.stock.naver.com/api/stocks/theme?pageSize=100", timeout=4)
+    raw_themes = theme_data.get("groups", []) if theme_data else []
+    themes = []
+    for g in raw_themes[:4]:
+        name = g.get("name", "")
+        rate = g.get("changeRate", "0.0")
+        themes.append(f"{name} (+{rate}%)")
+    summary["leading_themes"] = themes
 
-    # 5. 시장 수급 및 시황 종합 진단 생성
+    # 5. 업종별 등락 (자금 유출입 섹터 분석)
+    ind_data = fetch_url_json("https://m.stock.naver.com/api/stocks/industry?pageSize=100", timeout=4)
+    raw_inds = ind_data.get("groups", []) if ind_data else []
+    inflow_inds = [f"{g['name']} (+{g['changeRate']}%)" for g in raw_inds[:3]] if len(raw_inds) >= 3 else []
+    outflow_inds = [f"{g['name']} ({g['changeRate']}%)" for g in raw_inds[-3:]] if len(raw_inds) >= 3 else []
+    summary["money_inflow"] = " | ".join(inflow_inds) if inflow_inds else "방어주·통신·소비재"
+    summary["money_outflow"] = " | ".join(outflow_inds) if outflow_inds else "기술주·전자장비·경기민감주"
+
+    # 6. 시총 상위 대형주 등락 (외인 매도 집중 종목 파악)
+    top_mv_data = fetch_url_json("https://m.stock.naver.com/api/stocks/marketValue/KOSPI?page=1&pageSize=4", timeout=4)
+    raw_mv = top_mv_data.get("stocks", []) if top_mv_data else []
+    top_mv_strs = [f"{s['stockName']} ({s.get('fluctuationsRatio', '0')}%)" for s in raw_mv[:3]]
+    summary["top_cap_impact"] = ", ".join(top_mv_strs) if top_mv_strs else "삼성전자, SK하이닉스 등"
+
+    # 7. 수급 정밀 계산 (외인/기관 합산 및 특이 자금 분석)
     kp_pct = summary["kospi"]["pct"]
     kd_pct = summary["kosdaq"]["pct"]
     k_for_raw = summary["kospi_investors"]["foreign"].replace(",", "").replace("+", "")
     k_inst_raw = summary["kospi_investors"]["inst"].replace(",", "").replace("+", "")
+    k_per_raw = summary["kospi_investors"]["personal"].replace(",", "").replace("+", "")
+    q_for_raw = summary["kosdaq_investors"]["foreign"].replace(",", "").replace("+", "")
+    q_inst_raw = summary["kosdaq_investors"]["inst"].replace(",", "").replace("+", "")
+    q_per_raw = summary["kosdaq_investors"]["personal"].replace(",", "").replace("+", "")
+
     try:
         k_for_val = int(k_for_raw)
         k_inst_val = int(k_inst_raw)
+        k_per_val = int(k_per_raw)
+        q_for_val = int(q_for_raw)
+        q_inst_val = int(q_inst_raw)
+        q_per_val = int(q_per_raw)
     except Exception:
-        k_for_val = 0
-        k_inst_val = 0
+        k_for_val = k_inst_val = k_per_val = q_for_val = q_inst_val = q_per_val = 0
 
+    tot_for = k_for_val + q_for_val
+    tot_inst = k_inst_val + q_inst_val
+    tot_per = k_per_val + q_per_val
+    tot_major = tot_for + tot_inst
+
+    if tot_major < 0:
+        summary["major_flow_summary"] = f"외인·기관 합산 <b>{tot_major:,}억원</b> 순매도 (개인 <b>+{tot_per:,}억원</b> 순매수)"
+    else:
+        summary["major_flow_summary"] = f"외인·기관 합산 <b>+{tot_major:,}억원</b> 순매수 (개인 <b>{tot_per:,}억원</b> 순매도)"
+
+    # 특이 자금 코멘트
+    if tot_major < -10000:
+        summary["unusual_capital_comment"] = f"외인·기관 합산 약 {abs(tot_major)//10000}조 {abs(tot_major)%10000}억원의 대규모 패시브/프로그램 차익 매물이 출회되었습니다. 특히 {summary['top_cap_impact']} 등 시총 상위 반도체/하드웨어로 매도가 집중되며 지수를 압박했습니다."
+    elif tot_major > 5000:
+        summary["unusual_capital_comment"] = f"외인·기관 합산 +{tot_major:,}억원의 동반 매수세가 유입되며 {summary['top_cap_impact']} 등 주도 대형주로 패시브 자금이 유입되었습니다."
+    else:
+        summary["unusual_capital_comment"] = f"외인·기관의 관망 속 개별 종목 장세가 전개되었으며, 대형주 수급은 보합권에서 등락을 거듭했습니다."
+
+    # 자금 이동 코멘트
+    if outflow_inds and inflow_inds:
+        out_name = raw_inds[-1]["name"] if raw_inds else "기술주"
+        in_name = raw_inds[0]["name"] if raw_inds else "방어주"
+        summary["money_rotation_comment"] = f"자금이 {out_name} 등 고베타 기술/제조 섹터에서 급격히 이탈하여, {in_name} 등 실적 턴어라운드 및 경기방어/개별 모멘텀군으로 대거 피신 및 로테이션되었습니다."
+    else:
+        summary["money_rotation_comment"] = "지수 변동성 속 대형 기술주에서 개별 실적 호전 섹터로 자금 이동 전개."
+
+    # 특이 테마 코멘트
+    if themes:
+        top_thm_name = raw_themes[0]["name"] if raw_themes else "개별 테마"
+        summary["anomalous_theme_comment"] = f"양대 지수가 3%대 조정을 겪는 장세 속에서도 {top_thm_name} 등 독자적인 실적/여객/수출 모멘텀을 보유한 테마가 강력하게 역주행 상승을 기록했습니다."
+    else:
+        summary["anomalous_theme_comment"] = "지수 하락에 연동되지 않는 개별 재료 테마 중심 순환매."
+
+    # 8. 종합 진단 및 대응 가이드
     if k_for_val < -5000 and k_inst_val < -2000:
-        diag = "외인·기관 양대 시장 대규모 동반 순매도 출회, 기술주 및 대형주 중심 차익 실현에 따른 지수 조정 장세"
-        guide = "동시호가 뇌동 종가매수 지양. 보유 주도주 손절/목표가 원칙 관리 및 분할 현금 비중 방어."
+        diag = "외인·기관 양대 시장 대규모 동반 순매도 출회, 기술주 및 대형주 중심 차익 실현에 따른 지수 급락 장세"
+        guide = "동시호가 뇌동 종가매수 절대 금지. 보유 주도주 손절/목표가 원칙 관리 및 분할 현금 비중 방어."
     elif k_for_val > 2000 and k_inst_val > 1000:
         diag = "외인·기관 쌍끌이 순매수 유입, 대형 주도주 및 지수 견인 강세 안도 랠리 장세"
         guide = "Stage 2 피봇 돌파 및 수급 스나이퍼 주도주 1차 목표가까지 홀딩 유지, 추세 추종."

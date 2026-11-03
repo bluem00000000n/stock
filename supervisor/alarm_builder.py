@@ -508,16 +508,45 @@ def build_1500_kr_close_alarm(
     kp_sign = "🟢" if kp_pct > 0 else ("🔵" if kp_pct < 0 else "⚪")
     kd_sign = "🟢" if kd_pct > 0 else ("🔵" if kd_pct < 0 else "⚪")
 
-    lines.append("📊 <b>1. 🇰🇷 한국장 당일 마감 시황 요약</b>")
+    lines.append("📊 <b>1. 🇰🇷 한국장 당일 마감 시황 & 자금 이동(Money Flow) 요약</b>")
     lines.append(f"• <b>종가 지수:</b> 코스피 {kp_sign} <b>{kp.get('price', '-')}</b> ({kp.get('diff', '-')}p, <b>{kp_pct:+.2f}%</b>) | 코스닥 {kd_sign} <b>{kd.get('price', '-')}</b> ({kd.get('diff', '-')}p, <b>{kd_pct:+.2f}%</b>)")
     lines.append(f"• <b>원/달러 환율:</b> <b>{fx.get('price', '1,340.0')}원</b> (전일비 {fx.get('diff', '0.0')}원, {fx.get('pct', '0.0%')})")
-    lines.append(f"• <b>시장 메이저 수급 동향:</b>")
+
+    # A. 특이 자금 동향
+    major_flow = market_summary.get("major_flow_summary", "")
+    unusual_cap = market_summary.get("unusual_capital_comment", "")
+    lines.append(f"\n💸 <b>[특이 자금 동향 (Unusual Capital Flows)]</b>")
+    if major_flow:
+        lines.append(f"• <b>메이저 수급 합산:</b> {major_flow}")
     lines.append(f"  └ 코스피: 외인 <b>{kp_inv.get('foreign', '0')}억</b> | 기관 <b>{kp_inv.get('inst', '0')}억</b> | 개인 <b>{kp_inv.get('personal', '0')}억</b>")
     lines.append(f"  └ 코스닥: 외인 <b>{kd_inv.get('foreign', '0')}억</b> | 기관 <b>{kd_inv.get('inst', '0')}억</b> | 개인 <b>{kd_inv.get('personal', '0')}억</b>")
+    if unusual_cap:
+        lines.append(f"• <b>수급 집중 분석:</b> {unusual_cap}")
+
+    # B. 자금 이동 & 섹터 로테이션
+    outflow = market_summary.get("money_outflow", "")
+    inflow = market_summary.get("money_inflow", "")
+    money_rot = market_summary.get("money_rotation_comment", "")
+    lines.append(f"\n🔄 <b>[자금 이동 & 섹터 로테이션 (Money Migration)]</b>")
+    if outflow:
+        lines.append(f"• <b>자금 유출 섹터:</b> {outflow}")
+    if inflow:
+        lines.append(f"• <b>자금 유입 섹터:</b> {inflow}")
+    if money_rot:
+        lines.append(f"• <b>로테이션 분석:</b> {money_rot}")
+
+    # C. 특이 업종 & 역주행 테마
+    anom_theme = market_summary.get("anomalous_theme_comment", "")
+    lines.append(f"\n🚀 <b>[특이 업종 & 역주행 테마 (Anomalous Themes)]</b>")
     if themes:
-        lines.append(f"• <b>당일 강세 주도 테마:</b> " + " | ".join(themes[:3]))
-    lines.append(f"• <b>AI 시황 진단:</b> {diagnosis}")
-    lines.append(f"• <b>종가 대응 가이드:</b> {action_guide}")
+        lines.append(f"• <b>역주행 강세 테마 Top 3:</b> " + " | ".join(themes[:3]))
+    if anom_theme:
+        lines.append(f"• <b>테마 모멘텀 분석:</b> {anom_theme}")
+
+    # D. AI 종합 진단 & 종가 전술
+    lines.append(f"\n💡 <b>[AI 시황 종합 진단 & 종가 운용 전술]</b>")
+    lines.append(f"• <b>시황 진단:</b> {diagnosis}")
+    lines.append(f"• <b>종가 전술:</b> {action_guide}")
 
     # 2. 포트폴리오 변동 내역 (종가매수 & 포지션 재편)
     lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
