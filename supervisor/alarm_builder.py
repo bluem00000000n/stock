@@ -18,6 +18,8 @@ supervisor/alarm_builder.py
    - 종가 매수: [종가 매수 (15:20~15:30 동시호가 체결)] / [종가 매수 (LOC)]
 """
 
+import os
+import sqlite3
 from datetime import datetime
 from typing import Dict, Any, List, Optional
 from portfolio.selector import classify_cap_size
@@ -85,7 +87,7 @@ def get_holding_strategy_key(h: Dict[str, Any], market: str = "KRX") -> str:
     """보유 종목의 원천 전략 키 분류"""
     pid = (h.get("project_id") or h.get("project_name") or "").lower()
     ticker = str(h.get("ticker", "")).upper()
-    notes = str(h.get("notes", ""))
+    notes = str(h.get("notes", "")).lower()
 
     if market.upper() == "US":
         if "3x" in pid or "us3x" in pid or "3x" in notes or ticker in ("TQQQ", "SOXL", "UPRO", "TECL"):
@@ -94,18 +96,18 @@ def get_holding_strategy_key(h: Dict[str, Any], market: str = "KRX") -> str:
             return "stage2_revival"
         if "signal" in pid or "forge" in pid:
             return "signal_forge"
-        if "htp" in pid or ticker in ("NVDA", "PLTR", "AVGO"):
-            return "htp_momentum"
-        if "sepa" in pid:
+        if "sepa" in pid or "sepa" in notes or ticker in ("PLTR", "APP", "ALAB"):
             return "sepa_pivot"
-        if "swing" in pid:
+        if "htp" in pid or "htp" in notes or ticker in ("NVDA", "AVGO"):
+            return "htp_momentum"
+        if "swing" in pid or "swing" in notes:
             return "swing"
         return "htp_momentum"
     else:
-        if "sniper" in pid or "스나이퍼" in notes or ticker in ("000660", "012450", "042510"):
-            return "sniper"
-        if "sepa" in pid or "sepa" in notes or ticker in ("093320",):
+        if "sepa" in pid or "sepa" in notes or ticker in ("012450", "093320"):
             return "sepa_pivot"
+        if "sniper" in pid or "스나이퍼" in notes or ticker in ("000660", "042510"):
+            return "sniper"
         if "swing" in pid or "스윙" in notes or ticker in ("267260", "003230"):
             return "swing"
         if "cyclical" in pid or "시클리컬" in notes:
@@ -129,6 +131,54 @@ US_STRATEGY_DISPLAY = [
     ("stage2_revival", "🌱 <b>[단독: 중소형 2차 파동 부활]</b>", "10배주 라이프사이클 실적 퀀텀점프"),
     ("us3x", "⚡ <b>[단독: US 3X 레버리지]</b>", "TQQQ 분할 적립")
 ]
+
+
+def fetch_signal_forge_radar_targets(market: str = "KRX") -> List[Dict[str, Any]]:
+    """Signal Forge AI 레이더의 실시간 포착 매수 후보 종목 조회"""
+    db_path = "/Users/tothemoon/runtime/data/signal_forge.db"
+    if not os.path.exists(db_path):
+        return []
+    try:
+        conn = sqlite3.connect(db_path)
+        conn.row_factory = sqlite3.Row
+        asset_type = "STOCK_KR" if market.upper() in ("KRX", "KR", "KOR") else "STOCK_US"
+        rows = conn.execute("""
+            SELECT symbol, strategy_name, score, price, trigger_reason, created_at
+            FROM signals
+            WHERE asset_type = ? AND direction = 'LONG'
+            ORDER BY id DESC LIMIT 20
+        """, (asset_type,)).fetchall()
+
+        name_map = {
+            "005930": "삼성전자",
+            "000660": "SK하이닉스",
+            "NVDA": "엔비디아",
+            "AAPL": "애플",
+            "MSFT": "마이크로소프트",
+            "TSLA": "테슬라"
+        }
+
+        seen = set()
+        targets = []
+        for r in rows:
+            sym = r["symbol"]
+            if sym in seen:
+                continue
+            seen.add(sym)
+            targets.append({
+                "ticker": sym,
+                "name": name_map.get(sym, sym),
+                "strategy": r["strategy_name"],
+                "score": float(r["score"]),
+                "price": float(r["price"]),
+                "reason": r["trigger_reason"]
+            })
+            if len(targets) >= 2:
+                break
+        conn.close()
+        return targets
+    except Exception:
+        return []
 
 
 def format_strategy_grouped_portfolio(
@@ -194,13 +244,26 @@ def format_strategy_grouped_portfolio(
                 out.append(f" • {sign} <b>[{short_cap}] {name}</b> ({ticker}) | <b>{status_tag}</b>")
                 out.append(f"    {price_line}")
 
-    # 단독 Signal Forge 실시간 모니터링 카드
+    # 단독 Signal Forge 실시간 모니터링 카드 및 매수 타깃 출력
+    radar_targets = fetch_signal_forge_radar_targets(market=market)
     if is_kr:
-        out.append("\n📡 <b>[단독: Signal Forge AI 레이더]</b>")
-        out.append(" • 한국 거시 매크로 & 25대 퀀트 시그널 실시간 감시 연동 중 (리스크 온)")
+        out.append("\n📡 <b>[단독: Signal Forge AI 레이더]</b> (25대 퀀트 실시간 매수 타깃)")
+        if radar_targets:
+            for t in radar_targets:
+                p_str = f"{int(t['price']):,}원"
+                out.append(f" • 🎯 <b>[레이더 포착] {t['name']}</b> ({t['ticker']}) : <b>{p_str}</b> | <b>{t['score']:.0f}점</b> ({t['strategy']})")
+                out.append(f"    └ <i>레이더 촉매:</i> {t['reason']}")
+        else:
+            out.append(" • 한국 거시 매크로 & 25대 퀀트 시그널 실시간 감시 연동 중 (리스크 온)")
     else:
-        out.append("\n📡 <b>[단독: Signal Forge AI 레이더]</b>")
-        out.append(" • 미국 빅테크 & 퀀트 레이더 74개 시그널 실시간 감시 연동 중")
+        out.append("\n📡 <b>[단독: Signal Forge AI 레이더]</b> (미국 퀀트 실시간 매수 타깃)")
+        if radar_targets:
+            for t in radar_targets:
+                p_str = f"${t['price']:.2f}"
+                out.append(f" • 🎯 <b>[레이더 포착] {t['name']}</b> ({t['ticker']}) : <b>{p_str}</b> | <b>{t['score']:.0f}점</b> ({t['strategy']})")
+                out.append(f"    └ <i>레이더 촉매:</i> {t['reason']}")
+        else:
+            out.append(" • 미국 빅테크 & 퀀트 레이더 74개 시그널 실시간 감시 연동 중")
 
     return out
 
