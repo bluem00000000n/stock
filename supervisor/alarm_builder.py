@@ -451,6 +451,23 @@ def build_1730_us_open_alarm(
     kr_mid_c = sum(1 for h in kr_active if h.get("cap_size") != "대형주")
     avg_kr = kr_stats.get("avg_return_pct", 0.0)
 
+    # 5. [화요일 주간 특화] 미국 중소형 2차 파동 부활(Stage 2 Revival) 매수 검토 브리핑
+    if now.weekday() == 1:
+        try:
+            from strategies.stage2_revival import run_daily_surveillance
+            revival_signals = run_daily_surveillance()
+            if revival_signals:
+                lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
+                lines.append("🚀 <b>[화요일 주간 특화] 🇺🇸 미국 중소형 2차 파동 부활(Stage 2) 매수 검토</b>")
+                lines.append("• <i>1차 거품 붕괴 ➔ 실적 가시화 ➔ 2단계 피벗 돌파 엄선 종목</i>")
+                for s_idx, sig in enumerate(revival_signals[:3], 1):
+                    p_val = sig.get('target_price', 0)
+                    lines.append(f" {s_idx}. 🎯 <b>[{sig.get('signal_type', 'BUY')}] {sig['name']}</b> ({sig['ticker']}) | 현재가: <b>${sig['price']:.2f}</b>")
+                    lines.append(f"    └ 타점: <b>{sig['pattern']}</b> | 🎯 목표: ${sig['target_price']:.2f} | 🛑 손절: ${sig['stop_loss_price']:.2f}")
+                    lines.append(f"    └ <i>실적 촉매:</i> {sig['theme']}")
+        except Exception:
+            pass
+
     lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
     lines.append(f"💼 <b>4. 🇰🇷 한국장 실운용 포트폴리오 (총 {len(kr_active)}종목 - 대형 {kr_large_c}선 + 중소형 {kr_mid_c}선 | 마감 평균 {avg_kr:+.2f}%)</b>")
     if kr_active:
