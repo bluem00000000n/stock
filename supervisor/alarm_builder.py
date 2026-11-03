@@ -130,6 +130,8 @@ US_STRATEGY_DISPLAY = [
     ("swing", "🛡️ <b>[코어: 227선 무한 스윙]</b>", "우량 대형주 지지선 스윙")
 ]
 
+PORTFOLIO_LEGEND = "• <b>수익률 상태 범례:</b> 🟢 수익(+) | 🔵 손실(-) | ⚪ 보합/진입가(0.0%)"
+
 
 def fetch_signal_forge_radar_targets(market: str = "KRX") -> List[Dict[str, Any]]:
     """Signal Forge AI 레이더의 실시간 포착 매수 후보 종목 조회"""
@@ -256,6 +258,7 @@ def build_standalone_tracks_block(section_no: int = 5) -> str:
     lines = []
     lines.append(f"\n━━━━━━━━━━━━━━━━━━━━━━━━━")
     lines.append(f"⚡ <b>{section_no}. [단독 독립 운용 트랙] (코어 N수 미포함 / 독립 계좌 운용)</b>")
+    lines.append(PORTFOLIO_LEGEND)
 
     standalone_trades = []
     try:
@@ -432,6 +435,7 @@ def build_0830_kr_open_alarm(
     lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
     lines.append(f"💼 <b>3. 🇰🇷 한국장 코어 실운용 포트폴리오 (정예 {len(kr_active)}종목 - 대형 {large_c}선 + 중소형 {mid_c}선)</b>")
     lines.append(f"• <b>코어 포트폴리오 평균 수익률:</b> <b>{avg_ret:+.2f}%</b> (가용 슬롯: {kr_stats.get('available_slots', 0)}개)")
+    lines.append(PORTFOLIO_LEGEND)
     lines.extend(format_strategy_grouped_portfolio(kr_active, market="KRX", new_tickers=new_tickers, is_summary=False))
 
     # 4. 미국장 코어 실운용 포트폴리오
@@ -445,6 +449,7 @@ def build_0830_kr_open_alarm(
     lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
     lines.append(f"💼 <b>4. 🇺🇸 미국장 코어 실운용 포트폴리오 (정예 {len(us_active)}종목 - 대형 {us_large_c}선 + 중소형 {us_mid_c}선)</b>")
     lines.append(f"• <b>코어 포트폴리오 평균 수익률:</b> <b>{us_avg_ret:+.2f}%</b> (가용 슬롯: {us_stats.get('available_slots', 0)}개)")
+    lines.append(PORTFOLIO_LEGEND)
     lines.extend(format_strategy_grouped_portfolio(us_active, market="US", new_tickers=us_new_tickers, is_summary=False))
 
     # 5. 단독 독립 운용 트랙
@@ -601,6 +606,7 @@ def build_1500_kr_close_alarm(
     lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
     lines.append(f"💼 <b>3. 🇰🇷 한국장 코어 실운용 포트폴리오 마감 현황 (정예 {len(kr_active)}종목 - 대형 {large_c}선 + 중소형 {mid_c}선)</b>")
     lines.append(f"• <b>코어 포트폴리오 평균 수익률:</b> <b>{avg_ret:+.2f}%</b> (가용 슬롯: {kr_stats.get('available_slots', 0)}개)")
+    lines.append(PORTFOLIO_LEGEND)
     lines.extend(format_strategy_grouped_portfolio(kr_active, market="KRX", new_tickers=new_tickers, is_summary=False))
 
     # 4. 미국장 코어 실운용 포트폴리오 현황
@@ -613,6 +619,7 @@ def build_1500_kr_close_alarm(
     lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
     lines.append(f"💼 <b>4. 🇺🇸 미국장 코어 실운용 포트폴리오 현황 (정예 {len(us_active)}종목 - 대형 {us_large_c}선 + 중소형 {us_mid_c}선)</b>")
     lines.append(f"• <b>코어 포트폴리오 평균 수익률:</b> <b>{us_avg_ret:+.2f}%</b> (가용 슬롯: {us_stats.get('available_slots', 0)}개)")
+    lines.append(PORTFOLIO_LEGEND)
     lines.extend(format_strategy_grouped_portfolio(us_active, market="US", new_tickers=None, is_summary=False))
 
     # 5. 단독 독립 운용 트랙
@@ -707,6 +714,7 @@ def build_1730_us_open_alarm(
     lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
     lines.append(f"💼 <b>3. 🇺🇸 미국장 코어 실운용 포트폴리오 (정예 {len(us_active)}종목 - 대형 {us_large_c}선 + 중소형 {us_mid_c}선)</b>")
     lines.append(f"• <b>코어 포트폴리오 평균 수익률:</b> <b>{us_avg_ret:+.2f}%</b> (가용 슬롯: {us_stats.get('available_slots', 0)}개)")
+    lines.append(PORTFOLIO_LEGEND)
     lines.extend(format_strategy_grouped_portfolio(us_active, market="US", new_tickers=us_new_tickers, is_summary=False))
 
     # 4. 한국장 코어 실운용 포트폴리오 마감 요약
@@ -718,6 +726,7 @@ def build_1730_us_open_alarm(
 
     lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
     lines.append(f"💼 <b>4. 🇰🇷 한국장 코어 실운용 포트폴리오 (정예 {len(kr_active)}종목 - 대형 {kr_large_c}선 + 중소형 {kr_mid_c}선 | 마감 평균 {avg_kr:+.2f}%)</b>")
+    lines.append(PORTFOLIO_LEGEND)
     try:
         kr_mkt = fetch_krx_market_summary()
         kp_p = kr_mkt.get("kospi", {}).get("price", "-")
