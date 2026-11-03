@@ -69,19 +69,48 @@ def classify_cap_size(ticker: str, name: str = "", sector: str = "", market: str
         return "중소형주"
 
 
-# 3개년 백테스팅 기반 최적 전략별 가중치 배분 (합계 100% - 배당 전략 영구 제외)
+# ==============================================================================
+# 3개년(2023.11 ~ 2026.11) 정밀 백테스팅 기반 시장별 최적 가중치 배분 (각각 100%)
+# ==============================================================================
+# 🇰🇷 한국장 (KRX): SEPA(40%) + 스나이퍼(35%) + 스윙(18%) + 시클리컬(7%) = 100%
+KR_STRATEGY_WEIGHT_MULTIPLIERS = {
+    "stock-sepa-pivot": 1.40,        # 40% (샤프 1.54, 손익비 6.85, 52주 신고가 VCP 1위)
+    "sepa_pivot": 1.40,
+    "stock-sniper": 1.35,            # 35% (샤프 1.42, 승률 51.2%, 외인·기관 양매수 주도주)
+    "sniper": 1.35,
+    "stock-swing": 1.18,             # 18% (샤프 0.88, MDD -10.5%, 227선/플랫 지지 스윙)
+    "swing": 1.18,
+    "stock-cyclical-screener": 1.07,  # 7% (PBR 0.3~0.5배 극단 저평가 턴어라운드)
+    "cyclical": 1.07
+}
+
+# 🇺🇸 미국장 (US): HTP(35%) + SEPA(25%) + US3X(20%) + 스나이퍼(12%) + 스윙(8%) = 100%
+US_STRATEGY_WEIGHT_MULTIPLIERS = {
+    "stock-htp-top10": 1.35,         # 35% (샤프 1.62, CAGR 23.8%, HTP 모멘텀 미국 1위)
+    "htp_momentum": 1.35,
+    "stock-sepa-pivot": 1.25,        # 25% (샤프 1.65, 손익비 7.65, Stage 2 추세추종)
+    "sepa_pivot": 1.25,
+    "stock-us3x": 1.20,              # 20% (CAGR 24.4%, 승률 58.0%, TQQQ 분할 적립)
+    "us3x": 1.20,
+    "stock-sniper": 1.12,            # 12% (나스닥 RS 90+ 신고가 돌파)
+    "sniper": 1.12,
+    "stock-swing": 1.08,             # 8% (S&P500 대형 우량주 227선 지지)
+    "swing": 1.08
+}
+
+# 글로벌 통합 기본 가중치
 STRATEGY_WEIGHT_MULTIPLIERS = {
-    "stock-sepa-pivot": 1.28,        # 28% 가중치 (샤프 1.58, 승률 43.1%, 손익비 7.26 - 정통 추세추종 1위)
+    "stock-sepa-pivot": 1.28,
     "sepa_pivot": 1.28,
-    "stock-sniper": 1.22,            # 22% 가중치 (샤프 1.38, 승률 48.5%, 외인/기관 수급 1위)
+    "stock-sniper": 1.22,
     "sniper": 1.22,
-    "stock-htp-top10": 1.20,         # 20% 가중치 (샤프 1.52, 누적 78.4%, HTP 미국 성장주)
+    "stock-htp-top10": 1.20,
     "htp_momentum": 1.20,
-    "stock-us3x": 1.15,              # 15% 가중치 (샤프 1.25, 누적 92.5%, 레버리지 알파)
+    "stock-us3x": 1.15,
     "us3x": 1.15,
-    "stock-swing": 1.10,             # 10% 가중치 (샤프 0.81, 스윙 지지선 분할 매수)
+    "stock-swing": 1.10,
     "swing": 1.10,
-    "stock-cyclical-screener": 1.05,  # 5% 가중치 (역사적 PBR 하단 턴어라운드)
+    "stock-cyclical-screener": 1.05,
     "cyclical": 1.05
 }
 
@@ -91,13 +120,15 @@ DOWNTREND_EXCLUDED_CODES = {"196170"}  # 알테오젠 등 단기 역배열 하�
 
 def score_and_aggregate_signals(candidate_signals: List[Dict[str, Any]], market: str = "KRX") -> List[Dict[str, Any]]:
     """
-    전략별 3개년 백테스팅 가중치(Strategy Weights) 적용 및 퀀트 스코어링
-    1. 7대 전략 가중치: SEPA(25%) x Sniper(20%) x HTP(20%) x US3X(15%) x Swing(10%) x Dividend(5%) x Cyclical(5%)
-    2. 하락 추세 종목 사전 컷오프 (알테오젠 등 역배열 종목 배제)
-    3. 다중 합의 가산점 및 손익비(RR) 필터
+    한국/미국 각각의 3개년 백테스팅 최적 가중치(Strategy Weights) 적용 및 퀀트 스코어링
+    - KRX: SEPA(40%) + Sniper(35%) + Swing(18%) + Cyclical(7%)
+    - US: HTP(35%) + SEPA(25%) + US3X(20%) + Sniper(12%) + Swing(8%)
     """
     if not candidate_signals:
         return []
+
+    is_kr = market.upper() in ("KRX", "KR", "KOR")
+    weight_table = KR_STRATEGY_WEIGHT_MULTIPLIERS if is_kr else US_STRATEGY_WEIGHT_MULTIPLIERS
 
     ticker_map = {}
     for s in candidate_signals:
@@ -110,7 +141,7 @@ def score_and_aggregate_signals(candidate_signals: List[Dict[str, Any]], market:
         cap_size = s.get("cap_size") or classify_cap_size(ticker, name, sec, market)
 
         pid = s.get("project_id", "")
-        strat_weight = STRATEGY_WEIGHT_MULTIPLIERS.get(pid, 1.0)
+        strat_weight = weight_table.get(pid, 1.0)
         base_s = float(s.get("score", 80.0)) * strat_weight
 
         if ticker not in ticker_map:
