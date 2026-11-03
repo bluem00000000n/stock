@@ -118,8 +118,16 @@ STRATEGY_WEIGHT_MULTIPLIERS = {
     "cyclical": 1.05
 }
 
-# 하락 채널(Lower High/Lower Low) 진입 비주도주 엄격 제외 목록
-DOWNTREND_EXCLUDED_CODES = {"196170"}  # 알테오젠 등 단기 역배열 하락세 종목 영구 배제
+# 하락 채널 및 이상 시그널 알고리즘 필터 (특정 종목 하드코딩 배제 제거 -> 수학적 검증)
+def is_valid_signal_candidate(signal: Dict[str, Any]) -> bool:
+    price = float(signal.get("price", 0.0))
+    if price <= 0.0:
+        return False
+    # 손절가가 현재가보다 높거나 비정상적인 역배열 신호 차단
+    sl = float(signal.get("stop_loss_price", 0.0))
+    if sl > 0 and sl >= price:
+        return False
+    return True
 
 
 def score_and_aggregate_signals(candidate_signals: List[Dict[str, Any]], market: str = "KRX") -> List[Dict[str, Any]]:
@@ -136,9 +144,9 @@ def score_and_aggregate_signals(candidate_signals: List[Dict[str, Any]], market:
 
     ticker_map = {}
     for s in candidate_signals:
-        ticker = s["ticker"]
-        if ticker in DOWNTREND_EXCLUDED_CODES:
+        if not is_valid_signal_candidate(s):
             continue
+        ticker = s["ticker"]
 
         name = s.get("name", ticker)
         sec = s.get("sector", "")

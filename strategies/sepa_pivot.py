@@ -47,11 +47,9 @@ WATCHLIST = {
 def verify_minervini_trend_template(code: str, cur_price: float) -> bool:
     """마크 미너비니 2단계 상승 국면(Stage 2 Uptrend) 트렌드 템플릿 필터
     - 밑으로 깔리는 종목(역배열, 50일선 이탈, 고점 대비 -28% 초과 낙폭) 엄격 배제
-    - 신고가 근처에서 노는 주도주(Leader)만 통과
+    - 신고가 근처에서 노는 주도주(Leader)만 통과 (특정 종목 하드코딩 배제 완전 제거)
     """
     if cur_price <= 0:
-        return False
-    if code in ("196170",):  # 알테오젠 등 역배열 하락세 영구 차단
         return False
     try:
         import urllib.request, xml.etree.ElementTree as ET

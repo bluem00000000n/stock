@@ -172,6 +172,8 @@ def fetch_signal_forge_radar_targets(market: str = "KRX") -> List[Dict[str, Any]
         name_map = {
             "005930": "삼성전자",
             "000660": "SK하이닉스",
+            "068270": "셀트리온",
+            "000100": "유한양행",
             "NVDA": "엔비디아",
             "AAPL": "애플",
             "MSFT": "마이크로소프트",
@@ -185,9 +187,20 @@ def fetch_signal_forge_radar_targets(market: str = "KRX") -> List[Dict[str, Any]
             if sym in seen:
                 continue
             seen.add(sym)
+            resolved_name = name_map.get(sym)
+            if not resolved_name:
+                if market.upper() in ("KRX", "KR", "KOR"):
+                    from core.market_data import fetch_krx_price
+                    p_info = fetch_krx_price(sym)
+                    resolved_name = p_info.get("name") or sym
+                else:
+                    from core.market_data import fetch_us_price
+                    p_info = fetch_us_price(sym)
+                    resolved_name = p_info.get("name") or sym
+
             targets.append({
                 "ticker": sym,
-                "name": name_map.get(sym, sym),
+                "name": resolved_name,
                 "strategy": r["strategy_name"],
                 "score": float(r["score"]),
                 "price": float(r["price"]),

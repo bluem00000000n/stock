@@ -159,12 +159,22 @@ MONTHLY_STAGE2_UNIVERSE = [
 
 
 def update_monthly_pool() -> List[Dict[str, Any]]:
-    """매월 1일 실행: 유니버스 후보군 펀더멘털 및 기술적 스크리닝 데이터 갱신"""
+    """매월 1일 실행: 유니버스 후보군 펀더멘털 및 기술적 스크리닝 데이터 갱신 (동적 JSON 우선 로드)"""
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     pool_file = DATA_DIR / "monthly_pool.json"
 
+    base_pool = MONTHLY_STAGE2_UNIVERSE
+    if pool_file.exists():
+        try:
+            with open(pool_file, "r", encoding="utf-8") as f:
+                loaded = json.load(f)
+                if isinstance(loaded, list) and len(loaded) > 0:
+                    base_pool = loaded
+        except Exception:
+            pass
+
     updated_pool = []
-    for item in MONTHLY_STAGE2_UNIVERSE:
+    for item in base_pool:
         p_info = fetch_us_price(item["ticker"])
         cur_price = p_info["price"] if p_info["price"] > 0 else float(item["pivot"])
         entry = dict(item)

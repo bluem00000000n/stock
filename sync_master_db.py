@@ -26,8 +26,8 @@ PROJECT_REGISTRY = [
         "name": "Stock Sniper",
         "market": "KOR",
         "schedule": "Daily 08:45",
-        "source_type": "log",
-        "source_path": os.path.join(BASE_DIR, "stock-sniper/logs/execution.log")
+        "source_type": "python",
+        "source_path": os.path.join(SUPERVISOR_DIR, "strategies", "sniper.py")
     },
     {
         "id": "stock-sepa-pivot",
@@ -35,7 +35,7 @@ PROJECT_REGISTRY = [
         "market": "KOR / USA",
         "schedule": "Daily 08:40 & 21:30",
         "source_type": "json",
-        "source_path": os.path.join(BASE_DIR, "stock-sepa-pivot/fgrs_candidates.json")
+        "source_path": os.path.join(DATA_DIR, "strategies_data", "stock-sepa-pivot", "fgrs_candidates.json")
     },
     {
         "id": "stock-swing",
@@ -43,7 +43,7 @@ PROJECT_REGISTRY = [
         "market": "KOR / USA",
         "schedule": "Daily 08:40 & 21:30",
         "source_type": "sqlite",
-        "source_path": os.path.join(BASE_DIR, "stock-swing/data/swing_system.db")
+        "source_path": os.path.join(DATA_DIR, "strategies_data", "stock-swing", "data", "swing_system.db")
     },
     {
         "id": "stock-htp-top10",
@@ -51,7 +51,7 @@ PROJECT_REGISTRY = [
         "market": "USA",
         "schedule": "Daily 22:30",
         "source_type": "sqlite",
-        "source_path": os.path.join(BASE_DIR, "stock-htp-top10/portfolio_tracker.db")
+        "source_path": os.path.join(DATA_DIR, "strategies_data", "stock-htp-top10", "portfolio_tracker.db")
     },
     {
         "id": "stock-us3x",
@@ -59,7 +59,7 @@ PROJECT_REGISTRY = [
         "market": "USA",
         "schedule": "Daily 22:00",
         "source_type": "sqlite",
-        "source_path": os.path.join(BASE_DIR, "stock-us3x/database/us3x_trading.db")
+        "source_path": os.path.join(DATA_DIR, "strategies_data", "stock-us3x", "database", "us3x_trading.db")
     },
     {
         "id": "signal_forge_alert",
@@ -75,11 +75,7 @@ PROJECT_REGISTRY = [
         "market": "KOR",
         "schedule": "Daily 08:30",
         "source_type": "json",
-        "source_path": (
-            os.path.join(DATA_DIR, "strategies_data", "stock-cyclical-screener", "data", "alerts_history.json")
-            if os.path.exists(os.path.join(DATA_DIR, "strategies_data", "stock-cyclical-screener", "data", "alerts_history.json"))
-            else os.path.join(BASE_DIR, "stock-cyclical-screener/data/alerts_history.json")
-        )
+        "source_path": os.path.join(DATA_DIR, "strategies_data", "stock-cyclical-screener", "data", "alerts_history.json")
     },
     {
         "id": "stock-stage2-revival",
@@ -278,94 +274,182 @@ def migrate_legacy_trading_records():
 # ==========================================
 
 def sync_stock_swing(conn):
-    """stock-swing: swing_system.db 에서 signals 및 positions 수집"""
-    db_path = "/Users/tothemoon/stock-swing/data/swing_system.db"
-    if not os.path.exists(db_path):
-        return 0
-    sub_conn = sqlite3.connect(db_path)
-    sub_conn.row_factory = sqlite3.Row
+    """stock-swing: swing_system.db 또는 positions_kr.json / positions_us.json 에서 signals 및 positions 수집"""
     count = 0
-    try:
-        signals = sub_conn.execute("SELECT * FROM signals ORDER BY id DESC LIMIT 50").fetchall()
-        for s in signals:
-            market = "USA" if s["market"].upper() == "US" else "KOR"
-            ticker = s["ticker"].replace(".KS", "").replace(".KQ", "")
-            raw_json = json.dumps(dict(s), ensure_ascii=False)
-            now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            conn.execute("""
-            INSERT INTO subproject_signals (project_id, ticker, name, market, signal_type, signal_date, price, target_price, stop_loss_price, raw_json, created_at)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-            ON CONFLICT(project_id, ticker, signal_date, signal_type) DO UPDATE SET
-                price = excluded.price,
-                stop_loss_price = excluded.stop_loss_price,
-                raw_json = excluded.raw_json;
-            """, ("stock-swing", ticker, s["name"], market, s["signal_type"], s["signal_date"], s["price"], None, s["stop_price"], raw_json, now))
-            count += 1
-    except Exception as e:
-        print(f"[stock-swing] sync error: {e}")
-    finally:
-        sub_conn.close()
+    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    today = datetime.now().strftime("%Y-%m-%d")
+
+    # 1. strategies_data 내부 JSON 파일 우선 탐색
+    swing_dir = os.path.join(DATA_DIR, "strategies_data", "stock-swing", "data")
+    if os.path.exists(swing_dir):
+        for pos_file, mkt in [("positions_kr.json", "KOR"), ("positions_us.json", "USA")]:
+            p_path = os.path.join(swing_dir, pos_file)
+            if os.path.exists(p_path):
+                try:
+                    with open(p_path, "r", encoding="utf-8") as f:
+                        data = json.load(f)
+                    for sym, pos in data.get("active_positions", {}).items():
+                        clean_sym = sym.replace(".KS", "").replace(".KQ", "")
+                        raw_json = json.dumps(pos, ensure_ascii=False)
+                        sig_type = f"SWING_STAGE_{pos.get('stage', 1)}"
+                        conn.execute("""
+                        INSERT INTO subproject_signals (project_id, ticker, name, market, signal_type, signal_date, price, target_price, stop_loss_price, raw_json, created_at)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                        ON CONFLICT(project_id, ticker, signal_date, signal_type) DO UPDATE SET
+                            price = excluded.price,
+                            stop_loss_price = excluded.stop_loss_price,
+                            raw_json = excluded.raw_json;
+                        """, ("stock-swing", clean_sym, pos.get("name", clean_sym), mkt, sig_type, today, pos.get("last_price") or pos.get("avg_price"), None, pos.get("stop_price"), raw_json, now))
+                        count += 1
+                except Exception as e:
+                    print(f"[stock-swing] json sync error: {e}")
+
+    # 2. 레거시 sqlite db fallback
+    db_path = "/Users/tothemoon/stock-swing/data/swing_system.db"
+    if os.path.exists(db_path):
+        sub_conn = sqlite3.connect(db_path)
+        sub_conn.row_factory = sqlite3.Row
+        try:
+            signals = sub_conn.execute("SELECT * FROM signals ORDER BY id DESC LIMIT 50").fetchall()
+            for s in signals:
+                market = "USA" if s["market"].upper() == "US" else "KOR"
+                ticker = s["ticker"].replace(".KS", "").replace(".KQ", "")
+                raw_json = json.dumps(dict(s), ensure_ascii=False)
+                conn.execute("""
+                INSERT INTO subproject_signals (project_id, ticker, name, market, signal_type, signal_date, price, target_price, stop_loss_price, raw_json, created_at)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ON CONFLICT(project_id, ticker, signal_date, signal_type) DO UPDATE SET
+                    price = excluded.price,
+                    stop_loss_price = excluded.stop_loss_price,
+                    raw_json = excluded.raw_json;
+                """, ("stock-swing", ticker, s["name"], market, s["signal_type"], s["signal_date"], s["price"], None, s["stop_price"], raw_json, now))
+                count += 1
+        except Exception as e:
+            print(f"[stock-swing] db sync error: {e}")
+        finally:
+            sub_conn.close()
+
     return count
 
 def sync_stock_htp_top10(conn):
-    """stock-htp-top10: portfolio_tracker.db 에서 quant_recommendations 수집"""
-    db_path = "/Users/tothemoon/stock-htp-top10/portfolio_tracker.db"
-    if not os.path.exists(db_path):
-        return 0
-    sub_conn = sqlite3.connect(db_path)
-    sub_conn.row_factory = sqlite3.Row
+    """stock-htp-top10: ai_top10_latest.json 또는 portfolio_tracker.db 수집"""
     count = 0
-    try:
-        recs = sub_conn.execute("SELECT * FROM quant_recommendations ORDER BY id DESC LIMIT 50").fetchall()
-        for r in recs:
-            raw_json = json.dumps(dict(r), ensure_ascii=False)
-            now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            sig_type = f"HTP_{r['model_type']}_R{r['rank']}"
-            conn.execute("""
-            INSERT INTO subproject_signals (project_id, ticker, name, market, signal_type, signal_date, price, target_price, stop_loss_price, raw_json, created_at)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-            ON CONFLICT(project_id, ticker, signal_date, signal_type) DO UPDATE SET
-                price = excluded.price,
-                raw_json = excluded.raw_json;
-            """, ("stock-htp-top10", r["ticker"], r["name"], "USA", sig_type, r["as_of_date"], r["curr_price"], None, None, raw_json, now))
-            count += 1
-    except Exception as e:
-        print(f"[stock-htp-top10] sync error: {e}")
-    finally:
-        sub_conn.close()
+    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    today = datetime.now().strftime("%Y-%m-%d")
+
+    # 1. strategies_data 내부 ai_top10_latest.json 우선 탐색
+    htp_json = os.path.join(DATA_DIR, "strategies_data", "stock-htp-top10", "ai_top10_latest.json")
+    if os.path.exists(htp_json):
+        try:
+            with open(htp_json, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            for item in data.get("large_cap_top10", []):
+                sig_type = f"HTP_LARGE_R{item.get('rank', 1)}"
+                raw_json = json.dumps(item, ensure_ascii=False)
+                conn.execute("""
+                INSERT INTO subproject_signals (project_id, ticker, name, market, signal_type, signal_date, price, target_price, stop_loss_price, raw_json, created_at)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ON CONFLICT(project_id, ticker, signal_date, signal_type) DO UPDATE SET
+                    raw_json = excluded.raw_json;
+                """, ("stock-htp-top10", item["ticker"], item.get("name", item["ticker"]), "USA", sig_type, today, None, None, None, raw_json, now))
+                count += 1
+            for item in data.get("russell2000_top10", []) or data.get("small_cap_top10", []):
+                sig_type = f"HTP_SMALL_R{item.get('rank', 1)}"
+                raw_json = json.dumps(item, ensure_ascii=False)
+                conn.execute("""
+                INSERT INTO subproject_signals (project_id, ticker, name, market, signal_type, signal_date, price, target_price, stop_loss_price, raw_json, created_at)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ON CONFLICT(project_id, ticker, signal_date, signal_type) DO UPDATE SET
+                    raw_json = excluded.raw_json;
+                """, ("stock-htp-top10", item["ticker"], item.get("name", item["ticker"]), "USA", sig_type, today, None, None, None, raw_json, now))
+                count += 1
+        except Exception as e:
+            print(f"[stock-htp-top10] json sync error: {e}")
+
+    # 2. 레거시 portfolio_tracker.db fallback
+    db_path = "/Users/tothemoon/stock-htp-top10/portfolio_tracker.db"
+    if os.path.exists(db_path):
+        sub_conn = sqlite3.connect(db_path)
+        sub_conn.row_factory = sqlite3.Row
+        try:
+            recs = sub_conn.execute("SELECT * FROM quant_recommendations ORDER BY id DESC LIMIT 50").fetchall()
+            for r in recs:
+                raw_json = json.dumps(dict(r), ensure_ascii=False)
+                sig_type = f"HTP_{r['model_type']}_R{r['rank']}"
+                conn.execute("""
+                INSERT INTO subproject_signals (project_id, ticker, name, market, signal_type, signal_date, price, target_price, stop_loss_price, raw_json, created_at)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ON CONFLICT(project_id, ticker, signal_date, signal_type) DO UPDATE SET
+                    price = excluded.price,
+                    raw_json = excluded.raw_json;
+                """, ("stock-htp-top10", r["ticker"], r["name"], "USA", sig_type, r["as_of_date"], r["curr_price"], None, None, raw_json, now))
+                count += 1
+        except Exception as e:
+            print(f"[stock-htp-top10] db sync error: {e}")
+        finally:
+            sub_conn.close()
+
     return count
 
 def sync_stock_us3x(conn):
-    """stock-us3x: us3x_trading.db 에서 infinite_top3_records 수집"""
-    db_path = "/Users/tothemoon/stock-us3x/database/us3x_trading.db"
-    if not os.path.exists(db_path):
-        return 0
-    sub_conn = sqlite3.connect(db_path)
-    sub_conn.row_factory = sqlite3.Row
+    """stock-us3x: reports 최신 요약 또는 us3x_trading.db 수집"""
     count = 0
-    try:
-        records = sub_conn.execute("SELECT * FROM infinite_top3_records ORDER BY created_at DESC LIMIT 50").fetchall()
-        for r in records:
-            raw_json = json.dumps(dict(r), ensure_ascii=False)
-            now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            sig_date = r["created_at"].split()[0]
-            sig_type = f"US3X_RANK_{r['rank']}"
-            conn.execute("""
-            INSERT INTO subproject_signals (project_id, ticker, name, market, signal_type, signal_date, price, target_price, stop_loss_price, raw_json, created_at)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-            ON CONFLICT(project_id, ticker, signal_date, signal_type) DO UPDATE SET
-                raw_json = excluded.raw_json;
-            """, ("stock-us3x", r["ticker"], f"{r['ticker']} (3X)", "USA", sig_type, sig_date, None, None, None, raw_json, now))
-            count += 1
-    except Exception as e:
-        print(f"[stock-us3x] sync error: {e}")
-    finally:
-        sub_conn.close()
+    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    today = datetime.now().strftime("%Y-%m-%d")
+
+    # 1. strategies_data 내부 reports 폴더 우선 탐색
+    reports_dir = os.path.join(DATA_DIR, "strategies_data", "stock-us3x", "reports")
+    if os.path.exists(reports_dir):
+        date_dirs = sorted([d for d in os.listdir(reports_dir) if d.startswith("202")], reverse=True)
+        if date_dirs:
+            summary_path = os.path.join(reports_dir, date_dirs[0], "summary.json")
+            if os.path.exists(summary_path):
+                try:
+                    with open(summary_path, "r", encoding="utf-8") as f:
+                        data = json.load(f)
+                    for item in data.get("infinite_top3", []):
+                        sig_type = f"US3X_RANK_{item.get('rank', 1)}"
+                        raw_json = json.dumps(item, ensure_ascii=False)
+                        conn.execute("""
+                        INSERT INTO subproject_signals (project_id, ticker, name, market, signal_type, signal_date, price, target_price, stop_loss_price, raw_json, created_at)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                        ON CONFLICT(project_id, ticker, signal_date, signal_type) DO UPDATE SET
+                            raw_json = excluded.raw_json;
+                        """, ("stock-us3x", item["ticker"], f"{item.get('name', item['ticker'])} (3X)", "USA", sig_type, today, None, None, None, raw_json, now))
+                        count += 1
+                except Exception as e:
+                    print(f"[stock-us3x] json sync error: {e}")
+
+    # 2. 레거시 us3x_trading.db fallback
+    db_path = "/Users/tothemoon/stock-us3x/database/us3x_trading.db"
+    if os.path.exists(db_path):
+        sub_conn = sqlite3.connect(db_path)
+        sub_conn.row_factory = sqlite3.Row
+        try:
+            records = sub_conn.execute("SELECT * FROM infinite_top3_records ORDER BY created_at DESC LIMIT 50").fetchall()
+            for r in records:
+                raw_json = json.dumps(dict(r), ensure_ascii=False)
+                sig_date = r["created_at"].split()[0]
+                sig_type = f"US3X_RANK_{r['rank']}"
+                conn.execute("""
+                INSERT INTO subproject_signals (project_id, ticker, name, market, signal_type, signal_date, price, target_price, stop_loss_price, raw_json, created_at)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ON CONFLICT(project_id, ticker, signal_date, signal_type) DO UPDATE SET
+                    raw_json = excluded.raw_json;
+                """, ("stock-us3x", r["ticker"], f"{r['ticker']} (3X)", "USA", sig_type, sig_date, None, None, None, raw_json, now))
+                count += 1
+        except Exception as e:
+            print(f"[stock-us3x] db sync error: {e}")
+        finally:
+            sub_conn.close()
+
     return count
 
 def sync_stock_sepa_pivot(conn):
     """stock-sepa-pivot: fgrs_candidates.json 수집"""
-    json_path = "/Users/tothemoon/stock-sepa-pivot/fgrs_candidates.json"
+    json_path = os.path.join(DATA_DIR, "strategies_data", "stock-sepa-pivot", "fgrs_candidates.json")
+    if not os.path.exists(json_path):
+        json_path = "/Users/tothemoon/stock-sepa-pivot/fgrs_candidates.json"
     if not os.path.exists(json_path):
         return 0
     count = 0
@@ -390,6 +474,33 @@ def sync_stock_sepa_pivot(conn):
             count += 1
     except Exception as e:
         print(f"[stock-sepa-pivot] sync error: {e}")
+    return count
+
+def sync_stock_stage2_revival(conn):
+    """stock-stage2-revival: monthly_pool.json 수집"""
+    json_path = os.path.join(DATA_DIR, "strategies_data", "stock-stage2-revival", "monthly_pool.json")
+    if not os.path.exists(json_path):
+        return 0
+    count = 0
+    try:
+        with open(json_path, "r", encoding="utf-8") as f:
+            pool = json.load(f)
+        today = datetime.now().strftime("%Y-%m-%d")
+        now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        for item in pool:
+            sig_type = f"STAGE2_{item.get('stage', 'SURVEILLANCE')}"
+            raw_json = json.dumps(item, ensure_ascii=False)
+            conn.execute("""
+            INSERT INTO subproject_signals (project_id, ticker, name, market, signal_type, signal_date, price, target_price, stop_loss_price, raw_json, created_at)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ON CONFLICT(project_id, ticker, signal_date, signal_type) DO UPDATE SET
+                price = excluded.price,
+                stop_loss_price = excluded.stop_loss_price,
+                raw_json = excluded.raw_json;
+            """, ("stock-stage2-revival", item["ticker"], item.get("name", item["ticker"]), "USA", sig_type, today, item.get("current_price"), item.get("pivot"), item.get("stop"), raw_json, now))
+            count += 1
+    except Exception as e:
+        print(f"[stock-stage2-revival] sync error: {e}")
     return count
 
 def sync_kbit_bot(conn):
@@ -614,6 +725,7 @@ def sync_all_subprojects():
         "stock-htp-top10": sync_stock_htp_top10,
         "stock-us3x": sync_stock_us3x,
         "signal_forge_alert": sync_signal_forge_alert,
+        "stock-stage2-revival": sync_stock_stage2_revival,
     }
 
     for p_id, func in sync_map.items():

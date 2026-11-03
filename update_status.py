@@ -207,6 +207,17 @@ def collect_data():
         ld_info = launchd_map.get(label, {"pid": None, "last_exit_code": None, "registered": False})
         
         log_path = meta.get("log_path")
+        if not log_path or not os.path.exists(log_path):
+            alt_local = os.path.join(SUPERVISOR_DIR, "data", "strategies_data", p_id, "logs")
+            if os.path.exists(alt_local):
+                candidate_logs = sorted([os.path.join(alt_local, f) for f in os.listdir(alt_local) if f.endswith(".log") or f.endswith(".out")], reverse=True)
+                if candidate_logs:
+                    log_path = candidate_logs[0]
+            if not log_path or not os.path.exists(log_path):
+                runner_log = os.path.join(SUPERVISOR_DIR, "logs", "unified_runner.log")
+                if os.path.exists(runner_log):
+                    log_path = runner_log
+
         log_exists = log_path and os.path.exists(log_path)
         last_modified_str = "기록 없음"
         recent_logs = []
