@@ -180,7 +180,7 @@ def run_pipeline(mode: str = "auto", force: bool = False, dry_run: bool = False)
         alarm_text = build_1500_kr_close_alarm(
             kr_portfolio, us_portfolio, kr_best_buys, us_best_buys
         )
-        title = f"15:00 : 🇰🇷 한국장 종가매수 최종 타깃 & 포트폴리오 알람 ({kr_portfolio['date']})"
+        title = f"15:00 : 🇰🇷 한국장 마감 종합 시황 & 실전 포트폴리오 알람 ({kr_portfolio['date']})"
     else:  # 1730 or night
         alarm_text = build_1730_us_open_alarm(
             kr_portfolio, us_portfolio, macro, us_best_buys

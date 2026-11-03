@@ -23,6 +23,7 @@ import sqlite3
 from datetime import datetime
 from typing import Dict, Any, List, Optional
 from portfolio.selector import classify_cap_size
+from core.market_data import fetch_krx_market_summary, fetch_us_macro
 
 
 def format_order_type(item: Dict[str, Any], market: str = "KRX") -> str:
@@ -367,16 +368,18 @@ def build_0830_kr_open_alarm(
     lines.append(f"📅 <b>일시:</b> {today_str} 08:30 KST")
     lines.append("━━━━━━━━━━━━━━━━━━━━━━━━━")
 
-    # 1. 글로벌 매크로 요약 (간단히)
+    # 1. 미 증시 마감 시황 & 글로벌 매크로 요약
     dow = macro.get("dow", {})
     nasdaq = macro.get("nasdaq", {})
     sp500 = macro.get("sp500", {})
-    usd_krw = macro.get("usd_krw", "1,379.5")
+    usd_krw = macro.get("usd_krw", "1,340.0")
+    vix = macro.get("vix", "18.38")
+    us10y = macro.get("us10y", "4.20%")
 
-    lines.append("🌐 <b>1. 글로벌 매크로 요약</b>")
-    lines.append(f"• 다우: {dow.get('val', '-')} ({dow.get('pct', 0.0):+.2f}%) | 나스닥: {nasdaq.get('val', '-')} ({nasdaq.get('pct', 0.0):+.2f}%) | S&P500: {sp500.get('val', '-')} ({sp500.get('pct', 0.0):+.2f}%)")
-    lines.append(f"• 원/달러 환율: <b>{usd_krw}원</b> | VIX: {macro.get('vix', '18.38')}")
-    lines.append("• <b>당일 전술:</b> 09:00 시초가 갭상승 추격매수 금지, 5분봉 지지 확인 후 원칙 체결.")
+    lines.append("🌐 <b>1. 🇺🇸 미 증시 마감 시황 & 글로벌 매크로 요약</b>")
+    lines.append(f"• <b>미국 3대 지수:</b> 다우 {dow.get('val', '-')} ({dow.get('pct', 0.0):+.2f}%) | 나스닥 {nasdaq.get('val', '-')} ({nasdaq.get('pct', 0.0):+.2f}%) | S&P500 {sp500.get('val', '-')} ({sp500.get('pct', 0.0):+.2f}%)")
+    lines.append(f"• <b>환율/변동성/금리:</b> 원/달러 <b>{usd_krw}원</b> | VIX <b>{vix}</b> | 美 10년물 국채 <b>{us10y}</b>")
+    lines.append("• <b>한국장 개장 전술:</b> 09:00 시초가 갭상승 추격매수 금지, 5분봉 지지 확인 후 원칙 체결.")
 
     # 2. 포트폴리오 변동 내역 (교체 / 신규진입 / 매도제외 및 이유)
     lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
@@ -472,19 +475,53 @@ def build_1500_kr_close_alarm(
     us_buys: List[Dict[str, Any]] = None,
     screener_signals: Optional[List[Dict[str, Any]]] = None,
     us_screener_signals: Optional[List[Dict[str, Any]]] = None,
-    crypto_signals: Optional[List[Dict[str, Any]]] = None
+    crypto_signals: Optional[List[Dict[str, Any]]] = None,
+    market_summary: Optional[Dict[str, Any]] = None
 ) -> str:
     now = datetime.now()
     weekdays_kr = ["월", "화", "수", "목", "금", "토", "일"]
     today_str = f"{now.year}년 {now.month:02d}월 {now.day:02d}일 ({weekdays_kr[now.weekday()]})"
 
     lines = []
-    lines.append("🎯 <b>[STOCK SUPERVISOR] 🇰🇷 한국장 종가매수 최종 타깃 & 포트폴리오 알람</b>")
-    lines.append(f"📅 <b>기준일자:</b> {today_str} | ⏰ 15:00 KST (장마감 30분 전)")
+    lines.append("🎯 <b>[STOCK SUPERVISOR] 🇰🇷 한국장 마감 종합 시황 & 실전 포트폴리오 알람</b>")
+    lines.append(f"📅 <b>기준일자:</b> {today_str} | ⏰ 15:00~15:30 KST (장마감 종합 브리핑)")
     lines.append("━━━━━━━━━━━━━━━━━━━━━━━━━")
 
-    # 1. 포트폴리오 변동 내역 (종가매수 & 포지션 재편)
-    lines.append("🔄 <b>1. 포트폴리오 변동 내역 (종가매수 & 포지션 재편)</b>")
+    # 1. 한국장 당일 마감 시황 요약 (지수, 수급, 환율, 주도 테마, AI 시황 총평)
+    if market_summary is None:
+        try:
+            market_summary = fetch_krx_market_summary()
+        except Exception:
+            market_summary = {}
+
+    kp = market_summary.get("kospi", {})
+    kd = market_summary.get("kosdaq", {})
+    kp_inv = market_summary.get("kospi_investors", {})
+    kd_inv = market_summary.get("kosdaq_investors", {})
+    fx = market_summary.get("usd_krw", {})
+    themes = market_summary.get("leading_themes", [])
+    diagnosis = market_summary.get("market_diagnosis", "지수 변동성 속 개별 주도 섹터 중심 순환매")
+    action_guide = market_summary.get("action_guide", "보유 포지션 목표가/손절가 원칙 준수 및 분할 대응")
+
+    kp_pct = kp.get("pct", 0.0)
+    kd_pct = kd.get("pct", 0.0)
+    kp_sign = "🟢" if kp_pct > 0 else ("🔵" if kp_pct < 0 else "⚪")
+    kd_sign = "🟢" if kd_pct > 0 else ("🔵" if kd_pct < 0 else "⚪")
+
+    lines.append("📊 <b>1. 🇰🇷 한국장 당일 마감 시황 요약</b>")
+    lines.append(f"• <b>종가 지수:</b> 코스피 {kp_sign} <b>{kp.get('price', '-')}</b> ({kp.get('diff', '-')}p, <b>{kp_pct:+.2f}%</b>) | 코스닥 {kd_sign} <b>{kd.get('price', '-')}</b> ({kd.get('diff', '-')}p, <b>{kd_pct:+.2f}%</b>)")
+    lines.append(f"• <b>원/달러 환율:</b> <b>{fx.get('price', '1,340.0')}원</b> (전일비 {fx.get('diff', '0.0')}원, {fx.get('pct', '0.0%')})")
+    lines.append(f"• <b>시장 메이저 수급 동향:</b>")
+    lines.append(f"  └ 코스피: 외인 <b>{kp_inv.get('foreign', '0')}억</b> | 기관 <b>{kp_inv.get('inst', '0')}억</b> | 개인 <b>{kp_inv.get('personal', '0')}억</b>")
+    lines.append(f"  └ 코스닥: 외인 <b>{kd_inv.get('foreign', '0')}억</b> | 기관 <b>{kd_inv.get('inst', '0')}억</b> | 개인 <b>{kd_inv.get('personal', '0')}억</b>")
+    if themes:
+        lines.append(f"• <b>당일 강세 주도 테마:</b> " + " | ".join(themes[:3]))
+    lines.append(f"• <b>AI 시황 진단:</b> {diagnosis}")
+    lines.append(f"• <b>종가 대응 가이드:</b> {action_guide}")
+
+    # 2. 포트폴리오 변동 내역 (종가매수 & 포지션 재편)
+    lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
+    lines.append("🔄 <b>2. 포트폴리오 변동 내역 (종가매수 & 포지션 재편)</b>")
 
     new_buys = kr_portfolio.get("new_buys", [])
     sells_sl = kr_portfolio.get("sells_sl", [])
@@ -524,7 +561,7 @@ def build_1500_kr_close_alarm(
         lines.append("• 📋 <b>[포지션 운용 현황]</b> 한국 6종목 + 미국 6종목 전량 목표가/손절가 내 정상 마감")
         lines.append("• 💡 <b>[종가 주문 안내]</b> 신규 진입/교체/매도 대상 없음 ➔ 기존 12종목 홀딩 유지 (종가 매수 없음)")
 
-    # 2. 한국장 코어 실운용 포트폴리오 마감 현황
+    # 3. 한국장 코어 실운용 포트폴리오 마감 현황
     kr_active = kr_portfolio.get("active_holdings", [])
     kr_stats = kr_portfolio.get("stats", {})
     new_tickers = set(b.get("ticker") for b in new_buys)
@@ -533,11 +570,11 @@ def build_1500_kr_close_alarm(
     avg_ret = kr_stats.get("avg_return_pct", 0.0)
 
     lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
-    lines.append(f"💼 <b>2. 🇰🇷 한국장 코어 실운용 포트폴리오 마감 현황 (정예 {len(kr_active)}종목 - 대형 {large_c}선 + 중소형 {mid_c}선)</b>")
+    lines.append(f"💼 <b>3. 🇰🇷 한국장 코어 실운용 포트폴리오 마감 현황 (정예 {len(kr_active)}종목 - 대형 {large_c}선 + 중소형 {mid_c}선)</b>")
     lines.append(f"• <b>코어 포트폴리오 평균 수익률:</b> <b>{avg_ret:+.2f}%</b> (가용 슬롯: {kr_stats.get('available_slots', 0)}개)")
     lines.extend(format_strategy_grouped_portfolio(kr_active, market="KRX", new_tickers=new_tickers, is_summary=False))
 
-    # 3. 미국장 코어 실운용 포트폴리오 현황
+    # 4. 미국장 코어 실운용 포트폴리오 현황
     us_active = us_portfolio.get("active_holdings", [])
     us_stats = us_portfolio.get("stats", {})
     us_large_c = sum(1 for h in us_active if classify_cap_size(h.get("ticker", ""), h.get("name", ""), market="US") == "대형주")
@@ -545,12 +582,12 @@ def build_1500_kr_close_alarm(
     us_avg_ret = us_stats.get("avg_return_pct", 0.0)
 
     lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
-    lines.append(f"💼 <b>3. 🇺🇸 미국장 코어 실운용 포트폴리오 현황 (정예 {len(us_active)}종목 - 대형 {us_large_c}선 + 중소형 {us_mid_c}선)</b>")
+    lines.append(f"💼 <b>4. 🇺🇸 미국장 코어 실운용 포트폴리오 현황 (정예 {len(us_active)}종목 - 대형 {us_large_c}선 + 중소형 {us_mid_c}선)</b>")
     lines.append(f"• <b>코어 포트폴리오 평균 수익률:</b> <b>{us_avg_ret:+.2f}%</b> (가용 슬롯: {us_stats.get('available_slots', 0)}개)")
     lines.extend(format_strategy_grouped_portfolio(us_active, market="US", new_tickers=None, is_summary=False))
 
-    # 4. 단독 독립 운용 트랙
-    lines.append(build_standalone_tracks_block(section_no=4))
+    # 5. 단독 독립 운용 트랙
+    lines.append(build_standalone_tracks_block(section_no=5))
 
     lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
     lines.append("🖥️ <b>트레이딩 데스크:</b> https://bluem00000000n.github.io/stock/")
@@ -652,6 +689,15 @@ def build_1730_us_open_alarm(
 
     lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
     lines.append(f"💼 <b>4. 🇰🇷 한국장 코어 실운용 포트폴리오 (정예 {len(kr_active)}종목 - 대형 {kr_large_c}선 + 중소형 {kr_mid_c}선 | 마감 평균 {avg_kr:+.2f}%)</b>")
+    try:
+        kr_mkt = fetch_krx_market_summary()
+        kp_p = kr_mkt.get("kospi", {}).get("price", "-")
+        kp_r = kr_mkt.get("kospi", {}).get("pct", 0.0)
+        kd_p = kr_mkt.get("kosdaq", {}).get("price", "-")
+        kd_r = kr_mkt.get("kosdaq", {}).get("pct", 0.0)
+        lines.append(f"• <b>국내 증시 마감 요약:</b> 코스피 <b>{kp_p}</b> ({kp_r:+.2f}%) | 코스닥 <b>{kd_p}</b> ({kd_r:+.2f}%) | {kr_mkt.get('market_diagnosis', '')}")
+    except Exception:
+        pass
     lines.extend(format_strategy_grouped_portfolio(kr_active, market="KRX", new_tickers=None, is_summary=True))
 
     # 5. 단독 독립 운용 트랙

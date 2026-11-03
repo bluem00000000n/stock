@@ -209,7 +209,7 @@ def build_krx_close_report() -> tuple:
     kr_port = get_portfolio_context("KRX")
     us_port = get_portfolio_context("US")
     report_text = build_1500_kr_close_alarm(kr_port, us_port)
-    title = f"15:00 : 🇰🇷 한국장 종가매수 최종 타깃 & 포트폴리오 알람 ({kr_port['date']})"
+    title = f"15:00 : 🇰🇷 한국장 마감 종합 시황 & 실전 포트폴리오 알람 ({kr_port['date']})"
     return report_text, title, ["stock-supervisor"]
 
 
