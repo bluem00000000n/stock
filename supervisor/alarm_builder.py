@@ -118,18 +118,15 @@ def get_holding_strategy_key(h: Dict[str, Any], market: str = "KRX") -> str:
 
 
 KR_STRATEGY_DISPLAY = [
-    ("sniper", "🎯 <b>[수급 스나이퍼]</b>", "외인·기관 양매수 주도주"),
-    ("sepa_pivot", "🚀 <b>[SEPA x 피봇 돌파]</b>", "Stage 2 VCP 변동성축소"),
-    ("swing", "🛡️ <b>[227선 무한 스윙]</b>", "227일선/플랫 지지"),
-    ("cyclical", "🔄 <b>[시클리컬 턴어라운드]</b>", "PBR 극단 저평가")
+    ("sepa_pivot", "🚀 <b>[코어: SEPA x 피봇 돌파]</b>", "Stage 2 VCP 변동성축소"),
+    ("sniper", "🎯 <b>[코어: 수급 스나이퍼]</b>", "외인·기관 양매수 주도주"),
+    ("swing", "🛡️ <b>[코어: 227선 무한 스윙]</b>", "227일선/플랫 지지")
 ]
 
 US_STRATEGY_DISPLAY = [
     ("htp_momentum", "🏆 <b>[코어: HTP 모멘텀 Top 10]</b>", "나스닥 메가캡 실적 주도주"),
     ("sepa_pivot", "🚀 <b>[코어: SEPA x 피봇 돌파]</b>", "Stage 2 추세추종"),
-    ("swing", "🛡️ <b>[코어: 227선 무한 스윙]</b>", "우량 대형주 지지선 스윙"),
-    ("stage2_revival", "🌱 <b>[단독: 중소형 2차 파동 부활]</b>", "10배주 라이프사이클 실적 퀀텀점프"),
-    ("us3x", "⚡ <b>[단독: US 3X 레버리지]</b>", "TQQQ 분할 적립")
+    ("swing", "🛡️ <b>[코어: 227선 무한 스윙]</b>", "우량 대형주 지지선 스윙")
 ]
 
 
@@ -244,28 +241,109 @@ def format_strategy_grouped_portfolio(
                 out.append(f" • {sign} <b>[{short_cap}] {name}</b> ({ticker}) | <b>{status_tag}</b>")
                 out.append(f"    {price_line}")
 
-    # 단독 Signal Forge 실시간 모니터링 카드 및 매수 타깃 출력
-    radar_targets = fetch_signal_forge_radar_targets(market=market)
-    if is_kr:
-        out.append("\n📡 <b>[단독: Signal Forge AI 레이더]</b> (25대 퀀트 실시간 매수 타깃)")
-        if radar_targets:
-            for t in radar_targets:
-                p_str = f"{int(t['price']):,}원"
-                out.append(f" • 🎯 <b>[레이더 포착] {t['name']}</b> ({t['ticker']}) : <b>{p_str}</b> | <b>{t['score']:.0f}점</b> ({t['strategy']})")
-                out.append(f"    └ <i>레이더 촉매:</i> {t['reason']}")
-        else:
-            out.append(" • 한국 거시 매크로 & 25대 퀀트 시그널 실시간 감시 연동 중 (리스크 온)")
-    else:
-        out.append("\n📡 <b>[단독: Signal Forge AI 레이더]</b> (미국 퀀트 실시간 매수 타깃)")
-        if radar_targets:
-            for t in radar_targets:
-                p_str = f"${t['price']:.2f}"
-                out.append(f" • 🎯 <b>[레이더 포착] {t['name']}</b> ({t['ticker']}) : <b>{p_str}</b> | <b>{t['score']:.0f}점</b> ({t['strategy']})")
-                out.append(f"    └ <i>레이더 촉매:</i> {t['reason']}")
-        else:
-            out.append(" • 미국 빅테크 & 퀀트 레이더 74개 시그널 실시간 감시 연동 중")
-
     return out
+
+
+def build_standalone_tracks_block(section_no: int = 5) -> str:
+    """
+    [단독 독립 운용 트랙 블록]
+    - 코어 6종목 포트폴리오 N수에 포함되지 않는 독립 계좌/단독 운용 트랙
+    1. 📡 [단독: Signal Forge AI 레이더] : 셀트리온(068270) 보유 포지션 및 25대 퀀트 실시간 매수 타깃
+    2. 🌱 [단독: 중소형 2차 파동 부활] : 파월 인더스트리스(POWL), 모딘 매뉴팩처링(MOD)
+    3. ⚡ [단독: US 3X 레버리지] : ProShares UltraPro QQQ (TQQQ) 무한매수 분할적립
+    """
+    lines = []
+    lines.append(f"\n━━━━━━━━━━━━━━━━━━━━━━━━━")
+    lines.append(f"⚡ <b>{section_no}. [단독 독립 운용 트랙] (코어 N수 미포함 / 독립 계좌 운용)</b>")
+
+    standalone_trades = []
+    try:
+        from core.database import get_db_connection
+        with get_db_connection() as conn:
+            conn.row_factory = sqlite3.Row
+            rows = conn.execute("""
+                SELECT * FROM trades 
+                WHERE status = 'HOLDING' AND (
+                    LOWER(project_id) IN ('signal_forge_alert', 'signal-forge-alert', 'signal_forge', 'stock-stage2-revival', 'stage2_revival', 'stock-us3x', 'us3x')
+                    OR ticker IN ('068270', 'POWL', 'MOD', 'TQQQ')
+                )
+                ORDER BY id ASC
+            """).fetchall()
+            standalone_trades = [dict(r) for r in rows]
+    except Exception:
+        standalone_trades = []
+
+    # 1. Signal Forge AI 레이더
+    sf_holdings = [t for t in standalone_trades if t.get("ticker") == "068270" or "signal" in (t.get("project_id") or "").lower()]
+    lines.append("\n📡 <b>[단독: Signal Forge AI 레이더]</b> (25대 퀀트 매크로 & 실시간 레이더)")
+    if sf_holdings:
+        for h in sf_holdings:
+            cur_p = int(float(h.get("current_price", 0)))
+            entry_p = int(float(h.get("entry_price", 0)))
+            ret = float(h.get("return_pct", 0.0))
+            sign = "🟢" if ret > 0 else ("🔵" if ret < 0 else "⚪")
+            tgt_p = int(float(h.get("target_price", 0))) if h.get("target_price") else 200000
+            stp_p = int(float(h.get("stop_loss_price", 0))) if h.get("stop_loss_price") else 178000
+            lines.append(f" • {sign} <b>[포지션 보유] {h.get('name', '셀트리온')}</b> ({h.get('ticker')}) | <b>[보유 지속]</b>")
+            lines.append(f"    └ 진입: {entry_p:,}원 ➔ 현재: {cur_p:,}원 (<b>{ret:+.2f}%</b>) | 🎯 {tgt_p:,}원 | 🛑 {stp_p:,}원")
+            notes = h.get("notes", "")
+            if notes:
+                clean_notes = notes.split('|')[0].strip().replace("[단독/Signal Forge AI 레이더]", "").strip()
+                if clean_notes:
+                    lines.append(f"    └ <i>레이더 촉매:</i> {clean_notes}")
+    else:
+        lines.append(" • <i>현재 Signal Forge 보유 포지션 없음 (관망)</i>")
+
+    radar_targets = fetch_signal_forge_radar_targets(market="KRX")
+    if radar_targets:
+        for t in radar_targets:
+            p_str = f"{int(t['price']):,}원"
+            lines.append(f" • 🎯 <b>[실시간 레이더 포착] {t['name']}</b> ({t['ticker']}) : <b>{p_str}</b> | <b>{t['score']:.0f}점</b> ({t['strategy']})")
+            lines.append(f"    └ <i>포착 근거:</i> {t['reason']}")
+
+    # 2. 중소형 2차 파동 부활
+    s2_holdings = [t for t in standalone_trades if t.get("ticker") in ("POWL", "MOD") or "stage2" in (t.get("project_id") or "").lower()]
+    lines.append("\n🌱 <b>[단독: 중소형 2차 파동 부활]</b> (10배주 라이프사이클 실적 퀀텀점프)")
+    if s2_holdings:
+        for h in s2_holdings:
+            cur_p = float(h.get("current_price", 0))
+            entry_p = float(h.get("entry_price", 0))
+            ret = float(h.get("return_pct", 0.0))
+            sign = "🟢" if ret > 0 else ("🔵" if ret < 0 else "⚪")
+            tgt_p = float(h.get("target_price", 0)) if h.get("target_price") else 165.0
+            stp_p = float(h.get("stop_loss_price", 0)) if h.get("stop_loss_price") else 118.0
+            lines.append(f" • {sign} <b>[포지션 보유] {h.get('name', h.get('ticker'))}</b> ({h.get('ticker')}) | <b>[추세 추종]</b>")
+            lines.append(f"    └ 진입: ${entry_p:.2f} ➔ 현재: ${cur_p:.2f} (<b>{ret:+.2f}%</b>) | 🎯 ${tgt_p:.2f} | 🛑 ${stp_p:.2f}")
+            notes = h.get("notes", "")
+            if notes:
+                clean_notes = notes.split('|')[0].strip().replace("[중소형주/단독 Stage2부활]", "").strip()
+                if clean_notes:
+                    lines.append(f"    └ <i>전략 테마:</i> {clean_notes}")
+    else:
+        lines.append(" • <i>현재 부활 전략 편입 대기 중</i>")
+
+    # 3. US 3X 레버리지
+    us3x_holdings = [t for t in standalone_trades if t.get("ticker") in ("TQQQ", "SOXL", "UPRO") or "3x" in (t.get("project_id") or "").lower()]
+    lines.append("\n⚡ <b>[단독: US 3X 레버리지]</b> (나스닥 100 무한매수 분할 적립)")
+    if us3x_holdings:
+        for h in us3x_holdings:
+            cur_p = float(h.get("current_price", 0))
+            entry_p = float(h.get("entry_price", 0))
+            ret = float(h.get("return_pct", 0.0))
+            sign = "🟢" if ret > 0 else ("🔵" if ret < 0 else "⚪")
+            tgt_p = float(h.get("target_price", 0)) if h.get("target_price") else 85.0
+            stp_p = float(h.get("stop_loss_price", 0)) if h.get("stop_loss_price") else 45.0
+            lines.append(f" • {sign} <b>[분할 적립] {h.get('name', h.get('ticker'))}</b> ({h.get('ticker')}) | <b>[적립 분할매수]</b>")
+            lines.append(f"    └ 진입: ${entry_p:.2f} ➔ 현재: ${cur_p:.2f} (<b>{ret:+.2f}%</b>) | 🎯 ${tgt_p:.2f} | 🛑 ${stp_p:.2f}")
+            notes = h.get("notes", "")
+            if notes:
+                clean_notes = notes.split('|')[0].strip().replace("[3X 레버리지/US3X 15% 가중치]", "").strip()
+                if clean_notes:
+                    lines.append(f"    └ <i>운용 원칙:</i> {clean_notes}")
+    else:
+        lines.append(" • <i>현재 3X 레버리지 편입 대기 중</i>")
+
+    return "\n".join(lines)
 
 
 # =============================================================
@@ -340,7 +418,7 @@ def build_0830_kr_open_alarm(
         lines.append("• 📋 <b>[포지션 운용 현황]</b> 한국 6종목 + 미국 6종목 전량 목표가/손절가 내 정상 운용 중")
         lines.append("• 💡 <b>[금일 주문 안내]</b> 신규 진입/교체/매도 대상 없음 ➔ 기존 12종목 홀딩 대응 (신규 주문 없음)")
 
-    # 3. 한국장 실운용 포트폴리오 (대형 3선 + 중소형 3선)
+    # 3. 한국장 코어 실운용 포트폴리오 (대형 3선 + 중소형 3선)
     kr_active = kr_portfolio.get("active_holdings", [])
     kr_stats = kr_portfolio.get("stats", {})
     new_tickers = set(b.get("ticker") for b in new_buys)
@@ -349,25 +427,27 @@ def build_0830_kr_open_alarm(
     avg_ret = kr_stats.get("avg_return_pct", 0.0)
 
     lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
-    lines.append(f"💼 <b>3. 🇰🇷 한국장 실운용 포트폴리오 (총 {len(kr_active)}종목 - 대형 {large_c}선 + 중소형 {mid_c}선)</b>")
-    lines.append(f"• <b>포트폴리오 평균 수익률:</b> <b>{avg_ret:+.2f}%</b> (가용 슬롯: {kr_stats.get('available_slots', 0)}개)")
+    lines.append(f"💼 <b>3. 🇰🇷 한국장 코어 실운용 포트폴리오 (정예 {len(kr_active)}종목 - 대형 {large_c}선 + 중소형 {mid_c}선)</b>")
+    lines.append(f"• <b>코어 포트폴리오 평균 수익률:</b> <b>{avg_ret:+.2f}%</b> (가용 슬롯: {kr_stats.get('available_slots', 0)}개)")
     lines.extend(format_strategy_grouped_portfolio(kr_active, market="KRX", new_tickers=new_tickers, is_summary=False))
 
-    # 4. 미국장 실운용 포트폴리오 (대형 3선 + 중소형 2선 + 3X 레버리지 1선)
+    # 4. 미국장 코어 실운용 포트폴리오
     us_active = us_portfolio.get("active_holdings", [])
     us_stats = us_portfolio.get("stats", {})
     us_new_tickers = set(b.get("ticker") for b in us_portfolio.get("new_buys", []))
     us_large_c = sum(1 for h in us_active if classify_cap_size(h.get("ticker", ""), h.get("name", ""), market="US") == "대형주")
-    us_mid_c = sum(1 for h in us_active if classify_cap_size(h.get("ticker", ""), h.get("name", ""), market="US") == "중소형주")
-    us_3x_c = sum(1 for h in us_active if "3X" in classify_cap_size(h.get("ticker", ""), h.get("name", ""), market="US"))
+    us_mid_c = sum(1 for h in us_active if classify_cap_size(h.get("ticker", ""), h.get("name", ""), market="US") != "대형주")
     us_avg_ret = us_stats.get("avg_return_pct", 0.0)
 
     lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
-    lines.append(f"💼 <b>4. 🇺🇸 미국장 실운용 포트폴리오 (총 {len(us_active)}종목 - 대형 {us_large_c}선 + 중소형 {us_mid_c}선 + 3X 레버리지 {us_3x_c}선)</b>")
-    lines.append(f"• <b>포트폴리오 평균 수익률:</b> <b>{us_avg_ret:+.2f}%</b> (가용 슬롯: {us_stats.get('available_slots', 0)}개)")
+    lines.append(f"💼 <b>4. 🇺🇸 미국장 코어 실운용 포트폴리오 (정예 {len(us_active)}종목 - 대형 {us_large_c}선 + 중소형 {us_mid_c}선)</b>")
+    lines.append(f"• <b>코어 포트폴리오 평균 수익률:</b> <b>{us_avg_ret:+.2f}%</b> (가용 슬롯: {us_stats.get('available_slots', 0)}개)")
     lines.extend(format_strategy_grouped_portfolio(us_active, market="US", new_tickers=us_new_tickers, is_summary=False))
 
-    # 5. 매주 화요일 오후 특별 점검 (미국 중소형 2차 파동 부활 전략)
+    # 5. 단독 독립 운용 트랙
+    lines.append(build_standalone_tracks_block(section_no=5))
+
+    # 6. 매주 화요일 오후 특별 점검 (미국 중소형 2차 파동 부활 전략)
     if datetime.now().weekday() == 1:  # 0=월, 1=화
         try:
             from strategies.stage2_revival import build_tuesday_review_block
@@ -444,7 +524,7 @@ def build_1500_kr_close_alarm(
         lines.append("• 📋 <b>[포지션 운용 현황]</b> 한국 6종목 + 미국 6종목 전량 목표가/손절가 내 정상 마감")
         lines.append("• 💡 <b>[종가 주문 안내]</b> 신규 진입/교체/매도 대상 없음 ➔ 기존 12종목 홀딩 유지 (종가 매수 없음)")
 
-    # 2. 한국장 실운용 포트폴리오 마감 현황
+    # 2. 한국장 코어 실운용 포트폴리오 마감 현황
     kr_active = kr_portfolio.get("active_holdings", [])
     kr_stats = kr_portfolio.get("stats", {})
     new_tickers = set(b.get("ticker") for b in new_buys)
@@ -453,22 +533,24 @@ def build_1500_kr_close_alarm(
     avg_ret = kr_stats.get("avg_return_pct", 0.0)
 
     lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
-    lines.append(f"💼 <b>2. 🇰🇷 한국장 실운용 포트폴리오 마감 현황 (총 {len(kr_active)}종목 - 대형 {large_c}선 + 중소형 {mid_c}선)</b>")
-    lines.append(f"• <b>포트폴리오 평균 수익률:</b> <b>{avg_ret:+.2f}%</b> (가용 슬롯: {kr_stats.get('available_slots', 0)}개)")
+    lines.append(f"💼 <b>2. 🇰🇷 한국장 코어 실운용 포트폴리오 마감 현황 (정예 {len(kr_active)}종목 - 대형 {large_c}선 + 중소형 {mid_c}선)</b>")
+    lines.append(f"• <b>코어 포트폴리오 평균 수익률:</b> <b>{avg_ret:+.2f}%</b> (가용 슬롯: {kr_stats.get('available_slots', 0)}개)")
     lines.extend(format_strategy_grouped_portfolio(kr_active, market="KRX", new_tickers=new_tickers, is_summary=False))
 
-    # 3. 미국장 실운용 포트폴리오 현황
+    # 3. 미국장 코어 실운용 포트폴리오 현황
     us_active = us_portfolio.get("active_holdings", [])
     us_stats = us_portfolio.get("stats", {})
     us_large_c = sum(1 for h in us_active if classify_cap_size(h.get("ticker", ""), h.get("name", ""), market="US") == "대형주")
-    us_mid_c = sum(1 for h in us_active if classify_cap_size(h.get("ticker", ""), h.get("name", ""), market="US") == "중소형주")
-    us_3x_c = sum(1 for h in us_active if "3X" in classify_cap_size(h.get("ticker", ""), h.get("name", ""), market="US"))
+    us_mid_c = sum(1 for h in us_active if classify_cap_size(h.get("ticker", ""), h.get("name", ""), market="US") != "대형주")
     us_avg_ret = us_stats.get("avg_return_pct", 0.0)
 
     lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
-    lines.append(f"💼 <b>3. 🇺🇸 미국장 실운용 포트폴리오 현황 (총 {len(us_active)}종목 - 대형 {us_large_c}선 + 중소형 {us_mid_c}선 + 3X 레버리지 {us_3x_c}선)</b>")
-    lines.append(f"• <b>포트폴리오 평균 수익률:</b> <b>{us_avg_ret:+.2f}%</b> (가용 슬롯: {us_stats.get('available_slots', 0)}개)")
+    lines.append(f"💼 <b>3. 🇺🇸 미국장 코어 실운용 포트폴리오 현황 (정예 {len(us_active)}종목 - 대형 {us_large_c}선 + 중소형 {us_mid_c}선)</b>")
+    lines.append(f"• <b>코어 포트폴리오 평균 수익률:</b> <b>{us_avg_ret:+.2f}%</b> (가용 슬롯: {us_stats.get('available_slots', 0)}개)")
     lines.extend(format_strategy_grouped_portfolio(us_active, market="US", new_tickers=None, is_summary=False))
+
+    # 4. 단독 독립 운용 트랙
+    lines.append(build_standalone_tracks_block(section_no=4))
 
     lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
     lines.append("🖥️ <b>트레이딩 데스크:</b> https://bluem00000000n.github.io/stock/")
@@ -548,21 +630,20 @@ def build_1730_us_open_alarm(
         lines.append("• 📋 <b>[미국장 포지션 운용 현황]</b> 미국 6종목 전량 목표가/손절가 내 정상 운용 중")
         lines.append("• 💡 <b>[개장 주문 안내]</b> 신규 진입/교체/매도 대상 없음 ➔ 기존 6종목 홀딩 대응 (신규 매수 없음)")
 
-    # 3. 미국장 실운용 포트폴리오 (대형 3선 + 중소형 2선 + 3X 레버리지 1선)
+    # 3. 미국장 코어 실운용 포트폴리오
     us_active = us_portfolio.get("active_holdings", [])
     us_stats = us_portfolio.get("stats", {})
     us_new_tickers = set(b.get("ticker") for b in new_buys)
     us_large_c = sum(1 for h in us_active if classify_cap_size(h.get("ticker", ""), h.get("name", ""), market="US") == "대형주")
-    us_mid_c = sum(1 for h in us_active if classify_cap_size(h.get("ticker", ""), h.get("name", ""), market="US") == "중소형주")
-    us_3x_c = sum(1 for h in us_active if "3X" in classify_cap_size(h.get("ticker", ""), h.get("name", ""), market="US"))
+    us_mid_c = sum(1 for h in us_active if classify_cap_size(h.get("ticker", ""), h.get("name", ""), market="US") != "대형주")
     us_avg_ret = us_stats.get("avg_return_pct", 0.0)
 
     lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
-    lines.append(f"💼 <b>3. 🇺🇸 미국장 실운용 포트폴리오 (총 {len(us_active)}종목 - 대형 {us_large_c}선 + 중소형 {us_mid_c}선 + 3X 레버리지 {us_3x_c}선)</b>")
-    lines.append(f"• <b>포트폴리오 평균 수익률:</b> <b>{us_avg_ret:+.2f}%</b> (가용 슬롯: {us_stats.get('available_slots', 0)}개)")
+    lines.append(f"💼 <b>3. 🇺🇸 미국장 코어 실운용 포트폴리오 (정예 {len(us_active)}종목 - 대형 {us_large_c}선 + 중소형 {us_mid_c}선)</b>")
+    lines.append(f"• <b>코어 포트폴리오 평균 수익률:</b> <b>{us_avg_ret:+.2f}%</b> (가용 슬롯: {us_stats.get('available_slots', 0)}개)")
     lines.extend(format_strategy_grouped_portfolio(us_active, market="US", new_tickers=us_new_tickers, is_summary=False))
 
-    # 4. 한국장 실운용 포트폴리오 마감 요약
+    # 4. 한국장 코어 실운용 포트폴리오 마감 요약
     kr_active = kr_portfolio.get("active_holdings", [])
     kr_stats = kr_portfolio.get("stats", {})
     kr_large_c = sum(1 for h in kr_active if "대형" in classify_cap_size(h.get("ticker", ""), h.get("name", ""), market="KRX"))
@@ -570,10 +651,13 @@ def build_1730_us_open_alarm(
     avg_kr = kr_stats.get("avg_return_pct", 0.0)
 
     lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
-    lines.append(f"💼 <b>4. 🇰🇷 한국장 실운용 포트폴리오 (총 {len(kr_active)}종목 - 대형 {kr_large_c}선 + 중소형 {kr_mid_c}선 | 마감 평균 {avg_kr:+.2f}%)</b>")
+    lines.append(f"💼 <b>4. 🇰🇷 한국장 코어 실운용 포트폴리오 (정예 {len(kr_active)}종목 - 대형 {kr_large_c}선 + 중소형 {kr_mid_c}선 | 마감 평균 {avg_kr:+.2f}%)</b>")
     lines.extend(format_strategy_grouped_portfolio(kr_active, market="KRX", new_tickers=None, is_summary=True))
 
-    # 5. 매주 화요일 오후 특별 점검 (미국 중소형 2차 파동 부활 전략)
+    # 5. 단독 독립 운용 트랙
+    lines.append(build_standalone_tracks_block(section_no=5))
+
+    # 6. 매주 화요일 오후 특별 점검 (미국 중소형 2차 파동 부활 전략)
     if datetime.now().weekday() == 1:  # 0=월, 1=화
         try:
             from strategies.stage2_revival import build_tuesday_review_block

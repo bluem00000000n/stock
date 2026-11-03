@@ -72,12 +72,19 @@ def update_holdings_prices(market: str = "KRX") -> List[Dict[str, Any]]:
     return updated
 
 
+STANDALONE_PROJECT_IDS = {
+    "stock-us3x", "us3x",
+    "stock-stage2-revival", "stage2_revival",
+    "signal_forge_alert", "signal-forge-alert", "signal_forge"
+}
+
+
 def enforce_portfolio_target_6(market: str = "KRX", candidate_signals: List[Dict[str, Any]] = None) -> List[Dict[str, Any]]:
     """
-    [포트폴리오 6종목 황금 밸런스 강제 조정]
-    - 한국장: 정확히 6종목 (대형주 3 + 중소형주 3)
-    - 미국장: 정확히 6종목 (대형주 3 + 중소형주 3)
-    - 침체/마이너스 비주도 종목을 정리하고, 각 전략 리스트 최고/최선의 선택으로 재편
+    [코어 포트폴리오 6종목 황금 밸런스 강제 조정]
+    - 단독 전략(US 3X, 중소형 2차 부활, Signal Forge AI)은 코어 6종목 쿼터에서 완전 제외 및 독립 보존
+    - 한국장 코어: 정확히 6종목 (SEPA 2~3 + 스나이퍼 2 + 스윙 1~2)
+    - 미국장 코어: 정확히 6종목 (HTP 3 + SEPA 2 + 스윙 1)
     """
     today_str = datetime.now().strftime("%Y-%m-%d")
     now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -85,20 +92,24 @@ def enforce_portfolio_target_6(market: str = "KRX", candidate_signals: List[Dict
 
     holdings = update_holdings_prices(market=market)
 
-    # 선호 6대 정예 종목군 (대형 3 + 중소형 3) - 3개년 백테스트 가중치 최상위 우상향 정배열 종목
+    # 코어 종목과 단독 전략 종목 분리
+    core_holdings = [h for h in holdings if (h.get("project_id") or "").lower() not in STANDALONE_PROJECT_IDS]
+    standalone_holdings = [h for h in holdings if (h.get("project_id") or "").lower() in STANDALONE_PROJECT_IDS]
+
+    # 코어 6대 정예 종목군 (3개년 백테스트 최적 조합)
     kr_preferred = ["000660", "012450", "267260", "093320", "003230", "042510"]
-    us_preferred = ["NVDA", "PLTR", "AVGO", "POWL", "MOD", "TQQQ"]
+    us_preferred = ["NVDA", "AVGO", "AAPL", "PLTR", "APP", "CPAY"]
     pref_set = set(kr_preferred if is_kr else us_preferred)
 
-    # 1. 6종목 초과 보유 시: 선호 종목 및 고수익 상위 6종목(대형 3 + 중소형 3)만 유지하고 나머지 정리
-    if len(holdings) > 6:
+    # 1. 코어 6종목 초과 보유 시에만 코어 종목 내에서 정리 (단독 전략은 절대 손대지 않음)
+    if len(core_holdings) > 6:
         def sort_key(h):
             is_pref = 1 if h["ticker"] in pref_set else 0
             ret = float(h.get("return_pct", 0.0))
             return (is_pref, ret)
 
-        large_h = [h for h in holdings if h.get("cap_size") == "대형주"]
-        mid_h = [h for h in holdings if h.get("cap_size") != "대형주"]
+        large_h = [h for h in core_holdings if h.get("cap_size") == "대형주"]
+        mid_h = [h for h in core_holdings if h.get("cap_size") != "대형주"]
 
         large_h.sort(key=sort_key, reverse=True)
         mid_h.sort(key=sort_key, reverse=True)
@@ -114,28 +125,32 @@ def enforce_portfolio_target_6(market: str = "KRX", candidate_signals: List[Dict
             keep_mid.extend(mid_h[len(keep_mid):len(keep_mid) + needed])
 
         keep_ids = set([h["id"] for h in keep_large + keep_mid])
+        # 단독 전략 ID도 보존 목록에 추가
+        for s in standalone_holdings:
+            keep_ids.add(s["id"])
 
         with get_db_connection() as conn:
             cur = conn.cursor()
-            for h in holdings:
+            for h in core_holdings:
                 if h["id"] not in keep_ids:
                     cur.execute("""
                         UPDATE trades 
                         SET status = 'CLOSED', exit_price = current_price, exit_date = ?, 
-                            notes = '포트폴리오 6종목 황금밸런스 정예화(슬롯 초과 정리)', updated_at = ?
+                            notes = '코어 포트폴리오 6종목 황금밸런스 정예화(슬롯 초과 정리)', updated_at = ?
                         WHERE id = ?
                     """, (today_str, now_str, h["id"]))
             conn.commit()
 
     # 재조회
     holdings = update_holdings_prices(market=market)
-    cur_tickers = {h["ticker"] for h in holdings}
+    core_holdings = [h for h in holdings if (h.get("project_id") or "").lower() not in STANDALONE_PROJECT_IDS]
+    cur_tickers = {h["ticker"] for h in core_holdings}
 
-    # 3. 신규 편입을 통해 정확히 대형 3 + 중소형 3 = 6종목 완성
-    if len(holdings) < 6 and candidate_signals:
+    # 2. 신규 편입을 통해 코어 6종목 부족 시 보충
+    if len(core_holdings) < 6 and candidate_signals:
         balanced_buys = select_balanced_portfolio_buys(
             candidate_signals=candidate_signals,
-            current_holdings=holdings,
+            current_holdings=core_holdings,
             market=market,
             target_total=6,
             target_large=3,
