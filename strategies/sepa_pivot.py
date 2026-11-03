@@ -16,16 +16,15 @@ from core.market_data import fetch_krx_price, fetch_us_price
 
 WATCHLIST = {
     "KR_LARGE": [
-        {"name": "SK하이닉스", "code": "000660", "market": "코스피", "pivot": 205000, "stop": 192500, "turtle_stop": 194000, "farley_swing": "첫 1시간 ORB 돌파 감시", "pattern": "Ascending Triangle", "score": 98, "theme": "HBM3E/HBM4 독점 공급"},
-        {"name": "알테오젠", "code": "196170", "market": "코스닥", "pivot": 420000, "stop": 390000, "turtle_stop": 396000, "farley_swing": "Strong Close 안착 스윙", "pattern": "High Tight Flag", "score": 99, "theme": "ALT-B4 글로벌 빅파마 독점"},
-        {"name": "삼양식품", "code": "003230", "market": "코스피", "pivot": 630000, "stop": 592000, "turtle_stop": 602000, "farley_swing": "피보나치 38.2% 20일선 지지", "pattern": "Cup with Handle", "score": 97, "theme": "불닭 글로벌 수출 및 밀양2공장"},
-        {"name": "한화에어로스페이스", "code": "012450", "market": "코스피", "pivot": 380000, "stop": 357000, "turtle_stop": 362000, "farley_swing": "첫 1시간 ORB 상회 안착", "pattern": "Bull Flag", "score": 98, "theme": "지상방산 해외 수주 및 인적분할"},
-        {"name": "HD현대일렉트릭", "code": "267260", "market": "코스피", "pivot": 360000, "stop": 338000, "turtle_stop": 342000, "farley_swing": "50일선 지지 반등 스윙", "pattern": "Flat Base", "score": 98, "theme": "북미 초고압 변압기 쇼티지"},
+        {"name": "SK하이닉스", "code": "000660", "market": "코스피", "pivot": 1420000, "stop": 1330000, "turtle_stop": 1340000, "farley_swing": "첫 1시간 ORB 돌파 감시", "pattern": "Ascending Triangle", "score": 98, "theme": "HBM3E/HBM4 독점 공급"},
+        {"name": "한화에어로스페이스", "code": "012450", "market": "코스피", "pivot": 745000, "stop": 690000, "turtle_stop": 700000, "farley_swing": "첫 1시간 ORB 상회 안착", "pattern": "Bull Flag", "score": 98, "theme": "지상방산 해외 수주 및 불플래그 돌파"},
+        {"name": "HD현대일렉트릭", "code": "267260", "market": "코스피", "pivot": 435000, "stop": 405000, "turtle_stop": 410000, "farley_swing": "플랫베이스 지지 반등 스윙", "pattern": "Flat Base", "score": 98, "theme": "북미 초고압 변압기 쇼티지"},
     ],
     "KR_MID": [
-        {"name": "산일전기", "code": "075950", "market": "코스피", "pivot": 68000, "stop": 63200, "turtle_stop": 64200, "farley_swing": "Strong Close 안착 스윙", "pattern": "Bull Flag", "score": 98, "theme": "북미 특수변압기 직납 고성장"},
-        {"name": "제룡전기", "code": "033100", "market": "코스닥", "pivot": 82000, "stop": 77000, "turtle_stop": 77600, "farley_swing": "첫 1시간 ORB 분출", "pattern": "Flat Base", "score": 97, "theme": "주상변압기 마진 40%+ 지속"},
-        {"name": "피에스케이홀딩스", "code": "031980", "market": "코스닥", "pivot": 62000, "stop": 58200, "turtle_stop": 58600, "farley_swing": "VCP 3차 수축 돌파", "pattern": "VCP", "score": 96, "theme": "HBM 패키징 디스컴 장비"},
+        {"name": "케이아이엔엑스", "code": "093320", "market": "코스닥", "pivot": 175000, "stop": 161000, "turtle_stop": 164000, "farley_swing": "과천 IDC 하이타이트 플래그 돌파", "pattern": "High Tight Flag", "score": 99, "theme": "과천 AI IDC 본격 가동 및 52주 신고가 우상향"},
+        {"name": "라온시큐어", "code": "042510", "market": "코스닥", "pivot": 19000, "stop": 17500, "turtle_stop": 17800, "farley_swing": "52주 신고가 스나이퍼 수급 분출", "pattern": "Ascending Triangle", "score": 98, "theme": "글로벌 생체인증/양자암호 주도 수급"},
+        {"name": "피에스케이홀딩스", "code": "031980", "market": "코스닥", "pivot": 170000, "stop": 158000, "turtle_stop": 160000, "farley_swing": "VCP 3차 수축 돌파", "pattern": "VCP", "score": 96, "theme": "HBM 패키징 디스컴 장비"},
+        {"name": "산일전기", "code": "075950", "market": "코스피", "pivot": 68000, "stop": 63200, "turtle_stop": 64200, "farley_swing": "Strong Close 안착 스윙", "pattern": "Bull Flag", "score": 96, "theme": "북미 특수변압기 직납 고성장"},
     ],
     "US_LARGE": [
         {"ticker": "NVDA", "name": "Nvidia", "market": "NASDAQ", "pivot": 144.0, "stop": 135.3, "turtle_stop": 137.7, "farley_swing": "첫 1시간 ORB 돌파 감시", "pattern": "Ascending Triangle", "score": 98, "theme": "블랙웰 B200 풀캐파 가동"},
@@ -42,19 +41,51 @@ WATCHLIST = {
 }
 
 
+def verify_minervini_trend_template(code: str, cur_price: float) -> bool:
+    """마크 미너비니 2단계 상승 국면(Stage 2 Uptrend) 트렌드 템플릿 필터
+    - 밑으로 깔리는 종목(역배열, 50일선 이탈, 고점 대비 -28% 초과 낙폭) 엄격 배제
+    - 신고가 근처에서 노는 주도주(Leader)만 통과
+    """
+    if cur_price <= 0:
+        return False
+    if code in ("196170",):  # 알테오젠 등 역배열 하락세 영구 차단
+        return False
+    try:
+        import urllib.request, xml.etree.ElementTree as ET
+        url = f"https://fchart.stock.naver.com/sise.nhn?symbol={code}&timeframe=day&count=60&requestType=0"
+        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+        with urllib.request.urlopen(req, timeout=3) as resp:
+            xml_data = resp.read().decode("euc-kr", errors="ignore")
+            root = ET.fromstring(xml_data)
+            items = root.findall(".//item")
+            if len(items) >= 40:
+                closes = [int(it.attrib.get("data", "").split("|")[4]) for it in items]
+                ma50 = sum(closes[-50:]) / len(closes[-50:])
+                h_period = max(closes)
+                pct_h = (cur_price - h_period) / h_period
+                if pct_h < -0.28:
+                    return False
+                if cur_price < ma50 * 0.95:
+                    return False
+    except Exception:
+        pass
+    return True
+
+
 def run_analysis(market: str = "KRX") -> List[Dict[str, Any]]:
-    """SEPA x 피봇 감시 전략 분석 실행 및 시그널 리스트 반환"""
+    """SEPA x 피봇 감시 전략 분석 실행 및 시그널 리스트 반환 (미너비니 2단계 트렌드 템플릿 필터 적용)"""
     signals = []
 
     if market.upper() in ("KRX", "KR", "KOR"):
         for item in WATCHLIST["KR_LARGE"]:
-            item_copy = dict(item)
-            item_copy["cap_size"] = "대형주"
             p_info = fetch_krx_price(item["code"])
             cur_price = p_info["price"] if p_info["price"] > 0 else float(item["pivot"])
+            # 미너비니 트렌드 템플릿 검증: 밑으로 깔리는 종목 원천 배제
+            if not verify_minervini_trend_template(item["code"], cur_price):
+                continue
+
             pivot_val = float(item["pivot"])
             stop_val = float(item["stop"])
-            # 피봇이 현재가와 크게 괴리되어 있으면 현재가 기반 타점으로 자동 보정
             if cur_price > 0 and abs(cur_price - pivot_val) / pivot_val > 0.3:
                 pivot_val = round(cur_price * 1.02)
                 stop_val = round(cur_price * 0.94)
@@ -91,6 +122,9 @@ def run_analysis(market: str = "KRX") -> List[Dict[str, Any]]:
         for item in WATCHLIST["KR_MID"]:
             p_info = fetch_krx_price(item["code"])
             cur_price = p_info["price"] if p_info["price"] > 0 else float(item["pivot"])
+            # 미너비니 트렌드 템플릿 검증: 밑으로 깔리는 종목 원천 배제
+            if not verify_minervini_trend_template(item["code"], cur_price):
+                continue
             pivot_val = float(item["pivot"])
             stop_val = float(item["stop"])
             # 피봇이 현재가와 크게 괴리되어 있으면 현재가 기반 타점으로 자동 보정

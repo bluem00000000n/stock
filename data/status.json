@@ -1,6 +1,6 @@
 {
   "summary": {
-    "updated_at": "2026-11-03 10:07:29",
+    "updated_at": "2026-11-03 10:15:14",
     "total_projects": 8,
     "active_daemons": 0,
     "today_executed": 0,
@@ -11,10 +11,10 @@
     },
     "portfolio": {
       "date": "2026-11-03",
-      "daily_return_pct": 0.02,
-      "cumulative_return_pct": 2.34,
+      "daily_return_pct": 0.1,
+      "cumulative_return_pct": 2.38,
       "realized_pnl_pct": 4.88,
-      "unrealized_pnl_pct": 0.02,
+      "unrealized_pnl_pct": 0.1,
       "holding_count": 12,
       "closed_count": 11,
       "win_rate": 60.9
@@ -276,7 +276,7 @@
   ],
   "alarms": [
     {
-      "id": 135,
+      "id": 138,
       "project_id": "stock-supervisor",
       "project_name": "stock-supervisor",
       "sent_at": "2026-11-03 17:30:00",
@@ -287,7 +287,7 @@
       "stocks": []
     },
     {
-      "id": 134,
+      "id": 137,
       "project_id": "stock-supervisor",
       "project_name": "stock-supervisor",
       "sent_at": "2026-11-03 15:00:00",
@@ -298,7 +298,7 @@
       "stocks": []
     },
     {
-      "id": 133,
+      "id": 136,
       "project_id": "stock-supervisor",
       "project_name": "stock-supervisor",
       "sent_at": "2026-11-03 08:30:00",
@@ -311,27 +311,7 @@
   ],
   "trades": [
     {
-      "id": 217,
-      "project_id": "stock-sepa-pivot",
-      "project_name": "stock-sepa-pivot",
-      "ticker": "000660",
-      "name": "SK하이닉스",
-      "market": "KRX",
-      "signal_type": "시가매수(09:00)",
-      "signal_date": "2026-11-03 08:30:00",
-      "entry_price": 1389000.0,
-      "entry_date": "2026-11-03",
-      "current_price": 1416000.0,
-      "exit_price": null,
-      "exit_date": null,
-      "status": "HOLDING",
-      "return_pct": 1.94,
-      "target_price": 1750000.0,
-      "stop_loss_price": 1310000.0,
-      "notes": "[대형주/SEPA 25% 가중치] HBM3E 독점 VCP 피벗 돌파 | 시가 매수 (09:00 개장 시가 체결)"
-    },
-    {
-      "id": 218,
+      "id": 241,
       "project_id": "stock-sniper",
       "project_name": "stock-sniper",
       "ticker": "012450",
@@ -341,17 +321,37 @@
       "signal_date": "2026-11-03 08:30:00",
       "entry_price": 735000.0,
       "entry_date": "2026-11-03",
-      "current_price": 745000.0,
+      "current_price": 751000.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": 1.36,
+      "return_pct": 2.18,
       "target_price": 860000.0,
       "stop_loss_price": 680000.0,
       "notes": "[대형주/스나이퍼 20% 가중치] K9/천무 글로벌 수주 모멘텀, 불플래그 돌파 | 지정가 매수: 735,000원"
     },
     {
-      "id": 221,
+      "id": 240,
+      "project_id": "stock-sniper",
+      "project_name": "stock-sniper",
+      "ticker": "000660",
+      "name": "SK하이닉스",
+      "market": "KRX",
+      "signal_type": "시가매수(09:00)",
+      "signal_date": "2026-11-03 08:30:00",
+      "entry_price": 1389000.0,
+      "entry_date": "2026-11-03",
+      "current_price": 1418000.0,
+      "exit_price": null,
+      "exit_date": null,
+      "status": "HOLDING",
+      "return_pct": 2.09,
+      "target_price": 1750000.0,
+      "stop_loss_price": 1310000.0,
+      "notes": "[대형주/스나이퍼 20% 가중치] HBM3E 엔비디아 독점 공급 수급 주도주 | 시가 매수 (09:00 개장 시가 체결)"
+    },
+    {
+      "id": 244,
       "project_id": "stock-swing",
       "project_name": "stock-swing",
       "ticker": "003230",
@@ -361,19 +361,19 @@
       "signal_date": "2026-11-03 15:00:00",
       "entry_price": 1159000.0,
       "entry_date": "2026-11-03",
-      "current_price": 1170000.0,
+      "current_price": 1172000.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": 0.95,
+      "return_pct": 1.12,
       "target_price": 1380000.0,
       "stop_loss_price": 1090000.0,
       "notes": "[중소형주/스윙 10% 가중치] 글로벌 불닭 수출 호조, 컵앤핸들 지지 | 종가 매수 (15:20~15:30 동시호가 체결)"
     },
     {
-      "id": 219,
-      "project_id": "stock-sepa-pivot",
-      "project_name": "stock-sepa-pivot",
+      "id": 242,
+      "project_id": "stock-swing",
+      "project_name": "stock-swing",
       "ticker": "267260",
       "name": "HD현대일렉트릭",
       "market": "KRX",
@@ -381,37 +381,17 @@
       "signal_date": "2026-11-03 08:30:00",
       "entry_price": 431500.0,
       "entry_date": "2026-11-03",
-      "current_price": 434000.0,
+      "current_price": 433000.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": 0.58,
+      "return_pct": 0.35,
       "target_price": 520000.0,
       "stop_loss_price": 405000.0,
-      "notes": "[대형주/SEPA 25% 가중치] 북미 변압기 쇼티지 수혜, 플랫 베이스 지지 | 지정가 매수: 431,500원"
+      "notes": "[대형주/스윙 10% 가중치] 북미 변압기 쇼티지 수혜, 43만원 플랫 베이스 지지 | 지정가 매수: 431,500원"
     },
     {
-      "id": 220,
-      "project_id": "stock-sepa-pivot",
-      "project_name": "stock-sepa-pivot",
-      "ticker": "093320",
-      "name": "케이아이엔엑스",
-      "market": "KRX",
-      "signal_type": "지정가매수",
-      "signal_date": "2026-11-03 08:30:00",
-      "entry_price": 175000.0,
-      "entry_date": "2026-11-03",
-      "current_price": 175000.0,
-      "exit_price": null,
-      "exit_date": null,
-      "status": "HOLDING",
-      "return_pct": 0.0,
-      "target_price": 210000.0,
-      "stop_loss_price": 161000.0,
-      "notes": "[중소형주/SEPA 25% 가중치] 과천 AI IDC 가동 & 52주 신고가 하이타이트 플래그 돌파 | 지정가 매수: 175,000원"
-    },
-    {
-      "id": 223,
+      "id": 246,
       "project_id": "stock-htp-top10",
       "project_name": "stock-htp-top10",
       "ticker": "NVDA",
@@ -431,11 +411,11 @@
       "notes": "[대형주/HTP 20% 가중치] AI 가속기 독점 및 블랙웰 사이클, HTP 대형 1위 | 시가 매수 (22:30 개장 시가 체결)"
     },
     {
-      "id": 224,
+      "id": 247,
       "project_id": "stock-htp-top10",
       "project_name": "stock-htp-top10",
       "ticker": "PLTR",
-      "name": "팔란티어 테크놀로지스",
+      "name": "팔란티어",
       "market": "US",
       "signal_type": "지정가매수",
       "signal_date": "2026-11-03 17:30:00",
@@ -451,7 +431,7 @@
       "notes": "[대형주/HTP 20% 가중치] AIP 엔터프라이즈 모멘텀 급증, HTP 대형 5위 | 지정가 매수: $178.34"
     },
     {
-      "id": 225,
+      "id": 248,
       "project_id": "stock-htp-top10",
       "project_name": "stock-htp-top10",
       "ticker": "AVGO",
@@ -471,7 +451,7 @@
       "notes": "[대형주/HTP 20% 가중치] 커스텀 AI ASIC 수주 확대, HTP 대형 4위 | 지정가 매수: $322.23"
     },
     {
-      "id": 226,
+      "id": 249,
       "project_id": "stock-htp-top10",
       "project_name": "stock-htp-top10",
       "ticker": "POWL",
@@ -491,7 +471,7 @@
       "notes": "[중소형주/HTP 20% 가중치] AI 데이터센터 전력망 장비, 러셀 2000 HTP 1위 | 시가 매수 (22:30 개장 시가 체결)"
     },
     {
-      "id": 227,
+      "id": 250,
       "project_id": "stock-htp-top10",
       "project_name": "stock-htp-top10",
       "ticker": "MOD",
@@ -511,7 +491,7 @@
       "notes": "[중소형주/HTP 20% 가중치] AI 데이터센터 액체냉각 열관리 독보적 성장, HTP 2위 | 지정가 매수: $123.34"
     },
     {
-      "id": 228,
+      "id": 251,
       "project_id": "stock-us3x",
       "project_name": "stock-us3x",
       "ticker": "TQQQ",
@@ -531,7 +511,27 @@
       "notes": "[3X 레버리지/US3X 15% 가중치] 나스닥 100 3배 레버리지 무한매수 분할 적립 | 종가 매수 (LOC 20분할 매수)"
     },
     {
-      "id": 222,
+      "id": 243,
+      "project_id": "stock-sepa-pivot",
+      "project_name": "stock-sepa-pivot",
+      "ticker": "093320",
+      "name": "케이아이엔엑스",
+      "market": "KRX",
+      "signal_type": "지정가매수",
+      "signal_date": "2026-11-03 08:30:00",
+      "entry_price": 175000.0,
+      "entry_date": "2026-11-03",
+      "current_price": 174600.0,
+      "exit_price": null,
+      "exit_date": null,
+      "status": "HOLDING",
+      "return_pct": -0.23,
+      "target_price": 210000.0,
+      "stop_loss_price": 161000.0,
+      "notes": "[중소형주/SEPA 25% 가중치] 50일선 위 52주 신고가 하이타이트 플래그 추세추종 1위 | 지정가 매수: 175,000원"
+    },
+    {
+      "id": 245,
       "project_id": "stock-sniper",
       "project_name": "stock-sniper",
       "ticker": "042510",
@@ -541,17 +541,17 @@
       "signal_date": "2026-11-03 08:30:00",
       "entry_price": 19300.0,
       "entry_date": "2026-11-03",
-      "current_price": 18410.0,
+      "current_price": 18460.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": -4.61,
+      "return_pct": -4.35,
       "target_price": 22500.0,
       "stop_loss_price": 17900.0,
       "notes": "[중소형주/스나이퍼 20% 가중치] 생체인증/양자암호 52주 신고가 스나이퍼 수급 1위 | 시가 매수 (09:00 개장 시가 체결)"
     },
     {
-      "id": 229,
+      "id": 252,
       "project_id": "stock-us3x",
       "project_name": "stock-us3x",
       "ticker": "TECL",
@@ -571,7 +571,7 @@
       "notes": "테크 3X 트렌치 분할 익절"
     },
     {
-      "id": 230,
+      "id": 253,
       "project_id": "stock-us3x",
       "project_name": "stock-us3x",
       "ticker": "SOXL",
@@ -591,7 +591,7 @@
       "notes": "반도체 3X 트렌치 분할 익절"
     },
     {
-      "id": 237,
+      "id": 260,
       "project_id": "stock-cyclical-screener",
       "project_name": "stock-cyclical-screener",
       "ticker": "007860",
@@ -611,7 +611,7 @@
       "notes": "자동차 부품 PBR 호황기 정점 이익 실현 매도"
     },
     {
-      "id": 236,
+      "id": 259,
       "project_id": "stock-cyclical-screener",
       "project_name": "stock-cyclical-screener",
       "ticker": "078350",
@@ -631,7 +631,7 @@
       "notes": "반도체 패키징 PBR 침체기 저평가 매수 후 익절"
     },
     {
-      "id": 239,
+      "id": 262,
       "project_id": "stock-swing",
       "project_name": "stock-swing",
       "ticker": "011200",
@@ -651,7 +651,7 @@
       "notes": "227선 스윙 2차 트렌치 익절"
     },
     {
-      "id": 238,
+      "id": 261,
       "project_id": "stock-swing",
       "project_name": "stock-swing",
       "ticker": "033780",
@@ -671,7 +671,7 @@
       "notes": "227선 무한 스윙 3차 트렌치 익절"
     },
     {
-      "id": 231,
+      "id": 254,
       "project_id": "stock-dividend_top7",
       "project_name": "stock-dividend_top7",
       "ticker": "030200",
@@ -691,7 +691,7 @@
       "notes": "5년 평균 시가배당률 5.4% 목표가 달성 익절"
     },
     {
-      "id": 234,
+      "id": 257,
       "project_id": "signal_forge_alert",
       "project_name": "signal_forge_alert",
       "ticker": "068270",
@@ -711,7 +711,7 @@
       "notes": "Catalyst Breakout 다일간 모멘텀 목표 익절"
     },
     {
-      "id": 232,
+      "id": 255,
       "project_id": "stock-dividend_top7",
       "project_name": "stock-dividend_top7",
       "ticker": "017670",
@@ -731,7 +731,7 @@
       "notes": "분기배당 성장 목표가 달성 익절"
     },
     {
-      "id": 233,
+      "id": 256,
       "project_id": "stock-dividend_top7",
       "project_name": "stock-dividend_top7",
       "ticker": "029780",
@@ -751,7 +751,7 @@
       "notes": "시가배당률 6.8% 고배당 차익 실현"
     },
     {
-      "id": 235,
+      "id": 258,
       "project_id": "signal_forge_alert",
       "project_name": "signal_forge_alert",
       "ticker": "373220",
@@ -774,10 +774,10 @@
   "performance": {
     "PORTFOLIO_TOTAL": {
       "date": "2026-11-03",
-      "daily_return_pct": 0.02,
-      "cumulative_return_pct": 2.34,
+      "daily_return_pct": 0.1,
+      "cumulative_return_pct": 2.38,
       "realized_pnl_pct": 4.88,
-      "unrealized_pnl_pct": 0.02,
+      "unrealized_pnl_pct": 0.1,
       "holding_count": 12,
       "closed_count": 11,
       "win_rate": 60.9
@@ -824,31 +824,31 @@
     },
     "stock-sepa-pivot": {
       "date": "2026-11-03",
-      "daily_return_pct": 0.84,
-      "cumulative_return_pct": 0.84,
+      "daily_return_pct": -0.23,
+      "cumulative_return_pct": -0.23,
       "realized_pnl_pct": 0.0,
-      "unrealized_pnl_pct": 0.84,
+      "unrealized_pnl_pct": -0.23,
+      "holding_count": 1,
+      "closed_count": 0,
+      "win_rate": 0.0
+    },
+    "stock-sniper": {
+      "date": "2026-11-03",
+      "daily_return_pct": -0.03,
+      "cumulative_return_pct": -0.03,
+      "realized_pnl_pct": 0.0,
+      "unrealized_pnl_pct": -0.03,
       "holding_count": 3,
       "closed_count": 0,
       "win_rate": 66.7
     },
-    "stock-sniper": {
-      "date": "2026-11-03",
-      "daily_return_pct": -1.62,
-      "cumulative_return_pct": -1.62,
-      "realized_pnl_pct": 0.0,
-      "unrealized_pnl_pct": -1.62,
-      "holding_count": 2,
-      "closed_count": 0,
-      "win_rate": 50.0
-    },
     "stock-swing": {
       "date": "2026-11-03",
-      "daily_return_pct": 0.95,
-      "cumulative_return_pct": 3.73,
+      "daily_return_pct": 0.74,
+      "cumulative_return_pct": 2.93,
       "realized_pnl_pct": 5.12,
-      "unrealized_pnl_pct": 0.95,
-      "holding_count": 1,
+      "unrealized_pnl_pct": 0.74,
+      "holding_count": 2,
       "closed_count": 2,
       "win_rate": 100.0
     },

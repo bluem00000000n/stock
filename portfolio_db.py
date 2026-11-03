@@ -332,13 +332,13 @@ def reset_and_reload_all_9_projects():
     trades_to_insert = [
         # --- 🇰🇷 KRX 6종목 (대형 3선 + 중소형 3선) : 3개년 백테스트 가중치 기반 오늘(2026-11-03)부터 신규 체결 ---
         {
-            "project_id": "stock-sepa-pivot", "project_name": "stock-sepa-pivot",
+            "project_id": "stock-sniper", "project_name": "stock-sniper",
             "ticker": "000660", "name": "SK하이닉스", "market": "KRX",
             "signal_type": "시가매수(09:00)", "signal_date": f"{today_str} 08:30:00",
             "entry_price": 1389000.0, "entry_date": today_str, "current_price": 1389000.0,
             "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": 0.0,
             "target_price": 1750000.0, "stop_loss_price": 1310000.0,
-            "notes": "[대형주/SEPA 25% 가중치] HBM3E 독점 VCP 피벗 돌파 | 시가 매수 (09:00 개장 시가 체결)"
+            "notes": "[대형주/스나이퍼 20% 가중치] HBM3E 엔비디아 독점 공급 수급 주도주 | 시가 매수 (09:00 개장 시가 체결)"
         },
         {
             "project_id": "stock-sniper", "project_name": "stock-sniper",
@@ -350,13 +350,13 @@ def reset_and_reload_all_9_projects():
             "notes": "[대형주/스나이퍼 20% 가중치] K9/천무 글로벌 수주 모멘텀, 불플래그 돌파 | 지정가 매수: 735,000원"
         },
         {
-            "project_id": "stock-sepa-pivot", "project_name": "stock-sepa-pivot",
+            "project_id": "stock-swing", "project_name": "stock-swing",
             "ticker": "267260", "name": "HD현대일렉트릭", "market": "KRX",
             "signal_type": "지정가매수", "signal_date": f"{today_str} 08:30:00",
             "entry_price": 431500.0, "entry_date": today_str, "current_price": 431500.0,
             "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": 0.0,
             "target_price": 520000.0, "stop_loss_price": 405000.0,
-            "notes": "[대형주/SEPA 25% 가중치] 북미 변압기 쇼티지 수혜, 플랫 베이스 지지 | 지정가 매수: 431,500원"
+            "notes": "[대형주/스윙 10% 가중치] 북미 변압기 쇼티지 수혜, 43만원 플랫 베이스 지지 | 지정가 매수: 431,500원"
         },
         {
             "project_id": "stock-sepa-pivot", "project_name": "stock-sepa-pivot",
@@ -365,7 +365,7 @@ def reset_and_reload_all_9_projects():
             "entry_price": 175000.0, "entry_date": today_str, "current_price": 175000.0,
             "exit_price": None, "exit_date": None, "status": "HOLDING", "return_pct": 0.0,
             "target_price": 210000.0, "stop_loss_price": 161000.0,
-            "notes": "[중소형주/SEPA 25% 가중치] 과천 AI IDC 가동 & 52주 신고가 하이타이트 플래그 돌파 | 지정가 매수: 175,000원"
+            "notes": "[중소형주/SEPA 25% 가중치] 50일선 위 52주 신고가 하이타이트 플래그 추세추종 1위 | 지정가 매수: 175,000원"
         },
         {
             "project_id": "stock-swing", "project_name": "stock-swing",
