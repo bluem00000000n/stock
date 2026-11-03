@@ -62,14 +62,6 @@ PROJECT_REGISTRY = [
         "source_path": os.path.join(BASE_DIR, "stock-us3x/database/us3x_trading.db")
     },
     {
-        "id": "stock-dividend_top7",
-        "name": "Weekly Dividend TOP 7",
-        "market": "KOR",
-        "schedule": "Weekly Mon 08:30",
-        "source_type": "log",
-        "source_path": os.path.join(BASE_DIR, "stock-dividend_top7/scanner.log")
-    },
-    {
         "id": "signal_forge_alert",
         "name": "Signal Forge AI Macro",
         "market": "GLOBAL",
@@ -590,7 +582,6 @@ def sync_all_subprojects():
         "stock-sepa-pivot": sync_stock_sepa_pivot,
         "stock-swing": sync_stock_swing,
         "stock-cyclical-screener": sync_stock_cyclical,
-        "stock-dividend_top7": sync_stock_dividend_top7,
         "stock-htp-top10": sync_stock_htp_top10,
         "stock-us3x": sync_stock_us3x,
     }

@@ -460,30 +460,6 @@ def reset_and_reload_all_9_projects():
             "target_price": 85.0, "stop_loss_price": 55.0, "notes": "반도체 3X 트렌치 분할 익절"
         },
         {
-            "project_id": "stock-dividend_top7", "project_name": "stock-dividend_top7",
-            "ticker": "030200", "name": "KT", "market": "KRX",
-            "signal_type": "주간리밸런싱", "signal_date": f"{today_str} 08:30:00",
-            "entry_price": 45000.0, "entry_date": today_str, "current_price": 46950.0,
-            "exit_price": 46950.0, "exit_date": today_str, "status": "CLOSED", "return_pct": 4.33,
-            "target_price": 48000.0, "stop_loss_price": 42000.0, "notes": "5년 평균 시가배당률 5.4% 목표가 달성 익절"
-        },
-        {
-            "project_id": "stock-dividend_top7", "project_name": "stock-dividend_top7",
-            "ticker": "017670", "name": "SK텔레콤", "market": "KRX",
-            "signal_type": "주간리밸런싱", "signal_date": f"{today_str} 08:30:00",
-            "entry_price": 74500.0, "entry_date": today_str, "current_price": 76700.0,
-            "exit_price": 76700.0, "exit_date": today_str, "status": "CLOSED", "return_pct": 2.95,
-            "target_price": 80000.0, "stop_loss_price": 70000.0, "notes": "분기배당 성장 목표가 달성 익절"
-        },
-        {
-            "project_id": "stock-dividend_top7", "project_name": "stock-dividend_top7",
-            "ticker": "029780", "name": "삼성카드", "market": "KRX",
-            "signal_type": "주간리밸런싱", "signal_date": f"{today_str} 08:30:00",
-            "entry_price": 41000.0, "entry_date": today_str, "current_price": 41700.0,
-            "exit_price": 41700.0, "exit_date": today_str, "status": "CLOSED", "return_pct": 1.71,
-            "target_price": 45000.0, "stop_loss_price": 38000.0, "notes": "시가배당률 6.8% 고배당 차익 실현"
-        },
-        {
             "project_id": "signal_forge_alert", "project_name": "signal_forge_alert",
             "ticker": "068270", "name": "셀트리온", "market": "KRX",
             "signal_type": "장중알람", "signal_date": f"{today_str} 10:00:00",

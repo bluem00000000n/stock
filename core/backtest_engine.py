@@ -40,7 +40,7 @@ STRATEGY_3YEAR_PERFORMANCE: Dict[str, Dict[str, Any]] = {
         "sharpe": 1.58,
         "holding_days": 18.5,
         "concept": "VCP(변동성 축소) 피벗 돌파 시점 매수, -6% 기계적 손절, 20일선 트레일링 익절",
-        "weight": 25.0
+        "weight": 28.0
     },
     "stock-sniper": {
         "name": "스나이퍼 모멘텀 (장전 수급 & RS 주도주)",
@@ -54,7 +54,7 @@ STRATEGY_3YEAR_PERFORMANCE: Dict[str, Dict[str, Any]] = {
         "sharpe": 1.38,
         "holding_days": 5.2,
         "concept": "장전 08:45 거래대금 급증, 52주 신고가 상대강도(RS) 상위 5선 당일 시가 매수",
-        "weight": 20.0
+        "weight": 22.0
     },
     "stock-htp-top10": {
         "name": "HTP 탑10 (미국 S&P500/Russell 모멘텀)",
@@ -97,20 +97,6 @@ STRATEGY_3YEAR_PERFORMANCE: Dict[str, Dict[str, Any]] = {
         "holding_days": 25.6,
         "concept": "주요 지지선(227선) 분할 매수 후 평균단가 관리, 저위험 스윙 엑시트",
         "weight": 10.0
-    },
-    "stock-dividend_top7": {
-        "name": "배당 톱7 (한국 6대 원칙 고배당 성장)",
-        "market": "KRX",
-        "cagr": 8.7,
-        "total_return": 28.6,
-        "win_rate": 62.4,
-        "profit_factor": 1.85,
-        "payoff_ratio": 1.42,
-        "mdd": 9.8,
-        "sharpe": 1.10,
-        "holding_days": 65.0,
-        "concept": "배당수익률 5%+ 우량 금융/지주/통신주 분기 배당락 전후 포트폴리오 안전판",
-        "weight": 5.0
     },
     "stock-cyclical-screener": {
         "name": "시클리컬 턴어라운드 (역사적 PBR 하단)",

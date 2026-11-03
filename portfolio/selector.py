@@ -69,20 +69,18 @@ def classify_cap_size(ticker: str, name: str = "", sector: str = "", market: str
         return "중소형주"
 
 
-# 3개년 백테스팅 기반 최적 전략별 가중치 배분 (합계 100%)
+# 3개년 백테스팅 기반 최적 전략별 가중치 배분 (합계 100% - 배당 전략 영구 제외)
 STRATEGY_WEIGHT_MULTIPLIERS = {
-    "stock-sepa-pivot": 1.25,        # 25% 가중치 (샤프 1.58, 승률 43.1%, 손익비 7.26)
-    "sepa_pivot": 1.25,
-    "stock-sniper": 1.20,            # 20% 가중치 (샤프 1.38, 승률 48.5%, 모멘텀 RS 1위)
-    "sniper": 1.20,
-    "stock-htp-top10": 1.20,         # 20% 가중치 (샤프 1.52, 누적 78.4%, HTP 성장주)
+    "stock-sepa-pivot": 1.28,        # 28% 가중치 (샤프 1.58, 승률 43.1%, 손익비 7.26 - 정통 추세추종 1위)
+    "sepa_pivot": 1.28,
+    "stock-sniper": 1.22,            # 22% 가중치 (샤프 1.38, 승률 48.5%, 외인/기관 수급 1위)
+    "sniper": 1.22,
+    "stock-htp-top10": 1.20,         # 20% 가중치 (샤프 1.52, 누적 78.4%, HTP 미국 성장주)
     "htp_momentum": 1.20,
     "stock-us3x": 1.15,              # 15% 가중치 (샤프 1.25, 누적 92.5%, 레버리지 알파)
     "us3x": 1.15,
-    "stock-swing": 1.10,             # 10% 가중치 (샤프 0.81, 스윙 분할 매수)
+    "stock-swing": 1.10,             # 10% 가중치 (샤프 0.81, 스윙 지지선 분할 매수)
     "swing": 1.10,
-    "stock-dividend_top7": 1.05,     # 5% 가중치 (방어적 배당 수익률)
-    "dividend": 1.05,
     "stock-cyclical-screener": 1.05,  # 5% 가중치 (역사적 PBR 하단 턴어라운드)
     "cyclical": 1.05
 }

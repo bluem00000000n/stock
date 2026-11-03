@@ -32,13 +32,12 @@ from supervisor.alarm_builder import (
     build_1500_kr_close_us_open_alarm
 )
 
-# 7대 전략 모듈 임포트
+# 6대 핵심 전략 모듈 임포트 (배당 전략 제외)
 from strategies import (
     sniper,
     sepa_pivot,
     swing,
     cyclical,
-    dividend,
     htp_momentum,
     us3x,
     signal_forge_bridge
@@ -90,10 +89,6 @@ def run_pipeline(mode: str = "auto", force: bool = False, dry_run: bool = False)
         kr_signals.extend(cyclical.run_analysis())
     except Exception as e:
         print(f"⚠️ cyclical 오류: {e}")
-    try:
-        kr_signals.extend(dividend.run_analysis())
-    except Exception as e:
-        print(f"⚠️ dividend 오류: {e}")
 
     # 백찬규 센터장 실무 스크리너 (한국장: 성장주 후보 + 중소형 수급가치)
     screener_signals = []
