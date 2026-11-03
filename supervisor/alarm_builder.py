@@ -53,6 +53,16 @@ def format_order_type(item: Dict[str, Any], market: str = "KRX") -> str:
     return "[시가 매수]" if is_kr else "[시가 매수]"
 
 
+def format_holding_status(item: Dict[str, Any], market: str = "KRX", is_new: bool = False) -> str:
+    """보유 포트폴리오 상태 표기: 오늘 신규 진입 종목은 매수 주문 방식 표시, 기존 종목은 [보유 유지]"""
+    today_str = datetime.now().strftime("%Y-%m-%d")
+    entry_date = str(item.get("entry_date", ""))
+    if is_new or (item.get("is_new_entry") and entry_date == today_str):
+        order_tag = format_order_type(item, market)
+        return f"[오늘 신규진입 | {order_tag.strip('[]')}]"
+    return "[보유 유지]"
+
+
 def format_reason(item: Dict[str, Any]) -> str:
     """종목 변동/편입 사유 추출 (간단히)"""
     notes = item.get("notes") or ""
@@ -139,13 +149,15 @@ def build_0830_kr_open_alarm(
             lines.append(f"  └ <i>손절 이유:</i> 기계적 손절선 이탈에 따른 리스크 관리")
 
     if not has_changes:
-        lines.append("• <i>포트폴리오 변동 내역: 기존 6종목 100% 정상 유지 (교체/제외 없음)</i>")
+        lines.append("• 📋 <b>[포지션 운용 현황]</b> 한국 6종목 + 미국 6종목 전량 목표가/손절가 내 정상 운용 중")
+        lines.append("• 💡 <b>[금일 주문 안내]</b> 신규 진입/교체/매도 대상 없음 ➔ 기존 12종목 홀딩 대응 (신규 주문 없음)")
 
     # 3. 한국장 실운용 포트폴리오 (대형 3선 + 중소형 3선)
     kr_active = kr_portfolio.get("active_holdings", [])
     kr_stats = kr_portfolio.get("stats", {})
-    large_c = kr_stats.get("large_count", sum(1 for h in kr_active if h.get("cap_size") == "대형주"))
-    mid_c = kr_stats.get("mid_count", sum(1 for h in kr_active if h.get("cap_size") != "대형주"))
+    new_tickers = set(b.get("ticker") for b in new_buys)
+    large_c = sum(1 for h in kr_active if h.get("cap_size") == "대형주")
+    mid_c = sum(1 for h in kr_active if h.get("cap_size") != "대형주")
     avg_ret = kr_stats.get("avg_return_pct", 0.0)
 
     lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
@@ -157,26 +169,29 @@ def build_0830_kr_open_alarm(
             ret = float(h.get("return_pct", 0.0))
             sign = "🟢" if ret >= 0 else "🔵"
             cap_b = f"[{h.get('cap_size', '대형주')}] "
-            o_type = format_order_type(h, "KRX")
+            is_new = (h.get("ticker") in new_tickers) or h.get("is_new_entry", False)
+            status_tag = format_holding_status(h, "KRX", is_new=is_new)
             cur_p = int(float(h.get("current_price", 0)))
             entry_p = int(float(h.get("entry_price", 0)))
             tgt_p = int(float(h.get("target_price", 0))) if h.get("target_price") else 0
             stp_p = int(float(h.get("stop_loss_price", 0))) if h.get("stop_loss_price") else 0
 
-            lines.append(f" {idx}. {sign} <b>{cap_b}{h['name']}</b> ({h['ticker']}) | <b>{o_type}</b>")
+            lines.append(f" {idx}. {sign} <b>{cap_b}{h['name']}</b> ({h['ticker']}) | <b>{status_tag}</b>")
             lines.append(f"    └ 진입: {entry_p:,}원 ➔ 현재: {cur_p:,}원 (<b>{ret:+.2f}%</b>) | 🎯 {tgt_p:,}원 | 🛑 {stp_p:,}원")
     else:
         lines.append("• <i>현재 100% 현금 보유 대기 상태</i>")
 
-    # 4. 미국장 실운용 포트폴리오 (대형 3선 + 중소형 3선)
+    # 4. 미국장 실운용 포트폴리오 (대형 3선 + 중소형 2선 + 3X 레버리지 1선)
     us_active = us_portfolio.get("active_holdings", [])
     us_stats = us_portfolio.get("stats", {})
-    us_large_c = us_stats.get("large_count", sum(1 for h in us_active if h.get("cap_size") == "대형주"))
-    us_mid_c = us_stats.get("mid_count", sum(1 for h in us_active if h.get("cap_size") != "대형주"))
+    us_new_tickers = set(b.get("ticker") for b in us_portfolio.get("new_buys", []))
+    us_large_c = sum(1 for h in us_active if h.get("cap_size") == "대형주")
+    us_mid_c = sum(1 for h in us_active if h.get("cap_size") == "중소형주")
+    us_3x_c = sum(1 for h in us_active if "3X" in str(h.get("cap_size", "")) or "레버리지" in str(h.get("cap_size", "")))
     us_avg_ret = us_stats.get("avg_return_pct", 0.0)
 
     lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
-    lines.append(f"💼 <b>4. 🇺🇸 미국장 실운용 포트폴리오 (총 {len(us_active)}종목 - 대형 {us_large_c}선 + 중소형 {us_mid_c}선)</b>")
+    lines.append(f"💼 <b>4. 🇺🇸 미국장 실운용 포트폴리오 (총 {len(us_active)}종목 - 대형 {us_large_c}선 + 중소형 {us_mid_c}선 + 3X 레버리지 {us_3x_c}선)</b>")
     lines.append(f"• <b>포트폴리오 평균 수익률:</b> <b>{us_avg_ret:+.2f}%</b> (가용 슬롯: {us_stats.get('available_slots', 0)}개)")
 
     if us_active:
@@ -184,13 +199,14 @@ def build_0830_kr_open_alarm(
             ret = float(h.get("return_pct", 0.0))
             sign = "🟢" if ret >= 0 else "🔵"
             cap_b = f"[{h.get('cap_size', '대형주')}] "
-            o_type = format_order_type(h, "US")
+            is_new = (h.get("ticker") in us_new_tickers) or h.get("is_new_entry", False)
+            status_tag = format_holding_status(h, "US", is_new=is_new)
             cur_p = float(h.get("current_price", 0))
             entry_p = float(h.get("entry_price", 0))
             tgt_p = float(h.get("target_price", 0)) if h.get("target_price") else 0
             stp_p = float(h.get("stop_loss_price", 0)) if h.get("stop_loss_price") else 0
 
-            lines.append(f" {idx}. {sign} <b>{cap_b}{h['name']}</b> ({h['ticker']}) | <b>{o_type}</b>")
+            lines.append(f" {idx}. {sign} <b>{cap_b}{h['name']}</b> ({h['ticker']}) | <b>{status_tag}</b>")
             lines.append(f"    └ 진입: ${entry_p:.2f} ➔ 현재: ${cur_p:.2f} (<b>{ret:+.2f}%</b>) | 🎯 ${tgt_p:.2f} | 🛑 ${stp_p:.2f}")
     else:
         lines.append("• <i>현재 미국장 보유 포지션 없음 (신규 진입 대기)</i>")
@@ -260,13 +276,15 @@ def build_1500_kr_close_alarm(
             lines.append(f"  └ <i>손절 이유:</i> 기계적 손절선 이탈에 따른 리스크 관리")
 
     if not has_changes:
-        lines.append("• <i>포트폴리오 변동 내역: 기존 6종목 정상 유지 (교체/제외 없음)</i>")
+        lines.append("• 📋 <b>[포지션 운용 현황]</b> 한국 6종목 + 미국 6종목 전량 목표가/손절가 내 정상 마감")
+        lines.append("• 💡 <b>[종가 주문 안내]</b> 신규 진입/교체/매도 대상 없음 ➔ 기존 12종목 홀딩 유지 (종가 매수 없음)")
 
     # 2. 한국장 실운용 포트폴리오 마감 현황
     kr_active = kr_portfolio.get("active_holdings", [])
     kr_stats = kr_portfolio.get("stats", {})
-    large_c = kr_stats.get("large_count", sum(1 for h in kr_active if h.get("cap_size") == "대형주"))
-    mid_c = kr_stats.get("mid_count", sum(1 for h in kr_active if h.get("cap_size") != "대형주"))
+    new_tickers = set(b.get("ticker") for b in new_buys)
+    large_c = sum(1 for h in kr_active if h.get("cap_size") == "대형주")
+    mid_c = sum(1 for h in kr_active if h.get("cap_size") != "대형주")
     avg_ret = kr_stats.get("avg_return_pct", 0.0)
 
     lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
@@ -278,13 +296,14 @@ def build_1500_kr_close_alarm(
             ret = float(h.get("return_pct", 0.0))
             sign = "🟢" if ret >= 0 else "🔵"
             cap_b = f"[{h.get('cap_size', '대형주')}] "
-            o_type = format_order_type(h, "KRX")
+            is_new = (h.get("ticker") in new_tickers) or h.get("is_new_entry", False)
+            status_tag = format_holding_status(h, "KRX", is_new=is_new)
             cur_p = int(float(h.get("current_price", 0)))
             entry_p = int(float(h.get("entry_price", 0)))
             tgt_p = int(float(h.get("target_price", 0))) if h.get("target_price") else 0
             stp_p = int(float(h.get("stop_loss_price", 0))) if h.get("stop_loss_price") else 0
 
-            lines.append(f" {idx}. {sign} <b>{cap_b}{h['name']}</b> ({h['ticker']}) | <b>{o_type}</b>")
+            lines.append(f" {idx}. {sign} <b>{cap_b}{h['name']}</b> ({h['ticker']}) | <b>{status_tag}</b>")
             lines.append(f"    └ 진입: {entry_p:,}원 ➔ 마감: {cur_p:,}원 (<b>{ret:+.2f}%</b>) | 🎯 {tgt_p:,}원 | 🛑 {stp_p:,}원")
     else:
         lines.append("• <i>현재 보유 포지션 없음 (현금 대기)</i>")
@@ -292,12 +311,13 @@ def build_1500_kr_close_alarm(
     # 3. 미국장 실운용 포트폴리오 현황
     us_active = us_portfolio.get("active_holdings", [])
     us_stats = us_portfolio.get("stats", {})
-    us_large_c = us_stats.get("large_count", sum(1 for h in us_active if h.get("cap_size") == "대형주"))
-    us_mid_c = us_stats.get("mid_count", sum(1 for h in us_active if h.get("cap_size") != "대형주"))
+    us_large_c = sum(1 for h in us_active if h.get("cap_size") == "대형주")
+    us_mid_c = sum(1 for h in us_active if h.get("cap_size") == "중소형주")
+    us_3x_c = sum(1 for h in us_active if "3X" in str(h.get("cap_size", "")) or "레버리지" in str(h.get("cap_size", "")))
     us_avg_ret = us_stats.get("avg_return_pct", 0.0)
 
     lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
-    lines.append(f"💼 <b>3. 🇺🇸 미국장 실운용 포트폴리오 현황 (총 {len(us_active)}종목 - 대형 {us_large_c}선 + 중소형 {us_mid_c}선)</b>")
+    lines.append(f"💼 <b>3. 🇺🇸 미국장 실운용 포트폴리오 현황 (총 {len(us_active)}종목 - 대형 {us_large_c}선 + 중소형 {us_mid_c}선 + 3X 레버리지 {us_3x_c}선)</b>")
     lines.append(f"• <b>포트폴리오 평균 수익률:</b> <b>{us_avg_ret:+.2f}%</b> (가용 슬롯: {us_stats.get('available_slots', 0)}개)")
 
     if us_active:
@@ -305,13 +325,13 @@ def build_1500_kr_close_alarm(
             ret = float(h.get("return_pct", 0.0))
             sign = "🟢" if ret >= 0 else "🔵"
             cap_b = f"[{h.get('cap_size', '대형주')}] "
-            o_type = format_order_type(h, "US")
+            status_tag = format_holding_status(h, "US", is_new=False)
             cur_p = float(h.get("current_price", 0))
             entry_p = float(h.get("entry_price", 0))
             tgt_p = float(h.get("target_price", 0)) if h.get("target_price") else 0
             stp_p = float(h.get("stop_loss_price", 0)) if h.get("stop_loss_price") else 0
 
-            lines.append(f" {idx}. {sign} <b>{cap_b}{h['name']}</b> ({h['ticker']}) | <b>{o_type}</b>")
+            lines.append(f" {idx}. {sign} <b>{cap_b}{h['name']}</b> ({h['ticker']}) | <b>{status_tag}</b>")
             lines.append(f"    └ 진입: ${entry_p:.2f} ➔ 현재: ${cur_p:.2f} (<b>{ret:+.2f}%</b>) | 🎯 ${tgt_p:.2f} | 🛑 ${stp_p:.2f}")
     else:
         lines.append("• <i>미국장 보유 포지션 없음 (신규 진입 대기)</i>")
@@ -391,17 +411,20 @@ def build_1730_us_open_alarm(
             lines.append(f"  └ <i>손절 이유:</i> 기계적 손절선 이탈에 따른 리스크 관리")
 
     if not has_changes:
-        lines.append("• <i>미국장 포트폴리오 변동 내역: 기존 6종목 100% 정상 유지 (교체/제외 없음)</i>")
+        lines.append("• 📋 <b>[미국장 포지션 운용 현황]</b> 미국 6종목 전량 목표가/손절가 내 정상 운용 중")
+        lines.append("• 💡 <b>[개장 주문 안내]</b> 신규 진입/교체/매도 대상 없음 ➔ 기존 6종목 홀딩 대응 (신규 매수 없음)")
 
-    # 3. 미국장 실운용 포트폴리오 (대형 3선 + 중소형 3선)
+    # 3. 미국장 실운용 포트폴리오 (대형 3선 + 중소형 2선 + 3X 레버리지 1선)
     us_active = us_portfolio.get("active_holdings", [])
     us_stats = us_portfolio.get("stats", {})
-    us_large_c = us_stats.get("large_count", sum(1 for h in us_active if h.get("cap_size") == "대형주"))
-    us_mid_c = us_stats.get("mid_count", sum(1 for h in us_active if h.get("cap_size") != "대형주"))
+    us_new_tickers = set(b.get("ticker") for b in new_buys)
+    us_large_c = sum(1 for h in us_active if h.get("cap_size") == "대형주")
+    us_mid_c = sum(1 for h in us_active if h.get("cap_size") == "중소형주")
+    us_3x_c = sum(1 for h in us_active if "3X" in str(h.get("cap_size", "")) or "레버리지" in str(h.get("cap_size", "")))
     us_avg_ret = us_stats.get("avg_return_pct", 0.0)
 
     lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
-    lines.append(f"💼 <b>3. 🇺🇸 미국장 실운용 포트폴리오 (총 {len(us_active)}종목 - 대형 {us_large_c}선 + 중소형 {us_mid_c}선)</b>")
+    lines.append(f"💼 <b>3. 🇺🇸 미국장 실운용 포트폴리오 (총 {len(us_active)}종목 - 대형 {us_large_c}선 + 중소형 {us_mid_c}선 + 3X 레버리지 {us_3x_c}선)</b>")
     lines.append(f"• <b>포트폴리오 평균 수익률:</b> <b>{us_avg_ret:+.2f}%</b> (가용 슬롯: {us_stats.get('available_slots', 0)}개)")
 
     if us_active:
@@ -409,13 +432,14 @@ def build_1730_us_open_alarm(
             ret = float(h.get("return_pct", 0.0))
             sign = "🟢" if ret >= 0 else "🔵"
             cap_b = f"[{h.get('cap_size', '대형주')}] "
-            o_type = format_order_type(h, "US")
+            is_new = (h.get("ticker") in us_new_tickers) or h.get("is_new_entry", False)
+            status_tag = format_holding_status(h, "US", is_new=is_new)
             cur_p = float(h.get("current_price", 0))
             entry_p = float(h.get("entry_price", 0))
             tgt_p = float(h.get("target_price", 0)) if h.get("target_price") else 0
             stp_p = float(h.get("stop_loss_price", 0)) if h.get("stop_loss_price") else 0
 
-            lines.append(f" {idx}. {sign} <b>{cap_b}{h['name']}</b> ({h['ticker']}) | <b>{o_type}</b>")
+            lines.append(f" {idx}. {sign} <b>{cap_b}{h['name']}</b> ({h['ticker']}) | <b>{status_tag}</b>")
             lines.append(f"    └ 진입: ${entry_p:.2f} ➔ 현재: ${cur_p:.2f} (<b>{ret:+.2f}%</b>) | 🎯 ${tgt_p:.2f} | 🛑 ${stp_p:.2f}")
     else:
         lines.append("• <i>미국장 보유 포지션 없음 (신규 진입 대기)</i>")
@@ -423,10 +447,12 @@ def build_1730_us_open_alarm(
     # 4. 한국장 실운용 포트폴리오 마감 요약
     kr_active = kr_portfolio.get("active_holdings", [])
     kr_stats = kr_portfolio.get("stats", {})
+    kr_large_c = sum(1 for h in kr_active if h.get("cap_size") == "대형주")
+    kr_mid_c = sum(1 for h in kr_active if h.get("cap_size") != "대형주")
     avg_kr = kr_stats.get("avg_return_pct", 0.0)
 
     lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
-    lines.append(f"💼 <b>4. 🇰🇷 한국장 실운용 포트폴리오 (총 {len(kr_active)}종목 | 마감 평균 {avg_kr:+.2f}%)</b>")
+    lines.append(f"💼 <b>4. 🇰🇷 한국장 실운용 포트폴리오 (총 {len(kr_active)}종목 - 대형 {kr_large_c}선 + 중소형 {kr_mid_c}선 | 마감 평균 {avg_kr:+.2f}%)</b>")
     if kr_active:
         for idx, h in enumerate(kr_active, 1):
             ret = float(h.get("return_pct", 0.0))

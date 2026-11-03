@@ -161,10 +161,11 @@ from supervisor.alarm_builder import (
 # 4. 정기 알람 리포트 빌더 (추천리스트 삭제, 포트폴리오 & 변동내역 중심)
 # -------------------------------------------------------------
 def get_portfolio_context(market: str = "KRX") -> dict:
-    """실운영 6종목(대형 3선 + 중소형 3선) 포트폴리오 상태 패키징"""
+    """실운영 6종목(한국 3+3 / 미국 3+2+1) 포트폴리오 상태 패키징"""
     holdings = enforce_portfolio_target_6(market=market)
     large_cnt = sum(1 for h in holdings if h.get("cap_size") == "대형주")
-    mid_cnt = sum(1 for h in holdings if h.get("cap_size") != "대형주")
+    mid_cnt = sum(1 for h in holdings if h.get("cap_size") == "중소형주")
+    lev3x_cnt = sum(1 for h in holdings if "3X" in str(h.get("cap_size", "")) or "레버리지" in str(h.get("cap_size", "")))
     avg_ret = round(sum(float(h.get("return_pct", 0.0)) for h in holdings) / max(1, len(holdings)), 2)
 
     return {
@@ -179,6 +180,7 @@ def get_portfolio_context(market: str = "KRX") -> dict:
             "total_holdings": len(holdings),
             "large_count": large_cnt,
             "mid_count": mid_cnt,
+            "lev3x_count": lev3x_cnt,
             "avg_return_pct": avg_ret,
             "available_slots": max(0, 6 - len(holdings))
         }

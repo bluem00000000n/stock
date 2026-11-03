@@ -28,27 +28,39 @@ KR_LARGE_CODES = {
 
 
 def classify_cap_size(ticker: str, name: str = "", sector: str = "", market: str = "KRX") -> str:
-    """대형주 vs 중소형주 통합 표준 판별 함수"""
+    """대형주 vs 중소형주 vs 3X 레버리지 통합 표준 판별 함수"""
     is_kr = market.upper() in ("KRX", "KR", "KOR")
     if is_kr:
-        if ticker in KR_LARGE_CODES or "KOSPI" in sector or "코스피" in sector or "대형" in sector:
-            # 단, 기술성장주 중소형주 풀에 속한 것은 중소형주로 우선 분류
-            mid_priority_codes = {
-                "196170", "403870", "425420", "053800", "093320", "042510",
-                "036930", "161580", "080220", "000250", "042700", "075950",
-                "033100", "031980", "441270", "295310", "253590", "087800"
-            }
-            if ticker in mid_priority_codes:
-                return "중소형주"
+        clean_code = ticker.strip().zfill(6)
+        if clean_code in ("000660", "012450", "267260"):
+            return "대형주"
+        if clean_code in ("196170", "003230", "042510"):
+            return "중소형주"
+
+        mid_priority_codes = {
+            "003230", "196170", "403870", "425420", "053800", "093320", "042510",
+            "036930", "161580", "080220", "000250", "042700", "075950",
+            "033100", "031980", "441270", "295310", "253590", "087800"
+        }
+        if clean_code in mid_priority_codes:
+            return "중소형주"
+        if clean_code in KR_LARGE_CODES or "KOSPI" in sector or "코스피" in sector or "대형" in sector:
             return "대형주"
         return "중소형주"
     else:
         clean_tick = ticker.upper().strip()
+        if clean_tick in ("TQQQ", "TECL", "SOXL", "FAS", "UPRO", "FNGU"):
+            return "3X 레버리지"
+        if clean_tick in ("NVDA", "PLTR", "AVGO", "AAPL", "MSFT", "AMZN", "GOOGL", "META", "TSLA", "LLY"):
+            return "대형주"
+        if clean_tick in ("POWL", "MOD", "TMDX", "ROOT", "SKWD"):
+            return "중소형주"
+
         # 중소형/모멘텀주 우선 분류
         mid_priority_us = {
-            "PLTR", "APP", "CRWD", "ALAB", "TECH", "CPAY", "RDDT", "CRDO",
+            "APP", "CRWD", "ALAB", "TECH", "CPAY", "RDDT", "CRDO",
             "CROX", "ADT", "BHC", "PRCH", "NCLH", "PURR", "MESO", "OPCH",
-            "NSIT", "XNCR", "CBRL", "TQQQ", "TECL", "SOXL"
+            "NSIT", "XNCR", "CBRL"
         }
         if clean_tick in mid_priority_us:
             return "중소형주"

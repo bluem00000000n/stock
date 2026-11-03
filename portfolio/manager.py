@@ -278,8 +278,9 @@ def process_portfolio_cycle(candidate_signals: List[Dict[str, Any]], market: str
     final_holdings = update_holdings_prices(market=market)
     avg_ret = round(sum(h.get("return_pct", 0.0) for h in final_holdings) / max(1, len(final_holdings)), 2)
 
-    large_cnt = sum(1 for h in final_holdings if h["cap_size"] == "대형주")
-    mid_cnt = sum(1 for h in final_holdings if h["cap_size"] != "대형주")
+    large_cnt = sum(1 for h in final_holdings if h.get("cap_size") == "대형주")
+    mid_cnt = sum(1 for h in final_holdings if h.get("cap_size") == "중소형주")
+    lev3x_cnt = sum(1 for h in final_holdings if "3X" in str(h.get("cap_size", "")) or "레버리지" in str(h.get("cap_size", "")))
 
     return {
         "market": market,
@@ -292,6 +293,7 @@ def process_portfolio_cycle(candidate_signals: List[Dict[str, Any]], market: str
             "total_holdings": len(final_holdings),
             "large_count": large_cnt,
             "mid_count": mid_cnt,
+            "lev3x_count": lev3x_cnt,
             "avg_return_pct": avg_ret,
             "available_slots": max(0, max_holdings - len(final_holdings))
         }

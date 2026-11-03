@@ -100,7 +100,7 @@ def fetch_us_price(ticker: str) -> Dict[str, Any]:
 
 
 def fetch_us_macro() -> Dict[str, Any]:
-    """야간 미 증시 3대 지수, 환율, 국채 금리 수집"""
+    """야간 미 증시 3대 지수, 환율, VIX 실시간 수집 (Naver Finance API)"""
     if "us_macro" in _CACHE:
         return _CACHE["us_macro"]
 
@@ -108,40 +108,40 @@ def fetch_us_macro() -> Dict[str, Any]:
         "dow": {"val": "-", "pct": 0.0},
         "nasdaq": {"val": "-", "pct": 0.0},
         "sp500": {"val": "-", "pct": 0.0},
-        "usd_krw": "1,330.0",
+        "usd_krw": "1,344.9",
         "us10y": "4.20%",
-        "vix": "15.0"
+        "vix": "21.15"
     }
 
-    # 네이버 금융 환율 크롤링
+    # 1. 환율 (USD/KRW)
     try:
-        fx_url = "https://m.stock.naver.com/front-api/v1/marketIndex/prices?category=exchange&restate=true"
-        fx_data = fetch_url_json(fx_url)
-        if fx_data and "result" in fx_data:
-            for item in fx_data["result"]:
-                if "USD" in item.get("itemCode", ""):
-                    result["usd_krw"] = item.get("closePrice", "1,330.0")
-                    break
+        fx_url = "https://api.stock.naver.com/marketindex/exchange/FX_USDKRW"
+        fx_data = fetch_url_json(fx_url, timeout=4)
+        if fx_data and "exchangeInfo" in fx_data:
+            result["usd_krw"] = fx_data["exchangeInfo"].get("closePrice", "1,344.9")
     except Exception:
         pass
 
-    # 네이버 해외 증시 지수
-    try:
-        idx_url = "https://m.stock.naver.com/front-api/v1/marketIndex/prices?category=worldIndex&restate=true"
-        idx_data = fetch_url_json(idx_url)
-        if idx_data and "result" in idx_data:
-            for item in idx_data["result"]:
-                name = item.get("stockName", "")
-                ratio = float(str(item.get("fluctuationsRatio", "0")).replace(",", ""))
-                price = item.get("closePrice", "-")
-                if "다우" in name:
-                    result["dow"] = {"val": price, "pct": ratio}
-                elif "나스닥" in name:
-                    result["nasdaq"] = {"val": price, "pct": ratio}
-                elif "S&P" in name:
-                    result["sp500"] = {"val": price, "pct": ratio}
-    except Exception:
-        pass
+    # 2. 미국 3대 지수 및 VIX
+    indices = {
+        "dow": "https://api.stock.naver.com/index/.DJI/basic",
+        "nasdaq": "https://api.stock.naver.com/index/.IXIC/basic",
+        "sp500": "https://api.stock.naver.com/index/.INX/basic",
+        "vix": "https://api.stock.naver.com/index/.VIX/basic"
+    }
+
+    for key, url in indices.items():
+        try:
+            d = fetch_url_json(url, timeout=4)
+            if d and "closePrice" in d:
+                price = str(d.get("closePrice", "-"))
+                ratio = float(str(d.get("fluctuationsRatio", "0")).replace(",", ""))
+                if key == "vix":
+                    result["vix"] = price
+                else:
+                    result[key] = {"val": price, "pct": ratio}
+        except Exception:
+            pass
 
     _CACHE["us_macro"] = result
     return result
