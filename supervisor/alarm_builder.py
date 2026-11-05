@@ -130,22 +130,23 @@ US_STRATEGY_DISPLAY = [
 
 PORTFOLIO_LEGEND = "• <b>수익률 상태 범례:</b> 🟢 수익(+) | 🔵 손실(-) | ⚪ 보합/진입가(0.0%)"
 
-# 1순위 추천/보유 종목 매수 불가 시 즉시 집행하는 2순위 대체 예비 종목 풀
+# 1순위 추천/보유 종목 매수 불가 시 즉시 집행하는 2순위 대체 예비 종목 풀 (대형:중소형 1:1 매칭)
 KR_BACKUP_ALTERNATIVES = {
     "028050": {"ticker": "033780", "name": "KT&G", "cap": "대형", "reason": "Stage 2 [우상향] 52주 신고가 안착 및 밸류업 프로그램 랠리"},
     "000810": {"ticker": "068270", "name": "셀트리온", "cap": "대형", "reason": "Stage 2 [우상향] 짐펜트라 미국 PBM 등재 확대 및 기관 쌍끌이 매수"},
+    "033780": {"ticker": "068270", "name": "셀트리온", "cap": "대형", "reason": "Stage 2 [우상향] 짐펜트라 미국 PBM 등재 확대 및 밸류업 대장주"},
     "068270": {"ticker": "000810", "name": "삼성화재", "cap": "대형", "reason": "Stage 2 [우상향] 역대 최대 순이익 밸류업 대장주 및 외인 집중 순매수"},
     "093320": {"ticker": "219130", "name": "타이거일렉", "cap": "중형", "reason": "Stage 2 [우상향] 고다층 초고밀도 검사용 기판 공급확대 52주 신고가"},
-    "053800": {"ticker": "425420", "name": "티에프이", "cap": "중형", "reason": "Stage 2 [우상향] AI 고성능 반도체 테스트 소켓 국산화 선도"},
-    "425420": {"ticker": "219130", "name": "타이거일렉", "cap": "중형", "reason": "Stage 2 [우상향] 인쇄회로기판 수급 분출 및 신고가 돌파"}
+    "219130": {"ticker": "053800", "name": "안랩", "cap": "중형", "reason": "Stage 2 [우상향] 글로벌 보안 솔루션 및 기관 순매수 주도주"},
+    "053800": {"ticker": "219130", "name": "타이거일렉", "cap": "중형", "reason": "Stage 2 [우상향] AI 고성능 반도체 인쇄회로기판 수급 분출 및 신고가 돌파"}
 }
 
 US_BACKUP_ALTERNATIVES = {
     "LLY": {"ticker": "COST", "name": "코스트코", "cap": "대형", "reason": "Stage 2 [우상향] 멤버십 갱신율 93% 초우량 52주 신고가"},
+    "NVDA": {"ticker": "LLY", "name": "일라이 릴리", "cap": "대형", "reason": "Stage 2 [우상향] 글로벌 비만치료제 독점 랠리 52주 신고가"},
     "COST": {"ticker": "WMT", "name": "월마트", "cap": "대형", "reason": "Stage 2 [우상향] 경기방어 필수소비재 52주 신고가 우상향"},
     "XOM": {"ticker": "JPM", "name": "JP모건 체이스", "cap": "대형", "reason": "Stage 2 [우상향] 순이자이익 견조 및 글로벌 IB 자문 호조"},
     "JPM": {"ticker": "XOM", "name": "엑손모빌", "cap": "대형", "reason": "Stage 2 [우상향] 에너지 메이저 막대한 현금흐름 및 자사주 매입"},
-    "NVDA": {"ticker": "PLTR", "name": "팔란티어", "cap": "대형", "reason": "Stage 2 [우상향] AIP 플랫폼 상용화 급증 S&P500 최상위 모멘텀"},
     "PLTR": {"ticker": "CRWD", "name": "크라우드스트라이크", "cap": "중형", "reason": "Stage 2 [우상향] 팔콘 차세대 보안 플랫폼 52주 신고가 회복"},
     "CRWD": {"ticker": "PANW", "name": "팔로알토 네트웍스", "cap": "중형", "reason": "Stage 2 [우상향] 통합 사이버보안 플랫폼 VCP 수축 후 박스권 상단 돌파"},
     "PANW": {"ticker": "SPOT", "name": "스포티파이", "cap": "중형", "reason": "Stage 2 [우상향] 글로벌 유료 구독자 급증 52주 신고가 랠리"}
@@ -586,11 +587,12 @@ def build_standalone_tracks_block(section_no: int = 5) -> str:
                 if clean_notes:
                     lines.append(f"    └ <i>PBR/턴어라운드 근거:</i> {clean_notes}")
     else:
-        lines.append(" • 🟢 <b>[슬슬모아바] 롯데케미칼</b> (011170) : PBR 0.15배 | 다운사이클 최바닥 20분할 매집")
-        lines.append(" • 🟢 <b>[슬슬모아바] 현대제철</b> (004020) : PBR 0.18배 | 적자 피크아웃 바닥 20분할 매집")
-        lines.append(" • 🟢 <b>[슬슬모아바] POSCO홀딩스</b> (005490) : PBR 0.37배 | 철강/리튬 턴어라운드 바닥")
-        lines.append(" • 🔴 <b>[슬슬팔어] SK하이닉스</b> (000660) : PBR 4.03배, PER 6.63배 | 실적 사상최대 사이클 고점 분할매도")
-        lines.append(" • 🔴 <b>[슬슬팔어] 한화오션</b> (042660) : PBR 2.14배, PER 7.75배 | 조선 슈퍼사이클 고점 분할매도")
+        lines.append(" • 🟢 <b>[대형/슬슬모아바] 롯데케미칼</b> (011170) : PBR 0.15배 | 다운사이클 최바닥 20분할 매집")
+        lines.append(" • 🟢 <b>[대형/슬슬모아바] 현대제철</b> (004020) : PBR 0.18배 | 적자 피크아웃 바닥 20분할 매집")
+        lines.append(" • 🟢 <b>[중형/슬슬모아바] 세아제강지주</b> (001430) : PBR 0.15배 | 북미 에너지 강관 밸류 바닥 20분할 매집")
+        lines.append(" • 🟢 <b>[소형/슬슬모아바] 동일제강</b> (002690) : PBR 0.16배 | 역사적 최저점 자산가치 턴어라운드")
+        lines.append(" • 🔴 <b>[대형/슬슬팔어] SK하이닉스</b> (000660) : PBR 4.03배, PER 6.63배 | 실적 사상최대 사이클 고점 분할매도")
+        lines.append(" • 🔴 <b>[중형/슬슬팔어] 한화오션</b> (042660) : PBR 2.14배, PER 7.75배 | 조선 슈퍼사이클 고점 분할매도")
 
     return "\n".join(lines)
 
@@ -864,7 +866,8 @@ def build_1500_kr_close_alarm(
     us_avg_ret = us_stats.get("avg_return_pct", 0.0)
 
     lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
-    lines.append(f"💼 <b>4. 🇺🇸 미국장 코어 실운용 포트폴리오 현황 (정예 {len(us_active)}종목 - 대형 {us_large_c}선 : 중소형 {us_mid_c}선 [1:1 황금밸런스])</b>")
+    us_balance_tag = " [1:1 황금밸런스]" if us_large_c == us_mid_c else ""
+    lines.append(f"💼 <b>4. 🇺🇸 미국장 코어 실운용 포트폴리오 현황 (정예 {len(us_active)}종목 - 대형 {us_large_c}선 : 중소형 {us_mid_c}선{us_balance_tag})</b>")
     lines.append(f"• <b>코어 포트폴리오 평균 수익률:</b> <b>{us_avg_ret:+.2f}%</b> (가용 슬롯: {us_stats.get('available_slots', 0)}개)")
     lines.append(PORTFOLIO_LEGEND)
     lines.extend(format_strategy_grouped_portfolio(us_active, market="US", new_tickers=None, is_summary=False))

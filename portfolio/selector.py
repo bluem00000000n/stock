@@ -51,14 +51,14 @@ def classify_cap_size(ticker: str, name: str = "", sector: str = "", market: str
         clean_tick = ticker.upper().strip()
         if clean_tick in ("TQQQ", "TECL", "SOXL", "FAS", "UPRO", "FNGU"):
             return "3X 레버리지"
-        if clean_tick in ("NVDA", "PLTR", "AVGO", "AAPL", "MSFT", "AMZN", "GOOGL", "META", "TSLA", "LLY", "COST", "XOM", "JPM", "WMT", "MCK"):
+        if clean_tick in ("NVDA", "AVGO", "AAPL", "MSFT", "AMZN", "GOOGL", "META", "TSLA", "LLY", "COST", "XOM", "JPM", "WMT", "MCK"):
             return "대형주"
-        if clean_tick in ("POWL", "MOD", "TMDX", "ROOT", "SKWD", "CRWD", "PANW", "SPOT", "CAH", "COR"):
+        if clean_tick in ("PLTR", "POWL", "MOD", "TMDX", "ROOT", "SKWD", "CRWD", "PANW", "SPOT", "CAH", "COR"):
             return "중소형주"
 
         # 중소형/모멘텀주 우선 분류
         mid_priority_us = {
-            "APP", "CRWD", "ALAB", "TECH", "CPAY", "RDDT", "CRDO",
+            "PLTR", "APP", "CRWD", "ALAB", "TECH", "CPAY", "RDDT", "CRDO",
             "CROX", "ADT", "BHC", "PRCH", "NCLH", "PURR", "MESO", "OPCH",
             "NSIT", "XNCR", "CBRL", "PANW", "SPOT", "CAH", "COR"
         }
@@ -318,22 +318,48 @@ def score_and_aggregate_signals(candidate_signals: List[Dict[str, Any]], market:
     return scored_list
 
 
-def select_best_buys(candidate_signals: List[Dict[str, Any]], market: str = "KRX", max_select: int = 3) -> List[Dict[str, Any]]:
-    """일반 탑픽 선별 (섹터 분산 적용)"""
+def select_best_buys(candidate_signals: List[Dict[str, Any]], market: str = "KRX", max_select: int = 4) -> List[Dict[str, Any]]:
+    """
+    [추천 리스트 1:1 황금밸런스 선별 엔진]
+    - 대형주 : 중소형주 똑같은 비율 (1:1 균등 배분) 엄격 준수
+    """
     scored_list = score_and_aggregate_signals(candidate_signals, market=market)
-    selected = []
-    seen_sectors = {}
+    large_cands = [c for c in scored_list if c["cap_size"] == "대형주"]
+    mid_cands = [c for c in scored_list if c["cap_size"] != "대형주"]
 
-    for item in scored_list:
+    target_each = max(1, max_select // 2)
+
+    selected_large = []
+    seen_large_sectors = set()
+    for item in large_cands:
         sec = item["sector"]
-        if seen_sectors.get(sec, 0) >= 1 and not item["is_multi_confirmed"]:
+        if sec in seen_large_sectors and not item.get("is_multi_confirmed"):
             continue
-        selected.append(item)
-        seen_sectors[sec] = seen_sectors.get(sec, 0) + 1
-        if len(selected) >= max_select:
+        selected_large.append(item)
+        seen_large_sectors.add(sec)
+        if len(selected_large) >= target_each:
             break
 
-    return selected
+    selected_mid = []
+    seen_mid_sectors = set()
+    for item in mid_cands:
+        sec = item["sector"]
+        if sec in seen_mid_sectors and not item.get("is_multi_confirmed"):
+            continue
+        selected_mid.append(item)
+        seen_mid_sectors.add(sec)
+        if len(selected_mid) >= target_each:
+            break
+
+    # 1:1 똑같은 비율로 합산
+    final_selected = []
+    for i in range(max(len(selected_large), len(selected_mid))):
+        if i < len(selected_large):
+            final_selected.append(selected_large[i])
+        if i < len(selected_mid):
+            final_selected.append(selected_mid[i])
+
+    return final_selected[:max_select]
 
 
 # ==============================================================================
