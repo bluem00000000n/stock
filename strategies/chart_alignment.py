@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-strategies/kbit_chart.py
-kbit-bot 한국주식 차트 지능형 선별 엔진 (단기 모멘텀 & 정배열 돌파)
-- 네이버 금융 60일 일봉 및 30주 주봉 캔들 정밀 수학적 채점
-- 5일/20일 이동평균선 정배열 우상향 (+35점)
-- 20일 이평선 거래량 대량 돌파 (+30점)
-- 5일/20일선 골든크로스 (+20점)
-- 20일 평균 대비 거래량 폭증 (200%+ : +35점, 150%+ : +25점)
-- 당일 양봉 (+15점), 적정 탄력 1.5%~15% (+20점)
-- 역배열 하락세(close < ma5 and close < ma20) 즉시 영구 탈락 (-50점)
-- 대형:중소형 1:1 황금밸런스 준수
+strategies/chart_alignment.py
+한국주식 이동평균선 정배열 2차 검증 및 돌파 엔진 (단기 모멘텀 & 정배열 필터링)
+- 철학: 단기매매는 정배열 차트(5일선 > 20일선)에서 매매할 때 승률이 가장 높음
+- 네이버 금융 60일 일봉 및 30주 주봉 캔들 정밀 수학적 채점 (2차 정밀 검증 필터)
+  1. 5일선/20일선 이동평균선 정배열 우상향 (+35점)
+  2. 20일 이평선 거래량 대량 돌파 (+30점)
+  3. 5일/20일선 골든크로스 (+20점)
+  4. 20일 평균 대비 거래량 폭증 (200%+ : +35점, 150%+ : +25점)
+  5. 당일 양봉 (+15점), 적정 탄력 1.5%~15% (+20점)
+  6. 역배열 하락세(close < ma5 and close < ma20) 즉시 영구 탈락 (-50점)
+- 대형:중소형 1:1 황금밸런스 엄격 준수
 """
 
 import re
@@ -58,7 +59,7 @@ def is_valid_stock(code: str, name: str, price: int = 0) -> bool:
 
 def analyze_stock_chart(code: str) -> dict:
     """
-    네이버 금융 공식 XML API에서 일봉(60일) 및 주봉(30주) 데이터 정밀 분석 (kbit-bot 알고리즘)
+    네이버 금융 공식 XML API에서 일봉(60일) 및 주봉(30주) 데이터 정밀 분석 (정배열 2차 검증 엔진)
     """
     url_day = f"https://fchart.stock.naver.com/sise.nhn?symbol={code}&timeframe=day&count=60&requestType=0"
     try:
@@ -150,12 +151,12 @@ def analyze_stock_chart(code: str) -> dict:
             "is_good": (score >= 40 and not is_bearish),
             "chart_analysis": ", ".join(commentary)
         }
-    except Exception as e:
+    except Exception:
         return {"score": -999, "is_good": False, "chart_analysis": ""}
 
 
 def fetch_dynamic_candidates() -> List[Dict[str, Any]]:
-    """kbit-bot 시장 전방위 동적 후보군 수집 (100~150개)"""
+    """시장 전방위 동적 후보군 수집 (100~150개)"""
     candidates = {}
 
     # 1. Daum 검색어 상위 30
@@ -208,7 +209,7 @@ def fetch_dynamic_candidates() -> List[Dict[str, Any]]:
 
 
 def run_analysis(market: str = "KRX") -> List[Dict[str, Any]]:
-    """kbit-bot 차트 지능형 선별 파이프라인 가동 및 시그널 리스트 반환"""
+    """정배열 2차 차트 선별 파이프라인 가동 및 시그널 리스트 반환"""
     signals = []
     if market.upper() not in ("KRX", "KR", "KOR"):
         return signals
@@ -224,8 +225,8 @@ def run_analysis(market: str = "KRX") -> List[Dict[str, Any]]:
             cap = classify_cap_size(code, name, market="KRX")
             cur_p = float(chart["close"])
             evaluated.append({
-                "project_id": "stock-kbit-chart",
-                "project_name": "kbit 차트 스나이핑 (단기 5/20선 돌파 & 거래량 폭증)",
+                "project_id": "stock-chart-alignment",
+                "project_name": "정배열 돌파 & 2차 차트 검증 (5/20선 정배열 & 거래량 폭증)",
                 "ticker": code,
                 "name": name,
                 "market": "KRX",
@@ -237,16 +238,15 @@ def run_analysis(market: str = "KRX") -> List[Dict[str, Any]]:
                 "score": float(chart["score"]),
                 "rate": chart["rate"],
                 "vol_ratio": chart["vol_ratio"],
-                "notes": f"[kbit차트 {chart['score']}점/{chart['rate']}] {chart['chart_analysis']} (거래비율 {chart['vol_ratio']}%)"
+                "notes": f"[정배열 2차검증 {chart['score']}점/{chart['rate']}] {chart['chart_analysis']} (거래비율 {chart['vol_ratio']}%)"
             })
 
-    # 점수 기준 정렬
     evaluated.sort(key=lambda x: x["score"], reverse=True)
     return evaluated
 
 
 if __name__ == "__main__":
     res = run_analysis("KRX")
-    print(f"Total kbit-bot qualified signals: {len(res)}")
+    print(f"Total qualified signals: {len(res)}")
     for s in res[:10]:
         print(f"[{s['cap_size']}] {s['name']} ({s['ticker']}) : score={s['score']} | {s['price']:,}원 | {s['notes']}")

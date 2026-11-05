@@ -8,7 +8,7 @@ Stock Trading Desk - 실전 수익률 및 포트폴리오 데이터베이스 엔
 4. stock-htp-top10 (미국 S&P 500 / 러셀 2000 HTP 모멘텀 TOP 10)
 5. stock-us3x (미국 3배 레버리지 TQQQ/TECL/FAS 무한매수)
 6. stock-dividend_top7 (한국 거래소 6대 원칙 주간 배당 TOP 7)
-7. kbit-bot (장중 특징주 캔들 차트 분석 봇)
+7. 정배열 차트 분석 엔진 (장중 캔들 이평 정배열 2차 검증)
 8. signal_forge_alert (AI 거시 시장 인텔리전스 & 카탈리스트 돌파)
 9. stock-cyclical-screener (한국 6대 시클리컬 섹터 PBR 사이클)
 

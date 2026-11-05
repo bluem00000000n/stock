@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 portfolio/selector.py
-주식 지능형 정밀 선별 엔진 (kbit-style Inspector & Scoring)
+주식 지능형 정밀 선별 엔진 (정배열 차트 2차 검증 & 다각화 스코어링)
 - 대형주 & 중소형주 표준 판별 (classify_cap_size)
 - 대형 3종목 + 중형 3종목 황금 밸런스 선별 (select_balanced_portfolio_buys)
 - 원천 시그널 정예 스코어링 및 엑시트(SL/TP) 정밀 검사
@@ -72,10 +72,10 @@ def classify_cap_size(ticker: str, name: str = "", sector: str = "", market: str
 # ==============================================================================
 # 3개년(2023.11 ~ 2026.11) 정밀 백테스팅 기반 시장별 최적 가중치 배분 (각각 100%)
 # ==============================================================================
-# 🇰🇷 한국장 (KRX): kbit차트(45%) + SEPA(35%) + 스나이퍼(30%) + 스윙(18%) + 시클리컬(7%)
+# 🇰🇷 한국장 (KRX): 정배열차트(45%) + SEPA(35%) + 스나이퍼(30%) + 스윙(18%) + 시클리컬(7%)
 KR_STRATEGY_WEIGHT_MULTIPLIERS = {
-    "stock-kbit-chart": 1.45,        # 45% (kbit-bot 60일 일봉/30주 주봉 5/20선 정배열 돌파 & 거래량 폭증 1위)
-    "kbit_chart": 1.45,
+    "stock-chart-alignment": 1.45,   # 45% (60일 일봉/30주 주봉 5/20선 정배열 돌파 & 2차 차트 검증 1위)
+    "chart_alignment": 1.45,
     "stock-sepa-pivot": 1.40,        # 40% (샤프 1.54, 손익비 6.85, 52주 신고가 VCP 1위)
     "sepa_pivot": 1.40,
     "stock-sniper": 1.35,            # 35% (샤프 1.42, 승률 51.2%, 외인·기관 양매수 주도주)

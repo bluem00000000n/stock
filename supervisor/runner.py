@@ -42,7 +42,7 @@ from strategies import (
     us3x,
     stage2_revival,
     signal_forge_bridge,
-    kbit_chart
+    chart_alignment
 )
 from screener.engine import run_screener_analysis
 from screener.us_screener import run_us_screener_analysis
@@ -92,11 +92,11 @@ def run_pipeline(mode: str = "auto", force: bool = False, dry_run: bool = False)
     except Exception as e:
         print(f"⚠️ cyclical 오류: {e}")
     try:
-        kbit_sigs = kbit_chart.run_analysis("KRX")
-        kr_signals.extend(kbit_sigs)
-        print(f"🎯 kbit-bot 차트 지능형 선별 완료 ({len(kbit_sigs)}건 포착)")
+        chart_sigs = chart_alignment.run_analysis("KRX")
+        kr_signals.extend(chart_sigs)
+        print(f"🎯 이동평균선 정배열 2차 차트 선별 완료 ({len(chart_sigs)}건 포착)")
     except Exception as e:
-        print(f"⚠️ kbit_chart 오류: {e}")
+        print(f"⚠️ chart_alignment 오류: {e}")
 
     # 백찬규 센터장 실무 스크리너 (한국장: 성장주 후보 + 중소형 수급가치)
     screener_signals = []

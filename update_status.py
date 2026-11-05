@@ -8,7 +8,7 @@ Stock Supervisor - 프로젝트 상태 및 스케줄 데이터 수집기
 4. stock-htp-top10
 5. stock-us3x
 6. stock-dividend_top7
-7. kbit-bot
+7. 정배열 차트 엔진
 8. signal_forge_alert
 9. stock-cyclical-screener
 """
