@@ -152,7 +152,7 @@ def verify_stage2_trend_template(ticker: str, market: str = "KRX", cur_price: fl
 
                     price = cur_price if cur_price > 0 else closes[-1]
                     ma60 = sum(closes[-60:]) / len(closes[-60:])
-                    ma120 = sum(closes[-120:]) / len(closes)
+                    ma120 = sum(closes[-120:]) / len(closes[-120:])
                     h_max = max(highs)
                     l_min = min(lows)
 
@@ -251,6 +251,11 @@ def score_and_aggregate_signals(candidate_signals: List[Dict[str, Any]], market:
 
     ticker_map = {}
     for s in candidate_signals:
+        s_mkt = (s.get("market") or "").upper()
+        if is_kr and (s_mkt in ("US", "BINANCE", "CRYPTO") or not s.get("ticker", "").isdigit()):
+            continue
+        if not is_kr and (s_mkt in ("KRX", "KR", "KOR") or s.get("ticker", "").isdigit()):
+            continue
         if not is_valid_signal_candidate(s):
             continue
         ticker = s["ticker"]

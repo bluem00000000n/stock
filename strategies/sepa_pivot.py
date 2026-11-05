@@ -20,14 +20,14 @@ WATCHLIST = {
     "KR_LARGE": [
         {"name": "삼성E&A", "code": "028050", "market": "코스피", "pivot": 62000, "stop": 57600, "turtle_stop": 58500, "farley_swing": "20일선 지지 52주 신고가 VCP 돌파", "pattern": "Cup with Handle", "score": 99, "theme": "친환경 플랜트 및 대형 EPC 글로벌 수주 랠리"},
         {"name": "삼성화재", "code": "000810", "market": "코스피", "pivot": 660000, "stop": 615000, "turtle_stop": 625000, "farley_swing": "신고가 박스권 돌파 양매수", "pattern": "Flat Base", "score": 98, "theme": "밸류업 및 역대 최대 순이익 주주환원"},
-        {"name": "셀트리온", "code": "068270", "market": "코스피", "pivot": 192000, "stop": 181000, "turtle_stop": 183000, "farley_swing": "20주선 위 VCP 매물 소화 후 돌파", "pattern": "Ascending Triangle", "score": 98, "theme": "짐펜트라 미국 PBM 등재 및 바이오시밀러 초고성장"},
+        {"name": "셀트리온", "code": "068270", "market": "코스피", "pivot": 215000, "stop": 199500, "turtle_stop": 202000, "farley_swing": "20주선 위 VCP 매물 소화 후 돌파", "pattern": "Ascending Triangle", "score": 98, "theme": "짐펜트라 미국 PBM 등재 및 바이오시밀러 초고성장"},
         {"name": "KT&G", "code": "033780", "market": "코스피", "pivot": 194000, "stop": 182000, "turtle_stop": 184000, "farley_swing": "신고가 안착 우상향 스윙", "pattern": "High Tight Flag", "score": 97, "theme": "글로벌 NGP 전자담배 랠리 및 밸류업 프로그램"},
     ],
     "KR_MID": [
         {"name": "케이아이엔엑스", "code": "093320", "market": "코스닥", "pivot": 176000, "stop": 164000, "turtle_stop": 166000, "farley_swing": "과천 IDC 하이타이트 플래그 돌파", "pattern": "High Tight Flag", "score": 99, "theme": "과천 AI IDC 본격 가동 및 52주 신고가 우상향"},
         {"name": "안랩", "code": "053800", "market": "코스닥", "pivot": 115000, "stop": 104000, "turtle_stop": 106000, "farley_swing": "보안 대장주 52주 신고가 VCP 돌파", "pattern": "VCP", "score": 98, "theme": "차세대 클라우드/AI 보안 솔루션 수급 분출"},
         {"name": "티에프이", "code": "425420", "market": "코스닥", "pivot": 79000, "stop": 73000, "turtle_stop": 74500, "farley_swing": "테스트 소켓 2차 파동 돌파", "pattern": "Bull Flag", "score": 97, "theme": "AI 반도체 테스트 소켓 국산화 선도"},
-        {"name": "타이거일렉", "code": "219130", "market": "코스닥", "pivot": 96000, "stop": 89000, "turtle_stop": 90500, "farley_swing": "인쇄회로기판 초강세 52주 신고가", "pattern": "Ascending Triangle", "score": 96, "theme": "고다층 초고밀도 반도체 검사용 기판 공급확대"},
+        {"name": "타이거일렉", "code": "219130", "market": "코스닥", "pivot": 89000, "stop": 80700, "turtle_stop": 82000, "farley_swing": "인쇄회로기판 초강세 52주 신고가", "pattern": "Ascending Triangle", "score": 96, "theme": "고다층 초고밀도 반도체 검사용 기판 공급확대"},
     ],
     "US_LARGE": [
         {"ticker": "LLY", "name": "Eli Lilly", "market": "NYSE", "sector": "Healthcare", "pivot": 1420.0, "stop": 1330.0, "turtle_stop": 1350.0, "farley_swing": "20일선 지지 젭바운드 글로벌 랠리", "pattern": "Cup with Handle", "score": 99, "theme": "GLP-1 비만/당뇨 치료제 글로벌 1위 공급확대"},

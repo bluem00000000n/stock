@@ -103,10 +103,12 @@ def enforce_portfolio_target_6(market: str = "KRX", candidate_signals: List[Dict
         large_holdings.sort(key=lambda h: float(h.get("return_pct", 0.0)), reverse=True)
         mid_holdings.sort(key=lambda h: float(h.get("return_pct", 0.0)), reverse=True)
 
-        keep_large = large_holdings[:3]
-        keep_mid = mid_holdings[:3]
-
-        keep_holdings = keep_large + keep_mid
+        # 대형/중소형 균형을 맞추되, 한쪽이 부족하면 다른 쪽으로 채워 총 6종목 유지
+        max_large = max(3, 6 - len(mid_holdings))
+        max_mid = max(3, 6 - len(large_holdings))
+        keep_large = large_holdings[:max_large]
+        keep_mid = mid_holdings[:max_mid]
+        keep_holdings = (keep_large + keep_mid)[:6]
         keep_ids = set([h["id"] for h in keep_holdings])
         # 단독 전략 ID도 보존 목록에 추가
         for s in standalone_holdings:

@@ -422,11 +422,7 @@ def format_strategy_grouped_portfolio(
                 if alt:
                     out.append(f"    └ 🥈 <b>[2순위 대체 예비] {alt['name']}</b> ({alt['ticker']} / {alt['cap']}) : <i>{alt['reason']}</i>")
 
-        # 스나이퍼 전략에서 손절 청산 등으로 1슬롯 현금 대기 중일 때 신규 1순위 및 2순위 안내
-        if strat_key == "sniper" and is_kr and len(strat_holdings) < 2 and not is_summary:
-            out.append(" • ⚪ <b>[중형] 한미반도체</b> (042700) | <b>[가용 현금 슬롯 / 1순위 대기]</b>")
-            out.append("    └ <i>선정 근거:</i> 외인·기관 양매수 HBM TC본더 수급 1위 (시가/눌림목 분할 진입)")
-            out.append("    └ 🥈 <b>[2순위 대체 예비] HPSP</b> (403870 / 중형) : <i>고압 수소 어닐링 독점력 및 기관 수급 2순위</i>")
+
 
     return out
 
@@ -673,7 +669,8 @@ def build_0830_kr_open_alarm(
     avg_ret = kr_stats.get("avg_return_pct", 0.0)
 
     lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
-    lines.append(f"💼 <b>3. 🇰🇷 한국장 코어 실운용 포트폴리오 (정예 {len(kr_active)}종목 - 대형 {large_c}선 : 중소형 {mid_c}선 [1:1 황금밸런스])</b>")
+    balance_tag = " [1:1 황금밸런스]" if large_c == mid_c else ""
+    lines.append(f"💼 <b>3. 🇰🇷 한국장 코어 실운용 포트폴리오 (정예 {len(kr_active)}종목 - 대형 {large_c}선 : 중소형 {mid_c}선{balance_tag})</b>")
     lines.append(f"• <b>코어 포트폴리오 평균 수익률:</b> <b>{avg_ret:+.2f}%</b> (가용 슬롯: {kr_stats.get('available_slots', 0)}개)")
     lines.append(PORTFOLIO_LEGEND)
     lines.extend(format_strategy_grouped_portfolio(kr_active, market="KRX", new_tickers=new_tickers, is_summary=False))
@@ -844,7 +841,8 @@ def build_1500_kr_close_alarm(
     avg_ret = kr_stats.get("avg_return_pct", 0.0)
 
     lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
-    lines.append(f"💼 <b>3. 🇰🇷 한국장 코어 실운용 포트폴리오 마감 현황 (정예 {len(kr_active)}종목 - 대형 {large_c}선 : 중소형 {mid_c}선 [1:1 황금밸런스])</b>")
+    balance_tag = " [1:1 황금밸런스]" if large_c == mid_c else ""
+    lines.append(f"💼 <b>3. 🇰🇷 한국장 코어 실운용 포트폴리오 마감 현황 (정예 {len(kr_active)}종목 - 대형 {large_c}선 : 중소형 {mid_c}선{balance_tag})</b>")
     lines.append(f"• <b>코어 포트폴리오 평균 수익률:</b> <b>{avg_ret:+.2f}%</b> (가용 슬롯: {kr_stats.get('available_slots', 0)}개)")
     lines.append(PORTFOLIO_LEGEND)
     lines.extend(format_strategy_grouped_portfolio(kr_active, market="KRX", new_tickers=new_tickers, is_summary=False))
@@ -965,7 +963,8 @@ def build_1730_us_open_alarm(
     avg_kr = kr_stats.get("avg_return_pct", 0.0)
 
     lines.append("\n━━━━━━━━━━━━━━━━━━━━━━━━━")
-    lines.append(f"💼 <b>4. 🇰🇷 한국장 코어 실운용 포트폴리오 (정예 {len(kr_active)}종목 - 대형 {kr_large_c}선 : 중소형 {kr_mid_c}선 [1:1 황금밸런스] | 마감 평균 {avg_kr:+.2f}%)</b>")
+    kr_balance_tag = " [1:1 황금밸런스]" if kr_large_c == kr_mid_c else ""
+    lines.append(f"💼 <b>4. 🇰🇷 한국장 코어 실운용 포트폴리오 (정예 {len(kr_active)}종목 - 대형 {kr_large_c}선 : 중소형 {kr_mid_c}선{kr_balance_tag} | 마감 평균 {avg_kr:+.2f}%)</b>")
     lines.append(PORTFOLIO_LEGEND)
     try:
         kr_mkt = fetch_krx_market_summary()
