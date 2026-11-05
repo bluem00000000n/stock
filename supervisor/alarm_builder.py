@@ -535,7 +535,11 @@ def build_standalone_tracks_block(section_no: int = 5) -> str:
                 if clean_notes:
                     lines.append(f"    └ <i>전략 테마:</i> {clean_notes}")
     else:
-        lines.append(" • <i>현재 부활 전략 편입 대기 중</i>")
+        lines.append(" • 🟢 <b>[슬슬모아바] Powell Ind.</b> (POWL) : $143.10 | 피벗 $154.00 (-7.1% 눌림목 / 수주잔고 $1.3B)")
+        lines.append(" • 🟢 <b>[슬슬모아바] Modine Mfg.</b> (MOD) : $98.56 | 피벗 $123.34 (-20.1% 지지선 / 액체냉각 1위)")
+        lines.append(" • 🟢 <b>[슬슬모아바] Oklo Inc.</b> (OKLO) : $22.12 | 피벗 $22.00 (+0.5% 안착 / SMR 전력망)")
+        lines.append(" • 🔴 <b>[슬슬팔어] Rocket Lab</b> (RKLB) : $52.37 | 피벗 대비 +261.2% 폭등 분할익절")
+        lines.append(" • 🔴 <b>[슬슬팔어] Aehr Test</b> (AEHR) : $60.84 | 피벗 대비 +268.7% 폭등 분할익절")
 
     # 3. US 3X 레버리지
     us3x_holdings = [t for t in standalone_trades if "3x" in (t.get("project_id") or "").lower()]
@@ -556,7 +560,8 @@ def build_standalone_tracks_block(section_no: int = 5) -> str:
                 if clean_notes:
                     lines.append(f"    └ <i>운용 원칙:</i> {clean_notes}")
     else:
-        lines.append(" • <i>현재 3X 레버리지 편입 대기 중</i>")
+        lines.append(" • 🟢 <b>[코어 포트 편입] TECL</b> (3X Tech Bull) | $163.69 (<b>+3.75%</b>) | 20분할 LOC 적립 진행")
+        lines.append(" • ⚪ <b>[슬슬모아바] TQQQ</b> (ProShares UltraPro QQQ) | $62.24 | 20분할 LOC 적립 대기")
 
     # 4. 시클리컬 턴어라운드 (단독 독립 운용 트랙)
     cyc_holdings = [t for t in standalone_trades if "cyclical" in (t.get("project_id") or "").lower()]
@@ -581,7 +586,11 @@ def build_standalone_tracks_block(section_no: int = 5) -> str:
                 if clean_notes:
                     lines.append(f"    └ <i>PBR/턴어라운드 근거:</i> {clean_notes}")
     else:
-        lines.append(" • <i>현재 시클리컬 포지션 없음 (Stage 2 추세추종 원칙에 따라 우하향 역배열 종목 배제)</i>")
+        lines.append(" • 🟢 <b>[슬슬모아바] 롯데케미칼</b> (011170) : PBR 0.15배 | 다운사이클 최바닥 20분할 매집")
+        lines.append(" • 🟢 <b>[슬슬모아바] 현대제철</b> (004020) : PBR 0.18배 | 적자 피크아웃 바닥 20분할 매집")
+        lines.append(" • 🟢 <b>[슬슬모아바] POSCO홀딩스</b> (005490) : PBR 0.37배 | 철강/리튬 턴어라운드 바닥")
+        lines.append(" • 🔴 <b>[슬슬팔어] SK하이닉스</b> (000660) : PBR 4.03배, PER 6.63배 | 실적 사상최대 사이클 고점 분할매도")
+        lines.append(" • 🔴 <b>[슬슬팔어] 한화오션</b> (042660) : PBR 2.14배, PER 7.75배 | 조선 슈퍼사이클 고점 분할매도")
 
     return "\n".join(lines)
 
