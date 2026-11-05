@@ -21,7 +21,7 @@ supervisor/alarm_builder.py
 import os
 import sqlite3
 from datetime import datetime
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, List, Optional, Tuple
 from portfolio.selector import classify_cap_size
 from core.market_data import fetch_krx_market_summary, fetch_us_macro
 
@@ -152,65 +152,161 @@ US_BACKUP_ALTERNATIVES = {
 }
 
 
-def fetch_signal_forge_radar_targets(market: str = "KRX") -> List[Dict[str, Any]]:
-    """Signal Forge AI 레이더의 실시간 포착 매수 후보 종목 조회"""
-    db_path = "/Users/tothemoon/runtime/data/signal_forge.db"
-    if not os.path.exists(db_path):
-        return []
+def resolve_symbol_name(sym: str, asset_type: str = "KRX") -> str:
+    name_map = {
+        "005930": "삼성전자",
+        "000660": "SK하이닉스",
+        "068270": "셀트리온",
+        "000100": "유한양행",
+        "028050": "삼성E&A",
+        "093320": "케이아이엔엑스",
+        "000810": "삼성화재",
+        "033780": "KT&G",
+        "425420": "티에프이",
+        "144960": "뉴파워프라즈마",
+        "042700": "한미반도체",
+        "403870": "HPSP",
+        "NVDA": "엔비디아",
+        "AAPL": "애플",
+        "MSFT": "마이크로소프트",
+        "TSLA": "테슬라",
+        "LLY": "일라이 릴리",
+        "COST": "코스트코 홀세일",
+        "PLTR": "팔란티어 테크놀로지스",
+        "CRWD": "크라우드 스트라이크 홀딩스",
+        "POWL": "파월 인더스트리즈",
+        "MOD": "모딘 매뉴팩처링",
+        "BTC": "비트코인",
+        "ETH": "이더리움",
+        "SOL": "솔라나",
+        "XRP": "리플",
+        "DOGE": "도지코인"
+    }
+    clean_sym = sym.replace("-USDT", "").replace("/USDT", "").replace("KRW-", "").upper()
+    return name_map.get(clean_sym, sym)
+
+
+def format_standalone_price(price: Any, market: str = "KRX", ticker: str = "") -> str:
+    if price is None:
+        return "-"
     try:
-        conn = sqlite3.connect(db_path)
-        conn.row_factory = sqlite3.Row
-        asset_type = "STOCK_KR" if market.upper() in ("KRX", "KR", "KOR") else "STOCK_US"
-        rows = conn.execute("""
-            SELECT symbol, strategy_name, score, price, trigger_reason, created_at
-            FROM signals
-            WHERE asset_type = ? AND direction = 'LONG'
-            ORDER BY id DESC LIMIT 20
-        """, (asset_type,)).fetchall()
+        p = float(price)
+    except (ValueError, TypeError):
+        return str(price)
+    
+    m = (market or "").upper()
+    t = str(ticker).upper()
+    if m in ("KRX", "KR", "KOR", "STOCK_KR") or t.isdigit():
+        return f"{int(p):,}원"
+    elif "USDT" in t or m in ("US", "BINANCE", "STOCK_US"):
+        if p >= 10:
+            return f"${p:,.2f}"
+        else:
+            return f"${p:,.4f}"
+    elif m in ("CRYPTO", "UPBIT") and p >= 1000:
+        return f"{int(p):,}원"
+    elif p > 1000:
+        return f"{int(p):,}원"
+    else:
+        return f"${p:,.2f}"
 
-        name_map = {
-            "005930": "삼성전자",
-            "000660": "SK하이닉스",
-            "068270": "셀트리온",
-            "000100": "유한양행",
-            "NVDA": "엔비디아",
-            "AAPL": "애플",
-            "MSFT": "마이크로소프트",
-            "TSLA": "테슬라"
-        }
 
-        seen = set()
-        targets = []
-        for r in rows:
-            sym = r["symbol"]
-            if sym in seen:
-                continue
-            seen.add(sym)
-            resolved_name = name_map.get(sym)
-            if not resolved_name:
-                if market.upper() in ("KRX", "KR", "KOR"):
-                    from core.market_data import fetch_krx_price
-                    p_info = fetch_krx_price(sym)
-                    resolved_name = p_info.get("name") or sym
-                else:
-                    from core.market_data import fetch_us_price
-                    p_info = fetch_us_price(sym)
-                    resolved_name = p_info.get("name") or sym
+def fetch_signal_forge_execution_status(today_str: str) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]], List[Dict[str, Any]]]:
+    """
+    Signal Forge AI 실전 체결 포지션 상태 (매수 / 보유 / 매도) 추적
+    - 매수대기, 관망 등 레이더 후보 스팸 배제
+    - 실제 체결된 포지션만 [매수], [보유], [매도] 3가지 상태로 분류
+    """
+    buys = []
+    holds = []
+    sells = []
+    seen_tickers = set()
 
-            targets.append({
-                "ticker": sym,
-                "name": resolved_name,
-                "strategy": r["strategy_name"],
-                "score": float(r["score"]),
-                "price": float(r["price"]),
-                "reason": r["trigger_reason"]
-            })
-            if len(targets) >= 2:
-                break
-        conn.close()
-        return targets
+    # 1. stock_master.db trades 테이블
+    try:
+        from core.database import get_db_connection
+        with get_db_connection() as conn:
+            conn.row_factory = sqlite3.Row
+            rows = conn.execute("""
+                SELECT * FROM trades 
+                WHERE LOWER(project_id) IN ('signal_forge_alert', 'signal-forge-alert', 'signal_forge')
+                ORDER BY id ASC
+            """).fetchall()
+            for r in rows:
+                d = dict(r)
+                sym = d.get("ticker", "")
+                status = str(d.get("status", "")).upper()
+                e_date = str(d.get("entry_date", ""))[:10]
+                x_date = str(d.get("exit_date", ""))[:10]
+                if status == "HOLDING":
+                    seen_tickers.add(sym)
+                    if e_date == today_str:
+                        buys.append(d)
+                    else:
+                        holds.append(d)
+                elif status == "CLOSED" and x_date == today_str:
+                    seen_tickers.add(sym)
+                    sells.append(d)
     except Exception:
-        return []
+        pass
+
+    # 2. runtime/data/signal_forge.db compounding 포지션/체결 내역
+    sf_db = "/Users/tothemoon/runtime/data/signal_forge.db"
+    if os.path.exists(sf_db):
+        try:
+            with sqlite3.connect(sf_db) as conn:
+                conn.row_factory = sqlite3.Row
+                # 오픈 포지션
+                pos_rows = conn.execute("SELECT * FROM compounding_positions WHERE status = 'OPEN'").fetchall()
+                for r in pos_rows:
+                    d = dict(r)
+                    sym = d.get("symbol", "")
+                    if sym in seen_tickers:
+                        continue
+                    seen_tickers.add(sym)
+                    e_date = str(d.get("entry_time", ""))[:10]
+                    item = {
+                        "ticker": sym,
+                        "name": sym,
+                        "market": d.get("asset_type", "KRX"),
+                        "strategy": d.get("strategy_name", "25 Quant"),
+                        "entry_price": d.get("entry_price", 0.0),
+                        "current_price": d.get("current_price", 0.0),
+                        "return_pct": d.get("unrealized_pnl_pct", 0.0),
+                        "target_price": d.get("target_price", 0.0),
+                        "stop_loss_price": d.get("stop_loss_price", 0.0),
+                    }
+                    if e_date == today_str:
+                        buys.append(item)
+                    else:
+                        holds.append(item)
+
+                # 당일 청산 내역
+                trade_rows = conn.execute("SELECT * FROM compounding_trades WHERE exit_time LIKE ?", (f"{today_str}%",)).fetchall()
+                for r in trade_rows:
+                    d = dict(r)
+                    sym = d.get("symbol", "")
+                    if sym in seen_tickers:
+                        continue
+                    seen_tickers.add(sym)
+                    sells.append({
+                        "ticker": sym,
+                        "name": sym,
+                        "market": d.get("asset_type", "KRX"),
+                        "strategy": d.get("strategy_name", "25 Quant"),
+                        "exit_price": d.get("exit_price", 0.0),
+                        "return_pct": d.get("net_return_pct", 0.0),
+                        "exit_reason": d.get("exit_reason", "목표가/손절선 도달 청산")
+                    })
+        except Exception:
+            pass
+
+    return buys, holds, sells
+
+
+def fetch_signal_forge_radar_targets(market: str = "KRX") -> List[Dict[str, Any]]:
+    """[사용 중단] Signal Forge AI 레이더의 매수 후보 종목 조회 (불필요한 매수대기 노이즈 제거를 위해 빈 리스트 반환)"""
+    return []
 
 
 def format_strategy_grouped_portfolio(
@@ -369,32 +465,60 @@ def build_standalone_tracks_block(section_no: int = 5) -> str:
         standalone_trades = []
 
     # 1. Signal Forge AI 레이더
-    sf_holdings = [t for t in standalone_trades if "signal" in (t.get("project_id") or "").lower()]
-    lines.append("\n📡 <b>[단독: Signal Forge AI 레이더]</b> (25대 퀀트 매크로 & 실시간 레이더)")
-    if sf_holdings:
-        for h in sf_holdings:
-            cur_p = int(float(h.get("current_price", 0)))
-            entry_p = int(float(h.get("entry_price", 0)))
-            ret = float(h.get("return_pct", 0.0))
-            sign = "🟢" if ret > 0 else ("🔵" if ret < 0 else "⚪")
-            tgt_p = int(float(h.get("target_price", 0))) if h.get("target_price") else 200000
-            stp_p = int(float(h.get("stop_loss_price", 0))) if h.get("stop_loss_price") else 178000
-            lines.append(f" • {sign} <b>[포지션 보유] {h.get('name', '셀트리온')}</b> ({h.get('ticker')}) | <b>[보유 지속]</b>")
-            lines.append(f"    └ 진입: {entry_p:,}원 ➔ 현재: {cur_p:,}원 (<b>{ret:+.2f}%</b>) | 🎯 {tgt_p:,}원 | 🛑 {stp_p:,}원")
-            notes = h.get("notes", "")
-            if notes:
-                clean_notes = notes.split('|')[0].strip().replace("[단독/Signal Forge AI 레이더]", "").strip()
-                if clean_notes:
-                    lines.append(f"    └ <i>레이더 촉매:</i> {clean_notes}")
-    else:
-        lines.append(" • <i>현재 Signal Forge 보유 포지션 없음 (관망)</i>")
+    lines.append("\n📡 <b>[단독: Signal Forge AI 레이더]</b> (25대 퀀트 매크로 & 실시간 엔진)")
+    today_str = datetime.now().strftime("%Y-%m-%d")
+    sf_buys, sf_holds, sf_sells = fetch_signal_forge_execution_status(today_str)
+    has_sf_activity = False
 
-    radar_targets = fetch_signal_forge_radar_targets(market="KRX")
-    if radar_targets:
-        for t in radar_targets:
-            p_str = f"{int(t['price']):,}원"
-            lines.append(f" • 🎯 <b>[실시간 레이더 포착] {t['name']}</b> ({t['ticker']}) : <b>{p_str}</b> | <b>{t['score']:.0f}점</b> ({t['strategy']})")
-            lines.append(f"    └ <i>포착 근거:</i> {t['reason']}")
+    # [매수] 당일 신규 체결 포지션
+    for b in sf_buys:
+        has_sf_activity = True
+        sym = b.get("ticker", "")
+        name = b.get("name") or resolve_symbol_name(sym, b.get("market"))
+        strat = b.get("strategy", "25 Quant")
+        mkt = b.get("market", "KRX")
+        e_p = format_standalone_price(b.get("entry_price"), mkt, sym)
+        t_p = format_standalone_price(b.get("target_price"), mkt, sym)
+        s_p = format_standalone_price(b.get("stop_loss_price"), mkt, sym)
+        lines.append(f" • 🟢 <b>[매수] {name}</b> ({sym}) | <b>[신규 진입 체결]</b> ({strat})")
+        lines.append(f"    └ 진입가: {e_p} | 🎯 목표: {t_p} | 🛑 손절: {s_p}")
+
+    # [보유] 포지션 홀딩
+    for h in sf_holds:
+        has_sf_activity = True
+        sym = h.get("ticker", "")
+        name = h.get("name") or resolve_symbol_name(sym, h.get("market"))
+        strat = h.get("strategy", "25 Quant")
+        mkt = h.get("market", "KRX")
+        cur_p = format_standalone_price(h.get("current_price"), mkt, sym)
+        entry_p = format_standalone_price(h.get("entry_price"), mkt, sym)
+        ret = float(h.get("return_pct", 0.0))
+        sign = "🟢" if ret > 0 else ("🔵" if ret < 0 else "⚪")
+        t_p = format_standalone_price(h.get("target_price"), mkt, sym)
+        s_p = format_standalone_price(h.get("stop_loss_price"), mkt, sym)
+        lines.append(f" • {sign} <b>[보유] {name}</b> ({sym}) | <b>[보유 지속]</b> ({strat})")
+        lines.append(f"    └ 진입: {entry_p} ➔ 현재: {cur_p} (<b>{ret:+.2f}%</b>) | 🎯 {t_p} | 🛑 {s_p}")
+        notes = h.get("notes", "")
+        if notes:
+            clean_notes = notes.split('|')[0].strip().replace("[단독/Signal Forge AI 레이더]", "").strip()
+            if clean_notes:
+                lines.append(f"    └ <i>촉매:</i> {clean_notes}")
+
+    # [매도] 당일 청산 완료 포지션
+    for s in sf_sells:
+        has_sf_activity = True
+        sym = s.get("ticker", "")
+        name = s.get("name") or resolve_symbol_name(sym, s.get("market"))
+        mkt = s.get("market", "KRX")
+        exit_p = format_standalone_price(s.get("exit_price") or s.get("current_price"), mkt, sym)
+        ret = float(s.get("return_pct", s.get("realized_pnl_pct", 0.0)))
+        sign = "🟢" if ret > 0 else "🔴"
+        exit_reason = s.get("exit_reason", "목표가/손절선 도달 청산")
+        lines.append(f" • {sign} <b>[매도] {name}</b> ({sym}) | <b>[청산 완료]</b>")
+        lines.append(f"    └ 매도가: {exit_p} (실현수익: <b>{ret:+.2f}%</b>) | <i>청산 사유:</i> {exit_reason}")
+
+    if not has_sf_activity:
+        lines.append(" • <i>현재 보유 포지션 없음 (신규 체결 대기)</i>")
 
     # 2. 중소형 2차 파동 부활
     s2_holdings = [t for t in standalone_trades if "stage2" in (t.get("project_id") or "").lower() or "revival" in (t.get("project_id") or "").lower()]
