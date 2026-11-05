@@ -21,7 +21,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"4.2배 (Fwd)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 4.2배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -71,7 +71,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지"
   },
   {
@@ -146,7 +146,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"5.3배 (Fwd)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 5.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -171,7 +171,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"4.2배 (Fwd)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 4.2배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -246,7 +246,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지"
   },
   {
@@ -296,7 +296,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"레거시 메모리\/기판 적자 바닥, 턴어라운드 수혜 기대"
   },
   {
@@ -371,7 +371,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"39.2배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 39.2배 형성 (PBR 2.1배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -471,7 +471,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지"
   },
   {
@@ -521,7 +521,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"17.7배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 17.7배 형성 (PBR 1.1배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -596,7 +596,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"레거시 메모리\/기판 적자 바닥, 턴어라운드 수혜 기대"
   },
   {
@@ -671,7 +671,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"23.1배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 23.1배 형성 (PBR 1.5배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -771,7 +771,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"4.8배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 4.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -821,7 +821,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"5.3배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 5.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -871,7 +871,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지"
   },
   {
@@ -896,7 +896,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"6.3배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 6.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -921,7 +921,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"5.8배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 5.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -1021,7 +1021,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지"
   },
   {
@@ -1071,7 +1071,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지"
   },
   {
@@ -1221,7 +1221,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"16.0배 (Fwd)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 16.0배 형성 (PBR 2.1배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -1296,7 +1296,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지"
   },
   {
@@ -1421,7 +1421,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"137.4배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 137.4배 형성 (PBR 0.6배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -1521,7 +1521,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지"
   },
   {
@@ -1571,7 +1571,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"5.3배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 5.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -1646,7 +1646,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"39.4배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 39.4배 형성 (PBR 1.0배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -1671,7 +1671,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지"
   },
   {
@@ -1746,7 +1746,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지"
   },
   {
@@ -1871,7 +1871,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지"
   },
   {
@@ -1921,7 +1921,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"5.7배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 5.7배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -1946,7 +1946,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지"
   },
   {
@@ -2046,7 +2046,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지"
   },
   {
@@ -2071,7 +2071,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"6.5배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 6.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -2146,7 +2146,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"190.0배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 190.0배 형성 (PBR 2.1배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -2171,7 +2171,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지"
   },
   {
@@ -2296,7 +2296,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지"
   },
   {
@@ -2321,7 +2321,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"3.3배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 3.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -2346,7 +2346,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"18.9배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 18.9배 형성 (PBR 2.0배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -2371,7 +2371,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"41.1배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 41.1배 형성 (PBR 1.5배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -2396,7 +2396,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지"
   },
   {
@@ -2546,7 +2546,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지"
   },
   {
@@ -2571,7 +2571,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지"
   },
   {
@@ -2596,7 +2596,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지"
   },
   {
@@ -2696,7 +2696,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"114.6배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 114.6배 형성 (PBR 1.4배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -2721,7 +2721,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지"
   },
   {
@@ -2771,7 +2771,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"39.4배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 39.4배 형성 (PBR 0.7배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -2846,7 +2846,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"4.1배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 4.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -2921,7 +2921,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"16.2배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 16.2배 형성 (PBR 1.7배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -2971,7 +2971,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"23.6배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 23.6배 형성 (PBR 1.6배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -2996,7 +2996,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"48.6배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 48.6배 형성 (PBR 0.6배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -3071,7 +3071,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"4.4배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 4.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -3096,7 +3096,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"6.3배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 6.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -3196,7 +3196,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지"
   },
   {
@@ -3246,7 +3246,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지"
   },
   {
@@ -3296,7 +3296,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지"
   },
   {
@@ -3346,7 +3346,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"20.7배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 20.7배 형성 (PBR 1.7배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -3371,7 +3371,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"183.3배 (Fwd)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 183.3배 형성 (PBR 1.9배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -3396,7 +3396,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"6.3배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 6.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -3621,7 +3621,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"20.4배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 20.4배 형성 (PBR 1.5배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -3671,7 +3671,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"2.5배 (Fwd)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 2.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -3921,7 +3921,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지"
   },
   {
@@ -3946,7 +3946,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"16.6배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 16.6배 형성 (PBR 1.4배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -3996,7 +3996,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지"
   },
   {
@@ -4121,7 +4121,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"19.0배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 19.0배 형성 (PBR 1.8배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -4146,7 +4146,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지"
   },
   {
@@ -4196,7 +4196,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지"
   },
   {
@@ -4271,7 +4271,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"21.7배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 21.7배 형성 (PBR 2.1배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -4321,7 +4321,7 @@
     "sell_crit":"PER 4~7배 (사상 최대 영업이익 및 HBM\/DRAM 피크)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지"
   },
   {
@@ -4371,7 +4371,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"2.8배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 2.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -4396,7 +4396,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"4.5배 (Fwd)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 4.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -4446,7 +4446,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"4.5배 (Fwd)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 4.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -4471,7 +4471,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"5.5배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 5.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -4496,7 +4496,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"4.5배 (Fwd)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 4.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -4546,7 +4546,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"5.3배 (Fwd)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 5.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -4571,7 +4571,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"2.8배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 2.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -4596,7 +4596,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"5.5배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 5.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -4646,7 +4646,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"4.5배 (Fwd)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 4.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -4671,7 +4671,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"4.5배 (Fwd)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 4.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -4696,7 +4696,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"4.5배 (Fwd)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 4.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -4721,7 +4721,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"49.6배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 49.6배 형성 (PBR 0.3배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -4821,7 +4821,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"5.5배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 5.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -4871,7 +4871,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"2.8배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 2.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -4921,7 +4921,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"3.1배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 3.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -4946,7 +4946,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"3.5배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 3.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -4971,7 +4971,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"1.1배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 1.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -4996,7 +4996,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"4.4배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 4.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -5021,7 +5021,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"3.0배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 3.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -5071,7 +5071,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"3.5배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 3.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -5146,7 +5146,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"14.6배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 14.6배 형성 (PBR 1.1배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -5171,7 +5171,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"0.9배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 0.9배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -5196,7 +5196,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"5.0배 (Fwd)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 5.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -5221,7 +5221,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"3.5배 (Fwd)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 3.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -5246,7 +5246,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"2.2배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 2.2배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -5296,7 +5296,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"17.9배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 17.9배 형성 (PBR 0.7배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -5371,7 +5371,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"5.6배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 5.6배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -5396,7 +5396,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"3.0배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 3.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -5421,7 +5421,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"3.0배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 3.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -5446,7 +5446,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"2.1배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 2.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -5546,7 +5546,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"12.9배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 12.9배 형성 (PBR 0.6배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -5571,7 +5571,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"1.9배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 1.9배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -5646,7 +5646,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"5.4배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 5.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -5671,7 +5671,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"4.4배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 4.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -5721,7 +5721,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"3.3배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 3.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -5746,7 +5746,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"1.1배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 1.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -5796,7 +5796,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"5.1배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 5.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -5896,7 +5896,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"3.3배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 3.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -5996,7 +5996,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"1.6배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 1.6배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -6021,7 +6021,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"4.4배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 4.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -6071,7 +6071,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"3.1배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 3.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -6096,7 +6096,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"2.5배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 2.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -6121,7 +6121,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"6.0배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 6.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -6146,7 +6146,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"4.8배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 4.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -6171,7 +6171,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"1.2배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 1.2배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -6196,7 +6196,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"14.4배 (Fwd)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 14.4배 형성 (PBR 0.9배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -6221,7 +6221,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"1.1배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 1.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -6246,7 +6246,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"1.3배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 1.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -6271,7 +6271,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"3.6배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 3.6배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -6346,7 +6346,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"2.1배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 2.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -6396,7 +6396,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"3.1배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 3.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -6446,7 +6446,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"4.5배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 4.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -6471,7 +6471,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"11.2배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 11.2배 형성 (PBR 0.5배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -6496,7 +6496,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"4.9배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 4.9배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -6521,7 +6521,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"26.0배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 26.0배 형성 (PBR 0.6배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -6596,7 +6596,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"3.2배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 3.2배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -6621,7 +6621,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"4.3배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 4.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -6646,7 +6646,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"2.8배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 2.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -6671,7 +6671,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"3.6배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 3.6배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -6696,7 +6696,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"18.4배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 18.4배 형성 (PBR 0.3배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -6721,7 +6721,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"1.7배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 1.7배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -6771,7 +6771,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"4.4배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 4.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -6896,7 +6896,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"4.3배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 4.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -6921,7 +6921,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"4.3배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 4.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -6996,7 +6996,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"4.2배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 4.2배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -7021,7 +7021,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"1.8배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 1.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -7071,7 +7071,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"5.8배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 5.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -7221,7 +7221,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"3.1배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 3.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -7246,7 +7246,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"3.9배 (Fwd)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 3.9배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -7271,7 +7271,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"5.3배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 5.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -7321,7 +7321,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"3.9배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 3.9배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -7421,7 +7421,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"3.6배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 3.6배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -7446,7 +7446,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"1.8배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 1.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -7471,7 +7471,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"1.0배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 1.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -7521,7 +7521,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"3.3배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 3.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -7546,7 +7546,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"4.8배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 4.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -7621,7 +7621,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"1.5배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 1.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -7646,7 +7646,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"2.7배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 2.7배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -7671,7 +7671,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"45.8배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 45.8배 형성 (PBR 0.8배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -7871,7 +7871,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"3.3배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 3.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -7896,7 +7896,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"2.7배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 2.7배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -7946,7 +7946,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"5.0배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 5.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -7971,7 +7971,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"2.4배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 2.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -8021,7 +8021,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"1.3배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 1.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -8146,7 +8146,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"5.6배 (Fwd)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 5.6배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -8171,7 +8171,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"3.1배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 3.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -8221,7 +8221,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"2.2배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 2.2배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -8346,7 +8346,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"2.6배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 2.6배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -8371,7 +8371,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"13.4배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 13.4배 형성 (PBR 0.2배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -8421,7 +8421,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"2.1배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 2.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -8471,7 +8471,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"1.8배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 1.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -8521,7 +8521,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"4.4배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 4.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -8596,7 +8596,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"47.7배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 47.7배 형성 (PBR 0.6배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -8671,7 +8671,7 @@
     "sell_crit":"PER 3~6배 (사상 최대 OPM 10%+ 및 피크아웃)",
     "eff_per_str":"3.9배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 3.9배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -8846,7 +8846,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기"
   },
   {
@@ -8871,7 +8871,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"1.4배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 1.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -8971,7 +8971,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기"
   },
   {
@@ -8996,7 +8996,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"29.7배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 29.7배 형성 (PBR 1.1배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -9021,7 +9021,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"28.4배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 28.4배 형성 (PBR 0.9배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -9046,7 +9046,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"19.6배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 19.6배 형성 (PBR 0.8배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -9071,7 +9071,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기"
   },
   {
@@ -9121,7 +9121,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기"
   },
   {
@@ -9146,7 +9146,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"5.5배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 5.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -9221,7 +9221,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기"
   },
   {
@@ -9271,7 +9271,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"1.6배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 1.6배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -9396,7 +9396,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"4.4배 (Fwd)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 4.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -9446,7 +9446,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"5.3배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 5.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -9571,7 +9571,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"2.9배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 2.9배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -9621,7 +9621,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"5.3배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 5.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -9696,7 +9696,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"5.3배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 5.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -9721,7 +9721,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기"
   },
   {
@@ -9771,7 +9771,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"25.1배 (Fwd)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 25.1배 형성 (PBR 0.8배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -9821,7 +9821,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기"
   },
   {
@@ -9846,7 +9846,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"21.5배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 21.5배 형성 (PBR 1.1배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -9896,7 +9896,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"2.4배 (Fwd)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 2.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -10021,7 +10021,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"5.1배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 5.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -10096,7 +10096,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기"
   },
   {
@@ -10221,7 +10221,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"2.7배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 2.7배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -10246,7 +10246,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"23.3배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 23.3배 형성 (PBR 0.5배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -10271,7 +10271,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"5.0배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 5.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -10321,7 +10321,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"4.9배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 4.9배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -10346,7 +10346,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"4.8배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 4.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -10396,7 +10396,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기"
   },
   {
@@ -10421,7 +10421,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"4.0배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 4.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -10471,7 +10471,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"17.0배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 17.0배 형성 (PBR 0.4배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -10521,7 +10521,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"25.5배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 25.5배 형성 (PBR 1.1배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -10546,7 +10546,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기"
   },
   {
@@ -10571,7 +10571,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기"
   },
   {
@@ -10646,7 +10646,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"5.3배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 5.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -10696,7 +10696,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기"
   },
   {
@@ -10721,7 +10721,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"1.3배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 1.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -10771,7 +10771,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"40.7배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 40.7배 형성 (PBR 0.4배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -10796,7 +10796,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"3.2배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 3.2배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -10821,7 +10821,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기"
   },
   {
@@ -10846,7 +10846,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"4.2배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 4.2배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -10946,7 +10946,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"2.5배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 2.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -10971,7 +10971,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"1.4배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 1.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -11021,7 +11021,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"3.3배 (Fwd)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 3.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -11096,7 +11096,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"17.4배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 17.4배 형성 (PBR 1.1배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -11196,7 +11196,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"25.8배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 25.8배 형성 (PBR 0.7배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -11246,7 +11246,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"2.9배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 2.9배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -11346,7 +11346,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"3.9배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 3.9배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -11396,7 +11396,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"58.0배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 58.0배 형성 (PBR 1.4배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -11421,7 +11421,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"4.4배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 4.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -11471,7 +11471,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기"
   },
   {
@@ -11496,7 +11496,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"23.4배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 23.4배 형성 (PBR 1.0배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -11521,7 +11521,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기"
   },
   {
@@ -11596,7 +11596,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"109.9배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 109.9배 형성 (PBR 0.3배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -11621,7 +11621,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"61.4배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 61.4배 형성 (PBR 0.2배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -11821,7 +11821,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"35.9배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 35.9배 형성 (PBR 0.5배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -11871,7 +11871,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"60.7배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 60.7배 형성 (PBR 0.4배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -11921,7 +11921,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"3.0배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 3.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -11946,7 +11946,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기"
   },
   {
@@ -11971,7 +11971,7 @@
     "sell_crit":"PER 3~5배 (글로벌 증설 공백 및 마진 폭등 슈퍼사이클 정점)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기"
   },
   {
@@ -12071,7 +12071,7 @@
     "sell_crit":"PER 3~5배 (철강재 단가 인상 및 사상 최대 호황 정점)",
     "eff_per_str":"68.6배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 68.6배 형성 (PBR 0.4배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -12096,7 +12096,7 @@
     "sell_crit":"PER 3~5배 (철강재 단가 인상 및 사상 최대 호황 정점)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기"
   },
   {
@@ -12146,7 +12146,7 @@
     "sell_crit":"PER 3~5배 (철강재 단가 인상 및 사상 최대 호황 정점)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기"
   },
   {
@@ -12171,7 +12171,7 @@
     "sell_crit":"PER 3~5배 (철강재 단가 인상 및 사상 최대 호황 정점)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기"
   },
   {
@@ -12221,7 +12221,7 @@
     "sell_crit":"PER 3~5배 (철강재 단가 인상 및 사상 최대 호황 정점)",
     "eff_per_str":"18.8배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 18.8배 형성 (PBR 0.3배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -12246,7 +12246,7 @@
     "sell_crit":"PER 3~5배 (철강재 단가 인상 및 사상 최대 호황 정점)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기"
   },
   {
@@ -12321,7 +12321,7 @@
     "sell_crit":"PER 3~5배 (철강재 단가 인상 및 사상 최대 호황 정점)",
     "eff_per_str":"17.0배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 17.0배 형성 (PBR 0.7배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -12346,7 +12346,7 @@
     "sell_crit":"PER 3~5배 (철강재 단가 인상 및 사상 최대 호황 정점)",
     "eff_per_str":"4.8배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 4.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -12396,7 +12396,7 @@
     "sell_crit":"PER 3~5배 (철강재 단가 인상 및 사상 최대 호황 정점)",
     "eff_per_str":"2.2배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 2.2배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -12446,7 +12446,7 @@
     "sell_crit":"PER 3~5배 (철강재 단가 인상 및 사상 최대 호황 정점)",
     "eff_per_str":"17.7배 (Fwd)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 17.7배 형성 (PBR 0.3배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -12471,7 +12471,7 @@
     "sell_crit":"PER 3~5배 (철강재 단가 인상 및 사상 최대 호황 정점)",
     "eff_per_str":"30.7배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 30.7배 형성 (PBR 0.6배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -12496,7 +12496,7 @@
     "sell_crit":"PER 3~5배 (철강재 단가 인상 및 사상 최대 호황 정점)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기"
   },
   {
@@ -12546,7 +12546,7 @@
     "sell_crit":"PER 3~5배 (철강재 단가 인상 및 사상 최대 호황 정점)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기"
   },
   {
@@ -12571,7 +12571,7 @@
     "sell_crit":"PER 3~5배 (철강재 단가 인상 및 사상 최대 호황 정점)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기"
   },
   {
@@ -12621,7 +12621,7 @@
     "sell_crit":"PER 3~5배 (철강재 단가 인상 및 사상 최대 호황 정점)",
     "eff_per_str":"62.9배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 62.9배 형성 (PBR 0.9배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -12696,7 +12696,7 @@
     "sell_crit":"PER 3~5배 (철강재 단가 인상 및 사상 최대 호황 정점)",
     "eff_per_str":"3.8배 (Fwd)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 3.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -12721,7 +12721,7 @@
     "sell_crit":"PER 3~5배 (철강재 단가 인상 및 사상 최대 호황 정점)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기"
   },
   {
@@ -12746,7 +12746,7 @@
     "sell_crit":"PER 3~5배 (철강재 단가 인상 및 사상 최대 호황 정점)",
     "eff_per_str":"31.5배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 31.5배 형성 (PBR 0.2배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -12771,7 +12771,7 @@
     "sell_crit":"PER 3~5배 (철강재 단가 인상 및 사상 최대 호황 정점)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기"
   },
   {
@@ -12821,7 +12821,7 @@
     "sell_crit":"PER 3~5배 (철강재 단가 인상 및 사상 최대 호황 정점)",
     "eff_per_str":"132.6배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 132.6배 형성 (PBR 0.3배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -12846,7 +12846,7 @@
     "sell_crit":"PER 3~5배 (철강재 단가 인상 및 사상 최대 호황 정점)",
     "eff_per_str":"2.6배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 2.6배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -12871,7 +12871,7 @@
     "sell_crit":"PER 3~5배 (철강재 단가 인상 및 사상 최대 호황 정점)",
     "eff_per_str":"12.8배 (Fwd)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 12.8배 형성 (PBR 0.6배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -12921,7 +12921,7 @@
     "sell_crit":"PER 3~5배 (철강재 단가 인상 및 사상 최대 호황 정점)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기"
   },
   {
@@ -12946,7 +12946,7 @@
     "sell_crit":"PER 3~5배 (철강재 단가 인상 및 사상 최대 호황 정점)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기"
   },
   {
@@ -12996,7 +12996,7 @@
     "sell_crit":"PER 3~5배 (철강재 단가 인상 및 사상 최대 호황 정점)",
     "eff_per_str":"32.3배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 32.3배 형성 (PBR 0.2배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -13046,7 +13046,7 @@
     "sell_crit":"PER 3~5배 (철강재 단가 인상 및 사상 최대 호황 정점)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기"
   },
   {
@@ -13071,7 +13071,7 @@
     "sell_crit":"PER 3~5배 (철강재 단가 인상 및 사상 최대 호황 정점)",
     "eff_per_str":"48.1배 (Fwd)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 48.1배 형성 (PBR 0.2배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -13096,7 +13096,7 @@
     "sell_crit":"PER 3~5배 (철강재 단가 인상 및 사상 최대 호황 정점)",
     "eff_per_str":"23.3배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 23.3배 형성 (PBR 0.2배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -13121,7 +13121,7 @@
     "sell_crit":"PER 3~5배 (철강재 단가 인상 및 사상 최대 호황 정점)",
     "eff_per_str":"3.5배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 3.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -13146,7 +13146,7 @@
     "sell_crit":"PER 3~5배 (철강재 단가 인상 및 사상 최대 호황 정점)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기"
   },
   {
@@ -13171,7 +13171,7 @@
     "sell_crit":"PER 3~5배 (철강재 단가 인상 및 사상 최대 호황 정점)",
     "eff_per_str":"11.7배 (Fwd)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 11.7배 형성 (PBR 0.4배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -13196,7 +13196,7 @@
     "sell_crit":"PER 3~5배 (철강재 단가 인상 및 사상 최대 호황 정점)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기"
   },
   {
@@ -13246,7 +13246,7 @@
     "sell_crit":"PER 3~5배 (철강재 단가 인상 및 사상 최대 호황 정점)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기"
   },
   {
@@ -13271,7 +13271,7 @@
     "sell_crit":"PER 3~5배 (철강재 단가 인상 및 사상 최대 호황 정점)",
     "eff_per_str":"63.1배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 63.1배 형성 (PBR 0.9배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -13346,7 +13346,7 @@
     "sell_crit":"PER 3~5배 (철강재 단가 인상 및 사상 최대 호황 정점)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기"
   },
   {
@@ -13371,7 +13371,7 @@
     "sell_crit":"PER 3~5배 (철강재 단가 인상 및 사상 최대 호황 정점)",
     "eff_per_str":"5.0배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 5.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -13446,7 +13446,7 @@
     "sell_crit":"PER 6~9배 (3년 치 고선가 도크 완판 및 건조 인도 피크)",
     "eff_per_str":"2.9배 (Fwd)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 2.9배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -13496,7 +13496,7 @@
     "sell_crit":"PER 3~5배 (철강재 단가 인상 및 사상 최대 호황 정점)",
     "eff_per_str":"적자 (N\/A)",
     "phase":"업황 침체로 영업적자 기록 중",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기"
   },
   {
@@ -13521,7 +13521,7 @@
     "sell_crit":"PER 6~9배 (3년 치 고선가 도크 완판 및 건조 인도 피크)",
     "eff_per_str":"141.3배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 141.3배 형성 (PBR 2.5배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -13546,7 +13546,7 @@
     "sell_crit":"PER 6~9배 (3년 치 고선가 도크 완판 및 건조 인도 피크)",
     "eff_per_str":"4.8배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 4.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -13671,7 +13671,7 @@
     "sell_crit":"PER 6~9배 (3년 치 고선가 도크 완판 및 건조 인도 피크)",
     "eff_per_str":"8.6배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 8.6배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -13721,7 +13721,7 @@
     "sell_crit":"PER 6~9배 (3년 치 고선가 도크 완판 및 건조 인도 피크)",
     "eff_per_str":"7.0배 (Fwd)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 7.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -13796,7 +13796,7 @@
     "sell_crit":"PER 6~9배 (3년 치 고선가 도크 완판 및 건조 인도 피크)",
     "eff_per_str":"4.8배 (Fwd)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 4.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -13821,7 +13821,7 @@
     "sell_crit":"PER 6~9배 (3년 치 고선가 도크 완판 및 건조 인도 피크)",
     "eff_per_str":"7.1배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 7.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -13871,7 +13871,7 @@
     "sell_crit":"PER 6~9배 (3년 치 고선가 도크 완판 및 건조 인도 피크)",
     "eff_per_str":"3.0배 (Fwd)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 3.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -13896,7 +13896,7 @@
     "sell_crit":"PER 6~9배 (3년 치 고선가 도크 완판 및 건조 인도 피크)",
     "eff_per_str":"139.2배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 139.2배 형성 (PBR 2.4배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -13921,7 +13921,7 @@
     "sell_crit":"PER 6~9배 (3년 치 고선가 도크 완판 및 건조 인도 피크)",
     "eff_per_str":"5.0배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 5.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -13946,7 +13946,7 @@
     "sell_crit":"PER 6~9배 (3년 치 고선가 도크 완판 및 건조 인도 피크)",
     "eff_per_str":"6.9배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 6.9배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -14021,7 +14021,7 @@
     "sell_crit":"PER 6~9배 (3년 치 고선가 도크 완판 및 건조 인도 피크)",
     "eff_per_str":"3.1배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 3.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -14046,7 +14046,7 @@
     "sell_crit":"PER 6~9배 (3년 치 고선가 도크 완판 및 건조 인도 피크)",
     "eff_per_str":"118.0배 (Trail)",
     "phase":"이익 급감에 따른 고PER 침체 바닥권",
-    "decision":"[사라]",
+    "decision":"[슬슬모아바]",
     "reason":"PER 118.0배 형성 (PBR 1.9배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간"
   },
   {
@@ -14071,7 +14071,7 @@
     "sell_crit":"PER 6~9배 (3년 치 고선가 도크 완판 및 건조 인도 피크)",
     "eff_per_str":"8.6배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 8.6배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -14171,7 +14171,7 @@
     "sell_crit":"PER 6~9배 (3년 치 고선가 도크 완판 및 건조 인도 피크)",
     "eff_per_str":"6.6배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 6.6배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -14271,7 +14271,7 @@
     "sell_crit":"PER 6~9배 (3년 치 고선가 도크 완판 및 건조 인도 피크)",
     "eff_per_str":"4.8배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 4.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -14321,7 +14321,7 @@
     "sell_crit":"PER 6~9배 (3년 치 고선가 도크 완판 및 건조 인도 피크)",
     "eff_per_str":"8.2배 (Fwd)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 8.2배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -14346,7 +14346,7 @@
     "sell_crit":"PER 6~9배 (3년 치 고선가 도크 완판 및 건조 인도 피크)",
     "eff_per_str":"3.8배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 3.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -14371,7 +14371,7 @@
     "sell_crit":"PER 6~9배 (3년 치 고선가 도크 완판 및 건조 인도 피크)",
     "eff_per_str":"7.0배 (Fwd)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 7.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -14396,7 +14396,7 @@
     "sell_crit":"PER 6~9배 (3년 치 고선가 도크 완판 및 건조 인도 피크)",
     "eff_per_str":"8.1배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 8.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -14446,7 +14446,7 @@
     "sell_crit":"PER 6~9배 (3년 치 고선가 도크 완판 및 건조 인도 피크)",
     "eff_per_str":"4.3배 (Fwd)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 4.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -14496,7 +14496,7 @@
     "sell_crit":"PER 2~4배 (SCFI\/BDI 운임 폭등 사상 최대 실적 피크)",
     "eff_per_str":"3.2배 (Fwd)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 3.2배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -14521,7 +14521,7 @@
     "sell_crit":"PER 2~4배 (SCFI\/BDI 운임 폭등 사상 최대 실적 피크)",
     "eff_per_str":"3.5배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 3.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -14596,7 +14596,7 @@
     "sell_crit":"PER 2~4배 (SCFI\/BDI 운임 폭등 사상 최대 실적 피크)",
     "eff_per_str":"3.2배 (Fwd)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 3.2배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -14671,7 +14671,7 @@
     "sell_crit":"PER 2~4배 (SCFI\/BDI 운임 폭등 사상 최대 실적 피크)",
     "eff_per_str":"2.4배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 2.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {
@@ -14796,7 +14796,7 @@
     "sell_crit":"PER 2~4배 (SCFI\/BDI 운임 폭등 사상 최대 실적 피크)",
     "eff_per_str":"2.4배 (Trail)",
     "phase":"사상 최대 실적 반영 저PER 피크아웃 국면",
-    "decision":"[팔아라]",
+    "decision":"[슬슬팔어]",
     "reason":"PER 2.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용"
   },
   {

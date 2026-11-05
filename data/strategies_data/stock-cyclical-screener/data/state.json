@@ -5,7 +5,7 @@
     "cap": "대",
     "closePrice": "1,487,000",
     "eff_per_str": "4.2배 (Fwd)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 4.2배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -25,7 +25,7 @@
     "cap": "소",
     "closePrice": "2,960",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
     "updatedAt": "2026-10-29"
   },
@@ -55,7 +55,7 @@
     "cap": "대",
     "closePrice": "242,000",
     "eff_per_str": "5.3배 (Fwd)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 5.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -65,7 +65,7 @@
     "cap": "대",
     "closePrice": "190,100",
     "eff_per_str": "4.2배 (Fwd)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 4.2배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -95,7 +95,7 @@
     "cap": "소",
     "closePrice": "14,600",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
     "updatedAt": "2026-10-29"
   },
@@ -115,7 +115,7 @@
     "cap": "중",
     "closePrice": "14,900",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "레거시 메모리/기판 적자 바닥, 턴어라운드 수혜 기대",
     "updatedAt": "2026-10-29"
   },
@@ -145,7 +145,7 @@
     "cap": "중",
     "closePrice": "28,000",
     "eff_per_str": "39.2배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 39.2배 형성 (PBR 2.1배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -185,7 +185,7 @@
     "cap": "소",
     "closePrice": "3,095",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
     "updatedAt": "2026-10-29"
   },
@@ -205,7 +205,7 @@
     "cap": "소",
     "closePrice": "9,440",
     "eff_per_str": "17.7배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 17.7배 형성 (PBR 1.1배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -245,7 +245,7 @@
     "cap": "중",
     "closePrice": "27,700",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "레거시 메모리/기판 적자 바닥, 턴어라운드 수혜 기대",
     "updatedAt": "2026-10-29"
   },
@@ -275,7 +275,7 @@
     "cap": "소",
     "closePrice": "28,550",
     "eff_per_str": "23.1배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 23.1배 형성 (PBR 1.5배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -315,7 +315,7 @@
     "cap": "소",
     "closePrice": "3,265",
     "eff_per_str": "4.8배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 4.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -335,7 +335,7 @@
     "cap": "소",
     "closePrice": "1,094",
     "eff_per_str": "5.3배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 5.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -355,7 +355,7 @@
     "cap": "소",
     "closePrice": "8,460",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
     "updatedAt": "2026-10-29"
   },
@@ -365,7 +365,7 @@
     "cap": "소",
     "closePrice": "8,070",
     "eff_per_str": "18.6배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 18.6배 형성 (PBR 1.7배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-28"
   },
@@ -375,7 +375,7 @@
     "cap": "소",
     "closePrice": "3,435",
     "eff_per_str": "6.3배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 6.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -385,7 +385,7 @@
     "cap": "소",
     "closePrice": "3,705",
     "eff_per_str": "5.8배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 5.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -425,7 +425,7 @@
     "cap": "소",
     "closePrice": "3,275",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
     "updatedAt": "2026-10-29"
   },
@@ -445,7 +445,7 @@
     "cap": "소",
     "closePrice": "1,410",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
     "updatedAt": "2026-10-29"
   },
@@ -505,7 +505,7 @@
     "cap": "소",
     "closePrice": "10,680",
     "eff_per_str": "16.0배 (Fwd)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 16.0배 형성 (PBR 2.1배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -535,7 +535,7 @@
     "cap": "소",
     "closePrice": "12,660",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
     "updatedAt": "2026-10-29"
   },
@@ -585,7 +585,7 @@
     "cap": "소",
     "closePrice": "10,030",
     "eff_per_str": "137.4배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 137.4배 형성 (PBR 0.6배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -625,7 +625,7 @@
     "cap": "소",
     "closePrice": "3,705",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
     "updatedAt": "2026-10-29"
   },
@@ -645,7 +645,7 @@
     "cap": "소",
     "closePrice": "5,950",
     "eff_per_str": "5.3배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 5.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -675,7 +675,7 @@
     "cap": "소",
     "closePrice": "13,380",
     "eff_per_str": "39.4배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 39.4배 형성 (PBR 1.0배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -685,7 +685,7 @@
     "cap": "소",
     "closePrice": "2,600",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
     "updatedAt": "2026-10-29"
   },
@@ -715,7 +715,7 @@
     "cap": "소",
     "closePrice": "4,060",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
     "updatedAt": "2026-10-29"
   },
@@ -765,7 +765,7 @@
     "cap": "소",
     "closePrice": "2,900",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
     "updatedAt": "2026-10-29"
   },
@@ -785,7 +785,7 @@
     "cap": "소",
     "closePrice": "26,000",
     "eff_per_str": "5.7배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 5.7배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -795,7 +795,7 @@
     "cap": "소",
     "closePrice": "1,637",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
     "updatedAt": "2026-10-29"
   },
@@ -835,7 +835,7 @@
     "cap": "소",
     "closePrice": "7,470",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
     "updatedAt": "2026-10-29"
   },
@@ -845,7 +845,7 @@
     "cap": "소",
     "closePrice": "15,200",
     "eff_per_str": "6.5배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 6.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -875,7 +875,7 @@
     "cap": "소",
     "closePrice": "6,650",
     "eff_per_str": "190.0배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 190.0배 형성 (PBR 2.1배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -885,7 +885,7 @@
     "cap": "소",
     "closePrice": "5,600",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
     "updatedAt": "2026-10-29"
   },
@@ -935,7 +935,7 @@
     "cap": "소",
     "closePrice": "2,225",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
     "updatedAt": "2026-10-29"
   },
@@ -945,7 +945,7 @@
     "cap": "소",
     "closePrice": "7,060",
     "eff_per_str": "3.3배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 3.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -955,7 +955,7 @@
     "cap": "중",
     "closePrice": "15,400",
     "eff_per_str": "18.9배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 18.9배 형성 (PBR 2.0배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -965,7 +965,7 @@
     "cap": "소",
     "closePrice": "9,530",
     "eff_per_str": "41.1배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 41.1배 형성 (PBR 1.5배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -975,7 +975,7 @@
     "cap": "소",
     "closePrice": "3,380",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
     "updatedAt": "2026-10-29"
   },
@@ -1035,7 +1035,7 @@
     "cap": "소",
     "closePrice": "2,470",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
     "updatedAt": "2026-10-29"
   },
@@ -1045,7 +1045,7 @@
     "cap": "소",
     "closePrice": "10,690",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
     "updatedAt": "2026-10-29"
   },
@@ -1055,7 +1055,7 @@
     "cap": "소",
     "closePrice": "19,210",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
     "updatedAt": "2026-10-29"
   },
@@ -1095,7 +1095,7 @@
     "cap": "소",
     "closePrice": "19,600",
     "eff_per_str": "114.6배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 114.6배 형성 (PBR 1.4배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -1105,7 +1105,7 @@
     "cap": "소",
     "closePrice": "4,950",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
     "updatedAt": "2026-10-29"
   },
@@ -1125,7 +1125,7 @@
     "cap": "소",
     "closePrice": "1,338",
     "eff_per_str": "39.4배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 39.4배 형성 (PBR 0.7배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -1155,7 +1155,7 @@
     "cap": "소",
     "closePrice": "1,275",
     "eff_per_str": "4.1배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 4.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -1185,7 +1185,7 @@
     "cap": "소",
     "closePrice": "2,880",
     "eff_per_str": "16.2배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 16.2배 형성 (PBR 1.7배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -1205,7 +1205,7 @@
     "cap": "소",
     "closePrice": "34,750",
     "eff_per_str": "23.6배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 23.6배 형성 (PBR 1.6배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -1215,7 +1215,7 @@
     "cap": "소",
     "closePrice": "6,860",
     "eff_per_str": "48.6배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 48.6배 형성 (PBR 0.6배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -1245,7 +1245,7 @@
     "cap": "소",
     "closePrice": "15,000",
     "eff_per_str": "4.4배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 4.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -1255,7 +1255,7 @@
     "cap": "소",
     "closePrice": "12,830",
     "eff_per_str": "6.3배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 6.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -1295,7 +1295,7 @@
     "cap": "소",
     "closePrice": "1,633",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
     "updatedAt": "2026-10-29"
   },
@@ -1315,7 +1315,7 @@
     "cap": "소",
     "closePrice": "10,320",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
     "updatedAt": "2026-10-29"
   },
@@ -1335,7 +1335,7 @@
     "cap": "소",
     "closePrice": "10,760",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
     "updatedAt": "2026-10-29"
   },
@@ -1355,7 +1355,7 @@
     "cap": "소",
     "closePrice": "25,400",
     "eff_per_str": "20.7배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 20.7배 형성 (PBR 1.7배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -1365,7 +1365,7 @@
     "cap": "소",
     "closePrice": "27,500",
     "eff_per_str": "183.3배 (Fwd)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 183.3배 형성 (PBR 1.9배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -1375,7 +1375,7 @@
     "cap": "소",
     "closePrice": "8,880",
     "eff_per_str": "6.3배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 6.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -1465,7 +1465,7 @@
     "cap": "소",
     "closePrice": "6,460",
     "eff_per_str": "20.4배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 20.4배 형성 (PBR 1.5배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -1485,7 +1485,7 @@
     "cap": "대",
     "closePrice": "921,000",
     "eff_per_str": "2.5배 (Fwd)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 2.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -1585,7 +1585,7 @@
     "cap": "소",
     "closePrice": "9,950",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
     "updatedAt": "2026-10-29"
   },
@@ -1595,7 +1595,7 @@
     "cap": "소",
     "closePrice": "14,250",
     "eff_per_str": "16.6배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 16.6배 형성 (PBR 1.4배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -1615,7 +1615,7 @@
     "cap": "소",
     "closePrice": "2,995",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
     "updatedAt": "2026-10-29"
   },
@@ -1665,7 +1665,7 @@
     "cap": "소",
     "closePrice": "8,230",
     "eff_per_str": "19.0배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 19.0배 형성 (PBR 1.8배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -1675,7 +1675,7 @@
     "cap": "소",
     "closePrice": "3,255",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
     "updatedAt": "2026-10-29"
   },
@@ -1695,7 +1695,7 @@
     "cap": "소",
     "closePrice": "1,861",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
     "updatedAt": "2026-10-29"
   },
@@ -1725,7 +1725,7 @@
     "cap": "소",
     "closePrice": "20,900",
     "eff_per_str": "21.7배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 21.7배 형성 (PBR 2.1배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -1745,7 +1745,7 @@
     "cap": "소",
     "closePrice": "14,230",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "소부장 가동률 침체 적자 바닥 통과, 업황 반등 시 강한 레버리지",
     "updatedAt": "2026-10-29"
   },
@@ -1765,7 +1765,7 @@
     "cap": "소",
     "closePrice": "1,117",
     "eff_per_str": "0.7배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 0.7배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -1775,7 +1775,7 @@
     "cap": "대",
     "closePrice": "107,900",
     "eff_per_str": "5.3배 (Fwd)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 5.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -1785,7 +1785,7 @@
     "cap": "소",
     "closePrice": "3,785",
     "eff_per_str": "2.8배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 2.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -1795,7 +1795,7 @@
     "cap": "중",
     "closePrice": "2,545",
     "eff_per_str": "5.5배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 5.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -1815,7 +1815,7 @@
     "cap": "대",
     "closePrice": "158,000",
     "eff_per_str": "4.5배 (Fwd)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 4.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -1825,7 +1825,7 @@
     "cap": "대",
     "closePrice": "159,600",
     "eff_per_str": "4.5배 (Fwd)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 4.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -1835,7 +1835,7 @@
     "cap": "소",
     "closePrice": "156,600",
     "eff_per_str": "4.5배 (Fwd)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 4.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -1845,7 +1845,7 @@
     "cap": "소",
     "closePrice": "3,820",
     "eff_per_str": "49.6배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 49.6배 형성 (PBR 0.3배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -1895,7 +1895,7 @@
     "cap": "중",
     "closePrice": "22,800",
     "eff_per_str": "5.5배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 5.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -1915,7 +1915,7 @@
     "cap": "소",
     "closePrice": "1,158",
     "eff_per_str": "2.8배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 2.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-28"
   },
@@ -1935,7 +1935,7 @@
     "cap": "소",
     "closePrice": "3,530",
     "eff_per_str": "3.1배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 3.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-28"
   },
@@ -1945,7 +1945,7 @@
     "cap": "소",
     "closePrice": "4,030",
     "eff_per_str": "3.5배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 3.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-28"
   },
@@ -1955,7 +1955,7 @@
     "cap": "소",
     "closePrice": "4,570",
     "eff_per_str": "1.1배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 1.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-28"
   },
@@ -1965,7 +1965,7 @@
     "cap": "소",
     "closePrice": "1,850",
     "eff_per_str": "4.4배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 4.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-28"
   },
@@ -1975,7 +1975,7 @@
     "cap": "소",
     "closePrice": "4,575",
     "eff_per_str": "3.0배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 3.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-28"
   },
@@ -1995,7 +1995,7 @@
     "cap": "소",
     "closePrice": "4,010",
     "eff_per_str": "3.5배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 3.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2025,7 +2025,7 @@
     "cap": "소",
     "closePrice": "6,600",
     "eff_per_str": "14.6배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 14.6배 형성 (PBR 1.1배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -2035,7 +2035,7 @@
     "cap": "소",
     "closePrice": "1,918",
     "eff_per_str": "0.9배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 0.9배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2045,7 +2045,7 @@
     "cap": "중",
     "closePrice": "5,550",
     "eff_per_str": "5.0배 (Fwd)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 5.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2055,7 +2055,7 @@
     "cap": "소",
     "closePrice": "3,910",
     "eff_per_str": "3.5배 (Fwd)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 3.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2065,7 +2065,7 @@
     "cap": "소",
     "closePrice": "3,125",
     "eff_per_str": "2.2배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 2.2배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2085,7 +2085,7 @@
     "cap": "중",
     "closePrice": "26,500",
     "eff_per_str": "17.9배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 17.9배 형성 (PBR 0.7배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -2115,7 +2115,7 @@
     "cap": "중",
     "closePrice": "57,200",
     "eff_per_str": "5.6배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 5.6배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2125,7 +2125,7 @@
     "cap": "소",
     "closePrice": "10,640",
     "eff_per_str": "3.0배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 3.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2135,7 +2135,7 @@
     "cap": "소",
     "closePrice": "6,040",
     "eff_per_str": "3.0배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 3.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2145,7 +2145,7 @@
     "cap": "소",
     "closePrice": "4,385",
     "eff_per_str": "2.1배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 2.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2185,7 +2185,7 @@
     "cap": "소",
     "closePrice": "1,683",
     "eff_per_str": "12.9배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 12.9배 형성 (PBR 0.6배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -2195,7 +2195,7 @@
     "cap": "소",
     "closePrice": "7,120",
     "eff_per_str": "1.9배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 1.9배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2225,7 +2225,7 @@
     "cap": "소",
     "closePrice": "9,190",
     "eff_per_str": "5.4배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 5.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2235,7 +2235,7 @@
     "cap": "소",
     "closePrice": "3,170",
     "eff_per_str": "4.4배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 4.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2255,7 +2255,7 @@
     "cap": "소",
     "closePrice": "6,780",
     "eff_per_str": "3.3배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 3.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2265,7 +2265,7 @@
     "cap": "소",
     "closePrice": "3,290",
     "eff_per_str": "1.1배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 1.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2285,7 +2285,7 @@
     "cap": "소",
     "closePrice": "3,750",
     "eff_per_str": "5.1배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 5.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2325,7 +2325,7 @@
     "cap": "소",
     "closePrice": "4,225",
     "eff_per_str": "3.3배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 3.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2365,7 +2365,7 @@
     "cap": "소",
     "closePrice": "2,375",
     "eff_per_str": "1.6배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 1.6배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2375,7 +2375,7 @@
     "cap": "소",
     "closePrice": "3,780",
     "eff_per_str": "4.4배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 4.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2395,7 +2395,7 @@
     "cap": "소",
     "closePrice": "3,530",
     "eff_per_str": "3.1배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 3.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2405,7 +2405,7 @@
     "cap": "소",
     "closePrice": "5,370",
     "eff_per_str": "2.5배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 2.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2415,7 +2415,7 @@
     "cap": "소",
     "closePrice": "4,325",
     "eff_per_str": "6.0배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 6.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2425,7 +2425,7 @@
     "cap": "소",
     "closePrice": "3,620",
     "eff_per_str": "4.8배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 4.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2435,7 +2435,7 @@
     "cap": "소",
     "closePrice": "1,264",
     "eff_per_str": "1.2배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 1.2배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2445,7 +2445,7 @@
     "cap": "대",
     "closePrice": "3,710",
     "eff_per_str": "14.4배 (Fwd)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 14.4배 형성 (PBR 0.9배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -2455,7 +2455,7 @@
     "cap": "소",
     "closePrice": "4,565",
     "eff_per_str": "1.1배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 1.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2465,7 +2465,7 @@
     "cap": "소",
     "closePrice": "4,685",
     "eff_per_str": "1.3배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 1.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2475,7 +2475,7 @@
     "cap": "소",
     "closePrice": "3,350",
     "eff_per_str": "3.6배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 3.6배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2505,7 +2505,7 @@
     "cap": "소",
     "closePrice": "10,500",
     "eff_per_str": "2.1배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 2.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2525,7 +2525,7 @@
     "cap": "소",
     "closePrice": "4,660",
     "eff_per_str": "3.1배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 3.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2545,7 +2545,7 @@
     "cap": "소",
     "closePrice": "3,090",
     "eff_per_str": "4.5배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 4.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2555,7 +2555,7 @@
     "cap": "소",
     "closePrice": "2,130",
     "eff_per_str": "11.2배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 11.2배 형성 (PBR 0.5배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -2565,7 +2565,7 @@
     "cap": "소",
     "closePrice": "7,970",
     "eff_per_str": "4.9배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 4.9배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2575,7 +2575,7 @@
     "cap": "소",
     "closePrice": "2,080",
     "eff_per_str": "26.0배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 26.0배 형성 (PBR 0.6배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -2605,7 +2605,7 @@
     "cap": "소",
     "closePrice": "3,490",
     "eff_per_str": "3.2배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 3.2배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2615,7 +2615,7 @@
     "cap": "중",
     "closePrice": "52,100",
     "eff_per_str": "4.3배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 4.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2625,7 +2625,7 @@
     "cap": "소",
     "closePrice": "1,158",
     "eff_per_str": "2.8배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 2.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2635,7 +2635,7 @@
     "cap": "소",
     "closePrice": "3,740",
     "eff_per_str": "3.6배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 3.6배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2645,7 +2645,7 @@
     "cap": "소",
     "closePrice": "1,321",
     "eff_per_str": "18.4배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 18.4배 형성 (PBR 0.3배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -2655,7 +2655,7 @@
     "cap": "소",
     "closePrice": "5,880",
     "eff_per_str": "1.7배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 1.7배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2675,7 +2675,7 @@
     "cap": "소",
     "closePrice": "1,848",
     "eff_per_str": "4.4배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 4.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2725,7 +2725,7 @@
     "cap": "소",
     "closePrice": "4,755",
     "eff_per_str": "4.3배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 4.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2735,7 +2735,7 @@
     "cap": "소",
     "closePrice": "11,740",
     "eff_per_str": "4.3배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 4.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2765,7 +2765,7 @@
     "cap": "소",
     "closePrice": "1,245",
     "eff_per_str": "4.2배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 4.2배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2775,7 +2775,7 @@
     "cap": "소",
     "closePrice": "1,885",
     "eff_per_str": "1.8배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 1.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2795,7 +2795,7 @@
     "cap": "소",
     "closePrice": "34,950",
     "eff_per_str": "5.8배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 5.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2855,7 +2855,7 @@
     "cap": "소",
     "closePrice": "1,978",
     "eff_per_str": "3.1배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 3.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2865,7 +2865,7 @@
     "cap": "중",
     "closePrice": "5,190",
     "eff_per_str": "3.9배 (Fwd)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 3.9배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2875,7 +2875,7 @@
     "cap": "소",
     "closePrice": "2,820",
     "eff_per_str": "5.3배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 5.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2895,7 +2895,7 @@
     "cap": "소",
     "closePrice": "2,640",
     "eff_per_str": "3.9배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 3.9배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2935,7 +2935,7 @@
     "cap": "소",
     "closePrice": "3,685",
     "eff_per_str": "3.6배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 3.6배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2945,7 +2945,7 @@
     "cap": "소",
     "closePrice": "898",
     "eff_per_str": "1.8배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 1.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2955,7 +2955,7 @@
     "cap": "소",
     "closePrice": "5,650",
     "eff_per_str": "1.0배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 1.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2975,7 +2975,7 @@
     "cap": "소",
     "closePrice": "3,110",
     "eff_per_str": "3.3배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 3.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -2985,7 +2985,7 @@
     "cap": "소",
     "closePrice": "2,640",
     "eff_per_str": "4.8배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 4.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -3015,7 +3015,7 @@
     "cap": "소",
     "closePrice": "2,915",
     "eff_per_str": "1.5배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 1.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -3025,7 +3025,7 @@
     "cap": "소",
     "closePrice": "3,590",
     "eff_per_str": "2.7배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 2.7배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -3035,7 +3035,7 @@
     "cap": "소",
     "closePrice": "3,295",
     "eff_per_str": "45.8배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 45.8배 형성 (PBR 0.8배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -3115,7 +3115,7 @@
     "cap": "소",
     "closePrice": "4,960",
     "eff_per_str": "3.3배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 3.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -3125,7 +3125,7 @@
     "cap": "소",
     "closePrice": "3,120",
     "eff_per_str": "2.7배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 2.7배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -3145,7 +3145,7 @@
     "cap": "소",
     "closePrice": "3,105",
     "eff_per_str": "5.0배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 5.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -3155,7 +3155,7 @@
     "cap": "소",
     "closePrice": "897",
     "eff_per_str": "2.4배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 2.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -3175,7 +3175,7 @@
     "cap": "소",
     "closePrice": "1,937",
     "eff_per_str": "1.3배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 1.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -3225,7 +3225,7 @@
     "cap": "대",
     "closePrice": "56,800",
     "eff_per_str": "5.6배 (Fwd)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 5.6배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -3235,7 +3235,7 @@
     "cap": "소",
     "closePrice": "4,600",
     "eff_per_str": "3.1배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 3.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -3255,7 +3255,7 @@
     "cap": "소",
     "closePrice": "10,340",
     "eff_per_str": "2.2배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 2.2배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -3305,7 +3305,7 @@
     "cap": "소",
     "closePrice": "6,100",
     "eff_per_str": "2.6배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 2.6배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -3315,7 +3315,7 @@
     "cap": "소",
     "closePrice": "2,315",
     "eff_per_str": "13.4배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 13.4배 형성 (PBR 0.2배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -3335,7 +3335,7 @@
     "cap": "소",
     "closePrice": "5,740",
     "eff_per_str": "2.1배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 2.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -3355,7 +3355,7 @@
     "cap": "소",
     "closePrice": "2,035",
     "eff_per_str": "1.8배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 1.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -3375,7 +3375,7 @@
     "cap": "소",
     "closePrice": "1,569",
     "eff_per_str": "4.4배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 4.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -3405,7 +3405,7 @@
     "cap": "소",
     "closePrice": "2,860",
     "eff_per_str": "47.7배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 47.7배 형성 (PBR 0.6배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -3435,7 +3435,7 @@
     "cap": "소",
     "closePrice": "2,660",
     "eff_per_str": "1.4배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 1.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -3505,7 +3505,7 @@
     "cap": "소",
     "closePrice": "52,400",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
     "updatedAt": "2026-10-29"
   },
@@ -3535,7 +3535,7 @@
     "cap": "소",
     "closePrice": "7,890",
     "eff_per_str": "4.8배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 4.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-28"
   },
@@ -3545,7 +3545,7 @@
     "cap": "소",
     "closePrice": "3,300",
     "eff_per_str": "1.1배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 1.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-28"
   },
@@ -3605,7 +3605,7 @@
     "cap": "소",
     "closePrice": "12,650",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
     "updatedAt": "2026-10-29"
   },
@@ -3655,7 +3655,7 @@
     "cap": "소",
     "closePrice": "1,710",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
     "updatedAt": "2026-10-28"
   },
@@ -3665,7 +3665,7 @@
     "cap": "소",
     "closePrice": "2,645",
     "eff_per_str": "1.4배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 1.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-28"
   },
@@ -3695,7 +3695,7 @@
     "cap": "중",
     "closePrice": "110,700",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
     "updatedAt": "2026-10-28"
   },
@@ -3705,7 +3705,7 @@
     "cap": "중",
     "closePrice": "41,350",
     "eff_per_str": "109.1배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 109.1배 형성 (PBR 0.3배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-28"
   },
@@ -3715,7 +3715,7 @@
     "cap": "소",
     "closePrice": "7,590",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
     "updatedAt": "2026-10-28"
   },
@@ -3735,7 +3735,7 @@
     "cap": "소",
     "closePrice": "5,710",
     "eff_per_str": "17.7배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 17.7배 형성 (PBR 1.1배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-28"
   },
@@ -3765,7 +3765,7 @@
     "cap": "소",
     "closePrice": "3,420",
     "eff_per_str": "29.7배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 29.7배 형성 (PBR 1.1배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -3785,7 +3785,7 @@
     "cap": "소",
     "closePrice": "4,735",
     "eff_per_str": "28.4배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 28.4배 형성 (PBR 0.9배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -3795,7 +3795,7 @@
     "cap": "소",
     "closePrice": "9,660",
     "eff_per_str": "19.6배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 19.6배 형성 (PBR 0.8배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -3805,7 +3805,7 @@
     "cap": "중",
     "closePrice": "9,900",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
     "updatedAt": "2026-10-29"
   },
@@ -3825,7 +3825,7 @@
     "cap": "소",
     "closePrice": "3,860",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
     "updatedAt": "2026-10-29"
   },
@@ -3835,7 +3835,7 @@
     "cap": "소",
     "closePrice": "19,970",
     "eff_per_str": "5.5배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 5.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -3865,7 +3865,7 @@
     "cap": "소",
     "closePrice": "2,200",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
     "updatedAt": "2026-10-29"
   },
@@ -3885,7 +3885,7 @@
     "cap": "소",
     "closePrice": "116,200",
     "eff_per_str": "1.6배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 1.6배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -3935,7 +3935,7 @@
     "cap": "중",
     "closePrice": "35,900",
     "eff_per_str": "4.4배 (Fwd)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 4.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -3955,7 +3955,7 @@
     "cap": "소",
     "closePrice": "10,360",
     "eff_per_str": "5.3배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 5.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -4005,7 +4005,7 @@
     "cap": "소",
     "closePrice": "9,390",
     "eff_per_str": "2.9배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 2.9배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -4025,7 +4025,7 @@
     "cap": "소",
     "closePrice": "6,600",
     "eff_per_str": "5.3배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 5.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -4055,7 +4055,7 @@
     "cap": "소",
     "closePrice": "30,300",
     "eff_per_str": "5.3배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 5.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -4065,7 +4065,7 @@
     "cap": "소",
     "closePrice": "7,800",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
     "updatedAt": "2026-10-29"
   },
@@ -4085,7 +4085,7 @@
     "cap": "대",
     "closePrice": "180,300",
     "eff_per_str": "25.1배 (Fwd)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 25.1배 형성 (PBR 0.8배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -4105,7 +4105,7 @@
     "cap": "중",
     "closePrice": "47,900",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
     "updatedAt": "2026-10-29"
   },
@@ -4115,7 +4115,7 @@
     "cap": "소",
     "closePrice": "13,190",
     "eff_per_str": "21.5배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 21.5배 형성 (PBR 1.1배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -4135,7 +4135,7 @@
     "cap": "소",
     "closePrice": "45,100",
     "eff_per_str": "2.4배 (Fwd)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 2.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -4185,7 +4185,7 @@
     "cap": "소",
     "closePrice": "4,700",
     "eff_per_str": "5.1배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 5.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -4215,7 +4215,7 @@
     "cap": "소",
     "closePrice": "9,980",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
     "updatedAt": "2026-10-29"
   },
@@ -4265,7 +4265,7 @@
     "cap": "소",
     "closePrice": "61,300",
     "eff_per_str": "2.7배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 2.7배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -4275,7 +4275,7 @@
     "cap": "소",
     "closePrice": "5,520",
     "eff_per_str": "23.3배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 23.3배 형성 (PBR 0.5배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -4285,7 +4285,7 @@
     "cap": "소",
     "closePrice": "3,455",
     "eff_per_str": "5.0배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 5.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -4305,7 +4305,7 @@
     "cap": "소",
     "closePrice": "12,910",
     "eff_per_str": "4.9배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 4.9배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -4315,7 +4315,7 @@
     "cap": "소",
     "closePrice": "4,795",
     "eff_per_str": "4.8배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 4.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -4335,7 +4335,7 @@
     "cap": "소",
     "closePrice": "5,140",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
     "updatedAt": "2026-10-29"
   },
@@ -4345,7 +4345,7 @@
     "cap": "소",
     "closePrice": "2,060",
     "eff_per_str": "4.0배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 4.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -4365,7 +4365,7 @@
     "cap": "소",
     "closePrice": "933",
     "eff_per_str": "17.0배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 17.0배 형성 (PBR 0.4배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -4385,7 +4385,7 @@
     "cap": "소",
     "closePrice": "2,115",
     "eff_per_str": "25.5배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 25.5배 형성 (PBR 1.1배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -4395,7 +4395,7 @@
     "cap": "대",
     "closePrice": "236,000",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
     "updatedAt": "2026-10-29"
   },
@@ -4405,7 +4405,7 @@
     "cap": "중",
     "closePrice": "107,300",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
     "updatedAt": "2026-10-29"
   },
@@ -4435,7 +4435,7 @@
     "cap": "소",
     "closePrice": "4,440",
     "eff_per_str": "5.3배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 5.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -4455,7 +4455,7 @@
     "cap": "소",
     "closePrice": "2,920",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
     "updatedAt": "2026-10-29"
   },
@@ -4465,7 +4465,7 @@
     "cap": "소",
     "closePrice": "91,100",
     "eff_per_str": "1.3배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 1.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -4485,7 +4485,7 @@
     "cap": "소",
     "closePrice": "4,070",
     "eff_per_str": "40.7배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 40.7배 형성 (PBR 0.4배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -4495,7 +4495,7 @@
     "cap": "소",
     "closePrice": "3,175",
     "eff_per_str": "3.2배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 3.2배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -4505,7 +4505,7 @@
     "cap": "소",
     "closePrice": "10,200",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
     "updatedAt": "2026-10-29"
   },
@@ -4515,7 +4515,7 @@
     "cap": "소",
     "closePrice": "3,480",
     "eff_per_str": "4.2배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 4.2배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -4555,7 +4555,7 @@
     "cap": "소",
     "closePrice": "56,300",
     "eff_per_str": "2.5배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 2.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -4565,7 +4565,7 @@
     "cap": "소",
     "closePrice": "2,630",
     "eff_per_str": "1.4배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 1.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -4585,7 +4585,7 @@
     "cap": "소",
     "closePrice": "22,650",
     "eff_per_str": "3.3배 (Fwd)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 3.3배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -4615,7 +4615,7 @@
     "cap": "소",
     "closePrice": "5,620",
     "eff_per_str": "17.4배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 17.4배 형성 (PBR 1.1배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -4655,7 +4655,7 @@
     "cap": "중",
     "closePrice": "10,580",
     "eff_per_str": "25.8배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 25.8배 형성 (PBR 0.7배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -4675,7 +4675,7 @@
     "cap": "소",
     "closePrice": "5,270",
     "eff_per_str": "2.9배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 2.9배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -4715,7 +4715,7 @@
     "cap": "소",
     "closePrice": "1,305",
     "eff_per_str": "3.9배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 3.9배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -4735,7 +4735,7 @@
     "cap": "소",
     "closePrice": "4,290",
     "eff_per_str": "58.0배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 58.0배 형성 (PBR 1.4배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -4745,7 +4745,7 @@
     "cap": "소",
     "closePrice": "9,220",
     "eff_per_str": "4.4배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 4.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -4765,7 +4765,7 @@
     "cap": "소",
     "closePrice": "103,800",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
     "updatedAt": "2026-10-29"
   },
@@ -4775,7 +4775,7 @@
     "cap": "소",
     "closePrice": "4,560",
     "eff_per_str": "23.4배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 23.4배 형성 (PBR 1.0배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -4785,7 +4785,7 @@
     "cap": "소",
     "closePrice": "7,620",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
     "updatedAt": "2026-10-29"
   },
@@ -4815,7 +4815,7 @@
     "cap": "중",
     "closePrice": "41,650",
     "eff_per_str": "109.9배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 109.9배 형성 (PBR 0.3배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -4825,7 +4825,7 @@
     "cap": "소",
     "closePrice": "23,250",
     "eff_per_str": "61.4배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 61.4배 형성 (PBR 0.2배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -4905,7 +4905,7 @@
     "cap": "소",
     "closePrice": "1,901",
     "eff_per_str": "35.9배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 35.9배 형성 (PBR 0.5배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -4925,7 +4925,7 @@
     "cap": "중",
     "closePrice": "58,600",
     "eff_per_str": "60.7배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 60.7배 형성 (PBR 0.4배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -4945,7 +4945,7 @@
     "cap": "소",
     "closePrice": "2,845",
     "eff_per_str": "3.0배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 3.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -4955,7 +4955,7 @@
     "cap": "소",
     "closePrice": "2,810",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
     "updatedAt": "2026-10-28"
   },
@@ -4965,7 +4965,7 @@
     "cap": "소",
     "closePrice": "12,650",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
     "updatedAt": "2026-10-28"
   },
@@ -5005,7 +5005,7 @@
     "cap": "소",
     "closePrice": "3,085",
     "eff_per_str": "68.6배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 68.6배 형성 (PBR 0.4배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -5015,7 +5015,7 @@
     "cap": "소",
     "closePrice": "521",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
     "updatedAt": "2026-10-29"
   },
@@ -5035,7 +5035,7 @@
     "cap": "소",
     "closePrice": "2,110",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
     "updatedAt": "2026-10-29"
   },
@@ -5045,7 +5045,7 @@
     "cap": "소",
     "closePrice": "2,535",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
     "updatedAt": "2026-10-29"
   },
@@ -5065,7 +5065,7 @@
     "cap": "소",
     "closePrice": "1,954",
     "eff_per_str": "18.8배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 18.8배 형성 (PBR 0.3배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -5075,7 +5075,7 @@
     "cap": "소",
     "closePrice": "2,430",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
     "updatedAt": "2026-10-29"
   },
@@ -5105,7 +5105,7 @@
     "cap": "소",
     "closePrice": "5,770",
     "eff_per_str": "17.0배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 17.0배 형성 (PBR 0.7배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -5115,7 +5115,7 @@
     "cap": "소",
     "closePrice": "120,000",
     "eff_per_str": "4.8배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 4.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -5135,7 +5135,7 @@
     "cap": "소",
     "closePrice": "5,150",
     "eff_per_str": "2.2배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 2.2배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -5155,7 +5155,7 @@
     "cap": "소",
     "closePrice": "8,920",
     "eff_per_str": "17.7배 (Fwd)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 17.7배 형성 (PBR 0.3배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -5165,7 +5165,7 @@
     "cap": "소",
     "closePrice": "11,220",
     "eff_per_str": "30.7배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 30.7배 형성 (PBR 0.6배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -5175,7 +5175,7 @@
     "cap": "소",
     "closePrice": "9,950",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
     "updatedAt": "2026-10-29"
   },
@@ -5195,7 +5195,7 @@
     "cap": "소",
     "closePrice": "945",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
     "updatedAt": "2026-10-29"
   },
@@ -5205,7 +5205,7 @@
     "cap": "소",
     "closePrice": "2,135",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
     "updatedAt": "2026-10-29"
   },
@@ -5225,7 +5225,7 @@
     "cap": "소",
     "closePrice": "1,825",
     "eff_per_str": "62.9배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 62.9배 형성 (PBR 0.9배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -5255,7 +5255,7 @@
     "cap": "소",
     "closePrice": "119,800",
     "eff_per_str": "3.8배 (Fwd)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 3.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -5265,7 +5265,7 @@
     "cap": "소",
     "closePrice": "4,920",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
     "updatedAt": "2026-10-29"
   },
@@ -5275,7 +5275,7 @@
     "cap": "소",
     "closePrice": "9,160",
     "eff_per_str": "31.5배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 31.5배 형성 (PBR 0.2배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -5285,7 +5285,7 @@
     "cap": "소",
     "closePrice": "3,460",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
     "updatedAt": "2026-10-29"
   },
@@ -5305,7 +5305,7 @@
     "cap": "소",
     "closePrice": "3,845",
     "eff_per_str": "132.6배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 132.6배 형성 (PBR 0.3배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -5315,7 +5315,7 @@
     "cap": "소",
     "closePrice": "1,890",
     "eff_per_str": "2.6배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 2.6배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -5325,7 +5325,7 @@
     "cap": "중",
     "closePrice": "31,200",
     "eff_per_str": "12.8배 (Fwd)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 12.8배 형성 (PBR 0.6배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -5345,7 +5345,7 @@
     "cap": "소",
     "closePrice": "23,200",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
     "updatedAt": "2026-10-29"
   },
@@ -5355,7 +5355,7 @@
     "cap": "소",
     "closePrice": "2,725",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
     "updatedAt": "2026-10-29"
   },
@@ -5375,7 +5375,7 @@
     "cap": "소",
     "closePrice": "1,259",
     "eff_per_str": "32.3배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 32.3배 형성 (PBR 0.2배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -5395,7 +5395,7 @@
     "cap": "소",
     "closePrice": "94,700",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
     "updatedAt": "2026-10-29"
   },
@@ -5405,7 +5405,7 @@
     "cap": "대",
     "closePrice": "26,550",
     "eff_per_str": "48.1배 (Fwd)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 48.1배 형성 (PBR 0.2배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -5415,7 +5415,7 @@
     "cap": "소",
     "closePrice": "34,100",
     "eff_per_str": "23.3배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 23.3배 형성 (PBR 0.2배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -5425,7 +5425,7 @@
     "cap": "소",
     "closePrice": "71,900",
     "eff_per_str": "3.5배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 3.5배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -5435,7 +5435,7 @@
     "cap": "소",
     "closePrice": "3,645",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
     "updatedAt": "2026-10-29"
   },
@@ -5445,7 +5445,7 @@
     "cap": "대",
     "closePrice": "282,000",
     "eff_per_str": "11.7배 (Fwd)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 11.7배 형성 (PBR 0.4배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -5455,7 +5455,7 @@
     "cap": "소",
     "closePrice": "2,115",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
     "updatedAt": "2026-10-29"
   },
@@ -5475,7 +5475,7 @@
     "cap": "소",
     "closePrice": "1,247",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
     "updatedAt": "2026-10-29"
   },
@@ -5485,7 +5485,7 @@
     "cap": "소",
     "closePrice": "1,829",
     "eff_per_str": "63.1배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 63.1배 형성 (PBR 0.9배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-28"
   },
@@ -5515,7 +5515,7 @@
     "cap": "소",
     "closePrice": "1,831",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
     "updatedAt": "2026-10-29"
   },
@@ -5525,7 +5525,7 @@
     "cap": "소",
     "closePrice": "7,300",
     "eff_per_str": "5.0배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 5.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -5535,7 +5535,7 @@
     "cap": "중",
     "closePrice": "5,120",
     "eff_per_str": "2.9배 (Fwd)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 2.9배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -5555,7 +5555,7 @@
     "cap": "소",
     "closePrice": "1,100",
     "eff_per_str": "적자 (N/A)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "장기 다운사이클 적자 바닥 통과 중, 역발상 시클리컬 매수 최적기",
     "updatedAt": "2026-10-29"
   },
@@ -5595,7 +5595,7 @@
     "cap": "중",
     "closePrice": "37,150",
     "eff_per_str": "4.8배 (Fwd)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 4.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -5605,7 +5605,7 @@
     "cap": "소",
     "closePrice": "3,050",
     "eff_per_str": "7.1배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 7.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -5625,7 +5625,7 @@
     "cap": "대",
     "closePrice": "145,100",
     "eff_per_str": "3.0배 (Fwd)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 3.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -5635,7 +5635,7 @@
     "cap": "소",
     "closePrice": "11,550",
     "eff_per_str": "139.2배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 139.2배 형성 (PBR 2.4배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -5645,7 +5645,7 @@
     "cap": "소",
     "closePrice": "15,290",
     "eff_per_str": "5.0배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 5.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -5655,7 +5655,7 @@
     "cap": "소",
     "closePrice": "1,540",
     "eff_per_str": "6.9배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 6.9배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -5685,7 +5685,7 @@
     "cap": "소",
     "closePrice": "2,525",
     "eff_per_str": "3.1배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 3.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -5695,7 +5695,7 @@
     "cap": "소",
     "closePrice": "1,652",
     "eff_per_str": "118.0배 (Trail)",
-    "decision": "[사라]",
+    "decision": "[슬슬모아바]",
     "reason": "PER 118.0배 형성 (PBR 1.9배). 이익 급감기 고PER 바닥 확인 후 선제 매수 구간",
     "updatedAt": "2026-10-29"
   },
@@ -5705,7 +5705,7 @@
     "cap": "소",
     "closePrice": "14,290",
     "eff_per_str": "8.6배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 8.6배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -5745,7 +5745,7 @@
     "cap": "소",
     "closePrice": "7,390",
     "eff_per_str": "6.6배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 6.6배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -5785,7 +5785,7 @@
     "cap": "소",
     "closePrice": "5,490",
     "eff_per_str": "4.8배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 4.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -5815,7 +5815,7 @@
     "cap": "대",
     "closePrice": "52,500",
     "eff_per_str": "8.2배 (Fwd)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 8.2배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -5825,7 +5825,7 @@
     "cap": "소",
     "closePrice": "5,520",
     "eff_per_str": "3.8배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 3.8배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -5835,7 +5835,7 @@
     "cap": "중",
     "closePrice": "15,790",
     "eff_per_str": "7.0배 (Fwd)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 7.0배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -5845,7 +5845,7 @@
     "cap": "소",
     "closePrice": "3,725",
     "eff_per_str": "8.1배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 8.1배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -5865,7 +5865,7 @@
     "cap": "대",
     "closePrice": "241,500",
     "eff_per_str": "4.4배 (Fwd)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 4.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -5885,7 +5885,7 @@
     "cap": "중",
     "closePrice": "1,862",
     "eff_per_str": "3.2배 (Fwd)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 3.2배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -5915,7 +5915,7 @@
     "cap": "소",
     "closePrice": "11,760",
     "eff_per_str": "2.4배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 2.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -5935,7 +5935,7 @@
     "cap": "소",
     "closePrice": "5,680",
     "eff_per_str": "3.5배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 3.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-29"
   },
@@ -5985,7 +5985,7 @@
     "cap": "소",
     "closePrice": "11,720",
     "eff_per_str": "2.4배 (Trail)",
-    "decision": "[팔아라]",
+    "decision": "[슬슬팔어]",
     "reason": "PER 2.4배 도달. 호황 정점 '저PER 피크아웃' 매도 원칙 가차 없이 적용",
     "updatedAt": "2026-10-28"
   },
