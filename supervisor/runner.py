@@ -41,7 +41,8 @@ from strategies import (
     htp_momentum,
     us3x,
     stage2_revival,
-    signal_forge_bridge
+    signal_forge_bridge,
+    kbit_chart
 )
 from screener.engine import run_screener_analysis
 from screener.us_screener import run_us_screener_analysis
@@ -90,6 +91,12 @@ def run_pipeline(mode: str = "auto", force: bool = False, dry_run: bool = False)
         kr_signals.extend(cyclical.run_analysis())
     except Exception as e:
         print(f"⚠️ cyclical 오류: {e}")
+    try:
+        kbit_sigs = kbit_chart.run_analysis("KRX")
+        kr_signals.extend(kbit_sigs)
+        print(f"🎯 kbit-bot 차트 지능형 선별 완료 ({len(kbit_sigs)}건 포착)")
+    except Exception as e:
+        print(f"⚠️ kbit_chart 오류: {e}")
 
     # 백찬규 센터장 실무 스크리너 (한국장: 성장주 후보 + 중소형 수급가치)
     screener_signals = []
