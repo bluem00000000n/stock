@@ -602,19 +602,19 @@ def evaluate_macro_liquidity() -> Dict[str, Any]:
 
     # 4. Score Bracket & Risk Regime
     if liquidity_score >= 8:
-        liq_bracket = "Strong Expansion"
+        liq_bracket = "강력 확장 (Strong Expansion)"
         risk_regime = "RISK ON"
     elif liquidity_score >= 3:
-        liq_bracket = "Expansion"
+        liq_bracket = "유동성 확장 (Expansion)"
         risk_regime = "RISK ON"
     elif liquidity_score >= -2:
-        liq_bracket = "Neutral"
+        liq_bracket = "중립 (Neutral)"
         risk_regime = "NEUTRAL"
     elif liquidity_score >= -7:
-        liq_bracket = "Tightening"
+        liq_bracket = "통화 긴축 (Tightening)"
         risk_regime = "RISK OFF"
     else:
-        liq_bracket = "Strong Tightening"
+        liq_bracket = "강력 긴축 (Strong Tightening)"
         risk_regime = "HIGH RISK OFF"
 
     # 변동성 지표(VIX 28+, MOVE 97+) 감안 시 RISK OFF 확정
