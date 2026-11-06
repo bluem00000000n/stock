@@ -1,6 +1,6 @@
 {
   "summary": {
-    "updated_at": "2026-11-06 14:14:48",
+    "updated_at": "2026-11-06 14:16:45",
     "total_projects": 8,
     "active_daemons": 0,
     "today_executed": 8,
@@ -11,10 +11,10 @@
     },
     "portfolio": {
       "date": "2026-11-06",
-      "daily_return_pct": -0.05,
-      "cumulative_return_pct": -4.24,
+      "daily_return_pct": -0.14,
+      "cumulative_return_pct": -4.28,
       "realized_pnl_pct": -7.31,
-      "unrealized_pnl_pct": -0.05,
+      "unrealized_pnl_pct": -0.14,
       "holding_count": 11,
       "closed_count": 15,
       "win_rate": 30.8
@@ -1147,11 +1147,11 @@
       "signal_date": "2026-11-05",
       "entry_price": 183900.0,
       "entry_date": "2026-11-05",
-      "current_price": 191700.0,
+      "current_price": 191100.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": 4.24,
+      "return_pct": 3.92,
       "target_price": 202000.0,
       "stop_loss_price": 171000.0,
       "notes": "[정배열 2차검증 100점] 20일 이평선(177,075원) 대량거래(236%) 돌파 안착"
@@ -1187,11 +1187,11 @@
       "signal_date": "2026-11-03",
       "entry_price": 175000.0,
       "entry_date": "2026-11-03",
-      "current_price": 176100.0,
+      "current_price": 176000.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": 0.63,
+      "return_pct": 0.57,
       "target_price": 195000.0,
       "stop_loss_price": 164000.0,
       "notes": "[중소형주] 과천 AI IDC 본격 가동 및 52주 신고가 하이타이트 플래그 돌파"
@@ -1287,11 +1287,11 @@
       "signal_date": "2026-11-03",
       "entry_price": 61600.0,
       "entry_date": "2026-11-03",
-      "current_price": 61500.0,
+      "current_price": 61400.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": -0.16,
+      "return_pct": -0.32,
       "target_price": 67800.0,
       "stop_loss_price": 57600.0,
       "notes": "[대형주] 친환경 플랜트 대형 EPC 글로벌 수주 랠리 52주 신고가 VCP 돌파"
@@ -1347,11 +1347,11 @@
       "signal_date": "2026-11-05",
       "entry_price": 8660.0,
       "entry_date": "2026-11-05",
-      "current_price": 8320.0,
+      "current_price": 8280.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": -3.93,
+      "return_pct": -4.39,
       "target_price": 9520.0,
       "stop_loss_price": 8050.0,
       "notes": "[정배열 2차검증 140점/전체 1위] 5일/20일 정배열 우상향 및 거래량 6,960% 폭증 골든크로스"
@@ -1660,10 +1660,10 @@
   "performance": {
     "PORTFOLIO_TOTAL": {
       "date": "2026-11-06",
-      "daily_return_pct": -0.05,
-      "cumulative_return_pct": -4.24,
+      "daily_return_pct": -0.14,
+      "cumulative_return_pct": -4.28,
       "realized_pnl_pct": -7.31,
-      "unrealized_pnl_pct": -0.05,
+      "unrealized_pnl_pct": -0.14,
       "holding_count": 11,
       "closed_count": 15,
       "win_rate": 30.8
@@ -1680,10 +1680,10 @@
     },
     "stock-chart-alignment": {
       "date": "2026-11-06",
-      "daily_return_pct": -0.21,
-      "cumulative_return_pct": -7.12,
+      "daily_return_pct": -0.47,
+      "cumulative_return_pct": -7.31,
       "realized_pnl_pct": -27.84,
-      "unrealized_pnl_pct": -0.21,
+      "unrealized_pnl_pct": -0.47,
       "holding_count": 3,
       "closed_count": 1,
       "win_rate": 25.0
@@ -1700,10 +1700,10 @@
     },
     "stock-sepa-pivot": {
       "date": "2026-11-06",
-      "daily_return_pct": 0.23,
-      "cumulative_return_pct": 0.23,
+      "daily_return_pct": 0.12,
+      "cumulative_return_pct": 0.12,
       "realized_pnl_pct": 0.0,
-      "unrealized_pnl_pct": 0.23,
+      "unrealized_pnl_pct": 0.12,
       "holding_count": 2,
       "closed_count": 0,
       "win_rate": 50.0

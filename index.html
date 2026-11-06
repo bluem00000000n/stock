@@ -247,8 +247,8 @@
         <nav class="flex items-center space-x-2 pl-4 border-l border-desk-border flex-wrap gap-y-1">
           <!-- 1. 글로벌 멀티마켓 추세분석 -->
           <button id="tabBtn-macro" onclick="switchTab('macro')" class="px-3 py-1.5 text-xs font-semibold rounded bg-sky-950/90 text-sky-300 border border-sky-500/60 transition-colors flex items-center shadow-sm cursor-pointer">
-            <i class="fa-solid fa-earth-americas mr-1.5 text-sky-400"></i> 글로벌 멀티마켓 추세분석
-            <span class="ml-1.5 px-1.5 py-0.5 text-[9px] font-mono font-bold bg-sky-500/20 text-sky-400 border border-sky-500/40 rounded animate-pulse">LIVE</span>
+            <i class="fa-solid fa-house mr-1.5 text-sky-400"></i> 메인 홈 • 글로벌 멀티마켓 추세분석
+            <span class="ml-1.5 px-1.5 py-0.5 text-[9px] font-mono font-bold bg-sky-500/20 text-sky-400 border border-sky-500/40 rounded animate-pulse">DAILY 08:30</span>
           </button>
 
           <!-- 2. 미국 거시 유동성 & ETF -->
@@ -358,6 +358,14 @@
           <div class="flex items-center space-x-3">
             <span class="w-3 h-3 rounded-full bg-sky-400 animate-ping"></span>
             <div>
+              <div class="flex items-center space-x-2 mb-1">
+                <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-sky-500/20 text-sky-300 border border-sky-500/40 flex items-center">
+                  <i class="fa-solid fa-house mr-1 text-[9px]"></i> 메인 홈 (MAIN HOME)
+                </span>
+                <span class="text-[10px] font-mono text-emerald-400 font-semibold bg-emerald-950/70 px-2 py-0.5 rounded border border-emerald-800/80 flex items-center">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 mr-1.5 animate-pulse"></span> 매일 아침 08:30 장전 자동 갱신
+                </span>
+              </div>
               <h2 class="text-sm font-bold font-mono text-white uppercase tracking-wider flex items-center">
                 <i class="fa-solid fa-earth-americas mr-2 text-sky-400"></i>
                 글로벌 멀티마켓 매크로·테크니컬 트렌드 관제 센터
@@ -719,7 +727,7 @@
         <div class="p-3.5 border-b border-desk-border bg-desk-900 flex justify-between items-center">
           <h3 class="text-xs font-bold font-mono uppercase text-slate-200 flex items-center">
             <i class="fa-solid fa-list-check mr-2 text-sky-400"></i>
-            16대 글로벌 핵심 자산군 종합 분석 및 매매 대응 트리거
+            16대 글로벌 핵심 자산군 종합 분석 (Multi-Timeframe Trend & Dow Status)
           </h3>
           <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-desk-800 text-slate-300 border border-desk-border">
             16 Assets Monitored
@@ -738,7 +746,7 @@
                 <th class="py-2.5 px-3 text-center">다우 상태</th>
                 <th class="py-2.5 px-3 text-center">1-2-3 판정</th>
                 <th class="py-2.5 px-3 text-center">최종 판정</th>
-                <th class="py-2.5 px-3">핵심 트리거 (매수 진입 / 손절 기준)</th>
+                
               </tr>
             </thead>
             <tbody class="divide-y divide-desk-border">
@@ -751,7 +759,7 @@
                 <td class="py-2 px-3 text-center text-amber-400">추세약화</td>
                 <td class="py-2 px-3 text-center text-amber-400">전환경고</td>
                 <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded bg-amber-950 text-amber-300 font-bold text-[10px]">🟡 관망</span></td>
-                <td class="py-2 px-3 text-slate-300 text-[11px]">매수: 52,500 회복 / 손절: 51,200 이탈</td>
+                
               </tr>
               <tr>
                 <td class="py-2 px-3 font-bold text-white">S&P 500</td>
@@ -762,7 +770,7 @@
                 <td class="py-2 px-3 text-center text-amber-400">추세약화</td>
                 <td class="py-2 px-3 text-center text-red-400 font-bold">추세전환</td>
                 <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded bg-red-950 text-red-300 font-bold text-[10px]">🔴 매도</span></td>
-                <td class="py-2 px-3 text-slate-300 text-[11px]">매수: 7,450 안착 / 손절: 7,300 이탈</td>
+                
               </tr>
               <tr class="bg-red-950/10">
                 <td class="py-2 px-3 font-bold text-red-300">Nasdaq 종합</td>
@@ -773,7 +781,7 @@
                 <td class="py-2 px-3 text-center text-amber-400">추세약화</td>
                 <td class="py-2 px-3 text-center text-red-400 font-bold">추세전환</td>
                 <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded bg-red-600 text-white font-bold text-[10px]">🔴 강한매도</span></td>
-                <td class="py-2 px-3 text-red-200 text-[11px]">매수: 24,650 회복 / 손절: 24,000 이탈</td>
+                
               </tr>
               <tr class="bg-red-950/10">
                 <td class="py-2 px-3 font-bold text-red-300">KOSPI (한국)</td>
@@ -784,7 +792,7 @@
                 <td class="py-2 px-3 text-center text-slate-500">-</td>
                 <td class="py-2 px-3 text-center text-red-400 font-bold">추세전환</td>
                 <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded bg-amber-950 text-amber-300 font-bold text-[10px]">🟡 관망</span></td>
-                <td class="py-2 px-3 text-slate-300 text-[11px]">매수: 5,100 회복 / 손절: 4,900 이탈</td>
+                
               </tr>
               <tr>
                 <td class="py-2 px-3 font-bold text-white">Shanghai (중국)</td>
@@ -795,7 +803,7 @@
                 <td class="py-2 px-3 text-center text-slate-500">-</td>
                 <td class="py-2 px-3 text-center text-emerald-400">추세유지</td>
                 <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 font-bold text-[10px]">🟢 매수</span></td>
-                <td class="py-2 px-3 text-slate-300 text-[11px]">매수: 3,680 부근 / 손절: 3,620 이탈</td>
+                
               </tr>
               <tr>
                 <td class="py-2 px-3 font-bold text-white">Nikkei 225 (일본)</td>
@@ -806,7 +814,7 @@
                 <td class="py-2 px-3 text-center text-slate-500">-</td>
                 <td class="py-2 px-3 text-center text-red-400">추세전환</td>
                 <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded bg-amber-950 text-amber-300 font-bold text-[10px]">🟡 관망</span></td>
-                <td class="py-2 px-3 text-slate-300 text-[11px]">매수: 60,500 회복 / 손절: 58,800 이탈</td>
+                
               </tr>
               <tr class="bg-emerald-950/10">
                 <td class="py-2 px-3 font-bold text-emerald-300">US 10Y 국채</td>
@@ -817,7 +825,7 @@
                 <td class="py-2 px-3 text-center text-slate-500">-</td>
                 <td class="py-2 px-3 text-center text-amber-400">전환경고</td>
                 <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 font-bold text-[10px]">🟢 매수(채권)</span></td>
-                <td class="py-2 px-3 text-emerald-200 text-[11px]">매수: 금리 4.85% 이상 / 손절: 금리 4.95% 돌파</td>
+                
               </tr>
               <tr class="bg-emerald-950/15">
                 <td class="py-2 px-3 font-bold text-emerald-300">Gold (금 현물)</td>
@@ -828,7 +836,7 @@
                 <td class="py-2 px-3 text-center text-slate-500">-</td>
                 <td class="py-2 px-3 text-center text-emerald-400 font-bold">추세유지</td>
                 <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded bg-emerald-600 text-white font-bold text-[10px]">🟢 강한매수</span></td>
-                <td class="py-2 px-3 text-emerald-200 text-[11px]">매수: $4,110 눌림 / 손절: $4,020 이탈 (R/R 2.67)</td>
+                
               </tr>
               <tr>
                 <td class="py-2 px-3 font-bold text-white">Silver (은)</td>
@@ -839,7 +847,7 @@
                 <td class="py-2 px-3 text-center text-slate-500">-</td>
                 <td class="py-2 px-3 text-center text-emerald-400">추세유지</td>
                 <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 font-bold text-[10px]">🟢 매수</span></td>
-                <td class="py-2 px-3 text-slate-300 text-[11px]">매수: $51.00 부근 / 손절: $49.20 이탈</td>
+                
               </tr>
               <tr>
                 <td class="py-2 px-3 font-bold text-white">Copper (구리)</td>
@@ -850,7 +858,7 @@
                 <td class="py-2 px-3 text-center text-slate-500">-</td>
                 <td class="py-2 px-3 text-center text-red-400 font-bold">추세전환</td>
                 <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded bg-red-950 text-red-300 font-bold text-[10px]">🔴 매도(숏)</span></td>
-                <td class="py-2 px-3 text-slate-300 text-[11px]">숏: $6.30 리테스트 / 손절: $6.42 돌파 (R/R 2.92)</td>
+                
               </tr>
               <tr>
                 <td class="py-2 px-3 font-bold text-white">WTI 원유</td>
@@ -861,7 +869,7 @@
                 <td class="py-2 px-3 text-center text-slate-500">-</td>
                 <td class="py-2 px-3 text-center text-red-400">추세전환</td>
                 <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded bg-amber-950 text-amber-300 font-bold text-[10px]">🟡 관망</span></td>
-                <td class="py-2 px-3 text-slate-300 text-[11px]">매수: $86.50 지지확인 / 손절: $85.00 이탈</td>
+                
               </tr>
               <tr>
                 <td class="py-2 px-3 font-bold text-white">DXY (달러)</td>
@@ -872,7 +880,7 @@
                 <td class="py-2 px-3 text-center text-slate-500">-</td>
                 <td class="py-2 px-3 text-center text-amber-400">추세약화</td>
                 <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded bg-amber-950 text-amber-300 font-bold text-[10px]">🟡 관망</span></td>
-                <td class="py-2 px-3 text-slate-300 text-[11px]">매수: 102.20 회복 / 손절: 101.00 이탈</td>
+                
               </tr>
               <tr>
                 <td class="py-2 px-3 font-bold text-white">USD/JPY</td>
@@ -883,7 +891,7 @@
                 <td class="py-2 px-3 text-center text-slate-500">-</td>
                 <td class="py-2 px-3 text-center text-red-400">추세전환</td>
                 <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded bg-red-950 text-red-300 font-bold text-[10px]">🔴 매도(엔매수)</span></td>
-                <td class="py-2 px-3 text-slate-300 text-[11px]">엔매수: 158.20 부근 / 손절: 159.50 돌파</td>
+                
               </tr>
               <tr>
                 <td class="py-2 px-3 font-bold text-white">USD/KRW</td>
@@ -894,7 +902,7 @@
                 <td class="py-2 px-3 text-center text-slate-500">-</td>
                 <td class="py-2 px-3 text-center text-emerald-400">추세유지</td>
                 <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded bg-red-950 text-red-300 font-bold text-[10px]">🔴 매도(환전)</span></td>
-                <td class="py-2 px-3 text-slate-300 text-[11px]">매도: 1,360~1,365원 / 손절: 1,372원 돌파</td>
+                
               </tr>
               <tr>
                 <td class="py-2 px-3 font-bold text-white">Bitcoin (BTC)</td>
@@ -905,7 +913,7 @@
                 <td class="py-2 px-3 text-center text-slate-500">-</td>
                 <td class="py-2 px-3 text-center text-red-400">추세전환</td>
                 <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded bg-amber-950 text-amber-300 font-bold text-[10px]">🟡 관망</span></td>
-                <td class="py-2 px-3 text-slate-300 text-[11px]">매수: $76,500 회복 / 손절: $74,200 이탈 (R/R 2.06)</td>
+                
               </tr>
               <tr>
                 <td class="py-2 px-3 font-bold text-white">Ethereum (ETH)</td>
@@ -916,7 +924,7 @@
                 <td class="py-2 px-3 text-center text-slate-500">-</td>
                 <td class="py-2 px-3 text-center text-red-400">추세전환</td>
                 <td class="py-2 px-3 text-center"><span class="px-2 py-0.5 rounded bg-red-950 text-red-300 font-bold text-[10px]">🔴 매도</span></td>
-                <td class="py-2 px-3 text-slate-300 text-[11px]">매수: $2,320 회복 / 손절: $2,180 이탈</td>
+                
               </tr>
             </tbody>
           </table>
@@ -2221,7 +2229,7 @@
     // Embedded Initial Dataset (Auto-synced with status.json)
     const INITIAL_DATA = {
   "summary": {
-    "updated_at": "2026-11-06 14:14:48",
+    "updated_at": "2026-11-06 14:16:45",
     "total_projects": 8,
     "active_daemons": 0,
     "today_executed": 8,
@@ -2232,10 +2240,10 @@
     },
     "portfolio": {
       "date": "2026-11-06",
-      "daily_return_pct": -0.05,
-      "cumulative_return_pct": -4.24,
+      "daily_return_pct": -0.14,
+      "cumulative_return_pct": -4.28,
       "realized_pnl_pct": -7.31,
-      "unrealized_pnl_pct": -0.05,
+      "unrealized_pnl_pct": -0.14,
       "holding_count": 11,
       "closed_count": 15,
       "win_rate": 30.8
@@ -3368,11 +3376,11 @@
       "signal_date": "2026-11-05",
       "entry_price": 183900.0,
       "entry_date": "2026-11-05",
-      "current_price": 191700.0,
+      "current_price": 191100.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": 4.24,
+      "return_pct": 3.92,
       "target_price": 202000.0,
       "stop_loss_price": 171000.0,
       "notes": "[정배열 2차검증 100점] 20일 이평선(177,075원) 대량거래(236%) 돌파 안착"
@@ -3408,11 +3416,11 @@
       "signal_date": "2026-11-03",
       "entry_price": 175000.0,
       "entry_date": "2026-11-03",
-      "current_price": 176100.0,
+      "current_price": 176000.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": 0.63,
+      "return_pct": 0.57,
       "target_price": 195000.0,
       "stop_loss_price": 164000.0,
       "notes": "[중소형주] 과천 AI IDC 본격 가동 및 52주 신고가 하이타이트 플래그 돌파"
@@ -3508,11 +3516,11 @@
       "signal_date": "2026-11-03",
       "entry_price": 61600.0,
       "entry_date": "2026-11-03",
-      "current_price": 61500.0,
+      "current_price": 61400.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": -0.16,
+      "return_pct": -0.32,
       "target_price": 67800.0,
       "stop_loss_price": 57600.0,
       "notes": "[대형주] 친환경 플랜트 대형 EPC 글로벌 수주 랠리 52주 신고가 VCP 돌파"
@@ -3568,11 +3576,11 @@
       "signal_date": "2026-11-05",
       "entry_price": 8660.0,
       "entry_date": "2026-11-05",
-      "current_price": 8320.0,
+      "current_price": 8280.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": -3.93,
+      "return_pct": -4.39,
       "target_price": 9520.0,
       "stop_loss_price": 8050.0,
       "notes": "[정배열 2차검증 140점/전체 1위] 5일/20일 정배열 우상향 및 거래량 6,960% 폭증 골든크로스"
@@ -3881,10 +3889,10 @@
   "performance": {
     "PORTFOLIO_TOTAL": {
       "date": "2026-11-06",
-      "daily_return_pct": -0.05,
-      "cumulative_return_pct": -4.24,
+      "daily_return_pct": -0.14,
+      "cumulative_return_pct": -4.28,
       "realized_pnl_pct": -7.31,
-      "unrealized_pnl_pct": -0.05,
+      "unrealized_pnl_pct": -0.14,
       "holding_count": 11,
       "closed_count": 15,
       "win_rate": 30.8
@@ -3901,10 +3909,10 @@
     },
     "stock-chart-alignment": {
       "date": "2026-11-06",
-      "daily_return_pct": -0.21,
-      "cumulative_return_pct": -7.12,
+      "daily_return_pct": -0.47,
+      "cumulative_return_pct": -7.31,
       "realized_pnl_pct": -27.84,
-      "unrealized_pnl_pct": -0.21,
+      "unrealized_pnl_pct": -0.47,
       "holding_count": 3,
       "closed_count": 1,
       "win_rate": 25.0
@@ -3921,10 +3929,10 @@
     },
     "stock-sepa-pivot": {
       "date": "2026-11-06",
-      "daily_return_pct": 0.23,
-      "cumulative_return_pct": 0.23,
+      "daily_return_pct": 0.12,
+      "cumulative_return_pct": 0.12,
       "realized_pnl_pct": 0.0,
-      "unrealized_pnl_pct": 0.23,
+      "unrealized_pnl_pct": 0.12,
       "holding_count": 2,
       "closed_count": 0,
       "win_rate": 50.0
@@ -7405,8 +7413,10 @@
     // Start & Dynamic Tab Initialization
     loadLatestData();
     const initialHash = window.location.hash.replace('#', '');
-    if (['macro', 'liquidity', 'rotation', 'performance', 'portfolio'].includes(initialHash)) {
-      switchTab(initialHash === 'portfolio' ? 'performance' : initialHash);
+    if (['macro', 'home', 'liquidity', 'rotation', 'performance', 'portfolio'].includes(initialHash)) {
+      if (initialHash === 'portfolio') switchTab('performance');
+      else if (initialHash === 'home') switchTab('macro');
+      else switchTab(initialHash);
     } else {
       switchTab('macro');
     }
