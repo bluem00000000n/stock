@@ -54,25 +54,84 @@
     }
   </script>
   <style>
+    /* ============================================================== */
+    /* 3-THEME QUANT DESIGN SYSTEM TOKENS                             */
+    /* ============================================================== */
+    :root, [data-theme="stealth"] {
+      --bg-canvas: #08090c;
+      --bg-card: #0f1117;
+      --bg-card-hover: #141722;
+      --border-card: rgba(255, 255, 255, 0.08);
+      --border-card-hover: rgba(255, 255, 255, 0.18);
+      --card-radius: 12px;
+      --card-shadow: 0 12px 32px -10px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+      --accent-brand: #5e6ad2;
+      --accent-cyan: #38bdf8;
+      --accent-up: #10b981;
+      --accent-down: #f43f5e;
+      --text-main: #f8fafc;
+      --text-muted: #8a93a6;
+      --canvas-pattern: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      --canvas-pattern-size: 24px 24px;
+    }
+
+    [data-theme="citadel"] {
+      --bg-canvas: #090a0d;
+      --bg-card: #111317;
+      --bg-card-hover: #171920;
+      --border-card: #20242d;
+      --border-card-hover: #363c4a;
+      --card-radius: 4px;
+      --card-shadow: none;
+      --accent-brand: #f59e0b;
+      --accent-cyan: #06b6d4;
+      --accent-up: #00c853;
+      --accent-down: #ff3b30;
+      --text-main: #ffffff;
+      --text-muted: #7d8590;
+      --canvas-pattern: none;
+      --canvas-pattern-size: auto;
+    }
+
+    [data-theme="aladdin"] {
+      --bg-canvas: #060913;
+      --bg-card: rgba(13, 20, 36, 0.82);
+      --bg-card-hover: rgba(18, 28, 51, 0.88);
+      --border-card: rgba(56, 189, 248, 0.18);
+      --border-card-hover: rgba(56, 189, 248, 0.38);
+      --card-radius: 16px;
+      --card-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      --accent-brand: #38bdf8;
+      --accent-cyan: #22d3ee;
+      --accent-up: #34d399;
+      --accent-down: #fb7185;
+      --text-main: #ffffff;
+      --text-muted: #94a3b8;
+      --canvas-pattern: radial-gradient(circle at 15% 10%, rgba(56, 189, 248, 0.06) 0%, transparent 40%), radial-gradient(circle at 85% 60%, rgba(99, 102, 241, 0.05) 0%, transparent 50%);
+      --canvas-pattern-size: auto;
+    }
+
     body {
-      background-color: #06080d;
-      color: #e2e8f0;
+      background-color: var(--bg-canvas);
+      background-image: var(--canvas-pattern);
+      background-size: var(--canvas-pattern-size);
+      color: var(--text-main);
       font-family: "Pretendard", "Noto Sans KR", "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
       letter-spacing: -0.015em;
       font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-      background-image: 
-        radial-gradient(circle at 15% 10%, rgba(56, 189, 248, 0.03) 0%, transparent 40%),
-        radial-gradient(circle at 85% 60%, rgba(234, 179, 8, 0.02) 0%, transparent 50%),
-        radial-gradient(circle at 50% 90%, rgba(16, 185, 129, 0.02) 0%, transparent 45%);
+      transition: background-color 0.25s ease, color 0.25s ease;
     }
 
-    /* Luxury Magazine Glassmorphism Card System */
-    .glass-card {
-      background: rgba(11, 16, 24, 0.78);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border: 1px solid rgba(255, 255, 255, 0.07);
-      box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    /* Unified Institutional Card System */
+    .desk-card, .glass-card {
+      background-color: var(--bg-card) !important;
+      border: 1px solid var(--border-card) !important;
+      border-radius: var(--card-radius) !important;
+      box-shadow: var(--card-shadow) !important;
+      transition: background-color 0.25s ease, border-color 0.2s ease, box-shadow 0.2s ease, border-radius 0.2s ease;
+    }
+    .desk-card:hover, .glass-card:hover {
+      border-color: var(--border-card-hover) !important;
     }
     .glass-card-floating {
       background: linear-gradient(135deg, rgba(16, 23, 38, 0.82), rgba(9, 13, 22, 0.9));
@@ -93,12 +152,6 @@
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       height: 4px;
       margin: 10px 0;
-    }
-
-    /* Table Styling & Sticky Left Column Fix */
-    .desk-card {
-      background-color: #0b1018;
-      border: 1px solid #1a2436;
     }
 
     .desk-table th {
@@ -274,8 +327,17 @@
         </button>
       </nav>
 
-      <!-- Quick Status -->
+      <!-- Header Right: Theme Switcher & Quick Status -->
       <div class="flex items-center space-x-2 flex-shrink-0 whitespace-nowrap">
+        
+        <!-- Live Theme Switcher Pill -->
+        <div class="hidden md:flex items-center bg-desk-850 p-0.5 rounded border border-desk-border text-[10px] font-mono whitespace-nowrap flex-shrink-0">
+          <span class="text-slate-500 px-1.5"><i class="fa-solid fa-palette mr-1 text-indigo-400"></i>테마:</span>
+          <button onclick="setGlobalTheme('stealth')" id="themeBtn-stealth" class="px-2 py-0.5 rounded font-semibold bg-indigo-600 text-white transition-all cursor-pointer shadow-sm">1. 스텔스</button>
+          <button onclick="setGlobalTheme('citadel')" id="themeBtn-citadel" class="px-2 py-0.5 rounded font-semibold text-slate-400 hover:text-white transition-all cursor-pointer">2. 시타델</button>
+          <button onclick="setGlobalTheme('aladdin')" id="themeBtn-aladdin" class="px-2 py-0.5 rounded font-semibold text-slate-400 hover:text-white transition-all cursor-pointer">3. 알라딘</button>
+        </div>
+
         <div class="flex items-center text-[11px] font-mono text-slate-400 bg-desk-850 px-2.5 py-1 rounded border border-desk-border whitespace-nowrap">
           <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 mr-1.5 flex-shrink-0 animate-pulse"></span>
           <span class="text-slate-500 mr-1 hidden sm:inline whitespace-nowrap">취합:</span>
@@ -290,7 +352,102 @@
   </header>
 
   <!-- Main Body Content -->
-  <main class="max-w-[1560px] mx-auto px-4 sm:px-6 py-2 flex-1 w-full space-y-6">
+  <main class="max-w-[1560px] mx-auto px-4 sm:px-6 py-3 flex-1 w-full space-y-6">
+
+    <!-- 3-Theme Comparison & Live Preview Showcase Banner -->
+    <div id="themeShowcaseBanner" class="desk-card rounded-xl p-4 sm:p-5 border border-desk-border relative overflow-hidden transition-all shadow-xl">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3.5 mb-4 border-b border-white/[0.08] gap-3">
+        <div>
+          <div class="text-[10px] font-mono uppercase tracking-wider text-indigo-400 font-semibold flex items-center">
+            <i class="fa-solid fa-wand-magic-sparkles mr-1.5 animate-pulse text-indigo-400"></i> 디자인 시스템 전면 개편안 비교 &amp; 실시간 체험 (Design System Live Showcase)
+          </div>
+          <h2 class="font-sans text-base sm:text-lg font-bold text-slate-100 tracking-wide mt-0.5">
+            배경색 · 컬러 팔레트 · 레이아웃 3대 퀀트 디자인 시스템 실시간 비교
+          </h2>
+          <p class="text-xs text-slate-400 mt-1">
+            아래 3가지 스타일 중 원하는 카드를 클릭하면 대시보드 전체(캔버스 배경색, 카드 패널, 테두리, 버튼, 여백 밀도)에 즉시 실시간 전환됩니다.
+          </p>
+        </div>
+        <div class="flex items-center space-x-2 text-xs font-mono flex-shrink-0">
+          <span class="text-[11px] text-slate-400">현재 테마:</span>
+          <span id="currentActiveThemeLabel" class="px-2.5 py-1 rounded bg-indigo-500/20 text-indigo-300 border border-indigo-500/40 font-bold">1. 스텔스 퀀트 벤토</span>
+        </div>
+      </div>
+
+      <!-- 3 Theme Comparison Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5">
+        
+        <!-- Theme 1: Stealth Bento -->
+        <div onclick="setGlobalTheme('stealth')" id="themeCard-stealth" class="rounded-lg p-4 cursor-pointer transition-all duration-200 border-2 border-indigo-500 bg-[#0f1117] relative shadow-lg hover:scale-[1.01]">
+          <div class="flex items-center justify-between pb-2 mb-2.5 border-b border-white/[0.08]">
+            <span class="text-xs font-bold font-mono text-indigo-400 flex items-center">
+              <i class="fa-solid fa-cube mr-1.5"></i> 1. 스텔스 퀀트 벤토
+            </span>
+            <span class="px-1.5 py-0.5 text-[9px] font-mono font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/40 rounded">추천 (Recommended)</span>
+          </div>
+          <div class="text-xs font-bold text-slate-100">Linear x Bloomberg 스타일</div>
+          <p class="text-[11px] text-slate-400 mt-1 leading-relaxed">
+            딥 옵시디언(#08090c) 캔버스 + 마이크로 도트 패턴. 유색 보더를 전면 제거하고 0.08 화이트 헤어라인으로 통일하여 시각적 소음을 없애고 데이터에만 집중.
+          </p>
+          <div class="mt-3 pt-2.5 border-t border-white/[0.06] flex items-center justify-between">
+            <div class="flex items-center space-x-1.5">
+              <span class="w-3.5 h-3.5 rounded-full bg-[#08090c] border border-white/20" title="배경 #08090c"></span>
+              <span class="w-3.5 h-3.5 rounded-full bg-[#0f1117] border border-white/20" title="패널 #0f1117"></span>
+              <span class="w-3.5 h-3.5 rounded-full bg-[#10b981]" title="상승 민트 #10b981"></span>
+              <span class="w-3.5 h-3.5 rounded-full bg-[#f43f5e]" title="하락 크림슨 #f43f5e"></span>
+            </div>
+            <span class="text-[10px] font-mono text-indigo-400 font-semibold">12열 벤토 레이아웃</span>
+          </div>
+        </div>
+
+        <!-- Theme 2: Citadel Terminal -->
+        <div onclick="setGlobalTheme('citadel')" id="themeCard-citadel" class="rounded-lg p-4 cursor-pointer transition-all duration-200 border border-slate-700/80 bg-[#121316] relative hover:border-slate-500 hover:scale-[1.01]">
+          <div class="flex items-center justify-between pb-2 mb-2.5 border-b border-white/[0.08]">
+            <span class="text-xs font-bold font-mono text-amber-400 flex items-center">
+              <i class="fa-solid fa-terminal mr-1.5"></i> 2. 시타델 터미널
+            </span>
+            <span class="px-1.5 py-0.5 text-[9px] font-mono font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40 rounded">고밀도 (High-Density)</span>
+          </div>
+          <div class="text-xs font-bold text-slate-100">Citadel x Two Sigma 스타일</div>
+          <p class="text-[11px] text-slate-400 mt-1 leading-relaxed">
+            무광 매트 차콜(#090a0d)과 플랫 보더(#20242d). 그림자/블러 효과를 완전 배제하고 촘촘한 여백과 앰버/모노 폰트로 극단적인 데이터 밀도 확보.
+          </p>
+          <div class="mt-3 pt-2.5 border-t border-white/[0.06] flex items-center justify-between">
+            <div class="flex items-center space-x-1.5">
+              <span class="w-3.5 h-3.5 rounded-sm bg-[#090a0d] border border-white/20" title="배경 #090a0d"></span>
+              <span class="w-3.5 h-3.5 rounded-sm bg-[#121316] border border-white/20" title="패널 #121316"></span>
+              <span class="w-3.5 h-3.5 rounded-sm bg-[#00c853]" title="블룸버그 그린 #00c853"></span>
+              <span class="w-3.5 h-3.5 rounded-sm bg-[#ff3b30]" title="터미널 레드 #ff3b30"></span>
+            </div>
+            <span class="text-[10px] font-mono text-amber-400 font-semibold">초평면 플랫 모노</span>
+          </div>
+        </div>
+
+        <!-- Theme 3: Aladdin Luxury -->
+        <div onclick="setGlobalTheme('aladdin')" id="themeCard-aladdin" class="rounded-lg p-4 cursor-pointer transition-all duration-200 border border-slate-700/80 bg-[#0d1424] relative hover:border-sky-500 hover:scale-[1.01]">
+          <div class="flex items-center justify-between pb-2 mb-2.5 border-b border-white/[0.08]">
+            <span class="text-xs font-bold font-mono text-sky-400 flex items-center">
+              <i class="fa-solid fa-gem mr-1.5"></i> 3. 알라딘 럭셔리
+            </span>
+            <span class="px-1.5 py-0.5 text-[9px] font-mono font-bold bg-sky-500/20 text-sky-300 border border-sky-500/40 rounded">프리미엄 (Prestige)</span>
+          </div>
+          <div class="text-xs font-bold text-slate-100">BlackRock Aladdin 스타일</div>
+          <p class="text-[11px] text-slate-400 mt-1 leading-relaxed">
+            딥 사파이어 벨벳(#060913)과 앰비언트 메시 블러. 24px 백드롭 블러 글래스모피즘과 티타늄 발광 헤어라인으로 최고급 VIP 자산운용 룩 구현.
+          </p>
+          <div class="mt-3 pt-2.5 border-t border-white/[0.06] flex items-center justify-between">
+            <div class="flex items-center space-x-1.5">
+              <span class="w-3.5 h-3.5 rounded-full bg-[#060913] border border-sky-500/40" title="배경 #060913"></span>
+              <span class="w-3.5 h-3.5 rounded-full bg-[#0d1424] border border-sky-500/40" title="패널 #0d1424"></span>
+              <span class="w-3.5 h-3.5 rounded-full bg-[#34d399]" title="사파이어 민트 #34d399"></span>
+              <span class="w-3.5 h-3.5 rounded-full bg-[#38bdf8]" title="티타늄 사이언 #38bdf8"></span>
+            </div>
+            <span class="text-[10px] font-mono text-sky-400 font-semibold">24px 글래스모피즘</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
 
     <!-- ============================================================== -->
     <!-- TAB 1: 글로벌 멀티마켓 추세분석 (GLOBAL MACRO TRENDS) (GLOBAL MULTI-MARKET TREND)        -->
@@ -2046,7 +2203,7 @@
     // Embedded Initial Dataset (Auto-synced with status.json)
     const INITIAL_DATA = {
   "summary": {
-    "updated_at": "2026-11-06 16:29:58",
+    "updated_at": "2026-11-06 16:40:46",
     "total_projects": 8,
     "active_daemons": 0,
     "today_executed": 8,
@@ -3323,11 +3480,11 @@
       "signal_date": "2026-11-05",
       "entry_price": 183900.0,
       "entry_date": "2026-11-05",
-      "current_price": 187600.0,
+      "current_price": 187300.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": 2.01,
+      "return_pct": 1.85,
       "target_price": 202000.0,
       "stop_loss_price": 171000.0,
       "notes": "[정배열 2차검증 100점] 20일 이평선(177,075원) 대량거래(236%) 돌파 안착"
@@ -3463,11 +3620,11 @@
       "signal_date": "2026-11-03",
       "entry_price": 61600.0,
       "entry_date": "2026-11-03",
-      "current_price": 59700.0,
+      "current_price": 59800.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": -3.08,
+      "return_pct": -2.92,
       "target_price": 67800.0,
       "stop_loss_price": 57600.0,
       "notes": "[대형주] 친환경 플랜트 대형 EPC 글로벌 수주 랠리 52주 신고가 VCP 돌파"
@@ -3483,11 +3640,11 @@
       "signal_date": "2026-11-05",
       "entry_price": 215000.0,
       "entry_date": "2026-11-05",
-      "current_price": 208000.0,
+      "current_price": 208500.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": -3.26,
+      "return_pct": -3.02,
       "target_price": 236500.0,
       "stop_loss_price": 199900.0,
       "notes": "[정배열 2차검증 120점] 5일/20일선 정배열 우상향 및 거래량 367% 폭증 수급 유입"
@@ -3523,11 +3680,11 @@
       "signal_date": "2026-11-06",
       "entry_price": 4495.0,
       "entry_date": "2026-11-06",
-      "current_price": 4300.0,
+      "current_price": 4290.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": -4.34,
+      "return_pct": -4.56,
       "target_price": 4944.0,
       "stop_loss_price": 4180.0,
       "notes": "[중소형주 엄선]  | 전략: "
@@ -3876,10 +4033,10 @@
     },
     "stock-chart-alignment": {
       "date": "2026-11-06",
-      "daily_return_pct": -0.62,
-      "cumulative_return_pct": -9.06,
+      "daily_return_pct": -0.58,
+      "cumulative_return_pct": -9.04,
       "realized_pnl_pct": -17.5,
-      "unrealized_pnl_pct": -0.62,
+      "unrealized_pnl_pct": -0.58,
       "holding_count": 2,
       "closed_count": 2,
       "win_rate": 25.0
@@ -3896,10 +4053,10 @@
     },
     "stock-sepa-pivot": {
       "date": "2026-11-06",
-      "daily_return_pct": -1.46,
-      "cumulative_return_pct": -1.46,
+      "daily_return_pct": -1.38,
+      "cumulative_return_pct": -1.38,
       "realized_pnl_pct": 0.0,
-      "unrealized_pnl_pct": -1.46,
+      "unrealized_pnl_pct": -1.38,
       "holding_count": 2,
       "closed_count": 0,
       "win_rate": 50.0
@@ -3916,10 +4073,10 @@
     },
     "stock-supervisor": {
       "date": "2026-11-06",
-      "daily_return_pct": -0.66,
-      "cumulative_return_pct": -3.94,
+      "daily_return_pct": -0.68,
+      "cumulative_return_pct": -3.95,
       "realized_pnl_pct": -6.86,
-      "unrealized_pnl_pct": -0.66,
+      "unrealized_pnl_pct": -0.68,
       "holding_count": 8,
       "closed_count": 9,
       "win_rate": 23.5
@@ -6045,6 +6202,66 @@
     let currentRotFilter = 'ALL';
     let currentLiqFilter = 'ALL';
     let liquidityCharts = {};
+
+    // ==============================================================
+    // 3-THEME QUANT DESIGN SYSTEM ENGINE
+    // ==============================================================
+    let currentGlobalTheme = 'stealth';
+    function setGlobalTheme(theme) {
+      currentGlobalTheme = theme;
+      document.documentElement.setAttribute('data-theme', theme);
+      try {
+        localStorage.setItem('desk_global_theme', theme);
+      } catch (e) {}
+
+      // Update Header buttons
+      const btnStealth = document.getElementById('themeBtn-stealth');
+      const btnCitadel = document.getElementById('themeBtn-citadel');
+      const btnAladdin = document.getElementById('themeBtn-aladdin');
+      const inactiveBtnCls = "px-2 py-0.5 rounded font-semibold text-slate-400 hover:text-white transition-all cursor-pointer";
+
+      if (btnStealth) btnStealth.className = inactiveBtnCls;
+      if (btnCitadel) btnCitadel.className = inactiveBtnCls;
+      if (btnAladdin) btnAladdin.className = inactiveBtnCls;
+
+      if (theme === 'stealth') {
+        if (btnStealth) btnStealth.className = "px-2 py-0.5 rounded font-semibold bg-indigo-600 text-white transition-all cursor-pointer shadow-sm";
+      } else if (theme === 'citadel') {
+        if (btnCitadel) btnCitadel.className = "px-2 py-0.5 rounded font-semibold bg-amber-600 text-white transition-all cursor-pointer shadow-sm";
+      } else if (theme === 'aladdin') {
+        if (btnAladdin) btnAladdin.className = "px-2 py-0.5 rounded font-semibold bg-sky-600 text-white transition-all cursor-pointer shadow-sm";
+      }
+
+      // Update Showcase cards active borders
+      const cardStealth = document.getElementById('themeCard-stealth');
+      const cardCitadel = document.getElementById('themeCard-citadel');
+      const cardAladdin = document.getElementById('themeCard-aladdin');
+      const label = document.getElementById('currentActiveThemeLabel');
+
+      if (cardStealth) cardStealth.className = "rounded-lg p-4 cursor-pointer transition-all duration-200 bg-[#0f1117] relative hover:scale-[1.01] " + (theme === 'stealth' ? 'border-2 border-indigo-500 shadow-lg shadow-indigo-500/10' : 'border border-slate-700/80');
+      if (cardCitadel) cardCitadel.className = "rounded-lg p-4 cursor-pointer transition-all duration-200 bg-[#121316] relative hover:scale-[1.01] " + (theme === 'citadel' ? 'border-2 border-amber-500 shadow-lg shadow-amber-500/10' : 'border border-slate-700/80');
+      if (cardAladdin) cardAladdin.className = "rounded-lg p-4 cursor-pointer transition-all duration-200 bg-[#0d1424] relative hover:scale-[1.01] " + (theme === 'aladdin' ? 'border-2 border-sky-500 shadow-lg shadow-sky-500/10' : 'border border-slate-700/80');
+
+      if (label) {
+        if (theme === 'stealth') {
+          label.innerText = '1. 스텔스 퀀트 벤토 (Linear x Bloomberg)';
+          label.className = 'px-2.5 py-1 rounded bg-indigo-500/20 text-indigo-300 border border-indigo-500/40 font-bold';
+        } else if (theme === 'citadel') {
+          label.innerText = '2. 시타델 터미널 (Citadel x Two Sigma)';
+          label.className = 'px-2.5 py-1 rounded bg-amber-500/20 text-amber-300 border border-amber-500/40 font-bold';
+        } else if (theme === 'aladdin') {
+          label.innerText = '3. 알라딘 럭셔리 (BlackRock Aladdin)';
+          label.className = 'px-2.5 py-1 rounded bg-sky-500/20 text-sky-300 border border-sky-500/40 font-bold';
+        }
+      }
+    }
+
+    try {
+      const savedT = localStorage.getItem('desk_global_theme') || 'stealth';
+      setGlobalTheme(savedT);
+    } catch (e) {
+      setGlobalTheme('stealth');
+    }
 
     function switchTab(tab) {
       currentTab = tab;
