@@ -21,18 +21,19 @@ from supervisor.us_liquidity_engine import run_monthly_pipeline
 
 def main():
     parser = argparse.ArgumentParser(description="Monthly US Liquidity Command Center")
-    parser.add_argument("--send-telegram", action="store_true", help="텔레그램 발송 여부")
-    parser.add_argument("--dry-run", action="store_true", help="출력만 수행하고 전송하지 않음")
+    parser.add_argument("--send-telegram", action="store_true", help="텔레그램 발송 여부 (비활성화)")
+    parser.add_argument("--dry-run", action="store_true", help="출력만 수행하고 저장하지 않음")
     args = parser.parse_args()
 
-    # 매월 1일 자동 스케줄 실행 시 기본적으로 텔레그램 발송 플래그 활성화
-    send_tg = args.send_telegram and not args.dry_run
+    # 텔레그램 알림은 전면 비활성화 (Stock Trading Desk 웹 대시보드 전용)
+    send_tg = False
+    if args.send_telegram:
+        print("ℹ️ 텔레그램 알림이 삭제(비활성화)되었습니다. Stock Trading Desk 대시보드에만 자동 반영됩니다.")
 
     result = run_monthly_pipeline(send_telegram=send_tg, dry_run=args.dry_run)
     if result.get("success"):
         print(f"\n✅ 리포트 생성 및 저장 완료: {result.get('report_path')}")
-        if result.get("telegram_sent"):
-            print("✅ 텔레그램 발송 완료!")
+        print("✅ Stock Trading Desk (index.html) 최신화 동기화 완료 (텔레그램 알림 전송 안 함)")
     else:
         print("❌ 리포트 생성 중 오류 발생")
         sys.exit(1)

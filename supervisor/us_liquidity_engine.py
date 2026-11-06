@@ -1176,10 +1176,10 @@ def run_monthly_pipeline(send_telegram: bool = False, dry_run: bool = False) -> 
     generate_master_poster(eval_data, poster_file)
     print(f"   ✅ 마스터 포스터 생성 완료: {poster_file}")
 
-    # 5. 텔레그램 발송 (단 1장의 고해상도 인포그래픽으로 전송)
+    # 5. 텔레그램 발송 (사용자 요청으로 비활성화됨)
     tg_success = False
     if send_telegram and not dry_run:
-        print("📲 [5/5] 텔레그램 채널로 단일 마스터 포스터(1장) 전송 중...")
+        print("📲 [5/5] 텔레그램 채널 전송 중...")
         poster_caption = (
             "🏛️ <b>US LIQUIDITY COMMAND CENTER (월간 종합 인포그래픽)</b>\n"
             "━━━━━━━━━━━━━━━━━━━━━━━━\n"
@@ -1197,7 +1197,7 @@ def run_monthly_pipeline(send_telegram: bool = False, dry_run: bool = False) -> 
             print("   ⚠️ 사진 발송 실패로 텍스트 메시지 폴백 발송 시도...")
             tg_success = send_message(tg_html)
     else:
-        print("ℹ️ [5/5] 텔레그램 발송 생략 (send_telegram 옵션 미지정 또는 dry-run)")
+        print("ℹ️ [5/5] 텔레그램 알림 비활성화 (Stock Trading Desk 대시보드에만 자동 반영)")
 
     return {
         "success": True,

@@ -1,6 +1,6 @@
 {
   "summary": {
-    "updated_at": "2026-11-06 13:51:56",
+    "updated_at": "2026-11-06 14:08:25",
     "total_projects": 8,
     "active_daemons": 0,
     "today_executed": 8,
@@ -11,13 +11,13 @@
     },
     "portfolio": {
       "date": "2026-11-06",
-      "daily_return_pct": 0.1,
-      "cumulative_return_pct": -4.18,
+      "daily_return_pct": 0.0,
+      "cumulative_return_pct": -4.22,
       "realized_pnl_pct": -7.31,
-      "unrealized_pnl_pct": 0.1,
+      "unrealized_pnl_pct": 0.0,
       "holding_count": 11,
       "closed_count": 15,
-      "win_rate": 34.6
+      "win_rate": 30.8
     }
   },
   "projects": [
@@ -1147,11 +1147,11 @@
       "signal_date": "2026-11-05",
       "entry_price": 183900.0,
       "entry_date": "2026-11-05",
-      "current_price": 192400.0,
+      "current_price": 192800.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": 4.62,
+      "return_pct": 4.84,
       "target_price": 202000.0,
       "stop_loss_price": 171000.0,
       "notes": "[정배열 2차검증 100점] 20일 이평선(177,075원) 대량거래(236%) 돌파 안착"
@@ -1177,26 +1177,6 @@
       "notes": "[대형주 엄선] [대형주] 경기방어적 멤버십 기반 안정적 이익 성장 및 52주 신고가 우상향 | [대형주] 글로벌 멤버십 갱신율 93% 초우량 펀더멘털 | 전략: 스톡 스나이퍼 (US 대형주), SEPA x 피봇 (US 대형주)"
     },
     {
-      "id": 318,
-      "project_id": "stock-sepa-pivot",
-      "project_name": "SEPA x 피봇 돌파",
-      "ticker": "028050",
-      "name": "삼성E&A",
-      "market": "KRX",
-      "signal_type": "BUY [지정가 매수]",
-      "signal_date": "2026-11-03",
-      "entry_price": 61600.0,
-      "entry_date": "2026-11-03",
-      "current_price": 62000.0,
-      "exit_price": null,
-      "exit_date": null,
-      "status": "HOLDING",
-      "return_pct": 0.65,
-      "target_price": 67800.0,
-      "stop_loss_price": 57600.0,
-      "notes": "[대형주] 친환경 플랜트 대형 EPC 글로벌 수주 랠리 52주 신고가 VCP 돌파"
-    },
-    {
       "id": 321,
       "project_id": "stock-sepa-pivot",
       "project_name": "SEPA x 피봇 돌파",
@@ -1207,11 +1187,11 @@
       "signal_date": "2026-11-03",
       "entry_price": 175000.0,
       "entry_date": "2026-11-03",
-      "current_price": 176000.0,
+      "current_price": 176600.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": 0.57,
+      "return_pct": 0.91,
       "target_price": 195000.0,
       "stop_loss_price": 164000.0,
       "notes": "[중소형주] 과천 AI IDC 본격 가동 및 52주 신고가 하이타이트 플래그 돌파"
@@ -1235,6 +1215,26 @@
       "target_price": 75.0,
       "stop_loss_price": 57.84,
       "notes": "[중소형주 엄선] 특수 보험 분야에서의 뛰어난 언더라이팅 수익성과 높은 ROE 기록. 지수 조정기에도 52주 고점 부근에서 가격 방어력이 탁월하며 헤지펀드 기관 수급 지속 유입. | 전략: HTP 모멘텀 (미국 중소형)"
+    },
+    {
+      "id": 318,
+      "project_id": "stock-sepa-pivot",
+      "project_name": "SEPA x 피봇 돌파",
+      "ticker": "028050",
+      "name": "삼성E&A",
+      "market": "KRX",
+      "signal_type": "BUY [지정가 매수]",
+      "signal_date": "2026-11-03",
+      "entry_price": 61600.0,
+      "entry_date": "2026-11-03",
+      "current_price": 61600.0,
+      "exit_price": null,
+      "exit_date": null,
+      "status": "HOLDING",
+      "return_pct": 0.0,
+      "target_price": 67800.0,
+      "stop_loss_price": 57600.0,
+      "notes": "[대형주] 친환경 플랜트 대형 EPC 글로벌 수주 랠리 52주 신고가 VCP 돌파"
     },
     {
       "id": 347,
@@ -1317,26 +1317,6 @@
       "notes": "[정배열 2차검증 120점] 5일/20일선 정배열 우상향 및 거래량 367% 폭증 수급 유입"
     },
     {
-      "id": 342,
-      "project_id": "stock-chart-alignment",
-      "project_name": "이평 정배열 돌파 (단기 5/20선 골든스택 & 2차 차트검증)",
-      "ticker": "282720",
-      "name": "금양그린파워",
-      "market": "KRX",
-      "signal_type": "BUY",
-      "signal_date": "2026-11-05",
-      "entry_price": 8660.0,
-      "entry_date": "2026-11-05",
-      "current_price": 8380.0,
-      "exit_price": null,
-      "exit_date": null,
-      "status": "HOLDING",
-      "return_pct": -3.23,
-      "target_price": 9520.0,
-      "stop_loss_price": 8050.0,
-      "notes": "[정배열 2차검증 140점/전체 1위] 5일/20일 정배열 우상향 및 거래량 6,960% 폭증 골든크로스"
-    },
-    {
       "id": 330,
       "project_id": "stock-supervisor",
       "project_name": "스톡 스나이퍼 (US 대형주), HTP 모멘텀 (미국 대형), SEPA x 피봇 (US 대형주)",
@@ -1355,6 +1335,26 @@
       "target_price": 1507.97,
       "stop_loss_price": 1313.39,
       "notes": "[대형주 엄선] [대형주] GLP-1 비만치료제 젭바운드/마운자로 글로벌 시장 독점적 랠리 | 마운자로/젭바운드 수요 폭발로 펀더멘털 성장성이 가속화됨. 추세적 우상향 곡선을 그리며 52주 고점 형성 후 이탈이 적어 강한 HTP 모멘텀 점수를 기록. | 전략: 스톡 스나이퍼 (US 대형주), HTP 모멘텀 (미국 대형), SEPA x 피봇 (US 대형주)"
+    },
+    {
+      "id": 342,
+      "project_id": "stock-chart-alignment",
+      "project_name": "이평 정배열 돌파 (단기 5/20선 골든스택 & 2차 차트검증)",
+      "ticker": "282720",
+      "name": "금양그린파워",
+      "market": "KRX",
+      "signal_type": "BUY",
+      "signal_date": "2026-11-05",
+      "entry_price": 8660.0,
+      "entry_date": "2026-11-05",
+      "current_price": 8300.0,
+      "exit_price": null,
+      "exit_date": null,
+      "status": "HOLDING",
+      "return_pct": -4.16,
+      "target_price": 9520.0,
+      "stop_loss_price": 8050.0,
+      "notes": "[정배열 2차검증 140점/전체 1위] 5일/20일 정배열 우상향 및 거래량 6,960% 폭증 골든크로스"
     },
     {
       "id": 339,
@@ -1660,13 +1660,13 @@
   "performance": {
     "PORTFOLIO_TOTAL": {
       "date": "2026-11-06",
-      "daily_return_pct": 0.1,
-      "cumulative_return_pct": -4.18,
+      "daily_return_pct": 0.0,
+      "cumulative_return_pct": -4.22,
       "realized_pnl_pct": -7.31,
-      "unrealized_pnl_pct": 0.1,
+      "unrealized_pnl_pct": 0.0,
       "holding_count": 11,
       "closed_count": 15,
-      "win_rate": 34.6
+      "win_rate": 30.8
     },
     "signal_forge_alert": {
       "date": "2026-11-03",
@@ -1680,10 +1680,10 @@
     },
     "stock-chart-alignment": {
       "date": "2026-11-06",
-      "daily_return_pct": 0.08,
-      "cumulative_return_pct": -6.9,
+      "daily_return_pct": -0.16,
+      "cumulative_return_pct": -7.08,
       "realized_pnl_pct": -27.84,
-      "unrealized_pnl_pct": 0.08,
+      "unrealized_pnl_pct": -0.16,
       "holding_count": 3,
       "closed_count": 1,
       "win_rate": 25.0
@@ -1700,13 +1700,13 @@
     },
     "stock-sepa-pivot": {
       "date": "2026-11-06",
-      "daily_return_pct": 0.61,
-      "cumulative_return_pct": 0.61,
+      "daily_return_pct": 0.46,
+      "cumulative_return_pct": 0.46,
       "realized_pnl_pct": 0.0,
-      "unrealized_pnl_pct": 0.61,
+      "unrealized_pnl_pct": 0.46,
       "holding_count": 2,
       "closed_count": 0,
-      "win_rate": 100.0
+      "win_rate": 50.0
     },
     "stock-sniper": {
       "date": "2026-11-06",

@@ -9,7 +9,6 @@
     <array>
         <string>/Users/tothemoon/stock-supervisor/.venv/bin/python3</string>
         <string>/Users/tothemoon/stock-supervisor/scripts/monthly_liquidity_center.py</string>
-        <string>--send-telegram</string>
     </array>
 
     <key>WorkingDirectory</key>

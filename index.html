@@ -10,6 +10,10 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts: Editorial Serif, Luxury Display, Precision Mono & Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -17,57 +21,96 @@
         extend: {
           colors: {
             desk: {
-              950: '#070a0f',
-              900: '#0c1017',
-              850: '#111722',
-              800: '#161e2c',
-              700: '#212c40',
-              600: '#32415d',
-              border: '#1b2434',
-              hover: '#192231'
+              950: '#06080d',
+              900: '#0b1018',
+              850: '#101726',
+              800: '#151e30',
+              700: '#1f2b42',
+              600: '#2f4060',
+              border: '#1a2436',
+              hover: '#182235'
             },
             krx: {
-              up: '#f43f5e',     // 국내장 상승 빨강
-              down: '#3b82f6',   // 국내장 하락 파랑
+              up: '#f43f5e',     // 상승 빨강
+              down: '#38bdf8',   // 하락 스카이블루
               neutral: '#94a3b8'
+            },
+            gold: {
+              300: '#fde047',
+              400: '#facc15',
+              500: '#eab308',
+              600: '#ca8a04'
             }
           },
           fontFamily: {
-            mono: ['"JetBrains Mono"', 'Menlo', 'Consolas', 'monospace'],
-            sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif']
+            display: ['"Cinzel"', 'serif'],
+            serif: ['"Newsreader"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'Menlo', 'Consolas', 'monospace']
           }
         }
       }
     }
   </script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
-    
     body {
-      background-color: #070a0f;
+      background-color: #06080d;
       color: #e2e8f0;
       font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+      background-image: 
+        radial-gradient(circle at 15% 10%, rgba(56, 189, 248, 0.03) 0%, transparent 40%),
+        radial-gradient(circle at 85% 60%, rgba(234, 179, 8, 0.02) 0%, transparent 50%),
+        radial-gradient(circle at 50% 90%, rgba(16, 185, 129, 0.02) 0%, transparent 45%);
     }
 
-    /* Professional FinTech Table & Card borders */
+    /* Luxury Magazine Glassmorphism Card System */
+    .glass-card {
+      background: rgba(11, 16, 24, 0.78);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+    .glass-card-floating {
+      background: linear-gradient(135deg, rgba(16, 23, 38, 0.82), rgba(9, 13, 22, 0.9));
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      box-shadow: 0 24px 48px -15px rgba(0, 0, 0, 0.85), 0 0 25px -5px rgba(56, 189, 248, 0.12);
+    }
+    .glass-card-gold {
+      background: linear-gradient(135deg, rgba(24, 20, 14, 0.85), rgba(12, 10, 8, 0.92));
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(234, 179, 8, 0.28);
+      box-shadow: 0 24px 48px -15px rgba(0, 0, 0, 0.85), 0 0 25px -4px rgba(234, 179, 8, 0.15);
+    }
+
+    /* Financial Times Editorial Double Hairline */
+    .editorial-rule-double {
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      height: 4px;
+      margin: 10px 0;
+    }
+
+    /* Table Styling & Sticky Left Column Fix */
     .desk-card {
-      background-color: #0c1017;
-      border: 1px solid #1b2434;
+      background-color: #0b1018;
+      border: 1px solid #1a2436;
     }
 
     .desk-table th {
-      background-color: #0f141d;
-      border-bottom: 1px solid #1b2434;
+      background-color: #0e1522;
+      border-bottom: 1px solid #1a2436;
       font-size: 0.72rem;
       letter-spacing: 0.05em;
       text-transform: uppercase;
       color: #8292ab;
-      white-space: nowrap;
+      white-space: nowrap !important;
     }
 
     .desk-table td {
       border-bottom: 1px solid #141b27;
-      white-space: nowrap;
+      white-space: nowrap !important;
     }
 
     .desk-table tr:hover td {
@@ -78,19 +121,95 @@
     .desk-table .sticky-col {
       position: sticky;
       left: 0;
-      background-color: #0b0e14;
-      z-index: 20;
-      border-right: 1px solid #1b2434;
-      box-shadow: 4px 0 10px -2px rgba(0, 0, 0, 0.6);
+      background-color: #0b1018 !important;
+      z-index: 25;
+      border-right: 1px solid #1f2b3e;
+      box-shadow: 4px 0 12px -2px rgba(0, 0, 0, 0.8);
+      min-width: 140px;
     }
 
     .desk-table th.sticky-col {
-      background-color: #0f141d;
+      background-color: #0e1522 !important;
       z-index: 30;
     }
 
     .desk-table tr:hover td.sticky-col {
-      background-color: #121824;
+      background-color: #121824 !important;
+    }
+
+    /* Neon Wireframe Animations */
+    @keyframes flowNeon {
+      to { stroke-dashoffset: -48; }
+    }
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.85; filter: drop-shadow(0 0 6px currentColor); }
+      50% { opacity: 1; filter: drop-shadow(0 0 14px currentColor); }
+    }
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+
+    .neon-wire-cyan {
+      stroke-dasharray: 8 6;
+      animation: flowNeon 2.4s linear infinite;
+      filter: drop-shadow(0 0 4px rgba(6, 182, 212, 0.85));
+    }
+    .neon-wire-gold {
+      stroke-dasharray: 10 6;
+      animation: flowNeon 3s linear infinite;
+      filter: drop-shadow(0 0 5px rgba(234, 179, 8, 0.9));
+    }
+    .neon-wire-rose {
+      stroke-dasharray: 8 6;
+      animation: flowNeon 2s linear infinite;
+      filter: drop-shadow(0 0 4px rgba(244, 63, 94, 0.85));
+    }
+    .neon-wire-emerald {
+      stroke-dasharray: 8 6;
+      animation: flowNeon 2.2s linear infinite;
+      filter: drop-shadow(0 0 4px rgba(16, 185, 129, 0.85));
+    }
+
+    /* Hexagon Honeycomb Matrix Styles */
+    .hex-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      align-items: center;
+    }
+    .hex-cell {
+      position: relative;
+      width: 128px;
+      height: 142px;
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 10px;
+      cursor: pointer;
+    }
+    .hex-cell:hover {
+      transform: translateY(-5px) scale(1.05);
+      z-index: 30;
+    }
+    .hex-inflow {
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.22), rgba(16, 185, 129, 0.16));
+      border: 1px solid rgba(6, 182, 212, 0.65);
+      box-shadow: 0 0 16px -2px rgba(6, 182, 212, 0.4);
+    }
+    .hex-outflow {
+      background: linear-gradient(135deg, rgba(244, 63, 94, 0.22), rgba(225, 29, 72, 0.14));
+      border: 1px solid rgba(244, 63, 94, 0.6);
+      box-shadow: 0 0 16px -2px rgba(244, 63, 94, 0.35);
+    }
+    .hex-neutral {
+      background: linear-gradient(135deg, rgba(26, 36, 54, 0.5), rgba(15, 23, 36, 0.7));
+      border: 1px solid rgba(100, 116, 139, 0.35);
     }
 
     /* Minimal Custom Scrollbar */
@@ -99,14 +218,14 @@
       height: 5px;
     }
     ::-webkit-scrollbar-track {
-      background: #070a0f;
+      background: #06080d;
     }
     ::-webkit-scrollbar-thumb {
-      background: #212c40;
+      background: #1f2b42;
       border-radius: 2px;
     }
     ::-webkit-scrollbar-thumb:hover {
-      background: #32415d;
+      background: #2f4060;
     }
   </style>
 </head>
@@ -159,8 +278,66 @@
     </div>
   </header>
 
+  <!-- Luxury Editorial Masthead & Macro Regime Header -->
+  <section class="max-w-[1560px] mx-auto px-4 sm:px-6 pt-5 pb-3">
+    <div class="flex flex-col md:flex-row md:items-center justify-between text-[11px] font-mono text-slate-400 pb-2 border-b border-desk-border/60 gap-2">
+      <div class="flex items-center space-x-2 flex-wrap">
+        <span class="px-2 py-0.5 rounded bg-desk-850 text-slate-200 border border-desk-border font-bold">VOL. IV · NO. 11</span>
+        <span class="text-slate-500">|</span>
+        <span class="tracking-wider uppercase text-slate-300">NOVEMBER 2026 EDITION</span>
+        <span class="text-slate-500">|</span>
+        <span class="text-amber-400 font-semibold flex items-center"><i class="fa-solid fa-lock mr-1 text-[10px]"></i>CONFIDENTIAL QUANT DESK</span>
+      </div>
+      <div class="flex items-center space-x-3 text-slate-400 text-[10px]">
+        <span>SURVEILLANCE: 1-MIN LIVE</span>
+        <span>•</span>
+        <span class="text-emerald-400 font-semibold">1:1 RISK PARITY ENFORCED</span>
+      </div>
+    </div>
+
+    <div class="editorial-rule-double"></div>
+
+    <div class="py-4">
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-5">
+        <div class="max-w-4xl">
+          <h1 class="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-100 tracking-tight leading-tight">
+            THE GREAT CAPITAL REALLOCATION & LIQUIDITY REGIME
+          </h1>
+          <p class="font-serif italic text-base sm:text-lg text-slate-300 mt-2 leading-relaxed">
+            "In an epoch shaped by reverse repo (ON RRP) depletion, relentless sovereign debt issuance, and gold scaling historical zeniths above $4,134/oz, our desk enforces a strict 1:1 risk-parity architecture across Korean cyclicals and US small-mid alphas."
+          </p>
+        </div>
+
+        <!-- Asymmetric Floating Regime Indicators -->
+        <div class="flex flex-wrap lg:flex-col gap-2 shrink-0">
+          <div class="px-3 py-1.5 rounded-lg bg-emerald-950/70 border border-emerald-500/40 text-emerald-300 flex items-center space-x-2.5 text-xs font-mono shadow-sm">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            <div>
+              <div class="text-[9px] uppercase tracking-wider text-emerald-400 font-semibold">LIQUIDITY REGIME</div>
+              <div class="font-bold text-sm">STAGE 3 EXPANSION ($5.81T)</div>
+            </div>
+          </div>
+          <div class="px-3 py-1.5 rounded-lg bg-amber-950/70 border border-amber-500/40 text-amber-300 flex items-center space-x-2.5 text-xs font-mono shadow-sm">
+            <i class="fa-solid fa-coins text-amber-400 text-sm"></i>
+            <div>
+              <div class="text-[9px] uppercase tracking-wider text-amber-400 font-semibold">PHYSICAL HARD ASSET</div>
+              <div class="font-bold text-sm">GOLD ATH $4,134.50 (+2.45%)</div>
+            </div>
+          </div>
+          <div class="px-3 py-1.5 rounded-lg bg-cyan-950/70 border border-cyan-500/40 text-cyan-300 flex items-center space-x-2.5 text-xs font-mono shadow-sm">
+            <i class="fa-solid fa-scale-balanced text-cyan-400 text-sm"></i>
+            <div>
+              <div class="text-[9px] uppercase tracking-wider text-cyan-400 font-semibold">PORTFOLIO PARITY</div>
+              <div class="font-bold text-sm">50% KRX CYCLICAL : 50% US ALPHA</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Main Body Content -->
-  <main class="max-w-[1560px] mx-auto px-4 sm:px-6 py-5 flex-1 w-full space-y-5">
+  <main class="max-w-[1560px] mx-auto px-4 sm:px-6 py-2 flex-1 w-full space-y-6">
 
     <!-- ============================================================== -->
     <!-- TAB 1: 수익률 & 포트폴리오 관리 (PERFORMANCE & DB)              -->
@@ -244,6 +421,66 @@
         </div>
       </div>
 
+      <!-- ============================================================== -->
+      <!-- LUXURY EDITORIAL SPREAD: DIVERSIFICATION SPHERE & NEON SANKEY   -->
+      <!-- ============================================================== -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        
+        <!-- Left: Organic Bubble Cluster (Portfolio Diversification) -->
+        <div class="glass-card rounded-lg p-5 border border-desk-border relative overflow-hidden flex flex-col justify-between">
+          <div class="flex items-center justify-between pb-3 border-b border-desk-border/80">
+            <div>
+              <div class="text-[10px] font-mono uppercase tracking-wider text-cyan-400 font-semibold flex items-center">
+                <i class="fa-solid fa-circle-nodes mr-1.5 animate-pulse"></i> DIVERSIFICATION SPHERE CLUSTER
+              </div>
+              <h3 class="font-display text-base font-bold text-slate-100 tracking-wide mt-0.5">자산별 유기적 구형 버블 & 알파 집중도</h3>
+            </div>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-desk-850 text-slate-400 border border-desk-border">11개 보유 종목 시각화</span>
+          </div>
+          
+          <!-- SVG Bubble Cluster Canvas -->
+          <div class="relative w-full h-[320px] my-2 flex items-center justify-center" id="bubbleClusterContainer">
+            <svg id="bubbleClusterSvg" class="w-full h-full" viewBox="0 0 540 320"></svg>
+          </div>
+          
+          <!-- Bubble Inspector / Card on Hover -->
+          <div id="bubbleDetailCard" class="p-3 bg-desk-900/90 rounded border border-desk-border/80 text-xs font-mono flex items-center justify-between transition-all">
+            <div class="flex items-center space-x-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+              <span class="text-slate-300">버블에 마우스를 올리면 종목별 매매 전략과 팩터가 표시됩니다.</span>
+            </div>
+            <span class="text-[10px] text-cyan-400 font-semibold">1:1 리스크 패리티</span>
+          </div>
+        </div>
+
+        <!-- Right: Glowing Neon Wireframe Sankey Diagram -->
+        <div class="glass-card rounded-lg p-5 border border-desk-border relative overflow-hidden flex flex-col justify-between">
+          <div class="flex items-center justify-between pb-3 border-b border-desk-border/80">
+            <div>
+              <div class="text-[10px] font-mono uppercase tracking-wider text-amber-400 font-semibold flex items-center">
+                <i class="fa-solid fa-bolt mr-1.5 text-amber-400"></i> CAPITAL TRANSMISSION VECTOR
+              </div>
+              <h3 class="font-display text-base font-bold text-slate-100 tracking-wide mt-0.5">자금 이동 벡터 & 발광 네온 생키 다이어그램</h3>
+            </div>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-950/60 text-amber-300 border border-amber-800/80">실시간 유동성 전이</span>
+          </div>
+          
+          <!-- SVG Neon Wireframe Sankey Canvas -->
+          <div class="relative w-full h-[320px] my-2" id="neonSankeyContainer">
+            <svg id="neonSankeySvg" class="w-full h-full" viewBox="0 0 540 320"></svg>
+          </div>
+          
+          <!-- Sankey Footnote -->
+          <div class="p-3 bg-desk-900/90 rounded border border-desk-border/80 text-xs font-mono flex items-center justify-between text-slate-400">
+            <div class="flex items-center space-x-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+              <span>역레포 고갈 자금($2.4T ➔ $0.2B)이 미 단기 국채와 금($4,134 ATH)으로 집결 중</span>
+            </div>
+            <span class="text-amber-400 font-semibold text-[10px]">GOLD ALPHA +2.45%</span>
+          </div>
+        </div>
+      </div>
+
       <!-- Strategy Performance Summary Matrix -->
       <div class="desk-card rounded p-4">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 mb-3 border-b border-desk-border">
@@ -279,17 +516,37 @@
             </button>
           </div>
 
-          <!-- Filters -->
-          <div class="flex items-center space-x-2 text-xs font-mono">
-            <button onclick="setTradeFilter('ALL')" id="trade-btn-ALL" class="trade-filter-btn px-2.5 py-1 rounded bg-rose-600 text-white font-semibold">전체</button>
-            <button onclick="setTradeFilter('HOLDING')" id="trade-btn-HOLDING" class="trade-filter-btn px-2.5 py-1 rounded bg-desk-800 text-slate-400 hover:text-white border border-desk-border">보유중</button>
-            <button onclick="setTradeFilter('CLOSED')" id="trade-btn-CLOSED" class="trade-filter-btn px-2.5 py-1 rounded bg-desk-800 text-slate-400 hover:text-white border border-desk-border">매도완료</button>
-            <button onclick="setTradeFilter('KRX')" id="trade-btn-KRX" class="trade-filter-btn px-2.5 py-1 rounded bg-desk-800 text-slate-400 hover:text-white border border-desk-border">KRX</button>
-            <button onclick="setTradeFilter('US')" id="trade-btn-US" class="trade-filter-btn px-2.5 py-1 rounded bg-desk-800 text-slate-400 hover:text-white border border-desk-border">US</button>
+          <!-- Table View Mode & Market Filters -->
+          <div class="flex items-center space-x-2 flex-wrap gap-y-2 text-xs font-mono">
+            <!-- View Mode Switcher -->
+            <div class="flex items-center bg-desk-850 p-0.5 rounded border border-desk-border mr-2">
+              <button onclick="setTradesViewMode('table')" id="viewModeBtn-table" class="px-2 py-0.5 rounded text-[10px] font-semibold bg-desk-700 text-white transition-colors" title="테이블 뷰"><i class="fa-solid fa-table mr-1"></i>테이블</button>
+              <button onclick="setTradesViewMode('cards')" id="viewModeBtn-cards" class="px-2 py-0.5 rounded text-[10px] font-semibold text-slate-400 hover:text-white transition-colors" title="모바일 카드 뷰"><i class="fa-solid fa-grip-vertical mr-1"></i>카드</button>
+            </div>
+
+            <!-- Filters -->
+            <div class="flex items-center space-x-1">
+              <button onclick="setTradeFilter('ALL')" id="trade-btn-ALL" class="trade-filter-btn px-2 py-1 rounded bg-rose-600 text-white font-semibold">전체</button>
+              <button onclick="setTradeFilter('HOLDING')" id="trade-btn-HOLDING" class="trade-filter-btn px-2 py-1 rounded bg-desk-800 text-slate-400 hover:text-white border border-desk-border">보유중</button>
+              <button onclick="setTradeFilter('CLOSED')" id="trade-btn-CLOSED" class="trade-filter-btn px-2 py-1 rounded bg-desk-800 text-slate-400 hover:text-white border border-desk-border">매도완료</button>
+              <button onclick="setTradeFilter('KRX')" id="trade-btn-KRX" class="trade-filter-btn px-2 py-1 rounded bg-desk-800 text-slate-400 hover:text-white border border-desk-border">KRX</button>
+              <button onclick="setTradeFilter('US')" id="trade-btn-US" class="trade-filter-btn px-2 py-1 rounded bg-desk-800 text-slate-400 hover:text-white border border-desk-border">US</button>
+            </div>
           </div>
         </div>
 
-        <!-- Trades Table Content -->
+        <!-- Mobile Scroll Affordance Notice -->
+        <div class="sm:hidden px-3.5 py-1.5 bg-desk-950 border-b border-desk-border flex items-center justify-between text-[10px] font-mono">
+          <span class="text-cyan-400 flex items-center"><i class="fa-solid fa-arrows-left-right mr-1.5 animate-pulse"></i>좌우 스크롤로 상세지표 확인</span>
+          <span class="text-slate-400 font-semibold">종목명 좌측 고정됨</span>
+        </div>
+
+        <!-- Mobile Cards Container (Shown when mode is 'cards') -->
+        <div id="tradesMobileCardsContainer" class="hidden p-3 grid grid-cols-1 sm:grid-cols-2 gap-3 bg-desk-950">
+          <!-- Injected via JS -->
+        </div>
+
+        <!-- Trades Table Content (Shown when mode is 'table') -->
         <div class="overflow-x-auto relative rounded border border-desk-border">
           <table class="w-full text-left text-xs desk-table font-mono whitespace-nowrap min-w-[960px]">
             <thead>
@@ -777,6 +1034,40 @@
               달러(DXY 101.55) 약세에도 원/달러 <span class="text-amber-400 font-bold">1,356.50원</span> 폭등. 나스닥 24,650선 회복 전까지 <span class="text-rose-400 font-bold">기술주 저가 매수 엄격 금지</span>.
             </div>
           </div>
+        </div>
+      </div>
+
+      <!-- ============================================================== -->
+      <!-- INTERACTIVE CHRONOLOGICAL MACRO TIMELINE & INFOGRAPHIC          -->
+      <!-- ============================================================== -->
+      <div class="glass-card rounded-lg p-5 border border-sky-500/30 relative overflow-hidden">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 mb-4 border-b border-desk-border">
+          <div>
+            <div class="text-[10px] font-mono uppercase tracking-wider text-sky-400 font-semibold flex items-center">
+              <i class="fa-solid fa-timeline mr-1.5"></i> CHRONOLOGICAL MACRO TIMELINE & SYSTEMIC INFOGRAPHIC
+            </div>
+            <h3 class="font-display text-base font-bold text-slate-100 tracking-wide mt-0.5">
+              역사적 경제 이벤트 축 & 자본 흐름 스토리텔링 인포그래픽
+            </h3>
+          </div>
+          <div class="text-[11px] font-mono text-slate-400">
+            마일스톤 클릭 시 해당 시점의 자본 이동 벡터 및 거시 충격 분석 전개
+          </div>
+        </div>
+
+        <!-- Horizontal Interactive Timeline Bar -->
+        <div class="relative py-4 px-2 overflow-x-auto">
+          <div class="min-w-[680px] relative">
+            <div class="absolute top-1/2 left-6 right-6 h-0.5 bg-gradient-to-r from-cyan-500/40 via-sky-500 to-amber-500/60 -translate-y-1/2"></div>
+            <div id="macroTimelineNodes" class="relative flex justify-between items-center z-10">
+              <!-- Dynamic 5 Epoch Nodes Rendered via JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamic Narrative Card -->
+        <div id="macroTimelineNarrative" class="mt-4 p-4 rounded-lg bg-desk-900/90 border border-desk-border font-mono text-xs">
+          <!-- Injected via JS -->
         </div>
       </div>
 
@@ -1464,6 +1755,36 @@
         </div>
       </div>
 
+      <!-- ============================================================== -->
+      <!-- 11 GICS SECTOR HONEYCOMB ROTATION MATRIX                       -->
+      <!-- ============================================================== -->
+      <div class="glass-card rounded-lg p-5 border border-emerald-500/30 relative overflow-hidden">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 mb-4 border-b border-desk-border">
+          <div>
+            <div class="text-[10px] font-mono uppercase tracking-wider text-emerald-400 font-semibold flex items-center">
+              <i class="fa-solid fa-shapes mr-1.5"></i> 11 GICS SECTOR HONEYCOMB ROTATION MATRIX
+            </div>
+            <h3 class="font-display text-base font-bold text-slate-100 tracking-wide mt-0.5">
+              11대 GICS 섹터 자금순환 모멘텀 & 헥사곤 그리드
+            </h3>
+          </div>
+          <div class="flex items-center space-x-3 text-[11px] font-mono text-slate-400">
+            <span class="flex items-center"><span class="w-2.5 h-2.5 rounded-full bg-cyan-400 mr-1.5"></span>자금 유입 주도 (AUM 매집)</span>
+            <span class="flex items-center"><span class="w-2.5 h-2.5 rounded-full bg-rose-500 mr-1.5"></span>차익 실현 유출 (Rotation Out)</span>
+          </div>
+        </div>
+
+        <!-- Honeycomb Layout -->
+        <div id="sectorHexContainer" class="hex-grid py-4">
+          <!-- Dynamic 11 Hexagons Rendered via JS -->
+        </div>
+
+        <div id="hexDetailBanner" class="p-3 bg-desk-900/80 rounded border border-desk-border text-xs font-mono flex items-center justify-between text-slate-400">
+          <span>💡 헥사곤 셀 클릭 시 하단 세부 테이블의 해당 섹터로 자동 포커스됩니다.</span>
+          <span id="hexActiveSector" class="text-emerald-400 font-bold">XLF (금융) 모멘텀 1위 (+4.15B)</span>
+        </div>
+      </div>
+
       <!-- Executive Analyst Verdict: 3 Key Questions -->
       <div class="desk-card rounded p-5 bg-gradient-to-r from-desk-900 via-desk-850 to-desk-900 border border-emerald-500/30 shadow-lg">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-desk-border">
@@ -1880,6 +2201,7 @@
       </div>
 
     </section>
+  </main>
 
   <!-- Footer -->
   <footer class="border-t border-desk-border bg-desk-950 py-4 text-center text-xs font-mono text-slate-500 mt-10">
@@ -1891,7 +2213,7 @@
     // Embedded Initial Dataset (Auto-synced with status.json)
     const INITIAL_DATA = {
   "summary": {
-    "updated_at": "2026-11-06 13:51:56",
+    "updated_at": "2026-11-06 14:08:25",
     "total_projects": 8,
     "active_daemons": 0,
     "today_executed": 8,
@@ -1902,13 +2224,13 @@
     },
     "portfolio": {
       "date": "2026-11-06",
-      "daily_return_pct": 0.1,
-      "cumulative_return_pct": -4.18,
+      "daily_return_pct": 0.0,
+      "cumulative_return_pct": -4.22,
       "realized_pnl_pct": -7.31,
-      "unrealized_pnl_pct": 0.1,
+      "unrealized_pnl_pct": 0.0,
       "holding_count": 11,
       "closed_count": 15,
-      "win_rate": 34.6
+      "win_rate": 30.8
     }
   },
   "projects": [
@@ -3038,11 +3360,11 @@
       "signal_date": "2026-11-05",
       "entry_price": 183900.0,
       "entry_date": "2026-11-05",
-      "current_price": 192400.0,
+      "current_price": 192800.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": 4.62,
+      "return_pct": 4.84,
       "target_price": 202000.0,
       "stop_loss_price": 171000.0,
       "notes": "[정배열 2차검증 100점] 20일 이평선(177,075원) 대량거래(236%) 돌파 안착"
@@ -3068,26 +3390,6 @@
       "notes": "[대형주 엄선] [대형주] 경기방어적 멤버십 기반 안정적 이익 성장 및 52주 신고가 우상향 | [대형주] 글로벌 멤버십 갱신율 93% 초우량 펀더멘털 | 전략: 스톡 스나이퍼 (US 대형주), SEPA x 피봇 (US 대형주)"
     },
     {
-      "id": 318,
-      "project_id": "stock-sepa-pivot",
-      "project_name": "SEPA x 피봇 돌파",
-      "ticker": "028050",
-      "name": "삼성E&A",
-      "market": "KRX",
-      "signal_type": "BUY [지정가 매수]",
-      "signal_date": "2026-11-03",
-      "entry_price": 61600.0,
-      "entry_date": "2026-11-03",
-      "current_price": 62000.0,
-      "exit_price": null,
-      "exit_date": null,
-      "status": "HOLDING",
-      "return_pct": 0.65,
-      "target_price": 67800.0,
-      "stop_loss_price": 57600.0,
-      "notes": "[대형주] 친환경 플랜트 대형 EPC 글로벌 수주 랠리 52주 신고가 VCP 돌파"
-    },
-    {
       "id": 321,
       "project_id": "stock-sepa-pivot",
       "project_name": "SEPA x 피봇 돌파",
@@ -3098,11 +3400,11 @@
       "signal_date": "2026-11-03",
       "entry_price": 175000.0,
       "entry_date": "2026-11-03",
-      "current_price": 176000.0,
+      "current_price": 176600.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": 0.57,
+      "return_pct": 0.91,
       "target_price": 195000.0,
       "stop_loss_price": 164000.0,
       "notes": "[중소형주] 과천 AI IDC 본격 가동 및 52주 신고가 하이타이트 플래그 돌파"
@@ -3126,6 +3428,26 @@
       "target_price": 75.0,
       "stop_loss_price": 57.84,
       "notes": "[중소형주 엄선] 특수 보험 분야에서의 뛰어난 언더라이팅 수익성과 높은 ROE 기록. 지수 조정기에도 52주 고점 부근에서 가격 방어력이 탁월하며 헤지펀드 기관 수급 지속 유입. | 전략: HTP 모멘텀 (미국 중소형)"
+    },
+    {
+      "id": 318,
+      "project_id": "stock-sepa-pivot",
+      "project_name": "SEPA x 피봇 돌파",
+      "ticker": "028050",
+      "name": "삼성E&A",
+      "market": "KRX",
+      "signal_type": "BUY [지정가 매수]",
+      "signal_date": "2026-11-03",
+      "entry_price": 61600.0,
+      "entry_date": "2026-11-03",
+      "current_price": 61600.0,
+      "exit_price": null,
+      "exit_date": null,
+      "status": "HOLDING",
+      "return_pct": 0.0,
+      "target_price": 67800.0,
+      "stop_loss_price": 57600.0,
+      "notes": "[대형주] 친환경 플랜트 대형 EPC 글로벌 수주 랠리 52주 신고가 VCP 돌파"
     },
     {
       "id": 347,
@@ -3208,26 +3530,6 @@
       "notes": "[정배열 2차검증 120점] 5일/20일선 정배열 우상향 및 거래량 367% 폭증 수급 유입"
     },
     {
-      "id": 342,
-      "project_id": "stock-chart-alignment",
-      "project_name": "이평 정배열 돌파 (단기 5/20선 골든스택 & 2차 차트검증)",
-      "ticker": "282720",
-      "name": "금양그린파워",
-      "market": "KRX",
-      "signal_type": "BUY",
-      "signal_date": "2026-11-05",
-      "entry_price": 8660.0,
-      "entry_date": "2026-11-05",
-      "current_price": 8380.0,
-      "exit_price": null,
-      "exit_date": null,
-      "status": "HOLDING",
-      "return_pct": -3.23,
-      "target_price": 9520.0,
-      "stop_loss_price": 8050.0,
-      "notes": "[정배열 2차검증 140점/전체 1위] 5일/20일 정배열 우상향 및 거래량 6,960% 폭증 골든크로스"
-    },
-    {
       "id": 330,
       "project_id": "stock-supervisor",
       "project_name": "스톡 스나이퍼 (US 대형주), HTP 모멘텀 (미국 대형), SEPA x 피봇 (US 대형주)",
@@ -3246,6 +3548,26 @@
       "target_price": 1507.97,
       "stop_loss_price": 1313.39,
       "notes": "[대형주 엄선] [대형주] GLP-1 비만치료제 젭바운드/마운자로 글로벌 시장 독점적 랠리 | 마운자로/젭바운드 수요 폭발로 펀더멘털 성장성이 가속화됨. 추세적 우상향 곡선을 그리며 52주 고점 형성 후 이탈이 적어 강한 HTP 모멘텀 점수를 기록. | 전략: 스톡 스나이퍼 (US 대형주), HTP 모멘텀 (미국 대형), SEPA x 피봇 (US 대형주)"
+    },
+    {
+      "id": 342,
+      "project_id": "stock-chart-alignment",
+      "project_name": "이평 정배열 돌파 (단기 5/20선 골든스택 & 2차 차트검증)",
+      "ticker": "282720",
+      "name": "금양그린파워",
+      "market": "KRX",
+      "signal_type": "BUY",
+      "signal_date": "2026-11-05",
+      "entry_price": 8660.0,
+      "entry_date": "2026-11-05",
+      "current_price": 8300.0,
+      "exit_price": null,
+      "exit_date": null,
+      "status": "HOLDING",
+      "return_pct": -4.16,
+      "target_price": 9520.0,
+      "stop_loss_price": 8050.0,
+      "notes": "[정배열 2차검증 140점/전체 1위] 5일/20일 정배열 우상향 및 거래량 6,960% 폭증 골든크로스"
     },
     {
       "id": 339,
@@ -3551,13 +3873,13 @@
   "performance": {
     "PORTFOLIO_TOTAL": {
       "date": "2026-11-06",
-      "daily_return_pct": 0.1,
-      "cumulative_return_pct": -4.18,
+      "daily_return_pct": 0.0,
+      "cumulative_return_pct": -4.22,
       "realized_pnl_pct": -7.31,
-      "unrealized_pnl_pct": 0.1,
+      "unrealized_pnl_pct": 0.0,
       "holding_count": 11,
       "closed_count": 15,
-      "win_rate": 34.6
+      "win_rate": 30.8
     },
     "signal_forge_alert": {
       "date": "2026-11-03",
@@ -3571,10 +3893,10 @@
     },
     "stock-chart-alignment": {
       "date": "2026-11-06",
-      "daily_return_pct": 0.08,
-      "cumulative_return_pct": -6.9,
+      "daily_return_pct": -0.16,
+      "cumulative_return_pct": -7.08,
       "realized_pnl_pct": -27.84,
-      "unrealized_pnl_pct": 0.08,
+      "unrealized_pnl_pct": -0.16,
       "holding_count": 3,
       "closed_count": 1,
       "win_rate": 25.0
@@ -3591,13 +3913,13 @@
     },
     "stock-sepa-pivot": {
       "date": "2026-11-06",
-      "daily_return_pct": 0.61,
-      "cumulative_return_pct": 0.61,
+      "daily_return_pct": 0.46,
+      "cumulative_return_pct": 0.46,
       "realized_pnl_pct": 0.0,
-      "unrealized_pnl_pct": 0.61,
+      "unrealized_pnl_pct": 0.46,
       "holding_count": 2,
       "closed_count": 0,
-      "win_rate": 100.0
+      "win_rate": 50.0
     },
     "stock-sniper": {
       "date": "2026-11-06",
@@ -5903,9 +6225,9 @@
                 label: 'Net Liquidity ($T)',
                 data: netLiq,
                 borderColor: '#38bdf8',
-                backgroundColor: 'rgba(56, 189, 248, 0.12)',
+                backgroundColor: (() => { const c = ctx1.getContext('2d'); const g = c.createLinearGradient(0, 0, 0, 240); g.addColorStop(0, 'rgba(56, 189, 248, 0.38)'); g.addColorStop(0.7, 'rgba(56, 189, 248, 0.08)'); g.addColorStop(1, 'rgba(56, 189, 248, 0.0)'); return g; })(),
                 fill: true,
-                borderWidth: 2.5,
+                borderWidth: 2.8,
                 tension: 0.3
               },
               {
@@ -5962,9 +6284,9 @@
                 label: 'Bank Reserves ($T)',
                 data: rVals,
                 borderColor: '#10b981',
-                backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                fill: false,
-                borderWidth: 2.5,
+                backgroundColor: (() => { const c = ctx2.getContext('2d'); const g = c.createLinearGradient(0, 0, 0, 240); g.addColorStop(0, 'rgba(16, 185, 129, 0.32)'); g.addColorStop(0.7, 'rgba(16, 185, 129, 0.06)'); g.addColorStop(1, 'rgba(16, 185, 129, 0.0)'); return g; })(),
+                fill: true,
+                borderWidth: 2.8,
                 pointRadius: 4,
                 pointBackgroundColor: '#10b981',
                 tension: 0.3
@@ -6406,11 +6728,11 @@
       
       const kpiCum = document.getElementById('kpiCumulative');
       kpiCum.innerText = (cumVal >= 0 ? '+' : '') + cumVal.toFixed(1) + '%';
-      kpiCum.className = 'text-2xl font-bold font-mono ' + (cumVal >= 0 ? 'text-krx-up' : 'text-krx-down');
+      kpiCum.className = 'text-3xl font-display font-extrabold ' + (cumVal >= 0 ? 'text-krx-up' : 'text-krx-down');
 
       const kpiDay = document.getElementById('kpiDaily');
       kpiDay.innerText = (dayVal >= 0 ? '+' : '') + dayVal.toFixed(2) + '%';
-      kpiDay.className = 'text-2xl font-bold font-mono ' + (dayVal >= 0 ? 'text-krx-up' : 'text-krx-down');
+      kpiDay.className = 'text-3xl font-display font-extrabold ' + (dayVal >= 0 ? 'text-krx-up' : 'text-krx-down');
 
       document.getElementById('kpiWinRate').innerText = (port.win_rate || 0.0).toFixed(1) + '%';
       document.getElementById('kpiHoldings').innerText = port.holding_count || 0;
@@ -6419,8 +6741,378 @@
 
       renderStrategyMatrix();
       renderTradesTable();
+      renderBubbleCluster();
+      renderNeonSankey();
+      renderMacroTimeline();
+      renderSectorHexGrid();
       renderRotationView();
       renderLiquidityView();
+    }
+
+
+    // View mode for trades: 'table' or 'cards'
+    let currentTradesViewMode = 'table';
+    function setTradesViewMode(mode) {
+      currentTradesViewMode = mode;
+      const tBtn = document.getElementById('viewModeBtn-table');
+      const cBtn = document.getElementById('viewModeBtn-cards');
+      const tContainer = document.querySelector('.overflow-x-auto');
+      const cContainer = document.getElementById('tradesMobileCardsContainer');
+
+      if (mode === 'cards') {
+        if (tBtn) tBtn.className = 'px-2 py-0.5 rounded text-[10px] font-semibold text-slate-400 hover:text-white transition-colors';
+        if (cBtn) cBtn.className = 'px-2 py-0.5 rounded text-[10px] font-semibold bg-desk-700 text-white transition-colors';
+        if (tContainer) tContainer.classList.add('hidden');
+        if (cContainer) cContainer.classList.remove('hidden');
+      } else {
+        if (tBtn) tBtn.className = 'px-2 py-0.5 rounded text-[10px] font-semibold bg-desk-700 text-white transition-colors';
+        if (cBtn) cBtn.className = 'px-2 py-0.5 rounded text-[10px] font-semibold text-slate-400 hover:text-white transition-colors';
+        if (tContainer) tContainer.classList.remove('hidden');
+        if (cContainer) cContainer.classList.add('hidden');
+      }
+      renderTradesTable();
+    }
+
+    // 1. Organic Bubble Cluster Rendering
+    function renderBubbleCluster() {
+      const svg = document.getElementById('bubbleClusterSvg');
+      if (!svg) return;
+      svg.innerHTML = '';
+
+      const trades = (appData.trades || []).filter(t => t.status === 'HOLDING');
+      if (trades.length === 0) {
+        svg.innerHTML = '<text x="270" y="160" text-anchor="middle" fill="#64748b" font-family="JetBrains Mono" font-size="12">보유 중인 포지션이 없습니다.</text>';
+        return;
+      }
+
+      // Bubble layout positions (organic cluster coordinates)
+      const positions = [
+        { cx: 270, cy: 155, r: 48 }, // Center Core (NAVER)
+        { cx: 180, cy: 110, r: 42 }, // COST
+        { cx: 360, cy: 115, r: 40 }, // KINX
+        { cx: 195, cy: 220, r: 38 }, // SKWD
+        { cx: 345, cy: 220, r: 37 }, // Samsung E&A
+        { cx: 105, cy: 160, r: 32 }, // TQQQ
+        { cx: 435, cy: 160, r: 32 }, // XOM
+        { cx: 125, cy: 80,  r: 28 }, // TECL
+        { cx: 415, cy: 80,  r: 28 }, // FNGU
+        { cx: 125, cy: 250, r: 27 }, // 현대차
+        { cx: 415, cy: 250, r: 27 }, // 한화에어로
+      ];
+
+      // Defs for Radial 3D Sphere Gradients
+      const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+      defs.innerHTML = `
+        <radialGradient id="grad-green" cx="35%" cy="35%" r="65%">
+          <stop offset="0%" stop-color="#34d399" stop-opacity="0.95"/>
+          <stop offset="50%" stop-color="#059669" stop-opacity="0.8"/>
+          <stop offset="100%" stop-color="#022c22" stop-opacity="0.95"/>
+        </radialGradient>
+        <radialGradient id="grad-cyan" cx="35%" cy="35%" r="65%">
+          <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.95"/>
+          <stop offset="50%" stop-color="#0284c7" stop-opacity="0.8"/>
+          <stop offset="100%" stop-color="#082f49" stop-opacity="0.95"/>
+        </radialGradient>
+        <radialGradient id="grad-rose" cx="35%" cy="35%" r="65%">
+          <stop offset="0%" stop-color="#fb7185" stop-opacity="0.95"/>
+          <stop offset="50%" stop-color="#e11d48" stop-opacity="0.8"/>
+          <stop offset="100%" stop-color="#4c0519" stop-opacity="0.95"/>
+        </radialGradient>
+        <radialGradient id="grad-gold" cx="35%" cy="35%" r="65%">
+          <stop offset="0%" stop-color="#fde047" stop-opacity="0.95"/>
+          <stop offset="50%" stop-color="#d97706" stop-opacity="0.8"/>
+          <stop offset="100%" stop-color="#451a03" stop-opacity="0.95"/>
+        </radialGradient>
+        <filter id="glow-sphere" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.6"/>
+        </filter>
+      `;
+      svg.appendChild(defs);
+
+      // Render each trade bubble
+      trades.forEach((t, i) => {
+        const pos = positions[i] || { cx: 70 + (i * 45) % 400, cy: 80 + (i * 35) % 200, r: 26 };
+        const isUp = (t.return_pct || 0) >= 0;
+        const gradId = (t.return_pct || 0) > 2.0 ? 'grad-green' : (isUp ? 'grad-cyan' : 'grad-rose');
+        const strokeColor = isUp ? '#10b981' : '#f43f5e';
+
+        const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+        g.setAttribute('class', 'cursor-pointer transition-transform duration-300 hover:scale-110');
+        g.style.transformOrigin = `${pos.cx}px ${pos.cy}px`;
+
+        g.innerHTML = `
+          <!-- Sphere Outer Ring Glow -->
+          <circle cx="${pos.cx}" cy="${pos.cy}" r="${pos.r + 2}" fill="none" stroke="${strokeColor}" stroke-opacity="0.4" stroke-width="1.5" class="animate-pulse" style="animation-duration: ${2.5 + (i%3)}s"/>
+          
+          <!-- 3D Sphere Body -->
+          <circle cx="${pos.cx}" cy="${pos.cy}" r="${pos.r}" fill="url(#${gradId})" stroke="${strokeColor}" stroke-width="1" filter="url(#glow-sphere)"/>
+          
+          <!-- Specular Light Reflection -->
+          <ellipse cx="${pos.cx - pos.r*0.28}" cy="${pos.cy - pos.r*0.28}" rx="${pos.r*0.22}" ry="${pos.r*0.14}" fill="#ffffff" fill-opacity="0.45" transform="rotate(-30 ${pos.cx - pos.r*0.28} ${pos.cy - pos.r*0.28})"/>
+          
+          <!-- Ticker Label -->
+          <text x="${pos.cx}" y="${pos.cy - 3}" text-anchor="middle" fill="#ffffff" font-family="JetBrains Mono" font-weight="700" font-size="${pos.r > 35 ? '12' : '10'}" letter-spacing="0.5">${t.ticker}</text>
+          
+          <!-- Return PnL Label -->
+          <text x="${pos.cx}" y="${pos.cy + 13}" text-anchor="middle" fill="${isUp ? '#6ee7b7' : '#fca5a5'}" font-family="JetBrains Mono" font-weight="600" font-size="${pos.r > 35 ? '11' : '9'}">${isUp ? '+' : ''}${t.return_pct.toFixed(1)}%</text>
+        `;
+
+        // Hover & Click Interaction
+        g.addEventListener('mouseenter', () => {
+          const detailCard = document.getElementById('bubbleDetailCard');
+          if (detailCard) {
+            detailCard.innerHTML = `
+              <div class="flex items-center space-x-3">
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold ${t.market === 'KRX' ? 'bg-rose-950 text-rose-300 border border-rose-800' : 'bg-blue-950 text-blue-300 border border-blue-800'}">${t.market}</span>
+                <span class="font-bold text-slate-100 text-sm">${t.name} (${t.ticker})</span>
+                <span class="font-bold ${isUp ? 'text-krx-up' : 'text-krx-down'} font-mono">${isUp ? '+' : ''}${t.return_pct.toFixed(2)}%</span>
+              </div>
+              <div class="text-[11px] text-slate-400 font-mono">
+                현재가: <strong class="text-slate-200">${formatDeskPrice(t.current_price, t.market)}</strong> | 진입가: ${formatDeskPrice(t.entry_price, t.market)} | 전략: <span class="text-cyan-400">${t.project_id || t.project_name}</span>
+              </div>
+            `;
+          }
+        });
+
+        g.addEventListener('click', () => {
+          if (t.project_id) selectStrategy(t.project_id);
+        });
+
+        svg.appendChild(g);
+      });
+    }
+
+    // 2. Glowing Neon Wireframe Sankey Diagram
+    function renderNeonSankey() {
+      const svg = document.getElementById('neonSankeySvg');
+      if (!svg) return;
+      svg.innerHTML = '';
+
+      const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+      defs.innerHTML = `
+        <linearGradient id="sankeyGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.9"/>
+          <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.9"/>
+        </linearGradient>
+        <linearGradient id="sankeyGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#eab308" stop-opacity="0.9"/>
+          <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.9"/>
+        </linearGradient>
+        <linearGradient id="sankeyGrad3" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#10b981" stop-opacity="0.9"/>
+          <stop offset="100%" stop-color="#34d399" stop-opacity="0.9"/>
+        </linearGradient>
+      `;
+      svg.appendChild(defs);
+
+      // Node Definitions [Col 1: Sources, Col 2: Conduits, Col 3: Destinations]
+      const nodesCol1 = [
+        { label: '🏛️ ON RRP Buffer ($0.2B)', sub: '역레포 소진 완충재', y: 60, color: '#f43f5e' },
+        { label: '💵 MMF Cash ($6.5T)', sub: '단기자금 저수지', y: 160, color: '#38bdf8' },
+        { label: '🏢 BigTech FCF Pool', sub: '잉여현금흐름 재배분', y: 260, color: '#eab308' },
+      ];
+
+      const nodesCol2 = [
+        { label: '📜 Short US T-Bills', sub: '재무부 단기채 흡수', y: 85, color: '#38bdf8' },
+        { label: '⚡ Systematic ETFs', sub: '퀀트 패시브 파이프', y: 160, color: '#06b6d4' },
+        { label: '🔄 High-Beta Carry', sub: '크로스에셋 차익', y: 235, color: '#a855f7' },
+      ];
+
+      const nodesCol3 = [
+        { label: '🥇 Gold Hard Asset ($4,134 ATH)', sub: '인플레이션·헤지 최고가', y: 60, color: '#eab308' },
+        { label: '🇺🇸 US Small-Mid Alpha (SKWD, COST)', sub: '가치·실적 알파 주도주', y: 160, color: '#10b981' },
+        { label: '🇰🇷 KRX Heavy Cyclical (NAVER, KINX)', sub: '정배열 시클리컬 턴어라운드', y: 260, color: '#f43f5e' },
+      ];
+
+      // Draw Neon Transmission Vector Splines
+      const links = [
+        { x1: 155, y1: 60,  x2: 240, y2: 85,  cls: 'neon-wire-rose' },
+        { x1: 155, y1: 160, x2: 240, y2: 85,  cls: 'neon-wire-cyan' },
+        { x1: 155, y1: 160, x2: 240, y2: 160, cls: 'neon-wire-cyan' },
+        { x1: 155, y1: 260, x2: 240, y2: 160, cls: 'neon-wire-gold' },
+        { x1: 155, y1: 260, x2: 240, y2: 235, cls: 'neon-wire-gold' },
+        { x1: 330, y1: 85,  x2: 395, y2: 60,  cls: 'neon-wire-gold' },
+        { x1: 330, y1: 160, x2: 395, y2: 60,  cls: 'neon-wire-gold' },
+        { x1: 330, y1: 160, x2: 395, y2: 160, cls: 'neon-wire-emerald' },
+        { x1: 330, y1: 235, x2: 395, y2: 160, cls: 'neon-wire-cyan' },
+        { x1: 330, y1: 235, x2: 395, y2: 260, cls: 'neon-wire-rose' },
+      ];
+
+      links.forEach(l => {
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        const cx1 = l.x1 + 40;
+        const cx2 = l.x2 - 40;
+        const d = `M ${l.x1} ${l.y1} C ${cx1} ${l.y1}, ${cx2} ${l.y2}, ${l.x2} ${l.y2}`;
+        path.setAttribute('d', d);
+        path.setAttribute('fill', 'none');
+        path.setAttribute('stroke', l.cls.includes('gold') ? '#eab308' : (l.cls.includes('rose') ? '#f43f5e' : (l.cls.includes('emerald') ? '#10b981' : '#06b6d4')));
+        path.setAttribute('stroke-width', '2.2');
+        path.setAttribute('class', l.cls);
+        svg.appendChild(path);
+      });
+
+      // Helper to render node boxes
+      function renderNodes(nodes, x, width) {
+        nodes.forEach(n => {
+          const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+          g.innerHTML = `
+            <rect x="${x}" y="${n.y - 18}" width="${width}" height="36" rx="6" fill="#0b1018" stroke="${n.color}" stroke-opacity="0.6" stroke-width="1.2" class="hover:stroke-opacity-100 transition-all cursor-pointer"/>
+            <text x="${x + 8}" y="${n.y - 3}" fill="#f1f5f9" font-family="JetBrains Mono" font-size="10" font-weight="600">${n.label}</text>
+            <text x="${x + 8}" y="${n.y + 11}" fill="#94a3b8" font-family="JetBrains Mono" font-size="8.5">${n.sub}</text>
+          `;
+          svg.appendChild(g);
+        });
+      }
+
+      renderNodes(nodesCol1, 10, 145);
+      renderNodes(nodesCol2, 240, 90);
+      renderNodes(nodesCol3, 395, 138);
+    }
+
+    // 3. Chronological Macro Timeline Rendering
+    const macroTimelineData = [
+      {
+        epoch: '2020.03',
+        tag: 'UNLIMITED QE',
+        title: '판데믹 무제한 양적완화 & 제로금리',
+        summary: '코로나19 팬데믹 충격에 연준은 사상 최초 $4조 달러 대차대조표 급팽창과 제로금리를 단행했습니다. M2 통화량이 27% 폭증하며 기술주 버블과 모든 자산군의 유동성 파티가 촉발되었습니다.',
+        vector: '연준 자산매입 ➔ M2 급팽창 ➔ 나스닥 100 및 빅테크 랠리',
+        stat: 'Fed Net Liq: $3.8T ➔ $6.2T (+63%) | Gold: $1,470 ➔ $2,075'
+      },
+      {
+        epoch: '2022.03',
+        tag: 'AGGRESSIVE QT',
+        title: '40년만의 초인플레 & 525bp 최속 긴축',
+        summary: '소비자물가(CPI)가 9.1%로 치솟자 연준은 역사상 가장 가파른 525bp 연속 금리인상과 월 $95B 규모의 양적긴축(QT)에 돌입했습니다. 자산시장 전반의 멀티플 리셋과 채권 대학살이 발생했습니다.',
+        vector: '금리 급등 ➔ 역레포(ON RRP) $2.4T 집결 ➔ 성장주 밸류에이션 급락',
+        stat: 'Fed Fund Rate: 0.25% ➔ 5.50% | S&P500 고점대비 -25%'
+      },
+      {
+        epoch: '2023.03',
+        tag: 'SVB & BTFP',
+        title: '실리콘밸리은행 파산 & 비상 유동성 긴급수혈',
+        summary: '미국 국채 평가손실로 SVB가 순식간에 뱅크런으로 파산하자 연준은 긴급 은행기간대출프로그램(BTFP)을 가동하여 $400B의 유동성을 긴급 주입했습니다. 이로써 시스템 붕괴를 틀어막고 AI 랠리가 점화되었습니다.',
+        vector: '은행 지급준비금 위기 ➔ BTFP 비상창구 ➔ M2 일시 재팽창',
+        stat: 'Fed 대출: $165B 긴급 방출 | 은행 지급준비금 방어선 사수'
+      },
+      {
+        epoch: '2024.11',
+        tag: 'MMF $6.5T & SHIFT',
+        title: '머니마켓펀드 $6.5T 축적 & 정책 전환 사이클',
+        summary: '5%대 고금리 환경에서 머니마켓펀드(MMF)에 사상 최대인 $6.5조 달러가 고착화되었습니다. 연준의 피벗(금리인하 사이클 개시)과 정책 불확실성 속에서 자금은 매그니피센트 7에서 산업재·금융 가치주로 이동하기 시작했습니다.',
+        vector: '고금리 MMF 쏠림 ➔ 빅테크 독주 완화 ➔ 가치·배당 섹터 확산',
+        stat: 'MMF AUM: $6.51T (사상 최대) | 빅테크 외 493개사 분산 가속'
+      },
+      {
+        epoch: '2026.11',
+        tag: 'RRP EXHAUSTION & GOLD ATH',
+        title: '역레포 완충재 소진 & 금 $4,134 사상 최고가 돌파',
+        summary: '연준 긴축의 방파제였던 ON RRP가 $2.4조 달러에서 $0.2B로 사실상 완전 고갈되었습니다. 미국 재무부 단기채 발행 부담과 지정학적 탈달러화가 맞물려 Gold는 $4,134/oz 신고가를 돌파하고, 포트폴리오는 1:1 리스크 패리티를 강제합니다.',
+        vector: 'RRP 버퍼 고갈 ➔ 지급준비금 희소선($2.97T) 근접 ➔ 실물 금 & 중소형 가치주 도피',
+        stat: 'ON RRP: $0.225B (고갈 완료) | Gold: $4,134.50 ATH (+2.45%)'
+      }
+    ];
+
+    let currentTimelineIdx = 4; // Default: Current Epoch (2026.11)
+
+    function selectTimelineEpoch(idx) {
+      currentTimelineIdx = idx;
+      renderMacroTimeline();
+    }
+
+    function renderMacroTimeline() {
+      const container = document.getElementById('macroTimelineNodes');
+      const narrative = document.getElementById('macroTimelineNarrative');
+      if (!container || !narrative) return;
+
+      container.innerHTML = macroTimelineData.map((d, i) => {
+        const isActive = i === currentTimelineIdx;
+        return `
+          <div onclick="selectTimelineEpoch(${i})" class="flex flex-col items-center cursor-pointer group transition-transform duration-200 hover:scale-105">
+            <div class="px-2 py-0.5 rounded text-[10px] font-mono font-bold mb-2 transition-colors ${isActive ? 'bg-cyan-500 text-black shadow-lg shadow-cyan-500/50' : 'bg-desk-850 text-slate-400 group-hover:text-slate-200 border border-desk-border'}">
+              ${d.epoch}
+            </div>
+            <div class="w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${isActive ? 'border-cyan-400 bg-cyan-950 scale-125 shadow-lg shadow-cyan-500/50' : 'border-slate-600 bg-desk-900 group-hover:border-slate-400'}">
+              <span class="w-2 h-2 rounded-full ${isActive ? 'bg-cyan-400 animate-ping' : 'bg-slate-500'}"></span>
+            </div>
+            <div class="text-[10px] font-mono mt-1.5 font-semibold text-center max-w-[110px] leading-tight ${isActive ? 'text-cyan-300' : 'text-slate-500 group-hover:text-slate-300'}">
+              ${d.tag}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      const active = macroTimelineData[currentTimelineIdx];
+      narrative.innerHTML = `
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-2 mb-2 border-b border-desk-border gap-2">
+          <div class="flex items-center space-x-2">
+            <span class="px-2 py-0.5 rounded bg-cyan-950 text-cyan-300 border border-cyan-700 font-bold">${active.epoch} · ${active.tag}</span>
+            <span class="font-display text-sm font-bold text-slate-100">${active.title}</span>
+          </div>
+          <span class="text-[10px] text-amber-400 font-semibold">${active.stat}</span>
+        </div>
+        <p class="text-slate-300 text-xs font-serif leading-relaxed italic mb-2">"${active.summary}"</p>
+        <div class="flex items-center text-[11px] font-mono text-cyan-400 bg-desk-950/80 p-2 rounded border border-desk-border">
+          <i class="fa-solid fa-arrow-right-arrow-left mr-2 text-cyan-400"></i>
+          <span>자본 전이 벡터: <strong>${active.vector}</strong></span>
+        </div>
+      `;
+    }
+
+    // 4. 11 GICS Sector Honeycomb Hexagon Matrix Rendering
+    function renderSectorHexGrid() {
+      const container = document.getElementById('sectorHexContainer');
+      if (!container) return;
+
+      const rot = appData.etf_rotation || {};
+      const summary = rot.dataset_summary || {};
+
+      // 11 GICS Sectors Mapping
+      const gicsList = [
+        { ticker: 'XLF', name: '금융 (Financials)', icon: 'fa-building-columns' },
+        { ticker: 'XLV', name: '헬스케어 (Health Care)', icon: 'fa-heart-pulse' },
+        { ticker: 'XLB', name: '소재 (Materials)', icon: 'fa-mountain' },
+        { ticker: 'XLP', name: '필수소비재 (Staples)', icon: 'fa-basket-shopping' },
+        { ticker: 'XLI', name: '산업재 (Industrials)', icon: 'fa-gears' },
+        { ticker: 'XLC', name: '통신 (Communication)', icon: 'fa-tower-broadcast' },
+        { ticker: 'XLU', name: '유틸리티 (Utilities)', icon: 'fa-bolt' },
+        { ticker: 'XLY', name: '임의소비재 (Discretionary)', icon: 'fa-bag-shopping' },
+        { ticker: 'XLE', name: '에너지 (Energy)', icon: 'fa-fire-flame-curved' },
+        { ticker: 'XLK', name: '기술 (Technology)', icon: 'fa-microchip' },
+        { ticker: 'XLRE', name: '부동산 (Real Estate)', icon: 'fa-city' }
+      ];
+
+      container.innerHTML = gicsList.map(s => {
+        const d = summary[s.ticker] || {};
+        const score = d.score !== undefined ? d.score : 50.0;
+        const flow = d.flow_1m !== undefined ? d.flow_1m : 0.0;
+        const ret = d.ret_1m !== undefined ? d.ret_1m : 0.0;
+        const isInflow = flow > 0;
+        const isStrong = score >= 80;
+        const hexClass = isInflow ? 'hex-inflow' : (flow < -0.5 ? 'hex-outflow' : 'hex-neutral');
+        const badgeColor = isInflow ? 'text-emerald-400' : 'text-rose-400';
+
+        return `
+          <div onclick="selectSectorHex('${s.ticker}')" class="hex-cell ${hexClass} font-mono">
+            <i class="fa-solid ${s.icon} text-xs ${isInflow ? 'text-cyan-400' : 'text-rose-400'} mb-1"></i>
+            <div class="font-bold text-xs text-white">${s.ticker}</div>
+            <div class="text-[9px] text-slate-300 truncate max-w-[85px]">${s.name.split(' ')[0]}</div>
+            <div class="text-[10px] font-bold ${badgeColor} mt-0.5">${isInflow ? '+' : ''}${flow.toFixed(2)}B</div>
+            <div class="text-[8.5px] text-slate-400">Score: <strong class="${score >= 70 ? 'text-cyan-300' : 'text-slate-300'}">${score.toFixed(0)}</strong></div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function selectSectorHex(ticker) {
+      const banner = document.getElementById('hexActiveSector');
+      const rot = appData.etf_rotation || {};
+      const summary = rot.dataset_summary || {};
+      const d = summary[ticker] || {};
+
+      if (banner) {
+        banner.innerHTML = `<span class="text-cyan-300">${ticker}</span> 선택됨 (Score: ${d.score || 0}점 / 1M Flow: ${(d.flow_1m || 0) > 0 ? '+' : ''}${d.flow_1m || 0}B / 1M Ret: ${(d.ret_1m || 0).toFixed(1)}%)`;
+      }
     }
 
     // Helper: 마지막 알람시간(날짜,시간,초) 취득
@@ -6596,12 +7288,16 @@
         return;
       }
 
+      const cardsContainer = document.getElementById('tradesMobileCardsContainer');
+      if (cardsContainer) cardsContainer.innerHTML = '';
+
       trades.forEach(t => {
-        const tr = document.createElement('tr');
         const isHolding = t.status === 'HOLDING';
         const isUp = t.return_pct >= 0;
         const curOrExit = isHolding ? t.current_price : (t.exit_price || t.current_price);
 
+        // 1. Desktop / Standard Sticky Table Row
+        const tr = document.createElement('tr');
         tr.innerHTML = `
           <td class="py-2.5 px-3 sticky-col">
             <div class="flex items-center space-x-1.5">
@@ -6643,6 +7339,33 @@
           </td>
         `;
         tbody.appendChild(tr);
+
+        // 2. Mobile Responsive Card
+        if (cardsContainer) {
+          const card = document.createElement('div');
+          card.className = 'glass-card rounded p-3 text-xs font-mono border border-desk-border';
+          card.innerHTML = `
+            <div class="flex items-center justify-between pb-2 mb-2 border-b border-desk-border">
+              <div class="flex items-center space-x-1.5">
+                <span class="px-1.5 py-0.5 rounded text-[9px] font-semibold ${t.market === 'KRX' ? 'bg-rose-950 text-rose-300 border border-rose-900' : 'bg-blue-950 text-blue-300 border border-blue-900'}">${t.market}</span>
+                <span class="font-bold text-slate-100">${t.name}</span>
+                <span class="text-slate-500 text-[10px]">${t.ticker}</span>
+              </div>
+              <span class="font-bold text-sm ${isUp ? 'text-krx-up' : 'text-krx-down'}">${isUp ? '+' : ''}${t.return_pct.toFixed(2)}%</span>
+            </div>
+            <div class="grid grid-cols-2 gap-2 text-[11px]">
+              <div><span class="text-slate-500">현재가:</span> <strong class="text-slate-200">${formatDeskPrice(curOrExit, t.market)}</strong></div>
+              <div><span class="text-slate-500">진입가:</span> <span class="text-slate-300">${formatDeskPrice(t.entry_price, t.market)}</span></div>
+              <div><span class="text-slate-500">목표가:</span> <span class="text-slate-400">${formatDeskPrice(t.target_price, t.market)}</span></div>
+              <div><span class="text-slate-500">손절가:</span> <span class="text-slate-400">${formatDeskPrice(t.stop_loss_price, t.market)}</span></div>
+            </div>
+            <div class="mt-2 pt-2 border-t border-desk-border/60 flex items-center justify-between text-[10px] text-slate-400">
+              <span class="text-cyan-400">${t.project_name}</span>
+              <span>${isHolding ? '🟢 보유중' : '⚪ 매도완료'}</span>
+            </div>
+          `;
+          cardsContainer.appendChild(card);
+        }
       });
     }
 
