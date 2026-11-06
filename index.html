@@ -243,27 +243,21 @@
           <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-desk-800 text-slate-400 border border-desk-border">KRX / US LIVE</span>
         </div>
 
-        <!-- Navigation Tabs (Re-ordered: Macro -> Liquidity -> Rotation -> Individual Portfolio) -->
+        <!-- Navigation Tabs: Unified 3-Tier Macro Framework -->
         <nav class="flex items-center space-x-2 pl-4 border-l border-desk-border flex-wrap gap-y-1">
-          <!-- 1. 글로벌 멀티마켓 추세분석 -->
+          <!-- 1. 메인 홈 • 글로벌 멀티마켓 추세분석 -->
           <button id="tabBtn-macro" onclick="switchTab('macro')" class="px-3 py-1.5 text-xs font-semibold rounded bg-sky-950/90 text-sky-300 border border-sky-500/60 transition-colors flex items-center shadow-sm cursor-pointer">
             <i class="fa-solid fa-house mr-1.5 text-sky-400"></i> 메인 홈 • 글로벌 멀티마켓 추세분석
             <span class="ml-1.5 px-1.5 py-0.5 text-[9px] font-mono font-bold bg-sky-500/20 text-sky-400 border border-sky-500/40 rounded animate-pulse">DAILY 08:30</span>
           </button>
 
-          <!-- 2. 미국 거시 유동성 & ETF -->
+          <!-- 2. 미국 매크로 유동성 & ETF 자금순환 (통합) -->
           <button id="tabBtn-liquidity" onclick="switchTab('liquidity')" class="px-3 py-1.5 text-xs font-semibold rounded text-slate-300 hover:text-white hover:bg-desk-850 border border-slate-700/60 hover:border-cyan-500/50 transition-colors flex items-center cursor-pointer">
-            <i class="fa-solid fa-landmark mr-1.5 text-cyan-400"></i> 미국 거시 유동성 & ETF (Liquidity)
+            <i class="fa-solid fa-landmark mr-1.5 text-cyan-400"></i> 미국 매크로 유동성 & ETF 자금순환
             <span class="ml-1.5 px-1.5 py-0.5 text-[9px] font-mono font-bold bg-cyan-500/20 text-cyan-400 border border-cyan-500/40 rounded animate-pulse">WAR ROOM</span>
           </button>
 
-          <!-- 3. 미국 ETF 자금순환 -->
-          <button id="tabBtn-rotation" onclick="switchTab('rotation')" class="px-3 py-1.5 text-xs font-semibold rounded text-slate-300 hover:text-white hover:bg-desk-850 border border-slate-700/60 hover:border-emerald-500/50 transition-colors flex items-center cursor-pointer">
-            <i class="fa-solid fa-arrows-spin mr-1.5 text-emerald-400"></i> 미국 ETF 자금순환 (Rotation)
-            <span class="ml-1.5 px-1.5 py-0.5 text-[9px] font-mono font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 rounded animate-pulse">LIVE</span>
-          </button>
-
-          <!-- 4. 개별 포트폴리오 (수익률 & 포트폴리오 -> 개별 포트폴리오 문구 수정 및 맨 마지막 위치) -->
+          <!-- 3. 개별 포트폴리오 -->
           <button id="tabBtn-performance" onclick="switchTab('performance')" class="px-3 py-1.5 text-xs font-semibold rounded text-slate-300 hover:text-white hover:bg-desk-850 border border-slate-700/60 hover:border-rose-500/50 transition-colors flex items-center cursor-pointer">
             <i class="fa-solid fa-layer-group mr-1.5 text-rose-500"></i> 개별 포트폴리오
             <span class="ml-1.5 px-1.5 py-0.5 text-[9px] font-mono font-bold bg-rose-500/20 text-rose-300 border border-rose-500/40 rounded">ALPHA</span>
@@ -1052,9 +1046,10 @@
     </section>
 
     <!-- ============================================================== -->
-    <!-- TAB 2: 미국 거시 유동성 & ETF (US LIQUIDITY COMMAND CENTER) (US LIQUIDITY COMMAND CENTER)         -->
     <!-- ============================================================== -->
-    <section id="view-liquidity" class="tab-view space-y-6 hidden">
+    <!-- TAB 2: 미국 매크로 유동성 & ETF 자금순환 통합 관제 (US LIQUIDITY & ETF ROTATION) -->
+    <!-- ============================================================== -->
+<section id="view-liquidity" class="tab-view space-y-6 hidden">
 
       <!-- Executive War Room Header Card -->
       <div class="desk-card rounded p-5 bg-gradient-to-r from-desk-900 via-desk-850 to-desk-900 border border-cyan-500/30 shadow-lg">
@@ -1064,7 +1059,7 @@
             <div>
               <h2 class="text-sm font-bold font-mono text-white uppercase tracking-wider flex items-center">
                 <i class="fa-solid fa-landmark mr-2 text-cyan-400"></i>
-                US LIQUIDITY COMMAND CENTER (미국 거시 유동성 & ETF 정량 관제)
+                US MACRO LIQUIDITY & ETF CAPITAL ROTATION WAR ROOM (미국 매크로 유동성 & ETF 자금순환 통합 관제)
               </h2>
               <p class="text-xs text-slate-400 mt-0.5">
                 연준 대차대조표(H.4.1) · 재무부 현금(TGA/QRA) · 단기자금시장 스트레스(SOFR/Repo) 및 1X 무레버리지 동적 ETF 정량 엔진
@@ -1458,88 +1453,9 @@
     </section>
 
     <!-- ============================================================== -->
-    <!-- TAB 3: 미국 ETF 시장 자금순환 (SECTOR ROTATION DASHBOARD) (SECTOR ROTATION DASHBOARD)        -->
-    <!-- ============================================================== -->
-    <section id="view-rotation" class="tab-view space-y-6 hidden">
+    
 
-      <!-- Top KPI Bar: Sector Rotation Macro Summary -->
-      <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
-        <!-- 1. Top Inflow Sector -->
-        <div class="desk-card rounded p-3.5 flex flex-col justify-between border-t-2 border-t-emerald-500">
-          <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 uppercase">
-            <span>자금 유입 1위 주도 섹터</span>
-            <i class="fa-solid fa-arrow-trend-up text-emerald-400 text-xs"></i>
-          </div>
-          <div class="mt-2 flex items-baseline space-x-1.5">
-            <span class="text-xl font-bold font-mono text-emerald-400">XLF (금융)</span>
-            <span class="text-sm font-bold font-mono text-emerald-300">+4.15B</span>
-          </div>
-          <div class="text-[10px] font-mono text-slate-400 mt-1">
-            Flow/AUM <strong class="text-emerald-400">+7.7%</strong> • Score 95.1점
-          </div>
-        </div>
-
-        <!-- 2. Top Outflow Sector -->
-        <div class="desk-card rounded p-3.5 flex flex-col justify-between border-t-2 border-t-rose-500">
-          <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 uppercase">
-            <span>자금 유출 1위 조정 섹터</span>
-            <i class="fa-solid fa-arrow-trend-down text-rose-400 text-xs"></i>
-          </div>
-          <div class="mt-2 flex items-baseline space-x-1.5">
-            <span class="text-xl font-bold font-mono text-rose-400">XLK (기술주)</span>
-            <span class="text-sm font-bold font-mono text-rose-300">-1.82B</span>
-          </div>
-          <div class="text-[10px] font-mono text-slate-400 mt-1">
-            1M Ret <strong class="text-rose-400">-19.4%</strong> • 차익조정
-          </div>
-        </div>
-
-        <!-- 3. Next Top Pick -->
-        <div class="desk-card rounded p-3.5 flex flex-col justify-between border-t-2 border-t-cyan-500">
-          <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 uppercase">
-            <span>차기 유력 후보 (NEXT PICK)</span>
-            <i class="fa-solid fa-bolt text-cyan-400 text-xs"></i>
-          </div>
-          <div class="mt-2 flex items-baseline space-x-1.5">
-            <span class="text-xl font-bold font-mono text-cyan-400">GRID (전력망)</span>
-            <span class="text-sm font-bold font-mono text-cyan-300">+0.72B</span>
-          </div>
-          <div class="text-[10px] font-mono text-slate-400 mt-1">
-            거래량 <strong class="text-cyan-400">1.15x</strong> • AI 전력 병목 해소
-          </div>
-        </div>
-
-        <!-- 4. Macro Fixed Income -->
-        <div class="desk-card rounded p-3.5 flex flex-col justify-between border-t-2 border-t-indigo-500">
-          <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 uppercase">
-            <span>채권형 ETF 월간 총유입</span>
-            <i class="fa-solid fa-shield-halved text-indigo-400 text-xs"></i>
-          </div>
-          <div class="mt-2 flex items-baseline space-x-1.5">
-            <span class="text-2xl font-bold font-mono text-indigo-400">+$74.0B</span>
-          </div>
-          <div class="text-[10px] font-mono text-indigo-300 mt-1">
-            역대 최대 안전자산 & BIL 주차
-          </div>
-        </div>
-
-        <!-- 5. Leverage Speculation Alert -->
-        <div class="desk-card rounded p-3.5 flex flex-col justify-between border-t-2 border-t-amber-500 col-span-2 md:col-span-1">
-          <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 uppercase">
-            <span>레버리지 투기 경고</span>
-            <i class="fa-solid fa-triangle-exclamation text-amber-400 text-xs"></i>
-          </div>
-          <div class="mt-2 flex items-baseline space-x-1.5">
-            <span class="text-xl font-bold font-mono text-amber-400">SOXL (3X)</span>
-            <span class="text-sm font-bold font-mono text-amber-300">+1.45B</span>
-          </div>
-          <div class="text-[10px] font-mono text-amber-400 mt-1">
-            가격 -32% 폭락 속 극단 물타기 과열
-          </div>
-        </div>
-      </div>
-
-      <!-- ============================================================== -->
+<!-- ============================================================== -->
       <!-- 11 GICS SECTOR HONEYCOMB ROTATION MATRIX                       -->
       <!-- ============================================================== -->
       <div class="glass-card rounded-lg p-5 border border-emerald-500/30 relative overflow-hidden">
@@ -1984,9 +1900,9 @@
         </div>
       </div>
 
+    
     </section>
-    <!-- ============================================================== -->
-    <!-- TAB 4: 개별 포트폴리오 관리 (INDIVIDUAL PORTFOLIO & TRADES DB)              -->
+<!-- TAB 4: 개별 포트폴리오 관리 (INDIVIDUAL PORTFOLIO & TRADES DB)              -->
     <!-- ============================================================== -->
     <section id="view-performance" class="tab-view space-y-5 hidden">
 
@@ -2229,7 +2145,7 @@
     // Embedded Initial Dataset (Auto-synced with status.json)
     const INITIAL_DATA = {
   "summary": {
-    "updated_at": "2026-11-06 14:18:57",
+    "updated_at": "2026-11-06 14:22:12",
     "total_projects": 8,
     "active_daemons": 0,
     "today_executed": 8,
@@ -2240,10 +2156,10 @@
     },
     "portfolio": {
       "date": "2026-11-06",
-      "daily_return_pct": 0.05,
-      "cumulative_return_pct": -4.2,
+      "daily_return_pct": -0.06,
+      "cumulative_return_pct": -4.24,
       "realized_pnl_pct": -7.31,
-      "unrealized_pnl_pct": 0.05,
+      "unrealized_pnl_pct": -0.06,
       "holding_count": 11,
       "closed_count": 15,
       "win_rate": 30.8
@@ -3406,26 +3322,6 @@
       "notes": "[대형주 엄선] [대형주] 경기방어적 멤버십 기반 안정적 이익 성장 및 52주 신고가 우상향 | [대형주] 글로벌 멤버십 갱신율 93% 초우량 펀더멘털 | 전략: 스톡 스나이퍼 (US 대형주), SEPA x 피봇 (US 대형주)"
     },
     {
-      "id": 321,
-      "project_id": "stock-sepa-pivot",
-      "project_name": "SEPA x 피봇 돌파",
-      "ticker": "093320",
-      "name": "케이아이엔엑스",
-      "market": "KRX",
-      "signal_type": "BUY [지정가 매수]",
-      "signal_date": "2026-11-03",
-      "entry_price": 175000.0,
-      "entry_date": "2026-11-03",
-      "current_price": 176300.0,
-      "exit_price": null,
-      "exit_date": null,
-      "status": "HOLDING",
-      "return_pct": 0.74,
-      "target_price": 195000.0,
-      "stop_loss_price": 164000.0,
-      "notes": "[중소형주] 과천 AI IDC 본격 가동 및 52주 신고가 하이타이트 플래그 돌파"
-    },
-    {
       "id": 344,
       "project_id": "stock-supervisor",
       "project_name": "HTP 모멘텀 (미국 중소형)",
@@ -3446,24 +3342,24 @@
       "notes": "[중소형주 엄선] 특수 보험 분야에서의 뛰어난 언더라이팅 수익성과 높은 ROE 기록. 지수 조정기에도 52주 고점 부근에서 가격 방어력이 탁월하며 헤지펀드 기관 수급 지속 유입. | 전략: HTP 모멘텀 (미국 중소형)"
     },
     {
-      "id": 318,
+      "id": 321,
       "project_id": "stock-sepa-pivot",
       "project_name": "SEPA x 피봇 돌파",
-      "ticker": "028050",
-      "name": "삼성E&A",
+      "ticker": "093320",
+      "name": "케이아이엔엑스",
       "market": "KRX",
       "signal_type": "BUY [지정가 매수]",
       "signal_date": "2026-11-03",
-      "entry_price": 61600.0,
+      "entry_price": 175000.0,
       "entry_date": "2026-11-03",
-      "current_price": 61600.0,
+      "current_price": 175600.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": 0.0,
-      "target_price": 67800.0,
-      "stop_loss_price": 57600.0,
-      "notes": "[대형주] 친환경 플랜트 대형 EPC 글로벌 수주 랠리 52주 신고가 VCP 돌파"
+      "return_pct": 0.34,
+      "target_price": 195000.0,
+      "stop_loss_price": 164000.0,
+      "notes": "[중소형주] 과천 AI IDC 본격 가동 및 52주 신고가 하이타이트 플래그 돌파"
     },
     {
       "id": 347,
@@ -3526,6 +3422,26 @@
       "notes": "[3X 레버리지 엄선] 체제: RISK_ON (VIX: 18.38) | Score 100.0/100: Turnover=25, EntryPos=20, Mom=15, | 전략: US 3X 무한레버리지"
     },
     {
+      "id": 318,
+      "project_id": "stock-sepa-pivot",
+      "project_name": "SEPA x 피봇 돌파",
+      "ticker": "028050",
+      "name": "삼성E&A",
+      "market": "KRX",
+      "signal_type": "BUY [지정가 매수]",
+      "signal_date": "2026-11-03",
+      "entry_price": 61600.0,
+      "entry_date": "2026-11-03",
+      "current_price": 61400.0,
+      "exit_price": null,
+      "exit_date": null,
+      "status": "HOLDING",
+      "return_pct": -0.32,
+      "target_price": 67800.0,
+      "stop_loss_price": 57600.0,
+      "notes": "[대형주] 친환경 플랜트 대형 EPC 글로벌 수주 랠리 52주 신고가 VCP 돌파"
+    },
+    {
       "id": 340,
       "project_id": "stock-chart-alignment",
       "project_name": "이평 정배열 돌파 (단기 5/20선 골든스택 & 2차 차트검증)",
@@ -3536,11 +3452,11 @@
       "signal_date": "2026-11-05",
       "entry_price": 215000.0,
       "entry_date": "2026-11-05",
-      "current_price": 214000.0,
+      "current_price": 213000.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": -0.47,
+      "return_pct": -0.93,
       "target_price": 236500.0,
       "stop_loss_price": 199900.0,
       "notes": "[정배열 2차검증 120점] 5일/20일선 정배열 우상향 및 거래량 367% 폭증 수급 유입"
@@ -3889,10 +3805,10 @@
   "performance": {
     "PORTFOLIO_TOTAL": {
       "date": "2026-11-06",
-      "daily_return_pct": 0.05,
-      "cumulative_return_pct": -4.2,
+      "daily_return_pct": -0.06,
+      "cumulative_return_pct": -4.24,
       "realized_pnl_pct": -7.31,
-      "unrealized_pnl_pct": 0.05,
+      "unrealized_pnl_pct": -0.06,
       "holding_count": 11,
       "closed_count": 15,
       "win_rate": 30.8
@@ -3909,10 +3825,10 @@
     },
     "stock-chart-alignment": {
       "date": "2026-11-06",
-      "daily_return_pct": 0.07,
-      "cumulative_return_pct": -6.91,
+      "daily_return_pct": -0.08,
+      "cumulative_return_pct": -7.02,
       "realized_pnl_pct": -27.84,
-      "unrealized_pnl_pct": 0.07,
+      "unrealized_pnl_pct": -0.08,
       "holding_count": 3,
       "closed_count": 1,
       "win_rate": 25.0
@@ -3929,10 +3845,10 @@
     },
     "stock-sepa-pivot": {
       "date": "2026-11-06",
-      "daily_return_pct": 0.37,
-      "cumulative_return_pct": 0.37,
+      "daily_return_pct": 0.01,
+      "cumulative_return_pct": 0.01,
       "realized_pnl_pct": 0.0,
-      "unrealized_pnl_pct": 0.37,
+      "unrealized_pnl_pct": 0.01,
       "holding_count": 2,
       "closed_count": 0,
       "win_rate": 50.0
@@ -7416,6 +7332,7 @@
     if (['macro', 'home', 'liquidity', 'rotation', 'performance', 'portfolio'].includes(initialHash)) {
       if (initialHash === 'portfolio') switchTab('performance');
       else if (initialHash === 'home') switchTab('macro');
+      else if (initialHash === 'rotation') switchTab('liquidity');
       else switchTab(initialHash);
     } else {
       switchTab('macro');
