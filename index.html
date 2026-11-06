@@ -1574,26 +1574,50 @@
         </div>
       </div>
 
-      <!-- GICS 11 Matrix Interactive Table -->
+      <!-- GICS 11 Matrix Interactive View -->
       <div class="desk-card rounded p-4 border border-desk-border">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 mb-3 border-b border-desk-border">
           <div>
             <h3 class="text-xs font-bold font-mono text-slate-200 uppercase tracking-wider flex items-center">
-              <i class="fa-solid fa-table-cells mr-2 text-rose-500"></i>
-              GICS 11개 섹터 퀀트 자금순환 종합 매트릭스 (GICS 11 Sector Table)
+              <i class="fa-solid fa-compass mr-2 text-rose-500"></i>
+              GICS 11개 섹터 퀀트 자금순환 모멘텀 &amp; 4분면 맵 (Sector Rotation Matrix)
             </h3>
-            <p class="text-[11px] text-slate-400 mt-0.5">1M·3M·6M 자금 유출입, AUM 대비 순유입 비중, 가격 수익률, 상대강도(RS vs SPY), 지속성 패턴(A~F), 로테이션 스코어를 한눈에 비교합니다.</p>
+            <p class="text-[11px] text-slate-400 mt-0.5">자금 유출입(Flow)과 가격 모멘텀(Return)의 상관관계를 4분면 시각화 맵과 정량 테이블로 교차 검증합니다.</p>
           </div>
 
-          <!-- Table Filters -->
-          <div class="flex items-center space-x-1.5 text-xs font-mono">
-            <button onclick="filterRotationTable('ALL')" id="rotFilterBtn-ALL" class="px-2.5 py-1 rounded bg-desk-800 text-white border border-desk-600 font-semibold cursor-pointer">전체 (11)</button>
-            <button onclick="filterRotationTable('INFLOW')" id="rotFilterBtn-INFLOW" class="px-2.5 py-1 rounded text-slate-400 hover:text-white hover:bg-desk-800 border border-transparent hover:border-desk-border cursor-pointer">자금 유입 (+)</button>
-            <button onclick="filterRotationTable('OUTFLOW')" id="rotFilterBtn-OUTFLOW" class="px-2.5 py-1 rounded text-slate-400 hover:text-white hover:bg-desk-800 border border-transparent hover:border-desk-border cursor-pointer">차익·유출 (-)</button>
+          <div class="flex items-center space-x-2 text-xs font-mono">
+            <!-- View Mode Switcher -->
+            <div class="flex items-center bg-desk-850 p-0.5 rounded border border-desk-border mr-1">
+              <button onclick="setGicsViewMode('visual')" id="gicsViewModeBtn-visual" class="px-2.5 py-1 rounded text-[10px] font-semibold bg-rose-600 text-white transition-colors cursor-pointer" title="4분면 시각화 맵"><i class="fa-solid fa-chart-scatter mr-1"></i>4분면 맵</button>
+              <button onclick="setGicsViewMode('table')" id="gicsViewModeBtn-table" class="px-2.5 py-1 rounded text-[10px] font-semibold text-slate-400 hover:text-white transition-colors cursor-pointer" title="상세 데이터 표"><i class="fa-solid fa-table mr-1"></i>상세 표</button>
+            </div>
+
+            <!-- Table Filters (visible in table mode) -->
+            <div id="gicsTableFilters" class="hidden items-center space-x-1.5">
+              <button onclick="filterRotationTable('ALL')" id="rotFilterBtn-ALL" class="px-2 py-0.5 rounded bg-desk-800 text-white border border-desk-600 font-semibold cursor-pointer text-[10px]">전체 (11)</button>
+              <button onclick="filterRotationTable('INFLOW')" id="rotFilterBtn-INFLOW" class="px-2 py-0.5 rounded text-slate-400 hover:text-white hover:bg-desk-800 border border-transparent hover:border-desk-border cursor-pointer text-[10px]">유입 (+)</button>
+              <button onclick="filterRotationTable('OUTFLOW')" id="rotFilterBtn-OUTFLOW" class="px-2 py-0.5 rounded text-slate-400 hover:text-white hover:bg-desk-800 border border-transparent hover:border-desk-border cursor-pointer text-[10px]">유출 (-)</button>
+            </div>
           </div>
         </div>
 
-        <div class="overflow-x-auto">
+        <!-- 1. Visual Mode: 4-Quadrant Sector Momentum Canvas -->
+        <div id="gicsVisualViewContainer" class="space-y-3">
+          <div class="relative w-full h-[320px] bg-desk-950/70 rounded border border-desk-border/80 overflow-hidden" id="gicsQuadrantWrapper">
+            <svg id="gicsQuadrantSvg" class="w-full h-full" viewBox="0 0 960 320"></svg>
+          </div>
+          <!-- Quadrant Inspector Hover Card -->
+          <div id="gicsQuadrantInspector" class="p-3 bg-desk-900 rounded border border-desk-border text-xs font-mono flex items-center justify-between text-slate-400 transition-all">
+            <div class="flex items-center space-x-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse"></span>
+              <span id="gicsInspectorText">버블에 마우스를 올리면 섹터별 1M 자금흐름과 수익률, 운용자산(AUM) 상세 정보가 표시됩니다.</span>
+            </div>
+            <span class="text-[10px] text-slate-500 font-sans hidden sm:inline">원 크기: 운용자산(AUM) 비례</span>
+          </div>
+        </div>
+
+        <!-- 2. Table Mode: GICS Table -->
+        <div id="gicsTableViewContainer" class="hidden overflow-x-auto">
           <table class="w-full text-left text-xs desk-table font-mono">
             <thead>
               <tr class="text-slate-400 uppercase text-[10px] border-b border-desk-border bg-desk-850">
@@ -1609,7 +1633,7 @@
                 <th class="py-2.5 px-3 text-right">상대강도 (RS vs SPY)</th>
                 <th class="py-2.5 px-3 text-center">지속성</th>
                 <th class="py-2.5 px-3 text-center">종합 퀀트 판정</th>
-                <th class="py-2.5 px-3 text-center">로테이션 점수 (Rotation Score)</th>
+                <th class="py-2.5 px-3 text-center">로테이션 점수 (Score)</th>
               </tr>
             </thead>
             <tbody id="rotGicsTableBody" class="divide-y divide-desk-border">
@@ -1621,14 +1645,48 @@
 
       <!-- Market & Factor Flow Asset Class -->
       <div class="desk-card rounded p-4 border border-desk-border">
-        <div class="flex items-center justify-between pb-2.5 mb-3 border-b border-desk-border">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 mb-3 border-b border-desk-border">
           <div class="flex items-center space-x-2">
             <i class="fa-solid fa-globe text-cyan-400 text-xs"></i>
-            <h3 class="text-xs font-bold font-mono text-slate-200 uppercase">시장 전체 자산군 &amp; 팩터 이동 (Market &amp; Factor Flow)</h3>
+            <div>
+              <h3 class="text-xs font-bold font-mono text-slate-200 uppercase">시장 전체 자산군 &amp; 팩터 자금 이동 (Market &amp; Factor Flow)</h3>
+              <p class="text-[11px] text-slate-400 mt-0.5">주식(대형·중소형·가치·배당) · 채권(장기·회사채) · 현금성(단기국채) · 원자재(금) 5대 자산군의 자본 쏠림을 시각화합니다.</p>
+            </div>
           </div>
-          <span class="text-[10px] font-mono text-slate-400">주식 / 채권 / 현금 / 금 (Equities / Fixed Income / Cash / Gold)</span>
+          
+          <!-- View Mode Switcher -->
+          <div class="flex items-center bg-desk-850 p-0.5 rounded border border-desk-border flex-shrink-0">
+            <button onclick="setMacroViewMode('visual')" id="macroViewModeBtn-visual" class="px-2.5 py-1 rounded text-[10px] font-semibold bg-cyan-600 text-white transition-colors cursor-pointer" title="시각적 자금흐름 바 차트"><i class="fa-solid fa-chart-column mr-1"></i>시각적 관제</button>
+            <button onclick="setMacroViewMode('table')" id="macroViewModeBtn-table" class="px-2.5 py-1 rounded text-[10px] font-semibold text-slate-400 hover:text-white transition-colors cursor-pointer" title="상세 데이터 표"><i class="fa-solid fa-table mr-1"></i>상세 표</button>
+          </div>
         </div>
-        <div class="overflow-x-auto">
+
+        <!-- 1. Visual Mode: 5 Major Macro Pillar Cards & Diverging Flow Bar Chart -->
+        <div id="macroVisualViewContainer" class="space-y-4">
+          <!-- Top: 5 Core Macro Pillar Cards -->
+          <div id="macroPillarCardsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 font-mono text-xs">
+            <!-- Rendered dynamically via JS -->
+          </div>
+
+          <!-- Bottom: Capital Flow Waterfall Diverging Bar Chart -->
+          <div class="bg-desk-950/70 rounded p-4 border border-desk-border">
+            <div class="flex items-center justify-between pb-2 mb-3 border-b border-desk-border text-xs font-mono">
+              <span class="font-bold text-slate-200 flex items-center">
+                <i class="fa-solid fa-water mr-1.5 text-cyan-400"></i> 자산군별 1개월 순유출입 대조 (Net Capital Flow Divergence, $B)
+              </span>
+              <div class="flex items-center space-x-3 text-[10px]">
+                <span class="flex items-center"><span class="w-2.5 h-2.5 rounded-sm bg-emerald-500 mr-1"></span>순유입 (+)</span>
+                <span class="flex items-center"><span class="w-2.5 h-2.5 rounded-sm bg-rose-500 mr-1"></span>순유출 (-)</span>
+              </div>
+            </div>
+            <div id="macroFlowDivergingChart" class="space-y-2 font-mono text-xs">
+              <!-- Rendered dynamically via JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Table Mode: Detailed Macro Table -->
+        <div id="macroTableViewContainer" class="hidden overflow-x-auto">
           <table class="w-full text-left text-xs desk-table font-mono">
             <thead>
               <tr class="text-slate-400 uppercase text-[10px] border-b border-desk-border bg-desk-850">
@@ -1946,7 +2004,7 @@
     // Embedded Initial Dataset (Auto-synced with status.json)
     const INITIAL_DATA = {
   "summary": {
-    "updated_at": "2026-11-06 16:00:55",
+    "updated_at": "2026-11-06 16:06:56",
     "total_projects": 8,
     "active_daemons": 0,
     "today_executed": 8,
@@ -1957,10 +2015,10 @@
     },
     "portfolio": {
       "date": "2026-11-06",
-      "daily_return_pct": -0.46,
-      "cumulative_return_pct": -4.37,
+      "daily_return_pct": -0.42,
+      "cumulative_return_pct": -4.35,
       "realized_pnl_pct": -7.3,
-      "unrealized_pnl_pct": -0.46,
+      "unrealized_pnl_pct": -0.42,
       "holding_count": 12,
       "closed_count": 16,
       "win_rate": 25.0
@@ -3193,26 +3251,6 @@
   ],
   "trades": [
     {
-      "id": 341,
-      "project_id": "stock-chart-alignment",
-      "project_name": "이평 정배열 돌파 (단기 5/20선 골든스택 & 2차 차트검증)",
-      "ticker": "035420",
-      "name": "NAVER",
-      "market": "KRX",
-      "signal_type": "BUY",
-      "signal_date": "2026-11-05",
-      "entry_price": 183900.0,
-      "entry_date": "2026-11-05",
-      "current_price": 190200.0,
-      "exit_price": null,
-      "exit_date": null,
-      "status": "HOLDING",
-      "return_pct": 3.43,
-      "target_price": 202000.0,
-      "stop_loss_price": 171000.0,
-      "notes": "[정배열 2차검증 100점] 20일 이평선(177,075원) 대량거래(236%) 돌파 안착"
-    },
-    {
       "id": 332,
       "project_id": "stock-supervisor",
       "project_name": "스톡 스나이퍼 (US 대형주), SEPA x 피봇 (US 대형주)",
@@ -3231,6 +3269,26 @@
       "target_price": 1112.06,
       "stop_loss_price": 968.57,
       "notes": "[대형주 엄선] [대형주] 경기방어적 멤버십 기반 안정적 이익 성장 및 52주 신고가 우상향 | [대형주] 글로벌 멤버십 갱신율 93% 초우량 펀더멘털 | 전략: 스톡 스나이퍼 (US 대형주), SEPA x 피봇 (US 대형주)"
+    },
+    {
+      "id": 341,
+      "project_id": "stock-chart-alignment",
+      "project_name": "이평 정배열 돌파 (단기 5/20선 골든스택 & 2차 차트검증)",
+      "ticker": "035420",
+      "name": "NAVER",
+      "market": "KRX",
+      "signal_type": "BUY",
+      "signal_date": "2026-11-05",
+      "entry_price": 183900.0,
+      "entry_date": "2026-11-05",
+      "current_price": 188200.0,
+      "exit_price": null,
+      "exit_date": null,
+      "status": "HOLDING",
+      "return_pct": 2.34,
+      "target_price": 202000.0,
+      "stop_loss_price": 171000.0,
+      "notes": "[정배열 2차검증 100점] 20일 이평선(177,075원) 대량거래(236%) 돌파 안착"
     },
     {
       "id": 344,
@@ -3373,6 +3431,26 @@
       "notes": "[대형주] 친환경 플랜트 대형 EPC 글로벌 수주 랠리 52주 신고가 VCP 돌파"
     },
     {
+      "id": 351,
+      "project_id": "stock-supervisor",
+      "project_name": "",
+      "ticker": "261780",
+      "name": "아리바이오랩",
+      "market": "KRX",
+      "signal_type": "BUY",
+      "signal_date": "2026-11-06",
+      "entry_price": 4495.0,
+      "entry_date": "2026-11-06",
+      "current_price": 4400.0,
+      "exit_price": null,
+      "exit_date": null,
+      "status": "HOLDING",
+      "return_pct": -2.11,
+      "target_price": 4944.0,
+      "stop_loss_price": 4180.0,
+      "notes": "[중소형주 엄선]  | 전략: "
+    },
+    {
       "id": 340,
       "project_id": "stock-chart-alignment",
       "project_name": "이평 정배열 돌파 (단기 5/20선 골든스택 & 2차 차트검증)",
@@ -3383,11 +3461,11 @@
       "signal_date": "2026-11-05",
       "entry_price": 215000.0,
       "entry_date": "2026-11-05",
-      "current_price": 211000.0,
+      "current_price": 209500.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": -1.86,
+      "return_pct": -2.56,
       "target_price": 236500.0,
       "stop_loss_price": 199900.0,
       "notes": "[정배열 2차검증 120점] 5일/20일선 정배열 우상향 및 거래량 367% 폭증 수급 유입"
@@ -3411,26 +3489,6 @@
       "target_price": 1507.97,
       "stop_loss_price": 1313.39,
       "notes": "[대형주 엄선] [대형주] GLP-1 비만치료제 젭바운드/마운자로 글로벌 시장 독점적 랠리 | 마운자로/젭바운드 수요 폭발로 펀더멘털 성장성이 가속화됨. 추세적 우상향 곡선을 그리며 52주 고점 형성 후 이탈이 적어 강한 HTP 모멘텀 점수를 기록. | 전략: 스톡 스나이퍼 (US 대형주), HTP 모멘텀 (미국 대형), SEPA x 피봇 (US 대형주)"
-    },
-    {
-      "id": 351,
-      "project_id": "stock-supervisor",
-      "project_name": "",
-      "ticker": "261780",
-      "name": "아리바이오랩",
-      "market": "KRX",
-      "signal_type": "BUY",
-      "signal_date": "2026-11-06",
-      "entry_price": 4495.0,
-      "entry_date": "2026-11-06",
-      "current_price": 4300.0,
-      "exit_price": null,
-      "exit_date": null,
-      "status": "HOLDING",
-      "return_pct": -4.34,
-      "target_price": 4944.0,
-      "stop_loss_price": 4180.0,
-      "notes": "[중소형주 엄선]  | 전략: "
     },
     {
       "id": 339,
@@ -3756,10 +3814,10 @@
   "performance": {
     "PORTFOLIO_TOTAL": {
       "date": "2026-11-06",
-      "daily_return_pct": -0.46,
-      "cumulative_return_pct": -4.37,
+      "daily_return_pct": -0.42,
+      "cumulative_return_pct": -4.35,
       "realized_pnl_pct": -7.3,
-      "unrealized_pnl_pct": -0.46,
+      "unrealized_pnl_pct": -0.42,
       "holding_count": 12,
       "closed_count": 16,
       "win_rate": 25.0
@@ -3776,10 +3834,10 @@
     },
     "stock-chart-alignment": {
       "date": "2026-11-06",
-      "daily_return_pct": 0.79,
-      "cumulative_return_pct": -8.36,
+      "daily_return_pct": -0.11,
+      "cumulative_return_pct": -8.8,
       "realized_pnl_pct": -17.5,
-      "unrealized_pnl_pct": 0.79,
+      "unrealized_pnl_pct": -0.11,
       "holding_count": 2,
       "closed_count": 2,
       "win_rate": 25.0
@@ -3816,10 +3874,10 @@
     },
     "stock-supervisor": {
       "date": "2026-11-06",
-      "daily_return_pct": -0.66,
-      "cumulative_return_pct": -3.94,
+      "daily_return_pct": -0.38,
+      "cumulative_return_pct": -3.81,
       "realized_pnl_pct": -6.86,
-      "unrealized_pnl_pct": -0.66,
+      "unrealized_pnl_pct": -0.38,
       "holding_count": 8,
       "closed_count": 9,
       "win_rate": 23.5
@@ -6326,7 +6384,9 @@
 
       renderRotationCards(rot);
       renderRotationGicsTable(currentRotFilter);
+      renderGicsQuadrantMap(rot);
       renderRotationMacroTable(rot);
+      renderMacroVisuals(rot);
     }
 
     function renderRotationCards(rot) {
@@ -6572,6 +6632,349 @@
           </tr>
         `;
       }).join('');
+    }
+
+    let currentGicsViewMode = 'visual';
+    function setGicsViewMode(mode) {
+      currentGicsViewMode = mode;
+      const vContainer = document.getElementById('gicsVisualViewContainer');
+      const tContainer = document.getElementById('gicsTableViewContainer');
+      const vBtn = document.getElementById('gicsViewModeBtn-visual');
+      const tBtn = document.getElementById('gicsViewModeBtn-table');
+      const filters = document.getElementById('gicsTableFilters');
+
+      if (mode === 'visual') {
+        if (vContainer) vContainer.classList.remove('hidden');
+        if (tContainer) tContainer.classList.add('hidden');
+        if (filters) { filters.classList.remove('flex'); filters.classList.add('hidden'); }
+        if (vBtn) vBtn.className = "px-2.5 py-1 rounded text-[10px] font-semibold bg-rose-600 text-white transition-colors cursor-pointer shadow-sm";
+        if (tBtn) tBtn.className = "px-2.5 py-1 rounded text-[10px] font-semibold text-slate-400 hover:text-white transition-colors cursor-pointer";
+        renderGicsQuadrantMap(appData.etf_rotation);
+      } else {
+        if (vContainer) vContainer.classList.add('hidden');
+        if (tContainer) tContainer.classList.remove('hidden');
+        if (filters) { filters.classList.remove('hidden'); filters.classList.add('flex'); }
+        if (vBtn) vBtn.className = "px-2.5 py-1 rounded text-[10px] font-semibold text-slate-400 hover:text-white transition-colors cursor-pointer";
+        if (tBtn) tBtn.className = "px-2.5 py-1 rounded text-[10px] font-semibold bg-rose-600 text-white transition-colors cursor-pointer shadow-sm";
+      }
+    }
+
+    function renderGicsQuadrantMap(rot) {
+      const svg = document.getElementById('gicsQuadrantSvg');
+      if (!svg || !rot || !rot.dataset) return;
+      const ds = rot.dataset;
+
+      const sectors = [
+        { ticker: 'XLF', name: '금융 (Financials)' },
+        { ticker: 'XLV', name: '헬스케어 (Health Care)' },
+        { ticker: 'XLI', name: '산업재 (Industrials)' },
+        { ticker: 'XLK', name: '정보기술 (Tech)' },
+        { ticker: 'XLY', name: '임의소비재 (Discretionary)' },
+        { ticker: 'XLP', name: '필수소비재 (Staples)' },
+        { ticker: 'XLE', name: '에너지 (Energy)' },
+        { ticker: 'XLU', name: '유틸리티 (Utilities)' },
+        { ticker: 'XLB', name: '소재 (Materials)' },
+        { ticker: 'XLRE', name: '부동산 (Real Estate)' },
+        { ticker: 'XLC', name: '통신서비스 (Communication)' },
+        { ticker: 'GRID', name: '스마트그리드 (Smart Grid)' },
+        { ticker: 'COPX', name: '구리 광산 (Copper Miners)' }
+      ];
+
+      const width = 960;
+      const height = 320;
+      const cx = width / 2;
+      const cy = height / 2;
+
+      let html = `
+        <defs>
+          <radialGradient id="grad-green" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#34d399" stop-opacity="0.9"/>
+            <stop offset="100%" stop-color="#059669" stop-opacity="0.3"/>
+          </radialGradient>
+          <radialGradient id="grad-amber" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.9"/>
+            <stop offset="100%" stop-color="#d97706" stop-opacity="0.3"/>
+          </radialGradient>
+          <radialGradient id="grad-rose" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#f87171" stop-opacity="0.9"/>
+            <stop offset="100%" stop-color="#e11d48" stop-opacity="0.3"/>
+          </radialGradient>
+          <radialGradient id="grad-cyan" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.9"/>
+            <stop offset="100%" stop-color="#0891b2" stop-opacity="0.3"/>
+          </radialGradient>
+        </defs>
+
+        <!-- Quadrant Background Tints -->
+        <rect x="${cx}" y="20" width="${cx - 40}" height="${cy - 20}" fill="rgba(16, 185, 129, 0.05)" rx="6"/>
+        <rect x="40" y="20" width="${cx - 40}" height="${cy - 20}" fill="rgba(245, 158, 11, 0.04)" rx="6"/>
+        <rect x="40" y="${cy}" width="${cx - 40}" height="${height - cy - 20}" fill="rgba(244, 63, 94, 0.05)" rx="6"/>
+        <rect x="${cx}" y="${cy}" width="${cx - 40}" height="${height - cy - 20}" fill="rgba(6, 182, 212, 0.04)" rx="6"/>
+
+        <!-- Center Crosshair Axes -->
+        <line x1="40" y1="${cy}" x2="${width - 40}" y2="${cy}" stroke="#334155" stroke-width="1.2" stroke-dasharray="4,4"/>
+        <line x1="${cx}" y1="20" x2="${cx}" y2="${height - 20}" stroke="#334155" stroke-width="1.2" stroke-dasharray="4,4"/>
+
+        <!-- Quadrant Corner Badges & Labels -->
+        <text x="${width - 55}" y="40" text-anchor="end" fill="#10b981" font-size="11" font-family="sans-serif" font-weight="bold">🟢 1사분면: 선도 &amp; 실질 매집 (Leading / Flow In + Price Up)</text>
+        <text x="55" y="40" text-anchor="start" fill="#f59e0b" font-size="11" font-family="sans-serif" font-weight="bold">🟠 2사분면: 차익 실현 &amp; 과열 (Weakening / Flow Out + Price High)</text>
+        <text x="55" y="${height - 28}" text-anchor="start" fill="#f43f5e" font-size="11" font-family="sans-serif" font-weight="bold">🔴 3사분면: 소외 &amp; 구조적 유출 (Lagging / Flow Out + Price Down)</text>
+        <text x="${width - 55}" y="${height - 28}" text-anchor="end" fill="#06b6d4" font-size="11" font-family="sans-serif" font-weight="bold">🔵 4사분면: 저가 매수 &amp; 반등 (Improving / Flow In + Price Low)</text>
+
+        <!-- Axis Labels -->
+        <text x="${width - 45}" y="${cy - 6}" text-anchor="end" fill="#94a3b8" font-size="10" font-family="monospace">자금 유입 (+Flow) ►</text>
+        <text x="50" y="${cy - 6}" text-anchor="start" fill="#94a3b8" font-size="10" font-family="monospace">◄ 자금 유출 (-Flow)</text>
+        <text x="${cx + 8}" y="32" text-anchor="start" fill="#94a3b8" font-size="10" font-family="monospace">▲ 수익률 상승 (+Ret)</text>
+        <text x="${cx + 8}" y="${height - 25}" text-anchor="start" fill="#94a3b8" font-size="10" font-family="monospace">▼ 수익률 하락 (-Ret)</text>
+      `;
+
+      sectors.forEach(s => {
+        const d = ds[s.ticker] || {};
+        const flow = d.flow_1m !== undefined ? d.flow_1m : 0;
+        const ret = d.ret_1m !== undefined ? d.ret_1m : 0;
+        const aum = d.aum_b || 30;
+
+        // Scale flow [-4.8 to +4.8] -> X [85 to 875]
+        const maxFlow = 4.8;
+        const clampedFlow = Math.max(-maxFlow, Math.min(maxFlow, flow));
+        const px = cx + (clampedFlow / maxFlow) * (cx - 85);
+
+        // Scale ret [-8.0 to +8.0] -> Y [275 to 45]
+        const maxRet = 8.0;
+        const clampedRet = Math.max(-maxRet, Math.min(maxRet, ret));
+        const py = cy - (clampedRet / maxRet) * (cy - 45);
+
+        const r = Math.min(24, Math.max(14, Math.sqrt(aum) * 2.2));
+
+        let strokeCol = '#10b981';
+        let fillGrad = 'url(#grad-green)';
+        let textCol = '#6ee7b7';
+
+        if (flow >= 0 && ret >= 0) {
+          strokeCol = '#10b981'; fillGrad = 'url(#grad-green)'; textCol = '#6ee7b7';
+        } else if (flow < 0 && ret >= 0) {
+          strokeCol = '#f59e0b'; fillGrad = 'url(#grad-amber)'; textCol = '#fcd34d';
+        } else if (flow < 0 && ret < 0) {
+          strokeCol = '#f43f5e'; fillGrad = 'url(#grad-rose)'; textCol = '#fda4af';
+        } else {
+          strokeCol = '#06b6d4'; fillGrad = 'url(#grad-cyan)'; textCol = '#67e8f9';
+        }
+
+        const flowText = (flow >= 0 ? '+' : '') + flow.toFixed(2) + 'B';
+        const retText = (ret >= 0 ? '+' : '') + ret.toFixed(1) + '%';
+        const infoStr = `${s.ticker} (${s.name}) : 1M 자금흐름 ${flowText} | 1M 수익률 ${retText} | 운용자산 $${Number(aum).toFixed(1)}B | 판정: ${d.flow_price_relation || '-'}`;
+
+        html += `
+          <g class="cursor-pointer transition-transform hover:opacity-90" onmouseenter="showGicsQuadrantDetail('${infoStr}')" onclick="focusGicsSectorRow('${s.ticker}')">
+            <circle cx="${px}" cy="${py}" r="${r}" fill="${fillGrad}" stroke="${strokeCol}" stroke-width="1.8" />
+            <circle cx="${px}" cy="${py}" r="2" fill="#ffffff" />
+            <text x="${px}" y="${py - r - 3}" text-anchor="middle" fill="${textCol}" font-size="11" font-family="monospace" font-weight="bold" filter="drop-shadow(0 1px 3px rgba(0,0,0,0.9))">${s.ticker}</text>
+          </g>
+        `;
+      });
+
+      svg.innerHTML = html;
+    }
+
+    function showGicsQuadrantDetail(text) {
+      const el = document.getElementById('gicsInspectorText');
+      if (el) el.innerText = text;
+    }
+
+    function focusGicsSectorRow(ticker) {
+      setGicsViewMode('table');
+      setTimeout(() => {
+        const row = document.getElementById('gics-row-' + ticker);
+        if (row) {
+          row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          row.classList.add('bg-rose-950/70', 'ring-2', 'ring-rose-500');
+          setTimeout(() => row.classList.remove('bg-rose-950/70', 'ring-2', 'ring-rose-500'), 2500);
+        }
+      }, 50);
+    }
+
+    let currentMacroViewMode = 'visual';
+    function setMacroViewMode(mode) {
+      currentMacroViewMode = mode;
+      const vContainer = document.getElementById('macroVisualViewContainer');
+      const tContainer = document.getElementById('macroTableViewContainer');
+      const vBtn = document.getElementById('macroViewModeBtn-visual');
+      const tBtn = document.getElementById('macroViewModeBtn-table');
+
+      if (mode === 'visual') {
+        if (vContainer) vContainer.classList.remove('hidden');
+        if (tContainer) tContainer.classList.add('hidden');
+        if (vBtn) vBtn.className = "px-2.5 py-1 rounded text-[10px] font-semibold bg-cyan-600 text-white transition-colors cursor-pointer shadow-sm";
+        if (tBtn) tBtn.className = "px-2.5 py-1 rounded text-[10px] font-semibold text-slate-400 hover:text-white transition-colors cursor-pointer";
+        renderMacroVisuals(appData.etf_rotation);
+      } else {
+        if (vContainer) vContainer.classList.add('hidden');
+        if (tContainer) tContainer.classList.remove('hidden');
+        if (vBtn) vBtn.className = "px-2.5 py-1 rounded text-[10px] font-semibold text-slate-400 hover:text-white transition-colors cursor-pointer";
+        if (tBtn) tBtn.className = "px-2.5 py-1 rounded text-[10px] font-semibold bg-cyan-600 text-white transition-colors cursor-pointer shadow-sm";
+      }
+    }
+
+    function renderMacroVisuals(rot) {
+      if (!rot || !rot.dataset) return;
+      const ds = rot.dataset;
+
+      // 1. 5 Core Macro Pillar Cards
+      const pillarContainer = document.getElementById('macroPillarCardsGrid');
+      if (pillarContainer) {
+        const PILLARS = [
+          {
+            ticker: 'BIL',
+            category: '초단기채·현금',
+            icon: 'fa-money-bill-wave',
+            borderClass: 'border-emerald-500/40 hover:border-emerald-400',
+            badgeClass: 'bg-emerald-500/20 text-emerald-300',
+            iconColor: 'text-emerald-400',
+            tag: '🟢 피난처 유입 1위',
+            desc: '단기 금리(3.9%+) 수취 및 안전 피난처'
+          },
+          {
+            ticker: 'GLD',
+            category: '실물 금·원자재',
+            icon: 'fa-coins',
+            borderClass: 'border-amber-500/40 hover:border-amber-400',
+            badgeClass: 'bg-amber-500/20 text-amber-300',
+            iconColor: 'text-amber-400',
+            tag: '🟡 통화가치 방어',
+            desc: '재무부 국채발행 폭증 속 화폐가치 헷지'
+          },
+          {
+            ticker: 'VTV',
+            category: '가치주·고배당',
+            icon: 'fa-building-columns',
+            borderClass: 'border-cyan-500/40 hover:border-cyan-400',
+            badgeClass: 'bg-cyan-500/20 text-cyan-300',
+            iconColor: 'text-cyan-400',
+            tag: '🔵 저PER 순환매',
+            desc: '빅테크 탈출 자금의 실적 방어 안착'
+          },
+          {
+            ticker: 'SPY',
+            category: '미국 대형주',
+            icon: 'fa-chart-line',
+            borderClass: 'border-blue-500/40 hover:border-blue-400',
+            badgeClass: 'bg-blue-500/20 text-blue-300',
+            iconColor: 'text-blue-400',
+            tag: '🟠 지수 차익실현',
+            desc: '밸류에이션 부담에 따른 일시적 조정'
+          },
+          {
+            ticker: 'TLT',
+            category: '20Y+ 장기국채',
+            icon: 'fa-landmark',
+            borderClass: 'border-rose-500/40 hover:border-rose-400',
+            badgeClass: 'bg-rose-500/20 text-rose-300',
+            iconColor: 'text-rose-400',
+            tag: '🔴 장기채 회피',
+            desc: '국채 공급 과잉 및 기간프리미엄 상승'
+          }
+        ];
+
+        pillarContainer.innerHTML = PILLARS.map(p => {
+          const d = ds[p.ticker] || {};
+          const price = d.price ? `$${d.price.toFixed(2)}` : '-';
+          const flow = d.flow_1m !== undefined ? `${d.flow_1m >= 0 ? '+' : ''}$${d.flow_1m.toFixed(2)}B` : '-';
+          const ret = d.ret_1m !== undefined ? `${d.ret_1m >= 0 ? '+' : ''}${d.ret_1m.toFixed(1)}%` : '-';
+          const isUp = (d.ret_1m || 0) >= 0;
+          const isFlowPositive = (d.flow_1m || 0) >= 0;
+
+          return `
+            <div class="bg-desk-850 p-3 rounded border ${p.borderClass} transition-all flex flex-col justify-between shadow-sm">
+              <div>
+                <div class="flex items-center justify-between pb-1.5 mb-2 border-b border-desk-border">
+                  <span class="text-[10px] ${p.iconColor} font-bold flex items-center">
+                    <i class="fa-solid ${p.icon} mr-1"></i>${p.category}
+                  </span>
+                  <span class="text-[9px] px-1.5 py-0.2 rounded font-bold ${p.badgeClass}">${p.tag}</span>
+                </div>
+                <div class="flex items-baseline justify-between">
+                  <span class="text-sm font-bold text-white">${p.ticker}</span>
+                  <span class="text-xs text-slate-300 font-mono">${price}</span>
+                </div>
+                <div class="flex items-center justify-between text-[11px] mt-1.5 font-mono">
+                  <span class="text-slate-400">1M 자금흐름:</span>
+                  <span class="font-bold ${isFlowPositive ? 'text-emerald-400' : 'text-rose-400'}">${flow}</span>
+                </div>
+                <div class="flex items-center justify-between text-[11px] mt-0.5 font-mono">
+                  <span class="text-slate-400">1M 수익률:</span>
+                  <span class="font-bold ${isUp ? 'text-krx-up' : 'text-krx-down'}">${ret}</span>
+                </div>
+              </div>
+              <div class="mt-2.5 pt-2 border-t border-desk-border/60 text-[10px] text-slate-400 font-sans leading-tight">
+                ${p.desc}
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      // 2. Capital Flow Waterfall Diverging Bar Chart
+      const chartContainer = document.getElementById('macroFlowDivergingChart');
+      if (chartContainer) {
+        const ALL_MACRO = [
+          { ticker: 'BIL', name: '초단기국채 (1-3M T-Bill)', cat: '현금성' },
+          { ticker: 'GLD', name: '실물 금 (Gold Trust)', cat: '원자재' },
+          { ticker: 'VTV', name: '뱅가드 가치주 (Value)', cat: '주식' },
+          { ticker: 'SCHD', name: '배당 다우존스 (Dividend)', cat: '주식' },
+          { ticker: 'QUAL', name: '퀄리티 팩터 (Quality)', cat: '주식' },
+          { ticker: 'IJH', name: 'S&P 중형주 (MidCap)', cat: '주식' },
+          { ticker: 'IWM', name: '러셀 2000 소형주 (SmallCap)', cat: '주식' },
+          { ticker: 'HYG', name: '하이일드 회사채 (High Yield)', cat: '채권' },
+          { ticker: 'QQQ', name: '나스닥 100 (Tech Growth)', cat: '주식' },
+          { ticker: 'SPY', name: 'S&P 500 대형주 (S&P Core)', cat: '주식' },
+          { ticker: 'TLT', name: '20년+ 장기국채 (Long Treasury)', cat: '채권' }
+        ];
+
+        // Sort by flow descending
+        ALL_MACRO.sort((a, b) => ((ds[b.ticker]?.flow_1m || 0) - (ds[a.ticker]?.flow_1m || 0)));
+
+        const maxAbsFlow = 4.8;
+
+        chartContainer.innerHTML = ALL_MACRO.map(m => {
+          const d = ds[m.ticker] || {};
+          const flow = d.flow_1m !== undefined ? d.flow_1m : 0;
+          const ret = d.ret_1m !== undefined ? d.ret_1m : 0;
+          const isPos = flow >= 0;
+          const barWidthPct = Math.min(100, (Math.abs(flow) / maxAbsFlow) * 100);
+
+          return `
+            <div class="grid grid-cols-12 items-center gap-2 py-1.5 border-b border-desk-border/40 hover:bg-desk-900/60 transition-colors">
+              <!-- Label -->
+              <div class="col-span-3 flex items-center space-x-1.5 truncate">
+                <span class="font-bold text-white text-xs w-11 flex-shrink-0">${m.ticker}</span>
+                <span class="text-[10px] text-slate-400 truncate">${m.name}</span>
+              </div>
+
+              <!-- Diverging Bar Area (Center 0 Line) -->
+              <div class="col-span-6 flex items-center h-4 relative">
+                <!-- Left (Negative) half -->
+                <div class="w-1/2 h-full flex justify-end items-center pr-1 border-r border-slate-600">
+                  ${!isPos ? `
+                    <div class="h-3 rounded-l bg-gradient-to-l from-rose-500 to-rose-700 transition-all shadow-sm" style="width: ${barWidthPct}%;"></div>
+                  ` : ''}
+                </div>
+                <!-- Right (Positive) half -->
+                <div class="w-1/2 h-full flex justify-start items-center pl-1">
+                  ${isPos ? `
+                    <div class="h-3 rounded-r bg-gradient-to-r from-emerald-500 to-emerald-700 transition-all shadow-sm" style="width: ${barWidthPct}%;"></div>
+                  ` : ''}
+                </div>
+              </div>
+
+              <!-- Values & Badges -->
+              <div class="col-span-3 flex items-center justify-end space-x-2 text-right">
+                <span class="font-bold text-xs ${isPos ? 'text-emerald-400' : 'text-rose-400'}">${(flow >= 0 ? '+' : '')}${flow.toFixed(2)}B</span>
+                <span class="text-[10px] px-1.5 py-0.2 rounded font-semibold ${ret >= 0 ? 'bg-emerald-950/60 text-emerald-300' : 'bg-rose-950/60 text-rose-300'}">${(ret >= 0 ? '+' : '')}${ret.toFixed(1)}%</span>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
     }
 
     function formatDeskPrice(val, market) {
