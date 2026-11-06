@@ -10,3 +10,4 @@ data/*.log
 logs/
 data/screener/*.xlsx
 data/screener/*.csv
+.agents/
