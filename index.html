@@ -1619,62 +1619,32 @@
         </div>
       </div>
 
-      <!-- Macro Assets & Leverage Risk-on Layer -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
-        <!-- 1. Market & Factor Asset Class -->
-        <div class="desk-card rounded p-4 border border-desk-border">
-          <div class="flex items-center justify-between pb-2.5 mb-3 border-b border-desk-border">
-            <div class="flex items-center space-x-2">
-              <i class="fa-solid fa-globe text-cyan-400 text-xs"></i>
-              <h3 class="text-xs font-bold font-mono text-slate-200 uppercase">시장 전체 자산군 &amp; 팩터 이동 (Market &amp; Factor Flow)</h3>
-            </div>
-            <span class="text-[10px] font-mono text-slate-400">주식 / 채권 / 현금 / 금 (Equities / Fixed Income / Cash / Gold)</span>
+      <!-- Market & Factor Flow Asset Class -->
+      <div class="desk-card rounded p-4 border border-desk-border">
+        <div class="flex items-center justify-between pb-2.5 mb-3 border-b border-desk-border">
+          <div class="flex items-center space-x-2">
+            <i class="fa-solid fa-globe text-cyan-400 text-xs"></i>
+            <h3 class="text-xs font-bold font-mono text-slate-200 uppercase">시장 전체 자산군 &amp; 팩터 이동 (Market &amp; Factor Flow)</h3>
           </div>
-          <div class="overflow-x-auto">
-            <table class="w-full text-left text-xs desk-table font-mono">
-              <thead>
-                <tr class="text-slate-400 uppercase text-[10px] border-b border-desk-border bg-desk-850">
-                  <th class="py-2 px-2.5">자산군 / 티커 (Asset / Ticker)</th>
-                  <th class="py-2 px-2.5 text-right">현재가</th>
-                  <th class="py-2 px-2.5 text-right">운용자산 (AUM, $B)</th>
-                  <th class="py-2 px-2.5 text-right">1개월 자금흐름 (1M Flow)</th>
-                  <th class="py-2 px-2.5 text-right">1개월 수익률 (1M Ret)</th>
-                  <th class="py-2 px-2.5 text-center">지속성</th>
-                  <th class="py-2 px-2.5 text-center">점수 (Score)</th>
-                </tr>
-              </thead>
-              <tbody id="rotMacroTableBody" class="divide-y divide-desk-border">
-                <!-- Rendered via JS -->
-              </tbody>
-            </table>
-          </div>
+          <span class="text-[10px] font-mono text-slate-400">주식 / 채권 / 현금 / 금 (Equities / Fixed Income / Cash / Gold)</span>
         </div>
-
-        <!-- 2. Leverage Risk-on Layer -->
-        <div class="desk-card rounded p-4 border border-desk-border">
-          <div class="flex items-center justify-between pb-2.5 mb-3 border-b border-desk-border">
-            <div class="flex items-center space-x-2">
-              <i class="fa-solid fa-gauge-high text-amber-400 text-xs"></i>
-              <h3 class="text-xs font-bold font-mono text-slate-200 uppercase">레버리지 ETF 관제 레이어 (3X / 2X Risk-On Gauge)</h3>
-            </div>
-            <span class="text-[10px] font-mono text-amber-400 bg-amber-500/10 px-1.5 py-0.5 rounded border border-amber-500/20">투기적 과열 보조지표</span>
-          </div>
-          <div class="overflow-x-auto">
-            <table class="w-full text-left text-xs desk-table font-mono">
-              <thead>
-                <tr class="text-slate-400 uppercase text-[10px] border-b border-desk-border bg-desk-850">
-                  <th class="py-2 px-2.5">티커 / 기초자산 (Ticker / Base)</th>
-                  <th class="py-2 px-2.5 text-right">현재가</th>
-                  <th class="py-2 px-2.5 text-right">1개월 자금흐름 (1M Flow)</th>
-                  <th class="py-2 px-2.5 text-right">1개월 수익률 (1M Ret)</th>
-                  <th class="py-2 px-2.5">기초자산 괴리 및 투기성 진단</th>
-                </tr>
-              </thead>
-              <tbody id="rotLeverageTableBody" class="divide-y divide-desk-border">
-                <!-- Rendered via JS -->
-              </tbody>
-            </table>
-          </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs desk-table font-mono">
+            <thead>
+              <tr class="text-slate-400 uppercase text-[10px] border-b border-desk-border bg-desk-850">
+                <th class="py-2 px-2.5">자산군 / 티커 (Asset / Ticker)</th>
+                <th class="py-2 px-2.5 text-right">현재가</th>
+                <th class="py-2 px-2.5 text-right">운용자산 (AUM, $B)</th>
+                <th class="py-2 px-2.5 text-right">1개월 자금흐름 (1M Flow)</th>
+                <th class="py-2 px-2.5 text-right">1개월 수익률 (1M Ret)</th>
+                <th class="py-2 px-2.5 text-center">지속성</th>
+                <th class="py-2 px-2.5 text-center">점수 (Score)</th>
+              </tr>
+            </thead>
+            <tbody id="rotMacroTableBody" class="divide-y divide-desk-border">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
         </div>
       </div>
 
@@ -1976,7 +1946,7 @@
     // Embedded Initial Dataset (Auto-synced with status.json)
     const INITIAL_DATA = {
   "summary": {
-    "updated_at": "2026-11-06 15:57:29",
+    "updated_at": "2026-11-06 16:00:55",
     "total_projects": 8,
     "active_daemons": 0,
     "today_executed": 8,
@@ -6357,7 +6327,6 @@
       renderRotationCards(rot);
       renderRotationGicsTable(currentRotFilter);
       renderRotationMacroTable(rot);
-      renderRotationLeverageTable(rot);
     }
 
     function renderRotationCards(rot) {
@@ -6600,42 +6569,6 @@
             <td class="py-2 px-2.5 text-right font-semibold ${d.ret_1m >= 0 ? 'text-krx-up' : 'text-krx-down'}">${r1}</td>
             <td class="py-2 px-2.5 text-center font-bold text-slate-300 text-[10px]">${pat}</td>
             <td class="py-2 px-2.5 text-center font-bold text-slate-200">${score}</td>
-          </tr>
-        `;
-      }).join('');
-    }
-
-    function renderRotationLeverageTable(rot) {
-      const ds = rot.dataset || {};
-      const LEVERAGE_LIST = [
-        { ticker: 'SOXL', base: 'SOXX', name: '반도체 불 3배 (Semiconductor Bull 3X)', diag: '⚠️ 기초자산 폭락 속 레버리지에만 +$1.45B 투기적 물타기 극단 과열 경고' },
-        { ticker: 'TNA', base: 'IWM', name: '소형주 불 3배 (Small Cap Bull 3X)', diag: '러셀 2000 투기 심리 냉각 (-$0.35B 유출)' },
-        { ticker: 'NAIL', base: 'XHB', name: '주택건설 불 3배 (Homebuilders Bull 3X)', diag: '건설주 단기 변동성 관망' },
-        { ticker: 'QLD', base: 'QQQ', name: '프로셰어즈 울트라 QQQ 2배 (ProShares Ultra QQQ 2X)', diag: '나스닥 온건 레버리지 포지션 유지 (+$0.40B)' },
-        { ticker: 'SSO', base: 'SPY', name: '프로셰어즈 울트라 S&P 2배 (ProShares Ultra S&P 2X)', diag: '지수 헤지 및 분할 진입' },
-        { ticker: 'TQQQ', base: 'QQQ', name: '프로셰어즈 울트라프로 QQQ 3배 (ProShares UltraPro QQQ 3X)', diag: '빅테크 단기 기술적 반등 트레이딩 집중' }
-      ];
-
-      const tbody = document.getElementById('rotLeverageTableBody');
-      if (!tbody) return;
-
-      tbody.innerHTML = LEVERAGE_LIST.map(l => {
-        const d = ds[l.ticker] || {};
-        const p = d.price ? `$${d.price.toFixed(2)}` : '-';
-        const f1 = d.flow_1m !== undefined ? `${d.flow_1m >= 0 ? '+' : ''}${d.flow_1m.toFixed(2)}B` : '-';
-        const r1 = d.ret_1m !== undefined ? `${d.ret_1m >= 0 ? '+' : ''}${d.ret_1m.toFixed(1)}%` : '-';
-        const isAlert = l.ticker === 'SOXL';
-
-        return `
-          <tr class="hover:bg-desk-850/80 transition-colors">
-            <td class="py-2 px-2.5">
-              <span class="font-bold text-amber-300">${l.ticker}</span>
-              <span class="text-[10px] text-slate-400 font-sans ml-1">(${l.base})</span>
-            </td>
-            <td class="py-2 px-2.5 text-right text-slate-300 font-mono">${p}</td>
-            <td class="py-2 px-2.5 text-right font-bold font-mono ${d.flow_1m >= 0 ? 'text-emerald-400' : 'text-rose-400'}">${f1}</td>
-            <td class="py-2 px-2.5 text-right font-mono font-bold ${d.ret_1m >= 0 ? 'text-krx-up' : 'text-krx-down'}">${r1}</td>
-            <td class="py-2 px-2.5 text-[11px] font-sans ${isAlert ? 'text-amber-300 font-semibold' : 'text-slate-400'}">${l.diag}</td>
           </tr>
         `;
       }).join('');
