@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.stock.hourly-update</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/tothemoon/stock-supervisor/.venv/bin/python3</string>
+        <string>/Users/tothemoon/stock-supervisor/update_status.py</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/tothemoon/stock-supervisor</string>
+
+    <!-- 매시간 정각(00분) 1시간 간격 자동 실행 -->
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin</string>
+        <key>PYTHONUNBUFFERED</key>
+        <string>1</string>
+    </dict>
+
+    <key>StandardOutPath</key>
+    <string>/Users/tothemoon/stock-supervisor/logs/hourly_update.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/Users/tothemoon/stock-supervisor/logs/hourly_update.err</string>
+
+    <key>ProcessType</key>
+    <string>Background</string>
+
+    <key>LowPriorityIO</key>
+    <true/>
+</dict>
+</plist>

@@ -252,7 +252,7 @@
           <!-- 1. 메인 홈 • 글로벌 멀티마켓 추세분석 -->
           <button id="tabBtn-macro" onclick="switchTab('macro')" class="px-3 py-1.5 text-xs font-semibold rounded bg-sky-950/90 text-sky-300 border border-sky-500/60 transition-colors flex items-center shadow-sm cursor-pointer">
             <i class="fa-solid fa-house mr-1.5 text-sky-400"></i> 메인 홈 • 글로벌 멀티마켓 추세분석
-            <span class="ml-1.5 px-1.5 py-0.5 text-[9px] font-mono font-bold bg-sky-500/20 text-sky-400 border border-sky-500/40 rounded animate-pulse">일간 (DAILY) 08:30</span>
+            <span class="ml-1.5 px-1.5 py-0.5 text-[9px] font-mono font-bold bg-sky-500/20 text-sky-400 border border-sky-500/40 rounded animate-pulse">1시간 간격 갱신 (1H HOURLY)</span>
           </button>
 
           <!-- 2. 미국 매크로 유동성 & ETF 자금순환 (통합) -->
@@ -261,10 +261,10 @@
             <span class="ml-1.5 px-1.5 py-0.5 text-[9px] font-mono font-bold bg-cyan-500/20 text-cyan-400 border border-cyan-500/40 rounded">매월 1일 갱신</span>
           </button>
 
-          <!-- 3. 개별 포트폴리오 -->
+          <!-- 3. 전략별 포트폴리오 -->
           <button id="tabBtn-performance" onclick="switchTab('performance')" class="px-3 py-1.5 text-xs font-semibold rounded text-slate-300 hover:text-white hover:bg-desk-850 border border-slate-700/60 hover:border-rose-500/50 transition-colors flex items-center cursor-pointer">
-            <i class="fa-solid fa-layer-group mr-1.5 text-rose-500"></i> 개별 포트폴리오
-            <span class="ml-1.5 px-1.5 py-0.5 text-[9px] font-mono font-bold bg-rose-500/20 text-rose-300 border border-rose-500/40 rounded">알파 (ALPHA)</span>
+            <i class="fa-solid fa-layer-group mr-1.5 text-rose-500"></i> 전략별 포트폴리오
+            <span class="ml-1.5 px-1.5 py-0.5 text-[9px] font-mono font-bold bg-rose-500/20 text-rose-300 border border-rose-500/40 rounded animate-pulse">1시간 간격 갱신 (1H HOURLY)</span>
           </button>
         </nav>
       </div>
@@ -303,7 +303,7 @@
                   <i class="fa-solid fa-house mr-1 text-[9px]"></i> 메인 홈 (MAIN HOME)
                 </span>
                 <span class="text-[10px] font-mono text-emerald-400 font-semibold bg-emerald-950/70 px-2 py-0.5 rounded border border-emerald-800/80 flex items-center">
-                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 mr-1.5 animate-pulse"></span> 매일 아침 08:30 장전 자동 갱신
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 mr-1.5 animate-pulse"></span> 1시간 간격 종목·지표 자동 업데이트 (매시 정각)
                 </span>
               </div>
               <h2 class="text-sm font-bold font-mono text-white uppercase tracking-wider flex items-center">
@@ -320,8 +320,8 @@
               <span class="w-2 h-2 rounded-full bg-red-500 mr-1.5 animate-pulse"></span>
               위험회피 (7/12 경고)
             </span>
-            <span class="text-[11px] font-mono text-slate-400 bg-desk-800 px-2.5 py-1 rounded border border-desk-border">
-              2026-11-06 11:30 KST
+            <span id="macroSyncTimeBadge" class="text-[11px] font-mono text-slate-400 bg-desk-800 px-2.5 py-1 rounded border border-desk-border">
+              2026-11-06 15:00 KST
             </span>
           </div>
         </div>
@@ -1762,7 +1762,7 @@
 
     
     </section>
-<!-- TAB 4: 개별 포트폴리오 관리 (INDIVIDUAL PORTFOLIO & TRADES DB)              -->
+<!-- TAB 3: 전략별 포트폴리오 관리 (STRATEGY PORTFOLIO & TRADES DB)              -->
     <!-- ============================================================== -->
     <section id="view-performance" class="tab-view space-y-5 hidden">
 
@@ -1852,12 +1852,12 @@
             <div class="text-[10px] font-mono uppercase tracking-wider text-rose-400 font-semibold flex items-center">
               <i class="fa-solid fa-circle-nodes mr-1.5 animate-pulse"></i> 다각화 구형 버블 클러스터 (Diversification Sphere Cluster)
             </div>
-            <h3 class="font-sans text-base font-bold text-slate-100 tracking-wide mt-0.5">개별 포트폴리오 유기적 구형 버블 & 전략별 알파 집중도</h3>
+            <h3 class="font-sans text-base font-bold text-slate-100 tracking-wide mt-0.5">전략별 포트폴리오 유기적 구형 버블 & 알파 집중도</h3>
           </div>
-          <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-desk-850 text-slate-400 border border-desk-border">11개 실전 보유 종목 시각화</span>
+          <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-desk-850 text-slate-400 border border-desk-border">전략별 11개 실전 보유 종목 시각화 (1시간 간격 갱신)</span>
         </div>
         
-        <!-- SVG Bubble Cluster Canvas (Full-width individual portfolio view) -->
+        <!-- SVG Bubble Cluster Canvas (Full-width strategy portfolio view) -->
         <div class="relative w-full h-[300px] my-2 flex items-center justify-center" id="bubbleClusterContainer">
           <svg id="bubbleClusterSvg" class="w-full h-full" viewBox="0 0 960 300"></svg>
         </div>
@@ -1898,7 +1898,7 @@
           <div class="flex items-center space-x-3 flex-wrap gap-y-1">
             <h3 class="text-xs font-bold font-mono uppercase text-slate-200 flex items-center">
               <i class="fa-solid fa-table-list mr-2 text-slate-400"></i>
-              실시간 포트폴리오 포지션 & 체결 내역 (Trades Database)
+              실시간 전략별 포트폴리오 포지션 & 체결 내역 (Trades Database)
             </h3>
             <span id="tradesCountBadge" class="text-[10px] font-mono px-2 py-0.5 rounded bg-desk-800 text-slate-300 border border-desk-border">0 종목</span>
             <button id="strategyFilterBadge" class="hidden text-[10px] font-mono px-2 py-0.5 rounded bg-rose-950/80 text-rose-300 border border-rose-800/80 items-center hover:bg-rose-900 transition-colors cursor-pointer" onclick="selectStrategy(null)" title="전체 종목 보기">
@@ -1974,7 +1974,7 @@
     // Embedded Initial Dataset (Auto-synced with status.json)
     const INITIAL_DATA = {
   "summary": {
-    "updated_at": "2026-11-06 15:33:08",
+    "updated_at": "2026-11-06 15:40:31",
     "total_projects": 8,
     "active_daemons": 0,
     "today_executed": 8,
@@ -6649,6 +6649,8 @@
       const port = summary.portfolio || {};
 
       document.getElementById('headerSyncTime').innerText = summary.updated_at || '방금 전';
+      const macroSyncEl = document.getElementById('macroSyncTimeBadge');
+      if (macroSyncEl && summary.updated_at) macroSyncEl.innerText = summary.updated_at + ' KST';
       
       // Top KPI Values
       const cumVal = port.cumulative_return_pct !== undefined ? port.cumulative_return_pct : 0.0;
@@ -7419,6 +7421,8 @@
 
     // Start & Dynamic Tab Initialization
     loadLatestData();
+    // 1시간(3600초) 주기 종목 및 지표 자동 동기화
+    setInterval(loadLatestData, 3600000);
     const initialHash = window.location.hash.replace('#', '');
     if (['macro', 'home', 'liquidity', 'rotation', 'performance', 'portfolio'].includes(initialHash)) {
       if (initialHash === 'portfolio') switchTab('performance');
