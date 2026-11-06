@@ -254,7 +254,7 @@
           <!-- 2. 미국 매크로 유동성 & ETF 자금순환 (통합) -->
           <button id="tabBtn-liquidity" onclick="switchTab('liquidity')" class="px-3 py-1.5 text-xs font-semibold rounded text-slate-300 hover:text-white hover:bg-desk-850 border border-slate-700/60 hover:border-cyan-500/50 transition-colors flex items-center cursor-pointer">
             <i class="fa-solid fa-landmark mr-1.5 text-cyan-400"></i> 미국 매크로 유동성 & ETF 자금순환
-            <span class="ml-1.5 px-1.5 py-0.5 text-[9px] font-mono font-bold bg-cyan-500/20 text-cyan-400 border border-cyan-500/40 rounded animate-pulse">WAR ROOM</span>
+            <span class="ml-1.5 px-1.5 py-0.5 text-[9px] font-mono font-bold bg-cyan-500/20 text-cyan-400 border border-cyan-500/40 rounded">매월 1일 갱신</span>
           </button>
 
           <!-- 3. 개별 포트폴리오 -->
@@ -1004,11 +1004,15 @@
                 US MACRO LIQUIDITY & ETF CAPITAL ROTATION WAR ROOM (미국 매크로 유동성 & ETF 자금순환 통합 관제)
               </h2>
               <p class="text-xs text-slate-400 mt-0.5">
-                연준 대차대조표(H.4.1) · 재무부 현금(TGA/QRA) · 단기자금시장 스트레스(SOFR/Repo) 및 1X 무레버리지 동적 ETF 정량 엔진
+                연준 대차대조표(H.4.1) · 재무부 현금(TGA/QRA) · 단기자금시장 스트레스(SOFR/Repo) 및 11개 GICS 섹터 자금순환 정량 엔진
               </p>
             </div>
           </div>
           <div class="flex flex-wrap items-center gap-2 text-xs font-mono">
+            <span class="px-2.5 py-1 font-bold rounded bg-cyan-950/80 text-cyan-300 border border-cyan-500/50 flex items-center shadow-sm">
+              <i class="fa-solid fa-calendar-check mr-1.5 text-cyan-400"></i>
+              분석 주기: 매월 1일 09:00 정기 업데이트
+            </span>
             <span class="px-2.5 py-1 font-bold rounded bg-red-950/80 text-red-300 border border-red-500/50 flex items-center shadow-sm">
               <span class="w-2 h-2 rounded-full bg-red-500 mr-1.5 animate-pulse"></span>
               리스크 체제: 🔴 위험회피 (RISK OFF)
@@ -1020,7 +1024,7 @@
               경보 단계: 🟠 경계 (WARNING)
             </span>
             <span class="text-[11px] text-slate-400 bg-desk-800 px-2.5 py-1 rounded border border-desk-border">
-              2026-11-06 (Live Model)
+              2026-11-01 (월간 모델)
             </span>
           </div>
         </div>
@@ -1108,7 +1112,7 @@
             자금 흐름 벡터 (Capital Flow Vector) & 유동성 흡수 메커니즘
           </h3>
           <span class="text-[11px] font-mono text-cyan-400 bg-cyan-950/60 px-2.5 py-0.5 rounded border border-cyan-500/40">
-            구조적 포트폴리오 리밸런싱 국면
+            매월 1일 월간 유동성 자본 전이 벡터
           </span>
         </div>
 
@@ -1132,6 +1136,29 @@
             <div class="text-[10px] text-rose-400 uppercase">4. 시장 스트레스 확산</div>
             <div class="text-rose-300 font-bold my-2 text-sm">➔ [SOFR 역전 +4bp]<br>&amp; [VIX 28.2 폭등]</div>
             <div class="text-[10px] text-rose-400">담보 가뭄 심화로 주식/성장주 멀티플 급격 조정</div>
+          </div>
+        </div>
+
+        <!-- Neon Wireframe Sankey Canvas (Macro Liquidity & Capital Transmission) -->
+        <div class="mt-5 pt-4 border-t border-desk-border">
+          <div class="flex items-center justify-between pb-2 text-xs font-mono">
+            <div class="flex items-center space-x-2">
+              <i class="fa-solid fa-bolt text-amber-400"></i>
+              <span class="text-slate-200 font-bold">월간 거시 자금 이동 벡터 &amp; 발광 네온 생키 다이어그램</span>
+            </div>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-950/60 text-amber-300 border border-amber-800/80">월간 유동성 전이 경로</span>
+          </div>
+          
+          <div class="relative w-full h-[320px] my-2" id="neonSankeyContainer">
+            <svg id="neonSankeySvg" class="w-full h-full" viewBox="0 0 540 320"></svg>
+          </div>
+          
+          <div class="p-3 bg-desk-850 rounded border border-desk-border/80 text-xs font-mono flex items-center justify-between text-slate-300">
+            <div class="flex items-center space-x-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+              <span>역레포 고갈 자금($2.4T ➔ $0.2B)이 미 단기 국채(BIL)와 실물 금(GLD $4,134 ATH)으로 집중 유입</span>
+            </div>
+            <span class="text-amber-400 font-semibold text-[10px]">GOLD ALPHA +2.45%</span>
           </div>
         </div>
       </div>
@@ -1926,62 +1953,31 @@
       </div>
 
       <!-- ============================================================== -->
-      <!-- LUXURY EDITORIAL SPREAD: DIVERSIFICATION SPHERE & NEON SANKEY   -->
+      <!-- INDIVIDUAL PORTFOLIO: DIVERSIFICATION SPHERE CLUSTER           -->
       <!-- ============================================================== -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        
-        <!-- Left: Organic Bubble Cluster (Portfolio Diversification) -->
-        <div class="glass-card rounded-lg p-5 border border-desk-border relative overflow-hidden flex flex-col justify-between">
-          <div class="flex items-center justify-between pb-3 border-b border-desk-border/80">
-            <div>
-              <div class="text-[10px] font-mono uppercase tracking-wider text-cyan-400 font-semibold flex items-center">
-                <i class="fa-solid fa-circle-nodes mr-1.5 animate-pulse"></i> DIVERSIFICATION SPHERE CLUSTER
-              </div>
-              <h3 class="font-display text-base font-bold text-slate-100 tracking-wide mt-0.5">자산별 유기적 구형 버블 & 알파 집중도</h3>
+      <div class="glass-card rounded-lg p-5 border border-desk-border relative overflow-hidden flex flex-col justify-between">
+        <div class="flex items-center justify-between pb-3 border-b border-desk-border/80">
+          <div>
+            <div class="text-[10px] font-mono uppercase tracking-wider text-rose-400 font-semibold flex items-center">
+              <i class="fa-solid fa-circle-nodes mr-1.5 animate-pulse"></i> DIVERSIFICATION SPHERE CLUSTER
             </div>
-            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-desk-850 text-slate-400 border border-desk-border">11개 보유 종목 시각화</span>
+            <h3 class="font-display text-base font-bold text-slate-100 tracking-wide mt-0.5">개별 포트폴리오 유기적 구형 버블 & 전략별 알파 집중도</h3>
           </div>
-          
-          <!-- SVG Bubble Cluster Canvas -->
-          <div class="relative w-full h-[320px] my-2 flex items-center justify-center" id="bubbleClusterContainer">
-            <svg id="bubbleClusterSvg" class="w-full h-full" viewBox="0 0 540 320"></svg>
-          </div>
-          
-          <!-- Bubble Inspector / Card on Hover -->
-          <div id="bubbleDetailCard" class="p-3 bg-desk-900/90 rounded border border-desk-border/80 text-xs font-mono flex items-center justify-between transition-all">
-            <div class="flex items-center space-x-2">
-              <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
-              <span class="text-slate-300">버블에 마우스를 올리면 종목별 매매 전략과 팩터가 표시됩니다.</span>
-            </div>
-            <span class="text-[10px] text-cyan-400 font-semibold">1:1 리스크 패리티</span>
-          </div>
+          <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-desk-850 text-slate-400 border border-desk-border">11개 실전 보유 종목 시각화</span>
         </div>
-
-        <!-- Right: Glowing Neon Wireframe Sankey Diagram -->
-        <div class="glass-card rounded-lg p-5 border border-desk-border relative overflow-hidden flex flex-col justify-between">
-          <div class="flex items-center justify-between pb-3 border-b border-desk-border/80">
-            <div>
-              <div class="text-[10px] font-mono uppercase tracking-wider text-amber-400 font-semibold flex items-center">
-                <i class="fa-solid fa-bolt mr-1.5 text-amber-400"></i> CAPITAL TRANSMISSION VECTOR
-              </div>
-              <h3 class="font-display text-base font-bold text-slate-100 tracking-wide mt-0.5">자금 이동 벡터 & 발광 네온 생키 다이어그램</h3>
-            </div>
-            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-950/60 text-amber-300 border border-amber-800/80">실시간 유동성 전이</span>
+        
+        <!-- SVG Bubble Cluster Canvas (Full-width individual portfolio view) -->
+        <div class="relative w-full h-[300px] my-2 flex items-center justify-center" id="bubbleClusterContainer">
+          <svg id="bubbleClusterSvg" class="w-full h-full" viewBox="0 0 960 300"></svg>
+        </div>
+        
+        <!-- Bubble Inspector / Card on Hover -->
+        <div id="bubbleDetailCard" class="p-3 bg-desk-900/90 rounded border border-desk-border/80 text-xs font-mono flex items-center justify-between transition-all">
+          <div class="flex items-center space-x-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-ping"></span>
+            <span class="text-slate-300">각 버블에 마우스를 올리면 종목별 매매 전략과 실시간 수익률이 표시되며, 클릭 시 해당 전략의 종목만 필터링됩니다.</span>
           </div>
-          
-          <!-- SVG Neon Wireframe Sankey Canvas -->
-          <div class="relative w-full h-[320px] my-2" id="neonSankeyContainer">
-            <svg id="neonSankeySvg" class="w-full h-full" viewBox="0 0 540 320"></svg>
-          </div>
-          
-          <!-- Sankey Footnote -->
-          <div class="p-3 bg-desk-900/90 rounded border border-desk-border/80 text-xs font-mono flex items-center justify-between text-slate-400">
-            <div class="flex items-center space-x-1.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-              <span>역레포 고갈 자금($2.4T ➔ $0.2B)이 미 단기 국채와 금($4,134 ATH)으로 집결 중</span>
-            </div>
-            <span class="text-amber-400 font-semibold text-[10px]">GOLD ALPHA +2.45%</span>
-          </div>
+          <span class="text-[10px] text-rose-400 font-semibold">전략별 정예 포트폴리오</span>
         </div>
       </div>
 
@@ -2087,7 +2083,7 @@
     // Embedded Initial Dataset (Auto-synced with status.json)
     const INITIAL_DATA = {
   "summary": {
-    "updated_at": "2026-11-06 14:33:42",
+    "updated_at": "2026-11-06 14:42:49",
     "total_projects": 8,
     "active_daemons": 0,
     "today_executed": 8,
@@ -2098,13 +2094,13 @@
     },
     "portfolio": {
       "date": "2026-11-06",
-      "daily_return_pct": -0.12,
-      "cumulative_return_pct": -4.27,
+      "daily_return_pct": -0.06,
+      "cumulative_return_pct": -4.24,
       "realized_pnl_pct": -7.31,
-      "unrealized_pnl_pct": -0.12,
+      "unrealized_pnl_pct": -0.06,
       "holding_count": 11,
       "closed_count": 15,
-      "win_rate": 30.8
+      "win_rate": 34.6
     }
   },
   "projects": [
@@ -3234,11 +3230,11 @@
       "signal_date": "2026-11-05",
       "entry_price": 183900.0,
       "entry_date": "2026-11-05",
-      "current_price": 192400.0,
+      "current_price": 193200.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": 4.62,
+      "return_pct": 5.06,
       "target_price": 202000.0,
       "stop_loss_price": 171000.0,
       "notes": "[정배열 2차검증 100점] 20일 이평선(177,075원) 대량거래(236%) 돌파 안착"
@@ -3274,11 +3270,11 @@
       "signal_date": "2026-11-03",
       "entry_price": 175000.0,
       "entry_date": "2026-11-03",
-      "current_price": 176500.0,
+      "current_price": 176800.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": 0.86,
+      "return_pct": 1.03,
       "target_price": 195000.0,
       "stop_loss_price": 164000.0,
       "notes": "[중소형주] 과천 AI IDC 본격 가동 및 52주 신고가 하이타이트 플래그 돌파"
@@ -3302,6 +3298,26 @@
       "target_price": 75.0,
       "stop_loss_price": 57.84,
       "notes": "[중소형주 엄선] 특수 보험 분야에서의 뛰어난 언더라이팅 수익성과 높은 ROE 기록. 지수 조정기에도 52주 고점 부근에서 가격 방어력이 탁월하며 헤지펀드 기관 수급 지속 유입. | 전략: HTP 모멘텀 (미국 중소형)"
+    },
+    {
+      "id": 318,
+      "project_id": "stock-sepa-pivot",
+      "project_name": "SEPA x 피봇 돌파",
+      "ticker": "028050",
+      "name": "삼성E&A",
+      "market": "KRX",
+      "signal_type": "BUY [지정가 매수]",
+      "signal_date": "2026-11-03",
+      "entry_price": 61600.0,
+      "entry_date": "2026-11-03",
+      "current_price": 61700.0,
+      "exit_price": null,
+      "exit_date": null,
+      "status": "HOLDING",
+      "return_pct": 0.16,
+      "target_price": 67800.0,
+      "stop_loss_price": 57600.0,
+      "notes": "[대형주] 친환경 플랜트 대형 EPC 글로벌 수주 랠리 52주 신고가 VCP 돌파"
     },
     {
       "id": 347,
@@ -3364,26 +3380,6 @@
       "notes": "[3X 레버리지 엄선] 체제: RISK_ON (VIX: 18.38) | Score 100.0/100: Turnover=25, EntryPos=20, Mom=15, | 전략: US 3X 무한레버리지"
     },
     {
-      "id": 318,
-      "project_id": "stock-sepa-pivot",
-      "project_name": "SEPA x 피봇 돌파",
-      "ticker": "028050",
-      "name": "삼성E&A",
-      "market": "KRX",
-      "signal_type": "BUY [지정가 매수]",
-      "signal_date": "2026-11-03",
-      "entry_price": 61600.0,
-      "entry_date": "2026-11-03",
-      "current_price": 61200.0,
-      "exit_price": null,
-      "exit_date": null,
-      "status": "HOLDING",
-      "return_pct": -0.65,
-      "target_price": 67800.0,
-      "stop_loss_price": 57600.0,
-      "notes": "[대형주] 친환경 플랜트 대형 EPC 글로벌 수주 랠리 52주 신고가 VCP 돌파"
-    },
-    {
       "id": 340,
       "project_id": "stock-chart-alignment",
       "project_name": "이평 정배열 돌파 (단기 5/20선 골든스택 & 2차 차트검증)",
@@ -3394,11 +3390,11 @@
       "signal_date": "2026-11-05",
       "entry_price": 215000.0,
       "entry_date": "2026-11-05",
-      "current_price": 213500.0,
+      "current_price": 214000.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": -0.7,
+      "return_pct": -0.47,
       "target_price": 236500.0,
       "stop_loss_price": 199900.0,
       "notes": "[정배열 2차검증 120점] 5일/20일선 정배열 우상향 및 거래량 367% 폭증 수급 유입"
@@ -3434,11 +3430,11 @@
       "signal_date": "2026-11-05",
       "entry_price": 8660.0,
       "entry_date": "2026-11-05",
-      "current_price": 8220.0,
+      "current_price": 8140.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": -5.08,
+      "return_pct": -6.0,
       "target_price": 9520.0,
       "stop_loss_price": 8050.0,
       "notes": "[정배열 2차검증 140점/전체 1위] 5일/20일 정배열 우상향 및 거래량 6,960% 폭증 골든크로스"
@@ -3747,13 +3743,13 @@
   "performance": {
     "PORTFOLIO_TOTAL": {
       "date": "2026-11-06",
-      "daily_return_pct": -0.12,
-      "cumulative_return_pct": -4.27,
+      "daily_return_pct": -0.06,
+      "cumulative_return_pct": -4.24,
       "realized_pnl_pct": -7.31,
-      "unrealized_pnl_pct": -0.12,
+      "unrealized_pnl_pct": -0.06,
       "holding_count": 11,
       "closed_count": 15,
-      "win_rate": 30.8
+      "win_rate": 34.6
     },
     "signal_forge_alert": {
       "date": "2026-11-03",
@@ -3767,10 +3763,10 @@
     },
     "stock-chart-alignment": {
       "date": "2026-11-06",
-      "daily_return_pct": -0.39,
-      "cumulative_return_pct": -7.25,
+      "daily_return_pct": -0.47,
+      "cumulative_return_pct": -7.31,
       "realized_pnl_pct": -27.84,
-      "unrealized_pnl_pct": -0.39,
+      "unrealized_pnl_pct": -0.47,
       "holding_count": 3,
       "closed_count": 1,
       "win_rate": 25.0
@@ -3787,13 +3783,13 @@
     },
     "stock-sepa-pivot": {
       "date": "2026-11-06",
-      "daily_return_pct": 0.1,
-      "cumulative_return_pct": 0.1,
+      "daily_return_pct": 0.59,
+      "cumulative_return_pct": 0.59,
       "realized_pnl_pct": 0.0,
-      "unrealized_pnl_pct": 0.1,
+      "unrealized_pnl_pct": 0.59,
       "holding_count": 2,
       "closed_count": 0,
-      "win_rate": 50.0
+      "win_rate": 100.0
     },
     "stock-sniper": {
       "date": "2026-11-06",
@@ -5961,6 +5957,7 @@
       } else if (tab === 'liquidity') {
         if (lBtn) lBtn.className = "px-3 py-1.5 text-xs font-semibold rounded bg-cyan-950/90 text-cyan-300 border border-cyan-500/60 transition-colors flex items-center shadow-sm cursor-pointer";
         renderLiquidityView();
+        renderNeonSankey();
       } else if (tab === 'rotation') {
         if (rBtn) rBtn.className = "px-3 py-1.5 text-xs font-semibold rounded bg-emerald-950/90 text-emerald-300 border border-emerald-500/60 transition-colors flex items-center shadow-sm cursor-pointer";
         renderRotationView();
@@ -5968,7 +5965,6 @@
       } else if (tab === 'performance') {
         if (pBtn) pBtn.className = "px-3 py-1.5 text-xs font-semibold rounded bg-rose-950/90 text-rose-300 border border-rose-500/60 transition-colors flex items-center shadow-sm cursor-pointer";
         renderBubbleCluster();
-        renderNeonSankey();
       }
 
       // Sync URL hash seamlessly
@@ -6672,19 +6668,19 @@
         return;
       }
 
-      // Bubble layout positions (organic cluster coordinates)
+      // Bubble layout positions (organic cluster coordinates across 960x300 canvas)
       const positions = [
-        { cx: 270, cy: 155, r: 48 }, // Center Core (NAVER)
-        { cx: 180, cy: 110, r: 42 }, // COST
-        { cx: 360, cy: 115, r: 40 }, // KINX
-        { cx: 195, cy: 220, r: 38 }, // SKWD
-        { cx: 345, cy: 220, r: 37 }, // Samsung E&A
-        { cx: 105, cy: 160, r: 32 }, // TQQQ
-        { cx: 435, cy: 160, r: 32 }, // XOM
-        { cx: 125, cy: 80,  r: 28 }, // TECL
-        { cx: 415, cy: 80,  r: 28 }, // FNGU
-        { cx: 125, cy: 250, r: 27 }, // 현대차
-        { cx: 415, cy: 250, r: 27 }, // 한화에어로
+        { cx: 480, cy: 150, r: 52 }, // Center Core (NAVER)
+        { cx: 370, cy: 100, r: 44 }, // COST
+        { cx: 590, cy: 105, r: 42 }, // KINX
+        { cx: 380, cy: 215, r: 40 }, // SKWD
+        { cx: 580, cy: 210, r: 40 }, // Samsung E&A
+        { cx: 250, cy: 150, r: 35 }, // TQQQ
+        { cx: 710, cy: 150, r: 35 }, // XOM
+        { cx: 270, cy: 75,  r: 30 }, // TECL
+        { cx: 690, cy: 75,  r: 30 }, // Celltrion
+        { cx: 270, cy: 235, r: 30 }, // Kumyang Green Power
+        { cx: 690, cy: 235, r: 30 }, // InBody
       ];
 
       // Defs for Radial 3D Sphere Gradients
@@ -6806,9 +6802,9 @@
       ];
 
       const nodesCol3 = [
-        { label: '🥇 Gold Hard Asset ($4,134 ATH)', sub: '인플레이션·헤지 최고가', y: 60, color: '#eab308' },
-        { label: '🇺🇸 US Small-Mid Alpha (SKWD, COST)', sub: '가치·실적 알파 주도주', y: 160, color: '#10b981' },
-        { label: '🇰🇷 KRX Heavy Cyclical (NAVER, KINX)', sub: '정배열 시클리컬 턴어라운드', y: 260, color: '#f43f5e' },
+        { label: '🥇 Gold Asset ($4,134 ATH / GLD)', sub: '실물 하드에셋 헤지', y: 60, color: '#eab308' },
+        { label: '🇺🇸 US Equity Core (SPY / QQQ)', sub: '대형 퀄리티 & 인덱스 베타', y: 160, color: '#10b981' },
+        { label: '🛡️ T-Bill / Cash Reserve (BIL)', sub: '초단기 안전보존 무위험 이자', y: 260, color: '#38bdf8' },
       ];
 
       // Draw Neon Transmission Vector Splines
