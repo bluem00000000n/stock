@@ -14,7 +14,7 @@
     "current_price": 30.2,
     "discount_from_peak_pct": -22.6,
     "gain_from_trough_pct": 1410.0,
-    "updated_at": "2026-11-06 08:31:50",
+    "updated_at": "2026-11-06 15:01:52",
     "dist_to_pivot_pct": 25.0,
     "action": "[보유/모으기보류]",
     "action_reason": "Stage 2 대세 상승 진행 중(피벗 +25.0%). 기존 보유 유지 및 추격매수 금지"
@@ -34,7 +34,7 @@
     "current_price": 45.99,
     "discount_from_peak_pct": 119.0,
     "gain_from_trough_pct": 1177.5,
-    "updated_at": "2026-11-06 08:31:50",
+    "updated_at": "2026-11-06 15:01:53",
     "dist_to_pivot_pct": 261.2,
     "action": "[슬슬팔어]",
     "action_reason": "피벗 대비 +261.2% 단기 폭등 텐배거 파동. 분할 차익실현"
@@ -54,7 +54,7 @@
     "current_price": 125.06,
     "discount_from_peak_pct": 4.2,
     "gain_from_trough_pct": 177.9,
-    "updated_at": "2026-11-06 08:31:50",
+    "updated_at": "2026-11-06 15:01:53",
     "dist_to_pivot_pct": -7.1,
     "action": "[슬슬모아바]",
     "action_reason": "실적/수주잔고 기반 Stage 2 눌림목 지지권(피벗 -7.1%). 20분할 모으기 매수"
@@ -74,7 +74,7 @@
     "current_price": 91.39,
     "discount_from_peak_pct": 14.2,
     "gain_from_trough_pct": 265.6,
-    "updated_at": "2026-11-06 08:31:50",
+    "updated_at": "2026-11-06 15:01:53",
     "dist_to_pivot_pct": -20.1,
     "action": "[슬슬모아바]",
     "action_reason": "실적/수주잔고 기반 Stage 2 눌림목 지지권(피벗 -20.1%). 20분할 모으기 매수"
@@ -94,7 +94,7 @@
     "current_price": 112.33,
     "discount_from_peak_pct": 301.2,
     "gain_from_trough_pct": 1304.1,
-    "updated_at": "2026-11-06 08:31:51",
+    "updated_at": "2026-11-06 15:01:53",
     "dist_to_pivot_pct": 206.7,
     "action": "[슬슬팔어]",
     "action_reason": "피벗 대비 +206.7% 단기 폭등 텐배거 파동. 분할 차익실현"
@@ -114,7 +114,7 @@
     "current_price": 49.16,
     "discount_from_peak_pct": -9.0,
     "gain_from_trough_pct": 417.5,
-    "updated_at": "2026-11-06 08:31:51",
+    "updated_at": "2026-11-06 15:01:53",
     "dist_to_pivot_pct": 268.7,
     "action": "[슬슬팔어]",
     "action_reason": "피벗 대비 +268.7% 단기 폭등 텐배거 파동. 분할 차익실현"
@@ -134,7 +134,7 @@
     "current_price": 19.2,
     "discount_from_peak_pct": -26.2,
     "gain_from_trough_pct": 262.3,
-    "updated_at": "2026-11-06 08:31:52",
+    "updated_at": "2026-11-06 15:01:54",
     "dist_to_pivot_pct": 0.5,
     "action": "[슬슬모아바]",
     "action_reason": "실적/수주잔고 기반 Stage 2 눌림목 지지권(피벗 +0.5%). 20분할 모으기 매수"
@@ -154,7 +154,7 @@
     "current_price": 70.43,
     "discount_from_peak_pct": -6.1,
     "gain_from_trough_pct": 170.9,
-    "updated_at": "2026-11-06 08:31:52",
+    "updated_at": "2026-11-06 15:01:54",
     "dist_to_pivot_pct": 30.4,
     "action": "[보유/모으기보류]",
     "action_reason": "Stage 2 대세 상승 진행 중(피벗 +30.4%). 기존 보유 유지 및 추격매수 금지"
@@ -174,7 +174,7 @@
     "current_price": 179.47,
     "discount_from_peak_pct": 88.9,
     "gain_from_trough_pct": 398.5,
-    "updated_at": "2026-11-06 08:31:53",
+    "updated_at": "2026-11-06 15:01:55",
     "dist_to_pivot_pct": 152.3,
     "action": "[슬슬팔어]",
     "action_reason": "피벗 대비 +152.3% 단기 폭등 텐배거 파동. 분할 차익실현"
@@ -194,7 +194,7 @@
     "current_price": 26.43,
     "discount_from_peak_pct": -24.5,
     "gain_from_trough_pct": 781.0,
-    "updated_at": "2026-11-06 08:31:53",
+    "updated_at": "2026-11-06 15:01:56",
     "dist_to_pivot_pct": 64.1,
     "action": "[보유/모으기보류]",
     "action_reason": "Stage 2 대세 상승 진행 중(피벗 +64.1%). 기존 보유 유지 및 추격매수 금지"
