@@ -1575,20 +1575,22 @@
       </div>
 
       <!-- GICS 11 Matrix Interactive View -->
-      <div class="desk-card rounded p-4 border border-desk-border">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 mb-3 border-b border-desk-border">
+      <div class="glass-card rounded-lg p-5 border border-desk-border relative overflow-hidden flex flex-col justify-between shadow-xl">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3.5 mb-3 border-b border-desk-border/80 gap-3">
           <div>
-            <h3 class="text-xs font-bold font-mono text-slate-200 uppercase tracking-wider flex items-center">
-              <i class="fa-solid fa-compass mr-2 text-rose-500"></i>
-              GICS 11개 섹터 퀀트 자금순환 모멘텀 &amp; 4분면 맵 (Sector Rotation Matrix)
+            <div class="text-[10px] font-mono uppercase tracking-wider text-emerald-400 font-semibold flex items-center">
+              <i class="fa-solid fa-diagram-project mr-1.5 animate-pulse text-emerald-400"></i> GICS 11대 섹터 퀀트 자금순환 모멘텀 &amp; 생키 유출입 (Sector Rotation Matrix)
+            </div>
+            <h3 class="font-sans text-base font-bold text-slate-100 tracking-wide mt-0.5">
+              11개 GICS 섹터 자금 유출입 생키 다이어그램 &amp; 4분면 모멘텀 맵
             </h3>
-            <p class="text-[11px] text-slate-400 mt-0.5">자금 유출입(Flow)과 가격 모멘텀(Return)의 상관관계를 4분면 시각화 맵과 정량 테이블로 교차 검증합니다.</p>
           </div>
 
           <div class="flex items-center space-x-2 text-xs font-mono">
             <!-- View Mode Switcher -->
-            <div class="flex items-center bg-desk-850 p-0.5 rounded border border-desk-border mr-1">
-              <button onclick="setGicsViewMode('visual')" id="gicsViewModeBtn-visual" class="px-2.5 py-1 rounded text-[10px] font-semibold bg-rose-600 text-white transition-colors cursor-pointer" title="4분면 시각화 맵"><i class="fa-solid fa-chart-scatter mr-1"></i>4분면 맵</button>
+            <div class="flex items-center bg-desk-850 p-0.5 rounded border border-desk-border mr-1 flex-shrink-0">
+              <button onclick="setGicsViewMode('sankey')" id="gicsViewModeBtn-sankey" class="px-2.5 py-1 rounded text-[10px] font-semibold bg-emerald-600 text-white transition-colors cursor-pointer shadow-sm" title="생키 자금 유출입 다이어그램"><i class="fa-solid fa-water mr-1"></i>생키 유출입</button>
+              <button onclick="setGicsViewMode('quadrant')" id="gicsViewModeBtn-quadrant" class="px-2.5 py-1 rounded text-[10px] font-semibold text-slate-400 hover:text-white transition-colors cursor-pointer" title="4분면 시각화 맵"><i class="fa-solid fa-chart-scatter mr-1"></i>4분면 맵</button>
               <button onclick="setGicsViewMode('table')" id="gicsViewModeBtn-table" class="px-2.5 py-1 rounded text-[10px] font-semibold text-slate-400 hover:text-white transition-colors cursor-pointer" title="상세 데이터 표"><i class="fa-solid fa-table mr-1"></i>상세 표</button>
             </div>
 
@@ -1601,23 +1603,31 @@
           </div>
         </div>
 
-        <!-- 1. Visual Mode: 4-Quadrant Sector Momentum Canvas -->
-        <div id="gicsVisualViewContainer" class="space-y-3">
-          <div class="relative w-full h-[320px] bg-desk-950/70 rounded border border-desk-border/80 overflow-hidden" id="gicsQuadrantWrapper">
-            <svg id="gicsQuadrantSvg" class="w-full h-full" viewBox="0 0 960 320"></svg>
-          </div>
-          <!-- Quadrant Inspector Hover Card -->
-          <div id="gicsQuadrantInspector" class="p-3 bg-desk-900 rounded border border-desk-border text-xs font-mono flex items-center justify-between text-slate-400 transition-all">
-            <div class="flex items-center space-x-2">
-              <span class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse"></span>
-              <span id="gicsInspectorText">버블에 마우스를 올리면 섹터별 1M 자금흐름과 수익률, 운용자산(AUM) 상세 정보가 표시됩니다.</span>
-            </div>
-            <span class="text-[10px] text-slate-500 font-sans hidden sm:inline">원 크기: 운용자산(AUM) 비례</span>
+        <!-- 1. Mode 1: GICS Sector Sankey Flow Diagram (Default) -->
+        <div id="gicsSankeyContainer" class="space-y-3">
+          <div class="relative w-full h-[410px] bg-desk-950/80 rounded border border-desk-border/80 overflow-hidden flex items-center justify-center shadow-inner" id="gicsSankeyWrapper">
+            <svg id="gicsSankeySvg" class="w-full h-full" viewBox="0 0 960 410"></svg>
           </div>
         </div>
 
-        <!-- 2. Table Mode: GICS Table -->
-        <div id="gicsTableViewContainer" class="hidden overflow-x-auto">
+        <!-- 2. Mode 2: 4-Quadrant Sector Momentum Canvas -->
+        <div id="gicsQuadrantContainer" class="space-y-3 hidden">
+          <div class="relative w-full h-[340px] bg-desk-950/80 rounded border border-desk-border/80 overflow-hidden flex items-center justify-center shadow-inner" id="gicsQuadrantWrapper">
+            <svg id="gicsQuadrantSvg" class="w-full h-full" viewBox="0 0 960 340"></svg>
+          </div>
+        </div>
+
+        <!-- Live Telemetry / Inspector Card (Shared by Sankey & Quadrant) -->
+        <div id="gicsInspectorCard" class="mt-3 p-3 bg-desk-900/90 rounded border border-desk-border text-xs font-mono flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-slate-400 transition-all shadow-inner">
+          <div class="flex items-center space-x-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping flex-shrink-0"></span>
+            <span id="gicsInspectorText" class="text-slate-300">다이어그램의 섹터 노드나 자금 리본에 마우스를 올리면 1개월 자금 순유출입, 가격 모멘텀, 운용자산(AUM) 상세 정량 지표가 실시간 표시됩니다.</span>
+          </div>
+          <span class="text-[10px] text-emerald-400 font-semibold flex-shrink-0">GICS 자금순환 퀀트 엔진</span>
+        </div>
+
+        <!-- 3. Mode 3: GICS Detailed Table -->
+        <div id="gicsTableViewContainer" class="hidden overflow-x-auto my-2">
           <table class="w-full text-left text-xs desk-table font-mono">
             <thead>
               <tr class="text-slate-400 uppercase text-[10px] border-b border-desk-border bg-desk-850">
@@ -2036,7 +2046,7 @@
     // Embedded Initial Dataset (Auto-synced with status.json)
     const INITIAL_DATA = {
   "summary": {
-    "updated_at": "2026-11-06 16:14:34",
+    "updated_at": "2026-11-06 16:29:58",
     "total_projects": 8,
     "active_daemons": 0,
     "today_executed": 8,
@@ -2047,13 +2057,13 @@
     },
     "portfolio": {
       "date": "2026-11-06",
-      "daily_return_pct": -0.85,
-      "cumulative_return_pct": -4.54,
+      "daily_return_pct": -0.78,
+      "cumulative_return_pct": -4.51,
       "realized_pnl_pct": -7.3,
-      "unrealized_pnl_pct": -0.85,
+      "unrealized_pnl_pct": -0.78,
       "holding_count": 12,
       "closed_count": 16,
-      "win_rate": 25.0
+      "win_rate": 28.6
     }
   },
   "projects": [
@@ -3313,11 +3323,11 @@
       "signal_date": "2026-11-05",
       "entry_price": 183900.0,
       "entry_date": "2026-11-05",
-      "current_price": 187100.0,
+      "current_price": 187600.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": 1.74,
+      "return_pct": 2.01,
       "target_price": 202000.0,
       "stop_loss_price": 171000.0,
       "notes": "[정배열 2차검증 100점] 20일 이평선(177,075원) 대량거래(236%) 돌파 안착"
@@ -3353,11 +3363,11 @@
       "signal_date": "2026-11-03",
       "entry_price": 175000.0,
       "entry_date": "2026-11-03",
-      "current_price": 175000.0,
+      "current_price": 175300.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": 0.0,
+      "return_pct": 0.17,
       "target_price": 195000.0,
       "stop_loss_price": 164000.0,
       "notes": "[중소형주] 과천 AI IDC 본격 가동 및 52주 신고가 하이타이트 플래그 돌파"
@@ -3453,11 +3463,11 @@
       "signal_date": "2026-11-03",
       "entry_price": 61600.0,
       "entry_date": "2026-11-03",
-      "current_price": 60200.0,
+      "current_price": 59700.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": -2.27,
+      "return_pct": -3.08,
       "target_price": 67800.0,
       "stop_loss_price": 57600.0,
       "notes": "[대형주] 친환경 플랜트 대형 EPC 글로벌 수주 랠리 52주 신고가 VCP 돌파"
@@ -3513,11 +3523,11 @@
       "signal_date": "2026-11-06",
       "entry_price": 4495.0,
       "entry_date": "2026-11-06",
-      "current_price": 4245.0,
+      "current_price": 4300.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": -5.56,
+      "return_pct": -4.34,
       "target_price": 4944.0,
       "stop_loss_price": 4180.0,
       "notes": "[중소형주 엄선]  | 전략: "
@@ -3846,13 +3856,13 @@
   "performance": {
     "PORTFOLIO_TOTAL": {
       "date": "2026-11-06",
-      "daily_return_pct": -0.85,
-      "cumulative_return_pct": -4.54,
+      "daily_return_pct": -0.78,
+      "cumulative_return_pct": -4.51,
       "realized_pnl_pct": -7.3,
-      "unrealized_pnl_pct": -0.85,
+      "unrealized_pnl_pct": -0.78,
       "holding_count": 12,
       "closed_count": 16,
-      "win_rate": 25.0
+      "win_rate": 28.6
     },
     "signal_forge_alert": {
       "date": "2026-11-03",
@@ -3866,10 +3876,10 @@
     },
     "stock-chart-alignment": {
       "date": "2026-11-06",
-      "daily_return_pct": -0.76,
-      "cumulative_return_pct": -9.13,
+      "daily_return_pct": -0.62,
+      "cumulative_return_pct": -9.06,
       "realized_pnl_pct": -17.5,
-      "unrealized_pnl_pct": -0.76,
+      "unrealized_pnl_pct": -0.62,
       "holding_count": 2,
       "closed_count": 2,
       "win_rate": 25.0
@@ -3886,13 +3896,13 @@
     },
     "stock-sepa-pivot": {
       "date": "2026-11-06",
-      "daily_return_pct": -1.14,
-      "cumulative_return_pct": -1.14,
+      "daily_return_pct": -1.46,
+      "cumulative_return_pct": -1.46,
       "realized_pnl_pct": 0.0,
-      "unrealized_pnl_pct": -1.14,
+      "unrealized_pnl_pct": -1.46,
       "holding_count": 2,
       "closed_count": 0,
-      "win_rate": 0.0
+      "win_rate": 50.0
     },
     "stock-sniper": {
       "date": "2026-11-06",
@@ -3906,10 +3916,10 @@
     },
     "stock-supervisor": {
       "date": "2026-11-06",
-      "daily_return_pct": -0.81,
-      "cumulative_return_pct": -4.01,
+      "daily_return_pct": -0.66,
+      "cumulative_return_pct": -3.94,
       "realized_pnl_pct": -6.86,
-      "unrealized_pnl_pct": -0.81,
+      "unrealized_pnl_pct": -0.66,
       "holding_count": 8,
       "closed_count": 9,
       "win_rate": 23.5
@@ -6416,7 +6426,11 @@
 
       renderRotationCards(rot);
       renderRotationGicsTable(currentRotFilter);
-      renderGicsQuadrantMap(rot);
+      if (currentGicsViewMode === 'sankey') {
+        renderGicsSankeyDiagram(rot);
+      } else if (currentGicsViewMode === 'quadrant') {
+        renderGicsQuadrantMap(rot);
+      }
       renderRotationMacroTable(rot);
       renderMacroVisuals(rot);
     }
@@ -6666,29 +6680,344 @@
       }).join('');
     }
 
-    let currentGicsViewMode = 'visual';
+    let currentGicsViewMode = 'sankey';
+
     function setGicsViewMode(mode) {
       currentGicsViewMode = mode;
-      const vContainer = document.getElementById('gicsVisualViewContainer');
+      const sContainer = document.getElementById('gicsSankeyContainer');
+      const qContainer = document.getElementById('gicsQuadrantContainer');
       const tContainer = document.getElementById('gicsTableViewContainer');
-      const vBtn = document.getElementById('gicsViewModeBtn-visual');
+      const sBtn = document.getElementById('gicsViewModeBtn-sankey');
+      const qBtn = document.getElementById('gicsViewModeBtn-quadrant');
       const tBtn = document.getElementById('gicsViewModeBtn-table');
       const filters = document.getElementById('gicsTableFilters');
 
-      if (mode === 'visual') {
-        if (vContainer) vContainer.classList.remove('hidden');
+      const inactiveCls = "px-2.5 py-1 rounded text-[10px] font-semibold text-slate-400 hover:text-white transition-colors cursor-pointer";
+      const activeCls = "px-2.5 py-1 rounded text-[10px] font-semibold bg-emerald-600 text-white transition-colors cursor-pointer shadow-sm";
+
+      if (sBtn) sBtn.className = inactiveCls;
+      if (qBtn) qBtn.className = inactiveCls;
+      if (tBtn) tBtn.className = inactiveCls;
+
+      if (mode === 'sankey') {
+        if (sContainer) sContainer.classList.remove('hidden');
+        if (qContainer) qContainer.classList.add('hidden');
         if (tContainer) tContainer.classList.add('hidden');
         if (filters) { filters.classList.remove('flex'); filters.classList.add('hidden'); }
-        if (vBtn) vBtn.className = "px-2.5 py-1 rounded text-[10px] font-semibold bg-rose-600 text-white transition-colors cursor-pointer shadow-sm";
-        if (tBtn) tBtn.className = "px-2.5 py-1 rounded text-[10px] font-semibold text-slate-400 hover:text-white transition-colors cursor-pointer";
+        if (sBtn) sBtn.className = activeCls;
+        renderGicsSankeyDiagram(appData.etf_rotation);
+      } else if (mode === 'quadrant') {
+        if (sContainer) sContainer.classList.add('hidden');
+        if (qContainer) qContainer.classList.remove('hidden');
+        if (tContainer) tContainer.classList.add('hidden');
+        if (filters) { filters.classList.remove('flex'); filters.classList.add('hidden'); }
+        if (qBtn) qBtn.className = activeCls;
         renderGicsQuadrantMap(appData.etf_rotation);
       } else {
-        if (vContainer) vContainer.classList.add('hidden');
+        if (sContainer) sContainer.classList.add('hidden');
+        if (qContainer) qContainer.classList.add('hidden');
         if (tContainer) tContainer.classList.remove('hidden');
         if (filters) { filters.classList.remove('hidden'); filters.classList.add('flex'); }
-        if (vBtn) vBtn.className = "px-2.5 py-1 rounded text-[10px] font-semibold text-slate-400 hover:text-white transition-colors cursor-pointer";
-        if (tBtn) tBtn.className = "px-2.5 py-1 rounded text-[10px] font-semibold bg-rose-600 text-white transition-colors cursor-pointer shadow-sm";
+        if (tBtn) tBtn.className = activeCls;
       }
+    }
+
+    function renderGicsSankeyDiagram(rot) {
+      const svg = document.getElementById('gicsSankeySvg');
+      if (!svg || !rot || !rot.dataset) return;
+      const ds = rot.dataset;
+
+      // 1. Data mapping for Outflow and Inflow sectors
+      const outflowList = [
+        { ticker: 'XLK', name: '정보기술 (Tech)', flow: -1.82, ret: -19.37, aum: 107.6, role: '빅테크 밸류에이션 차익실현' },
+        { ticker: 'XLY', name: '임의소비재 (Discretionary)', flow: -1.15, ret: 5.64, aum: 22.5, role: '경기민감 소비재 비중축소' },
+        { ticker: 'XLE', name: '에너지 (Energy)', flow: -0.65, ret: -2.73, aum: 40.7, role: '유가 변동성 헤지 이탈' },
+        { ticker: 'XLRE', name: '부동산 (Real Estate)', flow: -0.45, ret: 9.19, aum: 8.4, role: '고금리 장기화 리츠 매도' },
+        { ticker: 'XLU', name: '유틸리티 (Utilities)', flow: -0.25, ret: 5.22, aum: 23.8, role: '단기 급등 차익 분배' }
+      ];
+
+      const inflowList = [
+        { ticker: 'XLF', name: '금융 (Financials)', flow: 4.15, ret: 6.98, aum: 53.9, role: '금리 마진 & 실적 기반 1위 매집' },
+        { ticker: 'XLV', name: '헬스케어 (Health Care)', flow: 2.89, ret: 9.54, aum: 49.7, role: '방어적 성장 & 저평가 가치 유입' },
+        { ticker: 'XLI', name: '산업재 (Industrials)', flow: 1.75, ret: -3.20, aum: 29.9, role: '인프라·제조업 구조적 축적' },
+        { ticker: 'XLP', name: '필수소비재 (Staples)', flow: 0.85, ret: 11.69, aum: 15.2, role: '경기방어 배당 현금 유입' },
+        { ticker: 'XLC', name: '통신서비스 (Comm)', flow: 0.42, ret: -6.22, aum: 21.8, role: '플랫폼 저가 선취매 집결' },
+        { ticker: 'XLB', name: '소재 (Materials)', flow: 0.38, ret: 6.84, aum: 8.4, role: '원자재·공급망 수혜 유입' }
+      ];
+
+      // Dynamic dataset sync
+      outflowList.forEach(s => {
+        if (ds[s.ticker]) {
+          if (ds[s.ticker].flow_1m !== undefined) s.flow = ds[s.ticker].flow_1m;
+          if (ds[s.ticker].ret_1m !== undefined) s.ret = ds[s.ticker].ret_1m;
+          if (ds[s.ticker].aum_b !== undefined) s.aum = ds[s.ticker].aum_b;
+        }
+      });
+      inflowList.forEach(s => {
+        if (ds[s.ticker]) {
+          if (ds[s.ticker].flow_1m !== undefined) s.flow = ds[s.ticker].flow_1m;
+          if (ds[s.ticker].ret_1m !== undefined) s.ret = ds[s.ticker].ret_1m;
+          if (ds[s.ticker].aum_b !== undefined) s.aum = ds[s.ticker].aum_b;
+        }
+      });
+
+      const totalOutflow = outflowList.reduce((sum, s) => sum + Math.abs(s.flow), 0);
+      const totalInflow = inflowList.reduce((sum, s) => sum + s.flow, 0);
+      const marketInjection = Math.max(0, totalInflow - totalOutflow);
+      const totalHubFlow = totalInflow;
+
+      // Sources (Left): 5 sectors + 1 Macro Cash
+      const sources = [
+        ...outflowList,
+        { ticker: 'MACRO', name: '외부 유동성 (Macro Injection)', flow: marketInjection, ret: 0, aum: 6500, role: 'MMF·초단기채 대기 자금의 주식시장 순유입' }
+      ];
+
+      // Destinations (Right): 6 sectors
+      const destinations = inflowList;
+
+      // Coordinates
+      const width = 960;
+      const height = 410;
+      const hubX1 = 430;
+      const hubX2 = 530;
+      const nodeW = 180;
+      const leftNodeX = 30;
+      const rightNodeX = 750;
+      const spanH = 320;
+      const startY = 48;
+
+      // Calculate Hub segments
+      let curLeftY = startY;
+      sources.forEach(src => {
+        src.hub_y_top = curLeftY;
+        const segH = (Math.abs(src.flow) / totalHubFlow) * spanH;
+        src.hub_y_bot = curLeftY + segH;
+        curLeftY = src.hub_y_bot;
+      });
+
+      let curRightY = startY;
+      destinations.forEach(dst => {
+        dst.hub_y_top = curRightY;
+        const segH = (dst.flow / totalHubFlow) * spanH;
+        dst.hub_y_bot = curRightY + segH;
+        curRightY = dst.hub_y_bot;
+      });
+
+      // SVG Definitions (Gradients & Filters)
+      let defsHtml = `
+        <defs>
+          <linearGradient id="hub-glass-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#0f172a" stop-opacity="0.95"/>
+            <stop offset="50%" stop-color="#09101d" stop-opacity="0.98"/>
+            <stop offset="100%" stop-color="#020617" stop-opacity="0.95"/>
+          </linearGradient>
+          <linearGradient id="grad-macro-flow" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#0284c7" stop-opacity="0.45"/>
+            <stop offset="100%" stop-color="#0ea5e9" stop-opacity="0.25"/>
+          </linearGradient>
+      `;
+
+      sources.forEach(src => {
+        if (src.ticker !== 'MACRO') {
+          defsHtml += `
+            <linearGradient id="sankey-grad-out-${src.ticker}" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#f43f5e" stop-opacity="0.45"/>
+              <stop offset="100%" stop-color="#475569" stop-opacity="0.25"/>
+            </linearGradient>
+          `;
+        }
+      });
+
+      destinations.forEach(dst => {
+        defsHtml += `
+          <linearGradient id="sankey-grad-in-${dst.ticker}" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#475569" stop-opacity="0.25"/>
+            <stop offset="100%" stop-color="#10b981" stop-opacity="0.5"/>
+          </linearGradient>
+        `;
+      });
+      defsHtml += `</defs>`;
+
+      // Header Labels inside SVG
+      let html = defsHtml;
+      html += `
+        <!-- Top Guide Legends -->
+        <text x="${leftNodeX}" y="24" fill="#f43f5e" font-size="10" font-family="monospace" font-weight="bold">
+          ◀ 자금 유출 섹터 (-$${totalOutflow.toFixed(2)}B) <tspan fill="#38bdf8">+ 신규 시장 자금 ($${marketInjection.toFixed(2)}B)</tspan>
+        </text>
+        <text x="480" y="24" text-anchor="middle" fill="#38bdf8" font-size="10" font-family="monospace" font-weight="bold">
+          자본 재배분 풀 (Market Rebalancing Hub $${totalHubFlow.toFixed(2)}B)
+        </text>
+        <text x="${rightNodeX + nodeW}" y="24" text-anchor="end" fill="#10b981" font-size="10" font-family="monospace" font-weight="bold">
+          자금 유입 주도 섹터 (Net Inflows +$${totalInflow.toFixed(2)}B) ▶
+        </text>
+      `;
+
+      // 2. Render Left Ribbons (Sources -> Hub)
+      const leftNodeGap = 11;
+      const leftNodeH = 43;
+      sources.forEach((src, idx) => {
+        const ny = startY + idx * (leftNodeH + leftNodeGap);
+        src.ny = ny;
+        const ribH = Math.max(6, Math.min(30, Math.abs(src.flow) * 7.5));
+        const y1_top = ny + (leftNodeH - ribH) / 2;
+        const y1_bot = y1_top + ribH;
+        src.y1_top = y1_top;
+        src.y1_bot = y1_bot;
+
+        const x1 = leftNodeX + nodeW;
+        const x2 = hubX1;
+        const cx1 = x1 + (x2 - x1) * 0.5;
+        const cx2 = x2 - (x2 - x1) * 0.5;
+        const d = `M ${x1} ${y1_top} C ${cx1} ${y1_top}, ${cx2} ${src.hub_y_top}, ${x2} ${src.hub_y_top} L ${x2} ${src.hub_y_bot} C ${cx2} ${src.hub_y_bot}, ${cx1} ${y1_bot}, ${x1} ${y1_bot} Z`;
+        const gradId = src.ticker === 'MACRO' ? 'grad-macro-flow' : `sankey-grad-out-${src.ticker}`;
+
+        const isMacro = src.ticker === 'MACRO';
+        const infoStr = isMacro
+          ? `[외부 유동성] MMF 및 단기 자금 대기 풀에서 주식시장으로 순유입: +$${marketInjection.toFixed(2)}B (전체 섹터 자본 확장 기여)`
+          : `[${src.ticker} ${src.name}] 1개월 자금 순유출: -$${Math.abs(src.flow).toFixed(2)}B | 1M 수익률: ${src.ret >= 0 ? '+' : ''}${src.ret.toFixed(1)}% | AUM: $${Math.round(src.aum)}B | 진단: ${src.role}`;
+
+        html += `
+          <path id="ribbon-${src.ticker}" class="gics-ribbon cursor-pointer transition-all duration-200"
+                d="${d}" fill="url(#${gradId})" stroke="rgba(255,255,255,0.08)" stroke-width="0.8" opacity="0.4"
+                onmouseenter="highlightGicsFlow('${src.ticker}', '${infoStr.replace(/'/g, "\\'")}')"
+                onmouseleave="resetGicsFlow()"
+                onclick="focusGicsSectorRow('${src.ticker}')" />
+        `;
+      });
+
+      // 3. Render Right Ribbons (Hub -> Destinations)
+      const rightNodeGap = 11;
+      const rightNodeH = 43;
+      destinations.forEach((dst, idx) => {
+        const ny = startY + idx * (rightNodeH + rightNodeGap);
+        dst.ny = ny;
+        const ribH = Math.max(6, Math.min(30, dst.flow * 7.5));
+        const y2_top = ny + (rightNodeH - ribH) / 2;
+        const y2_bot = y2_top + ribH;
+        dst.y2_top = y2_top;
+        dst.y2_bot = y2_bot;
+
+        const x1 = hubX2;
+        const x2 = rightNodeX;
+        const cx1 = x1 + (x2 - x1) * 0.5;
+        const cx2 = x2 - (x2 - x1) * 0.5;
+        const d = `M ${x1} ${dst.hub_y_top} C ${cx1} ${dst.hub_y_top}, ${cx2} ${y2_top}, ${x2} ${y2_top} L ${x2} ${y2_bot} C ${cx2} ${y2_bot}, ${cx1} ${dst.hub_y_bot}, ${x1} ${dst.hub_y_bot} Z`;
+        const gradId = `sankey-grad-in-${dst.ticker}`;
+
+        const infoStr = `[${dst.ticker} ${dst.name}] 1개월 자금 순유입: +$${dst.flow.toFixed(2)}B (AUM 대비 +${((dst.flow / dst.aum) * 100).toFixed(1)}%) | 1M 수익률: +${dst.ret.toFixed(1)}% | AUM: $${Math.round(dst.aum)}B | 진단: ${dst.role}`;
+
+        html += `
+          <path id="ribbon-${dst.ticker}" class="gics-ribbon cursor-pointer transition-all duration-200"
+                d="${d}" fill="url(#${gradId})" stroke="rgba(255,255,255,0.08)" stroke-width="0.8" opacity="0.45"
+                onmouseenter="highlightGicsFlow('${dst.ticker}', '${infoStr.replace(/'/g, "\\'")}')"
+                onmouseleave="resetGicsFlow()"
+                onclick="focusGicsSectorRow('${dst.ticker}')" />
+        `;
+      });
+
+      // 4. Render Central Hub Glass Pillar
+      html += `
+        <rect x="${hubX1}" y="42" width="${hubX2 - hubX1}" height="336" rx="8" fill="url(#hub-glass-grad)" stroke="#0ea5e9" stroke-width="1.2" stroke-opacity="0.8"/>
+        <rect x="${hubX1 + 4}" y="46" width="${hubX2 - hubX1 - 8}" height="328" rx="6" fill="none" stroke="#38bdf8" stroke-width="0.8" stroke-opacity="0.3" stroke-dasharray="4,4"/>
+        
+        <text x="480" y="66" text-anchor="middle" fill="#38bdf8" font-size="9" font-family="monospace" font-weight="bold" letter-spacing="1">ROTATION HUB</text>
+        <text x="480" y="78" text-anchor="middle" fill="#94a3b8" font-size="8" font-family="sans-serif">자본 전이 풀</text>
+        
+        <circle cx="480" cy="180" r="32" fill="rgba(14, 165, 233, 0.08)" stroke="#0ea5e9" stroke-width="1" stroke-dasharray="2,2"/>
+        <text x="480" y="176" text-anchor="middle" fill="#ffffff" font-size="15" font-family="monospace" font-weight="bold">$${totalHubFlow.toFixed(2)}B</text>
+        <text x="480" y="190" text-anchor="middle" fill="#64748b" font-size="8" font-family="monospace">총 회전 자본</text>
+        
+        <line x1="${hubX1 + 10}" y1="210" x2="${hubX2 - 10}" y2="210" stroke="#1e293b" stroke-width="1"/>
+        <text x="480" y="226" text-anchor="middle" fill="#f43f5e" font-size="8" font-family="monospace">유출 -$${totalOutflow.toFixed(2)}B</text>
+        <text x="480" y="240" text-anchor="middle" fill="#38bdf8" font-size="8" font-family="monospace">주입 +$${marketInjection.toFixed(2)}B</text>
+        <text x="480" y="254" text-anchor="middle" fill="#10b981" font-size="8" font-family="monospace">배분 +$${totalInflow.toFixed(2)}B</text>
+
+        <text x="480" y="358" text-anchor="middle" fill="#10b981" font-size="8" font-family="monospace" font-weight="bold">11 GICS SECTORS</text>
+        <text x="480" y="370" text-anchor="middle" fill="#34d399" font-size="9">►►►</text>
+      `;
+
+      // 5. Render Left Source Nodes
+      sources.forEach(src => {
+        const isMacro = src.ticker === 'MACRO';
+        const strokeCol = isMacro ? '#0284c7' : '#f43f5e';
+        const infoStr = isMacro
+          ? `[외부 유동성] MMF 및 단기 자금 대기 풀에서 주식시장으로 순유입: +$${marketInjection.toFixed(2)}B (전체 섹터 자본 확장 기여)`
+          : `[${src.ticker} ${src.name}] 1개월 자금 순유출: -$${Math.abs(src.flow).toFixed(2)}B | 1M 수익률: ${src.ret >= 0 ? '+' : ''}${src.ret.toFixed(1)}% | AUM: $${Math.round(src.aum)}B | 진단: ${src.role}`;
+
+        html += `
+          <g id="node-${src.ticker}" class="cursor-pointer transition-all duration-200"
+             onmouseenter="highlightGicsFlow('${src.ticker}', '${infoStr.replace(/'/g, "\\'")}')"
+             onmouseleave="resetGicsFlow()"
+             onclick="focusGicsSectorRow('${src.ticker}')">
+            <rect x="${leftNodeX}" y="${src.ny}" width="${nodeW}" height="${leftNodeH}" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <rect x="${leftNodeX}" y="${src.ny}" width="4" height="${leftNodeH}" rx="2" fill="${strokeCol}"/>
+            
+            <text x="${leftNodeX + 11}" y="${src.ny + 16}" fill="#ffffff" font-size="11" font-family="monospace" font-weight="bold">${src.ticker}</text>
+            <text x="${leftNodeX + 48}" y="${src.ny + 16}" fill="#94a3b8" font-size="9" font-family="sans-serif">${src.name.split(' ')[0]}</text>
+            <text x="${leftNodeX + nodeW - 8}" y="${src.ny + 16}" text-anchor="end" fill="${isMacro ? '#38bdf8' : '#f43f5e'}" font-size="11" font-family="monospace" font-weight="bold">
+              ${isMacro ? '+' : ''}${src.flow.toFixed(2)}B
+            </text>
+            
+            <text x="${leftNodeX + 11}" y="${src.ny + 32}" fill="#64748b" font-size="8" font-family="monospace">
+              ${isMacro ? '시장 신규 유입' : `1M: ${src.ret >= 0 ? '+' : ''}${src.ret.toFixed(1)}%`}
+            </text>
+            <text x="${leftNodeX + nodeW - 8}" y="${src.ny + 32}" text-anchor="end" fill="#64748b" font-size="8" font-family="monospace">
+              ${isMacro ? '대기자금 풀' : `AUM $${Math.round(src.aum)}B`}
+            </text>
+          </g>
+        `;
+      });
+
+      // 6. Render Right Destination Nodes
+      destinations.forEach(dst => {
+        const infoStr = `[${dst.ticker} ${dst.name}] 1개월 자금 순유입: +$${dst.flow.toFixed(2)}B (AUM 대비 +${((dst.flow / dst.aum) * 100).toFixed(1)}%) | 1M 수익률: +${dst.ret.toFixed(1)}% | AUM: $${Math.round(dst.aum)}B | 진단: ${dst.role}`;
+
+        html += `
+          <g id="node-${dst.ticker}" class="cursor-pointer transition-all duration-200"
+             onmouseenter="highlightGicsFlow('${dst.ticker}', '${infoStr.replace(/'/g, "\\'")}')"
+             onmouseleave="resetGicsFlow()"
+             onclick="focusGicsSectorRow('${dst.ticker}')">
+            <rect x="${rightNodeX}" y="${dst.ny}" width="${nodeW}" height="${rightNodeH}" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <rect x="${rightNodeX + nodeW - 4}" y="${dst.ny}" width="4" height="${rightNodeH}" rx="2" fill="#10b981"/>
+            
+            <text x="${rightNodeX + 11}" y="${dst.ny + 16}" fill="#ffffff" font-size="11" font-family="monospace" font-weight="bold">${dst.ticker}</text>
+            <text x="${rightNodeX + 48}" y="${dst.ny + 16}" fill="#94a3b8" font-size="9" font-family="sans-serif">${dst.name.split(' ')[0]}</text>
+            <text x="${rightNodeX + nodeW - 12}" y="${dst.ny + 16}" text-anchor="end" fill="#10b981" font-size="11" font-family="monospace" font-weight="bold">+${dst.flow.toFixed(2)}B</text>
+            
+            <text x="${rightNodeX + 11}" y="${dst.ny + 32}" fill="#64748b" font-size="8" font-family="monospace">1M: +${dst.ret.toFixed(1)}%</text>
+            <text x="${rightNodeX + nodeW - 12}" y="${dst.ny + 32}" text-anchor="end" fill="#34d399" font-size="8" font-family="monospace">Flow/AUM: +${((dst.flow / dst.aum) * 100).toFixed(1)}%</text>
+          </g>
+        `;
+      });
+
+      svg.innerHTML = html;
+    }
+
+    function highlightGicsFlow(ticker, info) {
+      const el = document.getElementById('gicsInspectorText');
+      if (el) el.innerText = info;
+
+      document.querySelectorAll('.gics-ribbon').forEach(r => {
+        if (r.id === 'ribbon-' + ticker) {
+          r.style.opacity = '0.95';
+          r.style.stroke = '#ffffff';
+          r.style.strokeWidth = '1.2';
+        } else {
+          r.style.opacity = '0.12';
+        }
+      });
+    }
+
+    function resetGicsFlow() {
+      const el = document.getElementById('gicsInspectorText');
+      if (el) el.innerText = '다이어그램의 섹터 노드나 자금 리본에 마우스를 올리면 1개월 자금 순유출입, 가격 모멘텀, 운용자산(AUM) 상세 정량 지표가 실시간 표시됩니다.';
+
+      document.querySelectorAll('.gics-ribbon').forEach(r => {
+        r.style.opacity = '0.4';
+        r.style.stroke = 'rgba(255,255,255,0.08)';
+        r.style.strokeWidth = '0.8';
+      });
     }
 
     function renderGicsQuadrantMap(rot) {
@@ -6713,51 +7042,63 @@
       ];
 
       const width = 960;
-      const height = 320;
+      const height = 340;
       const cx = width / 2;
       const cy = height / 2;
 
       let html = `
         <defs>
-          <radialGradient id="grad-green" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#34d399" stop-opacity="0.9"/>
-            <stop offset="100%" stop-color="#059669" stop-opacity="0.3"/>
+          <radialGradient id="qgrad-green" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#10b981" stop-opacity="0.8"/>
+            <stop offset="100%" stop-color="#064e3b" stop-opacity="0.2"/>
           </radialGradient>
-          <radialGradient id="grad-amber" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.9"/>
-            <stop offset="100%" stop-color="#d97706" stop-opacity="0.3"/>
+          <radialGradient id="qgrad-amber" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.8"/>
+            <stop offset="100%" stop-color="#78350f" stop-opacity="0.2"/>
           </radialGradient>
-          <radialGradient id="grad-rose" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#f87171" stop-opacity="0.9"/>
-            <stop offset="100%" stop-color="#e11d48" stop-opacity="0.3"/>
+          <radialGradient id="qgrad-rose" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#f43f5e" stop-opacity="0.8"/>
+            <stop offset="100%" stop-color="#4c0519" stop-opacity="0.2"/>
           </radialGradient>
-          <radialGradient id="grad-cyan" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.9"/>
-            <stop offset="100%" stop-color="#0891b2" stop-opacity="0.3"/>
+          <radialGradient id="qgrad-cyan" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.8"/>
+            <stop offset="100%" stop-color="#083344" stop-opacity="0.2"/>
           </radialGradient>
         </defs>
 
-        <!-- Quadrant Background Tints -->
-        <rect x="${cx}" y="20" width="${cx - 40}" height="${cy - 20}" fill="rgba(16, 185, 129, 0.05)" rx="6"/>
-        <rect x="40" y="20" width="${cx - 40}" height="${cy - 20}" fill="rgba(245, 158, 11, 0.04)" rx="6"/>
-        <rect x="40" y="${cy}" width="${cx - 40}" height="${height - cy - 20}" fill="rgba(244, 63, 94, 0.05)" rx="6"/>
-        <rect x="${cx}" y="${cy}" width="${cx - 40}" height="${height - cy - 20}" fill="rgba(6, 182, 212, 0.04)" rx="6"/>
+        <!-- Quadrant Background Subtle Tints -->
+        <rect x="${cx}" y="20" width="${cx - 30}" height="${cy - 20}" fill="rgba(16, 185, 129, 0.03)" rx="6"/>
+        <rect x="30" y="20" width="${cx - 30}" height="${cy - 20}" fill="rgba(245, 158, 11, 0.025)" rx="6"/>
+        <rect x="30" y="${cy}" width="${cx - 30}" height="${height - cy - 20}" fill="rgba(244, 63, 94, 0.03)" rx="6"/>
+        <rect x="${cx}" y="${cy}" width="${cx - 30}" height="${height - cy - 20}" fill="rgba(6, 182, 212, 0.025)" rx="6"/>
 
         <!-- Center Crosshair Axes -->
-        <line x1="40" y1="${cy}" x2="${width - 40}" y2="${cy}" stroke="#334155" stroke-width="1.2" stroke-dasharray="4,4"/>
+        <line x1="30" y1="${cy}" x2="${width - 30}" y2="${cy}" stroke="#334155" stroke-width="1.2" stroke-dasharray="4,4"/>
         <line x1="${cx}" y1="20" x2="${cx}" y2="${height - 20}" stroke="#334155" stroke-width="1.2" stroke-dasharray="4,4"/>
 
-        <!-- Quadrant Corner Badges & Labels -->
-        <text x="${width - 55}" y="40" text-anchor="end" fill="#10b981" font-size="11" font-family="sans-serif" font-weight="bold">🟢 1사분면: 선도 &amp; 실질 매집 (Leading / Flow In + Price Up)</text>
-        <text x="55" y="40" text-anchor="start" fill="#f59e0b" font-size="11" font-family="sans-serif" font-weight="bold">🟠 2사분면: 차익 실현 &amp; 과열 (Weakening / Flow Out + Price High)</text>
-        <text x="55" y="${height - 28}" text-anchor="start" fill="#f43f5e" font-size="11" font-family="sans-serif" font-weight="bold">🔴 3사분면: 소외 &amp; 구조적 유출 (Lagging / Flow Out + Price Down)</text>
-        <text x="${width - 55}" y="${height - 28}" text-anchor="end" fill="#06b6d4" font-size="11" font-family="sans-serif" font-weight="bold">🔵 4사분면: 저가 매수 &amp; 반등 (Improving / Flow In + Price Low)</text>
+        <!-- Institutional Quadrant Badges -->
+        <g transform="translate(${width - 240}, 28)">
+          <rect x="0" y="0" width="210" height="22" rx="4" fill="rgba(16, 185, 129, 0.12)" stroke="rgba(16, 185, 129, 0.4)" stroke-width="1"/>
+          <text x="105" y="15" text-anchor="middle" fill="#34d399" font-size="9.5" font-family="monospace" font-weight="bold">1사분면: 선도 &amp; 매집 (Leading)</text>
+        </g>
+        <g transform="translate(30, 28)">
+          <rect x="0" y="0" width="210" height="22" rx="4" fill="rgba(245, 158, 11, 0.12)" stroke="rgba(245, 158, 11, 0.4)" stroke-width="1"/>
+          <text x="105" y="15" text-anchor="middle" fill="#fbbf24" font-size="9.5" font-family="monospace" font-weight="bold">2사분면: 차익실현 (Weakening)</text>
+        </g>
+        <g transform="translate(30, ${height - 46})">
+          <rect x="0" y="0" width="210" height="22" rx="4" fill="rgba(244, 63, 94, 0.12)" stroke="rgba(244, 63, 94, 0.4)" stroke-width="1"/>
+          <text x="105" y="15" text-anchor="middle" fill="#f87171" font-size="9.5" font-family="monospace" font-weight="bold">3사분면: 구조적 소외 (Lagging)</text>
+        </g>
+        <g transform="translate(${width - 240}, ${height - 46})">
+          <rect x="0" y="0" width="210" height="22" rx="4" fill="rgba(6, 182, 212, 0.12)" stroke="rgba(6, 182, 212, 0.4)" stroke-width="1"/>
+          <text x="105" y="15" text-anchor="middle" fill="#38bdf8" font-size="9.5" font-family="monospace" font-weight="bold">4사분면: 저가 반등 (Improving)</text>
+        </g>
 
         <!-- Axis Labels -->
-        <text x="${width - 45}" y="${cy - 6}" text-anchor="end" fill="#94a3b8" font-size="10" font-family="monospace">자금 유입 (+Flow) ►</text>
-        <text x="50" y="${cy - 6}" text-anchor="start" fill="#94a3b8" font-size="10" font-family="monospace">◄ 자금 유출 (-Flow)</text>
-        <text x="${cx + 8}" y="32" text-anchor="start" fill="#94a3b8" font-size="10" font-family="monospace">▲ 수익률 상승 (+Ret)</text>
-        <text x="${cx + 8}" y="${height - 25}" text-anchor="start" fill="#94a3b8" font-size="10" font-family="monospace">▼ 수익률 하락 (-Ret)</text>
+        <text x="${width - 35}" y="${cy - 6}" text-anchor="end" fill="#94a3b8" font-size="9.5" font-family="monospace">자금 유입 (+Flow) ►</text>
+        <text x="35" y="${cy - 6}" text-anchor="start" fill="#94a3b8" font-size="9.5" font-family="monospace">◄ 자금 유출 (-Flow)</text>
+        <text x="${cx + 8}" y="32" text-anchor="start" fill="#94a3b8" font-size="9.5" font-family="monospace">▲ 수익률 상승 (+Ret)</text>
+        <text x="${cx + 8}" y="${height - 25}" text-anchor="start" fill="#94a3b8" font-size="9.5" font-family="monospace">▼ 수익률 하락 (-Ret)</text>
       `;
 
       sectors.forEach(s => {
@@ -6766,12 +7107,10 @@
         const ret = d.ret_1m !== undefined ? d.ret_1m : 0;
         const aum = d.aum_b || 30;
 
-        // Scale flow [-4.8 to +4.8] -> X [85 to 875]
         const maxFlow = 4.8;
         const clampedFlow = Math.max(-maxFlow, Math.min(maxFlow, flow));
         const px = cx + (clampedFlow / maxFlow) * (cx - 85);
 
-        // Scale ret [-8.0 to +8.0] -> Y [275 to 45]
         const maxRet = 8.0;
         const clampedRet = Math.max(-maxRet, Math.min(maxRet, ret));
         const py = cy - (clampedRet / maxRet) * (cy - 45);
@@ -6779,17 +7118,17 @@
         const r = Math.min(24, Math.max(14, Math.sqrt(aum) * 2.2));
 
         let strokeCol = '#10b981';
-        let fillGrad = 'url(#grad-green)';
+        let fillGrad = 'url(#qgrad-green)';
         let textCol = '#6ee7b7';
 
         if (flow >= 0 && ret >= 0) {
-          strokeCol = '#10b981'; fillGrad = 'url(#grad-green)'; textCol = '#6ee7b7';
+          strokeCol = '#10b981'; fillGrad = 'url(#qgrad-green)'; textCol = '#6ee7b7';
         } else if (flow < 0 && ret >= 0) {
-          strokeCol = '#f59e0b'; fillGrad = 'url(#grad-amber)'; textCol = '#fcd34d';
+          strokeCol = '#f59e0b'; fillGrad = 'url(#qgrad-amber)'; textCol = '#fcd34d';
         } else if (flow < 0 && ret < 0) {
-          strokeCol = '#f43f5e'; fillGrad = 'url(#grad-rose)'; textCol = '#fda4af';
+          strokeCol = '#f43f5e'; fillGrad = 'url(#qgrad-rose)'; textCol = '#fda4af';
         } else {
-          strokeCol = '#06b6d4'; fillGrad = 'url(#grad-cyan)'; textCol = '#67e8f9';
+          strokeCol = '#06b6d4'; fillGrad = 'url(#qgrad-cyan)'; textCol = '#67e8f9';
         }
 
         const flowText = (flow >= 0 ? '+' : '') + flow.toFixed(2) + 'B';
@@ -6797,10 +7136,12 @@
         const infoStr = `${s.ticker} (${s.name}) : 1M 자금흐름 ${flowText} | 1M 수익률 ${retText} | 운용자산 $${Number(aum).toFixed(1)}B | 판정: ${d.flow_price_relation || '-'}`;
 
         html += `
-          <g class="cursor-pointer transition-transform hover:opacity-90" onmouseenter="showGicsQuadrantDetail('${infoStr}')" onclick="focusGicsSectorRow('${s.ticker}')">
-            <circle cx="${px}" cy="${py}" r="${r}" fill="${fillGrad}" stroke="${strokeCol}" stroke-width="1.8" />
+          <g class="cursor-pointer transition-transform duration-200 hover:scale-110"
+             onmouseenter="showGicsQuadrantDetail('${infoStr.replace(/'/g, "\\'")}')"
+             onclick="focusGicsSectorRow('${s.ticker}')">
+            <circle cx="${px}" cy="${py}" r="${r}" fill="${fillGrad}" stroke="${strokeCol}" stroke-width="1.6" />
             <circle cx="${px}" cy="${py}" r="2" fill="#ffffff" />
-            <text x="${px}" y="${py - r - 3}" text-anchor="middle" fill="${textCol}" font-size="11" font-family="monospace" font-weight="bold" filter="drop-shadow(0 1px 3px rgba(0,0,0,0.9))">${s.ticker}</text>
+            <text x="${px}" y="${py - r - 3}" text-anchor="middle" fill="${textCol}" font-size="10" font-family="monospace" font-weight="bold">${s.ticker}</text>
           </g>
         `;
       });
@@ -6814,13 +7155,14 @@
     }
 
     function focusGicsSectorRow(ticker) {
+      if (ticker === 'MACRO') return;
       setGicsViewMode('table');
       setTimeout(() => {
         const row = document.getElementById('gics-row-' + ticker);
         if (row) {
           row.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          row.classList.add('bg-rose-950/70', 'ring-2', 'ring-rose-500');
-          setTimeout(() => row.classList.remove('bg-rose-950/70', 'ring-2', 'ring-rose-500'), 2500);
+          row.classList.add('bg-emerald-950/70', 'ring-2', 'ring-emerald-500');
+          setTimeout(() => row.classList.remove('bg-emerald-950/70', 'ring-2', 'ring-emerald-500'), 2500);
         }
       }, 50);
     }
