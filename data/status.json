@@ -1,6 +1,6 @@
 {
   "summary": {
-    "updated_at": "2026-11-06 14:16:45",
+    "updated_at": "2026-11-06 14:18:57",
     "total_projects": 8,
     "active_daemons": 0,
     "today_executed": 8,
@@ -11,10 +11,10 @@
     },
     "portfolio": {
       "date": "2026-11-06",
-      "daily_return_pct": -0.14,
-      "cumulative_return_pct": -4.28,
+      "daily_return_pct": 0.05,
+      "cumulative_return_pct": -4.2,
       "realized_pnl_pct": -7.31,
-      "unrealized_pnl_pct": -0.14,
+      "unrealized_pnl_pct": 0.05,
       "holding_count": 11,
       "closed_count": 15,
       "win_rate": 30.8
@@ -1147,11 +1147,11 @@
       "signal_date": "2026-11-05",
       "entry_price": 183900.0,
       "entry_date": "2026-11-05",
-      "current_price": 191100.0,
+      "current_price": 192400.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": 3.92,
+      "return_pct": 4.62,
       "target_price": 202000.0,
       "stop_loss_price": 171000.0,
       "notes": "[정배열 2차검증 100점] 20일 이평선(177,075원) 대량거래(236%) 돌파 안착"
@@ -1187,11 +1187,11 @@
       "signal_date": "2026-11-03",
       "entry_price": 175000.0,
       "entry_date": "2026-11-03",
-      "current_price": 176000.0,
+      "current_price": 176300.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": 0.57,
+      "return_pct": 0.74,
       "target_price": 195000.0,
       "stop_loss_price": 164000.0,
       "notes": "[중소형주] 과천 AI IDC 본격 가동 및 52주 신고가 하이타이트 플래그 돌파"
@@ -1215,6 +1215,26 @@
       "target_price": 75.0,
       "stop_loss_price": 57.84,
       "notes": "[중소형주 엄선] 특수 보험 분야에서의 뛰어난 언더라이팅 수익성과 높은 ROE 기록. 지수 조정기에도 52주 고점 부근에서 가격 방어력이 탁월하며 헤지펀드 기관 수급 지속 유입. | 전략: HTP 모멘텀 (미국 중소형)"
+    },
+    {
+      "id": 318,
+      "project_id": "stock-sepa-pivot",
+      "project_name": "SEPA x 피봇 돌파",
+      "ticker": "028050",
+      "name": "삼성E&A",
+      "market": "KRX",
+      "signal_type": "BUY [지정가 매수]",
+      "signal_date": "2026-11-03",
+      "entry_price": 61600.0,
+      "entry_date": "2026-11-03",
+      "current_price": 61600.0,
+      "exit_price": null,
+      "exit_date": null,
+      "status": "HOLDING",
+      "return_pct": 0.0,
+      "target_price": 67800.0,
+      "stop_loss_price": 57600.0,
+      "notes": "[대형주] 친환경 플랜트 대형 EPC 글로벌 수주 랠리 52주 신고가 VCP 돌파"
     },
     {
       "id": 347,
@@ -1277,26 +1297,6 @@
       "notes": "[3X 레버리지 엄선] 체제: RISK_ON (VIX: 18.38) | Score 100.0/100: Turnover=25, EntryPos=20, Mom=15, | 전략: US 3X 무한레버리지"
     },
     {
-      "id": 318,
-      "project_id": "stock-sepa-pivot",
-      "project_name": "SEPA x 피봇 돌파",
-      "ticker": "028050",
-      "name": "삼성E&A",
-      "market": "KRX",
-      "signal_type": "BUY [지정가 매수]",
-      "signal_date": "2026-11-03",
-      "entry_price": 61600.0,
-      "entry_date": "2026-11-03",
-      "current_price": 61400.0,
-      "exit_price": null,
-      "exit_date": null,
-      "status": "HOLDING",
-      "return_pct": -0.32,
-      "target_price": 67800.0,
-      "stop_loss_price": 57600.0,
-      "notes": "[대형주] 친환경 플랜트 대형 EPC 글로벌 수주 랠리 52주 신고가 VCP 돌파"
-    },
-    {
       "id": 340,
       "project_id": "stock-chart-alignment",
       "project_name": "이평 정배열 돌파 (단기 5/20선 골든스택 & 2차 차트검증)",
@@ -1307,11 +1307,11 @@
       "signal_date": "2026-11-05",
       "entry_price": 215000.0,
       "entry_date": "2026-11-05",
-      "current_price": 213000.0,
+      "current_price": 214000.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": -0.93,
+      "return_pct": -0.47,
       "target_price": 236500.0,
       "stop_loss_price": 199900.0,
       "notes": "[정배열 2차검증 120점] 5일/20일선 정배열 우상향 및 거래량 367% 폭증 수급 유입"
@@ -1347,11 +1347,11 @@
       "signal_date": "2026-11-05",
       "entry_price": 8660.0,
       "entry_date": "2026-11-05",
-      "current_price": 8280.0,
+      "current_price": 8320.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": -4.39,
+      "return_pct": -3.93,
       "target_price": 9520.0,
       "stop_loss_price": 8050.0,
       "notes": "[정배열 2차검증 140점/전체 1위] 5일/20일 정배열 우상향 및 거래량 6,960% 폭증 골든크로스"
@@ -1660,10 +1660,10 @@
   "performance": {
     "PORTFOLIO_TOTAL": {
       "date": "2026-11-06",
-      "daily_return_pct": -0.14,
-      "cumulative_return_pct": -4.28,
+      "daily_return_pct": 0.05,
+      "cumulative_return_pct": -4.2,
       "realized_pnl_pct": -7.31,
-      "unrealized_pnl_pct": -0.14,
+      "unrealized_pnl_pct": 0.05,
       "holding_count": 11,
       "closed_count": 15,
       "win_rate": 30.8
@@ -1680,10 +1680,10 @@
     },
     "stock-chart-alignment": {
       "date": "2026-11-06",
-      "daily_return_pct": -0.47,
-      "cumulative_return_pct": -7.31,
+      "daily_return_pct": 0.07,
+      "cumulative_return_pct": -6.91,
       "realized_pnl_pct": -27.84,
-      "unrealized_pnl_pct": -0.47,
+      "unrealized_pnl_pct": 0.07,
       "holding_count": 3,
       "closed_count": 1,
       "win_rate": 25.0
@@ -1700,10 +1700,10 @@
     },
     "stock-sepa-pivot": {
       "date": "2026-11-06",
-      "daily_return_pct": 0.12,
-      "cumulative_return_pct": 0.12,
+      "daily_return_pct": 0.37,
+      "cumulative_return_pct": 0.37,
       "realized_pnl_pct": 0.0,
-      "unrealized_pnl_pct": 0.12,
+      "unrealized_pnl_pct": 0.37,
       "holding_count": 2,
       "closed_count": 0,
       "win_rate": 50.0
