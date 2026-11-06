@@ -1802,52 +1802,61 @@
       <!-- Top KPI Bar: Executive Performance Summary -->
       <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
         <!-- 1. Cumulative Return -->
-        <div class="desk-card rounded p-3.5 flex flex-col justify-between">
+        <div class="desk-card rounded p-3.5 flex flex-col justify-between border-t-2 border-t-emerald-500/60 shadow-sm hover:border-slate-600 transition-all">
           <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 uppercase">
             <span>누적 수익률 (Cumulative Return)</span>
-            <i class="fa-solid fa-chart-pie text-slate-500 text-xs"></i>
+            <i class="fa-solid fa-chart-pie text-emerald-400 text-xs"></i>
           </div>
           <div class="mt-2 flex items-baseline space-x-1.5">
             <span id="kpiCumulative" class="text-2xl font-bold font-mono text-krx-up">+0.0%</span>
           </div>
-          <div class="text-[10px] font-mono text-slate-400 mt-1 flex items-center">
+          <div class="w-full bg-desk-800 h-1 rounded mt-2 overflow-hidden">
+            <div class="h-full bg-emerald-400 rounded" style="width: 75%"></div>
+          </div>
+          <div class="text-[10px] font-mono text-slate-400 mt-1.5 flex items-center">
             <span class="text-rose-400">실현+미실현 종합 수익</span>
           </div>
         </div>
 
         <!-- 2. Today Return -->
-        <div class="desk-card rounded p-3.5 flex flex-col justify-between">
+        <div class="desk-card rounded p-3.5 flex flex-col justify-between border-t-2 border-t-sky-500/60 shadow-sm hover:border-slate-600 transition-all">
           <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 uppercase">
             <span>일일 수익률 (Daily Return)</span>
-            <i class="fa-solid fa-bolt text-slate-500 text-xs"></i>
+            <i class="fa-solid fa-bolt text-sky-400 text-xs"></i>
           </div>
           <div class="mt-2 flex items-baseline space-x-1.5">
             <span id="kpiDaily" class="text-2xl font-bold font-mono text-krx-up">+0.0%</span>
           </div>
-          <div class="text-[10px] font-mono text-slate-400 mt-1">
+          <div class="w-full bg-desk-800 h-1 rounded mt-2 overflow-hidden">
+            <div class="h-full bg-sky-400 rounded" style="width: 50%"></div>
+          </div>
+          <div class="text-[10px] font-mono text-slate-400 mt-1.5">
             장전 시가 진입 포지션 기준
           </div>
         </div>
 
         <!-- 3. Win Rate -->
-        <div class="desk-card rounded p-3.5 flex flex-col justify-between">
+        <div class="desk-card rounded p-3.5 flex flex-col justify-between border-t-2 border-t-cyan-500/60 shadow-sm hover:border-slate-600 transition-all">
           <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 uppercase">
             <span>승률 (Win Rate)</span>
-            <i class="fa-solid fa-bullseye text-slate-500 text-xs"></i>
+            <i class="fa-solid fa-bullseye text-cyan-400 text-xs"></i>
           </div>
           <div class="mt-2 flex items-baseline space-x-1.5">
             <span id="kpiWinRate" class="text-2xl font-bold font-mono text-slate-100">0.0%</span>
           </div>
-          <div class="text-[10px] font-mono text-slate-400 mt-1">
+          <div class="w-full bg-desk-800 h-1 rounded mt-2 overflow-hidden">
+            <div class="h-full bg-cyan-400 rounded" style="width: 65%"></div>
+          </div>
+          <div class="text-[10px] font-mono text-slate-400 mt-1.5">
             수익 체결 종목 비율
           </div>
         </div>
 
         <!-- 4. Active Holdings -->
-        <div class="desk-card rounded p-3.5 flex flex-col justify-between">
+        <div class="desk-card rounded p-3.5 flex flex-col justify-between border-t-2 border-t-rose-500/60 shadow-sm hover:border-slate-600 transition-all">
           <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 uppercase">
             <span>보유 / 청산 종목 (Holdings / Closed)</span>
-            <i class="fa-solid fa-layer-group text-slate-500 text-xs"></i>
+            <i class="fa-solid fa-layer-group text-rose-400 text-xs"></i>
           </div>
           <div class="mt-2 flex items-baseline space-x-1 font-mono">
             <span id="kpiHoldings" class="text-2xl font-bold text-slate-100">0</span>
@@ -1855,53 +1864,76 @@
             <span id="kpiClosed" class="text-lg font-bold text-slate-400">0</span>
             <span class="text-xs text-slate-400">매도완료</span>
           </div>
-          <div class="text-[10px] font-mono text-emerald-400 mt-1">
+          <div class="w-full bg-desk-800 h-1 rounded mt-2 overflow-hidden">
+            <div class="h-full bg-rose-500 rounded" style="width: 100%"></div>
+          </div>
+          <div class="text-[10px] font-mono text-emerald-400 mt-1.5">
             장전알람 시가 매수 연동
           </div>
         </div>
 
         <!-- 5. Active Daemons -->
-        <div class="desk-card rounded p-3.5 flex flex-col justify-between col-span-2 md:col-span-1">
+        <div class="desk-card rounded p-3.5 flex flex-col justify-between col-span-2 md:col-span-1 border-t-2 border-t-emerald-500/60 shadow-sm hover:border-slate-600 transition-all">
           <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 uppercase">
             <span>시스템 관제 데몬 (Active Daemons)</span>
-            <i class="fa-solid fa-network-wired text-slate-500 text-xs"></i>
+            <i class="fa-solid fa-network-wired text-emerald-400 text-xs"></i>
           </div>
           <div class="mt-2 flex items-baseline space-x-1.5">
             <span id="kpiDaemons" class="text-2xl font-bold font-mono text-emerald-400">8 / 9</span>
             <span class="text-xs text-slate-400">가동 중</span>
           </div>
-          <div class="text-[10px] font-mono text-slate-400 mt-1">
+          <div class="w-full bg-desk-800 h-1 rounded mt-2 overflow-hidden">
+            <div class="h-full bg-emerald-400 rounded" style="width: 89%"></div>
+          </div>
+          <div class="text-[10px] font-mono text-slate-400 mt-1.5">
             Launchd 스케줄 정상 작동
           </div>
         </div>
       </div>
 
       <!-- ============================================================== -->
-      <!-- INDIVIDUAL PORTFOLIO: DIVERSIFICATION SPHERE CLUSTER           -->
+      <!-- STRATEGY PORTFOLIO: QUANT TREEMAP & CYBER ALPHA TERMINAL       -->
       <!-- ============================================================== -->
-      <div class="glass-card rounded-lg p-5 border border-desk-border relative overflow-hidden flex flex-col justify-between">
-        <div class="flex items-center justify-between pb-3 border-b border-desk-border/80">
+      <div class="glass-card rounded-lg p-5 border border-desk-border relative overflow-hidden flex flex-col justify-between shadow-xl">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3.5 mb-3 border-b border-desk-border/80 gap-3">
           <div>
             <div class="text-[10px] font-mono uppercase tracking-wider text-rose-400 font-semibold flex items-center">
-              <i class="fa-solid fa-circle-nodes mr-1.5 animate-pulse"></i> 다각화 구형 버블 클러스터 (Diversification Sphere Cluster)
+              <i class="fa-solid fa-radar mr-1.5 animate-pulse text-rose-500"></i> 전략별 포트폴리오 퀀트 자산배분 &amp; 알파 관제 (Strategy Portfolio Alpha Terminal)
             </div>
-            <h3 class="font-sans text-base font-bold text-slate-100 tracking-wide mt-0.5">전략별 포트폴리오 유기적 구형 버블 & 알파 집중도</h3>
+            <h3 class="font-sans text-base font-bold text-slate-100 tracking-wide mt-0.5">
+              실전 보유 종목 퀀트 트리맵 히트맵 &amp; 사이버 궤도 레이더
+            </h3>
           </div>
-          <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-desk-850 text-slate-400 border border-desk-border">전략별 11개 실전 보유 종목 시각화 (1시간 간격 갱신)</span>
+          
+          <div class="flex items-center space-x-2 text-xs font-mono">
+            <!-- View Mode Switcher -->
+            <div class="flex items-center bg-desk-850 p-0.5 rounded border border-desk-border flex-shrink-0">
+              <button onclick="setPortfolioVisualMode('treemap')" id="portModeBtn-treemap" class="px-2.5 py-1 rounded text-[10px] font-semibold bg-rose-600 text-white transition-colors cursor-pointer shadow-sm" title="Bento 퀀트 트리맵 히트맵"><i class="fa-solid fa-table-cells mr-1"></i>퀀트 트리맵</button>
+              <button onclick="setPortfolioVisualMode('radar')" id="portModeBtn-radar" class="px-2.5 py-1 rounded text-[10px] font-semibold text-slate-400 hover:text-white transition-colors cursor-pointer" title="사이버 궤도 레이더"><i class="fa-solid fa-circle-notch mr-1"></i>사이버 궤도</button>
+            </div>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-desk-850 text-slate-400 border border-desk-border hidden md:inline">1시간 간격 갱신</span>
+          </div>
         </div>
         
-        <!-- SVG Bubble Cluster Canvas (Full-width strategy portfolio view) -->
-        <div class="relative w-full h-[300px] my-2 flex items-center justify-center" id="bubbleClusterContainer">
-          <svg id="bubbleClusterSvg" class="w-full h-full" viewBox="0 0 960 300"></svg>
+        <!-- 1. Quant Treemap Bento Heatmap (Default View) -->
+        <div id="portfolioTreemapContainer" class="w-full my-2">
+          <div id="portfolioTreemapGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2.5 font-mono">
+            <!-- Rendered via JS -->
+          </div>
+        </div>
+
+        <!-- 2. Cyber Orbit Radar View -->
+        <div id="portfolioRadarContainer" class="relative w-full h-[320px] my-2 items-center justify-center hidden">
+          <svg id="portfolioRadarSvg" class="w-full h-full" viewBox="0 0 960 320"></svg>
         </div>
         
-        <!-- Bubble Inspector / Card on Hover -->
-        <div id="bubbleDetailCard" class="p-3 bg-desk-900/90 rounded border border-desk-border/80 text-xs font-mono flex items-center justify-between transition-all">
+        <!-- Alpha Inspector / Live Position Telemetry Card -->
+        <div id="bubbleDetailCard" class="p-3 bg-desk-900/90 rounded border border-desk-border/80 text-xs font-mono flex flex-col sm:flex-row sm:items-center justify-between gap-2 transition-all shadow-inner">
           <div class="flex items-center space-x-2">
-            <span class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-ping"></span>
-            <span class="text-slate-300">버블에 마우스를 올리면 종목별 매매 전략과 수익률이 나타나며, 클릭하면 해당 전략 종목만 모아볼 수 있습니다.</span>
+            <span class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-ping flex-shrink-0"></span>
+            <span id="portDetailText" class="text-slate-300">종목 타일에 마우스를 올리면 실시간 수익률, 진입가, 목표가, 손절선 및 전략 알파 데이터가 표시됩니다.</span>
           </div>
-          <span class="text-[10px] text-rose-400 font-semibold">전략별 정예 포트폴리오</span>
+          <span class="text-[10px] text-rose-400 font-semibold flex-shrink-0">전략별 정예 포트폴리오</span>
         </div>
       </div>
 
@@ -2004,7 +2036,7 @@
     // Embedded Initial Dataset (Auto-synced with status.json)
     const INITIAL_DATA = {
   "summary": {
-    "updated_at": "2026-11-06 16:06:56",
+    "updated_at": "2026-11-06 16:14:34",
     "total_projects": 8,
     "active_daemons": 0,
     "today_executed": 8,
@@ -2015,10 +2047,10 @@
     },
     "portfolio": {
       "date": "2026-11-06",
-      "daily_return_pct": -0.42,
-      "cumulative_return_pct": -4.35,
+      "daily_return_pct": -0.85,
+      "cumulative_return_pct": -4.54,
       "realized_pnl_pct": -7.3,
-      "unrealized_pnl_pct": -0.42,
+      "unrealized_pnl_pct": -0.85,
       "holding_count": 12,
       "closed_count": 16,
       "win_rate": 25.0
@@ -3281,11 +3313,11 @@
       "signal_date": "2026-11-05",
       "entry_price": 183900.0,
       "entry_date": "2026-11-05",
-      "current_price": 188200.0,
+      "current_price": 187100.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": 2.34,
+      "return_pct": 1.74,
       "target_price": 202000.0,
       "stop_loss_price": 171000.0,
       "notes": "[정배열 2차검증 100점] 20일 이평선(177,075원) 대량거래(236%) 돌파 안착"
@@ -3421,34 +3453,14 @@
       "signal_date": "2026-11-03",
       "entry_price": 61600.0,
       "entry_date": "2026-11-03",
-      "current_price": 60500.0,
+      "current_price": 60200.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": -1.79,
+      "return_pct": -2.27,
       "target_price": 67800.0,
       "stop_loss_price": 57600.0,
       "notes": "[대형주] 친환경 플랜트 대형 EPC 글로벌 수주 랠리 52주 신고가 VCP 돌파"
-    },
-    {
-      "id": 351,
-      "project_id": "stock-supervisor",
-      "project_name": "",
-      "ticker": "261780",
-      "name": "아리바이오랩",
-      "market": "KRX",
-      "signal_type": "BUY",
-      "signal_date": "2026-11-06",
-      "entry_price": 4495.0,
-      "entry_date": "2026-11-06",
-      "current_price": 4400.0,
-      "exit_price": null,
-      "exit_date": null,
-      "status": "HOLDING",
-      "return_pct": -2.11,
-      "target_price": 4944.0,
-      "stop_loss_price": 4180.0,
-      "notes": "[중소형주 엄선]  | 전략: "
     },
     {
       "id": 340,
@@ -3461,11 +3473,11 @@
       "signal_date": "2026-11-05",
       "entry_price": 215000.0,
       "entry_date": "2026-11-05",
-      "current_price": 209500.0,
+      "current_price": 208000.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": -2.56,
+      "return_pct": -3.26,
       "target_price": 236500.0,
       "stop_loss_price": 199900.0,
       "notes": "[정배열 2차검증 120점] 5일/20일선 정배열 우상향 및 거래량 367% 폭증 수급 유입"
@@ -3489,6 +3501,26 @@
       "target_price": 1507.97,
       "stop_loss_price": 1313.39,
       "notes": "[대형주 엄선] [대형주] GLP-1 비만치료제 젭바운드/마운자로 글로벌 시장 독점적 랠리 | 마운자로/젭바운드 수요 폭발로 펀더멘털 성장성이 가속화됨. 추세적 우상향 곡선을 그리며 52주 고점 형성 후 이탈이 적어 강한 HTP 모멘텀 점수를 기록. | 전략: 스톡 스나이퍼 (US 대형주), HTP 모멘텀 (미국 대형), SEPA x 피봇 (US 대형주)"
+    },
+    {
+      "id": 351,
+      "project_id": "stock-supervisor",
+      "project_name": "",
+      "ticker": "261780",
+      "name": "아리바이오랩",
+      "market": "KRX",
+      "signal_type": "BUY",
+      "signal_date": "2026-11-06",
+      "entry_price": 4495.0,
+      "entry_date": "2026-11-06",
+      "current_price": 4245.0,
+      "exit_price": null,
+      "exit_date": null,
+      "status": "HOLDING",
+      "return_pct": -5.56,
+      "target_price": 4944.0,
+      "stop_loss_price": 4180.0,
+      "notes": "[중소형주 엄선]  | 전략: "
     },
     {
       "id": 339,
@@ -3814,10 +3846,10 @@
   "performance": {
     "PORTFOLIO_TOTAL": {
       "date": "2026-11-06",
-      "daily_return_pct": -0.42,
-      "cumulative_return_pct": -4.35,
+      "daily_return_pct": -0.85,
+      "cumulative_return_pct": -4.54,
       "realized_pnl_pct": -7.3,
-      "unrealized_pnl_pct": -0.42,
+      "unrealized_pnl_pct": -0.85,
       "holding_count": 12,
       "closed_count": 16,
       "win_rate": 25.0
@@ -3834,10 +3866,10 @@
     },
     "stock-chart-alignment": {
       "date": "2026-11-06",
-      "daily_return_pct": -0.11,
-      "cumulative_return_pct": -8.8,
+      "daily_return_pct": -0.76,
+      "cumulative_return_pct": -9.13,
       "realized_pnl_pct": -17.5,
-      "unrealized_pnl_pct": -0.11,
+      "unrealized_pnl_pct": -0.76,
       "holding_count": 2,
       "closed_count": 2,
       "win_rate": 25.0
@@ -3854,10 +3886,10 @@
     },
     "stock-sepa-pivot": {
       "date": "2026-11-06",
-      "daily_return_pct": -0.9,
-      "cumulative_return_pct": -0.9,
+      "daily_return_pct": -1.14,
+      "cumulative_return_pct": -1.14,
       "realized_pnl_pct": 0.0,
-      "unrealized_pnl_pct": -0.9,
+      "unrealized_pnl_pct": -1.14,
       "holding_count": 2,
       "closed_count": 0,
       "win_rate": 0.0
@@ -3874,10 +3906,10 @@
     },
     "stock-supervisor": {
       "date": "2026-11-06",
-      "daily_return_pct": -0.38,
-      "cumulative_return_pct": -3.81,
+      "daily_return_pct": -0.81,
+      "cumulative_return_pct": -4.01,
       "realized_pnl_pct": -6.86,
-      "unrealized_pnl_pct": -0.38,
+      "unrealized_pnl_pct": -0.81,
       "holding_count": 8,
       "closed_count": 9,
       "win_rate": 23.5
@@ -7041,113 +7073,206 @@
       renderTradesTable();
     }
 
-    // 1. Organic Bubble Cluster Rendering
-    function renderBubbleCluster() {
-      const svg = document.getElementById('bubbleClusterSvg');
-      if (!svg) return;
-      svg.innerHTML = '';
+    // 1. Portfolio Visual Modes: Bento Quant Treemap & Cyber Orbit Radar
+    let currentPortVisualMode = 'treemap';
 
+    function setPortfolioVisualMode(mode) {
+      currentPortVisualMode = mode;
+      const tContainer = document.getElementById('portfolioTreemapContainer');
+      const rContainer = document.getElementById('portfolioRadarContainer');
+      const tBtn = document.getElementById('portModeBtn-treemap');
+      const rBtn = document.getElementById('portModeBtn-radar');
+
+      if (mode === 'treemap') {
+        if (tContainer) tContainer.classList.remove('hidden');
+        if (rContainer) {
+          rContainer.classList.add('hidden');
+          rContainer.classList.remove('flex');
+        }
+        if (tBtn) tBtn.className = "px-2.5 py-1 rounded text-[10px] font-semibold bg-rose-600 text-white transition-colors cursor-pointer shadow-sm";
+        if (rBtn) rBtn.className = "px-2.5 py-1 rounded text-[10px] font-semibold text-slate-400 hover:text-white transition-colors cursor-pointer";
+        renderPortfolioTreemap();
+      } else {
+        if (tContainer) tContainer.classList.add('hidden');
+        if (rContainer) {
+          rContainer.classList.remove('hidden');
+          rContainer.classList.add('flex');
+        }
+        if (tBtn) tBtn.className = "px-2.5 py-1 rounded text-[10px] font-semibold text-slate-400 hover:text-white transition-colors cursor-pointer";
+        if (rBtn) rBtn.className = "px-2.5 py-1 rounded text-[10px] font-semibold bg-rose-600 text-white transition-colors cursor-pointer shadow-sm";
+        renderPortfolioRadar();
+      }
+    }
+
+    function renderPortfolioTreemap() {
+      const grid = document.getElementById('portfolioTreemapGrid');
+      if (!grid) return;
       const trades = (appData.trades || []).filter(t => t.status === 'HOLDING');
       if (trades.length === 0) {
-        svg.innerHTML = '<text x="270" y="160" text-anchor="middle" fill="#64748b" font-family="JetBrains Mono" font-size="12">보유 중인 포지션이 없습니다.</text>';
+        grid.innerHTML = '<div class="col-span-full py-8 text-center text-slate-500 font-mono text-xs">현재 보유 중인 포트폴리오 포지션이 없습니다.</div>';
         return;
       }
 
-      // Bubble layout positions (organic cluster coordinates across 960x300 canvas)
-      const positions = [
-        { cx: 480, cy: 150, r: 52 }, // Center Core (NAVER)
-        { cx: 370, cy: 100, r: 44 }, // COST
-        { cx: 590, cy: 105, r: 42 }, // KINX
-        { cx: 380, cy: 215, r: 40 }, // SKWD
-        { cx: 580, cy: 210, r: 40 }, // Samsung E&A
-        { cx: 250, cy: 150, r: 35 }, // TQQQ
-        { cx: 710, cy: 150, r: 35 }, // XOM
-        { cx: 270, cy: 75,  r: 30 }, // TECL
-        { cx: 690, cy: 75,  r: 30 }, // Celltrion
-        { cx: 270, cy: 235, r: 30 }, // Kumyang Green Power
-        { cx: 690, cy: 235, r: 30 }, // InBody
-      ];
+      grid.innerHTML = trades.map(t => {
+        const ret = t.return_pct !== undefined ? t.return_pct : 0.0;
+        const isUp = ret >= 0;
+        const curPrice = formatDeskPrice(t.current_price, t.market);
+        const entryPrice = formatDeskPrice(t.entry_price, t.market);
+        const targetPrice = formatDeskPrice(t.target_price, t.market);
+        const stopPrice = formatDeskPrice(t.stop_loss_price, t.market);
+        const isKr = t.market === 'KRX';
 
-      // Defs for Radial 3D Sphere Gradients
-      const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
-      defs.innerHTML = `
-        <radialGradient id="grad-green" cx="35%" cy="35%" r="65%">
-          <stop offset="0%" stop-color="#34d399" stop-opacity="0.95"/>
-          <stop offset="50%" stop-color="#059669" stop-opacity="0.8"/>
-          <stop offset="100%" stop-color="#022c22" stop-opacity="0.95"/>
-        </radialGradient>
-        <radialGradient id="grad-cyan" cx="35%" cy="35%" r="65%">
-          <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.95"/>
-          <stop offset="50%" stop-color="#0284c7" stop-opacity="0.8"/>
-          <stop offset="100%" stop-color="#082f49" stop-opacity="0.95"/>
-        </radialGradient>
-        <radialGradient id="grad-rose" cx="35%" cy="35%" r="65%">
-          <stop offset="0%" stop-color="#fb7185" stop-opacity="0.95"/>
-          <stop offset="50%" stop-color="#e11d48" stop-opacity="0.8"/>
-          <stop offset="100%" stop-color="#4c0519" stop-opacity="0.95"/>
-        </radialGradient>
-        <radialGradient id="grad-gold" cx="35%" cy="35%" r="65%">
-          <stop offset="0%" stop-color="#fde047" stop-opacity="0.95"/>
-          <stop offset="50%" stop-color="#d97706" stop-opacity="0.8"/>
-          <stop offset="100%" stop-color="#451a03" stop-opacity="0.95"/>
-        </radialGradient>
-        <filter id="glow-sphere" x="-20%" y="-20%" width="140%" height="140%">
-          <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.6"/>
-        </filter>
-      `;
-      svg.appendChild(defs);
+        let bgStyle, borderStyle, badgeStyle;
+        if (ret >= 2.0) {
+          bgStyle = 'background: linear-gradient(135deg, rgba(6, 78, 59, 0.75), rgba(4, 120, 87, 0.35));';
+          borderStyle = 'border: 1px solid rgba(16, 185, 129, 0.45); box-shadow: 0 4px 15px -3px rgba(16, 185, 129, 0.15);';
+          badgeStyle = 'bg-emerald-500/25 text-emerald-300 border-emerald-500/40';
+        } else if (ret >= 0) {
+          bgStyle = 'background: linear-gradient(135deg, rgba(15, 23, 42, 0.85), rgba(6, 78, 59, 0.25));';
+          borderStyle = 'border: 1px solid rgba(52, 211, 153, 0.25);';
+          badgeStyle = 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30';
+        } else if (ret >= -1.5) {
+          bgStyle = 'background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(51, 65, 85, 0.3));';
+          borderStyle = 'border: 1px solid rgba(148, 163, 184, 0.18);';
+          badgeStyle = 'bg-slate-700/40 text-slate-300 border-slate-600/40';
+        } else {
+          bgStyle = 'background: linear-gradient(135deg, rgba(76, 5, 25, 0.75), rgba(15, 23, 42, 0.85));';
+          borderStyle = 'border: 1px solid rgba(244, 63, 94, 0.45); box-shadow: 0 4px 15px -3px rgba(244, 63, 94, 0.15);';
+          badgeStyle = 'bg-rose-500/25 text-rose-300 border-rose-500/40';
+        }
 
-      // Render each trade bubble
-      trades.forEach((t, i) => {
-        const pos = positions[i] || { cx: 70 + (i * 45) % 400, cy: 80 + (i * 35) % 200, r: 26 };
-        const isUp = (t.return_pct || 0) >= 0;
-        const gradId = (t.return_pct || 0) > 2.0 ? 'grad-green' : (isUp ? 'grad-cyan' : 'grad-rose');
-        const strokeColor = isUp ? '#10b981' : '#f43f5e';
+        const infoStr = `${t.name} (${t.ticker}) | 현재가: ${curPrice} | 진입가: ${entryPrice} | 목표가: ${targetPrice} | 손절가: ${stopPrice} | 전략: ${t.project_id || t.project_name}`;
 
-        const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-        g.setAttribute('class', 'cursor-pointer transition-transform duration-300 hover:scale-110');
-        g.style.transformOrigin = `${pos.cx}px ${pos.cy}px`;
-
-        g.innerHTML = `
-          <!-- Sphere Outer Ring Glow -->
-          <circle cx="${pos.cx}" cy="${pos.cy}" r="${pos.r + 2}" fill="none" stroke="${strokeColor}" stroke-opacity="0.4" stroke-width="1.5" class="animate-pulse" style="animation-duration: ${2.5 + (i%3)}s"/>
-          
-          <!-- 3D Sphere Body -->
-          <circle cx="${pos.cx}" cy="${pos.cy}" r="${pos.r}" fill="url(#${gradId})" stroke="${strokeColor}" stroke-width="1" filter="url(#glow-sphere)"/>
-          
-          <!-- Specular Light Reflection -->
-          <ellipse cx="${pos.cx - pos.r*0.28}" cy="${pos.cy - pos.r*0.28}" rx="${pos.r*0.22}" ry="${pos.r*0.14}" fill="#ffffff" fill-opacity="0.45" transform="rotate(-30 ${pos.cx - pos.r*0.28} ${pos.cy - pos.r*0.28})"/>
-          
-          <!-- Ticker Label -->
-          <text x="${pos.cx}" y="${pos.cy - 3}" text-anchor="middle" fill="#ffffff" font-family="JetBrains Mono" font-weight="700" font-size="${pos.r > 35 ? '12' : '10'}" letter-spacing="0.5">${t.ticker}</text>
-          
-          <!-- Return PnL Label -->
-          <text x="${pos.cx}" y="${pos.cy + 13}" text-anchor="middle" fill="${isUp ? '#6ee7b7' : '#fca5a5'}" font-family="JetBrains Mono" font-weight="600" font-size="${pos.r > 35 ? '11' : '9'}">${isUp ? '+' : ''}${t.return_pct.toFixed(1)}%</text>
+        return `
+          <div class="rounded-lg p-3.5 transition-all duration-200 hover:scale-[1.02] cursor-pointer flex flex-col justify-between" 
+               style="${bgStyle} ${borderStyle}"
+               onmouseenter="updatePortTelemetry('${infoStr.replace(/'/g, "\\'")}')"
+               onclick="selectStrategy('${t.project_id || ''}')">
+            <div>
+              <div class="flex items-center justify-between pb-1.5 mb-2 border-b border-white/10 text-[10px]">
+                <span class="px-1.5 py-0.2 rounded font-semibold ${isKr ? 'bg-rose-950/80 text-rose-300 border border-rose-800/60' : 'bg-blue-950/80 text-blue-300 border border-blue-800/60'}">
+                  ${isKr ? 'KRX' : 'US'}
+                </span>
+                <span class="px-1.5 py-0.2 rounded font-bold border ${badgeStyle}">
+                  ${isUp ? '+' : ''}${ret.toFixed(2)}%
+                </span>
+              </div>
+              <div class="font-bold text-white text-sm tracking-tight truncate">${t.name}</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">${t.ticker}</div>
+            </div>
+            
+            <div class="mt-3 pt-2 border-t border-white/10 flex items-end justify-between">
+              <div>
+                <div class="text-[9px] text-slate-400 uppercase font-sans">현재가</div>
+                <div class="font-bold text-slate-100 text-xs">${curPrice}</div>
+              </div>
+              <div class="text-right">
+                <span class="text-[9px] font-sans px-1.5 py-0.5 rounded bg-desk-900/80 text-cyan-400 border border-cyan-500/30 truncate max-w-[100px] inline-block">
+                  ${t.project_id ? t.project_id.replace('stock-', '') : 'Alpha'}
+                </span>
+              </div>
+            </div>
+          </div>
         `;
+      }).join('');
+    }
 
-        // Hover & Click Interaction
-        g.addEventListener('mouseenter', () => {
-          const detailCard = document.getElementById('bubbleDetailCard');
-          if (detailCard) {
-            detailCard.innerHTML = `
-              <div class="flex items-center space-x-3">
-                <span class="px-2 py-0.5 rounded text-[10px] font-bold ${t.market === 'KRX' ? 'bg-rose-950 text-rose-300 border border-rose-800' : 'bg-blue-950 text-blue-300 border border-blue-800'}">${t.market === 'KRX' ? '국내 (KRX)' : '미국 (US)'}</span>
-                <span class="font-bold text-slate-100 text-sm">${t.name} (${t.ticker})</span>
-                <span class="font-bold ${isUp ? 'text-krx-up' : 'text-krx-down'} font-mono">${isUp ? '+' : ''}${t.return_pct.toFixed(2)}%</span>
-              </div>
-              <div class="text-[11px] text-slate-400 font-mono">
-                현재가: <strong class="text-slate-200">${formatDeskPrice(t.current_price, t.market)}</strong> | 진입가: ${formatDeskPrice(t.entry_price, t.market)} | 전략: <span class="text-cyan-400">${t.project_id || t.project_name}</span>
-              </div>
-            `;
-          }
-        });
+    function updatePortTelemetry(text) {
+      const el = document.getElementById('portDetailText');
+      if (el) el.innerText = text;
+    }
 
-        g.addEventListener('click', () => {
-          if (t.project_id) selectStrategy(t.project_id);
-        });
+    function renderPortfolioRadar() {
+      const svg = document.getElementById('portfolioRadarSvg');
+      if (!svg) return;
+      const trades = (appData.trades || []).filter(t => t.status === 'HOLDING');
+      if (trades.length === 0) {
+        svg.innerHTML = '<text x="480" y="160" text-anchor="middle" fill="#64748b" font-family="monospace" font-size="12">보유 중인 포지션이 없습니다.</text>';
+        return;
+      }
 
-        svg.appendChild(g);
+      const cx = 480;
+      const cy = 160;
+      const rInner = 80;
+      const rMid = 145;
+      const rOuter = 210;
+
+      let html = `
+        <defs>
+          <radialGradient id="radar-core-grad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#10b981" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#0b1018" stop-opacity="0.9"/>
+          </radialGradient>
+        </defs>
+        <!-- Concentric Cyber Orbit Rings -->
+        <circle cx="${cx}" cy="${cy}" r="${rOuter}" fill="none" stroke="#1e293b" stroke-width="1.2" stroke-dasharray="3,3"/>
+        <circle cx="${cx}" cy="${cy}" r="${rMid}" fill="none" stroke="#334155" stroke-width="1.2" stroke-dasharray="4,4"/>
+        <circle cx="${cx}" cy="${cy}" r="${rInner}" fill="none" stroke="#475569" stroke-width="1.2"/>
+        
+        <!-- Reticle Crosshairs -->
+        <line x1="${cx - rOuter - 20}" y1="${cy}" x2="${cx + rOuter + 20}" y2="${cy}" stroke="#1e293b" stroke-width="1" stroke-dasharray="2,2"/>
+        <line x1="${cx}" y1="${cy - rOuter - 20}" x2="${cx}" y2="${cy + rOuter + 20}" stroke="#1e293b" stroke-width="1" stroke-dasharray="2,2"/>
+
+        <!-- Central Cyber Core -->
+        <circle cx="${cx}" cy="${cy}" r="28" fill="url(#radar-core-grad)" stroke="#10b981" stroke-width="1.5"/>
+        <circle cx="${cx}" cy="${cy}" r="34" fill="none" stroke="#10b981" stroke-opacity="0.4" stroke-width="1" class="animate-pulse"/>
+        <text x="${cx}" y="${cy - 3}" text-anchor="middle" fill="#10b981" font-size="9" font-family="monospace" font-weight="bold">ALPHA</text>
+        <text x="${cx}" y="${cy + 9}" text-anchor="middle" fill="#6ee7b7" font-size="8" font-family="monospace">CORE</text>
+
+        <!-- Orbit Labels -->
+        <text x="${cx + rInner + 6}" y="${cy - 4}" fill="#64748b" font-size="9" font-family="monospace">고수익 알파 (+2%↑)</text>
+        <text x="${cx + rMid + 6}" y="${cy - 4}" fill="#475569" font-size="9" font-family="monospace">안정 운용 (0~2%)</text>
+        <text x="${cx + rOuter + 6}" y="${cy - 4}" fill="#334155" font-size="9" font-family="monospace">방어·손절 감시</text>
+      `;
+
+      const count = trades.length;
+      trades.forEach((t, i) => {
+        const ret = t.return_pct !== undefined ? t.return_pct : 0.0;
+        const isUp = ret >= 0;
+        let orbitRadius = rMid;
+        if (ret >= 2.0) orbitRadius = rInner;
+        else if (ret < -1.0) orbitRadius = rOuter;
+
+        const angle = (i * (2 * Math.PI / count)) - (Math.PI / 2);
+        const nx = cx + orbitRadius * Math.cos(angle);
+        const ny = cy + orbitRadius * Math.sin(angle);
+
+        // Constellation laser line to core
+        html += `<line x1="${cx}" y1="${cy}" x2="${nx}" y2="${ny}" stroke="${isUp ? 'rgba(16,185,129,0.18)' : 'rgba(244,63,94,0.18)'}" stroke-width="1" stroke-dasharray="2,2"/>`;
+
+        const strokeCol = isUp ? '#10b981' : '#f43f5e';
+        const fillCol = isUp ? 'rgba(6, 78, 59, 0.75)' : 'rgba(76, 5, 25, 0.75)';
+        const textCol = isUp ? '#6ee7b7' : '#fda4af';
+        const curPrice = formatDeskPrice(t.current_price, t.market);
+        const infoStr = `${t.name} (${t.ticker}) | 현재가: ${curPrice} | 수익률: ${(isUp ? '+' : '')}${ret.toFixed(2)}% | 전략: ${t.project_id || t.project_name}`;
+
+        html += `
+          <g class="cursor-pointer transition-transform duration-200 hover:scale-115"
+             onmouseenter="updatePortTelemetry('${infoStr.replace(/'/g, "\\'")}')"
+             onclick="selectStrategy('${t.project_id || ''}')">
+            <!-- Pulsing Halo Ring -->
+            <circle cx="${nx}" cy="${ny}" r="26" fill="none" stroke="${strokeCol}" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="2,2" class="animate-pulse"/>
+            <!-- Flat Translucent Disc -->
+            <circle cx="${nx}" cy="${ny}" r="22" fill="${fillCol}" stroke="${strokeCol}" stroke-width="1.6"/>
+            <!-- Center Pivot Dot -->
+            <circle cx="${nx}" cy="${ny}" r="2" fill="#ffffff"/>
+            <!-- Ticker -->
+            <text x="${nx}" y="${ny - 3}" text-anchor="middle" fill="#ffffff" font-size="9" font-family="monospace" font-weight="bold">${t.ticker}</text>
+            <!-- Return -->
+            <text x="${nx}" y="${ny + 10}" text-anchor="middle" fill="${textCol}" font-size="8" font-family="monospace" font-weight="bold">${isUp ? '+' : ''}${ret.toFixed(1)}%</text>
+          </g>
+        `;
       });
+
+      svg.innerHTML = html;
+    }
+
+    function renderBubbleCluster() {
+      if (currentPortVisualMode === 'treemap') {
+        renderPortfolioTreemap();
+      } else {
+        renderPortfolioRadar();
+      }
     }
 
     // 2. Glowing Neon Wireframe Sankey Diagram
