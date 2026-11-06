@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.stock.monthly-sector-rotation</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/tothemoon/stock-supervisor/.venv/bin/python</string>
+        <string>/Users/tothemoon/stock-supervisor/scripts/run_monthly_sector_rotation.py</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/tothemoon/stock-supervisor</string>
+
+    <!-- 매월 1일 오전 08:30 KST 자동 실행 -->
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Day</key>
+        <integer>1</integer>
+        <key>Hour</key>
+        <integer>8</integer>
+        <key>Minute</key>
+        <integer>30</integer>
+    </dict>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin</string>
+        <key>PYTHONUNBUFFERED</key>
+        <string>1</string>
+    </dict>
+
+    <key>StandardOutPath</key>
+    <string>/Users/tothemoon/stock-supervisor/logs/monthly_sector_rotation.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/Users/tothemoon/stock-supervisor/logs/monthly_sector_rotation.err</string>
+
+    <key>ProcessType</key>
+    <string>Background</string>
+
+    <key>LowPriorityIO</key>
+    <true/>
+</dict>
+</plist>

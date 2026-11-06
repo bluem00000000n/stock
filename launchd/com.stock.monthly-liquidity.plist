@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.stock.monthly-liquidity</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/tothemoon/stock-supervisor/.venv/bin/python3</string>
+        <string>/Users/tothemoon/stock-supervisor/scripts/monthly_liquidity_center.py</string>
+        <string>--send-telegram</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/tothemoon/stock-supervisor</string>
+
+    <!-- 매월 1일 오전 09:00 KST 실행 -->
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Day</key>
+        <integer>1</integer>
+        <key>Hour</key>
+        <integer>9</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin</string>
+        <key>PYTHONUNBUFFERED</key>
+        <string>1</string>
+    </dict>
+
+    <key>StandardOutPath</key>
+    <string>/Users/tothemoon/stock-supervisor/logs/monthly_liquidity.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/Users/tothemoon/stock-supervisor/logs/monthly_liquidity.err</string>
+
+    <key>ProcessType</key>
+    <string>Background</string>
+
+    <key>LowPriorityIO</key>
+    <true/>
+</dict>
+</plist>

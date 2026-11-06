@@ -139,6 +139,112 @@ def send_message(text: str, token: str = None, chat_id: str = None) -> bool:
     return overall_success
 
 
+def send_photo(photo_path: str, caption: str = "", parse_mode: str = "HTML", token: str = None, chat_id: str = None) -> bool:
+    """단일 차트/이미지 텔레그램 발송 (requests 활용)"""
+    if not token or not chat_id:
+        token, chat_id = load_credentials()
+
+    if not token or not chat_id:
+        print("[core.telegram] ❌ 에러: TELEGRAM_TOKEN 또는 TELEGRAM_CHAT_ID 미설정")
+        return False
+
+    p = Path(photo_path)
+    if not p.exists():
+        print(f"[core.telegram] ❌ 에러: 이미지 파일 없음 ({photo_path})")
+        return False
+
+    try:
+        import urllib3
+        urllib3.disable_warnings()
+        import requests
+
+        with open(p, "rb") as f:
+            files = {"photo": f}
+            data = {
+                "chat_id": chat_id,
+                "caption": caption[:1024] if caption else "",
+                "parse_mode": parse_mode
+            }
+            res = requests.post(
+                f"https://api.telegram.org/bot{token}/sendPhoto",
+                data=data,
+                files=files,
+                timeout=20,
+                verify=False
+            )
+            data_res = res.json()
+            if data_res.get("ok"):
+                return True
+            else:
+                print(f"[core.telegram] ⚠️ sendPhoto 실패: {data_res}")
+                return False
+    except Exception as e:
+        print(f"[core.telegram] ❌ sendPhoto 예외: {e}")
+        return False
+
+
+def send_media_group(photo_paths: List[str], caption: str = "", parse_mode: str = "HTML", token: str = None, chat_id: str = None) -> bool:
+    """복수 차트 앨범(MediaGroup) 텔레그램 일괄 발송"""
+    if not token or not chat_id:
+        token, chat_id = load_credentials()
+
+    if not token or not chat_id:
+        print("[core.telegram] ❌ 에러: TELEGRAM_TOKEN 또는 TELEGRAM_CHAT_ID 미설정")
+        return False
+
+    valid_paths = [Path(p) for p in photo_paths if Path(p).exists()]
+    if not valid_paths:
+        print("[core.telegram] ❌ 에러: 유효한 이미지 파일이 없음")
+        return False
+
+    try:
+        import urllib3
+        urllib3.disable_warnings()
+        import requests
+
+        media = []
+        files = {}
+        file_handles = []
+        try:
+            for idx, p in enumerate(valid_paths):
+                fh = open(p, "rb")
+                file_handles.append(fh)
+                field_name = f"photo_{idx}"
+                files[field_name] = fh
+                item = {
+                    "type": "photo",
+                    "media": f"attach://{field_name}"
+                }
+                if idx == 0 and caption:
+                    item["caption"] = caption[:1024]
+                    item["parse_mode"] = parse_mode
+                media.append(item)
+
+            data = {
+                "chat_id": chat_id,
+                "media": json.dumps(media)
+            }
+            res = requests.post(
+                f"https://api.telegram.org/bot{token}/sendMediaGroup",
+                data=data,
+                files=files,
+                timeout=35,
+                verify=False
+            )
+            data_res = res.json()
+            if data_res.get("ok"):
+                return True
+            else:
+                print(f"[core.telegram] ⚠️ sendMediaGroup 실패: {data_res}")
+                return False
+        finally:
+            for fh in file_handles:
+                fh.close()
+    except Exception as e:
+        print(f"[core.telegram] ❌ sendMediaGroup 예외: {e}")
+        return False
+
+
 if __name__ == "__main__":
     t, c = load_credentials()
     print(f"✅ Telegram Token: {t[:10]}... | Chat ID: {c}")

@@ -164,6 +164,62 @@ PROJECTS_META = [
     }
 ]
 
+def get_latest_etf_rotation_data():
+    """최신 미국 ETF 자금순환(Sector Rotation) 퀀트 분석 데이터 로드"""
+    rotation_dir = os.path.join(SUPERVISOR_DIR, "data", "etf_rotation")
+    history_file = os.path.join(rotation_dir, "rotation_history.json")
+    snapshots_dir = os.path.join(rotation_dir, "snapshots")
+
+    if not os.path.exists(history_file):
+        return None
+
+    try:
+        with open(history_file, "r", encoding="utf-8") as f:
+            history = json.load(f)
+
+        if not history:
+            return None
+
+        latest_date = sorted(list(history.keys()))[-1]
+        latest_rec = history[latest_date]
+
+        snapshot_file = os.path.join(snapshots_dir, f"snapshot_{latest_date}.json")
+        dataset = {}
+        if os.path.exists(snapshot_file):
+            with open(snapshot_file, "r", encoding="utf-8") as f:
+                dataset = json.load(f)
+
+        return {
+            "date": latest_date,
+            "leaders": latest_rec.get("leaders", []),
+            "next_candidates": latest_rec.get("next_candidates", []),
+            "outflows": latest_rec.get("outflows", []),
+            "scenarios": latest_rec.get("scenarios", {}),
+            "dataset": dataset,
+            "dataset_summary": latest_rec.get("dataset_summary", {})
+        }
+    except Exception as e:
+        print(f"Warning: Failed to load etf rotation data: {e}")
+        return None
+
+
+def get_latest_us_liquidity_data():
+    """최신 미국 거시 유동성 & ETF 퀀트 분석 데이터 로드"""
+    reports_dir = os.path.join(SUPERVISOR_DIR, "data", "liquidity_reports")
+    if not os.path.exists(reports_dir):
+        return None
+
+    try:
+        json_files = sorted([f for f in os.listdir(reports_dir) if f.startswith("liquidity_report_") and f.endswith(".json")])
+        if not json_files:
+            return None
+        latest_file = os.path.join(reports_dir, json_files[-1])
+        with open(latest_file, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception as e:
+        print(f"Warning: Failed to load us liquidity data: {e}")
+        return None
+
 def get_launchd_status():
     services = {}
     try:
@@ -293,7 +349,9 @@ def collect_data():
         "projects": projects_data,
         "alarms": portfolio_data.get("alarms", []),
         "trades": portfolio_data.get("trades", []),
-        "performance": portfolio_data.get("performance", {})
+        "performance": portfolio_data.get("performance", {}),
+        "etf_rotation": get_latest_etf_rotation_data(),
+        "us_liquidity": get_latest_us_liquidity_data()
     }
 
 def update_index_html(data):
