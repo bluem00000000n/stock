@@ -243,22 +243,30 @@
           <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-desk-800 text-slate-400 border border-desk-border">KRX / US LIVE</span>
         </div>
 
-        <!-- Navigation Tabs -->
-        <nav class="flex items-center space-x-2 pl-4 border-l border-desk-border">
-          <button id="tabBtn-performance" onclick="switchTab('performance')" class="px-3 py-1.5 text-xs font-semibold rounded bg-desk-800 text-white border border-desk-600 transition-colors shadow-sm cursor-pointer">
-            <i class="fa-solid fa-chart-line mr-1.5 text-rose-500"></i> 수익률 & 포트폴리오
+        <!-- Navigation Tabs (Re-ordered: Macro -> Liquidity -> Rotation -> Individual Portfolio) -->
+        <nav class="flex items-center space-x-2 pl-4 border-l border-desk-border flex-wrap gap-y-1">
+          <!-- 1. 글로벌 멀티마켓 추세분석 -->
+          <button id="tabBtn-macro" onclick="switchTab('macro')" class="px-3 py-1.5 text-xs font-semibold rounded bg-sky-950/90 text-sky-300 border border-sky-500/60 transition-colors flex items-center shadow-sm cursor-pointer">
+            <i class="fa-solid fa-earth-americas mr-1.5 text-sky-400"></i> 글로벌 멀티마켓 추세분석
+            <span class="ml-1.5 px-1.5 py-0.5 text-[9px] font-mono font-bold bg-sky-500/20 text-sky-400 border border-sky-500/40 rounded animate-pulse">LIVE</span>
           </button>
+
+          <!-- 2. 미국 거시 유동성 & ETF -->
           <button id="tabBtn-liquidity" onclick="switchTab('liquidity')" class="px-3 py-1.5 text-xs font-semibold rounded text-slate-300 hover:text-white hover:bg-desk-850 border border-slate-700/60 hover:border-cyan-500/50 transition-colors flex items-center cursor-pointer">
             <i class="fa-solid fa-landmark mr-1.5 text-cyan-400"></i> 미국 거시 유동성 & ETF (Liquidity)
             <span class="ml-1.5 px-1.5 py-0.5 text-[9px] font-mono font-bold bg-cyan-500/20 text-cyan-400 border border-cyan-500/40 rounded animate-pulse">WAR ROOM</span>
           </button>
-          <button id="tabBtn-macro" onclick="switchTab('macro')" class="px-3 py-1.5 text-xs font-semibold rounded text-slate-300 hover:text-white hover:bg-desk-850 border border-slate-700/60 hover:border-sky-500/50 transition-colors flex items-center cursor-pointer">
-            <i class="fa-solid fa-earth-americas mr-1.5 text-sky-400"></i> 글로벌 멀티마켓 추세분석
-            <span class="ml-1.5 px-1.5 py-0.5 text-[9px] font-mono font-bold bg-sky-500/20 text-sky-400 border border-sky-500/40 rounded animate-pulse">LIVE</span>
-          </button>
+
+          <!-- 3. 미국 ETF 자금순환 -->
           <button id="tabBtn-rotation" onclick="switchTab('rotation')" class="px-3 py-1.5 text-xs font-semibold rounded text-slate-300 hover:text-white hover:bg-desk-850 border border-slate-700/60 hover:border-emerald-500/50 transition-colors flex items-center cursor-pointer">
             <i class="fa-solid fa-arrows-spin mr-1.5 text-emerald-400"></i> 미국 ETF 자금순환 (Rotation)
             <span class="ml-1.5 px-1.5 py-0.5 text-[9px] font-mono font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 rounded animate-pulse">LIVE</span>
+          </button>
+
+          <!-- 4. 개별 포트폴리오 (수익률 & 포트폴리오 -> 개별 포트폴리오 문구 수정 및 맨 마지막 위치) -->
+          <button id="tabBtn-performance" onclick="switchTab('performance')" class="px-3 py-1.5 text-xs font-semibold rounded text-slate-300 hover:text-white hover:bg-desk-850 border border-slate-700/60 hover:border-rose-500/50 transition-colors flex items-center cursor-pointer">
+            <i class="fa-solid fa-layer-group mr-1.5 text-rose-500"></i> 개별 포트폴리오
+            <span class="ml-1.5 px-1.5 py-0.5 text-[9px] font-mono font-bold bg-rose-500/20 text-rose-300 border border-rose-500/40 rounded">ALPHA</span>
           </button>
         </nav>
       </div>
@@ -340,647 +348,9 @@
   <main class="max-w-[1560px] mx-auto px-4 sm:px-6 py-2 flex-1 w-full space-y-6">
 
     <!-- ============================================================== -->
-    <!-- TAB 1: 수익률 & 포트폴리오 관리 (PERFORMANCE & DB)              -->
+    <!-- TAB 1: 글로벌 멀티마켓 추세분석 (GLOBAL MACRO TRENDS) (GLOBAL MULTI-MARKET TREND)        -->
     <!-- ============================================================== -->
-    <section id="view-performance" class="tab-view space-y-5">
-
-      <!-- Top KPI Bar: Executive Performance Summary -->
-      <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
-        <!-- 1. Cumulative Return -->
-        <div class="desk-card rounded p-3.5 flex flex-col justify-between">
-          <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 uppercase">
-            <span>포트폴리오 누적 수익률</span>
-            <i class="fa-solid fa-chart-pie text-slate-500 text-xs"></i>
-          </div>
-          <div class="mt-2 flex items-baseline space-x-1.5">
-            <span id="kpiCumulative" class="text-2xl font-bold font-mono text-krx-up">+0.0%</span>
-          </div>
-          <div class="text-[10px] font-mono text-slate-400 mt-1 flex items-center">
-            <span class="text-rose-400">실현+미실현 종합 수익</span>
-          </div>
-        </div>
-
-        <!-- 2. Today Return -->
-        <div class="desk-card rounded p-3.5 flex flex-col justify-between">
-          <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 uppercase">
-            <span>당일(일일) 수익률</span>
-            <i class="fa-solid fa-bolt text-slate-500 text-xs"></i>
-          </div>
-          <div class="mt-2 flex items-baseline space-x-1.5">
-            <span id="kpiDaily" class="text-2xl font-bold font-mono text-krx-up">+0.0%</span>
-          </div>
-          <div class="text-[10px] font-mono text-slate-400 mt-1">
-            장전 시가 진입 포지션 기준
-          </div>
-        </div>
-
-        <!-- 3. Win Rate -->
-        <div class="desk-card rounded p-3.5 flex flex-col justify-between">
-          <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 uppercase">
-            <span>승률 (Win Rate)</span>
-            <i class="fa-solid fa-bullseye text-slate-500 text-xs"></i>
-          </div>
-          <div class="mt-2 flex items-baseline space-x-1.5">
-            <span id="kpiWinRate" class="text-2xl font-bold font-mono text-slate-100">0.0%</span>
-          </div>
-          <div class="text-[10px] font-mono text-slate-400 mt-1">
-            수익 체결 종목 비율
-          </div>
-        </div>
-
-        <!-- 4. Active Holdings -->
-        <div class="desk-card rounded p-3.5 flex flex-col justify-between">
-          <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 uppercase">
-            <span>보유 / 청산 종목</span>
-            <i class="fa-solid fa-layer-group text-slate-500 text-xs"></i>
-          </div>
-          <div class="mt-2 flex items-baseline space-x-1 font-mono">
-            <span id="kpiHoldings" class="text-2xl font-bold text-slate-100">0</span>
-            <span class="text-xs text-slate-400">보유 /</span>
-            <span id="kpiClosed" class="text-lg font-bold text-slate-400">0</span>
-            <span class="text-xs text-slate-400">매도완료</span>
-          </div>
-          <div class="text-[10px] font-mono text-emerald-400 mt-1">
-            장전알람 시가 매수 연동
-          </div>
-        </div>
-
-        <!-- 5. Active Daemons -->
-        <div class="desk-card rounded p-3.5 flex flex-col justify-between col-span-2 md:col-span-1">
-          <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 uppercase">
-            <span>시스템 관제 데몬</span>
-            <i class="fa-solid fa-network-wired text-slate-500 text-xs"></i>
-          </div>
-          <div class="mt-2 flex items-baseline space-x-1.5">
-            <span id="kpiDaemons" class="text-2xl font-bold font-mono text-emerald-400">8 / 9</span>
-            <span class="text-xs text-slate-400">가동 중</span>
-          </div>
-          <div class="text-[10px] font-mono text-slate-400 mt-1">
-            Launchd 스케줄 정상 작동
-          </div>
-        </div>
-      </div>
-
-      <!-- ============================================================== -->
-      <!-- LUXURY EDITORIAL SPREAD: DIVERSIFICATION SPHERE & NEON SANKEY   -->
-      <!-- ============================================================== -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        
-        <!-- Left: Organic Bubble Cluster (Portfolio Diversification) -->
-        <div class="glass-card rounded-lg p-5 border border-desk-border relative overflow-hidden flex flex-col justify-between">
-          <div class="flex items-center justify-between pb-3 border-b border-desk-border/80">
-            <div>
-              <div class="text-[10px] font-mono uppercase tracking-wider text-cyan-400 font-semibold flex items-center">
-                <i class="fa-solid fa-circle-nodes mr-1.5 animate-pulse"></i> DIVERSIFICATION SPHERE CLUSTER
-              </div>
-              <h3 class="font-display text-base font-bold text-slate-100 tracking-wide mt-0.5">자산별 유기적 구형 버블 & 알파 집중도</h3>
-            </div>
-            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-desk-850 text-slate-400 border border-desk-border">11개 보유 종목 시각화</span>
-          </div>
-          
-          <!-- SVG Bubble Cluster Canvas -->
-          <div class="relative w-full h-[320px] my-2 flex items-center justify-center" id="bubbleClusterContainer">
-            <svg id="bubbleClusterSvg" class="w-full h-full" viewBox="0 0 540 320"></svg>
-          </div>
-          
-          <!-- Bubble Inspector / Card on Hover -->
-          <div id="bubbleDetailCard" class="p-3 bg-desk-900/90 rounded border border-desk-border/80 text-xs font-mono flex items-center justify-between transition-all">
-            <div class="flex items-center space-x-2">
-              <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
-              <span class="text-slate-300">버블에 마우스를 올리면 종목별 매매 전략과 팩터가 표시됩니다.</span>
-            </div>
-            <span class="text-[10px] text-cyan-400 font-semibold">1:1 리스크 패리티</span>
-          </div>
-        </div>
-
-        <!-- Right: Glowing Neon Wireframe Sankey Diagram -->
-        <div class="glass-card rounded-lg p-5 border border-desk-border relative overflow-hidden flex flex-col justify-between">
-          <div class="flex items-center justify-between pb-3 border-b border-desk-border/80">
-            <div>
-              <div class="text-[10px] font-mono uppercase tracking-wider text-amber-400 font-semibold flex items-center">
-                <i class="fa-solid fa-bolt mr-1.5 text-amber-400"></i> CAPITAL TRANSMISSION VECTOR
-              </div>
-              <h3 class="font-display text-base font-bold text-slate-100 tracking-wide mt-0.5">자금 이동 벡터 & 발광 네온 생키 다이어그램</h3>
-            </div>
-            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-950/60 text-amber-300 border border-amber-800/80">실시간 유동성 전이</span>
-          </div>
-          
-          <!-- SVG Neon Wireframe Sankey Canvas -->
-          <div class="relative w-full h-[320px] my-2" id="neonSankeyContainer">
-            <svg id="neonSankeySvg" class="w-full h-full" viewBox="0 0 540 320"></svg>
-          </div>
-          
-          <!-- Sankey Footnote -->
-          <div class="p-3 bg-desk-900/90 rounded border border-desk-border/80 text-xs font-mono flex items-center justify-between text-slate-400">
-            <div class="flex items-center space-x-1.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-              <span>역레포 고갈 자금($2.4T ➔ $0.2B)이 미 단기 국채와 금($4,134 ATH)으로 집결 중</span>
-            </div>
-            <span class="text-amber-400 font-semibold text-[10px]">GOLD ALPHA +2.45%</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Strategy Performance Summary Matrix -->
-      <div class="desk-card rounded p-4">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 mb-3 border-b border-desk-border">
-          <div>
-            <h2 class="text-xs font-bold font-mono text-slate-200 uppercase tracking-wider flex items-center">
-              <i class="fa-solid fa-cubes-stacked mr-2 text-rose-500"></i>
-              전략별 수익률 매트릭스
-            </h2>
-          </div>
-          <div class="text-[11px] font-mono text-slate-400 flex items-center space-x-2">
-            <span class="w-2 h-2 rounded-full bg-rose-500"></span>
-            <span>전략 카드 클릭 시 해당 포트의 종목만 필터링</span>
-          </div>
-        </div>
-
-        <div id="strategyMatrix" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-          <!-- Rendered via JS -->
-        </div>
-      </div>
-
-      <!-- Detailed Trades Table -->
-      <div id="tradesSection" class="desk-card rounded overflow-hidden">
-        <div class="p-3.5 border-b border-desk-border bg-desk-900 flex flex-col md:flex-row md:items-center justify-between gap-3">
-          <div class="flex items-center space-x-3 flex-wrap gap-y-1">
-            <h3 class="text-xs font-bold font-mono uppercase text-slate-200 flex items-center">
-              <i class="fa-solid fa-table-list mr-2 text-slate-400"></i>
-              실시간 포트폴리오 포지션 & 체결 내역 (Trades Database)
-            </h3>
-            <span id="tradesCountBadge" class="text-[10px] font-mono px-2 py-0.5 rounded bg-desk-800 text-slate-300 border border-desk-border">0 종목</span>
-            <button id="strategyFilterBadge" class="hidden text-[10px] font-mono px-2 py-0.5 rounded bg-rose-950/80 text-rose-300 border border-rose-800/80 items-center hover:bg-rose-900 transition-colors cursor-pointer" onclick="selectStrategy(null)" title="전체 종목 보기">
-              <span id="selectedStrategyBadgeText"></span>
-              <i class="fa-solid fa-xmark ml-1.5 text-[11px] text-rose-400"></i>
-            </button>
-          </div>
-
-          <!-- Table View Mode & Market Filters -->
-          <div class="flex items-center space-x-2 flex-wrap gap-y-2 text-xs font-mono">
-            <!-- View Mode Switcher -->
-            <div class="flex items-center bg-desk-850 p-0.5 rounded border border-desk-border mr-2">
-              <button onclick="setTradesViewMode('table')" id="viewModeBtn-table" class="px-2 py-0.5 rounded text-[10px] font-semibold bg-desk-700 text-white transition-colors" title="테이블 뷰"><i class="fa-solid fa-table mr-1"></i>테이블</button>
-              <button onclick="setTradesViewMode('cards')" id="viewModeBtn-cards" class="px-2 py-0.5 rounded text-[10px] font-semibold text-slate-400 hover:text-white transition-colors" title="모바일 카드 뷰"><i class="fa-solid fa-grip-vertical mr-1"></i>카드</button>
-            </div>
-
-            <!-- Filters -->
-            <div class="flex items-center space-x-1">
-              <button onclick="setTradeFilter('ALL')" id="trade-btn-ALL" class="trade-filter-btn px-2 py-1 rounded bg-rose-600 text-white font-semibold">전체</button>
-              <button onclick="setTradeFilter('HOLDING')" id="trade-btn-HOLDING" class="trade-filter-btn px-2 py-1 rounded bg-desk-800 text-slate-400 hover:text-white border border-desk-border">보유중</button>
-              <button onclick="setTradeFilter('CLOSED')" id="trade-btn-CLOSED" class="trade-filter-btn px-2 py-1 rounded bg-desk-800 text-slate-400 hover:text-white border border-desk-border">매도완료</button>
-              <button onclick="setTradeFilter('KRX')" id="trade-btn-KRX" class="trade-filter-btn px-2 py-1 rounded bg-desk-800 text-slate-400 hover:text-white border border-desk-border">KRX</button>
-              <button onclick="setTradeFilter('US')" id="trade-btn-US" class="trade-filter-btn px-2 py-1 rounded bg-desk-800 text-slate-400 hover:text-white border border-desk-border">US</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Mobile Scroll Affordance Notice -->
-        <div class="sm:hidden px-3.5 py-1.5 bg-desk-950 border-b border-desk-border flex items-center justify-between text-[10px] font-mono">
-          <span class="text-cyan-400 flex items-center"><i class="fa-solid fa-arrows-left-right mr-1.5 animate-pulse"></i>좌우 스크롤로 상세지표 확인</span>
-          <span class="text-slate-400 font-semibold">종목명 좌측 고정됨</span>
-        </div>
-
-        <!-- Mobile Cards Container (Shown when mode is 'cards') -->
-        <div id="tradesMobileCardsContainer" class="hidden p-3 grid grid-cols-1 sm:grid-cols-2 gap-3 bg-desk-950">
-          <!-- Injected via JS -->
-        </div>
-
-        <!-- Trades Table Content (Shown when mode is 'table') -->
-        <div class="overflow-x-auto relative rounded border border-desk-border">
-          <table class="w-full text-left text-xs desk-table font-mono whitespace-nowrap min-w-[960px]">
-            <thead>
-              <tr>
-                <th class="py-2.5 px-3 sticky-col">종목명 (코드 / 시장)</th>
-                <th class="py-2.5 px-3 text-center">상태</th>
-                <th class="py-2.5 px-3 text-right">수익률 (%)</th>
-                <th class="py-2.5 px-3 text-right">현재가 / 매도가</th>
-                <th class="py-2.5 px-3 text-right">시작가 (진입)</th>
-                <th class="py-2.5 px-3 text-center">신호 구분</th>
-                <th class="py-2.5 px-3 text-right">목표가</th>
-                <th class="py-2.5 px-3 text-right">손절가</th>
-                <th class="py-2.5 px-3">전략 프로젝트</th>
-                <th class="py-2.5 px-3">매매 근거 & 메모</th>
-              </tr>
-            </thead>
-            <tbody id="tradesTableBody" class="divide-y divide-desk-border">
-              <!-- Rendered via JS -->
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================== -->
-    <!-- TAB: 미국 거시 유동성 & ETF (US LIQUIDITY COMMAND CENTER)         -->
-    <!-- ============================================================== -->
-    <section id="view-liquidity" class="tab-view space-y-6 hidden">
-
-      <!-- Executive War Room Header Card -->
-      <div class="desk-card rounded p-5 bg-gradient-to-r from-desk-900 via-desk-850 to-desk-900 border border-cyan-500/30 shadow-lg">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-desk-border">
-          <div class="flex items-center space-x-3">
-            <span class="w-3 h-3 rounded-full bg-cyan-400 animate-ping"></span>
-            <div>
-              <h2 class="text-sm font-bold font-mono text-white uppercase tracking-wider flex items-center">
-                <i class="fa-solid fa-landmark mr-2 text-cyan-400"></i>
-                US LIQUIDITY COMMAND CENTER (미국 거시 유동성 & ETF 정량 관제)
-              </h2>
-              <p class="text-xs text-slate-400 mt-0.5">
-                연준 대차대조표(H.4.1) · 재무부 현금(TGA/QRA) · 단기자금시장 스트레스(SOFR/Repo) 및 1X 무레버리지 동적 ETF 정량 엔진
-              </p>
-            </div>
-          </div>
-          <div class="flex flex-wrap items-center gap-2 text-xs font-mono">
-            <span class="px-2.5 py-1 font-bold rounded bg-red-950/80 text-red-300 border border-red-500/50 flex items-center shadow-sm">
-              <span class="w-2 h-2 rounded-full bg-red-500 mr-1.5 animate-pulse"></span>
-              Risk Regime: 🔴 RISK OFF
-            </span>
-            <span class="px-2.5 py-1 font-bold rounded bg-amber-950/80 text-amber-300 border border-amber-500/50 flex items-center shadow-sm">
-              Score: -5 / 20 (Tightening)
-            </span>
-            <span class="px-2.5 py-1 font-bold rounded bg-orange-950/80 text-orange-300 border border-orange-500/50 flex items-center shadow-sm">
-              Alert: 🟠 WARNING
-            </span>
-            <span class="text-[11px] text-slate-400 bg-desk-800 px-2.5 py-1 rounded border border-desk-border">
-              2026-11-06 (Live Model)
-            </span>
-          </div>
-        </div>
-
-        <!-- 1-Line Summary & Transmission Banner -->
-        <div class="mt-4 p-3.5 bg-desk-800/80 rounded border border-desk-border">
-          <div class="flex items-center text-[11px] font-mono text-cyan-400 font-bold mb-1.5">
-            <i class="fa-solid fa-bolt mr-1.5 text-cyan-400"></i>
-            【월간 거시 유동성·ETF 전략 총괄 요약】
-          </div>
-          <p class="text-xs text-slate-200 leading-relaxed font-sans">
-            ON RRP 버퍼의 완전 고갈(<strong class="text-red-400">$0.23B</strong>)과 지준의 GDP 10%(<strong class="text-amber-400">$2.96T</strong>) 임계치 도달, SOFR-IORB 스프레드 양수 확대(<strong class="text-red-400">+4.0bp</strong>)에 따라 단기 자금시장 압박이 본격화되는 <strong class="text-red-300">[Tightening / RISK OFF]</strong> 국면입니다. 초단기 국채(<strong class="text-emerald-400">BIL</strong>) 및 금(<strong class="text-emerald-400">GLD</strong>)으로 자본을 보존하고 대형주 앵커(<strong class="text-sky-400">SPY</strong>) 외 고베타 성장주(<strong class="text-amber-400">QQQ/SMH</strong>) 비중 축소 및 장기채(<strong class="text-red-400">TLT</strong>) 회피를 권고합니다.
-          </p>
-        </div>
-      </div>
-
-      <!-- 4 Core Executive KPI Cards -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-        <!-- 1. Net Liquidity -->
-        <div class="desk-card rounded p-4 border-l-2 border-l-sky-500 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between text-[11px] font-mono text-slate-400 uppercase">
-              <span>Net Liquidity (순유동성)</span>
-              <span class="text-sky-400 font-bold">WALCL-TGA-RRP</span>
-            </div>
-            <div class="text-2xl font-black font-mono text-white mt-1.5" id="liqValNetLiq">$5,811.7B</div>
-          </div>
-          <div class="mt-2.5 pt-2 border-t border-desk-border/60 text-[11px] font-mono flex items-center justify-between">
-            <span class="text-rose-400 font-semibold">-0.85% MoM (-$49.7B)</span>
-            <span class="text-slate-400">유동성 축소 진행</span>
-          </div>
-        </div>
-
-        <!-- 2. Bank Reserves -->
-        <div class="desk-card rounded p-4 border-l-2 border-l-amber-500 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between text-[11px] font-mono text-slate-400 uppercase">
-              <span>Bank Reserves (은행 지준)</span>
-              <span class="text-amber-400 font-bold">GDP 9.97%</span>
-            </div>
-            <div class="text-2xl font-black font-mono text-white mt-1.5" id="liqValReserves">$2,962.8B</div>
-          </div>
-          <div class="mt-2.5 pt-2 border-t border-desk-border/60 text-[11px] font-mono flex items-center justify-between">
-            <span class="text-amber-400 font-semibold">Ample 하단(10%) 경계선</span>
-            <span class="text-slate-400">-$59.3B MoM</span>
-          </div>
-        </div>
-
-        <!-- 3. ON RRP Buffer -->
-        <div class="desk-card rounded p-4 border-l-2 border-l-red-500 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between text-[11px] font-mono text-slate-400 uppercase">
-              <span>ON RRP (역레포 버퍼)</span>
-              <span class="text-red-400 font-bold">고갈율 99.99%</span>
-            </div>
-            <div class="text-2xl font-black font-mono text-red-400 mt-1.5" id="liqValRRP">$0.23B</div>
-          </div>
-          <div class="mt-2.5 pt-2 border-t border-desk-border/60 text-[11px] font-mono flex items-center justify-between">
-            <span class="text-red-400 font-semibold">버퍼 소멸 (완충 불가)</span>
-            <span class="text-slate-400">지준 직접 잠식 전환</span>
-          </div>
-        </div>
-
-        <!-- 4. SOFR - IORB Spread -->
-        <div class="desk-card rounded p-4 border-l-2 border-l-rose-500 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between text-[11px] font-mono text-slate-400 uppercase">
-              <span>SOFR - IORB Spread</span>
-              <span class="text-rose-400 font-bold">3.94% > 3.90%</span>
-            </div>
-            <div class="text-2xl font-black font-mono text-rose-400 mt-1.5" id="liqValSofrSpread">+4.0 bps</div>
-          </div>
-          <div class="mt-2.5 pt-2 border-t border-desk-border/60 text-[11px] font-mono flex items-center justify-between">
-            <span class="text-rose-400 font-semibold">양수 역전 (스트레스 3/4)</span>
-            <span class="text-slate-400">Repo 거래 $3.2T 폭증</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Capital Flow Vector Diagram & Mechanism -->
-      <div class="desk-card rounded p-5">
-        <div class="flex items-center justify-between pb-3 mb-3 border-b border-desk-border">
-          <h3 class="text-xs font-bold font-mono text-slate-200 uppercase tracking-wider flex items-center">
-            <i class="fa-solid fa-diagram-project mr-2 text-cyan-400"></i>
-            자금 흐름 벡터 (Capital Flow Vector) & 유동성 흡수 메커니즘
-          </h3>
-          <span class="text-[11px] font-mono text-cyan-400 bg-cyan-950/60 px-2.5 py-0.5 rounded border border-cyan-500/40">
-            구조적 포트폴리오 리밸런싱 국면
-          </span>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-3 text-center text-xs font-mono mt-3">
-          <div class="p-3 bg-desk-800 rounded border border-desk-border flex flex-col justify-between">
-            <div class="text-[10px] text-slate-400 uppercase">1. 중앙은행 & 재무부</div>
-            <div class="text-slate-100 font-bold my-2 text-sm">[연준 QT $6.75T] +<br>[Q4 국채발행 $618B]</div>
-            <div class="text-[10px] text-slate-400">연준 자산 축소 지속 + 대규모 T-Bill 국채 공급</div>
-          </div>
-          <div class="p-3 bg-red-950/40 rounded border border-red-500/40 flex flex-col justify-between">
-            <div class="text-[10px] text-red-400 uppercase">2. 완충재 소멸</div>
-            <div class="text-red-300 font-bold my-2 text-sm">➔ [RRP 잔액 $0.23B]<br>완전 고갈 (흡수 불가)</div>
-            <div class="text-[10px] text-red-400">MMF의 역레포 인출 버퍼 완전히 바닥남</div>
-          </div>
-          <div class="p-3 bg-amber-950/40 rounded border border-amber-500/40 flex flex-col justify-between">
-            <div class="text-[10px] text-amber-400 uppercase">3. 지준 직접 잠식</div>
-            <div class="text-amber-300 font-bold my-2 text-sm">➔ [은행 지준 $2.96T]<br>1:1 직접 잠식 (GDP 9.97%)</div>
-            <div class="text-[10px] text-amber-400">국채 대금이 은행 지급준비금에서 전액 차감</div>
-          </div>
-          <div class="p-3 bg-rose-950/40 rounded border border-rose-500/40 flex flex-col justify-between">
-            <div class="text-[10px] text-rose-400 uppercase">4. 시장 스트레스 확산</div>
-            <div class="text-rose-300 font-bold my-2 text-sm">➔ [SOFR 역전 +4bp]<br>&amp; [VIX 28.2 폭등]</div>
-            <div class="text-[10px] text-rose-400">담보 가뭄 심화로 주식/성장주 멀티플 급격 조정</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 4 Core Interactive Charts -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <!-- Chart 1: Liquidity Trio & Net Liquidity -->
-        <div class="desk-card rounded p-4">
-          <div class="flex items-center justify-between pb-2 mb-2 border-b border-desk-border">
-            <h4 class="text-xs font-bold font-mono text-slate-200 uppercase flex items-center">
-              <i class="fa-solid fa-chart-area mr-2 text-sky-400"></i>
-              1. US Liquidity Trio & Net Liquidity Vector ($T)
-            </h4>
-            <span class="text-[10px] font-mono text-slate-400">Fed Assets - TGA - RRP</span>
-          </div>
-          <div class="h-64 relative">
-            <canvas id="chartNetLiq"></canvas>
-          </div>
-        </div>
-
-        <!-- Chart 2: Bank Reserves vs Ample Threshold -->
-        <div class="desk-card rounded p-4">
-          <div class="flex items-center justify-between pb-2 mb-2 border-b border-desk-border">
-            <h4 class="text-xs font-bold font-mono text-slate-200 uppercase flex items-center">
-              <i class="fa-solid fa-shield-virus mr-2 text-amber-400"></i>
-              2. Bank Reserves vs Ample Threshold (10% & 8% GDP)
-            </h4>
-            <span class="text-[10px] font-mono text-amber-400">Ample Line: $2.97T</span>
-          </div>
-          <div class="h-64 relative">
-            <canvas id="chartReserves"></canvas>
-          </div>
-        </div>
-
-        <!-- Chart 3: SOFR - IORB Spread -->
-        <div class="desk-card rounded p-4">
-          <div class="flex items-center justify-between pb-2 mb-2 border-b border-desk-border">
-            <h4 class="text-xs font-bold font-mono text-slate-200 uppercase flex items-center">
-              <i class="fa-solid fa-triangle-exclamation mr-2 text-rose-400"></i>
-              3. Money Market Stress: SOFR - IORB Spread (bps)
-            </h4>
-            <span class="text-[10px] font-mono text-rose-400">양수 전환 = 담보 부족</span>
-          </div>
-          <div class="h-64 relative">
-            <canvas id="chartSofrSpread"></canvas>
-          </div>
-        </div>
-
-        <!-- Chart 4: Cross-Asset Stress Metrics Spike -->
-        <div class="desk-card rounded p-4">
-          <div class="flex items-center justify-between pb-2 mb-2 border-b border-desk-border">
-            <h4 class="text-xs font-bold font-mono text-slate-200 uppercase flex items-center">
-              <i class="fa-solid fa-fire mr-2 text-orange-400"></i>
-              4. Cross-Asset Stress Metrics Spike (3-Mo Base vs Latest)
-            </h4>
-            <span class="text-[10px] font-mono text-slate-400">VIX · MOVE · HY OAS · US10Y</span>
-          </div>
-          <div class="h-64 relative">
-            <canvas id="chartCrossStress"></canvas>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dynamic ETF Universe Scorecard Table (1X Unleveraged Institutional) -->
-      <div class="desk-card rounded p-4">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 mb-3 border-b border-desk-border">
-          <div>
-            <h3 class="text-xs font-bold font-mono text-slate-200 uppercase tracking-wider flex items-center">
-              <i class="fa-solid fa-list-check mr-2 text-cyan-400"></i>
-              동적 선정 8대 ETF 퀀트 스코어카드 (1X 무레버리지 기관급)
-            </h3>
-            <p class="text-[11px] text-slate-400 mt-0.5">
-              거시 유동성(30%) · 매크로/금리(20%) · 신용/스프레드(15%) · 모멘텀(20%) · 변동성(15%) 5대 정량 팩터 종합 평가
-            </p>
-          </div>
-          <div class="flex items-center space-x-1.5 text-xs font-mono">
-            <button id="liqFilterBtn-ALL" onclick="filterLiquidityTable('ALL')" class="px-2.5 py-1 rounded bg-desk-800 text-white border border-desk-600 font-semibold cursor-pointer shadow-sm">전체 (8)</button>
-            <button id="liqFilterBtn-ENTRY" onclick="filterLiquidityTable('ENTRY')" class="px-2.5 py-1 rounded text-slate-400 hover:text-white hover:bg-desk-800 border border-transparent hover:border-desk-border cursor-pointer">🟢 진입</button>
-            <button id="liqFilterBtn-HOLD" onclick="filterLiquidityTable('HOLD')" class="px-2.5 py-1 rounded text-slate-400 hover:text-white hover:bg-desk-800 border border-transparent hover:border-desk-border cursor-pointer">🔵 보유</button>
-            <button id="liqFilterBtn-REDUCE" onclick="filterLiquidityTable('REDUCE')" class="px-2.5 py-1 rounded text-slate-400 hover:text-white hover:bg-desk-800 border border-transparent hover:border-desk-border cursor-pointer">🟠 감축</button>
-            <button id="liqFilterBtn-AVOID" onclick="filterLiquidityTable('AVOID')" class="px-2.5 py-1 rounded text-slate-400 hover:text-white hover:bg-desk-800 border border-transparent hover:border-desk-border cursor-pointer">🔴 회피</button>
-          </div>
-        </div>
-
-        <div class="overflow-x-auto">
-          <table class="w-full text-left desk-table font-mono text-xs">
-            <thead>
-              <tr>
-                <th class="py-2.5 px-3">티커</th>
-                <th class="py-2.5 px-3">자산군 / ETF 명칭</th>
-                <th class="py-2.5 px-3 text-right">최신 종가</th>
-                <th class="py-2.5 px-3 text-right">20D 수익률</th>
-                <th class="py-2.5 px-3 text-center">5대 팩터 스코어</th>
-                <th class="py-2.5 px-3 text-center">정량 총점</th>
-                <th class="py-2.5 px-3 text-center">Action</th>
-                <th class="py-2.5 px-3">핵심 매크로 및 전술 근거</th>
-              </tr>
-            </thead>
-            <tbody id="liquidityTableBody">
-              <!-- Rendered via JS -->
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- TOP 3 Strategic Assets Cards -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <!-- 1. BIL -->
-        <div class="desk-card rounded p-4 border border-emerald-500/40 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between pb-2 border-b border-desk-border text-xs font-mono">
-              <span class="font-bold text-emerald-400 flex items-center">
-                <i class="fa-solid fa-trophy mr-1.5 text-amber-400"></i> 전략 1위: BIL
-              </span>
-              <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/40">🟢 진입 (84점)</span>
-            </div>
-            <div class="mt-2.5 text-xs text-slate-200">
-              <div class="text-[11px] font-mono text-slate-400 mb-1">SPDR Bloomberg 1-3M T-Bill (초단기국채)</div>
-              <p class="text-xs leading-relaxed text-slate-300">
-                유동성 긴축(Net Liquidity -$49.7B) 및 SOFR 상승(+4.0bp 역전) 국면에서 무위험 단기금리(3.94%+) 확정 수취 및 원금 100% 보존. 포트폴리오 최우선 안전 피난처.
-              </p>
-            </div>
-            <div class="mt-3 space-y-1.5 text-[11px] font-mono text-slate-300 bg-desk-850 p-2.5 rounded border border-desk-border">
-              <div><strong class="text-emerald-400">진입 조건:</strong> 즉시 비중 30~40% 배분</div>
-              <div><strong class="text-amber-400">무효화:</strong> 연준 긴급 금리인하 및 Net Liq 강한 확장(+8) 시</div>
-              <div><strong class="text-rose-400">리스크:</strong> 주식시장 V자 급반등 시 상대적 기회비용</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 2. GLD -->
-        <div class="desk-card rounded p-4 border border-sky-500/40 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between pb-2 border-b border-desk-border text-xs font-mono">
-              <span class="font-bold text-sky-400 flex items-center">
-                <i class="fa-solid fa-medal mr-1.5 text-slate-300"></i> 전략 2위: GLD
-              </span>
-              <span class="px-2 py-0.5 rounded bg-sky-500/20 text-sky-300 font-bold border border-sky-500/40">🔵 보유 (76점)</span>
-            </div>
-            <div class="mt-2.5 text-xs text-slate-200">
-              <div class="text-[11px] font-mono text-slate-400 mb-1">SPDR Gold Shares (금 실물/인플레헤지)</div>
-              <p class="text-xs leading-relaxed text-slate-300">
-                연준 대차대조표 축소 한계 도달 및 미 재무부의 대규모 국채 순발행($618B) 지속에 따른 법정통화 가치 희석 헤지. 금융 스트레스 확산 시 안전자산 프리미엄 향유.
-              </p>
-            </div>
-            <div class="mt-3 space-y-1.5 text-[11px] font-mono text-slate-300 bg-desk-850 p-2.5 rounded border border-desk-border">
-              <div><strong class="text-emerald-400">진입 조건:</strong> 실질금리 안정 시 포트폴리오 10~15% 유지</div>
-              <div><strong class="text-amber-400">무효화:</strong> DXY 105 돌파 또는 실질금리 2.5% 돌파 시</div>
-              <div><strong class="text-rose-400">리스크:</strong> 단기 달러 강세 재개 시 가격 조정</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 3. SPY -->
-        <div class="desk-card rounded p-4 border border-blue-500/40 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between pb-2 border-b border-desk-border text-xs font-mono">
-              <span class="font-bold text-blue-400 flex items-center">
-                <i class="fa-solid fa-anchor mr-1.5 text-amber-600"></i> 전략 3위: SPY
-              </span>
-              <span class="px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 font-bold border border-blue-500/40">🔵 보유 (62점)</span>
-            </div>
-            <div class="mt-2.5 text-xs text-slate-200">
-              <div class="text-[11px] font-mono text-slate-400 mb-1">SPDR S&P 500 ETF (미국 대형주 앵커)</div>
-              <p class="text-xs leading-relaxed text-slate-300">
-                순유동성 축소기에도 막강한 잉여현금흐름(FCF)과 가격 결정력을 보유한 대형 우량주가 하방 경직성을 제공. 포트폴리오 주식 부문의 핵심 앵커 역할 수행.
-              </p>
-            </div>
-            <div class="mt-3 space-y-1.5 text-[11px] font-mono text-slate-300 bg-desk-850 p-2.5 rounded border border-desk-border">
-              <div><strong class="text-emerald-400">진입 조건:</strong> VIX 25 이하 안착 및 50일선 지지 확인 시</div>
-              <div><strong class="text-amber-400">무효화:</strong> 10년물 금리 5.0% 또는 SOFR 스프레드 +10bp 시</div>
-              <div><strong class="text-rose-400">리스크:</strong> 대형 기술주 실적 가이던스 하향 우려</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Macro Scenarios & Tail Risks & Final Investment Conclusion -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <!-- Scenarios & Cycles -->
-        <div class="desk-card rounded p-4">
-          <div class="flex items-center justify-between pb-2 mb-3 border-b border-desk-border">
-            <h4 class="text-xs font-bold font-mono text-slate-200 uppercase flex items-center">
-              <i class="fa-solid fa-clock-rotate-left mr-2 text-cyan-400"></i>
-              3개월 시나리오 &amp; 6개월 매크로 사이클
-            </h4>
-            <span class="text-[10px] font-mono text-cyan-400">사이클: Tightening</span>
-          </div>
-          <div class="space-y-2 text-xs font-mono">
-            <div class="p-2.5 bg-desk-850 rounded border border-desk-border">
-              <div class="flex justify-between text-slate-200 font-semibold mb-1">
-                <span class="text-sky-300">Base Case (확률: 60%)</span>
-                <span class="text-slate-400">QT 조기 종료 논의</span>
-              </div>
-              <p class="text-[11px] text-slate-400 leading-normal">
-                연준의 Standing Repo Facility(SRF) 상시 가동 논의 및 QT 감속. TGA $850B 방출로 일시적 지준 방어 후 1분기 대규모 재발행 전까지 지수 기간조정.
-              </p>
-            </div>
-            <div class="p-2.5 bg-desk-850 rounded border border-desk-border">
-              <div class="flex justify-between text-slate-200 font-semibold mb-1">
-                <span class="text-emerald-300">Bull Case (확률: 20%)</span>
-                <span class="text-slate-400">선제적 금리 인하</span>
-              </div>
-              <p class="text-[11px] text-slate-400 leading-normal">
-                연준의 인하 가속 및 RMP(준비금 관리 매입) 도입 시사로 Net Liquidity 급반등 및 성장주 랠리 재개.
-              </p>
-            </div>
-            <div class="p-2.5 bg-desk-850 rounded border border-desk-border">
-              <div class="flex justify-between text-slate-200 font-semibold mb-1">
-                <span class="text-rose-300">Bear Case (확률: 20%)</span>
-                <span class="text-slate-400">Repo 발작 & 투매</span>
-              </div>
-              <p class="text-[11px] text-slate-400 leading-normal">
-                SOFR 급등 및 단기금융 경색 심화 시 지준 급감과 함께 신용 스프레드 급등, 주식시장 10~15% 추가 투매.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tail Risks & Final Investment Conclusion -->
-        <div class="desk-card rounded p-4 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between pb-2 mb-3 border-b border-desk-border">
-              <h4 class="text-xs font-bold font-mono text-slate-200 uppercase flex items-center">
-                <i class="fa-solid fa-radiation mr-2 text-rose-400"></i>
-                핵심 테일 리스크 &amp; 최종 포지션 지침
-              </h4>
-              <span class="text-[10px] font-mono text-rose-400">현금 비중 40%+ 권고</span>
-            </div>
-            <div class="space-y-1.5 text-xs font-mono text-slate-300 mb-4">
-              <div class="flex items-start">
-                <span class="text-rose-400 mr-2 font-bold">1.</span>
-                <span><strong>Repo 시장 발작:</strong> 지준 $2.9T 하향 이탈 시 2019년 9월식 단기 금리 급등 위험</span>
-              </div>
-              <div class="flex items-start">
-                <span class="text-rose-400 mr-2 font-bold">2.</span>
-                <span><strong>10년물 금리 5.0% 안착:</strong> Q4 $618B/Q1 $800B 국채 공급 폭탄으로 기간프리미엄 급등</span>
-              </div>
-              <div class="flex items-start">
-                <span class="text-rose-400 mr-2 font-bold">3.</span>
-                <span><strong>HY 스프레드 400bp 돌파:</strong> 단기 차환 압박이 회사채 시장으로 전이되며 채무불이행 우려</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="p-3 bg-gradient-to-r from-red-950/60 to-desk-850 rounded border border-rose-500/40 text-xs font-mono">
-            <div class="text-amber-300 font-bold mb-1 flex items-center">
-              <i class="fa-solid fa-flag-checkered mr-1.5"></i>
-              포트폴리오 최종 포지션 결론
-            </div>
-            <div class="text-slate-200 leading-relaxed text-[11px]">
-              • <strong>단기 (1~4주):</strong> 초단기 국채(BIL) 및 금(GLD) 중심 자본 보존 (현금성 40% 이상 확보)<br>
-              • <strong>중기 (1~3개월):</strong> SPY/우량 방어주(XLU) 중심 포트폴리오 압축, 성장주 반등 시 비중 축소<br>
-              • <strong>구조적 (3~6개월):</strong> 연준 지준 방어 정책(RMP 도입) 확인 후 본격 팽창 시 공격적 확대<br>
-              • <strong class="text-rose-300 font-bold">최종 포지션: [초단기채·금 피난처 유지 / 주식 비중 축소 및 장기채(TLT) 회피]</strong>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </section>
-
-    <!-- ============================================================== -->
-    <!-- TAB: 글로벌 멀티마켓 추세분석 (GLOBAL MULTI-MARKET TREND)        -->
-    <!-- ============================================================== -->
-    <section id="view-macro" class="tab-view space-y-6 hidden">
+    <section id="view-macro" class="tab-view space-y-6">
 
       <!-- Executive Macro Verdict Header -->
       <div class="desk-card rounded p-5 bg-gradient-to-r from-desk-900 via-desk-850 to-desk-900 border border-sky-500/30 shadow-lg">
@@ -1674,7 +1044,413 @@
     </section>
 
     <!-- ============================================================== -->
-    <!-- TAB 2: 미국 ETF 시장 자금순환 (SECTOR ROTATION DASHBOARD)        -->
+    <!-- TAB 2: 미국 거시 유동성 & ETF (US LIQUIDITY COMMAND CENTER) (US LIQUIDITY COMMAND CENTER)         -->
+    <!-- ============================================================== -->
+    <section id="view-liquidity" class="tab-view space-y-6 hidden">
+
+      <!-- Executive War Room Header Card -->
+      <div class="desk-card rounded p-5 bg-gradient-to-r from-desk-900 via-desk-850 to-desk-900 border border-cyan-500/30 shadow-lg">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-desk-border">
+          <div class="flex items-center space-x-3">
+            <span class="w-3 h-3 rounded-full bg-cyan-400 animate-ping"></span>
+            <div>
+              <h2 class="text-sm font-bold font-mono text-white uppercase tracking-wider flex items-center">
+                <i class="fa-solid fa-landmark mr-2 text-cyan-400"></i>
+                US LIQUIDITY COMMAND CENTER (미국 거시 유동성 & ETF 정량 관제)
+              </h2>
+              <p class="text-xs text-slate-400 mt-0.5">
+                연준 대차대조표(H.4.1) · 재무부 현금(TGA/QRA) · 단기자금시장 스트레스(SOFR/Repo) 및 1X 무레버리지 동적 ETF 정량 엔진
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-wrap items-center gap-2 text-xs font-mono">
+            <span class="px-2.5 py-1 font-bold rounded bg-red-950/80 text-red-300 border border-red-500/50 flex items-center shadow-sm">
+              <span class="w-2 h-2 rounded-full bg-red-500 mr-1.5 animate-pulse"></span>
+              Risk Regime: 🔴 RISK OFF
+            </span>
+            <span class="px-2.5 py-1 font-bold rounded bg-amber-950/80 text-amber-300 border border-amber-500/50 flex items-center shadow-sm">
+              Score: -5 / 20 (Tightening)
+            </span>
+            <span class="px-2.5 py-1 font-bold rounded bg-orange-950/80 text-orange-300 border border-orange-500/50 flex items-center shadow-sm">
+              Alert: 🟠 WARNING
+            </span>
+            <span class="text-[11px] text-slate-400 bg-desk-800 px-2.5 py-1 rounded border border-desk-border">
+              2026-11-06 (Live Model)
+            </span>
+          </div>
+        </div>
+
+        <!-- 1-Line Summary & Transmission Banner -->
+        <div class="mt-4 p-3.5 bg-desk-800/80 rounded border border-desk-border">
+          <div class="flex items-center text-[11px] font-mono text-cyan-400 font-bold mb-1.5">
+            <i class="fa-solid fa-bolt mr-1.5 text-cyan-400"></i>
+            【월간 거시 유동성·ETF 전략 총괄 요약】
+          </div>
+          <p class="text-xs text-slate-200 leading-relaxed font-sans">
+            ON RRP 버퍼의 완전 고갈(<strong class="text-red-400">$0.23B</strong>)과 지준의 GDP 10%(<strong class="text-amber-400">$2.96T</strong>) 임계치 도달, SOFR-IORB 스프레드 양수 확대(<strong class="text-red-400">+4.0bp</strong>)에 따라 단기 자금시장 압박이 본격화되는 <strong class="text-red-300">[Tightening / RISK OFF]</strong> 국면입니다. 초단기 국채(<strong class="text-emerald-400">BIL</strong>) 및 금(<strong class="text-emerald-400">GLD</strong>)으로 자본을 보존하고 대형주 앵커(<strong class="text-sky-400">SPY</strong>) 외 고베타 성장주(<strong class="text-amber-400">QQQ/SMH</strong>) 비중 축소 및 장기채(<strong class="text-red-400">TLT</strong>) 회피를 권고합니다.
+          </p>
+        </div>
+      </div>
+
+      <!-- 4 Core Executive KPI Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        <!-- 1. Net Liquidity -->
+        <div class="desk-card rounded p-4 border-l-2 border-l-sky-500 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between text-[11px] font-mono text-slate-400 uppercase">
+              <span>Net Liquidity (순유동성)</span>
+              <span class="text-sky-400 font-bold">WALCL-TGA-RRP</span>
+            </div>
+            <div class="text-2xl font-black font-mono text-white mt-1.5" id="liqValNetLiq">$5,811.7B</div>
+          </div>
+          <div class="mt-2.5 pt-2 border-t border-desk-border/60 text-[11px] font-mono flex items-center justify-between">
+            <span class="text-rose-400 font-semibold">-0.85% MoM (-$49.7B)</span>
+            <span class="text-slate-400">유동성 축소 진행</span>
+          </div>
+        </div>
+
+        <!-- 2. Bank Reserves -->
+        <div class="desk-card rounded p-4 border-l-2 border-l-amber-500 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between text-[11px] font-mono text-slate-400 uppercase">
+              <span>Bank Reserves (은행 지준)</span>
+              <span class="text-amber-400 font-bold">GDP 9.97%</span>
+            </div>
+            <div class="text-2xl font-black font-mono text-white mt-1.5" id="liqValReserves">$2,962.8B</div>
+          </div>
+          <div class="mt-2.5 pt-2 border-t border-desk-border/60 text-[11px] font-mono flex items-center justify-between">
+            <span class="text-amber-400 font-semibold">Ample 하단(10%) 경계선</span>
+            <span class="text-slate-400">-$59.3B MoM</span>
+          </div>
+        </div>
+
+        <!-- 3. ON RRP Buffer -->
+        <div class="desk-card rounded p-4 border-l-2 border-l-red-500 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between text-[11px] font-mono text-slate-400 uppercase">
+              <span>ON RRP (역레포 버퍼)</span>
+              <span class="text-red-400 font-bold">고갈율 99.99%</span>
+            </div>
+            <div class="text-2xl font-black font-mono text-red-400 mt-1.5" id="liqValRRP">$0.23B</div>
+          </div>
+          <div class="mt-2.5 pt-2 border-t border-desk-border/60 text-[11px] font-mono flex items-center justify-between">
+            <span class="text-red-400 font-semibold">버퍼 소멸 (완충 불가)</span>
+            <span class="text-slate-400">지준 직접 잠식 전환</span>
+          </div>
+        </div>
+
+        <!-- 4. SOFR - IORB Spread -->
+        <div class="desk-card rounded p-4 border-l-2 border-l-rose-500 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between text-[11px] font-mono text-slate-400 uppercase">
+              <span>SOFR - IORB Spread</span>
+              <span class="text-rose-400 font-bold">3.94% > 3.90%</span>
+            </div>
+            <div class="text-2xl font-black font-mono text-rose-400 mt-1.5" id="liqValSofrSpread">+4.0 bps</div>
+          </div>
+          <div class="mt-2.5 pt-2 border-t border-desk-border/60 text-[11px] font-mono flex items-center justify-between">
+            <span class="text-rose-400 font-semibold">양수 역전 (스트레스 3/4)</span>
+            <span class="text-slate-400">Repo 거래 $3.2T 폭증</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Capital Flow Vector Diagram & Mechanism -->
+      <div class="desk-card rounded p-5">
+        <div class="flex items-center justify-between pb-3 mb-3 border-b border-desk-border">
+          <h3 class="text-xs font-bold font-mono text-slate-200 uppercase tracking-wider flex items-center">
+            <i class="fa-solid fa-diagram-project mr-2 text-cyan-400"></i>
+            자금 흐름 벡터 (Capital Flow Vector) & 유동성 흡수 메커니즘
+          </h3>
+          <span class="text-[11px] font-mono text-cyan-400 bg-cyan-950/60 px-2.5 py-0.5 rounded border border-cyan-500/40">
+            구조적 포트폴리오 리밸런싱 국면
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-3 text-center text-xs font-mono mt-3">
+          <div class="p-3 bg-desk-800 rounded border border-desk-border flex flex-col justify-between">
+            <div class="text-[10px] text-slate-400 uppercase">1. 중앙은행 & 재무부</div>
+            <div class="text-slate-100 font-bold my-2 text-sm">[연준 QT $6.75T] +<br>[Q4 국채발행 $618B]</div>
+            <div class="text-[10px] text-slate-400">연준 자산 축소 지속 + 대규모 T-Bill 국채 공급</div>
+          </div>
+          <div class="p-3 bg-red-950/40 rounded border border-red-500/40 flex flex-col justify-between">
+            <div class="text-[10px] text-red-400 uppercase">2. 완충재 소멸</div>
+            <div class="text-red-300 font-bold my-2 text-sm">➔ [RRP 잔액 $0.23B]<br>완전 고갈 (흡수 불가)</div>
+            <div class="text-[10px] text-red-400">MMF의 역레포 인출 버퍼 완전히 바닥남</div>
+          </div>
+          <div class="p-3 bg-amber-950/40 rounded border border-amber-500/40 flex flex-col justify-between">
+            <div class="text-[10px] text-amber-400 uppercase">3. 지준 직접 잠식</div>
+            <div class="text-amber-300 font-bold my-2 text-sm">➔ [은행 지준 $2.96T]<br>1:1 직접 잠식 (GDP 9.97%)</div>
+            <div class="text-[10px] text-amber-400">국채 대금이 은행 지급준비금에서 전액 차감</div>
+          </div>
+          <div class="p-3 bg-rose-950/40 rounded border border-rose-500/40 flex flex-col justify-between">
+            <div class="text-[10px] text-rose-400 uppercase">4. 시장 스트레스 확산</div>
+            <div class="text-rose-300 font-bold my-2 text-sm">➔ [SOFR 역전 +4bp]<br>&amp; [VIX 28.2 폭등]</div>
+            <div class="text-[10px] text-rose-400">담보 가뭄 심화로 주식/성장주 멀티플 급격 조정</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 Core Interactive Charts -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <!-- Chart 1: Liquidity Trio & Net Liquidity -->
+        <div class="desk-card rounded p-4">
+          <div class="flex items-center justify-between pb-2 mb-2 border-b border-desk-border">
+            <h4 class="text-xs font-bold font-mono text-slate-200 uppercase flex items-center">
+              <i class="fa-solid fa-chart-area mr-2 text-sky-400"></i>
+              1. US Liquidity Trio & Net Liquidity Vector ($T)
+            </h4>
+            <span class="text-[10px] font-mono text-slate-400">Fed Assets - TGA - RRP</span>
+          </div>
+          <div class="h-64 relative">
+            <canvas id="chartNetLiq"></canvas>
+          </div>
+        </div>
+
+        <!-- Chart 2: Bank Reserves vs Ample Threshold -->
+        <div class="desk-card rounded p-4">
+          <div class="flex items-center justify-between pb-2 mb-2 border-b border-desk-border">
+            <h4 class="text-xs font-bold font-mono text-slate-200 uppercase flex items-center">
+              <i class="fa-solid fa-shield-virus mr-2 text-amber-400"></i>
+              2. Bank Reserves vs Ample Threshold (10% & 8% GDP)
+            </h4>
+            <span class="text-[10px] font-mono text-amber-400">Ample Line: $2.97T</span>
+          </div>
+          <div class="h-64 relative">
+            <canvas id="chartReserves"></canvas>
+          </div>
+        </div>
+
+        <!-- Chart 3: SOFR - IORB Spread -->
+        <div class="desk-card rounded p-4">
+          <div class="flex items-center justify-between pb-2 mb-2 border-b border-desk-border">
+            <h4 class="text-xs font-bold font-mono text-slate-200 uppercase flex items-center">
+              <i class="fa-solid fa-triangle-exclamation mr-2 text-rose-400"></i>
+              3. Money Market Stress: SOFR - IORB Spread (bps)
+            </h4>
+            <span class="text-[10px] font-mono text-rose-400">양수 전환 = 담보 부족</span>
+          </div>
+          <div class="h-64 relative">
+            <canvas id="chartSofrSpread"></canvas>
+          </div>
+        </div>
+
+        <!-- Chart 4: Cross-Asset Stress Metrics Spike -->
+        <div class="desk-card rounded p-4">
+          <div class="flex items-center justify-between pb-2 mb-2 border-b border-desk-border">
+            <h4 class="text-xs font-bold font-mono text-slate-200 uppercase flex items-center">
+              <i class="fa-solid fa-fire mr-2 text-orange-400"></i>
+              4. Cross-Asset Stress Metrics Spike (3-Mo Base vs Latest)
+            </h4>
+            <span class="text-[10px] font-mono text-slate-400">VIX · MOVE · HY OAS · US10Y</span>
+          </div>
+          <div class="h-64 relative">
+            <canvas id="chartCrossStress"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dynamic ETF Universe Scorecard Table (1X Unleveraged Institutional) -->
+      <div class="desk-card rounded p-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 mb-3 border-b border-desk-border">
+          <div>
+            <h3 class="text-xs font-bold font-mono text-slate-200 uppercase tracking-wider flex items-center">
+              <i class="fa-solid fa-list-check mr-2 text-cyan-400"></i>
+              동적 선정 8대 ETF 퀀트 스코어카드 (1X 무레버리지 기관급)
+            </h3>
+            <p class="text-[11px] text-slate-400 mt-0.5">
+              거시 유동성(30%) · 매크로/금리(20%) · 신용/스프레드(15%) · 모멘텀(20%) · 변동성(15%) 5대 정량 팩터 종합 평가
+            </p>
+          </div>
+          <div class="flex items-center space-x-1.5 text-xs font-mono">
+            <button id="liqFilterBtn-ALL" onclick="filterLiquidityTable('ALL')" class="px-2.5 py-1 rounded bg-desk-800 text-white border border-desk-600 font-semibold cursor-pointer shadow-sm">전체 (8)</button>
+            <button id="liqFilterBtn-ENTRY" onclick="filterLiquidityTable('ENTRY')" class="px-2.5 py-1 rounded text-slate-400 hover:text-white hover:bg-desk-800 border border-transparent hover:border-desk-border cursor-pointer">🟢 진입</button>
+            <button id="liqFilterBtn-HOLD" onclick="filterLiquidityTable('HOLD')" class="px-2.5 py-1 rounded text-slate-400 hover:text-white hover:bg-desk-800 border border-transparent hover:border-desk-border cursor-pointer">🔵 보유</button>
+            <button id="liqFilterBtn-REDUCE" onclick="filterLiquidityTable('REDUCE')" class="px-2.5 py-1 rounded text-slate-400 hover:text-white hover:bg-desk-800 border border-transparent hover:border-desk-border cursor-pointer">🟠 감축</button>
+            <button id="liqFilterBtn-AVOID" onclick="filterLiquidityTable('AVOID')" class="px-2.5 py-1 rounded text-slate-400 hover:text-white hover:bg-desk-800 border border-transparent hover:border-desk-border cursor-pointer">🔴 회피</button>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left desk-table font-mono text-xs">
+            <thead>
+              <tr>
+                <th class="py-2.5 px-3">티커</th>
+                <th class="py-2.5 px-3">자산군 / ETF 명칭</th>
+                <th class="py-2.5 px-3 text-right">최신 종가</th>
+                <th class="py-2.5 px-3 text-right">20D 수익률</th>
+                <th class="py-2.5 px-3 text-center">5대 팩터 스코어</th>
+                <th class="py-2.5 px-3 text-center">정량 총점</th>
+                <th class="py-2.5 px-3 text-center">Action</th>
+                <th class="py-2.5 px-3">핵심 매크로 및 전술 근거</th>
+              </tr>
+            </thead>
+            <tbody id="liquidityTableBody">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TOP 3 Strategic Assets Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- 1. BIL -->
+        <div class="desk-card rounded p-4 border border-emerald-500/40 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between pb-2 border-b border-desk-border text-xs font-mono">
+              <span class="font-bold text-emerald-400 flex items-center">
+                <i class="fa-solid fa-trophy mr-1.5 text-amber-400"></i> 전략 1위: BIL
+              </span>
+              <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/40">🟢 진입 (84점)</span>
+            </div>
+            <div class="mt-2.5 text-xs text-slate-200">
+              <div class="text-[11px] font-mono text-slate-400 mb-1">SPDR Bloomberg 1-3M T-Bill (초단기국채)</div>
+              <p class="text-xs leading-relaxed text-slate-300">
+                유동성 긴축(Net Liquidity -$49.7B) 및 SOFR 상승(+4.0bp 역전) 국면에서 무위험 단기금리(3.94%+) 확정 수취 및 원금 100% 보존. 포트폴리오 최우선 안전 피난처.
+              </p>
+            </div>
+            <div class="mt-3 space-y-1.5 text-[11px] font-mono text-slate-300 bg-desk-850 p-2.5 rounded border border-desk-border">
+              <div><strong class="text-emerald-400">진입 조건:</strong> 즉시 비중 30~40% 배분</div>
+              <div><strong class="text-amber-400">무효화:</strong> 연준 긴급 금리인하 및 Net Liq 강한 확장(+8) 시</div>
+              <div><strong class="text-rose-400">리스크:</strong> 주식시장 V자 급반등 시 상대적 기회비용</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. GLD -->
+        <div class="desk-card rounded p-4 border border-sky-500/40 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between pb-2 border-b border-desk-border text-xs font-mono">
+              <span class="font-bold text-sky-400 flex items-center">
+                <i class="fa-solid fa-medal mr-1.5 text-slate-300"></i> 전략 2위: GLD
+              </span>
+              <span class="px-2 py-0.5 rounded bg-sky-500/20 text-sky-300 font-bold border border-sky-500/40">🔵 보유 (76점)</span>
+            </div>
+            <div class="mt-2.5 text-xs text-slate-200">
+              <div class="text-[11px] font-mono text-slate-400 mb-1">SPDR Gold Shares (금 실물/인플레헤지)</div>
+              <p class="text-xs leading-relaxed text-slate-300">
+                연준 대차대조표 축소 한계 도달 및 미 재무부의 대규모 국채 순발행($618B) 지속에 따른 법정통화 가치 희석 헤지. 금융 스트레스 확산 시 안전자산 프리미엄 향유.
+              </p>
+            </div>
+            <div class="mt-3 space-y-1.5 text-[11px] font-mono text-slate-300 bg-desk-850 p-2.5 rounded border border-desk-border">
+              <div><strong class="text-emerald-400">진입 조건:</strong> 실질금리 안정 시 포트폴리오 10~15% 유지</div>
+              <div><strong class="text-amber-400">무효화:</strong> DXY 105 돌파 또는 실질금리 2.5% 돌파 시</div>
+              <div><strong class="text-rose-400">리스크:</strong> 단기 달러 강세 재개 시 가격 조정</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. SPY -->
+        <div class="desk-card rounded p-4 border border-blue-500/40 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between pb-2 border-b border-desk-border text-xs font-mono">
+              <span class="font-bold text-blue-400 flex items-center">
+                <i class="fa-solid fa-anchor mr-1.5 text-amber-600"></i> 전략 3위: SPY
+              </span>
+              <span class="px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 font-bold border border-blue-500/40">🔵 보유 (62점)</span>
+            </div>
+            <div class="mt-2.5 text-xs text-slate-200">
+              <div class="text-[11px] font-mono text-slate-400 mb-1">SPDR S&P 500 ETF (미국 대형주 앵커)</div>
+              <p class="text-xs leading-relaxed text-slate-300">
+                순유동성 축소기에도 막강한 잉여현금흐름(FCF)과 가격 결정력을 보유한 대형 우량주가 하방 경직성을 제공. 포트폴리오 주식 부문의 핵심 앵커 역할 수행.
+              </p>
+            </div>
+            <div class="mt-3 space-y-1.5 text-[11px] font-mono text-slate-300 bg-desk-850 p-2.5 rounded border border-desk-border">
+              <div><strong class="text-emerald-400">진입 조건:</strong> VIX 25 이하 안착 및 50일선 지지 확인 시</div>
+              <div><strong class="text-amber-400">무효화:</strong> 10년물 금리 5.0% 또는 SOFR 스프레드 +10bp 시</div>
+              <div><strong class="text-rose-400">리스크:</strong> 대형 기술주 실적 가이던스 하향 우려</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Macro Scenarios & Tail Risks & Final Investment Conclusion -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <!-- Scenarios & Cycles -->
+        <div class="desk-card rounded p-4">
+          <div class="flex items-center justify-between pb-2 mb-3 border-b border-desk-border">
+            <h4 class="text-xs font-bold font-mono text-slate-200 uppercase flex items-center">
+              <i class="fa-solid fa-clock-rotate-left mr-2 text-cyan-400"></i>
+              3개월 시나리오 &amp; 6개월 매크로 사이클
+            </h4>
+            <span class="text-[10px] font-mono text-cyan-400">사이클: Tightening</span>
+          </div>
+          <div class="space-y-2 text-xs font-mono">
+            <div class="p-2.5 bg-desk-850 rounded border border-desk-border">
+              <div class="flex justify-between text-slate-200 font-semibold mb-1">
+                <span class="text-sky-300">Base Case (확률: 60%)</span>
+                <span class="text-slate-400">QT 조기 종료 논의</span>
+              </div>
+              <p class="text-[11px] text-slate-400 leading-normal">
+                연준의 Standing Repo Facility(SRF) 상시 가동 논의 및 QT 감속. TGA $850B 방출로 일시적 지준 방어 후 1분기 대규모 재발행 전까지 지수 기간조정.
+              </p>
+            </div>
+            <div class="p-2.5 bg-desk-850 rounded border border-desk-border">
+              <div class="flex justify-between text-slate-200 font-semibold mb-1">
+                <span class="text-emerald-300">Bull Case (확률: 20%)</span>
+                <span class="text-slate-400">선제적 금리 인하</span>
+              </div>
+              <p class="text-[11px] text-slate-400 leading-normal">
+                연준의 인하 가속 및 RMP(준비금 관리 매입) 도입 시사로 Net Liquidity 급반등 및 성장주 랠리 재개.
+              </p>
+            </div>
+            <div class="p-2.5 bg-desk-850 rounded border border-desk-border">
+              <div class="flex justify-between text-slate-200 font-semibold mb-1">
+                <span class="text-rose-300">Bear Case (확률: 20%)</span>
+                <span class="text-slate-400">Repo 발작 & 투매</span>
+              </div>
+              <p class="text-[11px] text-slate-400 leading-normal">
+                SOFR 급등 및 단기금융 경색 심화 시 지준 급감과 함께 신용 스프레드 급등, 주식시장 10~15% 추가 투매.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tail Risks & Final Investment Conclusion -->
+        <div class="desk-card rounded p-4 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between pb-2 mb-3 border-b border-desk-border">
+              <h4 class="text-xs font-bold font-mono text-slate-200 uppercase flex items-center">
+                <i class="fa-solid fa-radiation mr-2 text-rose-400"></i>
+                핵심 테일 리스크 &amp; 최종 포지션 지침
+              </h4>
+              <span class="text-[10px] font-mono text-rose-400">현금 비중 40%+ 권고</span>
+            </div>
+            <div class="space-y-1.5 text-xs font-mono text-slate-300 mb-4">
+              <div class="flex items-start">
+                <span class="text-rose-400 mr-2 font-bold">1.</span>
+                <span><strong>Repo 시장 발작:</strong> 지준 $2.9T 하향 이탈 시 2019년 9월식 단기 금리 급등 위험</span>
+              </div>
+              <div class="flex items-start">
+                <span class="text-rose-400 mr-2 font-bold">2.</span>
+                <span><strong>10년물 금리 5.0% 안착:</strong> Q4 $618B/Q1 $800B 국채 공급 폭탄으로 기간프리미엄 급등</span>
+              </div>
+              <div class="flex items-start">
+                <span class="text-rose-400 mr-2 font-bold">3.</span>
+                <span><strong>HY 스프레드 400bp 돌파:</strong> 단기 차환 압박이 회사채 시장으로 전이되며 채무불이행 우려</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-3 bg-gradient-to-r from-red-950/60 to-desk-850 rounded border border-rose-500/40 text-xs font-mono">
+            <div class="text-amber-300 font-bold mb-1 flex items-center">
+              <i class="fa-solid fa-flag-checkered mr-1.5"></i>
+              포트폴리오 최종 포지션 결론
+            </div>
+            <div class="text-slate-200 leading-relaxed text-[11px]">
+              • <strong>단기 (1~4주):</strong> 초단기 국채(BIL) 및 금(GLD) 중심 자본 보존 (현금성 40% 이상 확보)<br>
+              • <strong>중기 (1~3개월):</strong> SPY/우량 방어주(XLU) 중심 포트폴리오 압축, 성장주 반등 시 비중 축소<br>
+              • <strong>구조적 (3~6개월):</strong> 연준 지준 방어 정책(RMP 도입) 확인 후 본격 팽창 시 공격적 확대<br>
+              • <strong class="text-rose-300 font-bold">최종 포지션: [초단기채·금 피난처 유지 / 주식 비중 축소 및 장기채(TLT) 회피]</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- TAB 3: 미국 ETF 시장 자금순환 (SECTOR ROTATION DASHBOARD) (SECTOR ROTATION DASHBOARD)        -->
     <!-- ============================================================== -->
     <section id="view-rotation" class="tab-view space-y-6 hidden">
 
@@ -2201,6 +1977,238 @@
       </div>
 
     </section>
+    <!-- ============================================================== -->
+    <!-- TAB 4: 개별 포트폴리오 관리 (INDIVIDUAL PORTFOLIO & TRADES DB)              -->
+    <!-- ============================================================== -->
+    <section id="view-performance" class="tab-view space-y-5 hidden">
+
+      <!-- Top KPI Bar: Executive Performance Summary -->
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+        <!-- 1. Cumulative Return -->
+        <div class="desk-card rounded p-3.5 flex flex-col justify-between">
+          <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 uppercase">
+            <span>포트폴리오 누적 수익률</span>
+            <i class="fa-solid fa-chart-pie text-slate-500 text-xs"></i>
+          </div>
+          <div class="mt-2 flex items-baseline space-x-1.5">
+            <span id="kpiCumulative" class="text-2xl font-bold font-mono text-krx-up">+0.0%</span>
+          </div>
+          <div class="text-[10px] font-mono text-slate-400 mt-1 flex items-center">
+            <span class="text-rose-400">실현+미실현 종합 수익</span>
+          </div>
+        </div>
+
+        <!-- 2. Today Return -->
+        <div class="desk-card rounded p-3.5 flex flex-col justify-between">
+          <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 uppercase">
+            <span>당일(일일) 수익률</span>
+            <i class="fa-solid fa-bolt text-slate-500 text-xs"></i>
+          </div>
+          <div class="mt-2 flex items-baseline space-x-1.5">
+            <span id="kpiDaily" class="text-2xl font-bold font-mono text-krx-up">+0.0%</span>
+          </div>
+          <div class="text-[10px] font-mono text-slate-400 mt-1">
+            장전 시가 진입 포지션 기준
+          </div>
+        </div>
+
+        <!-- 3. Win Rate -->
+        <div class="desk-card rounded p-3.5 flex flex-col justify-between">
+          <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 uppercase">
+            <span>승률 (Win Rate)</span>
+            <i class="fa-solid fa-bullseye text-slate-500 text-xs"></i>
+          </div>
+          <div class="mt-2 flex items-baseline space-x-1.5">
+            <span id="kpiWinRate" class="text-2xl font-bold font-mono text-slate-100">0.0%</span>
+          </div>
+          <div class="text-[10px] font-mono text-slate-400 mt-1">
+            수익 체결 종목 비율
+          </div>
+        </div>
+
+        <!-- 4. Active Holdings -->
+        <div class="desk-card rounded p-3.5 flex flex-col justify-between">
+          <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 uppercase">
+            <span>보유 / 청산 종목</span>
+            <i class="fa-solid fa-layer-group text-slate-500 text-xs"></i>
+          </div>
+          <div class="mt-2 flex items-baseline space-x-1 font-mono">
+            <span id="kpiHoldings" class="text-2xl font-bold text-slate-100">0</span>
+            <span class="text-xs text-slate-400">보유 /</span>
+            <span id="kpiClosed" class="text-lg font-bold text-slate-400">0</span>
+            <span class="text-xs text-slate-400">매도완료</span>
+          </div>
+          <div class="text-[10px] font-mono text-emerald-400 mt-1">
+            장전알람 시가 매수 연동
+          </div>
+        </div>
+
+        <!-- 5. Active Daemons -->
+        <div class="desk-card rounded p-3.5 flex flex-col justify-between col-span-2 md:col-span-1">
+          <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 uppercase">
+            <span>시스템 관제 데몬</span>
+            <i class="fa-solid fa-network-wired text-slate-500 text-xs"></i>
+          </div>
+          <div class="mt-2 flex items-baseline space-x-1.5">
+            <span id="kpiDaemons" class="text-2xl font-bold font-mono text-emerald-400">8 / 9</span>
+            <span class="text-xs text-slate-400">가동 중</span>
+          </div>
+          <div class="text-[10px] font-mono text-slate-400 mt-1">
+            Launchd 스케줄 정상 작동
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================================== -->
+      <!-- LUXURY EDITORIAL SPREAD: DIVERSIFICATION SPHERE & NEON SANKEY   -->
+      <!-- ============================================================== -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        
+        <!-- Left: Organic Bubble Cluster (Portfolio Diversification) -->
+        <div class="glass-card rounded-lg p-5 border border-desk-border relative overflow-hidden flex flex-col justify-between">
+          <div class="flex items-center justify-between pb-3 border-b border-desk-border/80">
+            <div>
+              <div class="text-[10px] font-mono uppercase tracking-wider text-cyan-400 font-semibold flex items-center">
+                <i class="fa-solid fa-circle-nodes mr-1.5 animate-pulse"></i> DIVERSIFICATION SPHERE CLUSTER
+              </div>
+              <h3 class="font-display text-base font-bold text-slate-100 tracking-wide mt-0.5">자산별 유기적 구형 버블 & 알파 집중도</h3>
+            </div>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-desk-850 text-slate-400 border border-desk-border">11개 보유 종목 시각화</span>
+          </div>
+          
+          <!-- SVG Bubble Cluster Canvas -->
+          <div class="relative w-full h-[320px] my-2 flex items-center justify-center" id="bubbleClusterContainer">
+            <svg id="bubbleClusterSvg" class="w-full h-full" viewBox="0 0 540 320"></svg>
+          </div>
+          
+          <!-- Bubble Inspector / Card on Hover -->
+          <div id="bubbleDetailCard" class="p-3 bg-desk-900/90 rounded border border-desk-border/80 text-xs font-mono flex items-center justify-between transition-all">
+            <div class="flex items-center space-x-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+              <span class="text-slate-300">버블에 마우스를 올리면 종목별 매매 전략과 팩터가 표시됩니다.</span>
+            </div>
+            <span class="text-[10px] text-cyan-400 font-semibold">1:1 리스크 패리티</span>
+          </div>
+        </div>
+
+        <!-- Right: Glowing Neon Wireframe Sankey Diagram -->
+        <div class="glass-card rounded-lg p-5 border border-desk-border relative overflow-hidden flex flex-col justify-between">
+          <div class="flex items-center justify-between pb-3 border-b border-desk-border/80">
+            <div>
+              <div class="text-[10px] font-mono uppercase tracking-wider text-amber-400 font-semibold flex items-center">
+                <i class="fa-solid fa-bolt mr-1.5 text-amber-400"></i> CAPITAL TRANSMISSION VECTOR
+              </div>
+              <h3 class="font-display text-base font-bold text-slate-100 tracking-wide mt-0.5">자금 이동 벡터 & 발광 네온 생키 다이어그램</h3>
+            </div>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-950/60 text-amber-300 border border-amber-800/80">실시간 유동성 전이</span>
+          </div>
+          
+          <!-- SVG Neon Wireframe Sankey Canvas -->
+          <div class="relative w-full h-[320px] my-2" id="neonSankeyContainer">
+            <svg id="neonSankeySvg" class="w-full h-full" viewBox="0 0 540 320"></svg>
+          </div>
+          
+          <!-- Sankey Footnote -->
+          <div class="p-3 bg-desk-900/90 rounded border border-desk-border/80 text-xs font-mono flex items-center justify-between text-slate-400">
+            <div class="flex items-center space-x-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+              <span>역레포 고갈 자금($2.4T ➔ $0.2B)이 미 단기 국채와 금($4,134 ATH)으로 집결 중</span>
+            </div>
+            <span class="text-amber-400 font-semibold text-[10px]">GOLD ALPHA +2.45%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Strategy Performance Summary Matrix -->
+      <div class="desk-card rounded p-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 mb-3 border-b border-desk-border">
+          <div>
+            <h2 class="text-xs font-bold font-mono text-slate-200 uppercase tracking-wider flex items-center">
+              <i class="fa-solid fa-cubes-stacked mr-2 text-rose-500"></i>
+              전략별 수익률 매트릭스
+            </h2>
+          </div>
+          <div class="text-[11px] font-mono text-slate-400 flex items-center space-x-2">
+            <span class="w-2 h-2 rounded-full bg-rose-500"></span>
+            <span>전략 카드 클릭 시 해당 포트의 종목만 필터링</span>
+          </div>
+        </div>
+
+        <div id="strategyMatrix" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          <!-- Rendered via JS -->
+        </div>
+      </div>
+
+      <!-- Detailed Trades Table -->
+      <div id="tradesSection" class="desk-card rounded overflow-hidden">
+        <div class="p-3.5 border-b border-desk-border bg-desk-900 flex flex-col md:flex-row md:items-center justify-between gap-3">
+          <div class="flex items-center space-x-3 flex-wrap gap-y-1">
+            <h3 class="text-xs font-bold font-mono uppercase text-slate-200 flex items-center">
+              <i class="fa-solid fa-table-list mr-2 text-slate-400"></i>
+              실시간 포트폴리오 포지션 & 체결 내역 (Trades Database)
+            </h3>
+            <span id="tradesCountBadge" class="text-[10px] font-mono px-2 py-0.5 rounded bg-desk-800 text-slate-300 border border-desk-border">0 종목</span>
+            <button id="strategyFilterBadge" class="hidden text-[10px] font-mono px-2 py-0.5 rounded bg-rose-950/80 text-rose-300 border border-rose-800/80 items-center hover:bg-rose-900 transition-colors cursor-pointer" onclick="selectStrategy(null)" title="전체 종목 보기">
+              <span id="selectedStrategyBadgeText"></span>
+              <i class="fa-solid fa-xmark ml-1.5 text-[11px] text-rose-400"></i>
+            </button>
+          </div>
+
+          <!-- Table View Mode & Market Filters -->
+          <div class="flex items-center space-x-2 flex-wrap gap-y-2 text-xs font-mono">
+            <!-- View Mode Switcher -->
+            <div class="flex items-center bg-desk-850 p-0.5 rounded border border-desk-border mr-2">
+              <button onclick="setTradesViewMode('table')" id="viewModeBtn-table" class="px-2 py-0.5 rounded text-[10px] font-semibold bg-desk-700 text-white transition-colors" title="테이블 뷰"><i class="fa-solid fa-table mr-1"></i>테이블</button>
+              <button onclick="setTradesViewMode('cards')" id="viewModeBtn-cards" class="px-2 py-0.5 rounded text-[10px] font-semibold text-slate-400 hover:text-white transition-colors" title="모바일 카드 뷰"><i class="fa-solid fa-grip-vertical mr-1"></i>카드</button>
+            </div>
+
+            <!-- Filters -->
+            <div class="flex items-center space-x-1">
+              <button onclick="setTradeFilter('ALL')" id="trade-btn-ALL" class="trade-filter-btn px-2 py-1 rounded bg-rose-600 text-white font-semibold">전체</button>
+              <button onclick="setTradeFilter('HOLDING')" id="trade-btn-HOLDING" class="trade-filter-btn px-2 py-1 rounded bg-desk-800 text-slate-400 hover:text-white border border-desk-border">보유중</button>
+              <button onclick="setTradeFilter('CLOSED')" id="trade-btn-CLOSED" class="trade-filter-btn px-2 py-1 rounded bg-desk-800 text-slate-400 hover:text-white border border-desk-border">매도완료</button>
+              <button onclick="setTradeFilter('KRX')" id="trade-btn-KRX" class="trade-filter-btn px-2 py-1 rounded bg-desk-800 text-slate-400 hover:text-white border border-desk-border">KRX</button>
+              <button onclick="setTradeFilter('US')" id="trade-btn-US" class="trade-filter-btn px-2 py-1 rounded bg-desk-800 text-slate-400 hover:text-white border border-desk-border">US</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Scroll Affordance Notice -->
+        <div class="sm:hidden px-3.5 py-1.5 bg-desk-950 border-b border-desk-border flex items-center justify-between text-[10px] font-mono">
+          <span class="text-cyan-400 flex items-center"><i class="fa-solid fa-arrows-left-right mr-1.5 animate-pulse"></i>좌우 스크롤로 상세지표 확인</span>
+          <span class="text-slate-400 font-semibold">종목명 좌측 고정됨</span>
+        </div>
+
+        <!-- Mobile Cards Container (Shown when mode is 'cards') -->
+        <div id="tradesMobileCardsContainer" class="hidden p-3 grid grid-cols-1 sm:grid-cols-2 gap-3 bg-desk-950">
+          <!-- Injected via JS -->
+        </div>
+
+        <!-- Trades Table Content (Shown when mode is 'table') -->
+        <div class="overflow-x-auto relative rounded border border-desk-border">
+          <table class="w-full text-left text-xs desk-table font-mono whitespace-nowrap min-w-[960px]">
+            <thead>
+              <tr>
+                <th class="py-2.5 px-3 sticky-col">종목명 (코드 / 시장)</th>
+                <th class="py-2.5 px-3 text-center">상태</th>
+                <th class="py-2.5 px-3 text-right">수익률 (%)</th>
+                <th class="py-2.5 px-3 text-right">현재가 / 매도가</th>
+                <th class="py-2.5 px-3 text-right">시작가 (진입)</th>
+                <th class="py-2.5 px-3 text-center">신호 구분</th>
+                <th class="py-2.5 px-3 text-right">목표가</th>
+                <th class="py-2.5 px-3 text-right">손절가</th>
+                <th class="py-2.5 px-3">전략 프로젝트</th>
+                <th class="py-2.5 px-3">매매 근거 & 메모</th>
+              </tr>
+            </thead>
+            <tbody id="tradesTableBody" class="divide-y divide-desk-border">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <!-- Footer -->
@@ -2213,7 +2221,7 @@
     // Embedded Initial Dataset (Auto-synced with status.json)
     const INITIAL_DATA = {
   "summary": {
-    "updated_at": "2026-11-06 14:08:25",
+    "updated_at": "2026-11-06 14:14:48",
     "total_projects": 8,
     "active_daemons": 0,
     "today_executed": 8,
@@ -2224,10 +2232,10 @@
     },
     "portfolio": {
       "date": "2026-11-06",
-      "daily_return_pct": 0.0,
-      "cumulative_return_pct": -4.22,
+      "daily_return_pct": -0.05,
+      "cumulative_return_pct": -4.24,
       "realized_pnl_pct": -7.31,
-      "unrealized_pnl_pct": 0.0,
+      "unrealized_pnl_pct": -0.05,
       "holding_count": 11,
       "closed_count": 15,
       "win_rate": 30.8
@@ -3360,11 +3368,11 @@
       "signal_date": "2026-11-05",
       "entry_price": 183900.0,
       "entry_date": "2026-11-05",
-      "current_price": 192800.0,
+      "current_price": 191700.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": 4.84,
+      "return_pct": 4.24,
       "target_price": 202000.0,
       "stop_loss_price": 171000.0,
       "notes": "[정배열 2차검증 100점] 20일 이평선(177,075원) 대량거래(236%) 돌파 안착"
@@ -3400,11 +3408,11 @@
       "signal_date": "2026-11-03",
       "entry_price": 175000.0,
       "entry_date": "2026-11-03",
-      "current_price": 176600.0,
+      "current_price": 176100.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": 0.91,
+      "return_pct": 0.63,
       "target_price": 195000.0,
       "stop_loss_price": 164000.0,
       "notes": "[중소형주] 과천 AI IDC 본격 가동 및 52주 신고가 하이타이트 플래그 돌파"
@@ -3428,26 +3436,6 @@
       "target_price": 75.0,
       "stop_loss_price": 57.84,
       "notes": "[중소형주 엄선] 특수 보험 분야에서의 뛰어난 언더라이팅 수익성과 높은 ROE 기록. 지수 조정기에도 52주 고점 부근에서 가격 방어력이 탁월하며 헤지펀드 기관 수급 지속 유입. | 전략: HTP 모멘텀 (미국 중소형)"
-    },
-    {
-      "id": 318,
-      "project_id": "stock-sepa-pivot",
-      "project_name": "SEPA x 피봇 돌파",
-      "ticker": "028050",
-      "name": "삼성E&A",
-      "market": "KRX",
-      "signal_type": "BUY [지정가 매수]",
-      "signal_date": "2026-11-03",
-      "entry_price": 61600.0,
-      "entry_date": "2026-11-03",
-      "current_price": 61600.0,
-      "exit_price": null,
-      "exit_date": null,
-      "status": "HOLDING",
-      "return_pct": 0.0,
-      "target_price": 67800.0,
-      "stop_loss_price": 57600.0,
-      "notes": "[대형주] 친환경 플랜트 대형 EPC 글로벌 수주 랠리 52주 신고가 VCP 돌파"
     },
     {
       "id": 347,
@@ -3510,6 +3498,26 @@
       "notes": "[3X 레버리지 엄선] 체제: RISK_ON (VIX: 18.38) | Score 100.0/100: Turnover=25, EntryPos=20, Mom=15, | 전략: US 3X 무한레버리지"
     },
     {
+      "id": 318,
+      "project_id": "stock-sepa-pivot",
+      "project_name": "SEPA x 피봇 돌파",
+      "ticker": "028050",
+      "name": "삼성E&A",
+      "market": "KRX",
+      "signal_type": "BUY [지정가 매수]",
+      "signal_date": "2026-11-03",
+      "entry_price": 61600.0,
+      "entry_date": "2026-11-03",
+      "current_price": 61500.0,
+      "exit_price": null,
+      "exit_date": null,
+      "status": "HOLDING",
+      "return_pct": -0.16,
+      "target_price": 67800.0,
+      "stop_loss_price": 57600.0,
+      "notes": "[대형주] 친환경 플랜트 대형 EPC 글로벌 수주 랠리 52주 신고가 VCP 돌파"
+    },
+    {
       "id": 340,
       "project_id": "stock-chart-alignment",
       "project_name": "이평 정배열 돌파 (단기 5/20선 골든스택 & 2차 차트검증)",
@@ -3520,11 +3528,11 @@
       "signal_date": "2026-11-05",
       "entry_price": 215000.0,
       "entry_date": "2026-11-05",
-      "current_price": 212500.0,
+      "current_price": 213000.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": -1.16,
+      "return_pct": -0.93,
       "target_price": 236500.0,
       "stop_loss_price": 199900.0,
       "notes": "[정배열 2차검증 120점] 5일/20일선 정배열 우상향 및 거래량 367% 폭증 수급 유입"
@@ -3560,11 +3568,11 @@
       "signal_date": "2026-11-05",
       "entry_price": 8660.0,
       "entry_date": "2026-11-05",
-      "current_price": 8300.0,
+      "current_price": 8320.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": -4.16,
+      "return_pct": -3.93,
       "target_price": 9520.0,
       "stop_loss_price": 8050.0,
       "notes": "[정배열 2차검증 140점/전체 1위] 5일/20일 정배열 우상향 및 거래량 6,960% 폭증 골든크로스"
@@ -3873,10 +3881,10 @@
   "performance": {
     "PORTFOLIO_TOTAL": {
       "date": "2026-11-06",
-      "daily_return_pct": 0.0,
-      "cumulative_return_pct": -4.22,
+      "daily_return_pct": -0.05,
+      "cumulative_return_pct": -4.24,
       "realized_pnl_pct": -7.31,
-      "unrealized_pnl_pct": 0.0,
+      "unrealized_pnl_pct": -0.05,
       "holding_count": 11,
       "closed_count": 15,
       "win_rate": 30.8
@@ -3893,10 +3901,10 @@
     },
     "stock-chart-alignment": {
       "date": "2026-11-06",
-      "daily_return_pct": -0.16,
-      "cumulative_return_pct": -7.08,
+      "daily_return_pct": -0.21,
+      "cumulative_return_pct": -7.12,
       "realized_pnl_pct": -27.84,
-      "unrealized_pnl_pct": -0.16,
+      "unrealized_pnl_pct": -0.21,
       "holding_count": 3,
       "closed_count": 1,
       "win_rate": 25.0
@@ -3913,10 +3921,10 @@
     },
     "stock-sepa-pivot": {
       "date": "2026-11-06",
-      "daily_return_pct": 0.46,
-      "cumulative_return_pct": 0.46,
+      "daily_return_pct": 0.23,
+      "cumulative_return_pct": 0.23,
       "realized_pnl_pct": 0.0,
-      "unrealized_pnl_pct": 0.46,
+      "unrealized_pnl_pct": 0.23,
       "holding_count": 2,
       "closed_count": 0,
       "win_rate": 50.0
@@ -6030,7 +6038,7 @@
 };
 
     let appData = INITIAL_DATA;
-    let currentTab = 'performance';
+    let currentTab = 'macro';
     let currentTradeFilter = 'ALL';
     let selectedStrategy = null;
 
@@ -6069,28 +6077,41 @@
       const activeView = document.getElementById('view-' + tab);
       if (activeView) activeView.classList.remove('hidden');
 
-      const pBtn = document.getElementById('tabBtn-performance');
-      const lBtn = document.getElementById('tabBtn-liquidity');
       const mBtn = document.getElementById('tabBtn-macro');
+      const lBtn = document.getElementById('tabBtn-liquidity');
       const rBtn = document.getElementById('tabBtn-rotation');
+      const pBtn = document.getElementById('tabBtn-performance');
 
-      // Reset base classes
-      if (pBtn) pBtn.className = "px-3 py-1.5 text-xs font-semibold rounded text-slate-400 hover:text-white hover:bg-desk-850 border border-transparent hover:border-desk-border transition-colors cursor-pointer";
-      if (lBtn) lBtn.className = "px-3 py-1.5 text-xs font-semibold rounded text-slate-300 hover:text-white hover:bg-desk-850 border border-slate-700/60 hover:border-cyan-500/50 transition-colors flex items-center cursor-pointer";
+      // Reset base classes for all 4 navigation buttons
       if (mBtn) mBtn.className = "px-3 py-1.5 text-xs font-semibold rounded text-slate-300 hover:text-white hover:bg-desk-850 border border-slate-700/60 hover:border-sky-500/50 transition-colors flex items-center cursor-pointer";
+      if (lBtn) lBtn.className = "px-3 py-1.5 text-xs font-semibold rounded text-slate-300 hover:text-white hover:bg-desk-850 border border-slate-700/60 hover:border-cyan-500/50 transition-colors flex items-center cursor-pointer";
       if (rBtn) rBtn.className = "px-3 py-1.5 text-xs font-semibold rounded text-slate-300 hover:text-white hover:bg-desk-850 border border-slate-700/60 hover:border-emerald-500/50 transition-colors flex items-center cursor-pointer";
+      if (pBtn) pBtn.className = "px-3 py-1.5 text-xs font-semibold rounded text-slate-300 hover:text-white hover:bg-desk-850 border border-slate-700/60 hover:border-rose-500/50 transition-colors flex items-center cursor-pointer";
 
-      if (tab === 'performance') {
-        if (pBtn) pBtn.className = "px-3 py-1.5 text-xs font-semibold rounded bg-desk-800 text-white border border-desk-600 transition-colors shadow-sm cursor-pointer";
+      // Apply active styling and load child components
+      if (tab === 'macro') {
+        if (mBtn) mBtn.className = "px-3 py-1.5 text-xs font-semibold rounded bg-sky-950/90 text-sky-300 border border-sky-500/60 transition-colors flex items-center shadow-sm cursor-pointer";
+        renderMacroTimeline();
       } else if (tab === 'liquidity') {
         if (lBtn) lBtn.className = "px-3 py-1.5 text-xs font-semibold rounded bg-cyan-950/90 text-cyan-300 border border-cyan-500/60 transition-colors flex items-center shadow-sm cursor-pointer";
         renderLiquidityView();
-      } else if (tab === 'macro') {
-        if (mBtn) mBtn.className = "px-3 py-1.5 text-xs font-semibold rounded bg-sky-950/90 text-sky-300 border border-sky-500/60 transition-colors flex items-center shadow-sm cursor-pointer";
       } else if (tab === 'rotation') {
         if (rBtn) rBtn.className = "px-3 py-1.5 text-xs font-semibold rounded bg-emerald-950/90 text-emerald-300 border border-emerald-500/60 transition-colors flex items-center shadow-sm cursor-pointer";
         renderRotationView();
+        renderSectorHexGrid();
+      } else if (tab === 'performance') {
+        if (pBtn) pBtn.className = "px-3 py-1.5 text-xs font-semibold rounded bg-rose-950/90 text-rose-300 border border-rose-500/60 transition-colors flex items-center shadow-sm cursor-pointer";
+        renderBubbleCluster();
+        renderNeonSankey();
       }
+
+      // Sync URL hash seamlessly
+      try {
+        const hash = tab === 'performance' ? 'portfolio' : tab;
+        if (window.history && window.history.replaceState) {
+          window.history.replaceState(null, '', '#' + hash);
+        }
+      } catch (e) {}
     }
 
     function renderLiquidityView() {
@@ -7381,8 +7402,14 @@
       renderTradesTable();
     }
 
-    // Start
+    // Start & Dynamic Tab Initialization
     loadLatestData();
+    const initialHash = window.location.hash.replace('#', '');
+    if (['macro', 'liquidity', 'rotation', 'performance', 'portfolio'].includes(initialHash)) {
+      switchTab(initialHash === 'portfolio' ? 'performance' : initialHash);
+    } else {
+      switchTab('macro');
+    }
   </script>
 </body>
 </html>
