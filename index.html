@@ -10,10 +10,11 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- Google Fonts: Editorial Serif, Luxury Display, Precision Mono & Sans -->
+  <!-- Modern Gothic (Pretendard & Noto Sans KR & JetBrains Mono) -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -43,9 +44,9 @@
             }
           },
           fontFamily: {
-            display: ['"Cinzel"', 'serif'],
-            serif: ['"Newsreader"', 'Georgia', 'serif'],
-            sans: ['"Plus Jakarta Sans"', 'Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
+            display: ['"Pretendard"', '"Noto Sans KR"', '"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', '"Apple SD Gothic Neo"', 'sans-serif'],
+            serif: ['"Pretendard"', '"Noto Sans KR"', '"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', '"Apple SD Gothic Neo"', 'sans-serif'],
+            sans: ['"Pretendard"', '"Noto Sans KR"', '"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', '"Apple SD Gothic Neo"', 'sans-serif'],
             mono: ['"JetBrains Mono"', 'Menlo', 'Consolas', 'monospace']
           }
         }
@@ -56,6 +57,8 @@
     body {
       background-color: #06080d;
       color: #e2e8f0;
+      font-family: "Pretendard", "Noto Sans KR", "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+      letter-spacing: -0.015em;
       font-feature-settings: "cv02", "cv03", "cv04", "cv11";
       background-image: 
         radial-gradient(circle at 15% 10%, rgba(56, 189, 248, 0.03) 0%, transparent 40%),
@@ -208,8 +211,9 @@
       box-shadow: 0 0 16px -2px rgba(244, 63, 94, 0.35);
     }
     .hex-neutral {
-      background: linear-gradient(135deg, rgba(26, 36, 54, 0.5), rgba(15, 23, 36, 0.7));
-      border: 1px solid rgba(100, 116, 139, 0.35);
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.12), rgba(26, 36, 54, 0.7));
+      border: 1px solid rgba(245, 158, 11, 0.45);
+      box-shadow: 0 0 14px -3px rgba(245, 158, 11, 0.25);
     }
 
     /* Minimal Custom Scrollbar */
@@ -360,7 +364,7 @@
             <div class="text-[10px] font-mono uppercase tracking-wider text-sky-400 font-semibold flex items-center">
               <i class="fa-solid fa-timeline mr-1.5"></i> CHRONOLOGICAL MACRO TIMELINE & SYSTEMIC INFOGRAPHIC
             </div>
-            <h3 class="font-display text-base font-bold text-slate-100 tracking-wide mt-0.5">
+            <h3 class="font-sans text-base font-bold text-slate-100 tracking-wide mt-0.5">
               역사적 경제 이벤트 축 & 자본 흐름 스토리텔링 인포그래픽
             </h3>
           </div>
@@ -1433,7 +1437,7 @@
             <div class="text-[10px] font-mono uppercase tracking-wider text-emerald-400 font-semibold flex items-center">
               <i class="fa-solid fa-shapes mr-1.5"></i> 11 GICS SECTOR HONEYCOMB ROTATION MATRIX
             </div>
-            <h3 class="font-display text-base font-bold text-slate-100 tracking-wide mt-0.5">
+            <h3 class="font-sans text-base font-bold text-slate-100 tracking-wide mt-0.5">
               11대 GICS 섹터 자금순환 모멘텀 & 헥사곤 그리드
             </h3>
           </div>
@@ -1961,7 +1965,7 @@
             <div class="text-[10px] font-mono uppercase tracking-wider text-rose-400 font-semibold flex items-center">
               <i class="fa-solid fa-circle-nodes mr-1.5 animate-pulse"></i> DIVERSIFICATION SPHERE CLUSTER
             </div>
-            <h3 class="font-display text-base font-bold text-slate-100 tracking-wide mt-0.5">개별 포트폴리오 유기적 구형 버블 & 전략별 알파 집중도</h3>
+            <h3 class="font-sans text-base font-bold text-slate-100 tracking-wide mt-0.5">개별 포트폴리오 유기적 구형 버블 & 전략별 알파 집중도</h3>
           </div>
           <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-desk-850 text-slate-400 border border-desk-border">11개 실전 보유 종목 시각화</span>
         </div>
@@ -2083,7 +2087,7 @@
     // Embedded Initial Dataset (Auto-synced with status.json)
     const INITIAL_DATA = {
   "summary": {
-    "updated_at": "2026-11-06 14:42:49",
+    "updated_at": "2026-11-06 14:48:05",
     "total_projects": 8,
     "active_daemons": 0,
     "today_executed": 8,
@@ -2094,13 +2098,13 @@
     },
     "portfolio": {
       "date": "2026-11-06",
-      "daily_return_pct": -0.06,
-      "cumulative_return_pct": -4.24,
+      "daily_return_pct": -0.07,
+      "cumulative_return_pct": -4.25,
       "realized_pnl_pct": -7.31,
-      "unrealized_pnl_pct": -0.06,
+      "unrealized_pnl_pct": -0.07,
       "holding_count": 11,
       "closed_count": 15,
-      "win_rate": 34.6
+      "win_rate": 30.8
     }
   },
   "projects": [
@@ -3230,11 +3234,11 @@
       "signal_date": "2026-11-05",
       "entry_price": 183900.0,
       "entry_date": "2026-11-05",
-      "current_price": 193200.0,
+      "current_price": 192600.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": 5.06,
+      "return_pct": 4.73,
       "target_price": 202000.0,
       "stop_loss_price": 171000.0,
       "notes": "[정배열 2차검증 100점] 20일 이평선(177,075원) 대량거래(236%) 돌파 안착"
@@ -3310,11 +3314,11 @@
       "signal_date": "2026-11-03",
       "entry_price": 61600.0,
       "entry_date": "2026-11-03",
-      "current_price": 61700.0,
+      "current_price": 61600.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": 0.16,
+      "return_pct": 0.0,
       "target_price": 67800.0,
       "stop_loss_price": 57600.0,
       "notes": "[대형주] 친환경 플랜트 대형 EPC 글로벌 수주 랠리 52주 신고가 VCP 돌파"
@@ -3430,11 +3434,11 @@
       "signal_date": "2026-11-05",
       "entry_price": 8660.0,
       "entry_date": "2026-11-05",
-      "current_price": 8140.0,
+      "current_price": 8170.0,
       "exit_price": null,
       "exit_date": null,
       "status": "HOLDING",
-      "return_pct": -6.0,
+      "return_pct": -5.66,
       "target_price": 9520.0,
       "stop_loss_price": 8050.0,
       "notes": "[정배열 2차검증 140점/전체 1위] 5일/20일 정배열 우상향 및 거래량 6,960% 폭증 골든크로스"
@@ -3743,13 +3747,13 @@
   "performance": {
     "PORTFOLIO_TOTAL": {
       "date": "2026-11-06",
-      "daily_return_pct": -0.06,
-      "cumulative_return_pct": -4.24,
+      "daily_return_pct": -0.07,
+      "cumulative_return_pct": -4.25,
       "realized_pnl_pct": -7.31,
-      "unrealized_pnl_pct": -0.06,
+      "unrealized_pnl_pct": -0.07,
       "holding_count": 11,
       "closed_count": 15,
-      "win_rate": 34.6
+      "win_rate": 30.8
     },
     "signal_forge_alert": {
       "date": "2026-11-03",
@@ -3783,13 +3787,13 @@
     },
     "stock-sepa-pivot": {
       "date": "2026-11-06",
-      "daily_return_pct": 0.59,
-      "cumulative_return_pct": 0.59,
+      "daily_return_pct": 0.52,
+      "cumulative_return_pct": 0.52,
       "realized_pnl_pct": 0.0,
-      "unrealized_pnl_pct": 0.59,
+      "unrealized_pnl_pct": 0.52,
       "holding_count": 2,
       "closed_count": 0,
-      "win_rate": 100.0
+      "win_rate": 50.0
     },
     "stock-sniper": {
       "date": "2026-11-06",
@@ -6452,6 +6456,7 @@
 
       tbody.innerHTML = filtered.map(g => {
         const d = ds[g.ticker] || {};
+        const rowId = `gics-row-${g.ticker}`;
         const p = d.price ? `$${d.price.toFixed(2)}` : '-';
         const aum = d.aum_b ? `$${d.aum_b.toFixed(2)}B` : '-';
         const f1 = d.flow_1m !== undefined ? `${d.flow_1m >= 0 ? '+' : ''}${d.flow_1m.toFixed(2)}B` : '-';
@@ -6480,7 +6485,7 @@
         const patColor = pat === 'A' ? 'text-emerald-400 bg-emerald-500/20' : (pat === 'D' ? 'text-amber-400 bg-amber-500/20' : (pat === 'F' ? 'text-rose-400 bg-rose-500/20' : 'text-slate-300 bg-slate-700'));
 
         return `
-          <tr class="hover:bg-desk-850/80 transition-colors">
+          <tr id="${rowId}" class="hover:bg-desk-850/80 transition-all">
             <td class="py-2.5 px-3">
               <div class="font-bold text-white">${g.ticker}</div>
               <div class="text-[10px] text-slate-400 font-sans">${g.name}</div>
@@ -6611,11 +6616,11 @@
       
       const kpiCum = document.getElementById('kpiCumulative');
       kpiCum.innerText = (cumVal >= 0 ? '+' : '') + cumVal.toFixed(1) + '%';
-      kpiCum.className = 'text-3xl font-display font-extrabold ' + (cumVal >= 0 ? 'text-krx-up' : 'text-krx-down');
+      kpiCum.className = 'text-3xl font-sans font-bold ' + (cumVal >= 0 ? 'text-krx-up' : 'text-krx-down');
 
       const kpiDay = document.getElementById('kpiDaily');
       kpiDay.innerText = (dayVal >= 0 ? '+' : '') + dayVal.toFixed(2) + '%';
-      kpiDay.className = 'text-3xl font-display font-extrabold ' + (dayVal >= 0 ? 'text-krx-up' : 'text-krx-down');
+      kpiDay.className = 'text-3xl font-sans font-bold ' + (dayVal >= 0 ? 'text-krx-up' : 'text-krx-down');
 
       document.getElementById('kpiWinRate').innerText = (port.win_rate || 0.0).toFixed(1) + '%';
       document.getElementById('kpiHoldings').innerText = port.holding_count || 0;
@@ -6930,11 +6935,11 @@
         <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-2 mb-2 border-b border-desk-border gap-2">
           <div class="flex items-center space-x-2">
             <span class="px-2 py-0.5 rounded bg-cyan-950 text-cyan-300 border border-cyan-700 font-bold">${active.epoch} · ${active.tag}</span>
-            <span class="font-display text-sm font-bold text-slate-100">${active.title}</span>
+            <span class="font-sans text-sm font-bold text-slate-100">${active.title}</span>
           </div>
           <span class="text-[10px] text-amber-400 font-semibold">${active.stat}</span>
         </div>
-        <p class="text-slate-300 text-xs font-serif leading-relaxed italic mb-2">"${active.summary}"</p>
+        <p class="text-slate-300 text-xs font-sans leading-relaxed mb-2">"${active.summary}"</p>
         <div class="flex items-center text-[11px] font-mono text-cyan-400 bg-desk-950/80 p-2 rounded border border-desk-border">
           <i class="fa-solid fa-arrow-right-arrow-left mr-2 text-cyan-400"></i>
           <span>자본 전이 벡터: <strong>${active.vector}</strong></span>
@@ -6950,41 +6955,149 @@
       const rot = appData.etf_rotation || {};
       const summary = rot.dataset_summary || {};
 
-      // 11 GICS Sectors Mapping
-      const gicsList = [
-        { ticker: 'XLF', name: '금융 (Financials)', icon: 'fa-building-columns' },
-        { ticker: 'XLV', name: '헬스케어 (Health Care)', icon: 'fa-heart-pulse' },
-        { ticker: 'XLB', name: '소재 (Materials)', icon: 'fa-mountain' },
-        { ticker: 'XLP', name: '필수소비재 (Staples)', icon: 'fa-basket-shopping' },
-        { ticker: 'XLI', name: '산업재 (Industrials)', icon: 'fa-gears' },
-        { ticker: 'XLC', name: '통신 (Communication)', icon: 'fa-tower-broadcast' },
-        { ticker: 'XLU', name: '유틸리티 (Utilities)', icon: 'fa-bolt' },
-        { ticker: 'XLY', name: '임의소비재 (Discretionary)', icon: 'fa-bag-shopping' },
-        { ticker: 'XLE', name: '에너지 (Energy)', icon: 'fa-fire-flame-curved' },
-        { ticker: 'XLK', name: '기술 (Technology)', icon: 'fa-microchip' },
-        { ticker: 'XLRE', name: '부동산 (Real Estate)', icon: 'fa-city' }
+      // 11 GICS Sectors with Group Classification
+      // Group 1: INFLOW (Capital Inflow / Overweight) - XLF, XLV, XLI, XLP, XLB, XLC
+      // Group 2: NEUTRAL (Transition / Neutral) - XLU
+      // Group 3: OUTFLOW (Capital Outflow / Underweight) - XLRE, XLE, XLY, XLK
+      const groups = [
+        {
+          id: 'inflow',
+          title: '자금 유입 주도 그룹 (CAPITAL INFLOW / OVERWEIGHT)',
+          sub: '기관 순매집 및 모멘텀 확장 섹터',
+          badgeClass: 'bg-emerald-950 text-emerald-400 border-emerald-800',
+          dotColor: 'bg-emerald-400',
+          cardBorder: 'border-emerald-500/40 bg-emerald-950/10',
+          textColor: 'text-emerald-400',
+          sectors: [
+            { ticker: 'XLF', name: '금융 (Financials)', icon: 'fa-building-columns' },
+            { ticker: 'XLV', name: '헬스케어 (Health Care)', icon: 'fa-heart-pulse' },
+            { ticker: 'XLI', name: '산업재 (Industrials)', icon: 'fa-gears' },
+            { ticker: 'XLP', name: '필수소비재 (Staples)', icon: 'fa-basket-shopping' },
+            { ticker: 'XLB', name: '소재 (Materials)', icon: 'fa-mountain' },
+            { ticker: 'XLC', name: '통신 (Communication)', icon: 'fa-tower-broadcast' }
+          ]
+        },
+        {
+          id: 'neutral',
+          title: '중립 및 관망 그룹 (NEUTRAL / TRANSITION)',
+          sub: '유출입 보합 및 수급 전환 관망 섹터',
+          badgeClass: 'bg-amber-950 text-amber-400 border-amber-800',
+          dotColor: 'bg-amber-400',
+          cardBorder: 'border-amber-500/40 bg-amber-950/10',
+          textColor: 'text-amber-400',
+          sectors: [
+            { ticker: 'XLU', name: '유틸리티 (Utilities)', icon: 'fa-bolt' }
+          ]
+        },
+        {
+          id: 'outflow',
+          title: '자금 유출 경계 그룹 (CAPITAL OUTFLOW / UNDERWEIGHT)',
+          sub: '차익 실현 매도 및 로테이션 유출 섹터',
+          badgeClass: 'bg-rose-950 text-rose-400 border-rose-800',
+          dotColor: 'bg-rose-500',
+          cardBorder: 'border-rose-500/40 bg-rose-950/10',
+          textColor: 'text-rose-400',
+          sectors: [
+            { ticker: 'XLRE', name: '부동산 (Real Estate)', icon: 'fa-city' },
+            { ticker: 'XLE', name: '에너지 (Energy)', icon: 'fa-fire-flame-curved' },
+            { ticker: 'XLY', name: '임의소비재 (Discretionary)', icon: 'fa-bag-shopping' },
+            { ticker: 'XLK', name: '기술 (Technology)', icon: 'fa-microchip' }
+          ]
+        }
       ];
 
-      container.innerHTML = gicsList.map(s => {
+      // Helper to render individual hexagon cell
+      function renderHexItem(s) {
         const d = summary[s.ticker] || {};
         const score = d.score !== undefined ? d.score : 50.0;
         const flow = d.flow_1m !== undefined ? d.flow_1m : 0.0;
         const ret = d.ret_1m !== undefined ? d.ret_1m : 0.0;
         const isInflow = flow > 0;
-        const isStrong = score >= 80;
-        const hexClass = isInflow ? 'hex-inflow' : (flow < -0.5 ? 'hex-outflow' : 'hex-neutral');
-        const badgeColor = isInflow ? 'text-emerald-400' : 'text-rose-400';
+        const isNeutral = flow >= -0.3 && flow <= 0.1;
+        const hexClass = isInflow ? 'hex-inflow' : (isNeutral ? 'hex-neutral' : 'hex-outflow');
+        const badgeColor = isInflow ? 'text-emerald-400' : (isNeutral ? 'text-amber-400' : 'text-rose-400');
+        const iconColor = isInflow ? 'text-cyan-400' : (isNeutral ? 'text-amber-400' : 'text-rose-400');
 
         return `
-          <div onclick="selectSectorHex('${s.ticker}')" class="hex-cell ${hexClass} font-mono">
-            <i class="fa-solid ${s.icon} text-xs ${isInflow ? 'text-cyan-400' : 'text-rose-400'} mb-1"></i>
+          <div onclick="selectSectorHex('${s.ticker}')" class="hex-cell ${hexClass} font-mono select-none" title="클릭 시 하단 세부 테이블 포커스">
+            <i class="fa-solid ${s.icon} text-xs ${iconColor} mb-1"></i>
             <div class="font-bold text-xs text-white">${s.ticker}</div>
             <div class="text-[9px] text-slate-300 truncate max-w-[85px]">${s.name.split(' ')[0]}</div>
-            <div class="text-[10px] font-bold ${badgeColor} mt-0.5">${isInflow ? '+' : ''}${flow.toFixed(2)}B</div>
+            <div class="text-[10px] font-bold ${badgeColor} mt-0.5">${flow >= 0 ? '+' : ''}${flow.toFixed(2)}B</div>
             <div class="text-[8.5px] text-slate-400">Score: <strong class="${score >= 70 ? 'text-cyan-300' : 'text-slate-300'}">${score.toFixed(0)}</strong></div>
           </div>
         `;
-      }).join('');
+      }
+
+      // Calculate Net Flow for each group
+      const inflowSum = groups[0].sectors.reduce((acc, s) => acc + (summary[s.ticker]?.flow_1m || 0), 0);
+      const neutralSum = groups[1].sectors.reduce((acc, s) => acc + (summary[s.ticker]?.flow_1m || 0), 0);
+      const outflowSum = groups[2].sectors.reduce((acc, s) => acc + (summary[s.ticker]?.flow_1m || 0), 0);
+
+      container.innerHTML = `
+        <div class="space-y-4">
+          <!-- 1. Capital Inflow Group (6 Sectors) -->
+          <div class="p-4 rounded-lg border ${groups[0].cardBorder} shadow-sm">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2.5 mb-3 border-b border-desk-border">
+              <div class="flex items-center space-x-2.5">
+                <span class="w-2.5 h-2.5 rounded-full ${groups[0].dotColor} animate-pulse"></span>
+                <span class="font-bold text-xs ${groups[0].textColor} font-mono tracking-wide">${groups[0].title}</span>
+                <span class="px-2 py-0.5 rounded text-[10px] ${groups[0].badgeClass} font-mono font-semibold">${groups[0].sectors.length}개 섹터</span>
+              </div>
+              <div class="text-xs font-mono font-bold ${groups[0].textColor} bg-desk-900/80 px-2.5 py-1 rounded border border-desk-border">
+                1M 총 순유입: +$${inflowSum.toFixed(2)}B
+              </div>
+            </div>
+            <div class="hex-grid py-2">
+              ${groups[0].sectors.map(renderHexItem).join('')}
+            </div>
+          </div>
+
+          <!-- Bottom Split: Neutral Group (1 Sector) & Outflow Group (4 Sectors) -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+            
+            <!-- 2. Neutral / Transition Group (col-span-4) -->
+            <div class="lg:col-span-4 p-4 rounded-lg border ${groups[1].cardBorder} shadow-sm flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between pb-2.5 mb-3 border-b border-desk-border">
+                  <div class="flex items-center space-x-2">
+                    <span class="w-2.5 h-2.5 rounded-full ${groups[1].dotColor}"></span>
+                    <span class="font-bold text-xs ${groups[1].textColor} font-mono">중립·관망 그룹</span>
+                    <span class="px-1.5 py-0.5 rounded text-[10px] ${groups[1].badgeClass} font-mono font-semibold">1개</span>
+                  </div>
+                  <span class="text-xs font-mono font-bold ${groups[1].textColor}">
+                    ${neutralSum >= 0 ? '+' : ''}$${neutralSum.toFixed(2)}B
+                  </span>
+                </div>
+                <div class="hex-grid py-2">
+                  ${groups[1].sectors.map(renderHexItem).join('')}
+                </div>
+              </div>
+              <div class="text-[10px] font-mono text-slate-400 text-center mt-2 pt-2 border-t border-desk-border/60">
+                수급 균형 및 금리 민감 방어 관망
+              </div>
+            </div>
+
+            <!-- 3. Capital Outflow Group (col-span-8) -->
+            <div class="lg:col-span-8 p-4 rounded-lg border ${groups[2].cardBorder} shadow-sm">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2.5 mb-3 border-b border-desk-border">
+                <div class="flex items-center space-x-2.5">
+                  <span class="w-2.5 h-2.5 rounded-full ${groups[2].dotColor} animate-pulse"></span>
+                  <span class="font-bold text-xs ${groups[2].textColor} font-mono tracking-wide">${groups[2].title}</span>
+                  <span class="px-2 py-0.5 rounded text-[10px] ${groups[2].badgeClass} font-mono font-semibold">${groups[2].sectors.length}개 섹터</span>
+                </div>
+                <div class="text-xs font-mono font-bold ${groups[2].textColor} bg-desk-900/80 px-2.5 py-1 rounded border border-desk-border">
+                  1M 총 순유출: -$${Math.abs(outflowSum).toFixed(2)}B
+                </div>
+              </div>
+              <div class="hex-grid py-2">
+                ${groups[2].sectors.map(renderHexItem).join('')}
+              </div>
+            </div>
+
+          </div>
+        </div>
+      `;
     }
 
     function selectSectorHex(ticker) {
