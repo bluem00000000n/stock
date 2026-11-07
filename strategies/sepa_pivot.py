@@ -29,6 +29,12 @@ WATCHLIST = {
         {"name": "티에프이", "code": "425420", "market": "코스닥", "pivot": 79000, "stop": 73000, "turtle_stop": 74500, "farley_swing": "테스트 소켓 2차 파동 돌파", "pattern": "Bull Flag", "score": 97, "theme": "AI 반도체 테스트 소켓 국산화 선도"},
         {"name": "타이거일렉", "code": "219130", "market": "코스닥", "pivot": 89000, "stop": 80700, "turtle_stop": 82000, "farley_swing": "인쇄회로기판 초강세 52주 신고가", "pattern": "Ascending Triangle", "score": 96, "theme": "고다층 초고밀도 반도체 검사용 기판 공급확대"},
     ],
+    "KR_EPISODIC_PIVOT": [
+        {"name": "알테오젠", "code": "196170", "market": "코스닥", "pivot": 440000, "stop": 415000, "turtle_stop": 420000, "farley_swing": "머크 키트루다SC 독점 계약 촉매 EP 돌파", "pattern": "Episodic Pivot", "score": 99, "theme": "글로벌 1위 항암제 키트루다SC 피하주사 독점 라이선스 EP 랠리"},
+        {"name": "삼양식품", "code": "003230", "market": "코스피", "pivot": 650000, "stop": 610000, "turtle_stop": 620000, "farley_swing": "불닭볶음면 글로벌 수출 폭증 어닝 서프라이즈 EP", "pattern": "Episodic Pivot", "score": 99, "theme": "영업이익 세 자릿수 폭증 및 글로벌 유통망 확장 EP 모멘텀"},
+        {"name": "실리콘투", "code": "257720", "market": "코스닥", "pivot": 52000, "stop": 48500, "turtle_stop": 49500, "farley_swing": "K-뷰티 북미/유럽 풀필먼트 공급망 폭발 어닝 EP", "pattern": "Episodic Pivot", "score": 98, "theme": "글로벌 160개국 K-뷰티 유통 허브 매출 급증 EP"},
+        {"name": "유한양행", "code": "000100", "market": "코스피", "pivot": 160000, "stop": 149000, "turtle_stop": 152000, "farley_swing": "렉라자 FDA 승인 갭업 후 DEP 깃발형 안착", "pattern": "Delayed Reaction EP", "score": 98, "theme": "국산 1호 글로벌 블록버스터 폐암 신약 FDA 승인 촉매"}
+    ],
     "US_LARGE": [
         {"ticker": "LLY", "name": "Eli Lilly", "market": "NYSE", "sector": "Healthcare", "pivot": 1420.0, "stop": 1330.0, "turtle_stop": 1350.0, "farley_swing": "20일선 지지 젭바운드 글로벌 랠리", "pattern": "Cup with Handle", "score": 99, "theme": "GLP-1 비만/당뇨 치료제 글로벌 1위 공급확대"},
         {"ticker": "COST", "name": "Costco", "market": "NASDAQ", "sector": "Consumer Staples", "pivot": 1050.0, "stop": 980.0, "turtle_stop": 995.0, "farley_swing": "플랫베이스 지지 우상향 스윙", "pattern": "Flat Base", "score": 98, "theme": "글로벌 멤버십 갱신율 93% 초우량 펀더멘털"},
@@ -45,6 +51,12 @@ WATCHLIST = {
         {"ticker": "SPOT", "name": "Spotify", "market": "NYSE", "sector": "Communication Services", "pivot": 600.0, "stop": 560.0, "turtle_stop": 570.0, "farley_swing": "신고가 박스권 돌파", "pattern": "High Tight Flag", "score": 98, "theme": "글로벌 유료 구독자 급증 및 영업이익률 레버리지"},
         {"ticker": "CAH", "name": "Cardinal Health", "market": "NYSE", "sector": "Healthcare", "pivot": 256.0, "stop": 240.0, "turtle_stop": 243.0, "farley_swing": "플랫베이스 지지 돌파", "pattern": "Flat Base", "score": 96, "theme": "글로벌 제약 유통 및 특수 의약품 고성장"},
         {"ticker": "COR", "name": "Cencora", "market": "NYSE", "sector": "Healthcare", "pivot": 340.0, "stop": 318.0, "turtle_stop": 322.0, "farley_swing": "52주 신고가권 안착 스윙", "pattern": "Bull Flag", "score": 96, "theme": "글로벌 헬스케어 유통 과점 지배력"}
+    ],
+    "US_EPISODIC_PIVOT": [
+        {"ticker": "TMDX", "name": "TransMedics", "market": "NASDAQ", "sector": "Healthcare", "pivot": 88.0, "stop": 82.5, "turtle_stop": 84.0, "farley_swing": "장기이식 OCS 임상/매출 폭발 어닝 EP", "pattern": "Episodic Pivot", "score": 99, "theme": "장기보존 OCS 기술 독점 및 분기 실적 서프라이즈 EP"},
+        {"ticker": "PLTR", "name": "Palantir", "market": "NYSE", "sector": "Information Technology", "pivot": 180.0, "stop": 168.0, "turtle_stop": 171.0, "farley_swing": "AIP 부트캠프 엔터프라이즈 어닝 EP 신고가", "pattern": "Episodic Pivot", "score": 99, "theme": "상업용 AI 매출 가속화 및 S&P500 편입 촉매 EP"},
+        {"ticker": "APP", "name": "AppLovin", "market": "NASDAQ", "sector": "Information Technology", "pivot": 320.0, "stop": 298.0, "turtle_stop": 305.0, "farley_swing": "AXON 2.0 AI 광고 엔진 분기 실적 폭발 EP", "pattern": "Episodic Pivot", "score": 99, "theme": "AI 머신러닝 광고 추천 엔진 이익 레버리지 폭발 EP"},
+        {"ticker": "FROG", "name": "JFrog", "market": "NASDAQ", "sector": "Information Technology", "pivot": 100.0, "stop": 93.0, "turtle_stop": 95.0, "farley_swing": "AI 소프트웨어 공급망 보안 호실적 EP", "pattern": "Episodic Pivot", "score": 98, "theme": "기업용 데브옵스 및 AI 파이프라인 수주 급증 EP"}
     ]
 }
 
@@ -167,6 +179,46 @@ def run_analysis(market: str = "KRX") -> List[Dict[str, Any]]:
                     "pattern": item["pattern"]
                 }
             })
+
+        # 3. 한국장 에피소딕 피봇 (EP & DEP 촉매주)
+        for item in WATCHLIST.get("KR_EPISODIC_PIVOT", []):
+            p_info = fetch_krx_price(item["code"])
+            cur_price = p_info["price"] if p_info["price"] > 0 else float(item["pivot"])
+            pivot_val = float(item["pivot"])
+            if cur_price > 0 and abs(cur_price - pivot_val) / pivot_val > 0.3:
+                pivot_val = round(cur_price * 1.02)
+                stop_val = round(cur_price * 0.95)
+            else:
+                stop_val = float(item["stop"])
+            tp1_val = round(pivot_val * 1.15)
+            tp2_val = round(pivot_val * 1.30)
+            rr = round((tp1_val - pivot_val) / max(1.0, (pivot_val - stop_val)), 2)
+
+            signals.append({
+                "project_id": "stock-sepa-pivot",
+                "strategy_name": "SEPA x 피봇 (KR 에피소딕 피봇 EP)",
+                "market": "KRX",
+                "cap_size": "촉매주",
+                "ticker": item["code"],
+                "name": item["name"],
+                "signal_type": "BUY",
+                "price": cur_price,
+                "target_price": tp1_val,
+                "target_price_2": tp2_val,
+                "stop_loss_price": stop_val,
+                "risk_reward_ratio": rr,
+                "score": float(item["score"]),
+                "sector": item.get("sector") or f"EP 촉매주 / {item['market']}",
+                "theme": f"[에피소딕 피봇] {item['theme']}",
+                "pattern": item["pattern"],
+                "action_plan": f"[EP 촉매] {item['pattern']} 감시. 피봇({pivot_val:,}원) ORB 돌파 및 {item['farley_swing']}. LOD 손절({stop_val:,}원) 엄수",
+                "raw_data": {
+                    "cap_size": "촉매주",
+                    "turtle_stop": item["turtle_stop"],
+                    "farley_swing": item["farley_swing"],
+                    "pattern": item["pattern"]
+                }
+            })
     else:
         for item in WATCHLIST["US_LARGE"]:
             ticker = item["ticker"]
@@ -251,8 +303,50 @@ def run_analysis(market: str = "KRX") -> List[Dict[str, Any]]:
                 }
             })
 
+        # 3. 미국장 에피소딕 피봇 (EP & DEP 촉매주)
+        for item in WATCHLIST.get("US_EPISODIC_PIVOT", []):
+            ticker = item["ticker"]
+            p_info = fetch_us_price(ticker)
+            cur_price = p_info["price"] if p_info["price"] > 0 else float(item["pivot"])
+            pivot_val = float(item["pivot"])
+            if cur_price > 0 and abs(cur_price - pivot_val) / pivot_val > 0.3:
+                pivot_val = round(cur_price * 1.02, 2)
+                stop_val = round(cur_price * 0.95, 2)
+            else:
+                stop_val = float(item["stop"])
+
+            tp1_val = round(pivot_val * 1.20, 2)
+            tp2_val = round(pivot_val * 1.35, 2)
+            rr = round((tp1_val - pivot_val) / max(0.1, (pivot_val - stop_val)), 2)
+
+            signals.append({
+                "project_id": "stock-sepa-pivot",
+                "strategy_name": "SEPA x 피봇 (US 에피소딕 피봇 EP)",
+                "market": "US",
+                "cap_size": "촉매주",
+                "ticker": ticker,
+                "name": p_info["name"] or item["name"],
+                "signal_type": "BUY",
+                "price": cur_price,
+                "target_price": tp1_val,
+                "target_price_2": tp2_val,
+                "stop_loss_price": stop_val,
+                "risk_reward_ratio": rr,
+                "score": float(item["score"]),
+                "sector": item.get("sector") or f"EP 촉매주 / {item['market']}",
+                "theme": f"[에피소딕 피봇] {item['theme']}",
+                "pattern": item["pattern"],
+                "action_plan": f"[EP 촉매] {item['pattern']} 감시. 피봇(${pivot_val:.2f}) ORB 돌파 및 {item['farley_swing']}. LOD 손절(${stop_val:.2f}) 엄수",
+                "raw_data": {
+                    "cap_size": "촉매주",
+                    "turtle_stop": item["turtle_stop"],
+                    "farley_swing": item["farley_swing"],
+                    "pattern": item["pattern"]
+                }
+            })
+
     signals.sort(key=lambda x: x["score"], reverse=True)
-    return signals[:6]
+    return signals[:8]
 
 
 if __name__ == "__main__":
